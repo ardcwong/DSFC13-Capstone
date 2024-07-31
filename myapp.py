@@ -43,7 +43,7 @@ def login():
         
         if st.session_state.vote == None: 
 
-            if col21.button("Aspiring Student"):
+            if role_as:
                 st.session_state.role_chosen == "Aspiring Student"
                 if st.session_state.role_chosen == True:
                     role = role_as
