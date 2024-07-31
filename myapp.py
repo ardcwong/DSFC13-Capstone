@@ -1,6 +1,7 @@
 import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import pandas as pd
 
 st.set_page_config(layout='wide')
 credentials = st.secrets["gcp_service_account"]
