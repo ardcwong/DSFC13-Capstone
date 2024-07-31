@@ -25,7 +25,8 @@ nltk.download('punkt', quiet=True)
 nltk.download('wordnet', quiet=True)
 nltk.download('omw-1.4', quiet=True)
 
-###
+# Load credentials from st.secrets
+credentials = st.secrets["gcp_service_account"]
 api_key = st.secrets["api"]['api_key']
 
 client = OpenAI(api_key=api_key)
@@ -39,6 +40,33 @@ st.markdown('<p style="font-size: 14px; color: red; text-align: center;"><strong
 x = "No"
 
 
+# Google Sheets setup using st.secrets
+scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
+client = gspread.authorize(creds)
+
+# Open the Google Sheet
+sheet = client.open("LoginCredentials").sheet1
+
+# Function to check login
+def check_login(username, password):
+    users = pd.DataFrame(sheet.get_all_records())
+    if username in users['Username'].values:
+        if password == users[users['Username'] == username]['Password'].values[0]:
+            return True
+    return False
+
+# Streamlit app
+st.title("Login Page")
+
+username = st.text_input("Username")
+password = st.text_input("Password", type="password")
+
+if st.button("Login"):
+    if check_login(username, password):
+        st.success("Login successful!")
+    else:
+        st.error("Invalid username or password")
 
 
 
