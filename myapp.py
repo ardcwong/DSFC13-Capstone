@@ -36,9 +36,6 @@ def login():
         role_as = col21.button("Aspiring Student")
         role_fl = col21.button("Fellow")
         role_mt = col21.button("Mentor")
-        if role_as:
-            
-
         
         if st.session_state.vote == None: 
             if role_as:
