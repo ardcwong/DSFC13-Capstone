@@ -43,7 +43,7 @@ def login():
             elif col23.button("Mentor"):
                 role = "Mentor"
             else: 
-                None
+                role = []
             return role
         role = role_chosen()
        
