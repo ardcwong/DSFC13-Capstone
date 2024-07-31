@@ -1,8 +1,9 @@
 import streamlit as st
-import streamlit_authenticator as stauth
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 st.set_page_config(layout='wide')
-
+credentials = st.secrets["gcp_service_account"]
 
 if "role" not in st.session_state:
     st.session_state.role = None
@@ -112,35 +113,84 @@ def medinfohubplus():
   
 @st.dialog("❗Important Reminder",width="large")
 def vote(role):
-
-    st.markdown("""While our app provides information about illnesses and medications, it is not a substitute for professional medical advice. Self-medicating can be dangerous and may lead to serious health issues. 
-    Always consult a healthcare professional before starting or changing any medication. <br><br>If you are experiencing symptoms, please seek medical advice from a qualified healthcare provider. 
-    For your convenience, we have partnered with trusted clinics. <br><br>Find a Partner Clinic Here.""", unsafe_allow_html=True
-               )
-    col1, col2, col3 = st.columns(3)
-    col1.link_button("Now Serving", "https://nowserving.ph", use_container_width = True)
-    col2.link_button("Konsulta MD", "https://konsulta.md/", use_container_width = True)
-    col3.link_button("SeriousMD", "https://seriousmd.com/healthcare-super-app-philippines", use_container_width = True)
+    # Google Sheets setup using st.secrets
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
+    client = gspread.authorize(creds)
     
-    agree = st.checkbox("I acknowledge that I understand the importance of consulting a healthcare professional.")
-   
-    if st.button("Enter MedInfoHub+", type = "primary"):
-        if agree:
+    # Open the Google Sheet
+    sheet = client.open("LoginCredentials").sheet1
+    users = pd.DataFrame(sheet.get_all_records())
+    st.write(users['Username'])
+    
+    st.write(pd.DataFrame(sheet.get_all_records()))
+    # Function to check login
+    def check_login(username, password):
+        users = pd.DataFrame(sheet.get_all_records())
+        if username in users['Username'].values:
+            st.session_state.username_exist = True
+            if password == str(users[users['Username'] == username]['Password'].values[0]):
+                st.write("Correct")
+                return True
+        return False
+    
+    # Streamlit app
+    st.title("Login Page")
+    
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+    
+    if st.button("Login"):
+        if check_login(username, password):
+            st.success("Login successful!")
             st.session_state.vote = {"role": role}
             st.session_state.role = st.session_state.vote['role']
             st.rerun()
-        else: 
-            st.error("It is important to acknowledge the need for professional medical advice.")
+        else:
+            st.error("Invalid username or password")
+            
+    # agree = st.checkbox("I acknowledge that I understand the importance of consulting a healthcare professional.")
+   
+    # if st.button("Enter MedInfoHub+", type = "primary"):
+    #     if agree:
+    #         st.session_state.vote = {"role": role}
+    #         st.session_state.role = st.session_state.vote['role']
+    #         st.rerun()
+    #     else: 
+    #         st.error("It is important to acknowledge the need for professional medical advice.")
 
+
+
+
+
+
+
+
+
+
+
+    
+    # st.markdown("""While our app provides information about illnesses and medications, it is not a substitute for professional medical advice. Self-medicating can be dangerous and may lead to serious health issues. 
+    # Always consult a healthcare professional before starting or changing any medication. <br><br>If you are experiencing symptoms, please seek medical advice from a qualified healthcare provider. 
+    # For your convenience, we have partnered with trusted clinics. <br><br>Find a Partner Clinic Here.""", unsafe_allow_html=True
+    #            )
+    # col1, col2, col3 = st.columns(3)
+    # col1.link_button("Now Serving", "https://nowserving.ph", use_container_width = True)
+    # col2.link_button("Konsulta MD", "https://konsulta.md/", use_container_width = True)
+    # col3.link_button("SeriousMD", "https://seriousmd.com/healthcare-super-app-philippines", use_container_width = True)
+    
+
+
+
+
+
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------
 
 role = st.session_state.role
-# def role_print_none():
-#     if st.session_state.role:
-#         st.sidebar.markdown(f"Hi, {st.session_state.role}")
-        
-#     return []
 
-# role_print_none()
 
 
 logout_page = st.Page(logout, title="End Session", icon=":material/logout:")
@@ -158,66 +208,22 @@ fda_app = st.Page(
     "FDA/fda_app.py", title="PharmaPal", icon="⚕️"
 )
 
-# 👩🏻‍⚕️
-# respond_1 = st.Page(
-#     "respond/respond_1.py",
-#     title="Respond 1",
-#     icon=":material/healing:",
-#     default=(role == "Responder"),
-# )
-# respond_2 = st.Page(
-#     "respond/respond_2.py", title="Respond 2", icon=":material/handyman:"
-# )
-
-
-# admin_1 = st.Page(
-#     "admin/admin_1.py",
-#     title="Admin 1",
-#     icon=":material/person_add:",
-#     default=(role == "Admin"),
-# )
-# admin_2 = st.Page("admin/admin_2.py", title="Admin 2", icon=":material/security:")
 about_us_pages = [medinfohubplus_info,about_us]
 account_pages = [logout_page]
 data_apps = [medquad, fda_app]
-# user_info = []
 
-
-# respond_pages = [respond_1, respond_2]
-# admin_pages = [admin_1, admin_2]
-
-# st.sidebar.title('MedInfoHub')
-# with st.sidebar:
-#     # st.subheader("WHAT WE OFFER")
-#     # st.image('data/use.png')
-#     st.subheader("CONTACT US")
-#     st.write('For any concerns or suggestions, you may reach out to us through the following:')
-#     contactinfo = """
-#     Facebook: facebook.com/medinfohub
-#     Twitter: twitter.com/medinfohub
-#     Instagram: instagram.com/medinfohub
-#     """
-#     # Display formatted text with st.markdown
-#     st.markdown(contactinfo, unsafe_allow_html=True)
-# st.title("Request manager")
-# st.logo("images/horizontal_blue.png", icon_image="images/icon_blue.png")
 st.logo(
     "data/mihplus.png",
     icon_image= "data/logo.png",
 )
 
 page_dict = {}
-# if st.session_state.role in ["Patient/Caregiver", "Healthcare Provider", "Neither"]:
-#     page_dict["Hi",role] = user_info
+
 if st.session_state.role in ["Aspiring Student", "Fellow", "Mentor"]:
     page_dict["Application"] = data_apps
 if st.session_state.role in ["Aspiring Student", "Fellow", "Mentor"]:
     page_dict["MedInfoHub+"] = about_us_pages
 
-# if st.session_state.role in ["Responder", "Admin"]:
-#     page_dict["Respond"] = respond_pages
-# if st.session_state.role == "Admin":
-#     page_dict["Admin"] = admin_pages
 
 if len(page_dict) > 0:
     pg = st.navigation(page_dict | {"Session": account_pages})
