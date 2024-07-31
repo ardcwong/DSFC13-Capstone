@@ -159,7 +159,7 @@ def vote(role):
     password = st.text_input("Password", type="password")
     
     if st.button("Login"):
-        if check_login(username, password):
+        if check_login(username, password, sheet, user):
             st.success("Login successful!")
             st.session_state.vote = {"role": role}
             st.session_state.role = st.session_state.vote['role']
