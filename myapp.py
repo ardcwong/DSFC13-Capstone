@@ -34,11 +34,11 @@ def login():
     with col2:
         col21, col22, col23 = st.columns([1,1,1])
         def role_chosen():
-            if col21.button("Aspiring Student"):
+            if col21.button("Aspiring Student", type = "primary", use_container_width = True):
                 role = "Aspiring Student"
-            elif col22.button("Fellow"):
+            elif col22.button("Fellow", type = "primary", use_container_width = True)
                 role = "Fellow"
-            elif col23.button("Mentor"):
+            elif col23.button("Mentor", type = "primary", use_container_width = True)
                 role = "Mentor"
             else: 
                 role = []
@@ -61,34 +61,6 @@ def login():
             st.session_state.role = st.session_state.vote['role']
                 
             
-
-        
-
-
-    
-        
-    # role = col2.radio("I am a ",ROLES, index = None, label_visibility = "collapsed",captions = ["Aspiring Data Analyst, Data Scientist", "Currently Enrolled in a bootcamp / fellowship", "I am a mentor / instructor / ops"] )
-    # # role = col2.selectbox("Choose your role", ROLES)
-    # if st.session_state.vote == None: 
-        
-    #     if col2.button("Next"):
-    #         if role in ["Aspiring Student"]:
-    #             st.session_state.vote = {"role": role}
-    #             st.rerun()
-    #         elif role in ["Fellow", "Mentor"]:
-    #             vote(role)
-    #         elif role == []:
-    #             col2.error("Please Select Your Profile in order to proceed.")
-    # else:
-    #     st.session_state.role = st.session_state.vote['role']
-
-    
-    
-    # col2.button("Enter MedInfoHub+"):
-        
-        # st.session_state.role = role
-        # st.rerun()
-
  
 def logout():
     # st.session_state = None
@@ -115,24 +87,6 @@ def contactus():
     # Display formatted text with st.markdown
     st.markdown(contactinfo, unsafe_allow_html=True)
 def medinfohubplus():
-    # if st.session_state.role:
-    #     # st.markdown("<h5 style='text-align: center;'>Hi, </h5>", unsafe_allow_html=True)
-    #     st.markdown(f"""
-    #     <div style="text-align: center; background-color: #C4E8F3;padding: 5px; border-radius: 5px; margin-right: 5px;">
-    #         Hi, <b>{st.session_state.role}</b>
-    #     </div>
-    #     """, unsafe_allow_html=True)
-
-    # if st.session_state.role:
-    #     st.markdown(f"""
-    #     <div style="text-align: center; background-color: #C4E8F3; padding: 5px; border-radius: 5px; margin-right: 5px;">
-    #         Hi, <span style="font-weight: bold;">{st.session_state.role}</span>
-    #     </div>
-    #     """, unsafe_allow_html=True)
-    
-
-    
-        
     st.markdown(f"<h1 style='text-align: center;'>Welcome to MedInfoHub+, {role} ✨</h1>", unsafe_allow_html=True)
     st.divider()
     st.markdown("<h4 style='text-align: center;color: #e76f51;'><b><i>MedInfoHub</b></i><i> is your ultimate resource for accessible, reliable, and easy-to-understand medical information. Our platform is designed to enhance public health literacy, advocate telemedicine consultations, and bridge the gap between drug knowledge and patient understanding. MedInfoHub+ features two powerful applications: HealthPlus and PharmaPal.</i></h4>", unsafe_allow_html=True)
@@ -142,33 +96,20 @@ def medinfohubplus():
         st.subheader("➕HealthPlus")
         st.markdown("***Empowering you with reliable medical knowledge***")
         st.markdown("HealthPlus leverages the power of the MedQuAD dataset and advanced AI to provide you with accurate and easy-to-understand medical information. Our goal is to make healthcare information accessible to everyone, enhancing public health literacy and advocating telemedicine consultations.")
-        # st.image('data/healthplus.png')
         
 
     with col2:
         st.subheader("⚕️PharmaPal")
         st.markdown("***Bridging the gap between drug knowledge and patient understanding***")
         st.markdown("PharmaPal is an innovative Streamlit application designed to bridge the gap between drug knowledge and patient understanding. Leveraging the power of the FDA Dataset through the Retrieval-Augmented Generation (RAG), this app provides clear, reliable, and accessible information about the drug that is tailor-fit on the user profile, whether a healthcare provider or a patient.")
-        # st.image('data/pharmapal.png')
-        
+ 
     col3, col4 = st.columns(2)
     if col3.button('HealthPlus', type = "primary", use_container_width = True):
         st.switch_page("MedQuAd/medquad.py")
     if col4.button('PharmaPal', type = "primary", use_container_width = True):
         st.switch_page("FDA/fda_app.py")
 
-    # st.subheader("WHAT WE OFFER")
-    # st.image('data/use.png')
-    # st.subheader("CONTACT US")
-    # st.write('For any concerns or suggestions, you may reach out to us through the following:')
-    # contactinfo = """
-    # Facebook: facebook.com/medinfohub
-    # Twitter: twitter.com/medinfohub
-    # Instagram: instagram.com/medinfohub
-    # """
-    # # Display formatted text with st.markdown
-    # st.markdown(contactinfo, unsafe_allow_html=True)
-
+  
 @st.dialog("❗Important Reminder",width="large")
 def vote(role):
 
