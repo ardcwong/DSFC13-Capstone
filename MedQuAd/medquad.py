@@ -47,6 +47,9 @@ client = gspread.authorize(creds)
 
 # Open the Google Sheet
 sheet = client.open("LoginCredentials").sheet1
+users = pd.DataFrame(sheet.get_all_records())
+st.write(users['Username'])
+
 st.write(pd.DataFrame(sheet.get_all_records()))
 # Function to check login
 def check_login(username, password):
