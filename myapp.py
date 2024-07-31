@@ -51,7 +51,7 @@ def login():
 
             if role in ["Aspiring Student"]:
                 st.session_state.vote = {"role": role}
-                st.rerun()
+                # st.rerun()
             elif role in ["Fellow", "Mentor"]:
                 vote(role)
             # elif role == []:
