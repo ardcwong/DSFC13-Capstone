@@ -38,12 +38,13 @@ def login():
         role_as = col21.button("Aspiring Student")
         role_fl = col22.button("Fellow")
         role_mt = col23.button("Mentor") 
-
+        st.write(st.session_state.role_chosen)
         
         if st.session_state.vote == None: 
 
             if role_as:
-                st.session_state.role_chosen == True
+                st.session_state.role_chosen == role_as
+                
                 if st.session_state.role_chosen == True:
                     role = role_as
                     st.session_state.vote = {"role": role}
