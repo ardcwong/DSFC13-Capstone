@@ -36,9 +36,9 @@ def login():
         def role_chosen():
             if col21.button("Aspiring Student", type = "primary", use_container_width = True):
                 role = "Aspiring Student"
-            elif col22.button("Fellow", type = "primary", use_container_width = True)
+            elif col22.button("Fellow", type = "primary", use_container_width = True):
                 role = "Fellow"
-            elif col23.button("Mentor", type = "primary", use_container_width = True)
+            elif col23.button("Mentor", type = "primary", use_container_width = True):
                 role = "Mentor"
             else: 
                 role = []
