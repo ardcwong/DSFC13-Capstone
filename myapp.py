@@ -124,18 +124,30 @@ def vote(role):
     client = gspread.authorize(creds)
     
     # Open the Google Sheet
-    sheet = client.open("LoginCredentials").sheet1
-    users = pd.DataFrame(sheet.get_all_records())
-    st.write(users['Username'])
+    sheet_fellow = client.open("LoginCredentials").sheet1
+    sheet_mentor = client.open("LoginCredentials").sheet2
+    users_fellow = pd.DataFrame(sheet_fellow.get_all_records())
+    users_mentor = pd.DataFrame(sheet_mentor.get_all_records())
+   
+    st.write(pd.DataFrame(sheet_fellow.get_all_records()))
+    st.write(pd.DataFrame(sheet_mentor.get_all_records()))
+    def check_role_login(role):
+        if role in ["Fellow"]:
+            sheet = sheet_fellow
+            user = user_fellow
+        elif role in ["Mentor"]:
+            sheet = sheet_mentor
+            user = user_mentor
+        return sheet, user
+        
+    sheet, user = check_role_login(role)
     
-    st.write(pd.DataFrame(sheet.get_all_records()))
     # Function to check login
-    def check_login(username, password):
+    def check_login(username, password, sheet, user):    
         users = pd.DataFrame(sheet.get_all_records())
         if username in users['Username'].values:
             st.session_state.username_exist = True
             if password == str(users[users['Username'] == username]['Password'].values[0]):
-                st.write("Correct")
                 return True
         return False
     
@@ -154,36 +166,7 @@ def vote(role):
         else:
             st.error("Invalid username or password")
             
-    # agree = st.checkbox("I acknowledge that I understand the importance of consulting a healthcare professional.")
-   
-    # if st.button("Enter MedInfoHub+", type = "primary"):
-    #     if agree:
-    #         st.session_state.vote = {"role": role}
-    #         st.session_state.role = st.session_state.vote['role']
-    #         st.rerun()
-    #     else: 
-    #         st.error("It is important to acknowledge the need for professional medical advice.")
-
-
-
-
-
-
-
-
-
-
-
-    
-    # st.markdown("""While our app provides information about illnesses and medications, it is not a substitute for professional medical advice. Self-medicating can be dangerous and may lead to serious health issues. 
-    # Always consult a healthcare professional before starting or changing any medication. <br><br>If you are experiencing symptoms, please seek medical advice from a qualified healthcare provider. 
-    # For your convenience, we have partnered with trusted clinics. <br><br>Find a Partner Clinic Here.""", unsafe_allow_html=True
-    #            )
-    # col1, col2, col3 = st.columns(3)
-    # col1.link_button("Now Serving", "https://nowserving.ph", use_container_width = True)
-    # col2.link_button("Konsulta MD", "https://konsulta.md/", use_container_width = True)
-    # col3.link_button("SeriousMD", "https://seriousmd.com/healthcare-super-app-philippines", use_container_width = True)
-    
+ 
 
 
 
