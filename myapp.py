@@ -41,7 +41,7 @@ def login():
             if role_as:
                 role = role_as
                 st.session_state.vote = {"role": role}
-                st.rerun()
+                # st.rerun()
             elif role_fl:
                 role = role_fl
                 vote(role)
