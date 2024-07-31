@@ -55,7 +55,7 @@ def login():
             elif role in ["Fellow", "Mentor"]:
                 vote(role)
             elif role == []:
-                col2.error("Please Select Your Profile in order to proceed.")
+                None
         else:
             st.session_state.role = st.session_state.vote['role']
                 
