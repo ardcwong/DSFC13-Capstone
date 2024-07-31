@@ -57,6 +57,7 @@ def check_login(username, password):
     if username in users['Username'].values:
         st.write("username exists")
         if password == users[users['Username'] == username]['Password'].values[0]:
+            st.write("Correct")
             return True
     return False
 
