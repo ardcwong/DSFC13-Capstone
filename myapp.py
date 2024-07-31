@@ -13,16 +13,11 @@ if "vote" not in st.session_state:
 ROLES = ["Aspiring Student", "Fellow", "Mentor"]
 
 
-
-
-
-
-
         
 def login():
     col1, col2, col3 = st.columns([1,3,1])
     
-    col2.image('data/mihplus.png')
+    # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
 
     col2.header("ESKWELABS APP")
     # col1.image('data/art.png')
@@ -35,21 +30,48 @@ def login():
 
     col2.subheader("Get Started")
     col2.markdown("Let us know who's visiting. Are you a/an ...")
-
-    role = col2.radio("I am a ",ROLES, index = None, label_visibility = "collapsed",captions = ["Aspiring Data Analyst, Data Scientist", "Currently Enrolled in a bootcamp / fellowship", "I am a mentor / instructor / ops"] )
-    # role = col2.selectbox("Choose your role", ROLES)
-    if st.session_state.vote == None: 
+    with col2:
+        col21, col22, col23 = st.columns([1,1,1])
         
-        if col2.button("Next"):
-            if role in ["Aspiring Student"]:
-                st.session_state.vote = {"role": role}
-                st.rerun()
-            elif role in ["Fellow", "Mentor"]:
-                vote(role)
-            elif role == []:
-                col2.error("Please Select Your Profile in order to proceed.")
+        role_as = col21.button("Aspiring Student")
+        role_fl = col21.button("Fellow")
+        role_mt = col21.button("Mentor")
+        
+    if st.session_state.vote == None: 
+        if role_as:
+            role = role_as
+            st.session_state.vote = {"role": role}
+            st.rerun()
+        elif role_fl:
+            role = role_fl
+            vote(role)
+        elif role_mt:
+            role = role_mt
+            vote(role)
     else:
         st.session_state.role = st.session_state.vote['role']
+            
+            
+
+        
+
+
+    
+        
+    # role = col2.radio("I am a ",ROLES, index = None, label_visibility = "collapsed",captions = ["Aspiring Data Analyst, Data Scientist", "Currently Enrolled in a bootcamp / fellowship", "I am a mentor / instructor / ops"] )
+    # # role = col2.selectbox("Choose your role", ROLES)
+    # if st.session_state.vote == None: 
+        
+    #     if col2.button("Next"):
+    #         if role in ["Aspiring Student"]:
+    #             st.session_state.vote = {"role": role}
+    #             st.rerun()
+    #         elif role in ["Fellow", "Mentor"]:
+    #             vote(role)
+    #         elif role == []:
+    #             col2.error("Please Select Your Profile in order to proceed.")
+    # else:
+    #     st.session_state.role = st.session_state.vote['role']
 
     
     
@@ -140,26 +162,24 @@ def medinfohubplus():
 
 @st.experimental_dialog("❗Important Reminder",width="large")
 def vote(role):
-    if role == "Aspiring Student":
-        st.session_state.vote = {"role": role}
-    else:
-        st.markdown("""While our app provides information about illnesses and medications, it is not a substitute for professional medical advice. Self-medicating can be dangerous and may lead to serious health issues. 
-        Always consult a healthcare professional before starting or changing any medication. <br><br>If you are experiencing symptoms, please seek medical advice from a qualified healthcare provider. 
-        For your convenience, we have partnered with trusted clinics. <br><br>Find a Partner Clinic Here.""", unsafe_allow_html=True
-                   )
-        col1, col2, col3 = st.columns(3)
-        col1.link_button("Now Serving", "https://nowserving.ph", use_container_width = True)
-        col2.link_button("Konsulta MD", "https://konsulta.md/", use_container_width = True)
-        col3.link_button("SeriousMD", "https://seriousmd.com/healthcare-super-app-philippines", use_container_width = True)
-        
-        agree = st.checkbox("I acknowledge that I understand the importance of consulting a healthcare professional.")
-       
-        if st.button("Enter MedInfoHub+", type = "primary"):
-            if agree:
-                st.session_state.vote = {"role": role}
-                st.rerun()
-            else: 
-                st.error("It is important to acknowledge the need for professional medical advice.")
+
+    st.markdown("""While our app provides information about illnesses and medications, it is not a substitute for professional medical advice. Self-medicating can be dangerous and may lead to serious health issues. 
+    Always consult a healthcare professional before starting or changing any medication. <br><br>If you are experiencing symptoms, please seek medical advice from a qualified healthcare provider. 
+    For your convenience, we have partnered with trusted clinics. <br><br>Find a Partner Clinic Here.""", unsafe_allow_html=True
+               )
+    col1, col2, col3 = st.columns(3)
+    col1.link_button("Now Serving", "https://nowserving.ph", use_container_width = True)
+    col2.link_button("Konsulta MD", "https://konsulta.md/", use_container_width = True)
+    col3.link_button("SeriousMD", "https://seriousmd.com/healthcare-super-app-philippines", use_container_width = True)
+    
+    agree = st.checkbox("I acknowledge that I understand the importance of consulting a healthcare professional.")
+   
+    if st.button("Enter MedInfoHub+", type = "primary"):
+        if agree:
+            st.session_state.vote = {"role": role}
+            st.rerun()
+        else: 
+            st.error("It is important to acknowledge the need for professional medical advice.")
 
 
 role = st.session_state.role
