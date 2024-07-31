@@ -41,7 +41,7 @@ def login():
             if role_as:
                 role = role_as
                 st.session_state.vote = {"role": role}
-                st.rerun()
+                # st.rerun()
             elif role_fl:
                 role = role_fl
                 vote(role)
@@ -160,7 +160,7 @@ def medinfohubplus():
     # # Display formatted text with st.markdown
     # st.markdown(contactinfo, unsafe_allow_html=True)
 
-@st.experimental_dialog("❗Important Reminder",width="large")
+@st.dialog("❗Important Reminder",width="large")
 def vote(role):
 
     st.markdown("""While our app provides information about illnesses and medications, it is not a substitute for professional medical advice. Self-medicating can be dangerous and may lead to serious health issues. 
