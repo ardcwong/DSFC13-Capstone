@@ -43,7 +43,7 @@ def login():
         if col2.button("Next"):
             if role in ["Aspiring Student"]:
                 st.session_state.vote = {"role": role}
-            
+                st.rerun()
             elif role in ["Fellow", "Mentor"]:
                 vote(role)
             elif role == []:
