@@ -42,6 +42,8 @@ def login():
                 role = "Fellow"
             elif col23.button("Mentor"):
                 role = "Mentor"
+            else: 
+                None
             return role
         role = role_chosen()
        
