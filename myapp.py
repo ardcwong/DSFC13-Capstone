@@ -37,19 +37,19 @@ def login():
         role_fl = col21.button("Fellow")
         role_mt = col21.button("Mentor")
         
-        if st.session_state.vote == None: 
-            if role_as:
-                role = role_as
-                st.session_state.vote = {"role": role}
-                # st.rerun()
-            elif role_fl:
-                role = role_fl
-                vote(role)
-            elif role_mt:
-                role = role_mt
-                vote(role)
-        else:
-            st.session_state.role = st.session_state.vote['role']
+        # if st.session_state.vote == None: 
+        #     if role_as:
+        #         role = role_as
+        #         st.session_state.vote = {"role": role}
+        #         # st.rerun()
+        #     elif role_fl:
+        #         role = role_fl
+        #         vote(role)
+        #     elif role_mt:
+        #         role = role_mt
+        #         vote(role)
+        # else:
+        #     st.session_state.role = st.session_state.vote['role']
             
             
 
