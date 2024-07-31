@@ -43,20 +43,18 @@ def login():
         if st.session_state.vote == None: 
 
             if role_as:
-                st.session_state.vote = {"role": role_as}
-                st.session_state.role = st.session_state.vote['role']
-                # st.session_state.role_chosen == role_as
-                # if st.session_state.role_chosen:
-                #     role = role_as
-                #     st.session_state.vote = {"role": role}
-                #     # st.rerun()
+                st.session_state.role_chosen == True
+                if st.session_state.role_chosen == True:
+                    role = role_as
+                    st.session_state.vote = {"role": role}
+                    # st.rerun()
             elif role_fl:
-                st.session_state.role_chosen == role_fl
+                st.session_state.role_chosen == True
                 if st.session_state.role_chosen:
                     role = role_fl
                     vote(role)
             elif role_mt:
-                st.session_state.role_chosen == role_mt
+                st.session_state.role_chosen == True
                 if st.session_state.role_chosen:
                     role = role_mt
                     vote(role)
