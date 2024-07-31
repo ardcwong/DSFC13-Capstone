@@ -39,6 +39,7 @@ def login():
         role_fl = col22.button("Fellow")
         role_mt = col23.button("Mentor") 
         st.write(st.session_state.role_chosen)
+        st.write(st.session_state.vote)
         
         if st.session_state.vote == None: 
 
