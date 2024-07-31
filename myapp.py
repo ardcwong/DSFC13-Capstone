@@ -35,12 +35,16 @@ def login():
     col2.markdown("Let us know who's visiting. Are you a/an ...")
     with col2:
         col21, col22, col23 = st.columns([1,1,1])
+        
         def role_chosen():
-            if col21.button("Aspiring Student", type = "primary", use_container_width = True):
+            a = col21.button("Aspiring Student", type = "primary", use_container_width = True)
+            b = col22.button("Fellow", type = "primary", use_container_width = True)
+            c = col23.button("Mentor", type = "primary", use_container_width = True)
+            if a:
                 role = "Aspiring Student"
-            elif col22.button("Fellow", type = "primary", use_container_width = True):
+            elif b:
                 role = "Fellow"
-            elif col23.button("Mentor", type = "primary", use_container_width = True):
+            elif c:
                 role = "Mentor"
             else: 
                 role = []
