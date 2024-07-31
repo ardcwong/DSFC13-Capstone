@@ -136,10 +136,10 @@ def vote(role):
 
     if role in ["Fellow"]:
         sheet = sheet_fellow
-        user = user_fellow
+        user = users_fellow
     elif role in ["Mentor"]:
         sheet = sheet_mentor
-        user = user_mentor
+        user = users_mentor
 
         
     
