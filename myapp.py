@@ -133,16 +133,15 @@ def vote(role):
    
     st.write(pd.DataFrame(sheet_fellow.get_all_records()))
     st.write(pd.DataFrame(sheet_mentor.get_all_records()))
-    def check_role_login(role):
-        if role in ["Fellow"]:
-            sheet = sheet_fellow
-            user = user_fellow
-        elif role in ["Mentor"]:
-            sheet = sheet_mentor
-            user = user_mentor
-        return sheet, user
+
+    if role in ["Fellow"]:
+        sheet = sheet_fellow
+        user = user_fellow
+    elif role in ["Mentor"]:
+        sheet = sheet_mentor
+        user = user_mentor
+
         
-    sheet, user = check_role_login(role)
     
     # Function to check login
     def check_login(username, password, sheet, user):    
