@@ -124,10 +124,11 @@ def vote(role):
     client = gspread.authorize(creds)
     
     # Open the Google Sheet
-    sheet_fellow = client.open("LoginCredentials").sheet1
-    
+    spreadsheet = client.open("LoginCredentials")
+    sheet_fellow = spreadsheet.worksheet("Sheet1")
+    sheet_mentor = spreadsheet.worksheet("Sheet2")
     users_fellow = pd.DataFrame(sheet_fellow.get_all_records())
-    sheet_mentor = client.open("LoginCredentials").sheet2
+
     users_mentor = pd.DataFrame(sheet_mentor.get_all_records())
    
     st.write(pd.DataFrame(sheet_fellow.get_all_records()))
