@@ -9,6 +9,9 @@ if "role" not in st.session_state:
 
 if "vote" not in st.session_state:
     st.session_state.vote = None
+
+if "role_chosen" not in st.session_state:
+    st.session_state.role_chosen = None
     
 ROLES = ["Aspiring Student", "Fellow", "Mentor"]
 
