@@ -41,9 +41,12 @@ def login():
     if st.session_state.vote == None: 
         
         if col2.button("Next"):
-            if role:
+            if role == "Aspiring Student":
+                st.session_state.vote = {"role": role}
+            
+            elif role == "Fellow" | "Mentor":
                 vote(role)
-            else:
+            elif role == []:
                 col2.error("Please Select Your Profile in order to proceed.")
     else:
         st.session_state.role = st.session_state.vote['role']
