@@ -56,7 +56,7 @@ def check_login(username, password):
     users = pd.DataFrame(sheet.get_all_records())
     if username in users['Username'].values:
         st.write("username exists")
-        st.write(str.(users[users['Username'] == username]['Password'].values[0]))
+        st.write(str(users[users['Username'] == username]['Password'].values[0]))
         if password == users[users['Username'] == username]['Password'].values[0]:
             st.write("Correct")
             return True
