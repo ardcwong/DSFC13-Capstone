@@ -34,7 +34,7 @@ def login():
     col2.markdown(content, unsafe_allow_html=True)
 
     col2.subheader("Get Started")
-    col2.markdown("Let us know who's visiting. Are you a ...")
+    col2.markdown("Let us know who's visiting. Are you a/an ...")
 
     role = col2.radio("I am a ",ROLES, index = None, label_visibility = "collapsed",captions = ["Aspiring Data Analyst, Data Scientist", "Currently Enrolled in a bootcamp / fellowship", "I am a mentor / instructor / ops"] )
     # role = col2.selectbox("Choose your role", ROLES)
@@ -137,23 +137,26 @@ def medinfohubplus():
 
 @st.experimental_dialog("❗Important Reminder",width="large")
 def vote(role):
-    st.markdown("""While our app provides information about illnesses and medications, it is not a substitute for professional medical advice. Self-medicating can be dangerous and may lead to serious health issues. 
-    Always consult a healthcare professional before starting or changing any medication. <br><br>If you are experiencing symptoms, please seek medical advice from a qualified healthcare provider. 
-    For your convenience, we have partnered with trusted clinics. <br><br>Find a Partner Clinic Here.""", unsafe_allow_html=True
-               )
-    col1, col2, col3 = st.columns(3)
-    col1.link_button("Now Serving", "https://nowserving.ph", use_container_width = True)
-    col2.link_button("Konsulta MD", "https://konsulta.md/", use_container_width = True)
-    col3.link_button("SeriousMD", "https://seriousmd.com/healthcare-super-app-philippines", use_container_width = True)
-    
-    agree = st.checkbox("I acknowledge that I understand the importance of consulting a healthcare professional.")
-   
-    if st.button("Enter MedInfoHub+", type = "primary"):
-        if agree:
-            st.session_state.vote = {"role": role}
-            st.rerun()
-        else: 
-            st.error("It is important to acknowledge the need for professional medical advice.")
+    if role == "Aspiring Student":
+        st.session_state.vote = {"role": role}
+    else:
+        st.markdown("""While our app provides information about illnesses and medications, it is not a substitute for professional medical advice. Self-medicating can be dangerous and may lead to serious health issues. 
+        Always consult a healthcare professional before starting or changing any medication. <br><br>If you are experiencing symptoms, please seek medical advice from a qualified healthcare provider. 
+        For your convenience, we have partnered with trusted clinics. <br><br>Find a Partner Clinic Here.""", unsafe_allow_html=True
+                   )
+        col1, col2, col3 = st.columns(3)
+        col1.link_button("Now Serving", "https://nowserving.ph", use_container_width = True)
+        col2.link_button("Konsulta MD", "https://konsulta.md/", use_container_width = True)
+        col3.link_button("SeriousMD", "https://seriousmd.com/healthcare-super-app-philippines", use_container_width = True)
+        
+        agree = st.checkbox("I acknowledge that I understand the importance of consulting a healthcare professional.")
+       
+        if st.button("Enter MedInfoHub+", type = "primary"):
+            if agree:
+                st.session_state.vote = {"role": role}
+                st.rerun()
+            else: 
+                st.error("It is important to acknowledge the need for professional medical advice.")
 
 
 role = st.session_state.role
