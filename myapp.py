@@ -35,9 +35,9 @@ def login():
     col2.markdown("Let us know who's visiting. Are you a/an ...")
     with col2:
         col21, col22, col23 = st.columns([1,1,1])
-        # role_as = col21.button("Aspiring Student")
-        # role_fl = col22.button("Fellow")
-        # role_mt = col23.button("Mentor") 
+        role_as = col21.button("Aspiring Student")
+        role_fl = col22.button("Fellow")
+        role_mt = col23.button("Mentor") 
         st.write(st.session_state.role_chosen)
         
         if st.session_state.vote == None: 
