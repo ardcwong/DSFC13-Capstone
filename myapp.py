@@ -186,6 +186,7 @@ def vote(role):
     if st.button("Enter MedInfoHub+", type = "primary"):
         if agree:
             st.session_state.vote = {"role": role}
+            st.session_state.role = st.session_state.vote['role']
             st.rerun()
         else: 
             st.error("It is important to acknowledge the need for professional medical advice.")
