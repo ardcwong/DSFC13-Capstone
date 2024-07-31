@@ -116,7 +116,7 @@ def medinfohubplus():
         st.switch_page("FDA/fda_app.py")
 
   
-@st.dialog("❗Important Reminder",width="large")
+@st.dialog("Log In",width="large")
 def vote(role):
     # Google Sheets setup using st.secrets
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
@@ -152,13 +152,11 @@ def vote(role):
                 return True
         return False
     
-    # Streamlit app
-    st.title("Login Page")
-    
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     
     if st.button("Login"):
+        
         if check_login(username, password, sheet, user):
             st.success("Login successful!")
             st.session_state.vote = {"role": role}
