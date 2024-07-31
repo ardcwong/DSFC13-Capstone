@@ -1,15 +1,8 @@
 import streamlit as st
-
+import streamlit_authenticator as stauth
 
 st.set_page_config(layout='wide')
-# st.config.set_option('client.caching', False)
 
-
-# col2.write("")
-
-# # col2.write("MedInfoHub is a comprehensive healthcare app designed to provide accessible medical information to patients and healthcare providers. Leveraging the power of the MedQuAD dataset* and advanced AI, MedInfoHub offers reliable answers to medical questions, supports telemedicine consultations, and enhances public health literacy. Whether you’re a patient seeking to understand your health better or a healthcare provider in need of quick, reliable information, MedInfoHub is your go-to resource for trusted medical knowledge.")
-# col2.write("*Do you agree that ")
-# col2.write("Press the 'Activate MedInfoHub' Button to begin exploring MedInfoHub.")
 
 if "role" not in st.session_state:
     st.session_state.role = None
@@ -48,13 +41,11 @@ def login():
     
     col2.image('data/mihplus.png')
 
-    col2.header("Welcome to MedInfoHub+!")
+    col2.header("ESKWELABS APP")
     # col1.image('data/art.png')
     # st.header("Log in")
     content = """
-    Welcome to MedInfoHub+, your comprehensive source for accessible, reliable, and easy-to-understand medical information. 
-    We aim to enhance public health literacy, advocate telemedicine consultations, and bridge the gap between drug knowledge and patient understanding. 
-    Whether you’re a patient managing a chronic condition, a caregiver needing clear explanations, a healthcare provider requiring quick and reliable information, or a health enthusiast looking for health tips, MedInfoHub+ is your go-to resource.
+    Welcome to Eskwelabs App. Ready for the Future of Work? Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school that gives you access to affordable and high quality data skills education.
 
     """
     col2.markdown(content, unsafe_allow_html=True)
