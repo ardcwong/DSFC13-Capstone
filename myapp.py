@@ -61,6 +61,10 @@ def suitability():
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
     
+    # Display the entire chat history
+    for role, message in st.session_state.chat_history:
+        st.chat_message(role).write(message)
+    
     # Function to display the current question and collect user response
     def display_question():
         if st.session_state.question_index < len(questions):
@@ -111,9 +115,7 @@ def suitability():
                 st.session_state.question_index += 1
                 st.rerun(scope="fragment")
     
-    # Display the entire chat history
-    for role, message in st.session_state.chat_history:
-        st.chat_message(role).write(message)
+
 
 
 def login():
