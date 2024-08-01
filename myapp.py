@@ -39,7 +39,7 @@ if "spreadsheet" not in st.session_state:
     st.session_state.spreadsheet = google_connection(client)
 
 def suitability():
-    # Define the questions
+   # Define the questions
     questions = [
         "What is your highest level of education completed?",
         "Do you have any prior experience in programming or data analysis? If yes, please describe.",
@@ -58,19 +58,19 @@ def suitability():
     if 'question_index' not in st.session_state:
         st.session_state.question_index = 0
     
-    # Function to handle user input
-    def handle_input():
-        user_response = st.chat_input("Your response:")
-        if user_response:
-            st.session_state.responses.append(user_response)
-            st.session_state.question_index += 1
-            st.rerun()
-    
     # Function to display the current question
     def display_question():
         current_question = questions[st.session_state.question_index]
-        st.chat_message("user").write(current_question)
-        handle_input()
+        st.chat_message("Question").write(current_question)
+    
+        # Capture user response
+        user_response = st.text_input("Your response", key=f"response_{st.session_state.question_index}")
+        
+        # Proceed to the next question if user has responded
+        if user_response:
+            if st.button("Next", key=f"next_{st.session_state.question_index}"):
+                st.session_state.responses.append(user_response)
+                st.session_state.question_index += 1
     
     # Function to get classification from OpenAI
     def get_classification():
@@ -105,7 +105,7 @@ def suitability():
         if st.session_state.responses:
             classification = get_classification()
             if classification:
-                st.chat_message("assistant").write(classification)
+                st.chat_message("Suitability").write(classification)
         else:
             st.write("Please answer all the questions to get a classification.")
     
