@@ -88,6 +88,7 @@ def suitability():
     if st.session_state.question_index < len(questions):
         current_question = questions[st.session_state.question_index]
         st.chat_message("AI").write(current_question)
+        st.write(st.session_state.question_index)
     
         user_response = st.chat_input("Your response:")
     
