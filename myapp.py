@@ -28,7 +28,7 @@ if "spreadsheet" not in st.session_state:
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
     client = gspread.authorize(creds)
-
+    st.session_state.spreadsheet = google_connection(client)
 
 def google_connection(client):
 # Open the Google Sheet
@@ -36,7 +36,7 @@ def google_connection(client):
     st.session_state.spreadsheet = spreadsheet
     return st.session_state.spreadsheet
 
-st.session_state.spreadsheet = google_connection(client)
+
 # st.write(pd.DataFrame(sheet_fellow.get_all_records()))
 # st.write(pd.DataFrame(sheet_mentor.get_all_records()))
 
