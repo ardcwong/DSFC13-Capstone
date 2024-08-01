@@ -22,6 +22,28 @@ if "vote" not in st.session_state:
    
 ROLES = ["Aspiring Student", "Fellow", "Mentor"]
 
+# Google Sheets setup using st.secrets
+scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
+client = gspread.authorize(creds)
+
+@st.cache_resource
+def google_connection(client):
+# Open the Google Sheet
+    spreadsheet = client.open("LoginCredentials")
+    sheet_fellow = spreadsheet.worksheet("Sheet1")
+    sheet_mentor = spreadsheet.worksheet("Sheet2")
+    users_fellow = pd.DataFrame(sheet_fellow.get_all_records())
+    users_mentor = pd.DataFrame(sheet_mentor.get_all_records())
+ return sheet_fellow, sheet_mentor, users_fellow, users_mentor
+
+google_connection(client)
+# st.write(pd.DataFrame(sheet_fellow.get_all_records()))
+# st.write(pd.DataFrame(sheet_mentor.get_all_records()))
+
+
+
+
 
         
 def login():
@@ -67,7 +89,7 @@ def login():
                 st.session_state.role = st.session_state.vote['role']
                 st.rerun()
             elif role in ["Fellow", "Mentor"]:
-                vote(role)
+                vote(role,sheet_fellow, sheet_mentor, users_fellow, users_mentor)
             # elif role == []:
                 
         else:
@@ -124,22 +146,8 @@ def medinfohubplus():
 
   
 @st.dialog("Log In",width="large")
-def vote(role):
-    # Google Sheets setup using st.secrets
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
-    client = gspread.authorize(creds)
+def vote(role, sheet_fellow, sheet_mentor, users_fellow, users_mentor):
     
-    # Open the Google Sheet
-    spreadsheet = client.open("LoginCredentials")
-    sheet_fellow = spreadsheet.worksheet("Sheet1")
-    sheet_mentor = spreadsheet.worksheet("Sheet2")
-    users_fellow = pd.DataFrame(sheet_fellow.get_all_records())
-
-    users_mentor = pd.DataFrame(sheet_mentor.get_all_records())
-   
-    # st.write(pd.DataFrame(sheet_fellow.get_all_records()))
-    # st.write(pd.DataFrame(sheet_mentor.get_all_records()))
 
     if role in ["Fellow"]:
         sheet = sheet_fellow
