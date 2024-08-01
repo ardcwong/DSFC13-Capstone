@@ -110,10 +110,14 @@ def suitability():
                 st.session_state.question_index += 1
                 st.rerun(scope="fragment")
     
-    # Display the entire chat history
-    for role, message in st.session_state.chat_history:
+    # Display the entire chat history after user submission
+    for role, message in st.session_state.chat_history[:-1]:  # Show all but the last question in the history initially
         st.chat_message(role).write(message)
-            
+    
+    if st.session_state.responses and st.session_state.question_index == len(questions):
+        st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])  # Show the last question after user response
+
+
 def login():
     col1, col2, col3 = st.columns([1,3,1])
     
