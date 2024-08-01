@@ -88,7 +88,7 @@ def login():
                 st.session_state.role = st.session_state.vote['role']
                 st.rerun()
             elif role in ["Fellow", "Mentor"]:
-                vote(role,sheet_fellow, sheet_mentor, users_fellow, users_mentor)
+                vote(role,st.session_state.spreadsheet)
             # elif role == []:
                 
         else:
@@ -145,7 +145,7 @@ def medinfohubplus():
 
   
 @st.dialog("Log In",width="large")
-def vote(role, st.session_state.spreadsheet):
+def vote(role, spreadsheet):
     sheet_fellow = spreadsheet.worksheet("Sheet1")
     sheet_mentor = spreadsheet.worksheet("Sheet2")
     users_fellow = pd.DataFrame(sheet_fellow.get_all_records())
