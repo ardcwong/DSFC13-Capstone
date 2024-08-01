@@ -69,7 +69,7 @@ def handle_input():
 # Display the current question and handle the user input
 if st.session_state.question_index < len(questions):
     current_question = questions[st.session_state.question_index]
-    st.chat_message("Question", current_question)
+    st.chat_message("Question")
     handle_input()
 else:
     if st.session_state.responses:
