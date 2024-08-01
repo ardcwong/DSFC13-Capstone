@@ -65,7 +65,7 @@ def suitability():
     def display_question():
         current_question = questions[st.session_state.question_index]
         st.session_state.chat_history.append(("AI", current_question))
-        st.chat_message("User").write(current_question)
+        st.chat_message("AI").write(current_question)
         user_response = st.chat_input("Your response:")
         if user_response:
             st.session_state.responses.append(user_response)
