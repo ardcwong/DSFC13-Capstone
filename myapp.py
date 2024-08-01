@@ -58,20 +58,6 @@ def suitability():
     if 'question_index' not in st.session_state:
         st.session_state.question_index = 0
     
-    # Function to handle user input
-    def handle_input():
-        user_response = st.chat_input("user")
-        if user_response:
-            st.session_state.responses.append(user_response)
-            st.session_state.question_index += 1
-            st.rerun()
-    
-    # Function to display the current question
-    def display_question():
-        current_question = questions[st.session_state.question_index]
-        st.chat_message("Question").write(current_question)
-        handle_input()
-    
     # Function to get classification from OpenAI
     def get_classification():
         questions_responses = ""
@@ -85,14 +71,14 @@ def suitability():
         """
     
         try:
-            response = openai.ChatCompletion.create(
+            response = openai.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[
                     {"role": "system", "content": "You are a helpful assistant that classifies education suitability."},
                     {"role": "user", "content": prompt}
                 ]
             )
-            classification = response.choices[0].message['content'].strip()
+            classification = response.choices[0].message.content.strip()
             return classification
         except Exception as e:
             st.error(f"Error: {e}")
@@ -100,7 +86,14 @@ def suitability():
     
     # Main logic
     if st.session_state.question_index < len(questions):
-        display_question()
+        current_question = questions[st.session_state.question_index]
+        st.chat_message("AI").write(current_question)
+    
+        user_response = st.chat_input("Your response:")
+    
+        if user_response:
+            st.session_state.responses.append(user_response)
+            st.session_state.question_index += 1
     else:
         if st.session_state.responses:
             classification = get_classification()
