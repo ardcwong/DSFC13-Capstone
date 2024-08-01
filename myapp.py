@@ -138,8 +138,8 @@ def vote(role):
 
     users_mentor = pd.DataFrame(sheet_mentor.get_all_records())
    
-    st.write(pd.DataFrame(sheet_fellow.get_all_records()))
-    st.write(pd.DataFrame(sheet_mentor.get_all_records()))
+    # st.write(pd.DataFrame(sheet_fellow.get_all_records()))
+    # st.write(pd.DataFrame(sheet_mentor.get_all_records()))
 
     if role in ["Fellow"]:
         sheet = sheet_fellow
