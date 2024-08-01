@@ -97,6 +97,7 @@ def suitability():
     else:
         if st.session_state.responses:
             classification = get_classification()
+            st.write(st.session_state.responses)
             if classification:
                 st.chat_message("Suitability").write(classification)
         else:
