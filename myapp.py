@@ -67,10 +67,7 @@ def suitability():
     #     st.chat_message(role).write(message)
     # Display the entire chat history with user responses on the right
     for role, message in st.session_state.chat_history:
-        if role == "User":
-            st.markdown(f"<div style='text-align: right;'>{message}</div>", unsafe_allow_html=True).chat_message(role)
-        else:
-            st.chat_message(role).write(message)
+        st.chat_message(role).write(message)
     
     # Function to display the current question and collect user response
     def display_question():
