@@ -35,7 +35,7 @@ def google_connection(client):
     sheet_mentor = spreadsheet.worksheet("Sheet2")
     users_fellow = pd.DataFrame(sheet_fellow.get_all_records())
     users_mentor = pd.DataFrame(sheet_mentor.get_all_records())
- return sheet_fellow, sheet_mentor, users_fellow, users_mentor
+    return sheet_fellow, sheet_mentor, users_fellow, users_mentor
 
 google_connection(client)
 # st.write(pd.DataFrame(sheet_fellow.get_all_records()))
