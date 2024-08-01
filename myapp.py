@@ -33,16 +33,8 @@ if "spreadsheet" not in st.session_state:
 def google_connection(client):
 # Open the Google Sheet
     spreadsheet = client.open("LoginCredentials")
-    st.session_state.spreadsheet = spreadsheet
-    return st.session_state.spreadsheet
-
-
-# st.write(pd.DataFrame(sheet_fellow.get_all_records()))
-# st.write(pd.DataFrame(sheet_mentor.get_all_records()))
-
-
-
-
+    
+    return spreadsheet
 
         
 def login():
@@ -183,13 +175,6 @@ def vote(role, spreadsheet):
             st.error("Invalid username or password")
             
  
-
-
-
-
-
-
-
 
 #----------------------------------------------------------------------------------------------------------------------------
 
