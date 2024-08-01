@@ -6,6 +6,18 @@
     margin: auto;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     overflow: auto;
-    background: radial-gradient(circle at 0 70%, #00b096, #00b0a4 25%, #0a6fb3 72%, #3d32ae) !important;
+    background: radial-gradient(circle at 0 70%, #00b096, #00b0a4 25%, #0a6fb3 72%, #0a6fb3) !important;
     z-index: -5 !important;
+}
+
+.bg-noise {
+    z-index: -3;
+    mix-blend-mode: color-burn;
+    background-image: url(https://cdn.prod.website-files.com/62d9f0993f98812ece5bafbc/631702cf9c894d4536e694a8_noise.svg);
+    background-position: 0 0;
+    background-size: auto;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
 }
