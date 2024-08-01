@@ -38,7 +38,7 @@ def google_connection(client):
     return sheet_fellow, sheet_mentor, users_fellow, users_mentor
 
 @st.cache_data
-    google_connection(client)
+google_connection(client)
 # st.write(pd.DataFrame(sheet_fellow.get_all_records()))
 # st.write(pd.DataFrame(sheet_mentor.get_all_records()))
 
