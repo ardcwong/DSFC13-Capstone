@@ -8,7 +8,7 @@ st.set_page_config(
     
     layout='wide',
     menu_items={
-    'About': "# This is a header. This is an *extremely* cool app!"
+    'About': "### Hi! Thanks for viewing our app!"
     }
 )
 credentials = st.secrets["gcp_service_account"]
