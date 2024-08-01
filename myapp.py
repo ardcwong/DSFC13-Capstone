@@ -4,6 +4,17 @@ from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import openai
 
+# Function to load local CSS file
+def load_local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+# Load the local CSS file
+load_local_css("data/styles.css")
+
+
+
+
 api_key = st.secrets["api"]['api_key']
 openai.api_key = api_key
 st.set_page_config(
