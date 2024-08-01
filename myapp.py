@@ -38,6 +38,7 @@ if "spreadsheet" not in st.session_state:
     client = gspread.authorize(creds)
     st.session_state.spreadsheet = google_connection(client)
 
+@st.fragment
 def suitability():
     # Define the questions
     questions = [
@@ -57,6 +58,20 @@ def suitability():
         st.session_state.responses = []
     if 'question_index' not in st.session_state:
         st.session_state.question_index = 0
+    
+    # Function to handle user input
+    def handle_input():
+        user_response = st.chat_input("Your response:")
+        if user_response:
+            st.session_state.responses.append(user_response)
+            st.session_state.question_index += 1
+            st.rerun(scope="fragment")
+    
+    # Function to display the current question
+    def display_question():
+        current_question = questions[st.session_state.question_index]
+        st.chat_message("Question").write(current_question)
+        handle_input()
     
     # Function to get classification from OpenAI
     def get_classification():
@@ -86,19 +101,10 @@ def suitability():
     
     # Main logic
     if st.session_state.question_index < len(questions):
-        current_question = questions[st.session_state.question_index]
-        st.chat_message("AI").write(current_question)
-        st.write(st.session_state.question_index)
-    
-        user_response = st.chat_input("Your response:")
-    
-        if user_response:
-            st.session_state.responses.append(user_response)
-            st.session_state.question_index += 1
+        display_question()
     else:
         if st.session_state.responses:
             classification = get_classification()
-            st.write(st.session_state.responses)
             if classification:
                 st.chat_message("Suitability").write(classification)
         else:
