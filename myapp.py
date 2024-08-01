@@ -28,6 +28,8 @@ def load_css(file_name):
 
 # Load your CSS file
 load_css("waves.css")
+# Add the bg-noise div
+st.markdown('<div class="bg-noise"></div>', unsafe_allow_html=True)
 
 ########################################################
 # API KEYS and CREDENTIALS
