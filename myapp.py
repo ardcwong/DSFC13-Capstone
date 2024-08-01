@@ -3,7 +3,14 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 
-st.set_page_config(layout='wide')
+st.set_page_config(
+    page_title = "Welcome to Eskwelabs App!",
+    
+    layout='wide',
+    menu_items={
+    'About': "# This is a header. This is an *extremely* cool app!"
+    }
+)
 credentials = st.secrets["gcp_service_account"]
 
 if "role" not in st.session_state:
