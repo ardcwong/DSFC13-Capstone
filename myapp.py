@@ -27,7 +27,7 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
 client = gspread.authorize(creds)
 
-@st.cache_resource
+@st.cache_data
 def google_connection(client):
 # Open the Google Sheet
     spreadsheet = client.open("LoginCredentials")
