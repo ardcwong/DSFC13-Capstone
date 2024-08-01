@@ -4,19 +4,9 @@ from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import openai
 
-# Function to load local CSS file
-def load_local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
-# Load the local CSS file
-load_local_css("data/styles.css")
-
-
-
-
-api_key = st.secrets["api"]['api_key']
-openai.api_key = api_key
+########################################################
+# PAGE CONFIG
+########################################################
 st.set_page_config(
     page_title = "Welcome to Eskwelabs App!",
     
@@ -25,7 +15,27 @@ st.set_page_config(
     'About': "### Hi! Thanks for viewing our app!"
     }
 )
+
+
+########################################################
+# LOAD BACKGROUND CSS
+########################################################
+# Function to load local CSS file
+def load_local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+# Load the local CSS file
+load_local_css("data/styles.css")
+
+########################################################
+# API KEYS and CREDENTIALS
+########################################################
+api_key = st.secrets["api"]['api_key']
+openai.api_key = api_key
 credentials = st.secrets["gcp_service_account"]
+
+
 
 if "role" not in st.session_state:
     st.session_state.role = None
