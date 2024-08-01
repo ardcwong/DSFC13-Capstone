@@ -24,10 +24,10 @@ ROLES = ["Aspiring Student", "Fellow", "Mentor"]
 if "spreadsheet" not in st.session_state:
     st.session_state.vote = None
 
-# Google Sheets setup using st.secrets
-scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
-client = gspread.authorize(creds)
+    # Google Sheets setup using st.secrets
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
+    client = gspread.authorize(creds)
 
 
 def google_connection(client):
