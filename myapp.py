@@ -36,6 +36,66 @@ if "spreadsheet" not in st.session_state:
     st.session_state.spreadsheet = google_connection(client)
 
 
+def suitability():
+    # Define the questions
+    questions = [
+        "What is your highest level of education completed?",
+        "Do you have any prior experience in programming or data analysis? If yes, please describe.",
+        "Do you prefer structured learning environments with a clear curriculum, or do you thrive in self-paced, unstructured settings?",
+        "How many hours per week can you realistically dedicate to learning data science?",
+        "What are your long-term career goals in the field of data science?"
+    ]
+    
+    # Streamlit app
+    st.title("Data Science Learning Path Classifier")
+    st.write("Please answer the following questions to determine your suitability for different learning paths in data science.")
+    
+    # Initialize or retrieve session state
+    if 'responses' not in st.session_state:
+        st.session_state.responses = []
+    if 'question_index' not in st.session_state:
+        st.session_state.question_index = 0
+    
+    # Function to handle user input
+    def handle_input():
+        user_response = st.chat_input("Your response:")
+        if user_response:
+            st.session_state.responses.append(user_response)
+            st.session_state.question_index += 1
+        
+        # Display the current question and handle the user input
+        if st.session_state.question_index < len(questions):
+            current_question = questions[st.session_state.question_index]
+            st.chat_message("Question", current_question)
+            handle_input()
+        else:
+            if st.session_state.responses:
+                # Format the questions and responses for the prompt
+                questions_responses = ""
+                for i, question in enumerate(questions):
+                    questions_responses += f"{i+1}. {question}\n   - Response: {st.session_state.responses[i]}\n"
+        
+                # Construct the prompt
+                prompt = f"""
+                Classify the following person’s suitability for a data science bootcamp, self-learning, or a master's program based on their responses to the questions:
+                {questions_responses}
+                Suitability:
+                """
+        
+                # Call OpenAI API for classification
+                response = openai.chat.completions.create(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {"role": "system", "content": "You are a helpful assistant that classifies education suitability."},
+                        {"role": "user", "content": prompt}
+                    ]
+                )
+        
+                # Extract and print the classification result
+                classification = response.choices[0].message.content
+                st.chat_message("Suitability", classification.strip())
+            else:
+                st.write("Please answer all the questions to get a classification.")
         
 def login():
     col1, col2, col3 = st.columns([1,3,1])
@@ -50,7 +110,8 @@ def login():
     Your Future Begins with Upskilling. Eskwelabs creates a warm online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
     """
     col2.markdown(content, unsafe_allow_html=True)
-
+    handle_input()
+    
     col2.subheader("Get Started")
     col2.markdown("Let us know who's visiting. Are you a/an ...")
     with col2:
