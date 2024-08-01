@@ -27,7 +27,7 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
 client = gspread.authorize(creds)
 
-@st.cache_data
+
 def google_connection(client):
 # Open the Google Sheet
     spreadsheet = client.open("LoginCredentials")
@@ -37,7 +37,8 @@ def google_connection(client):
     users_mentor = pd.DataFrame(sheet_mentor.get_all_records())
     return sheet_fellow, sheet_mentor, users_fellow, users_mentor
 
-google_connection(client)
+@st.cache_data
+    google_connection(client)
 # st.write(pd.DataFrame(sheet_fellow.get_all_records()))
 # st.write(pd.DataFrame(sheet_mentor.get_all_records()))
 
