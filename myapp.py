@@ -66,13 +66,13 @@ def suitability():
     #     st.chat_message(role).write(message)
     # Display the entire chat history with user responses on the right
     for role, message in st.session_state.chat_history:
-        st.chat_message(role).write_stream(message)
+        st.chat_message(role).write(message)
     
     # Function to display the current question and collect user response
     def display_question():
         if st.session_state.question_index < len(questions):
             current_question = questions[st.session_state.question_index]
-            st.chat_message("AI").write(current_question)
+            st.chat_message("AI", avatar= "").write(current_question)
             user_response = st.chat_input("Your response:")
             if user_response:
                 st.session_state.responses.append(user_response)
