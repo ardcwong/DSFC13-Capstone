@@ -19,8 +19,10 @@ if "role" not in st.session_state:
 if "vote" not in st.session_state:
     st.session_state.vote = None
 
-   
+
 ROLES = ["Aspiring Student", "Fellow", "Mentor"]
+if "spreadsheet" not in st.session_state:
+    st.session_state.vote = None
 
 # Google Sheets setup using st.secrets
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
@@ -31,13 +33,10 @@ client = gspread.authorize(creds)
 def google_connection(client):
 # Open the Google Sheet
     spreadsheet = client.open("LoginCredentials")
-    sheet_fellow = spreadsheet.worksheet("Sheet1")
-    sheet_mentor = spreadsheet.worksheet("Sheet2")
-    users_fellow = pd.DataFrame(sheet_fellow.get_all_records())
-    users_mentor = pd.DataFrame(sheet_mentor.get_all_records())
-    return sheet_fellow, sheet_mentor, users_fellow, users_mentor
+    st.session_state.spreadsheet = spreadsheet
+    return st.session_state.spreadsheet
 
-sheet_fellow, sheet_mentor, users_fellow, users_mentor = google_connection(client)
+st.session_state.spreadsheet = google_connection(client)
 # st.write(pd.DataFrame(sheet_fellow.get_all_records()))
 # st.write(pd.DataFrame(sheet_mentor.get_all_records()))
 
@@ -146,8 +145,11 @@ def medinfohubplus():
 
   
 @st.dialog("Log In",width="large")
-def vote(role, sheet_fellow, sheet_mentor, users_fellow, users_mentor):
-    
+def vote(role, st.session_state.spreadsheet):
+    sheet_fellow = spreadsheet.worksheet("Sheet1")
+    sheet_mentor = spreadsheet.worksheet("Sheet2")
+    users_fellow = pd.DataFrame(sheet_fellow.get_all_records())
+    users_mentor = pd.DataFrame(sheet_mentor.get_all_records())
 
     if role in ["Fellow"]:
         sheet = sheet_fellow
