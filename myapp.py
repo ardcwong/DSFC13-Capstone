@@ -61,7 +61,7 @@ def suitability():
     # Function to display the current question
     def display_question():
         current_question = questions[st.session_state.question_index]
-        st.chat_message("Question").write(current_question)
+        st.chat_message("AI").write(current_question)
     
         # Capture user response
         user_response = st.text_input("Your response", key=f"response_{st.session_state.question_index}")
