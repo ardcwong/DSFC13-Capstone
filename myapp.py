@@ -3,7 +3,6 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import openai
-from streamlit_chat import message
 
 api_key = st.secrets["api"]['api_key']
 openai.api_key = api_key
