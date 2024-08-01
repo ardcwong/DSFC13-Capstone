@@ -58,20 +58,20 @@ def suitability():
         st.session_state.responses = []
     if 'question_index' not in st.session_state:
         st.session_state.question_index = 0
+    if 'chat_history' not in st.session_state:
+        st.session_state.chat_history = []
     
-    # Function to handle user input
-    def handle_input():
+    # Function to display the current question and collect user response
+    def display_question():
+        current_question = questions[st.session_state.question_index]
+        st.session_state.chat_history.append(("AI", current_question))
+        st.chat_message("User").write(current_question)
         user_response = st.chat_input("Your response:")
         if user_response:
             st.session_state.responses.append(user_response)
+            st.session_state.chat_history.append(("User", user_response))
             st.session_state.question_index += 1
             st.rerun(scope="fragment")
-    
-    # Function to display the current question
-    def display_question():
-        current_question = questions[st.session_state.question_index]
-        st.chat_message("Question").write(current_question)
-        handle_input()
     
     # Function to get classification from OpenAI
     def get_classification():
@@ -103,13 +103,16 @@ def suitability():
     if st.session_state.question_index < len(questions):
         display_question()
     else:
-        if st.session_state.responses:
+        if st.session_state.responses and st.session_state.question_index == len(questions):
             classification = get_classification()
             if classification:
-                st.chat_message("Suitability").write(classification)
-        else:
-            st.write("Please answer all the questions to get a classification.")
+                st.session_state.chat_history.append(("Suitability", classification))
+                st.session_state.question_index += 1
+                st.rerun(scope="fragment")
     
+    # Display the entire chat history
+    for role, message in st.session_state.chat_history:
+        st.chat_message(role).write(message)
             
 def login():
     col1, col2, col3 = st.columns([1,3,1])
