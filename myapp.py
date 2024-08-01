@@ -18,16 +18,18 @@ if "role" not in st.session_state:
 
 if "vote" not in st.session_state:
     st.session_state.vote = None
-
+if "client" not in st.session_state:
+    st.session_state.client = None
 
 ROLES = ["Aspiring Student", "Fellow", "Mentor"]
 if "spreadsheet" not in st.session_state:
     # Google Sheets setup using st.secrets
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
-    client = gspread.authorize(creds)
-    st.session_state.spreadsheet = google_connection(client)
+    st.session_state.client = gspread.authorize(creds)
 
+if st.session_state.client:
+    st.session_state.spreadsheet = google_connection(st.session_state.client)
 def google_connection(client):
 # Open the Google Sheet
     spreadsheet = client.open("LoginCredentials")
