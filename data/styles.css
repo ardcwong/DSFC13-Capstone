@@ -1,9 +1,9 @@
 body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle at 0 70%, #00b096, #00b0a4 25%, #0a6fb3 72%, #3d32ae);
-    z-index: -5;
+    margin: 0 !important;
+    height: 100vh !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: radial-gradient(circle at 0 70%, #00b096, #00b0a4 25%, #0a6fb3 72%, #3d32ae) !important;
+    z-index: -5 !important;
 }
