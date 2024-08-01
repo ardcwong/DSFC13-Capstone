@@ -2,7 +2,10 @@ import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
+import openai
 
+api_key = st.secrets["api"]['api_key']
+openai.api_key = api_key
 st.set_page_config(
     page_title = "Welcome to Eskwelabs App!",
     
