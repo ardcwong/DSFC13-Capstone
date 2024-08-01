@@ -85,14 +85,14 @@ def get_classification():
     """
 
     try:
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant that classifies education suitability."},
                 {"role": "user", "content": prompt}
             ]
         )
-        classification = response.choices[0].message['content'].strip()
+        classification = response.choices[0].message.content.strip()
         return classification
     except Exception as e:
         st.error(f"Error: {e}")
