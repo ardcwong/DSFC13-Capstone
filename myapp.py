@@ -20,18 +20,14 @@ st.set_page_config(
 ########################################################
 # LOAD BACKGROUND CSS
 ########################################################
-# Function to load local CSS file
-# Function to load local CSS file
-def load_local_css(file_name):
-    try:
-        with open(file_name) as f:
-            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-            st.success("CSS loaded successfully!")  # Debug statement
-    except FileNotFoundError:
-        st.error(f"File {file_name} not found!")
+# Function to load the CSS file
+def load_css(file_name):
+    with open(file_name) as f:
+        css = f.read()
+    st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
 
-# Load the local CSS file
-load_local_css("data/styles.css")
+# Load your CSS file
+load_css("waves.css")
 
 ########################################################
 # API KEYS and CREDENTIALS
