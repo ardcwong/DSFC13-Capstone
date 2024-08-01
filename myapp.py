@@ -63,15 +63,16 @@ def suitability():
     
     # Function to display the current question and collect user response
     def display_question():
-        current_question = questions[st.session_state.question_index]
-        st.session_state.chat_history.append(("AI", current_question))
-        st.chat_message("AI").write(current_question)
-        user_response = st.chat_input("Your response:")
-        if user_response:
-            st.session_state.responses.append(user_response)
-            st.session_state.chat_history.append(("User", user_response))
-            st.session_state.question_index += 1
-            st.rerun(scope="fragment")
+        if st.session_state.question_index < len(questions):
+            current_question = questions[st.session_state.question_index]
+            st.chat_message("AI").write(current_question)
+            user_response = st.chat_input("Your response:")
+            if user_response:
+                st.session_state.responses.append(user_response)
+                st.session_state.chat_history.append(("AI", current_question))
+                st.session_state.chat_history.append(("User", user_response))
+                st.session_state.question_index += 1
+                st.rerun(scope="fragment")
     
     # Function to get classification from OpenAI
     def get_classification():
@@ -110,12 +111,9 @@ def suitability():
                 st.session_state.question_index += 1
                 st.rerun(scope="fragment")
     
-    # Display the entire chat history after user submission
-    for role, message in st.session_state.chat_history[:-1]:  # Show all but the last question in the history initially
+    # Display the entire chat history
+    for role, message in st.session_state.chat_history:
         st.chat_message(role).write(message)
-    
-    if st.session_state.responses and st.session_state.question_index == len(questions):
-        st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])  # Show the last question after user response
 
 
 def login():
