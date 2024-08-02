@@ -254,8 +254,8 @@ medinfohubplus_info = st.Page(medinfohubplus, title="About Our Data App", icon="
 
 # settings = st.Page("settings.py", title="Settings", icon=":material/settings:")
 suitability = st.Page(
-    "Suitability/DSLPC.py",
-    title="HealthPlus",
+    "suitability/DSLPC.py",
+    title="Data Science Learning Path Classifier",
     icon="➕",
 )
 fda_app = st.Page(
