@@ -250,7 +250,7 @@ home_page = st.Page(home, title="Home", icon="🏠", default=(role == role))
 login_page = st.Page(login, title = "Log In",icon=":material/login:")
 logout_page = st.Page(logout, title="Log Out", icon=":material/logout:")
 pathfinder_rfs = st.Page("Pathfinder/feedback_summary.py", title="Results Feedback Summary", icon="📓")
-DSF = st.Page("DSF/app.py", title = "DSF Program Information")
+DSF = st.Page("DSF/app.py", title = "DSF Program Information", icon = "📗")
 
 suitability = st.Page(
     "suitability/DSLPC.py",
@@ -263,8 +263,8 @@ ProgramInformation = st.Page(
 
 
 
-main_apps = [home_page, ProgramInformation, suitability]
-account_pages = [login_page, logout_page]
+main_apps = [login_page, logout_page, home_page, ProgramInformation, suitability]
+account_pages = []
 data_apps = []
 dsf_apps = [DSF]
 pf_apps = [pathfinder_rfs]
@@ -280,13 +280,12 @@ if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["PathFinder"] = pf_apps
 if st.session_state.role in [None,"Fellow"]:
     page_dict["Data Science Fellowship"] = dsf_apps
-if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
-    page_dict["Cool Applications"] = data_apps
+
 
 
 
 if len(page_dict) > 0:
-    pg = st.navigation(page_dict | {"Account": account_pages}, position="sidebar")
+    pg = st.navigation(page_dict)# | {"Account": account_pages}, position="sidebar")
 else:
     pg = st.navigation([st.Page(login)], position="sidebar") #defaults to login page if no acceptable role is selected
 
