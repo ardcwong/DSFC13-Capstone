@@ -107,27 +107,27 @@ if "spreadsheet" not in st.session_state:
 
 def login():
         vote(st.session_state.spreadsheet)
-        
+        st.write(st.session_state.role)
 
         st.subheader("Get Started")
         st.markdown("Let us know who's visiting. Are you a/an ...")
         col21, col22, col23 = st.columns([1,1,1])
         
         
-        def role_chosen():
-            a = col21.button("Aspiring Student", type = "primary", use_container_width = True)
-            b = col22.button("Fellow", type = "primary", use_container_width = True)
-            c = col23.button("Mentor", type = "primary", use_container_width = True)
-            if a:
-                role = "Aspiring Student"
-            elif b:
-                role = "Fellow"
-            elif c:
-                role = "Mentor"
-            else: 
-                role = []
-            return role
-        role = role_chosen()
+        # def role_chosen():
+        #     a = col21.button("Aspiring Student", type = "primary", use_container_width = True)
+        #     b = col22.button("Fellow", type = "primary", use_container_width = True)
+        #     c = col23.button("Mentor", type = "primary", use_container_width = True)
+        #     if a:
+        #         role = "Aspiring Student"
+        #     elif b:
+        #         role = "Fellow"
+        #     elif c:
+        #         role = "Mentor"
+        #     else: 
+        #         role = []
+        #     return role
+        # role = role_chosen()
        
         
         # if st.session_state.vote == None: 
