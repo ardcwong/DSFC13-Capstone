@@ -264,8 +264,9 @@ ProgramInformation = st.Page(
 
 
 
-main_apps = [login_page, logout_page, home_page, ProgramInformation, suitability]
-account_pages = []
+main_apps = [home_page, ProgramInformation, suitability]
+log_in = [login_page]
+log_out = [logout_page]
 data_apps = []
 dsf_apps = [DSF]
 pf_apps = [pathfinder_rfs]
@@ -276,7 +277,7 @@ st.logo(
 
 page_dict = {}
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
-    page_dict["Eskwelabs App"] = main_apps
+    page_dict["Eskwelabs App"] = login, main_apps
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["PathFinder"] = pf_apps
 if st.session_state.role in [None,"Fellow"]:
