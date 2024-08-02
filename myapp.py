@@ -246,10 +246,10 @@ def vote(role, spreadsheet):
 ########################################################################
 role = st.session_state.role
 
-
+home_page = st.Page(home, title="Home", icon="🏠", default=(role == role))
 login_page = st.Page(login, title = "Welcome",icon=":material/login:")
 logout_page = st.Page(logout, title="End Session", icon=":material/logout:")
-home_page = st.Page(home, title="HOME", icon="🏠", default=(role == role))
+
 # role_print = st.Page(role_print_none,title=role)
 
 # settings = st.Page("settings.py", title="Settings", icon=":material/settings:")
@@ -272,11 +272,11 @@ st.logo(
 )
 
 page_dict = {}
-
+if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
+    page_dict["Eskwelabs App"] = about_us_pages
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["Application"] = data_apps
-if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
-    page_dict["MedInfoHub+"] = about_us_pages
+
 
 
 if len(page_dict) > 0:
