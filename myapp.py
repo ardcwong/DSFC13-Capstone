@@ -280,9 +280,9 @@ if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
 
 
 if len(page_dict) > 0:
-    pg = st.navigation(page_dict | {"Session": account_pages}, position="hidden")
+    pg = st.navigation(page_dict | {"Session": account_pages}, position="sidebar")
 else:
-    pg = st.navigation([st.Page(login)], position="hidden") #defaults to login page if no acceptable role is selected
+    pg = st.navigation([st.Page(login)], position="sidebar") #defaults to login page if no acceptable role is selected
 
 pg.run()
 
