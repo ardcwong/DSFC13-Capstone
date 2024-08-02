@@ -33,7 +33,7 @@ def load_local_css(file_name):
 #Load the local CSS file from the 'data' directory
 load_local_css("data/styles.css")
 # Add the bg-noise div
-st.markdown('<div class="st-emotion-cache-1dtm625.e1f1d6gn2"></div>', unsafe_allow_html=True)
+st.markdown('<div class="st-emotion-cache-0.e1f1d6gn0"></div>', unsafe_allow_html=True)
 
 
 
