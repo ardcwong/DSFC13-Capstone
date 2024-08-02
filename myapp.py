@@ -85,7 +85,7 @@ if "vote" not in st.session_state:
 # SET UP ROLES
 ########################################################
 ROLES = [None,"Aspiring Student", "Fellow", "Mentor"]
-
+role = st.session_state.role
 
 ########################################################
 # SETUP CONNECTION TO GOOGLE SHEET
@@ -142,8 +142,8 @@ def login():
         role = role_chosen()
        
         
-        if st.session_state.vote == None: 
-            role = st.session_state.vote
+        # if st.session_state.vote == None: 
+            
             
 
         #     if role in ["Aspiring Student"]:
@@ -291,12 +291,12 @@ if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["MedInfoHub+"] = about_us_pages
 
 
-# if len(page_dict) > 0:
-#     pg = st.navigation(page_dict | {"Session": account_pages})
-# else:
-#     pg = st.navigation([st.Page(login)]) #defaults to login page if no acceptable role is selected
+if len(page_dict) > 0:
+    pg = st.navigation(page_dict | {"Session": account_pages})
+else:
+    pg = st.navigation([st.Page(login)]) #defaults to login page if no acceptable role is selected
 
-# pg.run()
+pg.run()
 
 
 ########################################################
