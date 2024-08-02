@@ -287,7 +287,7 @@ if st.session_state.role in [None,"Fellow"]:
 
 
 if len(page_dict) > 0:
-    pg = st.navigation(page_dict)# | {"Account": account_pages}, position="sidebar")
+    pg = st.navigation(page_dict) | {"Account": account_pages}, position="sidebar")
 else:
     pg = st.navigation([st.Page(login)], position="sidebar") #defaults to login page if no acceptable role is selected
 
