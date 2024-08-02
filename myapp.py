@@ -156,62 +156,47 @@ def logout():
     st.session_state.vote = None
     st.rerun()
 
-def contactus():
-    st.title('MedInfoHub+')
-    # st.subheader("WHAT WE OFFER")
-    # st.image('data/use.png')
-    st.subheader("CONTACT US")
-    st.write('For any concerns or suggestions, you may reach out to us through the following:')
-    contactinfo = """
-    Email us:
-    General Inquiries: info@medinfohub.com<br>
-    Support: support@medinfohub.com<br>
 
-    Follow us on Social Media Platforms:<br>
-    Facebook: facebook.com/medinfohub<br>
-    Twitter: twitter.com/medinfohub<br>
-    Instagram: instagram.com/medinfohub
-    """
-    # Display formatted text with st.markdown
-    st.markdown(contactinfo, unsafe_allow_html=True)
 def medinfohubplus():
-    col1, col2, col3 = st.columns([1,3,1])
+    col1, col2, col3 = st.columns([1,8,1])
     
     # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
     with col2:
         
-        st.header("ESKWELABS APP")
+        st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELABS APP✨</h1>", unsafe_allow_html=True)
+        st.divider()
+        st.markdown("""<h4 style='text-align: center;color: #e76f51;'><b><i>Welcome to Eskwelabs App.</b></i><i> Ready for the Future of Work? 
+        Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school 
+        that gives you access to affordable and high quality data skills education. Your Future Begins with Upskilling. Eskwelabs creates a warm 
+        online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.""", unsafe_allow_html=True)
+        
+        st.divider()
         # col1.image('data/art.png')
         # st.header("Log in")
-        content = """
-        Welcome to Eskwelabs App. Ready for the Future of Work? Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school that gives you access to affordable and high quality data skills education.
-        Your Future Begins with Upskilling. Eskwelabs creates a warm online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
-        """
-        st.markdown(content, unsafe_allow_html=True)
+       
     
     
     
-    st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELABS APP✨</h1>", unsafe_allow_html=True)
-    st.divider()
-    st.markdown("<h4 style='text-align: center;color: #e76f51;'><b><i>MedInfoHub</b></i><i> is your ultimate resource for accessible, reliable, and easy-to-understand medical information. Our platform is designed to enhance public health literacy, advocate telemedicine consultations, and bridge the gap between drug knowledge and patient understanding. MedInfoHub+ features two powerful applications: HealthPlus and PharmaPal.</i></h4>", unsafe_allow_html=True)
-    st.divider()
-    col1, col2 = st.columns(2)
-    with col1:
-        st.subheader("➕HealthPlus")
-        st.markdown("***Empowering you with reliable medical knowledge***")
-        st.markdown("HealthPlus leverages the power of the MedQuAD dataset and advanced AI to provide you with accurate and easy-to-understand medical information. Our goal is to make healthcare information accessible to everyone, enhancing public health literacy and advocating telemedicine consultations.")
+    # st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELABS APP✨</h1>", unsafe_allow_html=True)
+    # st.divider()
+    
+    # col1, col2 = st.columns(2)
+    # with col1:
+    #     st.subheader("➕HealthPlus")
+    #     st.markdown("***Empowering you with reliable medical knowledge***")
+    #     st.markdown("HealthPlus leverages the power of the MedQuAD dataset and advanced AI to provide you with accurate and easy-to-understand medical information. Our goal is to make healthcare information accessible to everyone, enhancing public health literacy and advocating telemedicine consultations.")
         
 
-    with col2:
-        st.subheader("⚕️PharmaPal")
-        st.markdown("***Bridging the gap between drug knowledge and patient understanding***")
-        st.markdown("PharmaPal is an innovative Streamlit application designed to bridge the gap between drug knowledge and patient understanding. Leveraging the power of the FDA Dataset through the Retrieval-Augmented Generation (RAG), this app provides clear, reliable, and accessible information about the drug that is tailor-fit on the user profile, whether a healthcare provider or a patient.")
+    # with col2:
+    #     st.subheader("⚕️PharmaPal")
+    #     st.markdown("***Bridging the gap between drug knowledge and patient understanding***")
+    #     st.markdown("PharmaPal is an innovative Streamlit application designed to bridge the gap between drug knowledge and patient understanding. Leveraging the power of the FDA Dataset through the Retrieval-Augmented Generation (RAG), this app provides clear, reliable, and accessible information about the drug that is tailor-fit on the user profile, whether a healthcare provider or a patient.")
  
-    col3, col4 = st.columns(2)
-    if col3.button('HealthPlus', type = "primary", use_container_width = True):
-        st.switch_page("MedQuAd/medquad.py")
-    if col4.button('PharmaPal', type = "primary", use_container_width = True):
-        st.switch_page("FDA/fda_app.py")
+    # col3, col4 = st.columns(2)
+    # if col3.button('HealthPlus', type = "primary", use_container_width = True):
+    #     st.switch_page("MedQuAd/medquad.py")
+    # if col4.button('PharmaPal', type = "primary", use_container_width = True):
+    #     st.switch_page("FDA/fda_app.py")
 
   
 @st.dialog("Log In",width="large")
@@ -264,7 +249,6 @@ role = st.session_state.role
 
 login_page = st.Page(login, title = "Welcome",icon=":material/login:")
 logout_page = st.Page(logout, title="End Session", icon=":material/logout:")
-about_us = st.Page(contactus, title="Contact Us", icon="✉️")
 medinfohubplus_info = st.Page(medinfohubplus, title="About Our Data App", icon="📱", default=(role == role))
 # role_print = st.Page(role_print_none,title=role)
 
@@ -278,7 +262,7 @@ fda_app = st.Page(
     "FDA/fda_app.py", title="PharmaPal", icon="⚕️"
 )
 
-about_us_pages = [login_page, medinfohubplus_info,about_us]
+about_us_pages = [login_page, medinfohubplus_info]
 account_pages = [logout_page]
 data_apps = [medquad, fda_app]
 
@@ -303,89 +287,5 @@ else:
 pg.run()
 
 
-########################################################
-# SUITABILITY
-########################################################
-@st.fragment
-def suitability():
-    # Define the questions
-    questions = [
-        "What is your highest level of education completed?",
-        "Do you have any prior experience in programming or data analysis? If yes, please describe.",
-        "Do you prefer structured learning environments with a clear curriculum, or do you thrive in self-paced, unstructured settings?",
-        "How many hours per week can you realistically dedicate to learning data science?",
-        "What are your long-term career goals in the field of data science?"
-    ]
-    
-    # Streamlit app setup
-    st.title("Data Science Learning Path Classifier")
-    st.write("Please answer the following questions to determine your suitability for different learning paths in data science.")
-    
-    # Initialize or retrieve session state
-    if 'responses' not in st.session_state:
-        st.session_state.responses = []
-    if 'question_index' not in st.session_state:
-        st.session_state.question_index = 0
-    if 'chat_history' not in st.session_state:
-        st.session_state.chat_history = []
-    
-    # # Display the entire chat history
-    # for role, message in st.session_state.chat_history:
-    #     st.chat_message(role).write(message)
-    # Display the entire chat history with user responses on the right
-    for role, message in st.session_state.chat_history:
-        st.chat_message(role).write(message)
-    
-    # Function to display the current question and collect user response
-    def display_question():
-        if st.session_state.question_index < len(questions):
-            current_question = questions[st.session_state.question_index]
-            st.chat_message("AI").write(current_question)
-            user_response = st.chat_input("Your response:")
-            if user_response:
-                st.session_state.responses.append(user_response)
-                st.session_state.chat_history.append(("AI", current_question))
-                st.session_state.chat_history.append(("User", user_response))
-                st.session_state.question_index += 1
-                st.rerun(scope="fragment")
-    
-    # Function to get classification from OpenAI
-    def get_classification():
-        questions_responses = ""
-        for i, question in enumerate(questions):
-            questions_responses += f"{i+1}. {question}\n   - Response: {st.session_state.responses[i]}\n"
-    
-        prompt = f"""
-        Classify the following person’s suitability for a data science bootcamp, self-learning, or a master's program based on their responses to the questions:
-        {questions_responses}
-        Suitability:
-        """
-    
-        try:
-            response = openai.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": "You are a helpful assistant that classifies education suitability."},
-                    {"role": "user", "content": prompt}
-                ]
-            )
-            classification = response.choices[0].message.content.strip()
-            return classification
-        except Exception as e:
-            st.error(f"Error: {e}")
-            return None
-    
-    # Main logic
-    if st.session_state.question_index < len(questions):
-        display_question()
-    else:
-        if st.session_state.responses and st.session_state.question_index == len(questions):
-            classification = get_classification()
-            if classification:
-                st.session_state.chat_history.append(("Suitability", classification))
-                st.session_state.question_index += 1
-                st.rerun(scope="fragment")
 
-            # with st.container(border=True):
-        #     suitability()    
         
