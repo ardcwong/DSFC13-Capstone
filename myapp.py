@@ -184,23 +184,22 @@ def login():
     col1, col2, col3 = st.columns([1,3,1])
     
     # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
-
-    col2.header("ESKWELABS APP")
-    # col1.image('data/art.png')
-    # st.header("Log in")
-    content = """
-    Welcome to Eskwelabs App. Ready for the Future of Work? Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school that gives you access to affordable and high quality data skills education.
-    Your Future Begins with Upskilling. Eskwelabs creates a warm online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
-    """
-    col2.markdown(content, unsafe_allow_html=True)
-    
-    with col2.container(border=True):
-        st.markdown('<div class="custom-column">', unsafe_allow_html=True)
-        suitability()    
-    
-    col2.subheader("Get Started")
-    
     with col2:
+        st.markdown('<div class="custom-column">', unsafe_allow_html=True)
+        st.header("ESKWELABS APP")
+        # col1.image('data/art.png')
+        # st.header("Log in")
+        content = """
+        Welcome to Eskwelabs App. Ready for the Future of Work? Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school that gives you access to affordable and high quality data skills education.
+        Your Future Begins with Upskilling. Eskwelabs creates a warm online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
+        """
+        st.markdown(content, unsafe_allow_html=True)
+        
+        with st.container(border=True):
+            suitability()    
+        
+        st.subheader("Get Started")
+        
         col21, col22, col23 = st.columns([1,1,1])
         st.markdown("Let us know who's visiting. Are you a/an ...")
         def role_chosen():
@@ -232,7 +231,8 @@ def login():
                 
         else:
             st.session_state.role = st.session_state.vote['role']
-                
+
+        st.markdown('</div>', unsafe_allow_html=True)
             
  
 def logout():
