@@ -106,7 +106,7 @@ if "spreadsheet" not in st.session_state:
 
 
 def login():
-        vote(role,st.session_state.spreadsheet)
+        vote(st.session_state.spreadsheet)
         
 
         st.subheader("Get Started")
@@ -150,7 +150,7 @@ def login():
         """, unsafe_allow_html=True)
     
 @st.dialog("Log In",width="large")
-def vote(role, spreadsheet):
+def vote(spreadsheet):
     sheet = spreadsheet.worksheet("Sheet1")
     users = pd.DataFrame(sheet.get_all_records())
 
