@@ -3,6 +3,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import openai
+import base64
 
 ########################################################
 # PAGE CONFIG
@@ -18,10 +19,9 @@ st.set_page_config(
 
 
 ########################################################
-# LOAD BACKGROUND CSS
+# LOAD STYLES CSS
 ########################################################
-# Function to load the CSS file
-#Function to load local CSS file
+# Function to load local CSS file
 def load_local_css(file_name):
     try:
         with open(file_name) as f:
@@ -35,9 +35,9 @@ load_local_css("data/styles.css")
 
 
 
-
-import base64
-
+########################################################
+# CHANGE BACKGROUND USING LOCAL PNG
+########################################################
 @st.cache(allow_output_mutation=True)
 def set_bg_hack(main_bg):
     '''
@@ -72,17 +72,24 @@ api_key = st.secrets["api"]['api_key']
 openai.api_key = api_key
 credentials = st.secrets["gcp_service_account"]
 
-
-
+########################################################
+# INITIALIZE role and vote (login)
+########################################################
 if "role" not in st.session_state:
     st.session_state.role = None
 
 if "vote" not in st.session_state:
     st.session_state.vote = None
 
-
+########################################################
+# SET UP ROLES
+########################################################
 ROLES = ["Aspiring Student", "Fellow", "Mentor"]
 
+
+########################################################
+# SETUP CONNECTION TO GOOGLE SHEET
+########################################################
 def google_connection(client):
 # Open the Google Sheet
     spreadsheet = client.open("LoginCredentials")
@@ -95,6 +102,11 @@ if "spreadsheet" not in st.session_state:
     creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
     client = gspread.authorize(creds)
     st.session_state.spreadsheet = google_connection(client)
+
+
+########################################################
+# SUITABILITY
+########################################################
 
 @st.fragment
 def suitability():
