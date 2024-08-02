@@ -1,11 +1,19 @@
 .stApp > header {
     background-color: transparent;
 }
-.stApp {
+/* .stApp {
     background-image: url('./data/bg.png')!important;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+} */
+
+.stApp {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: url('./data/bg.png')!important;
+    z-index: -5 !important;
 }
 
 /* .stApp {
@@ -14,4 +22,5 @@
     overflow: auto;
     background: radial-gradient(circle at 0 70%, #00b096, #00b0a4 25%, #0a6fb3 72%, #0a6fb3) !important;
     z-index: -5 !important;
-} */
+}
+ */
