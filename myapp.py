@@ -199,9 +199,9 @@ def login():
             suitability()    
         
         st.subheader("Get Started")
-        
-        col21, col22, col23 = st.columns([1,1,1])
         st.markdown("Let us know who's visiting. Are you a/an ...")
+        col21, col22, col23 = st.columns([1,1,1])
+        
         
         def role_chosen():
             a = col21.button("Aspiring Student", type = "primary", use_container_width = True)
