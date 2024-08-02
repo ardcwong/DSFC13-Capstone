@@ -288,9 +288,9 @@ st.logo(
 
 page_dict = {}
 
-if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
+if st.session_state.role in ["Aspiring Student", "Fellow", "Mentor"]:
     page_dict["Application"] = data_apps
-if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
+if st.session_state.role in ["Aspiring Student", "Fellow", "Mentor"]:
     page_dict["MedInfoHub+"] = about_us_pages
 
 
