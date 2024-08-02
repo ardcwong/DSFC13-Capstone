@@ -5,7 +5,7 @@
 /* .bg {
     background-image: url(https://github.com/ardcwong/DSFC13-Capstone/blob/main/data/bg.png) !important;
     background-position: 0 0;
-    background-size: cover; /* or contain, depending on your needs */
+    background-size: cover;
     width: 100% !important;
     height: 100% !important;
     position: fixed !important;
