@@ -250,7 +250,7 @@ home_page = st.Page(home, title="Home", icon="🏠", default=(role == role))
 login_page = st.Page(login, title = "Log In",icon=":material/login:")
 logout_page = st.Page(logout, title="Log Out", icon=":material/logout:")
 pathfinder_rfs = st.Page(home, title="Results Feedback Summary", icon="📓")
-DSF = st.Page(home, title = "DSF Program Information")
+DSF = st.Page(title = "DSF Program Information")
 
 suitability = st.Page(
     "suitability/DSLPC.py",
