@@ -1,9 +1,0 @@
-.stApp > header {
-    background-color: transparent;
-}
-.stApp {
-    background-image: url('data/bg.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
