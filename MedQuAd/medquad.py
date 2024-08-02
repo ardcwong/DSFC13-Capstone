@@ -15,7 +15,7 @@ def load_local_css(file_name):
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 #Load the local CSS file from the 'data' directory
-load_local_css("data/styles.css")
+# load_local_css("data/styles.css")
 
 
 
