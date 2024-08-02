@@ -276,8 +276,8 @@ st.logo(
 )
 
 page_dict = {}
-if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
-    page_dict["Eskwelabs App"] = login, main_apps
+# if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
+#     page_dict["Eskwelabs App"] = login, main_apps
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["PathFinder"] = pf_apps
 if st.session_state.role in [None,"Fellow"]:
@@ -287,7 +287,7 @@ if st.session_state.role in [None,"Fellow"]:
 
 
 if len(page_dict) > 0:
-    pg = st.navigation(page_dict) | {"Account": account_pages}, position="sidebar")
+    pg = st.navigation(page_dict) | {"Eskwelabs App": login, main_apps}, position="sidebar")
 else:
     pg = st.navigation([st.Page(login)], position="sidebar") #defaults to login page if no acceptable role is selected
 
