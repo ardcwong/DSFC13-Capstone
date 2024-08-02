@@ -27,7 +27,7 @@ def load_css(file_name):
     st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
 
 # Load your CSS file
-load_css("data/styles.css")
+load_css("styles.css")
 # Add the bg-noise div
 st.markdown('<div class="bg-noise"></div>', unsafe_allow_html=True)
 
