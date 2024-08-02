@@ -193,7 +193,9 @@ def login():
     Your Future Begins with Upskilling. Eskwelabs creates a warm online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
     """
     col2.markdown(content, unsafe_allow_html=True)
+    col2.markdown('<div class="custom-column">', unsafe_allow_html=True)
     with col2.container(border=True):
+        
         suitability()    
     
     col2.subheader("Get Started")
