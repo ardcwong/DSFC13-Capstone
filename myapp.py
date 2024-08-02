@@ -21,19 +21,19 @@ st.set_page_config(
 # LOAD BACKGROUND CSS
 ########################################################
 # Function to load the CSS file
-# Function to load local CSS file
-# def load_local_css(file_name):
-#     try:
-#         with open(file_name) as f:
-#             st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-#             st.success("CSS loaded successfully!")  # Debug statement
-#     except FileNotFoundError:
-#         st.error(f"File {file_name} not found!")
+Function to load local CSS file
+def load_local_css(file_name):
+    try:
+        with open(file_name) as f:
+            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+            st.success("CSS loaded successfully!")  # Debug statement
+    except FileNotFoundError:
+        st.error(f"File {file_name} not found!")
 
-# Load the local CSS file from the 'data' directory
-# load_local_css("data/styles.css")
-# # Add the bg-noise div
-# st.markdown('<div class="bg"></div>', unsafe_allow_html=True)
+Load the local CSS file from the 'data' directory
+load_local_css("data/styles.css")
+# Add the bg-noise div
+st.markdown('<div class="st-emotion-cache-14jjz1b.e1f1d6gn2"></div>', unsafe_allow_html=True)
 
 
 
