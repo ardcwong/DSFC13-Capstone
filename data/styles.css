@@ -10,8 +10,6 @@
 
 
 .stApp {
-    z-index: -3;
-    mix-blend-mode: color-burn;
     background-image: url('./data/bg.png')!important;
     background-position: 0 0;
     background-size: auto;
