@@ -181,6 +181,7 @@ def vote(spreadsheet):
             role = users[users['UserID']==userid]['Type']
             st.session_state.vote = {"role": role}
             st.session_state.role = st.session_state.vote['role']
+            st.write(st.session_state.role)
             st.rerun()
         else:
             st.error("Invalid username or password")          
