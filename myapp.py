@@ -124,9 +124,7 @@ def login():
         """
         st.markdown(content, unsafe_allow_html=True)
         
-        # with st.container(border=True):
-        #     suitability()    
-        
+
         st.subheader("Get Started")
         st.markdown("Let us know who's visiting. Are you a/an ...")
         col21, col22, col23 = st.columns([1,1,1])
@@ -386,4 +384,6 @@ def suitability():
                 st.session_state.question_index += 1
                 st.rerun(scope="fragment")
 
-    
+            # with st.container(border=True):
+        #     suitability()    
+        
