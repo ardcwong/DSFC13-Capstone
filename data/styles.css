@@ -12,7 +12,7 @@
     margin: auto;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     overflow: auto;
-    background: url('./data/bg.png')!important;
+    background: url('/data/bg.png')!important;
     z-index: -5 !important;
 }
 
