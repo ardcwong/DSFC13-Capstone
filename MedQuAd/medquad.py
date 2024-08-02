@@ -11,12 +11,8 @@ import base64
 ########################################################
 # Function to load local CSS file
 def load_local_css(file_name):
-    try:
-        with open(file_name) as f:
-            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-            # st.success("CSS loaded successfully!")  # Debug statement
-    except FileNotFoundError:
-        st.error(f"File {file_name} not found!")
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 #Load the local CSS file from the 'data' directory
 load_local_css("data/styles.css")
@@ -26,7 +22,7 @@ load_local_css("data/styles.css")
 ########################################################
 # CHANGE BACKGROUND USING LOCAL PNG
 ########################################################
-@st.cache(allow_output_mutation=True)
+@st.cache_data(allow_output_mutation=True)
 def set_bg_hack(main_bg):
     '''
     A function to unpack an image from root folder and set as bg.
