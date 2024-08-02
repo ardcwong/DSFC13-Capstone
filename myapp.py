@@ -258,13 +258,13 @@ suitability = st.Page(
     title="Learning Path Suitability",
     icon="➕",
 )
-fda_app = st.Page(
-    "FDA/fda_app.py", title="PharmaPal", icon="⚕️"
+ProgramInformation = st.Page(
+    "Program_Information/pi_app.py", title="Program Information", icon="⚕️"
 )
 
 about_us_pages = [login_page, medinfohubplus_info]
 account_pages = [logout_page]
-data_apps = [suitability, fda_app]
+data_apps = [suitability, ProgramInformation]
 
 st.logo(
     "data/mihplus.png"#,
