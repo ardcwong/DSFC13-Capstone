@@ -163,7 +163,7 @@ def vote(spreadsheet):
     #     user = users_mentor
     
     # Function to check login
-    def check_login(userid, password, sheet, user):    
+    def check_login(userid, password):    
         users = pd.DataFrame(sheet.get_all_records())
         if userid in users['UserID'].values:
             st.session_state.username_exist = True
@@ -176,7 +176,7 @@ def vote(spreadsheet):
     
     if st.button("Login"):
         
-        if check_login(userid, password, sheet, user):
+        if check_login(userid, password):
             st.success("Login successful!")
             role = users[users['UserID']==userid]['Type']
             st.session_state.vote = {"role": role}
