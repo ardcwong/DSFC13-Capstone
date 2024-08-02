@@ -157,7 +157,7 @@ def logout():
     st.rerun()
 
 
-def medinfohubplus():
+def home():
     col1, col2, col3 = st.columns([1,8,1])
     
     # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
@@ -249,7 +249,7 @@ role = st.session_state.role
 
 login_page = st.Page(login, title = "Welcome",icon=":material/login:")
 logout_page = st.Page(logout, title="End Session", icon=":material/logout:")
-medinfohubplus_info = st.Page(medinfohubplus, title="About Our Data App", icon="📱", default=(role == role))
+home_page = st.Page(home, title="HOME", icon="🏠", default=(role == role))
 # role_print = st.Page(role_print_none,title=role)
 
 # settings = st.Page("settings.py", title="Settings", icon=":material/settings:")
@@ -262,7 +262,7 @@ ProgramInformation = st.Page(
     "Program_Information/pi_app.py", title="Program Information", icon="⚕️"
 )
 
-about_us_pages = [login_page, medinfohubplus_info]
+about_us_pages = [login_page, home_page]
 account_pages = [logout_page]
 data_apps = [suitability, ProgramInformation]
 
