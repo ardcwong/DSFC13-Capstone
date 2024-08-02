@@ -277,7 +277,7 @@ st.logo(
 
 page_dict = {}
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
-    page_dict["Eskwelabs App"] = login, main_apps
+    page_dict["Eskwelabs App"] = main_apps
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["PathFinder"] = pf_apps
 if st.session_state.role in [None,"Fellow"]:
