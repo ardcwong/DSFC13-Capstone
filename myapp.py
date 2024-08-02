@@ -142,7 +142,8 @@ def login():
         role = role_chosen()
        
         
-        # if st.session_state.vote == None: 
+        if st.session_state.vote == None: 
+            role = st.session_state.vote
             
 
         #     if role in ["Aspiring Student"]:
