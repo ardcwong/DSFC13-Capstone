@@ -7,49 +7,6 @@ import base64
 
 
 ########################################################
-# LOAD STYLES CSS
-########################################################
-# Function to load local CSS file
-def load_local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
-#Load the local CSS file from the 'data' directory
-# load_local_css("data/styles.css")
-
-
-
-########################################################
-# CHANGE BACKGROUND USING LOCAL PNG
-########################################################
-@st.cache_data
-def set_bg_hack(main_bg):
-    '''
-    A function to unpack an image from root folder and set as bg.
- 
-    Returns
-    -------
-    The background.
-    '''
-    # set bg name
-    main_bg_ext = "png"
-        
-    st.markdown(
-         f"""
-         <style>
-         .stApp {{
-             background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});
-             background-size: cover
-         }}
-         </style>
-         """,
-         unsafe_allow_html=True
-     )
-
-# set_bg_hack('data/bg.png')
-
-
-########################################################
 # API KEYS and CREDENTIALS
 ########################################################
 api_key = st.secrets["api"]['api_key']
