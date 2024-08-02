@@ -106,7 +106,7 @@ if "spreadsheet" not in st.session_state:
 
 
 def login():
-    
+        vote(role,st.session_state.spreadsheet)
         
 
         st.subheader("Get Started")
@@ -148,7 +148,42 @@ def login():
         st.markdown("""<br><br>
         
         """, unsafe_allow_html=True)
-            
+    
+@st.dialog("Log In",width="large")
+def vote(role, spreadsheet):
+    sheet = spreadsheet.worksheet("Sheet1")
+    users = pd.DataFrame(sheet.get_all_records())
+
+    # st.radio
+    # if role in ["Fellow"]:
+    #     sheet = sheet_fellow
+    #     user = users_fellow
+    # elif role in ["Mentor"]:
+    #     sheet = sheet_mentor
+    #     user = users_mentor
+    
+    # Function to check login
+    def check_login(userid, password, sheet, user):    
+        users = pd.DataFrame(sheet.get_all_records())
+        if userid in users['UserID'].values:
+            st.session_state.username_exist = True
+            if password == str(users[users['UserID'] == userid]['Password'].values[0]):
+                return True
+        return False
+    
+    userid = st.text_input("UserID")
+    password = st.text_input("Password", type="password")
+    
+    if st.button("Login"):
+        
+        if check_login(userid, password, sheet, user):
+            st.success("Login successful!")
+            role = users[user['UserID']==userid]['Type']
+            st.session_state.vote = {"role": role}
+            st.session_state.role = st.session_state.vote['role']
+            st.rerun()
+        else:
+            st.error("Invalid username or password")          
  
 def logout():
     # st.session_state = None
@@ -200,43 +235,7 @@ def home():
     #     st.switch_page("FDA/fda_app.py")
 
   
-@st.dialog("Log In",width="large")
-def vote(role, spreadsheet):
-    sheet_fellow = spreadsheet.worksheet("Sheet1")
-    sheet_mentor = spreadsheet.worksheet("Sheet2")
-    users_fellow = pd.DataFrame(sheet_fellow.get_all_records())
-    users_mentor = pd.DataFrame(sheet_mentor.get_all_records())
 
-    if role in ["Fellow"]:
-        sheet = sheet_fellow
-        user = users_fellow
-    elif role in ["Mentor"]:
-        sheet = sheet_mentor
-        user = users_mentor
-
-        
-    
-    # Function to check login
-    def check_login(username, password, sheet, user):    
-        users = pd.DataFrame(sheet.get_all_records())
-        if username in users['Username'].values:
-            st.session_state.username_exist = True
-            if password == str(users[users['Username'] == username]['Password'].values[0]):
-                return True
-        return False
-    
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-    
-    if st.button("Login"):
-        
-        if check_login(username, password, sheet, user):
-            st.success("Login successful!")
-            st.session_state.vote = {"role": role}
-            st.session_state.role = st.session_state.vote['role']
-            st.rerun()
-        else:
-            st.error("Invalid username or password")
             
  
 ########################################################################
