@@ -250,7 +250,7 @@ home_page = st.Page(home, title="Home", icon="🏠", default=(role == role))
 login_page = st.Page(login, title = "Log In",icon=":material/login:")
 logout_page = st.Page(logout, title="Log Out", icon=":material/logout:")
 pathfinder_rfs = st.Page("Pathfinder/feedback_summary.py", title="Results Feedback Summary", icon="📓")
-DSF = st.Page(home, title = "DSF Program Information")
+DSF = st.Page("DSF/app.py", title = "DSF Program Information")
 
 suitability = st.Page(
     "suitability/DSLPC.py",
@@ -263,9 +263,9 @@ ProgramInformation = st.Page(
 
 
 
-about_us_pages = [home_page, ProgramInformation]
+main_apps = [home_page, ProgramInformation, suitability]
 account_pages = [login_page, logout_page]
-data_apps = [suitability]
+data_apps = []
 dsf_apps = [DSF]
 pf_apps = [pathfinder_rfs]
 st.logo(
@@ -275,10 +275,10 @@ st.logo(
 
 page_dict = {}
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
-    page_dict["Eskwelabs App"] = about_us_pages
+    page_dict["Eskwelabs App"] = main_apps
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["PathFinder"] = pf_apps
-if st.session_state.role in ["Fellow"]:
+if st.session_state.role in [None,"Fellow"]:
     page_dict["Data Science Fellowship"] = dsf_apps
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["Cool Applications"] = data_apps
