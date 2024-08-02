@@ -80,6 +80,10 @@ if "role" not in st.session_state:
 
 if "vote" not in st.session_state:
     st.session_state.vote = None
+    
+if "name" not in st.session_state:
+    st.session_state.name = None
+
 
 ########################################################
 # SET UP ROLES
@@ -111,9 +115,10 @@ def login():
         else:
             st.session_state.role = st.session_state.vote['role']
 
-        st.subheader("Get Started")
-        st.markdown("Let us know who's visiting. Are you a/an ...")
-        col21, col22, col23 = st.columns([1,1,1])
+        if st.session_state.name:
+            st.subheader(f"Hi, {st.session_state.name}!")
+            # st.markdown("Let us know who's visiting. Are you a/an ...")
+            # col21, col22, col23 = st.columns([1,1,1])
         
         
         # def role_chosen():
@@ -183,6 +188,7 @@ def vote(spreadsheet):
             role = str(users[users['UserID']==userid]['Type'].values[0])
             st.session_state.vote = {"role": role}
             st.session_state.role = st.session_state.vote['role']
+            st.session_state.name = str(users[users['UserID']==userid]['FirstName'].values[0])
             st.rerun()
         else:
             st.error("Invalid username or password")          
