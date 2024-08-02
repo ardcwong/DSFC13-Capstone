@@ -10,7 +10,7 @@ import base64
 ########################################################
 st.set_page_config(
     page_title = "Welcome to Eskwelabs App!",
-    initial_sidebar_state="expanded",
+    # initial_sidebar_state="expanded",
     layout='wide',
     menu_items={
     'About': "### Hi! Thanks for viewing our app!"
