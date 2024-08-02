@@ -30,7 +30,7 @@ def load_local_css(file_name):
     except FileNotFoundError:
         st.error(f"File {file_name} not found!")
 
-Load the local CSS file from the 'data' directory
+#Load the local CSS file from the 'data' directory
 load_local_css("data/styles.css")
 # Add the bg-noise div
 st.markdown('<div class="st-emotion-cache-14jjz1b.e1f1d6gn2"></div>', unsafe_allow_html=True)
