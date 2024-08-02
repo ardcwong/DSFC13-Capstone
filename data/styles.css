@@ -1,4 +1,7 @@
-body {
+.stApp > header {
+    background-color: transparent;
+}
+.stApp {
     margin: 0 !important;
     height: 100vh !important;
     display: flex !important;
