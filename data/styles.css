@@ -2,7 +2,7 @@
     background-color: transparent;
 }
 .stApp {
-    background-image: url('./data/bg.png');
+    background-image: url('./data/bg.png')!important;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
