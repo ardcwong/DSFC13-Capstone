@@ -8,12 +8,18 @@
     background-attachment: fixed;
 } */
 
+
 .stApp {
-    margin: auto;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    overflow: auto;
-    background: url('/data/bg.png')!important;
-    z-index: -5 !important;
+    z-index: -3;
+    mix-blend-mode: color-burn;
+    background-image: url('./data/bg.png')!important;
+    background-position: 0 0;
+    background-size: auto;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 /* .stApp {
