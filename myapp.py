@@ -22,13 +22,13 @@ st.set_page_config(
 ########################################################
 # Function to load the CSS file
 # Function to load local CSS file
-def load_local_css(file_name):
-    try:
-        with open(file_name) as f:
-            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-            st.success("CSS loaded successfully!")  # Debug statement
-    except FileNotFoundError:
-        st.error(f"File {file_name} not found!")
+# def load_local_css(file_name):
+#     try:
+#         with open(file_name) as f:
+#             st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+#             st.success("CSS loaded successfully!")  # Debug statement
+#     except FileNotFoundError:
+#         st.error(f"File {file_name} not found!")
 
 # Load the local CSS file from the 'data' directory
 # load_local_css("data/styles.css")
@@ -40,25 +40,26 @@ def load_local_css(file_name):
 def set_bg_hack(main_bg):
     '''
     A function to unpack an image from root folder and set as bg.
- 
+
     Returns
     -------
     The background.
     '''
     # set bg name
-    main_bg_ext = "png"
-        
+    main_bg_ext = main_bg.split('.')[-1]
+
     st.markdown(
-         f"""
-         <style>
-         .stApp {{
-             background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});
-             background-size: cover
-         }}
-         </style>
-         """,
-         unsafe_allow_html=True
-     )
+        f"""
+        <style>
+        .stApp {{
+            background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});
+            background-size: cover;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
 set_bg_hack('data/bg.png')
 
