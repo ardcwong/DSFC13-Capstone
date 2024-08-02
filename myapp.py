@@ -106,19 +106,7 @@ if "spreadsheet" not in st.session_state:
 
 
 def login():
-    col1, col2, col3 = st.columns([1,3,1])
     
-    # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
-    with col2:
-        
-        st.header("ESKWELABS APP")
-        # col1.image('data/art.png')
-        # st.header("Log in")
-        content = """
-        Welcome to Eskwelabs App. Ready for the Future of Work? Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school that gives you access to affordable and high quality data skills education.
-        Your Future Begins with Upskilling. Eskwelabs creates a warm online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
-        """
-        st.markdown(content, unsafe_allow_html=True)
         
 
         st.subheader("Get Started")
@@ -187,7 +175,23 @@ def contactus():
     # Display formatted text with st.markdown
     st.markdown(contactinfo, unsafe_allow_html=True)
 def medinfohubplus():
-    st.markdown(f"<h1 style='text-align: center;'>Welcome to MedInfoHub+, {role} ✨</h1>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1,3,1])
+    
+    # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
+    with col2:
+        
+        st.header("ESKWELABS APP")
+        # col1.image('data/art.png')
+        # st.header("Log in")
+        content = """
+        Welcome to Eskwelabs App. Ready for the Future of Work? Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school that gives you access to affordable and high quality data skills education.
+        Your Future Begins with Upskilling. Eskwelabs creates a warm online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
+        """
+        st.markdown(content, unsafe_allow_html=True)
+    
+    
+    
+    st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELABS APP✨</h1>", unsafe_allow_html=True)
     st.divider()
     st.markdown("<h4 style='text-align: center;color: #e76f51;'><b><i>MedInfoHub</b></i><i> is your ultimate resource for accessible, reliable, and easy-to-understand medical information. Our platform is designed to enhance public health literacy, advocate telemedicine consultations, and bridge the gap between drug knowledge and patient understanding. MedInfoHub+ features two powerful applications: HealthPlus and PharmaPal.</i></h4>", unsafe_allow_html=True)
     st.divider()
