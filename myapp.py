@@ -60,7 +60,7 @@ def set_bg_hack(main_bg):
          unsafe_allow_html=True
      )
 
-set_bg_hack(data/bg)
+set_bg_hack('bg.png')
 
 
 ########################################################
