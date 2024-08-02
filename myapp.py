@@ -247,8 +247,8 @@ def vote(role, spreadsheet):
 role = st.session_state.role
 
 home_page = st.Page(home, title="Home", icon="🏠", default=(role == role))
-login_page = st.Page(login, title = "Welcome",icon=":material/login:")
-logout_page = st.Page(logout, title="End Session", icon=":material/logout:")
+login_page = st.Page(login, title = "Log In",icon=":material/login:")
+logout_page = st.Page(logout, title="Log Out", icon=":material/logout:")
 
 # role_print = st.Page(role_print_none,title=role)
 
@@ -264,8 +264,8 @@ ProgramInformation = st.Page(
 
 DSF = st.Page(home, title = "DSF Program Information")
 
-about_us_pages = [login_page, home_page, ProgramInformation]
-account_pages = [logout_page]
+about_us_pages = [home_page, ProgramInformation]
+account_pages = [login_page, logout_page]
 data_apps = [suitability]
 dsf_apps = [DSF]
 
@@ -285,7 +285,7 @@ if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
 
 
 if len(page_dict) > 0:
-    pg = st.navigation(page_dict | {"Session": account_pages}, position="sidebar")
+    pg = st.navigation(page_dict | {"Account": account_pages}, position="sidebar")
 else:
     pg = st.navigation([st.Page(login)], position="sidebar") #defaults to login page if no acceptable role is selected
 
