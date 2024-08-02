@@ -8,9 +8,11 @@
 
 .custom-column {
     background-color: rgba(255, 255, 255, 0.9); /* White with 90% transparency */
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
+    height: 100%; /* Make sure it covers the entire height of the content */
 }
+
 
 /* .bg {
     background-image: url(https://github.com/ardcwong/DSFC13-Capstone/blob/main/data/bg.png) !important;
