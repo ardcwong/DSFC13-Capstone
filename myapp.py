@@ -253,8 +253,8 @@ medinfohubplus_info = st.Page(medinfohubplus, title="About Our Data App", icon="
 # role_print = st.Page(role_print_none,title=role)
 
 # settings = st.Page("settings.py", title="Settings", icon=":material/settings:")
-medquad = st.Page(
-    "MedQuAd/medquad.py",
+suitability = st.Page(
+    "Suitability/DSLPC.py",
     title="HealthPlus",
     icon="➕",
 )
@@ -264,7 +264,7 @@ fda_app = st.Page(
 
 about_us_pages = [login_page, medinfohubplus_info]
 account_pages = [logout_page]
-data_apps = [medquad, fda_app]
+data_apps = [suitability, fda_app]
 
 st.logo(
     "data/mihplus.png"#,
