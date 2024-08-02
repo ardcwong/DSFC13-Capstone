@@ -278,8 +278,8 @@ account_pages = [logout_page]
 data_apps = [medquad, fda_app]
 
 st.logo(
-    "data/mihplus.png",
-    icon_image= "data/logo.png",
+    "data/mihplus.png"#,
+    # icon_image= "data/logo.png",
 )
 
 page_dict = {}
