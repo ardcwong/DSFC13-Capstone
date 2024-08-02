@@ -232,7 +232,9 @@ def login():
         else:
             st.session_state.role = st.session_state.vote['role']
 
-        st.markdown("""<br><br>""")
+        st.markdown("""<br><br>
+        
+        """, unsafe_allow_html=True)
             
  
 def logout():
