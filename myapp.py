@@ -262,7 +262,7 @@ ProgramInformation = st.Page(
     "Program_Information/pi_app.py", title="Program Information", icon="⚕️"
 )
 
-DSF = st.Page()
+DSF = st.Page(st.write("DSF"))
 
 about_us_pages = [login_page, home_page, ProgramInformation]
 account_pages = [logout_page]
