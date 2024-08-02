@@ -32,8 +32,7 @@ def load_local_css(file_name):
 
 #Load the local CSS file from the 'data' directory
 load_local_css("data/styles.css")
-# Add the bg-noise div
-# st.markdown('<div class="st-emotion-cache-1wmy9hl.e1f1d6gn1"></div>', unsafe_allow_html=True)
+
 
 
 
@@ -233,7 +232,7 @@ def login():
         else:
             st.session_state.role = st.session_state.vote['role']
 
-        
+        st.markdown("""<br><br>""")
             
  
 def logout():
