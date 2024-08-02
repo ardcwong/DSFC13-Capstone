@@ -26,7 +26,7 @@ def load_local_css(file_name):
     try:
         with open(file_name) as f:
             st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-            st.success("CSS loaded successfully!")  # Debug statement
+            # st.success("CSS loaded successfully!")  # Debug statement
     except FileNotFoundError:
         st.error(f"File {file_name} not found!")
 
