@@ -178,7 +178,7 @@ def vote(spreadsheet):
         
         if check_login(userid, password, sheet, user):
             st.success("Login successful!")
-            role = users[user['UserID']==userid]['Type']
+            role = users[users['UserID']==userid]['Type']
             st.session_state.vote = {"role": role}
             st.session_state.role = st.session_state.vote['role']
             st.rerun()
