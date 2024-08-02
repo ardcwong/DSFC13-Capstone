@@ -106,8 +106,10 @@ if "spreadsheet" not in st.session_state:
 
 
 def login():
-        vote(st.session_state.spreadsheet)
-        st.write(st.session_state.role)
+        if st.session_state.vote == None: 
+            vote(st.session_state.spreadsheet)
+        else:
+            st.session_state.role = st.session_state.vote['role']
 
         st.subheader("Get Started")
         st.markdown("Let us know who's visiting. Are you a/an ...")
@@ -181,7 +183,6 @@ def vote(spreadsheet):
             role = str(users[users['UserID']==userid]['Type'].values[0])
             st.session_state.vote = {"role": role}
             st.session_state.role = st.session_state.vote['role']
-            st.write(st.session_state.role)
             st.rerun()
         else:
             st.error("Invalid username or password")          
