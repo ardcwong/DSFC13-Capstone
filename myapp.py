@@ -278,7 +278,7 @@ data_apps = []
 dsf_apps = [DSF]
 pf_apps = [pathfinder_rfs]
 st.logo(
-    "data/mihplus.png"#,
+    "data/Eskwelabs_logo.svg"#,
     # icon_image= "data/logo.png",
 )
 
