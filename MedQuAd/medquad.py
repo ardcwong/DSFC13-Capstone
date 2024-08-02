@@ -22,7 +22,7 @@ load_local_css("data/styles.css")
 ########################################################
 # CHANGE BACKGROUND USING LOCAL PNG
 ########################################################
-@st.cache_data(allow_output_mutation=True)
+@st.cache_data
 def set_bg_hack(main_bg):
     '''
     A function to unpack an image from root folder and set as bg.
