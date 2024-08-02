@@ -21,7 +21,7 @@ st.set_page_config(
 # LOAD BACKGROUND CSS
 ########################################################
 # Function to load the CSS file
-Function to load local CSS file
+#Function to load local CSS file
 def load_local_css(file_name):
     try:
         with open(file_name) as f:
