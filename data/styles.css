@@ -2,11 +2,8 @@
     background-color: transparent;
 }
 .stApp {
-    margin: 0 !important;
-    height: 100vh !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    background: radial-gradient(circle at 0 70%, #00b096, #00b0a4 25%, #0a6fb3 72%, #3d32ae) !important;
-    z-index: -5 !important;
+    background-image: url('data/bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
