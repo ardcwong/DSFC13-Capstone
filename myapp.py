@@ -32,7 +32,8 @@ def load_local_css(file_name):
 
 # Load the local CSS file from the 'data' directory
 load_local_css("data/styles.css")
-
+# Add the bg-noise div
+st.markdown('<div class="bg"></div>', unsafe_allow_html=True)
 ########################################################
 # API KEYS and CREDENTIALS
 ########################################################
