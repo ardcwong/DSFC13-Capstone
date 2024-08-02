@@ -84,7 +84,7 @@ if "vote" not in st.session_state:
 ########################################################
 # SET UP ROLES
 ########################################################
-ROLES = ["Aspiring Student", "Fellow", "Mentor"]
+ROLES = [None,"Aspiring Student", "Fellow", "Mentor"]
 
 
 ########################################################
@@ -142,19 +142,19 @@ def login():
         role = role_chosen()
        
         
-        if st.session_state.vote == None: 
+        # if st.session_state.vote == None: 
             
 
-            if role in ["Aspiring Student"]:
-                st.session_state.vote = {"role": role}
-                st.session_state.role = st.session_state.vote['role']
-                st.rerun()
-            elif role in ["Fellow", "Mentor"]:
-                vote(role,st.session_state.spreadsheet)
-            # elif role == []:
+        #     if role in ["Aspiring Student"]:
+        #         st.session_state.vote = {"role": role}
+        #         st.session_state.role = st.session_state.vote['role']
+        #         st.rerun()
+        #     elif role in ["Fellow", "Mentor"]:
+        #         vote(role,st.session_state.spreadsheet)
+        #     # elif role == []:
                 
-        else:
-            st.session_state.role = st.session_state.vote['role']
+        # else:
+        #     st.session_state.role = st.session_state.vote['role']
 
         st.markdown("""<br><br>
         
