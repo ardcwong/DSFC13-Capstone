@@ -9,17 +9,12 @@
 /* .st-emotion-cache-1wmy9hl.e1f1d6gn1  */
 .st-emotion-cache-0.e1f1d6gn0 {
     background-color: rgba(255, 255, 255, 0.8); /* White with 90% transparency */
-    padding: 20px;
-    border-radius: 5px;
+/*     padding: 20px; */
+/*     border-radius: 5px; */
     height: 100%; /* Make sure it covers the entire height of the content */
 }
 /* .st-emotion-cache-1jicfl2  */
-.st-emotion-cache-1c7y2kd {
-    background-color: rgba(240, 242, 246, 1); /* White with 90% transparency */
-    padding: 20px;
-    border-radius: 5px;
-    height: 100%; /* Make sure it covers the entire height of the content */
-}
+/* .st-emotion-cache-1c7y2kd 
 /* .bg {
     background-image: url(https://github.com/ardcwong/DSFC13-Capstone/blob/main/data/bg.png) !important;
     background-position: 0 0;
