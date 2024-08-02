@@ -31,7 +31,7 @@ def load_local_css(file_name):
         st.error(f"File {file_name} not found!")
 
 #Load the local CSS file from the 'data' directory
-load_local_css("data/styles.css")
+# load_local_css("data/styles.css")
 
 
 
