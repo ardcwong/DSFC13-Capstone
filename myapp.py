@@ -267,7 +267,7 @@ DSF = st.Page(st.write("DSF"), title = "DSF Program Information")
 about_us_pages = [login_page, home_page, ProgramInformation]
 account_pages = [logout_page]
 data_apps = [suitability]
-dsf_apps = []
+dsf_apps = [DSF]
 
 st.logo(
     "data/mihplus.png"#,
