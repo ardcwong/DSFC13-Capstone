@@ -262,9 +262,12 @@ ProgramInformation = st.Page(
     "Program_Information/pi_app.py", title="Program Information", icon="⚕️"
 )
 
+DSF = st.Page()
+
 about_us_pages = [login_page, home_page, ProgramInformation]
 account_pages = [logout_page]
 data_apps = [suitability]
+dsf_apps = []
 
 st.logo(
     "data/mihplus.png"#,
@@ -274,6 +277,8 @@ st.logo(
 page_dict = {}
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["Eskwelabs App"] = about_us_pages
+if st.session_state.role in ["Fellow"]:
+    page_dict["Data Science Fellowship"] = dsf_apps
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["Cool Applications"] = data_apps
 
