@@ -193,7 +193,7 @@ def login():
         Welcome to Eskwelabs App. Ready for the Future of Work? Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school that gives you access to affordable and high quality data skills education.
         Your Future Begins with Upskilling. Eskwelabs creates a warm online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
         """
-        st.markdown(f"content'</div>'", unsafe_allow_html=True)
+        st.markdown(f"{content}'</div>'", unsafe_allow_html=True)
         
         with st.container(border=True):
             suitability()    
