@@ -84,7 +84,7 @@ if "vote" not in st.session_state:
 ########################################################
 # SET UP ROLES
 ########################################################
-ROLES = ["Aspiring Student", "Fellow", "Mentor"]
+ROLES = [None,"Aspiring Student", "Fellow", "Mentor"]
 
 
 ########################################################
@@ -107,7 +107,6 @@ if "spreadsheet" not in st.session_state:
 ########################################################
 # SUITABILITY
 ########################################################
-
 @st.fragment
 def suitability():
     # Define the questions
@@ -369,9 +368,9 @@ st.logo(
 
 page_dict = {}
 
-if st.session_state.role in ["Aspiring Student", "Fellow", "Mentor"]:
+if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["Application"] = data_apps
-if st.session_state.role in ["Aspiring Student", "Fellow", "Mentor"]:
+if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["MedInfoHub+"] = about_us_pages
 
 
