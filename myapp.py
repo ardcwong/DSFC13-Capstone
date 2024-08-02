@@ -284,18 +284,18 @@ st.logo(
 
 page_dict = {}
 
-if st.session_state.role in ["Aspiring Student", "Fellow", "Mentor"]:
+if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["Application"] = data_apps
-if st.session_state.role in ["Aspiring Student", "Fellow", "Mentor"]:
+if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["MedInfoHub+"] = about_us_pages
 
 
-if len(page_dict) > 0:
-    pg = st.navigation(page_dict | {"Session": account_pages})
-else:
-    pg = st.navigation([st.Page(login)]) #defaults to login page if no acceptable role is selected
+# if len(page_dict) > 0:
+#     pg = st.navigation(page_dict | {"Session": account_pages})
+# else:
+#     pg = st.navigation([st.Page(login)]) #defaults to login page if no acceptable role is selected
 
-pg.run()
+# pg.run()
 
 
 ########################################################
