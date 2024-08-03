@@ -105,7 +105,7 @@ def suitability():
 
         # Display the entire chat history with user responses on the right
         for role, message in st.session_state.chat_history:
-            st.chat_message(role).write(message)
+            st.chat_message(role).markdown(message)
         
         if st.session_state.classification:
             st.info("Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?")
