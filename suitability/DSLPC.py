@@ -34,7 +34,7 @@ st.write("Please answer the following questions to determine your suitability fo
 
 @st.fragment
 def suitability():
-    with st.container(height=500):
+    with st.container(height=400):
         # Initialize or retrieve session state
         if 'responses' not in st.session_state:
             st.session_state.responses = []
@@ -51,7 +51,7 @@ def suitability():
         # Display the entire chat history with user responses on the right
         for role, message in st.session_state.chat_history:
             st.chat_message(role).write(message)
-
+    with st.container():
         # Function to display the current question and collect user response
         def display_question():
             if st.session_state.question_index < len(questions):
