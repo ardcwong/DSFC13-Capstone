@@ -81,9 +81,6 @@ if "role" not in st.session_state:
 if "vote" not in st.session_state:
     st.session_state.vote = None
     
-if "name" not in st.session_state:
-    st.session_state.name = None
-
 if "userinfo" not in st.session_state:
     st.session_state.userinfo = None
 
@@ -121,10 +118,7 @@ def login():
             vote(st.session_state.spreadsheet)
         else:
             st.session_state.role = st.session_state.vote['role']
-
-        if st.session_state.name:
-            st.subheader(f"Hi, {st.session_state.name}!")
-            
+           
             # st.markdown("Let us know who's visiting. Are you a/an ...")
             # col21, col22, col23 = st.columns([1,1,1])
         
