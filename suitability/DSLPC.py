@@ -150,10 +150,8 @@ def suitability():
             if feedback:
                 sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback, st.session_state.chat_history)
                 st.success("Thank you for your feedback!")
-                st.session_state.responses = []
-                st.session_state.question_index = 0
-                st.session_state.chat_history = []
-                st.session_state.classification = []
+                # st.session_state.classification = []
+                st.rerun()  
         
     with col2:
         
