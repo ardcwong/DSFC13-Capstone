@@ -237,7 +237,7 @@ def home():
             st.subheader("We added these specific apps for you!")
             home_main_content()
         else:
-            home_main_content90
+            home_main_content()
 
         
 
