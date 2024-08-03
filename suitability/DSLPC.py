@@ -109,5 +109,5 @@ def suitability():
 ############################
 # RUN SUITABILITY
 ############################
-# suitability()
+suitability()
 
