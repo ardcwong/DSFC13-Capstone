@@ -147,8 +147,9 @@ def suitability():
         if st.session_state.classification:
             sentiment_mapping = [1,0]
             feedback = st.feedback("thumbs")        
-            if feedback:
-                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback, st.session_state.chat_history)
+            if feedback is not None:
+                feedback_score = {sentiment_mapping[selected]}
+                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
                 st.success("Thank you for your feedback!")
                 st.session_state.classification = []
                 st.rerun()   
