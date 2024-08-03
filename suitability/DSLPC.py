@@ -56,7 +56,7 @@ def write_feedback_to_gsheet(spreadsheet, feedback, chat_history):
     # chat_history_df = pd.DataFrame([chat_history])
     # chat_history_list = chat_history_df.values.tolist()[0]
     # flattened_chat_history = [item for sublist in chat_history for item in sublist]
-    chat_history_list = chat_history_df.values.flatten().tolist()
+    chat_history_list = chat_history.values.flatten().tolist()
     # chat_history_json = chat_history.iloc[0].to_json(orient="records")
     sheet.append_row([str(datetime.now()), feedback] + chat_history_list)
     return sheet
