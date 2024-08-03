@@ -146,7 +146,7 @@ def suitability():
     with col1:
         if st.session_state.classification:
             sentiment_mapping = [1,0]
-            feedback = st.feedback("thumbs",123)        
+            feedback = st.feedback("thumbs")        
             if feedback:
                 sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback, st.session_state.chat_history)
                 st.success("Thank you for your feedback!")
@@ -169,17 +169,17 @@ def suitability():
 suitability()
 
 
-if st.session_state.classification:
-    feedback = st.feedback("thumbs")        
-    if feedback:
-        sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback, st.session_state.chat_history)
-        st.success("Thank you for your feedback!")
-        st.session_state.responses = []
-        st.session_state.question_index = 0
-        st.session_state.chat_history = []
-        st.session_state.classification = []
-        st.write(pd.DataFrame(sheet.get_all_records()))
-        st.rerun() 
+# if st.session_state.classification:
+#     feedback = st.feedback("thumbs")        
+#     if feedback:
+#         sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback, st.session_state.chat_history)
+#         st.success("Thank you for your feedback!")
+#         st.session_state.responses = []
+#         st.session_state.question_index = 0
+#         st.session_state.chat_history = []
+#         st.session_state.classification = []
+#         st.write(pd.DataFrame(sheet.get_all_records()))
+#         st.rerun() 
 
 
 
