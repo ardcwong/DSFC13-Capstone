@@ -43,7 +43,8 @@ def google_connection(client):
 def write_feedback_to_gsheet(spreadsheet, feedback, chat_history):
     sheet = spreadsheet.sheet1
     # chat_history_json = json.dumps(chat_history)
-    sheet.append_row([str(datetime.now()), feedback, chat_history])
+    chat_history_json = chat_history.to_json(orient="records")
+    sheet.append_row([str(datetime.now()), feedback, chat_history_json])
     return sheet
 
 # Initialize Google Sheets connection if not already in session state
