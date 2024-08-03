@@ -149,8 +149,8 @@ def suitability():
             feedback = st.feedback("thumbs")        
             if feedback is not None:
                 st.markdown(type(feedback))
-                feedback_score = {sentiment_mapping[feedback]}.value[0]
-                st.markdown(f"You selected: {sentiment_mapping[feedback]}")
+                feedback_score = {sentiment_mapping[feedback]}
+                st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
                 sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
                 st.success("Thank you for your feedback!")
                 st.session_state.classification = []
