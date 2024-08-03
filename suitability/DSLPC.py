@@ -22,11 +22,21 @@ credentials = st.secrets["gcp_service_account"]
 
 # Define the questions
 questions = [
-    "What is your highest level of education completed?",
-    "Do you have any prior experience in programming or data analysis? If yes, please describe.",
-    "Do you prefer structured learning environments with a clear curriculum, or do you thrive in self-paced, unstructured settings?",
-    "How many hours per week can you realistically dedicate to learning data science?",
-    "What are your long-term career goals in the field of data science?"
+    "What is your highest level of education?"
+    "Do you have a background in mathematics, statistics, or computer science?"
+    "Do you have any work experience related to data science or any technical field? If so, please describe your role(s)."
+    "How many years of professional experience do you have?"
+    "Are you familiar with any programming languages? If yes, which ones?"
+    "Do you have any experience with data analysis tools or software (e.g., Python, R, SQL, Excel)?"
+    "Have you worked on any data science projects or competitions (e.g., Kaggle)?"
+    "Do you prefer structured learning with a defined curriculum or self-paced learning?"
+    "How much time can you dedicate to studying each week?"
+    "What are your short-term and long-term career goals in data science?"
+    "Are you looking to make a career switch to data science, or do you want to enhance your current role with data science skills?"
+    "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?"
+    "Do you need to balance your studies with work or other commitments?"
+    "Do you prefer learning in a classroom setting, online, or a hybrid approach?"
+    "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?"
 ]
 
 # Streamlit app setup
@@ -108,19 +118,21 @@ def suitability():
                 questions_responses += f"{i+1}. {question}\n   - Response: {st.session_state.responses[i]}\n"
             # If my responses is not enough for you to classify me, ask the me to press the reset button, otherwise, please describe my suitability for each and recommend the most suitable one for me.
             # Inform me that in case I want to change any of my responses only, I can press the reset button.
+            # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
             
             prompt = f"""
             Check if my responses are related to the questions being asked.
-            Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
+            I need to you classify my suitability in a bootcamp, self-learning, or master’s degree to help me decide if I want to join the Eskwelabs bootcamp based on my responses to the questions:{questions_responses}.
+            Suitability:
 
-        
+            Overall Recommendation:
             """
-
+# You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
             try:
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                        {"role": "system", "content": "You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
+                        {"role": "system", "content": "You are an expert in classifying data science learning pathways suitability and recommends the most suitable learning path."},
                         {"role": "user", "content": prompt}
                     ]
                 )
