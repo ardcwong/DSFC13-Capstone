@@ -205,11 +205,18 @@ def vote(spreadsheet):
 ########################################################
 def logout():
     # st.session_state = None
-    st.session_state.role = None
-    st.session_state.vote = None
-    st.session_state.userinfo = None
-    st.switch_page(home_page)
-    st.rerun()
+    @st.dialog("Are you sure?")
+    def LO_confirmation():
+        if st.button("Yes"):
+            
+    
+            
+            st.session_state.role = None
+            st.session_state.vote = None
+            st.session_state.userinfo = None
+            st.switch_page(home_page)
+            st.rerun()
+    LO_confirmation()
 
 
 ########################################################
