@@ -301,7 +301,7 @@ if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["Eskwelabs App"] = main_apps
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["PathFinder"] = pf_apps
-if st.session_state.role in [None,"Fellow"]:
+if st.session_state.role in ["Fellow"]:
     page_dict["Data Science Fellowship"] = dsf_apps
 
 if st.session_state.role in ["Fellow", "Mentor", "Ops"]:
