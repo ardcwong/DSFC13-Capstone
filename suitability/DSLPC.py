@@ -42,8 +42,8 @@ def google_connection(client):
 # Function to write feedback and chat history to Google Sheet
 def write_feedback_to_gsheet(spreadsheet, feedback, chat_history):
     sheet = spreadsheet.sheet1
-    # chat_history_json = json.dumps(chat_history)
-    chat_history_json = chat_history.iloc[0].to_json(orient="records")
+    chat_history_json = json.dumps(chat_history)
+    # chat_history_json = chat_history.iloc[0].to_json(orient="records")
     sheet.append_row([str(datetime.now()), feedback, chat_history_json])
     return sheet
 
@@ -152,7 +152,7 @@ def suitability():
                 st.markdown(type(feedback))
                 feedback_score = sentiment_mapping[feedback]
                 st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
-                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score,pd.DataFrame([st.session_state.chat_history]))
+                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
                 st.success("Thank you for your feedback!")
                 st.session_state.classification = []
                 st.rerun()   
@@ -169,7 +169,7 @@ def suitability():
     # st.dataframe(st.session_state.chat_history)
 
 suitability()
-st.write(pd.DataFrame([st.session_state.chat_history]).loc[0])
+st.write(pd.DataFrame([st.session_state.chat_history]))
 
 # if st.session_state.classification:
 #     feedback = st.feedback("thumbs")        
