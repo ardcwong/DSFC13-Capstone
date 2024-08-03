@@ -121,7 +121,11 @@ def suitability():
             # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
             
             prompt = f"""
-            Classify my suitability for a data science bootcamp, self-learning, or a master’s program based on my responses to the question:{questions_responses}. 
+            Classify my suitability for a data science bootcamp, self-learning, or a master’s program based on my responses to the question:{questions_responses}.
+            Suitability:
+            
+            Overall Recommendation:
+            
             """
 # You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
             # Before you classify suitability and recommend the most suitable learning path, check first if the responses is related to the questions being asked.
@@ -181,6 +185,7 @@ def suitability():
 
 suitability()
 df = pd.DataFrame(st.session_state.chat_history)
+st.write(st.session_state.chat_history)
 st.write(pd.DataFrame(st.session_state.chat_history)[[1]])
 st.write(df[[1]].T)
 st.write(pd.DataFrame([st.session_state.chat_history]))
