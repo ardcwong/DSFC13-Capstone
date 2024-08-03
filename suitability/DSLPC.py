@@ -127,22 +127,20 @@ def suitability():
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
                 st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
                 f1,f2,f3,f4 = st.columns([4,1,1,4])
-                feedback_up = f2.button("👍🏻", use_container_width = True, help = "This response helpful")    
-                feedback_down = f3.button("👎🏻", use_container_width = True, help = "This response unhelpful")
+                
+            
+            
+                if f2.button("👍🏻", use_container_width = True, help = "This response helpful"):
+                    feedback_score = 1
+                    sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
+                    st.session_state.feedback_up = feedback_score
+                    st.rerun() 
+                elif f3.button("👎🏻", use_container_width = True, help = "This response unhelpful"):
+                    feedback_score = 0
+                    sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
+                    st.session_state.feedback_down = feedback_score
+                    st.rerun() 
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-            
-            
-            if feedback_up:
-                feedback_score = 1
-                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-                st.session_state.feedback_up = feedback_score
-                st.rerun() 
-            elif feedback_down:
-                feedback_score = 0
-                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-                st.session_state.feedback_down = feedback_score
-                st.rerun() 
-
     with st.container():
         # Function to display the current question and collect user response
         def display_question():
