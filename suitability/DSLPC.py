@@ -6,6 +6,10 @@ import openai
 import base64
 import json
 from datetime import datetime
+import pytz
+
+# Define the timezone for the Philippines
+philippines_timezone = pytz.timezone('Asia/Manila')
 
 ########################################################
 # API KEYS and CREDENTIALS
@@ -65,7 +69,7 @@ def write_feedback_to_gsheet(spreadsheet, feedback, chat_history):
     chat_history_list = pd.DataFrame(chat_history)[[1]].T.values.flatten().tolist()
     # chat_history_list = chat_history.values.flatten().tolist()
     # chat_history_json = chat_history.iloc[0].to_json(orient="records")
-    sheet.append_row([str(datetime.now()), feedback] + chat_history_list)
+    sheet.append_row([str(datetime.now(philippines_timezone)), feedback] + chat_history_list)
     return sheet
 
 # Initialize Google Sheets connection if not already in session state
