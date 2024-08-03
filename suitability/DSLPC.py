@@ -22,20 +22,20 @@ credentials = st.secrets["gcp_service_account"]
 
 # Define the questions
 questions = [
-    "What is your highest level of education?"
-    "Do you have a background in mathematics, statistics, or computer science?"
-    "Do you have any work experience related to data science or any technical field? If so, please describe your role(s)."
-    "How many years of professional experience do you have?"
-    "Are you familiar with any programming languages? If yes, which ones?"
-    "Do you have any experience with data analysis tools or software (e.g., Python, R, SQL, Excel)?"
-    "Have you worked on any data science projects or competitions (e.g., Kaggle)?"
-    "Do you prefer structured learning with a defined curriculum or self-paced learning?"
-    "How much time can you dedicate to studying each week?"
-    "What are your short-term and long-term career goals in data science?"
-    "Are you looking to make a career switch to data science, or do you want to enhance your current role with data science skills?"
-    "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?"
-    "Do you need to balance your studies with work or other commitments?"
-    "Do you prefer learning in a classroom setting, online, or a hybrid approach?"
+    "What is your highest level of education?",
+    "Do you have a background in mathematics, statistics, or computer science?",
+    "Do you have any work experience related to data science or any technical field? If so, please describe your role(s).",
+    "How many years of professional experience do you have?",
+    "Are you familiar with any programming languages? If yes, which ones?",
+    "Do you have any experience with data analysis tools or software (e.g., Python, R, SQL, Excel)?",
+    "Have you worked on any data science projects or competitions (e.g., Kaggle)?",
+    "Do you prefer structured learning with a defined curriculum or self-paced learning?",
+    "How much time can you dedicate to studying each week?",
+    "What are your short-term and long-term career goals in data science?",
+    "Are you looking to make a career switch to data science, or do you want to enhance your current role with data science skills?",
+    "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
+    "Do you need to balance your studies with work or other commitments?",
+    "Do you prefer learning in a classroom setting, online, or a hybrid approach?",
     "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?"
 ]
 
