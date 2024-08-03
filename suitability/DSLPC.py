@@ -113,7 +113,7 @@ def suitability():
 
     if st.session_state.classification == True:
         feedback = st.feedback("thumbs")
-            
+    st.write(st.session_state.classification)     
     # Reset button
     col1, col2 = st.columns([10, 2])
     with col2:
