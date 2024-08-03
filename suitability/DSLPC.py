@@ -59,6 +59,7 @@ def suitability():
                 # st.chat_message("AI").write(current_question)
                 st.session_state.chat_history.append(("AI", current_question))
                 user_response = st.chat_input("Your response:")
+                st.rerun(scope="fragment")
                 if user_response:
                     st.session_state.responses.append(user_response)
                     
