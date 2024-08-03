@@ -75,6 +75,7 @@ def suitability():
             # Inform me that in case I want to change any of my responses only, I can press the reset button.
             
             prompt = f"""
+            Check if my responses are related to the questions being asked.
             Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
 
         
