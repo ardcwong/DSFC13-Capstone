@@ -116,14 +116,12 @@ def suitability():
             
             if st.session_state.feedback_up:
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>You selected 👍🏻</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>Thanks for your feedback!</h6>", unsafe_allow_html=True)
+                st.markdown("<h6 style='text-align: center;'>You selected 👍🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
 
             elif st.session_state.feedback_up:
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>You selected 👎🏻</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>Thanks for your feedback!</h6>", unsafe_allow_html=True)
+                st.markdown("<h6 style='text-align: center;'>You selected 👎🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
             else:
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
