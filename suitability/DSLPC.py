@@ -162,7 +162,7 @@ if st.session_state.classification:
     if feedback:
         sheet = write_feedback_to_gsheet(st.session_state.spreadsheet, feedback, st.session_state.chat_history)
         st.success("Thank you for your feedback!")
-        st.write(sheet)
+        st.write(pd.DataFrame(sheet.get_all_records()))
 
 
 
