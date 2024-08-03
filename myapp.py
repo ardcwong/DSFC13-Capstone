@@ -222,7 +222,7 @@ def logout():
 ########################################################
 def home():
     col1, col2, col3 = st.columns([1,8,1])
-    st.subheader(f"Hi, {st.session_state.userinfo["FirstName"]}!")
+    st.subheader(f"Hi, {st.session_state.userinfo['FirstName']}!")
     # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
     with col2:
         
