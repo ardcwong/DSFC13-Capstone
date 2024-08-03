@@ -116,19 +116,19 @@ def suitability():
             
             if st.session_state.feedback_up:
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>You selected :material/thumb_up:.Thanks for your feedback!</h6>", unsafe_allow_html=True)
+                st.markdown("<h6 style='text-align: center;'>You selected 👍🏻.Thanks for your feedback!</h6>", unsafe_allow_html=True)
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
 
             elif st.session_state.feedback_up:
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>You selected :material/thumb_down:.Thanks for your feedback!</h6>", unsafe_allow_html=True)
+                st.markdown("<h6 style='text-align: center;'>You selected 👎🏻.Thanks for your feedback!</h6>", unsafe_allow_html=True)
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
             else:
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
                 st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
                 f1,f2,f3,f4 = st.columns([4,1,1,4])
-                feedback_up = f2.button(":material/thumb_up:", use_container_width = True)    
-                feedback_down = f3.button(":material/thumb_down:", use_container_width = True)
+                feedback_up = f2.button("👍🏻", use_container_width = True, help = "This response helpful")    
+                feedback_down = f3.button("👎🏻", use_container_width = True, help = "This response unhelpful")
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
             
             
