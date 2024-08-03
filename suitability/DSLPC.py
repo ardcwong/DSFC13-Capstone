@@ -145,6 +145,7 @@ def suitability():
     col1, col2 = st.columns([10, 2])
     with col1:
         if st.session_state.classification:
+            sentiment_mapping = [1,0]
             feedback = st.feedback("thumbs")        
             if feedback:
                 sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback, st.session_state.chat_history)
