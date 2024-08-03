@@ -5,6 +5,7 @@ import pandas as pd
 import openai
 import base64
 import json
+import time
 
 ########################################################
 # API KEYS and CREDENTIALS
