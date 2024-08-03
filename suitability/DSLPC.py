@@ -28,11 +28,11 @@ questions = [
     "How many years of professional experience do you have?",
     "Are you familiar with any programming languages? If yes, which ones?",
     "Do you have any experience with data analysis tools or software (e.g., Python, R, SQL, Excel)?",
-    # "Have you worked on any data science projects or competitions (e.g., Kaggle)?",
-    # "Do you prefer structured learning with a defined curriculum or self-paced learning?",
-    # "How much time can you dedicate to studying each week?",
-    # "What are your short-term and long-term career goals in data science?",
-    # "Are you looking to make a career switch to data science, or do you want to enhance your current role with data science skills?",
+    "Have you worked on any data science projects or competitions (e.g., Kaggle)?",
+    "Do you prefer structured learning with a defined curriculum or self-paced learning?",
+    "How much time can you dedicate to studying each week?",
+    "What are your short-term and long-term career goals in data science?",
+    "Are you looking to make a career switch to data science, or do you want to enhance your current role with data science skills?",
     "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
     "Do you need to balance your studies with work or other commitments?",
     "Do you prefer learning in a classroom setting, online, or a hybrid approach?",
@@ -135,7 +135,7 @@ def suitability():
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                        {"role": "system", "content": "You are an expert in classifying user's suitability to data science learning pathways and recommends the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if the responses is related to the questions being asked."},
+                        {"role": "system", "content": "You are an expert in classifying user's suitability to data science learning pathways and recommends the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if most responses are related to the questions being asked."},
                         {"role": "user", "content": prompt}
                     ]
                 )
