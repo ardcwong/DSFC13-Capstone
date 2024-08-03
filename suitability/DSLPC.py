@@ -108,7 +108,7 @@ def suitability():
             st.chat_message(role).write(message)
         
         if st.session_state.classification:
-            st.chat_message("").info("*Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?*")
+            st.chat_message(" ").caption("*Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?*")
             sentiment_mapping = [0,1]
             feedback = st.feedback("thumbs")    
             if feedback is not None:
