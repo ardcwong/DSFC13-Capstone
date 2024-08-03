@@ -115,14 +115,13 @@ def suitability():
         def get_classification():
             questions_responses = ""
             for i, question in enumerate(questions):
-                questions_responses += f"{i+1}. {question}\n   - Response: {st.session_state.responses[i]}\n"
+                questions_responses += f"{i+1}. {question}: {st.session_state.responses[i]}\n"
             # If my responses is not enough for you to classify me, ask the me to press the reset button, otherwise, please describe my suitability for each and recommend the most suitable one for me.
             # Inform me that in case I want to change any of my responses only, I can press the reset button.
             # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
             
             prompt = f"""
-            Check if my responses are related to the questions being asked: {questions_responses}. 
-            Then I need to you classify my suitability in a bootcamp, self-learning, or master’s degree to help me decide if I want to join the Eskwelabs bootcamp based on my responses to the questions: {questions_responses}.
+            Based on my responses to the questions: {questions_responses}, I need to you classify my suitability in a bootcamp, self-learning, or master’s degree to help me decide if I want to join the Eskwelabs bootcamp based on my responses to the questions: {questions_responses}.
             Suitability:
 
             Overall Recommendation:
