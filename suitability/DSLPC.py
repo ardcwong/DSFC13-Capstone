@@ -147,7 +147,7 @@ def suitability():
         if st.session_state.classification:
             feedback = st.feedback("thumbs")        
             if feedback:
-                st.session_state.spreadsheet_DSLPC = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback, st.session_state.chat_history)
+                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback, st.session_state.chat_history)
                 st.success("Thank you for your feedback!")
                 st.session_state.responses = []
                 st.session_state.question_index = 0
@@ -167,7 +167,6 @@ def suitability():
 
 suitability()
 
-st.write(pd.DataFrame(st.session_state.spreadsheet_DSLPC.get_all_records()))
 
 if st.session_state.classification:
     feedback = st.feedback("thumbs")        
