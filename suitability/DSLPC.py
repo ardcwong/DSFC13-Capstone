@@ -176,8 +176,9 @@ def suitability():
     col1, col2 = st.columns([10, 2])
     with col1:
         if st.session_state.classification:
+            # st.info("Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?")
             sentiment_mapping = [0,1]
-            feedback = st.feedback("thumbs")        
+            feedback = st.feedback("thumbs").info("Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?")        
             if feedback is not None:
                 st.markdown(type(feedback))
                 feedback_score = sentiment_mapping[feedback]
