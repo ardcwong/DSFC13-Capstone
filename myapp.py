@@ -84,6 +84,8 @@ if "vote" not in st.session_state:
 if "name" not in st.session_state:
     st.session_state.name = None
 
+if "userinfo" not in st.session_state:
+    st.session_state.userinfo = None
 
 ########################################################
 # SET UP ROLES
@@ -122,6 +124,7 @@ def login():
 
         if st.session_state.name:
             st.subheader(f"Hi, {st.session_state.name}!")
+            st.subheader(st.session_state.userinfo)
             # st.markdown("Let us know who's visiting. Are you a/an ...")
             # col21, col22, col23 = st.columns([1,1,1])
         
@@ -196,6 +199,8 @@ def vote(spreadsheet):
             role = str(users[users['UserID']==userid]['Type'].values[0])
             st.session_state.vote = {"role": role}
             st.session_state.role = st.session_state.vote['role']
+            df_user_info = users[users['UserID']==userid]
+            st.session_state.userinfo = df_user_info
             st.session_state.name = str(users[users['UserID']==userid]['FirstName'].values[0])
             st.rerun()
         else:
