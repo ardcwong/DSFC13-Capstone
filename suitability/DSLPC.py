@@ -184,6 +184,8 @@ def suitability():
     # st.dataframe(st.session_state.chat_history)
 
 suitability()
+df = pd.DataFrame(st.session_state.chat_history)
+st.write(df.[[1]])
 st.write(pd.DataFrame([st.session_state.chat_history]))
 
 # if st.session_state.classification:
