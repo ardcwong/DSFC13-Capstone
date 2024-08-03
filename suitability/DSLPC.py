@@ -109,7 +109,7 @@ def suitability():
                 if classification:
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
-                    st.rerun(scope="fragment")
+                    st.rerun()
 
     if st.session_state.classification == True:
         feedback = st.feedback("thumbs")
