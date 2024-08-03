@@ -122,9 +122,6 @@ def suitability():
             
             prompt = f"""
             Based on my responses to the questions: {questions_responses}, I need to you classify my suitability in a bootcamp, self-learning, or master’s degree to help me decide if I want to join the Eskwelabs bootcamp based on my responses to the questions: {questions_responses}.
-            Suitability:
-
-            Overall Recommendation:
             """
 # You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
             try:
