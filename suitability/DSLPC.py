@@ -139,7 +139,7 @@ suitability()
 if st.session_state.classification:
     feedback = st.feedback("thumbs")
     if feedback:
-        write_feedback_to_gsheet(feedback, chat_history)
+        write_feedback_to_gsheet(feedback, st.session_state.chat_history)
         st.success("Thank you for your feedback!")
         
 
