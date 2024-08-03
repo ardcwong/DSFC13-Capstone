@@ -64,7 +64,7 @@ def suitability():
                     if st.session_state.question_index < len(questions):
                         next_question = questions[st.session_state.question_index]
                         st.session_state.chat_history.append(("AI", next_question))
-                    st.rerun()
+                    st.rerun(scope="fragment")
 
         # Function to get classification from OpenAI
         def get_classification():
@@ -102,7 +102,12 @@ def suitability():
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
                     st.rerun()
-
+    # Reset button
+    if st.button("Reset"):
+        st.session_state.responses = []
+        st.session_state.question_index = 0
+        st.session_state.chat_history = []
+        st.rerun(scope="fragment")    
 suitability()
 
 
