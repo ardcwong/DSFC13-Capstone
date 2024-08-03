@@ -108,7 +108,7 @@ def suitability():
             st.chat_message(role).write(message)
         
         if st.session_state.classification:
-            st.divider()
+            # st.divider()
             st.markdown(f"<h7 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?</h7>", unsafe_allow_html=True)
             # st.caption("*Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?*")
             f1,f2,f3 = st.columns([10,2,10])
