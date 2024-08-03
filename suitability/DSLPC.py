@@ -154,7 +154,6 @@ def suitability():
                 st.session_state.question_index = 0
                 st.session_state.chat_history = []
                 st.session_state.classification = []
-                st.rerun()
         
     with col2:
         
@@ -162,6 +161,7 @@ def suitability():
             st.session_state.responses = []
             st.session_state.question_index = 0
             st.session_state.chat_history = []
+            st.session_state.classification = []
             st.rerun()   
 
     # st.dataframe(st.session_state.chat_history)
