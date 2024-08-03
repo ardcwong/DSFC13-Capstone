@@ -121,14 +121,14 @@ def suitability():
             # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
             
             prompt = f"""
-            Based on my responses to the questions: {questions_responses}, I need to you classify my suitability in a bootcamp, self-learning, or master’s degree to help me decide if I want to join the Eskwelabs bootcamp based on my responses to the questions: {questions_responses}.
+            Based on my responses to the questions: {questions_responses}, I need to you classify my suitability in a bootcamp, self-learning, or master’s degree.
             """
 # You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
             try:
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                        {"role": "system", "content": "You are an expert in classifying data science learning pathways suitability and recommends the most suitable learning path."},
+                        {"role": "system", "content": "You are an expert in classifying user's suitability to data science learning pathways and recommends the most suitable learning path."},
                         {"role": "user", "content": prompt}
                     ]
                 )
