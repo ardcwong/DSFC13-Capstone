@@ -32,7 +32,14 @@ questions = [
 st.title("Data Science Learning Path Classifier")
 st.write("Please answer the following questions to determine your suitability for different learning paths in data science.")
 
-    
+# Function to write feedback and chat history to Google Sheet
+def write_feedback_to_gsheet(feedback, chat_history):
+    sheet = client.open("Data Science Learning Path Classifier").sheet1
+    chat_history_json = json.dumps(chat_history)
+    sheet.append_row([str(datetime.now()), feedback, chat_history_json])
+
+
+
 @st.fragment
 def suitability():
     if 'classification' not in st.session_state:
@@ -114,27 +121,27 @@ def suitability():
                     st.session_state.classification = classification
                     st.rerun()
 
-    if st.session_state.classification:
-        feedback = st.feedback("thumbs")
-        
-    st.write(st.session_state.classification)     
+   
+             
     # Reset button
     col1, col2 = st.columns([10, 2])
     with col2:
+        if st.session_state.classification:
+            feedback = st.feedback("thumbs")
+            if feedback:
+                write_feedback_to_gsheet(feedback, chat_history)
+                st.success("Thank you for your feedback!")
+        
         if st.button("Reset", use_container_width = True):
             st.session_state.responses = []
             st.session_state.question_index = 0
             st.session_state.chat_history = []
             st.rerun()   
 
-    st.dataframe(st.session_state.chat_history)
+    # st.dataframe(st.session_state.chat_history)
+
 suitability()
 
-# Function to write feedback and chat history to Google Sheet
-def write_feedback_to_gsheet(feedback, chat_history):
-    sheet = client.open("Your Google Sheet Name").sheet1
-    chat_history_json = json.dumps(chat_history)
-    sheet.append_row([str(datetime.now()), feedback, chat_history_json])
 
 
 
