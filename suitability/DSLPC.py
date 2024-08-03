@@ -17,7 +17,7 @@ credentials = st.secrets["gcp_service_account"]
 ########################################################
 # SUITABILITY
 ########################################################
-@st.fragment
+
 def suitability():
     # Define the questions
     questions = [
@@ -31,6 +31,7 @@ def suitability():
     # Streamlit app setup
     st.title("Data Science Learning Path Classifier")
     st.write("Please answer the following questions to determine your suitability for different learning paths in data science.")
+    @st.fragment
     with st.container(height=500):
             # Initialize or retrieve session state
         if 'responses' not in st.session_state:
