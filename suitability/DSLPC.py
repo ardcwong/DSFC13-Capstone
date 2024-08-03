@@ -5,7 +5,7 @@ import pandas as pd
 import openai
 import base64
 import json
-import time
+from datetime import datetime
 
 ########################################################
 # API KEYS and CREDENTIALS
