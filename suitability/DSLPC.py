@@ -32,29 +32,27 @@ questions = [
 st.title("Data Science Learning Path Classifier")
 st.write("Please answer the following questions to determine your suitability for different learning paths in data science.")
 
-########################################################
-# SETUP CONNECTION TO GOOGLE SHEET
-########################################################
+# Google Sheets connection function
 def google_connection(client):
-# Open the Google Sheet
-    spreadsheet = client.open("Data Science Learning Path Classifier").sheet1
+    # Open the Google Sheet
+    spreadsheet = client.open("Data Science Learning Path Classifier")
     return spreadsheet
 
-########################################################
-# ACCESS LoginCredentials GSHEET
-########################################################
+# Function to write feedback and chat history to Google Sheet
+def write_feedback_to_gsheet(spreadsheet, feedback, chat_history_df):
+    sheet = spreadsheet.sheet1
+    chat_history_json = chat_history_df.to_json(orient="records")
+    sheet.append_row([str(datetime.now()), feedback, chat_history_json])
+
+# Initialize Google Sheets connection if not already in session state
 if "spreadsheet" not in st.session_state:
     # Google Sheets setup using st.secrets
+    credentials = st.secrets["gcp_service_account"]  # Make sure to add your credentials in Streamlit secrets
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
     client = gspread.authorize(creds)
     st.session_state.spreadsheet = google_connection(client)
 
-
-# Function to write feedback and chat history to Google Sheet
-def write_feedback_to_gsheet(feedback, chat_history):
-    chat_history_json = json.dumps(chat_history)
-    st.session_state.spreadsheet.append_row([str(datetime.now()), feedback, chat_history_json])
 
 
 
@@ -158,12 +156,10 @@ suitability()
 
 
 if st.session_state.classification:
-    feedback = st.feedback("thumbs")
+    feedback = st.feedback("thumbs")        
     if feedback:
-        write_feedback_to_gsheet(feedback, st.session_state.chat_history)
+        write_feedback_to_gsheet(st.session_state.spreadsheet, feedback, chat_history_df)
         st.success("Thank you for your feedback!")
-        
-
 
 
 
