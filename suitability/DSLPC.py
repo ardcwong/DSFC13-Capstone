@@ -149,7 +149,7 @@ def suitability():
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
                     st.session_state.classification = classification
-                    # st.rerun()
+                    st.rerun()
 
    
              
