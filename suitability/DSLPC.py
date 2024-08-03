@@ -34,7 +34,7 @@ st.write("Please answer the following questions to determine your suitability fo
 
 @st.fragment
 def suitability():
-    with st.container():
+    with st.container(height=500):
         # Initialize or retrieve session state
         if 'responses' not in st.session_state:
             st.session_state.responses = []
