@@ -142,25 +142,24 @@ def suitability():
    
              
     # Reset button
-    col1, col2 = st.columns([10, 2])
-    with col1:
-        if st.session_state.classification:
-            sentiment_mapping = [1,0]
-            feedback = st.feedback("thumbs")        
-            if feedback:
-                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback, st.session_state.chat_history)
-                st.success("Thank you for your feedback!")
-                # st.session_state.classification = []
-                st.rerun()  
-        
-    with col2:
-        
-        if st.button("Reset", use_container_width = True):
-            st.session_state.responses = []
-            st.session_state.question_index = 0
-            st.session_state.chat_history = []
-            st.session_state.classification = []
-            st.rerun()   
+col1, col2 = st.columns([10, 2])
+with col1:
+    if st.session_state.classification:
+        sentiment_mapping = [1,0]
+        feedback = st.feedback("thumbs")        
+        if feedback:
+            sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback, st.session_state.chat_history)
+            st.success("Thank you for your feedback!")
+            # st.session_state.classification = []
+    
+with col2:
+    
+    if st.button("Reset", use_container_width = True):
+        st.session_state.responses = []
+        st.session_state.question_index = 0
+        st.session_state.chat_history = []
+        st.session_state.classification = []
+        st.rerun()   
 
     # st.dataframe(st.session_state.chat_history)
 
