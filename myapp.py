@@ -203,9 +203,6 @@ def vote(spreadsheet):
 ########################################################
 # LOG OUT
 ########################################################
-if "LO_confirmation" not in st.session_state:
-    st.session_state.LO_confirmation = None
-
 def logout():
     # st.session_state = None
     
@@ -230,17 +227,13 @@ def logout():
                 st.rerun()
     
     LO_confirmation()
-    if st.session_state.LO_confirmation == True:
-        st.switch_page(home_page)
-    # st.switch_page(home_page)
+
 
 
 ########################################################
 # HOME PAGE
 ########################################################
 def home():
-
-    st.session_state.LO_confirmation = False
     def home_main_content():
         st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELABS APP✨</h1>", unsafe_allow_html=True)
         st.divider()
