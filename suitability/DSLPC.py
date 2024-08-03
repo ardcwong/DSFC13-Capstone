@@ -73,7 +73,7 @@ def suitability():
                 questions_responses += f"{i+1}. {question}\n   - Response: {st.session_state.responses[i]}\n"
 
             prompt = f"""
-            Classify the following person’s suitability for a data science bootcamp, self-learning, or a master's program based on their responses to the questions:
+            Classify my’s suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions:
             {questions_responses}
             Suitability:
             """
