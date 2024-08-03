@@ -114,7 +114,7 @@ def suitability():
             st.session_state.chat_history = []
             st.rerun()   
 
-    st.write(st.session_state.chat_history)
+    st.dataframe(st.session_state.chat_history)
 suitability()
 
 
