@@ -99,7 +99,7 @@ def suitability():
             if st.session_state.responses and st.session_state.question_index == len(questions):
                 classification = get_classification()
                 if classification:
-                    st.session_state.chat_history.append(("Suitability", classification))
+                    st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
                     st.rerun()
 
