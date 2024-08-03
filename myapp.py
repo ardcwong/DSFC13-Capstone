@@ -212,6 +212,7 @@ def logout():
     
     @st.dialog("Are you sure?")
     def LO_confirmation():
+        st.session_state.LO_confirmation = True
         LO1, LO2 = st.columns([1,1])
         with LO1:
             if st.button("Yes", use_container_width = True):
@@ -221,12 +222,10 @@ def logout():
                 st.session_state.role = None
                 st.session_state.vote = None
                 st.session_state.userinfo = None
-                st.session_state.LO_confirmation = True
                 st.switch_page(home_page)
                 st.rerun()
         with LO2:
             if st.button("No", use_container_width = True):
-                st.session_state.LO_confirmation = True
                 st.switch_page(home_page)
                 st.rerun()
     
@@ -241,7 +240,7 @@ def logout():
 ########################################################
 def home():
 
-
+    st.session_state.LO_confirmation = False
     def home_main_content():
         st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELABS APP✨</h1>", unsafe_allow_html=True)
         st.divider()
