@@ -304,11 +304,14 @@ if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
 if st.session_state.role in [None,"Fellow"]:
     page_dict["Data Science Fellowship"] = dsf_apps
 
-
+if st.session_state.role in ["Fellow", "Mentor", "Ops"]:
+    account_apps = [log_out]
+elif st.session_state.role in [None]:
+    account_apps = [log_in]
 
 
 if len(page_dict) > 0:
-    pg = st.navigation(page_dict | {"Eskwelabs App": log_in + main_apps}, position="sidebar")
+    pg = st.navigation(page_dict | {"Eskwelabs App": account_apps + main_apps}, position="sidebar")
 else:
     pg = st.navigation([st.Page(login)], position="sidebar") #defaults to login page if no acceptable role is selected
 
