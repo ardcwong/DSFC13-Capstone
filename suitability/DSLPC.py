@@ -223,7 +223,7 @@ def suitability():
         
     with col2:
         
-        if st.button("Reset", use_container_width = True):
+        if st.button("Reset", use_container_width = True, help = "To update your answer, please press the RESET button to start over and answer the questions again. Feel free to make any necessary improvements or corrections to enhance your response."):
             st.session_state.responses = []
             st.session_state.question_index = 0
             st.session_state.chat_history = []
