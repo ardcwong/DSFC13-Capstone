@@ -103,7 +103,8 @@ def suitability():
                     st.session_state.question_index += 1
                     st.rerun()
     # Reset button
-    if st.button("Reset"):
+    col1, col2 = st.column([10, 2])
+    if st.button("Reset", use_container_width = True):
         st.session_state.responses = []
         st.session_state.question_index = 0
         st.session_state.chat_history = []
