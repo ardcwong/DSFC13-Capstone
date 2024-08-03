@@ -39,9 +39,9 @@ def google_connection(client):
     return spreadsheet
 
 # Function to write feedback and chat history to Google Sheet
-def write_feedback_to_gsheet(spreadsheet, feedback, chat_history_df):
+def write_feedback_to_gsheet(spreadsheet, feedback, chat_history):
     sheet = spreadsheet.sheet1
-    chat_history_json = chat_history_df.to_json(orient="records")
+    chat_history_json = json.dumps(chat_history)
     sheet.append_row([str(datetime.now()), feedback, chat_history_json])
 
 # Initialize Google Sheets connection if not already in session state
@@ -158,7 +158,7 @@ suitability()
 if st.session_state.classification:
     feedback = st.feedback("thumbs")        
     if feedback:
-        write_feedback_to_gsheet(st.session_state.spreadsheet, feedback, chat_history_df)
+        write_feedback_to_gsheet(st.session_state.spreadsheet, feedback, st.session_state.chat_history)
         st.success("Thank you for your feedback!")
 
 
