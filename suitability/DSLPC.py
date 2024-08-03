@@ -97,7 +97,18 @@ def suitability():
         if 'chat_history' not in st.session_state:
             st.session_state.chat_history = []
 
-        
+        if st.session_state.classification:
+            st.info("Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?")
+            sentiment_mapping = [0,1]
+            feedback = st.feedback("thumbs")    
+            if feedback is not None:
+                st.markdown(type(feedback))
+                feedback_score = sentiment_mapping[feedback]
+                st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
+                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
+                st.success("Thank you for your feedback!")
+                st.session_state.classification = []
+                st.rerun()   
 
         # Initialize the first question in the chat history if not already done
         if st.session_state.question_index == 0 and not st.session_state.chat_history:
@@ -173,20 +184,20 @@ def suitability():
    
              
     # Reset button
-    col1, col2 = st.columns([10, 2])
-    with col1:
-        if st.session_state.classification:
-            # st.info("Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?")
-            sentiment_mapping = [0,1]
-            feedback = st.feedback("thumbs").info("Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?")        
-            if feedback is not None:
-                st.markdown(type(feedback))
-                feedback_score = sentiment_mapping[feedback]
-                st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
-                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-                st.success("Thank you for your feedback!")
-                st.session_state.classification = []
-                st.rerun()   
+    col1, col2, col3 = st.columns([10, 2])
+    # with col1:
+    #     if st.session_state.classification:
+    #         st.info("Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?")
+    #         sentiment_mapping = [0,1]
+    #         feedback = st.feedback("thumbs")    
+    #         if feedback is not None:
+    #             st.markdown(type(feedback))
+    #             feedback_score = sentiment_mapping[feedback]
+    #             st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
+    #             sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
+    #             st.success("Thank you for your feedback!")
+    #             st.session_state.classification = []
+    #             st.rerun()   
         
     with col2:
         
