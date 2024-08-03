@@ -221,8 +221,11 @@ def logout():
 # HOME PAGE
 ########################################################
 def home():
-    col1, col2, col3 = st.columns([1,8,1])
     st.subheader(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
+    st.title("We added these specific apps for you!")
+    
+    col1, col2, col3 = st.columns([1,8,1])
+    
     # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
     with col2:
         
