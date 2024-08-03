@@ -212,7 +212,7 @@ def logout():
     
     @st.dialog("Are you sure?")
     def LO_confirmation():
-        st.session_state.LO_confirmation = True
+        # st.session_state.LO_confirmation = True
         LO1, LO2 = st.columns([1,1])
         with LO1:
             if st.button("Yes", use_container_width = True):
