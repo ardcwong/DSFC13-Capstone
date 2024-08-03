@@ -111,7 +111,7 @@ def suitability():
             # st.divider()
             st.markdown(f"<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
             # st.caption("*Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?*")
-            f1,f2,f3,f4 = st.columns([4,2,,2,4])
+            f1,f2,f3,f4 = st.columns([4,2,2,4])
             # sentiment_mapping = [0,1]
             feedback_up = f2.button(":material/thumb_up:")    
             feedback_down = f3.button(":material/thumb_down:")
