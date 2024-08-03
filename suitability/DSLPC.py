@@ -19,18 +19,20 @@ credentials = st.secrets["gcp_service_account"]
 ########################################################
 
 
-    # Define the questions
-    questions = [
-        "What is your highest level of education completed?",
-        "Do you have any prior experience in programming or data analysis? If yes, please describe.",
-        "Do you prefer structured learning environments with a clear curriculum, or do you thrive in self-paced, unstructured settings?",
-        "How many hours per week can you realistically dedicate to learning data science?",
-        "What are your long-term career goals in the field of data science?"
-    ]
-    
-    # Streamlit app setup
-    st.title("Data Science Learning Path Classifier")
-    st.write("Please answer the following questions to determine your suitability for different learning paths in data science.")
+# Define the questions
+questions = [
+    "What is your highest level of education completed?",
+    "Do you have any prior experience in programming or data analysis? If yes, please describe.",
+    "Do you prefer structured learning environments with a clear curriculum, or do you thrive in self-paced, unstructured settings?",
+    "How many hours per week can you realistically dedicate to learning data science?",
+    "What are your long-term career goals in the field of data science?"
+]
+
+# Streamlit app setup
+st.title("Data Science Learning Path Classifier")
+st.write("Please answer the following questions to determine your suitability for different learning paths in data science.")
+
+
 @st.fragment
 def suitability():    
     with st.container(height=500):
