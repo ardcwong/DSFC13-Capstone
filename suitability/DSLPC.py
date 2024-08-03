@@ -36,7 +36,7 @@ st.write("Please answer the following questions to determine your suitability fo
 @st.fragment
 def suitability():
     if 'classification' not in st.session_state:
-        st.session_state.classification = False
+        st.session_state.classification = []
     with st.container(height=400):
         # Initialize or retrieve session state
         if 'responses' not in st.session_state:
@@ -111,11 +111,12 @@ def suitability():
                 if classification:
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
-                    st.session_state.classification = True
+                    st.session_state.classification = classification
                     st.rerun()
 
     if st.session_state.classification == True:
         feedback = st.feedback("thumbs")
+        
     st.write(st.session_state.classification)     
     # Reset button
     col1, col2 = st.columns([10, 2])
