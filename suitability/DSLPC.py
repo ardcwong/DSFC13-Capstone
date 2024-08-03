@@ -104,11 +104,12 @@ def suitability():
                     st.rerun()
     # Reset button
     col1, col2 = st.columns([10, 2])
-    if st.button("Reset", use_container_width = True):
-        st.session_state.responses = []
-        st.session_state.question_index = 0
-        st.session_state.chat_history = []
-        st.rerun()    
+    with col2:
+        if st.button("Reset", use_container_width = True):
+            st.session_state.responses = []
+            st.session_state.question_index = 0
+            st.session_state.chat_history = []
+            st.rerun()    
 suitability()
 
 
