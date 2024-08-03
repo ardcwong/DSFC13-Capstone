@@ -88,7 +88,7 @@ if "spreadsheet_DSLPC" not in st.session_state:
 def suitability():
     if 'classification' not in st.session_state:
         st.session_state.classification = []
-    with st.container(height=400):
+    with st.container(height=500):
         # Initialize or retrieve session state
         if 'responses' not in st.session_state:
             st.session_state.responses = []
@@ -111,20 +111,36 @@ def suitability():
             # st.divider()
             st.markdown(f"<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
             # st.caption("*Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?*")
-            f1,f2,f3 = st.columns([10,2,10])
-            sentiment_mapping = [0,1]
-            feedback = f2.feedback("thumbs")    
-            st.divider()
-            if feedback is not None:
-                st.markdown(type(feedback))
-                feedback_score = sentiment_mapping[feedback]
-                st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
+            f1,f2,f3,f4 = st.columns([4,2,,2,4])
+            # sentiment_mapping = [0,1]
+            feedback_up = f2.button(":material/thumb_up:")    
+            feedback_down = f3.button(":material/thumb_down:")
+            
+            
+            # st.divider()
+            if feedback_up:
+                # st.markdown(type(feedback))
+                # feedback_score = sentiment_mapping[feedback]
+                feedback_score = 1
+                # st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
                 sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
                 st.success("Thank you for your feedback!")
-                st.session_state.classification = []
+                # st.session_state.classification = []
+                st.rerun() 
+            elif feedback_down:
+                feedback_score = 0
+                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
+                st.success("Thank you for your feedback!")
                 st.rerun() 
 
-    
+            # if feedback is not None:
+            #     st.markdown(type(feedback))
+            #     feedback_score = sentiment_mapping[feedback]
+            #     st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
+            #     sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
+            #     st.success("Thank you for your feedback!")
+            #     st.session_state.classification = []
+            #     st.rerun() 
     with st.container():
         # Function to display the current question and collect user response
         def display_question():
