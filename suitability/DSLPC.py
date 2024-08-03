@@ -104,6 +104,7 @@ def suitability():
                 if classification:
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
+                    feedback = st.feedback("thumbs")
                     st.rerun()
     # Reset button
     col1, col2 = st.columns([10, 2])
@@ -116,6 +117,17 @@ def suitability():
 
     st.dataframe(st.session_state.chat_history)
 suitability()
+
+# Function to write feedback and chat history to Google Sheet
+def write_feedback_to_gsheet(feedback, chat_history):
+    sheet = client.open("Your Google Sheet Name").sheet1
+    chat_history_json = json.dumps(chat_history)
+    sheet.append_row([str(datetime.now()), feedback, chat_history_json])
+
+
+
+
+
 
 
 # ##############################################
