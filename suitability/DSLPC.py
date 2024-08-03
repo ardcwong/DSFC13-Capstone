@@ -73,16 +73,16 @@ def suitability():
                 questions_responses += f"{i+1}. {question}\n   - Response: {st.session_state.responses[i]}\n"
 
             prompt = f"""
-            Classify my’s suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions:
-            {questions_responses}
-            Suitability:
+            Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
+            If my responses is not enough for you to classify me, ask the me to press the reset button.
+        
             """
 
             try:
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                        {"role": "system", "content": "You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. If the responses is not enough for you to classify the user, ask the user to press the reset button."},
+                        {"role": "system", "content": "You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
                         {"role": "user", "content": prompt}
                     ]
                 )
