@@ -123,8 +123,11 @@ def suitability():
             # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
             
             prompt = f"""
-            Classify my suitability for a data science bootcamp, self-learning, or a master’s program based on my responses to the question:{questions_responses}.
+            Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
             Suitability:
+            1. Bootcamp:
+            2. Self-Learning:
+            3. Master's Program:
             
             Overall Recommendation:
             
