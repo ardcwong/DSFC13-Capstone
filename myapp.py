@@ -226,7 +226,7 @@ def logout():
                 st.rerun()
     
     LO_confirmation()
-    st.switch_page(home_page)
+    # st.switch_page(home_page)
 
 
 ########################################################
