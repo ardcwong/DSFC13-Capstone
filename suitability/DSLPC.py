@@ -31,7 +31,7 @@ def suitability():
     # Streamlit app setup
     st.title("Data Science Learning Path Classifier")
     st.write("Please answer the following questions to determine your suitability for different learning paths in data science.")
-    with st.comtainer(height=1000):
+    with st.container(height=1000):
         # Initialize or retrieve session state
         if 'responses' not in st.session_state:
             st.session_state.responses = []
