@@ -207,6 +207,7 @@ def logout():
     # st.session_state = None
     st.session_state.role = None
     st.session_state.vote = None
+    st.session_state.userinfo = None
     st.switch_page(home_page)
     st.rerun()
 
@@ -221,8 +222,9 @@ def home():
     
     # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
     with col2:
-        st.title(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
-        st.subheader("We added these specific apps for you!")
+        if st.session_state.userinfo in ["Fellow", "Mentor", "Ops"]
+            st.title(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
+            st.subheader("We added these specific apps for you!")
 
 
         
