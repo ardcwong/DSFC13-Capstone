@@ -4,7 +4,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import openai
 import base64
-
+import json
 
 ########################################################
 # API KEYS and CREDENTIALS
