@@ -129,7 +129,7 @@ def suitability():
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                        {"role": "system", "content": "You are an expert in classifying user's suitability to data science learning pathways and recommends the most suitable learning path. "},
+                        {"role": "system", "content": "You are an expert in classifying user's suitability to data science learning pathways and recommends the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if the responses is related to the questions being asked."},
                         {"role": "user", "content": prompt}
                     ]
                 )
