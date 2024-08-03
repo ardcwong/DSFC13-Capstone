@@ -75,7 +75,8 @@ def suitability():
             prompt = f"""
             Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
             If my responses is not enough for you to classify me, ask the me to press the reset button. 
-            If my responses are enough for you to classify my suitable learning path, please describe my suitability for each and recommend the most suitable one for me in this format:
+            If my responses are enough for you to classify my suitable learning path, please describe my suitability for each and recommend the most suitable one for me.
+            Ask me if I want to change any of my answer, I can press the reset button.
         
             """
 
