@@ -56,7 +56,8 @@ def write_feedback_to_gsheet(spreadsheet, feedback, chat_history):
     # chat_history_df = pd.DataFrame([chat_history])
     # chat_history_list = chat_history_df.values.tolist()[0]
     # flattened_chat_history = [item for sublist in chat_history for item in sublist]
-    chat_history_list = chat_history.values.flatten().tolist()
+    chat_history_list = pd.DataFrame(chat_history)[[1]].T.values.flatten().tolist()
+    # chat_history_list = chat_history.values.flatten().tolist()
     # chat_history_json = chat_history.iloc[0].to_json(orient="records")
     sheet.append_row([str(datetime.now()), feedback] + chat_history_list)
     return sheet
@@ -168,7 +169,7 @@ def suitability():
                 st.markdown(type(feedback))
                 feedback_score = sentiment_mapping[feedback]
                 st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
-                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, pd.DataFrame(st.session_state.chat_history)[[1]].T)
+                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
                 st.success("Thank you for your feedback!")
                 st.session_state.classification = []
                 st.rerun()   
