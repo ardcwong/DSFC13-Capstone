@@ -109,9 +109,8 @@ def suitability():
         
         if st.session_state.classification:
             # st.divider()
-            st.empty()
             st.markdown(
-                "<h6 style='text-align: center;'>.        .        .</h6>", 
+                "<h6 style='text-align: center;'>.\t\t.\t\t.</h6>", 
                 unsafe_allow_html=True
             )
             st.markdown(
@@ -123,8 +122,10 @@ def suitability():
             # sentiment_mapping = [0,1]
             feedback_up = f2.button(":material/thumb_up:", use_container_width = True)    
             feedback_down = f3.button(":material/thumb_down:", use_container_width = True)
-            
-            st.empty()
+            st.markdown(
+                "<h6 style='text-align: center;'>.\t\t.\t\t.</h6>", 
+                unsafe_allow_html=True
+            )
             # st.divider()
             if feedback_up:
                 # st.markdown(type(feedback))
