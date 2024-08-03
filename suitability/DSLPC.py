@@ -114,7 +114,7 @@ def suitability():
                     st.session_state.classification = classification
                     st.rerun()
 
-    if st.session_state.classification == True:
+    if st.session_state.classification:
         feedback = st.feedback("thumbs")
         
     st.write(st.session_state.classification)     
