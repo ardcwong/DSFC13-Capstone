@@ -108,8 +108,12 @@ def suitability():
             st.chat_message(role).write(message)
         
         if st.session_state.classification:
-            st.divider()
+            # st.divider()
             st.empty()
+            st.markdown(
+                "<h6 style='text-align: center;'>.        .        .</h6>", 
+                unsafe_allow_html=True
+            )
             st.markdown(
                 "<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?</h6>", 
                 unsafe_allow_html=True
@@ -121,7 +125,7 @@ def suitability():
             feedback_down = f3.button(":material/thumb_down:", use_container_width = True)
             
             st.empty()
-            st.divider()
+            # st.divider()
             if feedback_up:
                 # st.markdown(type(feedback))
                 # feedback_score = sentiment_mapping[feedback]
