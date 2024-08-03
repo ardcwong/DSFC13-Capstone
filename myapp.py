@@ -216,18 +216,9 @@ def logout():
 # HOME PAGE
 ########################################################
 def home():
-    
-    
-    col1, col2, col3 = st.columns([1,8,1])
-    
-    # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
-    with col2:
-        if st.session_state.userinfo in ["Fellow", "Mentor", "Ops"]:
-            st.title(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
-            st.subheader("We added these specific apps for you!")
 
 
-        
+    def home_main_content():
         st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELABS APP✨</h1>", unsafe_allow_html=True)
         st.divider()
         st.markdown("""<h4 style='text-align: center;color: #e76f51;'><b><i>Welcome to Eskwelabs App.</b></i><i> Ready for the Future of Work? 
@@ -236,6 +227,20 @@ def home():
         online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.""", unsafe_allow_html=True)
         
         st.divider()
+        
+    col1, col2, col3 = st.columns([1,8,1])
+    
+    # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
+    with col2:
+        if st.session_state.userinfo in ["Fellow", "Mentor", "Ops"]:
+            st.title(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
+            st.subheader("We added these specific apps for you!")
+            home_main_content()
+        else:
+            home_main_content90
+
+        
+
         # col1.image('data/art.png')
         # st.header("Log in")
        
