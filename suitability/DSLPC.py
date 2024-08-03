@@ -121,8 +121,8 @@ def suitability():
             # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
             
             prompt = f"""
-            Check if my responses are related to the questions being asked.
-            I need to you classify my suitability in a bootcamp, self-learning, or master’s degree to help me decide if I want to join the Eskwelabs bootcamp based on my responses to the questions:{questions_responses}.
+            Check if my responses are related to the questions being asked: {questions_responses}. 
+            Then I need to you classify my suitability in a bootcamp, self-learning, or master’s degree to help me decide if I want to join the Eskwelabs bootcamp based on my responses to the questions.
             Suitability:
 
             Overall Recommendation:
