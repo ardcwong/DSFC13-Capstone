@@ -126,11 +126,6 @@ def suitability():
     # Reset button
     col1, col2 = st.columns([10, 2])
     with col2:
-        if st.session_state.classification:
-            feedback = st.feedback("thumbs")
-            if feedback:
-                write_feedback_to_gsheet(feedback, chat_history)
-                st.success("Thank you for your feedback!")
         
         if st.button("Reset", use_container_width = True):
             st.session_state.responses = []
@@ -141,7 +136,12 @@ def suitability():
     # st.dataframe(st.session_state.chat_history)
 
 suitability()
-
+if st.session_state.classification:
+    feedback = st.feedback("thumbs")
+    if feedback:
+        write_feedback_to_gsheet(feedback, chat_history)
+        st.success("Thank you for your feedback!")
+        
 
 
 
