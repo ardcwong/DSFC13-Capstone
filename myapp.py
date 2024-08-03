@@ -232,7 +232,7 @@ def home():
     
     # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
     with col2:
-        if st.session_state.userinfo:
+        if not in st.session_state.userinfo.empty() :
             st.title(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
             st.subheader("We added these specific apps for you!")
             home_main_content()
