@@ -32,7 +32,8 @@ if "stop" not in st.session_state:
 
 x = "No"
 
-api_key = st.secrets[api]['api_key']
+api_key = st.secrets["api"]['api_key']
 openai.api_key = api_key
+credentials = st.secrets["gcp_service_account"]
 client = OpenAI(api_key=api_key)
 # SKLLMConfig.set_openai_key(api_key)
