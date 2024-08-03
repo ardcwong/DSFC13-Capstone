@@ -111,8 +111,8 @@ def suitability():
                     st.session_state.question_index += 1
                     st.rerun(scope="fragment")
 
-        if st.session_state.classification == True:
-            feedback = st.feedback("thumbs")
+    if st.session_state.classification == True:
+        feedback = st.feedback("thumbs")
             
     # Reset button
     col1, col2 = st.columns([10, 2])
