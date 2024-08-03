@@ -221,13 +221,16 @@ def logout():
 # HOME PAGE
 ########################################################
 def home():
-    st.subheader(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
-    st.title("We added these specific apps for you!")
+    
     
     col1, col2, col3 = st.columns([1,8,1])
     
     # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
     with col2:
+        st.title(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
+        st.subheader("We added these specific apps for you!")
+
+
         
         st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELABS APP✨</h1>", unsafe_allow_html=True)
         st.divider()
