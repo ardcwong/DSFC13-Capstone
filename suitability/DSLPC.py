@@ -31,10 +31,12 @@ questions = [
 # Streamlit app setup
 st.title("Data Science Learning Path Classifier")
 st.write("Please answer the following questions to determine your suitability for different learning paths in data science.")
-if 'classification' not in st.session_state:
-    st.session_state.classification = False
+
+    
 @st.fragment
 def suitability():
+    if 'classification' not in st.session_state:
+        st.session_state.classification = False
     with st.container(height=400):
         # Initialize or retrieve session state
         if 'responses' not in st.session_state:
@@ -105,10 +107,11 @@ def suitability():
         else:
             if st.session_state.responses and st.session_state.question_index == len(questions):
                 classification = get_classification()
-                st.session_state.classfiication = True
+                
                 if classification:
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
+                    st.session_state.classification = True
                     st.rerun()
 
     if st.session_state.classification == True:
