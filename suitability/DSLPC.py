@@ -47,13 +47,13 @@ def write_feedback_to_gsheet(spreadsheet, feedback, chat_history):
     return sheet
 
 # Initialize Google Sheets connection if not already in session state
-if "spreadsheet" not in st.session_state:
+if "spreadsheet_DSLPC" not in st.session_state:
     # Google Sheets setup using st.secrets
     credentials = st.secrets["gcp_service_account"]  # Make sure to add your credentials in Streamlit secrets
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
     client = gspread.authorize(creds)
-    st.session_state.spreadsheet = google_connection(client)
+    st.session_state.spreadsheet_DSLPC = google_connection(client)
 
 
 
@@ -160,8 +160,13 @@ suitability()
 if st.session_state.classification:
     feedback = st.feedback("thumbs")        
     if feedback:
-        sheet = write_feedback_to_gsheet(st.session_state.spreadsheet, feedback, st.session_state.chat_history)
+        sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback, st.session_state.chat_history)
         st.success("Thank you for your feedback!")
+        st.session_state.responses = []
+        st.session_state.question_index = 0
+        st.session_state.chat_history = []
+        st.session_state.classification = []
+        st.rerun()   
         st.write(pd.DataFrame(sheet.get_all_records()))
 
 
