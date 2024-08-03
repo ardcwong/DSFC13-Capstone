@@ -115,7 +115,7 @@ def suitability():
         def get_classification():
             questions_responses = ""
             for i, question in enumerate(questions):
-                questions_responses += f"{i+1}. {question}: {st.session_state.responses[i]}\n"
+                questions_responses += f"{i+1}. {question}\n - Responses: {st.session_state.responses[i]}\n"
             # If my responses is not enough for you to classify me, ask the me to press the reset button, otherwise, please describe my suitability for each and recommend the most suitable one for me.
             # Inform me that in case I want to change any of my responses only, I can press the reset button.
             # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
@@ -133,7 +133,7 @@ def suitability():
                     ]
                 )
                 classification = response.choices[0].message.content.strip()
-                return classification
+                return classification, questions_responses
             except Exception as e:
                 st.error(f"Error: {e}")
                 return None
@@ -143,13 +143,13 @@ def suitability():
             display_question()
         else:
             if st.session_state.responses and st.session_state.question_index == len(questions):
-                classification = get_classification()
-                
+                questions_responses, classification = get_classification()
+                st.write(questions_responses)
                 if classification:
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
                     st.session_state.classification = classification
-                    st.rerun()
+                    # st.rerun()
 
    
              
