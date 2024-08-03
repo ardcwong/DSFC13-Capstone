@@ -43,6 +43,9 @@ def suitability():
         if 'chat_history' not in st.session_state:
             st.session_state.chat_history = []
 
+        if 'classification' not in st.session_state:
+            st.session_state.classification = False
+
         # Initialize the first question in the chat history if not already done
         if st.session_state.question_index == 0 and not st.session_state.chat_history:
             first_question = questions[st.session_state.question_index]
@@ -102,11 +105,15 @@ def suitability():
         else:
             if st.session_state.responses and st.session_state.question_index == len(questions):
                 classification = get_classification()
+                st.session_state.classfiication = True
                 if classification:
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
-                    feedback = st.feedback("thumbs")
                     st.rerun(scope="fragment")
+
+        if st.session_state.classfiication == True:
+            feedback = st.feedback("thumbs")
+            
     # Reset button
     col1, col2 = st.columns([10, 2])
     with col2:
