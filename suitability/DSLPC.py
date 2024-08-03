@@ -110,7 +110,7 @@ def suitability():
         if st.session_state.classification:
             # st.divider()
             st.markdown(
-                "<div style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?</div>", 
+                "<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?</h6>", 
                 unsafe_allow_html=True
             )
             # st.caption("*Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?*")
