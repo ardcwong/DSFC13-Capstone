@@ -99,7 +99,10 @@ def google_connection(client):
     spreadsheet = client.open("LoginCredentials")
     
     return spreadsheet
-    
+
+########################################################
+# ACCESS LoginCredentials GSHEET
+########################################################
 if "spreadsheet" not in st.session_state:
     # Google Sheets setup using st.secrets
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
@@ -108,7 +111,9 @@ if "spreadsheet" not in st.session_state:
     st.session_state.spreadsheet = google_connection(client)
 
 
-
+########################################################
+# LOGIN RULES
+########################################################
 def login():
         if st.session_state.vote == None: 
             vote(st.session_state.spreadsheet)
@@ -155,7 +160,10 @@ def login():
         st.markdown("""<br><br>
         
         """, unsafe_allow_html=True)
-    
+
+########################################################
+# LOGIN POP UP AND CHECKING
+########################################################
 @st.dialog("Log In",width="large")
 def vote(spreadsheet):
     sheet = spreadsheet.worksheet("Sheet1")
@@ -192,7 +200,10 @@ def vote(spreadsheet):
             st.rerun()
         else:
             st.error("Invalid username or password")          
- 
+
+########################################################
+# LOG OUT
+########################################################
 def logout():
     # st.session_state = None
     st.session_state.role = None
@@ -201,6 +212,9 @@ def logout():
     st.rerun()
 
 
+########################################################
+# HOME PAGE
+########################################################
 def home():
     col1, col2, col3 = st.columns([1,8,1])
     
