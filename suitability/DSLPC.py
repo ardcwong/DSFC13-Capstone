@@ -96,7 +96,17 @@ def suitability():
             st.session_state.question_index = 0
         if 'chat_history' not in st.session_state:
             st.session_state.chat_history = []
+          
 
+        # Initialize the first question in the chat history if not already done
+        if st.session_state.question_index == 0 and not st.session_state.chat_history:
+            first_question = questions[st.session_state.question_index]
+            st.session_state.chat_history.append(("AI", first_question))
+
+        # Display the entire chat history with user responses on the right
+        for role, message in st.session_state.chat_history:
+            st.chat_message(role).write(message)
+        
         if st.session_state.classification:
             st.info("Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?")
             sentiment_mapping = [0,1]
@@ -108,17 +118,9 @@ def suitability():
                 sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
                 st.success("Thank you for your feedback!")
                 st.session_state.classification = []
-                st.rerun()   
+                st.rerun() 
 
-        # Initialize the first question in the chat history if not already done
-        if st.session_state.question_index == 0 and not st.session_state.chat_history:
-            first_question = questions[st.session_state.question_index]
-            st.session_state.chat_history.append(("AI", first_question))
-
-        # Display the entire chat history with user responses on the right
-        for role, message in st.session_state.chat_history:
-            st.chat_message(role).write(message)
-            
+    
     with st.container():
         # Function to display the current question and collect user response
         def display_question():
@@ -184,7 +186,7 @@ def suitability():
    
              
     # Reset button
-    col1, col2, col3 = st.columns([10, 2])
+    col1, col2 = st.columns([10, 2])
     # with col1:
     #     if st.session_state.classification:
     #         st.info("Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?")
