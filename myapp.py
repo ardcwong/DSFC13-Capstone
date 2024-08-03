@@ -124,7 +124,7 @@ def login():
 
         if st.session_state.name:
             st.subheader(f"Hi, {st.session_state.name}!")
-            st.subheader(st.session_state.userinfo)
+            
             # st.markdown("Let us know who's visiting. Are you a/an ...")
             # col21, col22, col23 = st.columns([1,1,1])
         
@@ -222,7 +222,7 @@ def logout():
 ########################################################
 def home():
     col1, col2, col3 = st.columns([1,8,1])
-    
+    st.write(st.session_state.userinfo)
     # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
     with col2:
         
