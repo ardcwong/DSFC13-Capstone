@@ -61,7 +61,7 @@ with st.container(border = False):
                 
                 st.session_state.chat_history.append(("User", user_response))
                 st.session_state.question_index += 1
-                st.rerun(scope="fragment")
+                st.rerun#(scope="fragment")
 
 # Function to get classification from OpenAI
 def get_classification():
