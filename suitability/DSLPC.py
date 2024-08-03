@@ -51,6 +51,7 @@ def suitability():
         # Display the entire chat history with user responses on the right
         for role, message in st.session_state.chat_history:
             st.chat_message(role).write(message)
+            
     with st.container():
         # Function to display the current question and collect user response
         def display_question():
@@ -105,7 +106,7 @@ def suitability():
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
                     feedback = st.feedback("thumbs")
-                    st.rerun()
+                    st.rerun(scope="fragment")
     # Reset button
     col1, col2 = st.columns([10, 2])
     with col2:
