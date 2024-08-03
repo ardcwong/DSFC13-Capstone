@@ -107,7 +107,7 @@ def suitability():
         st.session_state.responses = []
         st.session_state.question_index = 0
         st.session_state.chat_history = []
-        st.rerun(scope="fragment")    
+        st.rerun()    
 suitability()
 
 
