@@ -32,7 +32,7 @@ def suitability():
     st.title("Data Science Learning Path Classifier")
     st.write("Please answer the following questions to determine your suitability for different learning paths in data science.")
     with st.container(height=600):
-        with st. container(height=400, border=False):
+        with st.container(height=400, border=False):
             # Initialize or retrieve session state
             if 'responses' not in st.session_state:
                 st.session_state.responses = []
