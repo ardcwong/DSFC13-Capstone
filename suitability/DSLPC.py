@@ -43,6 +43,11 @@ def suitability():
         if 'chat_history' not in st.session_state:
             st.session_state.chat_history = []
 
+        # Initialize the first question in the chat history if not already done
+        if st.session_state.question_index == 0 and not st.session_state.chat_history:
+            first_question = questions[st.session_state.question_index]
+            st.session_state.chat_history.append(("AI", first_question))
+
         # Display the entire chat history with user responses on the right
         for role, message in st.session_state.chat_history:
             st.chat_message(role).write(message)
@@ -51,16 +56,15 @@ def suitability():
         def display_question():
             if st.session_state.question_index < len(questions):
                 current_question = questions[st.session_state.question_index]
-                # Only add the current question to chat history if it's not already added
-                if st.session_state.question_index == 0 or st.session_state.chat_history[-1][1] != current_question:
-                    st.session_state.chat_history.append(("AI", current_question))
-                
                 user_response = st.chat_input("Your response:")
                 if user_response:
                     st.session_state.responses.append(user_response)
                     st.session_state.chat_history.append(("User", user_response))
                     st.session_state.question_index += 1
-                    st.rerun(scope="fragment")
+                    if st.session_state.question_index < len(questions):
+                        next_question = questions[st.session_state.question_index]
+                        st.session_state.chat_history.append(("AI", next_question))
+                    st.rerun()
 
         # Function to get classification from OpenAI
         def get_classification():
