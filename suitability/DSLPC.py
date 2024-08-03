@@ -168,7 +168,7 @@ def suitability():
     # st.dataframe(st.session_state.chat_history)
 
 suitability()
-
+st.write(pd.DataFrame(st.session_state.chat_history).tolist())
 
 # if st.session_state.classification:
 #     feedback = st.feedback("thumbs")        
