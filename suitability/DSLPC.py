@@ -108,48 +108,41 @@ def suitability():
             st.chat_message(role).write(message)
         
         if st.session_state.classification:
-            # st.divider()
-            st.markdown(
-                "<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", 
-                unsafe_allow_html=True
-            )
-            st.markdown(
-                "<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?</h6>", 
-                unsafe_allow_html=True
-            )
-            # st.caption("*Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?*")
-            f1,f2,f3,f4 = st.columns([4,1,1,4])
-            # sentiment_mapping = [0,1]
-            feedback_up = f2.button(":material/thumb_up:", use_container_width = True)    
-            feedback_down = f3.button(":material/thumb_down:", use_container_width = True)
-            st.markdown(
-                "<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", 
-                unsafe_allow_html=True
-            )
-            # st.divider()
+            if 'feedback_up' not in st.session_state:
+                st.session_state.feedback_up = []
+            if 'feedback_down' not in st.session_state:
+                st.session_state.feedback_down = []
+
+            
+            if st.session_state.feedback_up:
+                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+                st.markdown("<h6 style='text-align: center;'>You selected :material/thumb_up:.Thanks for your feedback!</h6>", unsafe_allow_html=True)
+                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+
+            elif st.session_state.feedback_up:
+                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+                st.markdown("<h6 style='text-align: center;'>You selected :material/thumb_down:.Thanks for your feedback!</h6>", unsafe_allow_html=True)
+                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+            else:
+                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+                st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
+                f1,f2,f3,f4 = st.columns([4,1,1,4])
+                feedback_up = f2.button(":material/thumb_up:", use_container_width = True)    
+                feedback_down = f3.button(":material/thumb_down:", use_container_width = True)
+                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+            
+            
             if feedback_up:
-                # st.markdown(type(feedback))
-                # feedback_score = sentiment_mapping[feedback]
                 feedback_score = 1
-                # st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
                 sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-                st.success("Thank you for your feedback!")
-                # st.session_state.classification = []
+                st.session_state.feedback_up = feedback_score
                 st.rerun() 
             elif feedback_down:
                 feedback_score = 0
                 sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-                st.success("Thank you for your feedback!")
+                st.session_state.feedback_down = feedback_score
                 st.rerun() 
 
-            # if feedback is not None:
-            #     st.markdown(type(feedback))
-            #     feedback_score = sentiment_mapping[feedback]
-            #     st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
-            #     sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-            #     st.success("Thank you for your feedback!")
-            #     st.session_state.classification = []
-            #     st.rerun() 
     with st.container():
         # Function to display the current question and collect user response
         def display_question():
@@ -237,6 +230,8 @@ def suitability():
             st.session_state.question_index = 0
             st.session_state.chat_history = []
             st.session_state.classification = []
+            st.session_state.feedback_up = []
+            st.session_state.feedback_down = []
             st.rerun()   
 
     # st.dataframe(st.session_state.chat_history)
