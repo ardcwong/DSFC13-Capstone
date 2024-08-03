@@ -167,7 +167,7 @@ def suitability():
                 st.markdown(type(feedback))
                 feedback_score = sentiment_mapping[feedback]
                 st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
-                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, pd.DataFrame(st.session_state.chat_history)[[1]])
+                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
                 st.success("Thank you for your feedback!")
                 st.session_state.classification = []
                 st.rerun()   
