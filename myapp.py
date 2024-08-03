@@ -305,9 +305,9 @@ if st.session_state.role in [None,"Fellow"]:
     page_dict["Data Science Fellowship"] = dsf_apps
 
 if st.session_state.role in ["Fellow", "Mentor", "Ops"]:
-    account_apps = [log_out]
+    account_apps = log_out
 elif st.session_state.role in [None]:
-    account_apps = [log_in]
+    account_apps = log_in
 
 
 if len(page_dict) > 0:
