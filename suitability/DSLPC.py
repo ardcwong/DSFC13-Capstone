@@ -48,8 +48,7 @@ def suitability():
         # for role, message in st.session_state.chat_history:
         #     st.chat_message(role).write(message)
         # Display the entire chat history with user responses on the right
-        for role, message in st.session_state.chat_history:
-            st.chat_message(role).write(message)
+        
                 
     with st.container(border = False):
         # Function to display the current question and collect user response
@@ -58,14 +57,17 @@ def suitability():
                 current_question = questions[st.session_state.question_index]
                 # st.chat_message("AI").write(current_question)
                 st.session_state.chat_history.append(("AI", current_question))
+                for role, message in st.session_state.chat_history:
+                    st.chat_message(role).write(message)
+                
                 user_response = st.chat_input("Your response:")
-                st.rerun(scope="fragment")
+                # st.rerun(scope="fragment")
                 if user_response:
                     st.session_state.responses.append(user_response)
                     
                     st.session_state.chat_history.append(("User", user_response))
                     st.session_state.question_index += 1
-                    # st.rerun(scope="fragment")
+                    st.rerun(scope="fragment")
     
     # Function to get classification from OpenAI
     def get_classification():
