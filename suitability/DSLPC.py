@@ -82,7 +82,7 @@ def suitability():
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                        {"role": "system", "content": "You are a helpful assistant that classifies education suitability."},
+                        {"role": "system", "content": "You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. If the responses is not enough for you to classify the user, ask the user to press the reset button."},
                         {"role": "user", "content": prompt}
                     ]
                 )
