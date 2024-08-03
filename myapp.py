@@ -114,7 +114,7 @@ if "spreadsheet" not in st.session_state:
 # LOGIN RULES
 ########################################################
 def login():
-        if st.session_state.vote == None: 
+        if st.session_state.vote is None: 
             vote(st.session_state.spreadsheet)
         else:
             st.session_state.role = st.session_state.vote['role']
