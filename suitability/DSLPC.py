@@ -44,6 +44,7 @@ def write_feedback_to_gsheet(spreadsheet, feedback, chat_history):
     sheet = spreadsheet.sheet1
     chat_history_json = json.dumps(chat_history)
     sheet.append_row([str(datetime.now()), feedback, chat_history_json])
+    return sheet
 
 # Initialize Google Sheets connection if not already in session state
 if "spreadsheet" not in st.session_state:
@@ -159,8 +160,9 @@ suitability()
 if st.session_state.classification:
     feedback = st.feedback("thumbs")        
     if feedback:
-        write_feedback_to_gsheet(st.session_state.spreadsheet, feedback, st.session_state.chat_history)
+        sheet = write_feedback_to_gsheet(st.session_state.spreadsheet, feedback, st.session_state.chat_history)
         st.success("Thank you for your feedback!")
+        st.write(sheet)
 
 
 
