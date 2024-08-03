@@ -31,34 +31,34 @@ def suitability():
     # Streamlit app setup
     st.title("Data Science Learning Path Classifier")
     st.write("Please answer the following questions to determine your suitability for different learning paths in data science.")
-    
-    # Initialize or retrieve session state
-    if 'responses' not in st.session_state:
-        st.session_state.responses = []
-    if 'question_index' not in st.session_state:
-        st.session_state.question_index = 0
-    if 'chat_history' not in st.session_state:
-        st.session_state.chat_history = []
-    
-    # # Display the entire chat history
-    # for role, message in st.session_state.chat_history:
-    #     st.chat_message(role).write(message)
-    # Display the entire chat history with user responses on the right
-    for role, message in st.session_state.chat_history:
-        st.chat_message(role).write(message)
-    
-    # Function to display the current question and collect user response
-    def display_question():
-        if st.session_state.question_index < len(questions):
-            current_question = questions[st.session_state.question_index]
-            st.chat_message("AI").write(current_question)
-            user_response = st.chat_input("Your response:")
-            if user_response:
-                st.session_state.responses.append(user_response)
-                st.session_state.chat_history.append(("AI", current_question))
-                st.session_state.chat_history.append(("User", user_response))
-                st.session_state.question_index += 1
-                st.rerun(scope="fragment")
+    with st.comtainer(height=1000):
+        # Initialize or retrieve session state
+        if 'responses' not in st.session_state:
+            st.session_state.responses = []
+        if 'question_index' not in st.session_state:
+            st.session_state.question_index = 0
+        if 'chat_history' not in st.session_state:
+            st.session_state.chat_history = []
+        
+        # # Display the entire chat history
+        # for role, message in st.session_state.chat_history:
+        #     st.chat_message(role).write(message)
+        # Display the entire chat history with user responses on the right
+        for role, message in st.session_state.chat_history:
+            st.chat_message(role).write(message)
+    with st.container():
+        # Function to display the current question and collect user response
+        def display_question():
+            if st.session_state.question_index < len(questions):
+                current_question = questions[st.session_state.question_index]
+                st.chat_message("AI").write(current_question)
+                user_response = st.chat_input("Your response:")
+                if user_response:
+                    st.session_state.responses.append(user_response)
+                    st.session_state.chat_history.append(("AI", current_question))
+                    st.session_state.chat_history.append(("User", user_response))
+                    st.session_state.question_index += 1
+                    st.rerun(scope="fragment")
     
     # Function to get classification from OpenAI
     def get_classification():
