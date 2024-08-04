@@ -125,7 +125,7 @@ def suitability():
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
             else:
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
+                st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your responses, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
                 f1,f2,f3,f4 = st.columns([4,1,1,4])
                 
             
@@ -167,12 +167,7 @@ def suitability():
             
             prompt = f"""
             Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
-            Suitability:
-            1. Bootcamp:
-            2. Self-Learning:
-            3. Master's Program:
-            
-            Overall Recommendation:
+
             
             """
 # You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
@@ -181,7 +176,15 @@ def suitability():
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                        {"role": "system", "content": "You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program) and recommends the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if most responses are related to the questions being asked."},
+                        {"role": "system", "content": """You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and recommends the most suitable learning path. You can only classify and recommend if most responses are related to the questions being asked.
+                        Suitability and  Justification for each:
+                            1. Bootcamp: 
+                            2. Self-Learning:
+                            3. Master's Program:
+                        
+                        Overall Recommendation:
+                        """
+                        },
                         {"role": "user", "content": prompt}
                     ]
                 )
