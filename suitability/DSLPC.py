@@ -88,7 +88,7 @@ if "spreadsheet_DSLPC" not in st.session_state:
 def suitability():
     if 'classification' not in st.session_state:
         st.session_state.classification = []
-    with st.container(height=500, border=None):
+    with st.container(height=450, border=None):
         # Initialize or retrieve session state
         if 'responses' not in st.session_state:
             st.session_state.responses = []
