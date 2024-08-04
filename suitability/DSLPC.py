@@ -167,7 +167,7 @@ def suitability():
             
             prompt = f"""
             Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
-            Suitability and  Justification for each:
+            Suitability:
                 1. Bootcamp: 
                 2. Self-Learning:
                 3. Master's Program:
