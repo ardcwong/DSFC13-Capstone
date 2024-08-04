@@ -184,6 +184,7 @@ def suitability():
                         {"role": "system", "content": "You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and recommends the most suitable learning path by providing the pros and cons of the recommendation. Before you can classify and recommend the most suitable learning path, check if most responses are related to the questions being asked."},
                         {"role": "user", "content": prompt}
                     ]
+                    temperature = 0.6
                 )
                 classification = response.choices[0].message.content.strip()
                 return classification
