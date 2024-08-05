@@ -84,7 +84,7 @@ def load_collection():
     # return collection
     
 
-collection = load_collection()
+vector_store = load_collection()
 
 def retrieve_documents(query, collection):
     # Perform similarity search
@@ -126,7 +126,7 @@ chat_history = ChatHistory()
 
 user_query = st.text_input("Ask")
 if user_query:
-    response = chatbot_response(user_query, collection, chat_history)
+    response = chatbot_response(user_query, vector_store, chat_history)
     st.write(response)
 
 if st.button("Clear history"):
