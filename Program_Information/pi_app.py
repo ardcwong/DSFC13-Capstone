@@ -25,7 +25,7 @@ import chromadb
 from chromadb.utils import embedding_functions
 from annotated_text import annotated_text
 from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 
 # if "stop" not in st.session_state:
 #     st.session_state.stop = True
