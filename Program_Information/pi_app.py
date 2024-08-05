@@ -104,8 +104,7 @@ def generate_chatbot_response(context, query, metadata, chat_history):
         messages=[
             {"role": "system", "content": "You are an assistant that helps students answer questions about Eskwelabs' Data Science Fellowship program."},
             {"role": "user", "content": prompt}
-        ],
-        temperature = 0.7
+        ]
     )
     
     return response.choices[0].message.content.strip()
