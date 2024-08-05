@@ -27,3 +27,4 @@ oauth2client
 langchain-chroma
 tiktoken
 langchain-openai
+langchain
