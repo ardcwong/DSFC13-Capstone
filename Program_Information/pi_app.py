@@ -72,17 +72,15 @@ def load_collection():
     # metadata={"hnsw:space": "cosine"}
     # )
     CHROMA_DATA_PATH = "persistent_directory_4"
+
+
     try:
-        vector_store = Chroma(persist_directory=CHROMA_DATA_PATH, embedding_function = OpenAIEmbeddings(api_key))
-        st.write(vector_store)
+        vector_store = Chroma(persist_directory=CHROMA_DATA_PATH, embedding_function  = OpenAIEmbeddings(api_key=openai.api_key))
         return vector_store
     except Exception as e:
         st.error(f"Error loading vector store: {e}")
         return None
 
-
-    
-    # return collection
     
 
 vector_store = load_collection()
