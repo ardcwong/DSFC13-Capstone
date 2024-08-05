@@ -25,7 +25,5 @@ streamlit-authenticator
 gspread
 oauth2client
 langchain-chroma
-langchain
-langchain-community
 tiktoken
 langchain-openai
