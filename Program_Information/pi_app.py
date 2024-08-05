@@ -60,7 +60,7 @@ class ChatHistory:
 
 
 
-@st.cache_resource
+# @st.cache_resource
 def load_collection():
     # CHROMA_DATA_PATH = 'FDA/fda_drugs_v6'
     # COLLECTION_NAME = "fda_drugs_embeddings_v6"
