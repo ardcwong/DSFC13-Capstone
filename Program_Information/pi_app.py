@@ -24,7 +24,8 @@ import ast #built in
 import chromadb
 from chromadb.utils import embedding_functions
 from annotated_text import annotated_text
-from langchain.vectorstores import Chroma
+# from langchain.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 
 # if "stop" not in st.session_state:
