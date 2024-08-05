@@ -85,8 +85,6 @@ def load_collection():
     # return collection
     
 collection = load_collection()
-st.write(collection)
-
 if collection:
     query = st.text_input("type")
     if query:
