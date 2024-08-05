@@ -85,7 +85,7 @@ def load_collection():
     
 
 vector_store = load_collection()
-
+st.write(vector_store)
 def retrieve_documents(query, collection):
     # Perform similarity search
     results = collection.similarity_search(query, k=3)
