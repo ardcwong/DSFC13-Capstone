@@ -125,8 +125,8 @@ def chatbot_response(user_query, collection, chat_history):
 # # Initialize chat history
 chat_history = ChatHistory()
 
-query = st.text_input("Ask")
-if query:
+user_query = st.text_input("Ask")
+if user_query:
     response = chatbot_response(user_query, collection, chat_history)
     st.write(response)
 
