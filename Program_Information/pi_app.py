@@ -84,12 +84,8 @@ def load_collection():
     
     # return collection
     
-collection = load_collection()
-if collection:
-    query = st.text_input("type")
-    if query:
-        results = collection.similarity_search(query, k=3)
-        st.write(results)
+
+
 
 def retrieve_documents(query, collection):
     # Perform similarity search
@@ -129,10 +125,11 @@ def chatbot_response(user_query, collection, chat_history):
 # # Initialize chat history
 chat_history = ChatHistory()
 
-# Example usage with chat history
-user_query = "How hard will it be for me to juggle this work?"
-response = chatbot_response(user_query, collection, chat_history)
-st.write(response)
+query = st.text_input("Ask")
+if query:
+    response = chatbot_response(user_query, collection, chat_history)
+    st.write(response)
+
 
 
 
