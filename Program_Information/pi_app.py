@@ -73,7 +73,7 @@ def load_collection():
     # )
     CHROMA_DATA_PATH = "persistent_directory_4"
     try:
-        vector_store = Chroma(persist_directory=CHROMA_DATA_PATH)
+        vector_store = Chroma(persist_directory=CHROMA_DATA_PATH, embedding_function = OpenAIEmbeddings(openai.api_key))
         return vector_store
     except Exception as e:
         st.error(f"Error loading vector store: {e}")
