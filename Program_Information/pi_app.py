@@ -102,12 +102,6 @@ def retrieve_documents(query, collection):
 
     return [{'text': doc, 'metadata': meta} for doc, meta in zip(docs, metadatas)]
 
-# def retrieve_documents(query, collection):
-#     results = collection.query(query_texts=[query], n_results=3)
-#     docs = results['documents'][0]
-#     metadatas = results['metadatas'][0]
-#     return [{"text": doc, "metadata": meta} for doc, meta in zip(docs, metadatas)]
-
 
 def generate_chatbot_response(context, query, metadata, chat_history):
     history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_history])
@@ -120,6 +114,7 @@ def generate_chatbot_response(context, query, metadata, chat_history):
             {"role": "system", "content": "You are an assistant that helps students answer questions about Eskwelabs' Data Science Fellowship program."},
             {"role": "user", "content": prompt}
         ],
+        temperature = 0.7,
         max_tokens=200
     )
     
