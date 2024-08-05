@@ -85,7 +85,7 @@ def load_collection():
     # return collection
     
 
-
+collection = load_collection()
 
 def retrieve_documents(query, collection):
     # Perform similarity search
