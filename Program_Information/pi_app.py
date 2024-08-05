@@ -130,7 +130,7 @@ def chatbot_response(user_query, collection, chat_history):
 chat_history = ChatHistory()
 
 # Example usage with chat history
-user_query = "Sprint 1"
+user_query = "How hard will it be for me to juggle this work?"
 response = chatbot_response(user_query, collection, chat_history)
 st.write(response)
 
