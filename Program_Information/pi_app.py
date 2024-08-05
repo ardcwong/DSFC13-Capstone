@@ -130,7 +130,7 @@ def chatbot_response(user_query, collection, chat_history):
 chat_history = ChatHistory()
 
 # Example usage with chat history
-user_query = "Tell me more about Eskwelabs bootcamp."
+user_query = "Sprint1"
 response = chatbot_response(user_query, collection, chat_history)
 st.write(response)
 
