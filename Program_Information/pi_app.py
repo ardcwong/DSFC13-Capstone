@@ -39,6 +39,27 @@ credentials = st.secrets["gcp_service_account"]
 client = OpenAI(api_key=api_key)
 # SKLLMConfig.set_openai_key(api_key)
 
+class ChatHistory:
+    def __init__(self):
+        self.history = []
+
+    def add_message(self, role, content):
+        self.history.append({"role": role, "content": content})
+
+    def get_history(self):
+        return self.history
+
+    def clear_history(self):
+        self.history = []
+
+    def show_history(self):
+        for msg in self.history:
+            role = msg['role']
+            content = msg['content']
+            print(f"{role.capitalize()}: {content}")
+
+
+
 @st.cache_resource
 def load_collection():
     # CHROMA_DATA_PATH = 'FDA/fda_drugs_v6'
@@ -72,7 +93,49 @@ if collection:
         results = collection.similarity_search(query, k=3)
         st.write(results)
 
+def retrieve_documents(query, collection):
+    # Perform similarity search
+    results = collection.similarity_search(query, k=3)
+    
+    docs = [result.page_content for result in results]
+    metadatas = [result.metadata for result in results] 
 
+    return [{'text': doc, 'metadata': meta} for doc, meta in zip(docs, metadatas)]
+
+# def retrieve_documents(query, collection):
+#     results = collection.query(query_texts=[query], n_results=3)
+#     docs = results['documents'][0]
+#     metadatas = results['metadatas'][0]
+#     return [{"text": doc, "metadata": meta} for doc, meta in zip(docs, metadatas)]
+
+
+def generate_chatbot_response(context, query, metadata, chat_history):
+    history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_history])
+    metadata_info = "\n".join([f"File: {meta['description']}" for meta in metadata])
+    prompt = f"Based on the following conversation history:\n\n{history_text}\n\nAnd the following information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
+    
+    response = openai.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are an assistant that helps students answer questions about Eskwelabs' Data Science Fellowship program."},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=200
+    )
+    
+    return response.choices[0].message.content.strip()
+def chatbot_response(user_query, collection, chat_history):
+    chat_history.add_message("user", user_query)
+    
+    retrieved_docs = retrieve_documents(user_query, collection)
+    context = ' '.join([doc['text'] for doc in retrieved_docs])
+    response = generate_chatbot_response(context, user_query, [doc['metadata'] for doc in retrieved_docs], chat_history.get_history())
+    
+    chat_history.add_message("assistant", response)
+    return response
+
+# # Initialize chat history
+chat_history = ChatHistory()
 
 
 
