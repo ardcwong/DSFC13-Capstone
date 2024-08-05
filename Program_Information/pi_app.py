@@ -56,7 +56,7 @@ class ChatHistory:
         for msg in self.history:
             role = msg['role']
             content = msg['content']
-            print(f"{role.capitalize()}: {content}")
+            st.write(f"{role.capitalize()}: {content}")
 
 
 
@@ -130,7 +130,10 @@ if user_query:
     response = chatbot_response(user_query, collection, chat_history)
     st.write(response)
 
+if st.button("Clear history"):
+    chat_history.clear_history()
 
+chat_history.show_history()
 
 
 
