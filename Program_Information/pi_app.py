@@ -115,7 +115,7 @@ def generate_chatbot_response(context, query, metadata, chat_history):
             {"role": "user", "content": prompt}
         ],
         temperature = 0.7,
-        max_tokens=200
+        max_tokens=300
     )
     
     return response.choices[0].message.content.strip()
