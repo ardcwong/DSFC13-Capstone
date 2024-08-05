@@ -28,3 +28,4 @@ langchain-chroma
 tiktoken
 langchain-openai
 langchain
+langchain-community
