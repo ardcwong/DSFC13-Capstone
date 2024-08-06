@@ -97,208 +97,220 @@ if "spreadsheet_DSLPC" not in st.session_state:
     client = gspread.authorize(creds)
     st.session_state.spreadsheet_DSLPC = google_connection(client)
 
-
+def program_info_page_switch():
+if st.button("Program Information",type="primary"):  
+    return st.switch_page("Program_Information/pi_app.py")
 
 
 @st.fragment
 def suitability():
     if 'classification' not in st.session_state:
         st.session_state.classification = []
-    with st.container(height=450, border=None):
-        # Initialize or retrieve session state
-        if 'responses' not in st.session_state:
-            st.session_state.responses = []
-        if 'question_index' not in st.session_state:
-            st.session_state.question_index = 0
-        if 'chat_history' not in st.session_state:
-            st.session_state.chat_history = []
-          
+    
 
-        # Initialize the first question in the chat history if not already done
-        if st.session_state.question_index == 0 and not st.session_state.chat_history:
-            first_question = questions[st.session_state.question_index]
-            st.session_state.chat_history.append(("AI", first_question))
-
+        
+    if st.session_state.classification:
         # Display the entire chat history with user responses on the right
-        for role, message in st.session_state.chat_history:
-            st.chat_message(role).write(message)
+        # for role, message in st.session_state.chat_history:
         
-       
-    with st.container():
-        # Function to display the current question and collect user response
-        def display_question():
-            if st.session_state.question_index < len(questions):
-                current_question = questions[st.session_state.question_index]
-                user_response = st.chat_input("Your response:")
-                if user_response:
-                    st.session_state.responses.append(user_response)
-                    st.session_state.chat_history.append(("User", user_response))
-                    st.session_state.question_index += 1
-                    if st.session_state.question_index < len(questions):
-                        next_question = questions[st.session_state.question_index]
-                        st.session_state.chat_history.append(("AI", next_question))
-                    st.rerun(scope="fragment")
-
-        # Function to get classification from OpenAI
-        def get_classification():
-
-            # Apply the stopwords removal to the responses
-            # filtered_responses = [remove_stopwords(response) for response in st.session_state.responses]
-
-            questions_responses = ""
-            for i, question in enumerate(questions):
-                questions_responses += f"{i+1}. {question}\n - Responses: {st.session_state.responses[i]}\n"
-
-
-            
-            # If my responses is not enough for you to classify me, ask the me to press the reset button, otherwise, please describe my suitability for each and recommend the most suitable one for me.
-            # Inform me that in case I want to change any of my responses only, I can press the reset button.
-            # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
-            
-            # prompt = f"""
-            # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
-            # Suitability:
-            #     1. Bootcamp: 
-            #     2. Self-Learning:
-            #     3. Master's Program:
-            
-            # Overall Recommendation: 
-            
-            # """
-
-            # prompt = f"""
-            # Based on my responses to the questions listed below, please evaluate whether the responses are relevant to the questions asked. Subsequently, classify my suitability for the following data science learning pathways: Bootcamp, Self-Learning, and a Master’s Program.
-            
-            # Questions and Responses:
-            # {questions_responses}
-            
-            # Suitability:
-            # 1. Bootcamp: 
-            # 2. Self-Learning:
-            # 3. Master's Program:
-            
-            # Finally, provide an overall recommendation on the most suitable learning pathway for me, considering my responses:
-            # Overall Recommendation:
-            # """
-             # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
-            prompt = f"""
-            Classify and explain my suitability for the following data science learning pathway: Eskwelabs' bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
-           
-            
-            *1. Eskwelabs Bootcamp:* Suitability and Explanation
-            *2. Self-Learning:* Suitability and Explanation
-            *3. Master's Program:* Suitability and Explanation
-
-            
-            Overall Recommendation:
-            """
-
-
-# You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
-            # Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
-            try:
-                response = openai.chat.completions.create(
-                    model="gpt-3.5-turbo",
-                    messages=[
-                    	{"role": "system", "content": f"You are an expert education bot designed to classify the suitability either Highly Suitable, Moderately Suitable, Slightly Suitable, or Not Suitable for each learning pathway of the user, and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability of the user to each of the following learning path: Eskwelabs bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path."},
-                        {"role": "user", "content": prompt},
-                        # {"role": "assistant", "content": prompt}
-                    ]
-                    #temperature = 0.7 You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and in recommending the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
-                )
-                classification = response.choices[0].message.content.strip()
-                return classification
-            except Exception as e:
-                st.error(f"Error: {e}")
-                return None
-        # Main logic
-        if st.session_state.question_index < len(questions):
-            display_question()
-        else:
-            if st.session_state.responses and st.session_state.question_index == len(questions):
-                classification = get_classification()
-                if classification:
-                    st.session_state.chat_history.append(("AI", classification))
-                    st.session_state.question_index += 1
-                    st.session_state.classification = classification
-                    st.rerun()
-
-   
-
-    col1, col2 = st.columns([10, 2])
-
+        st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
+        # st.write(st.session_state.chat_history)
         
-    with col2:
-        
-        if st.button("Reset", use_container_width = True, help = "To update your answer, please press the RESET button to start over and answer the questions again. Feel free to make any necessary improvements or corrections to enhance your response."):
-            st.session_state.responses = []
-            st.session_state.question_index = 0
-            st.session_state.chat_history = []
-            st.session_state.classification = []
+        if 'feedback_up' not in st.session_state:
             st.session_state.feedback_up = []
+        if 'feedback_down' not in st.session_state:
             st.session_state.feedback_down = []
-            st.rerun()   
+    
+        
+        if st.session_state.feedback_up == 1:
+            st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center;'>You selected 👍🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+    
+        elif st.session_state.feedback_up == 0:
+            st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center;'>You selected 👎🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+        else:
+            st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your responses, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
+            f1,f2,f3,f4 = st.columns([4,1,1,4])
+            
+        
+        
+            if f2.button("👍🏻", use_container_width = True, help = "This response helpful"):
+                feedback_score = 1
+                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
+                st.session_state.feedback_up = feedback_score
+                st.rerun() 
+            elif f3.button("👎🏻", use_container_width = True, help = "This response unhelpful"):
+                feedback_score = 0
+                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
+                st.session_state.feedback_down = feedback_score
+                st.rerun() 
+            st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+        
+        col1, col2, col3 = st.columns([1,6,1])
+        with col2:
+            with st.container():
+                st.markdown("<h6 style='text-align: center;color: #e76f51;'>Data Science Fellowship (DSF) Program by Eskwelabs</h6>", unsafe_allow_html=True)
+                st.markdown("""The Data Science Fellowship (DSF) Program by Eskwelabs offers a comprehensive curriculum designed to equip 
+                participants with practical skills through hands-on projects and sprints. The program includes projects on customer segmentation, 
+                credit fraud detection, recommender engines, and generative AI, each aiming to provide actionable insights and enhance strategic 
+                decision-making. Various payment options are available, including early bird discounts, installment plans, and study-now-pay-later 
+                schemes. Interested individuals can apply online, explore past capstone projects, and consult with admissions advisors for 
+                personalized guidance. Additional resources and details about the program, including tuition fees and refund policies, 
+                are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information" button.
+                """, unsafe_allow_html=True)
+    
+                program_info_page_switch()
+    
+    
+    
+    
+    else:
+    
+    
+    
+    
+        with st.container(height=450, border=None):
+            # Initialize or retrieve session state
+            if 'responses' not in st.session_state:
+                st.session_state.responses = []
+            if 'question_index' not in st.session_state:
+                st.session_state.question_index = 0
+            if 'chat_history' not in st.session_state:
+                st.session_state.chat_history = []
+              
+    
+            # Initialize the first question in the chat history if not already done
+            if st.session_state.question_index == 0 and not st.session_state.chat_history:
+                first_question = questions[st.session_state.question_index]
+                st.session_state.chat_history.append(("AI", first_question))
+    
+            # Display the entire chat history with user responses on the right
+            for role, message in st.session_state.chat_history:
+                st.chat_message(role).write(message)
+            
+           
+        with st.container():
+            # Function to display the current question and collect user response
+            def display_question():
+                if st.session_state.question_index < len(questions):
+                    current_question = questions[st.session_state.question_index]
+                    user_response = st.chat_input("Your response:")
+                    if user_response:
+                        st.session_state.responses.append(user_response)
+                        st.session_state.chat_history.append(("User", user_response))
+                        st.session_state.question_index += 1
+                        if st.session_state.question_index < len(questions):
+                            next_question = questions[st.session_state.question_index]
+                            st.session_state.chat_history.append(("AI", next_question))
+                        st.rerun(scope="fragment")
+    
+            # Function to get classification from OpenAI
+            def get_classification():
+    
+                # Apply the stopwords removal to the responses
+                # filtered_responses = [remove_stopwords(response) for response in st.session_state.responses]
+    
+                questions_responses = ""
+                for i, question in enumerate(questions):
+                    questions_responses += f"{i+1}. {question}\n - Responses: {st.session_state.responses[i]}\n"
+    
+    
+                
+                # If my responses is not enough for you to classify me, ask the me to press the reset button, otherwise, please describe my suitability for each and recommend the most suitable one for me.
+                # Inform me that in case I want to change any of my responses only, I can press the reset button.
+                # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
+                
+                # prompt = f"""
+                # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
+                # Suitability:
+                #     1. Bootcamp: 
+                #     2. Self-Learning:
+                #     3. Master's Program:
+                
+                # Overall Recommendation: 
+                
+                # """
+    
+                # prompt = f"""
+                # Based on my responses to the questions listed below, please evaluate whether the responses are relevant to the questions asked. Subsequently, classify my suitability for the following data science learning pathways: Bootcamp, Self-Learning, and a Master’s Program.
+                
+                # Questions and Responses:
+                # {questions_responses}
+                
+                # Suitability:
+                # 1. Bootcamp: 
+                # 2. Self-Learning:
+                # 3. Master's Program:
+                
+                # Finally, provide an overall recommendation on the most suitable learning pathway for me, considering my responses:
+                # Overall Recommendation:
+                # """
+                 # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
+                prompt = f"""
+                Classify and explain my suitability for the following data science learning pathway: Eskwelabs' bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
+               
+                
+                *1. Eskwelabs Bootcamp:* Suitability and Explanation
+                *2. Self-Learning:* Suitability and Explanation
+                *3. Master's Program:* Suitability and Explanation
+    
+                
+                Overall Recommendation:
+                """
+    
+    
+    # You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
+                # Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
+                try:
+                    response = openai.chat.completions.create(
+                        model="gpt-3.5-turbo",
+                        messages=[
+                        	{"role": "system", "content": f"You are an expert education bot designed to classify the suitability either Highly Suitable, Moderately Suitable, Slightly Suitable, or Not Suitable for each learning pathway of the user, and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability of the user to each of the following learning path: Eskwelabs bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path."},
+                            {"role": "user", "content": prompt},
+                            # {"role": "assistant", "content": prompt}
+                        ]
+                        #temperature = 0.7 You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and in recommending the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
+                    )
+                    classification = response.choices[0].message.content.strip()
+                    return classification
+                except Exception as e:
+                    st.error(f"Error: {e}")
+                    return None
+            # Main logic
+            if st.session_state.question_index < len(questions):
+                display_question()
+            else:
+                if st.session_state.responses and st.session_state.question_index == len(questions):
+                    classification = get_classification()
+                    if classification:
+                        st.session_state.chat_history.append(("AI", classification))
+                        st.session_state.question_index += 1
+                        st.session_state.classification = classification
+                        st.rerun()
+    
+       
+    
+        col1, col2 = st.columns([10, 2])
+    
+            
+        with col2:
+            
+            if st.button("Reset", use_container_width = True, help = "To update your answer, please press the RESET button to start over and answer the questions again. Feel free to make any necessary improvements or corrections to enhance your response."):
+                st.session_state.responses = []
+                st.session_state.question_index = 0
+                st.session_state.chat_history = []
+                st.session_state.classification = []
+                st.session_state.feedback_up = []
+                st.session_state.feedback_down = []
+                st.rerun()   
 
 
 
 suitability()
 
-def program_info_page_switch():
-    if st.button("Program Information",type="primary"):  
-        return st.switch_page("Program_Information/pi_app.py")
-        
-if st.session_state.classification:
-    # Display the entire chat history with user responses on the right
-    # for role, message in st.session_state.chat_history:
-    st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
-    # st.write(st.session_state.chat_history)
-    
-    if 'feedback_up' not in st.session_state:
-        st.session_state.feedback_up = []
-    if 'feedback_down' not in st.session_state:
-        st.session_state.feedback_down = []
 
-    
-    if st.session_state.feedback_up == 1:
-        st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-        st.markdown("<h6 style='text-align: center;'>You selected 👍🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
-        st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-
-    elif st.session_state.feedback_up == 0:
-        st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-        st.markdown("<h6 style='text-align: center;'>You selected 👎🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
-        st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-    else:
-        st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-        st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your responses, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
-        f1,f2,f3,f4 = st.columns([4,1,1,4])
-        
-    
-    
-        if f2.button("👍🏻", use_container_width = True, help = "This response helpful"):
-            feedback_score = 1
-            sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-            st.session_state.feedback_up = feedback_score
-            st.rerun() 
-        elif f3.button("👎🏻", use_container_width = True, help = "This response unhelpful"):
-            feedback_score = 0
-            sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-            st.session_state.feedback_down = feedback_score
-            st.rerun() 
-        st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-    
-    col1, col2, col3 = st.columns([1,6,1])
-    with col2:
-        with st.container():
-            st.markdown("<h6 style='text-align: center;color: #e76f51;'>Data Science Fellowship (DSF) Program by Eskwelabs</h6>", unsafe_allow_html=True)
-            st.markdown("""The Data Science Fellowship (DSF) Program by Eskwelabs offers a comprehensive curriculum designed to equip 
-            participants with practical skills through hands-on projects and sprints. The program includes projects on customer segmentation, 
-            credit fraud detection, recommender engines, and generative AI, each aiming to provide actionable insights and enhance strategic 
-            decision-making. Various payment options are available, including early bird discounts, installment plans, and study-now-pay-later 
-            schemes. Interested individuals can apply online, explore past capstone projects, and consult with admissions advisors for 
-            personalized guidance. Additional resources and details about the program, including tuition fees and refund policies, 
-            are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information" button.
-            """, unsafe_allow_html=True)
-
-            program_info_page_switch()
        
