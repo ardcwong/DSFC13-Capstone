@@ -244,7 +244,7 @@ def suitability():
 suitability()
 
 def program_info_page_switch():
-    if st.button = ("Program Information"):  
+    if st.button("Program Information"):  
         return st.switch_page("Program_Information/pi_app.py")
 if st.session_state.classification:
     # Display the entire chat history with user responses on the right
