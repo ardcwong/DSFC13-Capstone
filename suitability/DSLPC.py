@@ -215,15 +215,14 @@ def suitability():
             # """
              # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
             prompt = f"""
-            Based on the {questions_responses} provided, classify and explain my suitability for the following data science learning pathway: Eskwelabs' bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway. Provide a brief explanation for your classification and recommendation.
+            Classify and explain my suitability for the following data science learning pathway: Eskwelabs' bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
            
             
-            Classify the suitability of each and provide explanations.
-            1. Eskwelabs Bootcamp: 
-            2. Self-Learning:
-            3. Master's Program:
+            1. Eskwelabs Bootcamp: Suitability and Explanation
+            2. Self-Learning: Suitability and Explanation
+            3. Master's Program: Suitability and Explanation
 
-            Determine the most suitable learning path.
+            
             Overall Recommendation:
             """
 
@@ -234,7 +233,7 @@ def suitability():
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                    	{"role": "system", "content": f"You are a classifier bot designed to classify the suitability of each learning pathway of the user, and to recommend the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability of the user to each of the following learning path: Eskwelabs bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path."},
+                    	{"role": "system", "content": f"You are an expert education bot designed to classify the suitability of each learning pathway of the user, and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability of the user to each of the following learning path: Eskwelabs bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path."},
                         {"role": "user", "content": prompt},
                         # {"role": "assistant", "content": prompt}
                     ]
