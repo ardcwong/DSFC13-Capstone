@@ -124,7 +124,7 @@ def suitability():
                 # Display the entire chat history with user responses on the right
                 for role, message in st.session_state.chat_history:
                     st.chat_message(role).write(message)
-            
+        with column1:    
             st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
             # st.write(st.session_state.chat_history)
             
@@ -161,7 +161,7 @@ def suitability():
                     st.session_state.feedback_down = feedback_score
                     st.rerun() 
                 st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-        with column1:
+        
             col1, col2, col3 = st.columns([1,6,1])
             with col2:
                 with st.container():
