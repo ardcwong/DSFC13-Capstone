@@ -166,13 +166,13 @@ def suitability():
             with col2:
                 with st.container():
                     st.markdown("<h6 style='text-align: center;color: #e76f51;'>Data Science Fellowship (DSF) Program by Eskwelabs</h6>", unsafe_allow_html=True)
-                    st.markdown("""The Data Science Fellowship (DSF) Program by Eskwelabs offers a comprehensive curriculum designed to equip 
+                    st.markdown("""<h7 style='text-align: center;'>The Data Science Fellowship (DSF) Program by Eskwelabs offers a comprehensive curriculum designed to equip 
                     participants with practical skills through hands-on projects and sprints. The program includes projects on customer segmentation, 
                     credit fraud detection, recommender engines, and generative AI, each aiming to provide actionable insights and enhance strategic 
                     decision-making. Various payment options are available, including early bird discounts, installment plans, and study-now-pay-later 
                     schemes. Interested individuals can apply online, explore past capstone projects, and consult with admissions advisors for 
                     personalized guidance. Additional resources and details about the program, including tuition fees and refund policies, 
-                    are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information" button.
+                    are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information" button.</h7>
                     """, unsafe_allow_html=True)
                     st.markdown("")
                     cola, colb, colc = st.columns([1,1,1,])
