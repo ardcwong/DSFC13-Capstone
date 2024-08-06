@@ -175,13 +175,28 @@ def suitability():
             Overall Recommendation: 
             
             """
+
+            prompt = f"""
+            Based on my responses to the questions listed below, please classify my suitability for the following data science learning pathways: Bootcamp, Self-Learning, and a Master’s Program. 
+            
+            Responses:
+            {questions_responses}
+            
+            Classify my suitability for each pathway:
+            1. Bootcamp: 
+            2. Self-Learning:
+            3. Master's Program:
+            
+            Overall Recommendation:
+            """
+
 # You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
             # Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
             try:
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                    	{"role": "system", "content": f"You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), in recommending the most suitable learning path, and in identifying if the response is related to the question. Check first if most responses are related to the questions being asked based on {questions_responses}, before you can classify and recommend the most suitable learning path."},
+                    	{"role": "system", "content": f"You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), in recommending the most suitable learning path, and in identifying if the response is related to the question. Check first if most responses are related to the questions, before you can classify and recommend the most suitable learning path."},
                         {"role": "user", "content": prompt}
                     ]
                     #temperature = 0.7
