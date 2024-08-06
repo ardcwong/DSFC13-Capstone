@@ -246,12 +246,13 @@ suitability()
 def program_info_page_switch():
     if st.button("Program Information"):  
         return st.switch_page("Program_Information/pi_app.py")
+        
 if st.session_state.classification:
     # Display the entire chat history with user responses on the right
     # for role, message in st.session_state.chat_history:
     st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
     # st.write(st.session_state.chat_history)
-
+    program_info_page_switch()
     
     if 'feedback_up' not in st.session_state:
         st.session_state.feedback_up = []
