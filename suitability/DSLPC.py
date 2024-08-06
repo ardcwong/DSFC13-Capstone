@@ -78,7 +78,7 @@ if st.session_state.BeginAssessment == True:
     with col_main2:
         with st.expander(":blue-background[How it works]", expanded=st.session_state.BeginAssessment):
             st.markdown("""
-            **1. Answer Questions:** Provide responses to a series of questions about your current experience, learning preferences, time commitment, and budget. 
+            **1. Answer Questions:** Provide responses to a series of questions about your current experience, learning preferences, time commitment, and budget. \n
             **2. Get Classified:** Based on your answers, our classifier bot will evaluate and determine the most appropriate learning pathway for you: 
             &emsp;- **Eskwelabs' Bootcamp**: Ideal for those who prefer structured, guided learning with hands-on projects and community support. 
             &emsp;- **Self-Learning**: Best suited for independent learners who thrive on flexibility and self-paced study. 
