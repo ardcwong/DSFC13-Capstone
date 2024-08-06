@@ -107,11 +107,21 @@ def suitability():
     if 'classification' not in st.session_state:
         st.session_state.classification = []
     
-
+        # Initialize or retrieve session state
+    if 'responses' not in st.session_state:
+        st.session_state.responses = []
+    if 'question_index' not in st.session_state:
+        st.session_state.question_index = 0
+    if 'chat_history' not in st.session_state:
+        st.session_state.chat_history = []
         
     if st.session_state.classification:
         # Display the entire chat history with user responses on the right
         # for role, message in st.session_state.chat_history:
+        with st.expander("Click to view your responses")
+            # Display the entire chat history with user responses on the right
+            for role, message in st.session_state.chat_history:
+                st.chat_message(role).write(message)
         
         st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
         # st.write(st.session_state.chat_history)
@@ -162,8 +172,10 @@ def suitability():
                 personalized guidance. Additional resources and details about the program, including tuition fees and refund policies, 
                 are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information" button.
                 """, unsafe_allow_html=True)
-    
-                program_info_page_switch()
+                st.markdown("")
+                cola, colb, colc = st.columns([1,1,1,])
+                with colb:
+                    program_info_page_switch()
     
     
     
@@ -174,13 +186,7 @@ def suitability():
     
     
         with st.container(height=450, border=None):
-            # Initialize or retrieve session state
-            if 'responses' not in st.session_state:
-                st.session_state.responses = []
-            if 'question_index' not in st.session_state:
-                st.session_state.question_index = 0
-            if 'chat_history' not in st.session_state:
-                st.session_state.chat_history = []
+
               
     
             # Initialize the first question in the chat history if not already done
