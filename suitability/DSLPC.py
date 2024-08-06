@@ -215,7 +215,7 @@ def suitability():
             # """
              # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
             prompt = f"""
-            Based on the responses provided, classify the user into one of the following learning pathways: Eskwelabs' bootcamp, self-learning, or a master's degree. Provide a brief explanation for your classification.
+            Based on the {questions_responses} provided, Classify my suitability for the following data science learning pathway: Eskwelabs' bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway. Provide a brief explanation for your classification.
            
             
             Suitabiliity:
@@ -233,9 +233,9 @@ def suitability():
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                    	{"role": "system", "content": f"You are a classifier bot designed to determine the suitability of each learning pathway to the user and to determine most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify them into one of the following categories: bootcamp, self-learning, or a master's degree."},
-                        {"role": "user", "content": questions_responses},
-                        {"role": "assistant", "content": prompt}
+                    	{"role": "system", "content": f"You are a classifier bot designed to classify the suitability of each learning pathway to the user and to recommend the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify the suitability of the user to each of the following learning path: Eskwelabs bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path."},
+                        {"role": "user", "content": prompt},
+                        # {"role": "assistant", "content": prompt}
                     ]
                     #temperature = 0.7 You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and in recommending the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
                 )
