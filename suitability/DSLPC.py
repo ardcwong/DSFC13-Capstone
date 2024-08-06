@@ -131,6 +131,7 @@ def suitability():
                     st.session_state.classification = []
                     st.session_state.feedback_up = []
                     st.session_state.feedback_down = []
+                    st.session_state.BeginAssessment = True
                     st.rerun()   
 
             
@@ -323,6 +324,7 @@ def suitability():
                 st.session_state.classification = []
                 st.session_state.feedback_up = []
                 st.session_state.feedback_down = []
+                st.session_state.BeginAssessment = True
                 st.rerun()   
 
 
@@ -356,7 +358,7 @@ if st.session_state.BeginAssessment == True:
             with cs2:
                 if st.button("Begin Assessment", type="primary", use_container_width = True):
                     st.session_state.BeginAssessment = False
-                    st.rerun()
+                    # st.rerun()
                     
 
 else: 
