@@ -75,6 +75,14 @@ if st.session_state.BeginAssessment == True:
     with col_main1:
         with st.expander(":blue-background[Our Bot]", expanded=st.session_state.BeginAssessment):
             st.write("Are you unsure about the best way to pursue your data science journey? Our intelligent classifier bot is here to help! By answering a few simple questions about your background, preferences, and goals, our bot will recommend the most suitable learning pathway for you.")
+    with col_main2:
+        with st.expander(":blue-background[How it works]", expanded=st.session_state.BeginAssessment):
+            st.markdown("""
+            1. Answer Questions: Provide responses to a series of questions about your current experience, learning preferences, time commitment, and budget. 
+            2. Get Classified: Based on your answers, our classifier bot will evaluate and determine the most appropriate learning pathway for you: 
+            - Eskwelabs' Bootcamp: Ideal for those who prefer structured, guided learning with hands-on projects and community support. 
+            - Self-Learning: Best suited for independent learners who thrive on flexibility and self-paced study. 
+            - Master's Degree: Perfect for individuals seeking an in-depth, academic approach with comprehensive coverage of data science topics.""", unsafe_allow_html=True)
 
 # Google Sheets connection function
 def google_connection(client):
