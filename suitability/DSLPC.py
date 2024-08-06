@@ -287,7 +287,7 @@ if st.session_state.classification:
             st.rerun() 
         st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
     
-    col1, col2, col3 = st.columns([1,3,1])
+    col1, col2, col3 = st.columns([1,4,1])
     with col2:
         with st.container():
             st.markdown("<h6 style='text-align: center;color: #e76f51;'>Data Science Fellowship (DSF) Program by Eskwelabs</h6>", unsafe_allow_html=True)
