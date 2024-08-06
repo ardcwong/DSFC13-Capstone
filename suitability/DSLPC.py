@@ -242,7 +242,7 @@ def suitability():
 
 
 suitability()
- if st.session_state.classification:
+if st.session_state.classification:
     if 'feedback_up' not in st.session_state:
         st.session_state.feedback_up = []
     if 'feedback_down' not in st.session_state:
