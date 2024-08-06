@@ -118,7 +118,7 @@ def suitability():
     if st.session_state.classification:
         # Display the entire chat history with user responses on the right
         # for role, message in st.session_state.chat_history:
-        with st.expander("Click to view your responses")
+        with st.expander("Click to view your responses"):
             # Display the entire chat history with user responses on the right
             for role, message in st.session_state.chat_history:
                 st.chat_message(role).write(message)
