@@ -335,7 +335,7 @@ if 'BeginAssessment' not in st.session_state:
     st.session_state.BeginAssessment = True
 
 
-col_main1, col_main2 = st.columns([1,2])
+col_main1, col_main2, col_main3 = st.columns([1,2,0.5])
 with col_main1:
     with st.expander("**Our Bot**", expanded=st.session_state.BeginAssessment):
         st.write("Are you unsure about the best way to pursue your data science journey? Our intelligent classifier bot is here to help! By answering a few simple questions about your background, preferences, and goals, our bot will recommend the most suitable learning pathway for you.")
@@ -346,7 +346,18 @@ with col_main2:
         1. Answer Questions: *Provide responses to a series of questions about your current experience, learning preferences, time commitment, and budget.*<br>
         2. Get Classified: *Based on your answers, our classifier bot will evaluate and determine the most appropriate learning pathway for you:* 
         :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
+with col_main3:
+    if st.button("Start Over", disabled=st.session_state.BeginAssessment, type="primary", use_container_width = True, help = "To update your answer, please press the RESET button to start over and answer the questions again. Feel free to make any necessary improvements or corrections to enhance your response."):
+        st.session_state.responses = []
+        st.session_state.question_index = 0
+        st.session_state.chat_history = []
+        st.session_state.classification = []
+        st.session_state.feedback_up = []
+        st.session_state.feedback_down = []
+        st.session_state.BeginAssessment = True
+        st.rerun()       
 
+    
 if st.session_state.BeginAssessment == True:    
     with st.container(border=None):
         s1, s2, s3 = st.columns([1,8,1])
