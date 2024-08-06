@@ -84,12 +84,10 @@ if st.session_state.BeginAssessment == True:
             :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
     
     with st.container(height=450, border=None):
+        col1, col2, col3 = st.columns([1,8,1])
         st.markdown(f"<h2 style='text-align: center;'>Start Your Journey</h2>", unsafe_allow_html=True)
-        st.divider()
         st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Simply click "Begin Assessment" </b></i><i>
         and follow the prompts to receive your personalized learning pathway recommendation. Empower your data science career with the right guidance tailored to your needs!.</h5>""", unsafe_allow_html=True)
-        
-        st.divider()
 
 
 
