@@ -97,7 +97,9 @@ if st.session_state.BeginAssessment == True:
                     st.rerun()
                     
 
-
+else: 
+    # st.session_state.BeginAssessment == False:
+    suitability()
 
         
 # Google Sheets connection function
@@ -360,9 +362,7 @@ def suitability():
                 st.rerun()   
 
 
-else: 
-    # st.session_state.BeginAssessment == False:
-    suitability()
+
 
 
 
