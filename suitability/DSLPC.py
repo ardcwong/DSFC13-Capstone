@@ -67,7 +67,7 @@ questions = [
 
 # Streamlit app setup
 st.title("Data Science Learning Path Classifier")
-st.write("Please answer the following questions to determine your suitability for different learning paths in data science.")
+st.write("Are you unsure about the best way to pursue your data science journey? Our intelligent classifier bot is here to help! By answering a few simple questions about your background, preferences, and goals, our bot will recommend the most suitable learning pathway for you.")
 
 # Google Sheets connection function
 def google_connection(client):
