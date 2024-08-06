@@ -70,25 +70,32 @@ st.title("Data Science Learning Path Classifier")
 if 'BeginAssessment' not in st.session_state:
     st.session_state.BeginAssessment = True
 
-if st.session_state.BeginAssessment == True:
-    col_main1, col_main2 = st.columns([1,2])
-    with col_main1:
-        with st.expander(":blue-background[**Our Bot**]", expanded=st.session_state.BeginAssessment):
-            st.write("Are you unsure about the best way to pursue your data science journey? Our intelligent classifier bot is here to help! By answering a few simple questions about your background, preferences, and goals, our bot will recommend the most suitable learning pathway for you.")
-    
-    with col_main2:
-        with st.expander(":blue-background[**How it works**]", expanded=st.session_state.BeginAssessment):
-            st.markdown("""
-            1. Answer Questions: *Provide responses to a series of questions about your current experience, learning preferences, time commitment, and budget.*<br>
-            2. Get Classified: *Based on your answers, our classifier bot will evaluate and determine the most appropriate learning pathway for you:* 
-            :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
-    
-    with st.container(height=450, border=None):
-        col1, col2, col3 = st.columns([1,8,1])
-        st.markdown(f"<h2 style='text-align: center;'>Start Your Journey</h2>", unsafe_allow_html=True)
-        st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Simply click "Begin Assessment" </b></i><i>
-        and follow the prompts to receive your personalized learning pathway recommendation. Empower your data science career with the right guidance tailored to your needs!.</h5>""", unsafe_allow_html=True)
 
+col_main1, col_main2 = st.columns([1,2])
+with col_main1:
+    with st.expander(":blue-background[**Our Bot**]", expanded=st.session_state.BeginAssessment):
+        st.write("Are you unsure about the best way to pursue your data science journey? Our intelligent classifier bot is here to help! By answering a few simple questions about your background, preferences, and goals, our bot will recommend the most suitable learning pathway for you.")
+
+with col_main2:
+    with st.expander(":blue-background[**How it works**]", expanded=st.session_state.BeginAssessment):
+        st.markdown("""
+        1. Answer Questions: *Provide responses to a series of questions about your current experience, learning preferences, time commitment, and budget.*<br>
+        2. Get Classified: *Based on your answers, our classifier bot will evaluate and determine the most appropriate learning pathway for you:* 
+        :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
+
+if st.session_state.BeginAssessment == True:    
+    with st.container(height=450, border=None):
+        s1, s2, s3 = st.columns([1,8,1])
+        with s2:
+            st.markdown(f"<h2 style='text-align: center;'>Start Your Journey</h2>", unsafe_allow_html=True)
+            st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Simply click "Begin Assessment" </b></i><i>
+            and follow the prompts to receive your personalized learning pathway recommendation. Empower your data science career with the right guidance tailored to your needs!.</h5>""", unsafe_allow_html=True)
+            cs1,cs2,cs3 = st.columns([1,1,1])
+            with cs2:
+                if st.button("Begin Assessment", type="primary", use_container_width = True):
+                    st.session_state.BeginAssessment = False
+                    st.rerun()
+                    
 
 
 
@@ -353,8 +360,9 @@ def suitability():
                 st.rerun()   
 
 
+elif st.session_state.BeginAssessment == False:
+    suitability()
 
-suitability()
 
 
        
