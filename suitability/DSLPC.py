@@ -360,7 +360,8 @@ def suitability():
                 st.rerun()   
 
 
-elif st.session_state.BeginAssessment == False:
+else: 
+    # st.session_state.BeginAssessment == False:
     suitability()
 
 
