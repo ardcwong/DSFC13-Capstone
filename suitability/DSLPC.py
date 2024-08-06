@@ -50,18 +50,18 @@ questions = [
     "Do you have any experience with data analysis tools or software (e.g., Python, R, SQL, Excel)?",
     "Have you worked on any data science projects or competitions?",
     "Do you have experience with machine learning algorithms?",
-    "Do you prefer structured learning with a defined curriculum or self-paced learning?",
-    "How much time can you dedicate to studying each week?",
-    "What type of learner are you (visual, auditory, reading/writing, kinesthetic)?",
-    "What are your short-term and long-term career goals in data science?",
-    "Are you looking to make a career switch to data science, or do you want to enhance your current role with data science skills?",
-    "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
-    "Do you need to balance your studies with work or other commitments?",
-    "Do you prefer learning in a classroom setting, online, or a hybrid approach?",
-    "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?",
-    "Have you ever attended any data science workshops or courses? If so, please describe them.",
-    "How do you handle complex problem-solving and analytical tasks?",
-    "Do you have a network or community for support in your learning journey?"
+    # "Do you prefer structured learning with a defined curriculum or self-paced learning?",
+    # "How much time can you dedicate to studying each week?",
+    # "What type of learner are you (visual, auditory, reading/writing, kinesthetic)?",
+    # "What are your short-term and long-term career goals in data science?",
+    # "Are you looking to make a career switch to data science, or do you want to enhance your current role with data science skills?",
+    # "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
+    # "Do you need to balance your studies with work or other commitments?",
+    # "Do you prefer learning in a classroom setting, online, or a hybrid approach?",
+    # "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?",
+    # "Have you ever attended any data science workshops or courses? If so, please describe them.",
+    # "How do you handle complex problem-solving and analytical tasks?",
+    # "Do you have a network or community for support in your learning journey?"
 
 ]
 
