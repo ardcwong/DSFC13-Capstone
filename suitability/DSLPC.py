@@ -125,6 +125,18 @@ def suitability():
                 st.chat_message(role).write(message)
        
         with tab1:
+            colSO1, colSO2 = st.columns([7,3])
+            with colSO2:
+                if st.button("Start Over", type="primary", use_container_width = True, help = "To update your answer, please press the RESET button to start over and answer the questions again. Feel free to make any necessary improvements or corrections to enhance your response."):
+                    st.session_state.responses = []
+                    st.session_state.question_index = 0
+                    st.session_state.chat_history = []
+                    st.session_state.classification = []
+                    st.session_state.feedback_up = []
+                    st.session_state.feedback_down = []
+                    st.rerun()   
+
+            
             st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
             # st.write(st.session_state.chat_history)
         
@@ -307,7 +319,7 @@ def suitability():
             
         with col2:
             
-            if st.button("Reset", use_container_width = True, help = "To update your answer, please press the RESET button to start over and answer the questions again. Feel free to make any necessary improvements or corrections to enhance your response."):
+            if st.button("Start Over", type="primary", use_container_width = True, help = "To update your answer, please press the RESET button to start over and answer the questions again. Feel free to make any necessary improvements or corrections to enhance your response."):
                 st.session_state.responses = []
                 st.session_state.question_index = 0
                 st.session_state.chat_history = []
