@@ -118,67 +118,66 @@ def suitability():
     if st.session_state.classification:
         # Display the entire chat history with user responses on the right
         # for role, message in st.session_state.chat_history:
-        column1, column2 = st.columns([2,1])
-        with column2:
-            with st.expander("Click to view your responses"):
-                # Display the entire chat history with user responses on the right
-                for role, message in st.session_state.chat_history:
-                    st.chat_message(role).write(message)
-        with column1:    
-            st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
-            # st.write(st.session_state.chat_history)
-            
-            if 'feedback_up' not in st.session_state:
-                st.session_state.feedback_up = []
-            if 'feedback_down' not in st.session_state:
-                st.session_state.feedback_down = []
+        tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
+        with st.expander("Click to view your responses"):
+            # Display the entire chat history with user responses on the right
+            for role, message in st.session_state.chat_history:
+                st.chat_message(role).write(message)
+
+        st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
+        # st.write(st.session_state.chat_history)
         
-            
-            if st.session_state.feedback_up == 1:
-                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>You selected 👍🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-        
-            elif st.session_state.feedback_up == 0:
-                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>You selected 👎🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-            else:
-                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your responses, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
-                f1,f2,f3,f4 = st.columns([4,1,1,4])
-                
-            
-            
-                if f2.button("👍🏻", use_container_width = True, help = "This response helpful"):
-                    feedback_score = 1
-                    sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-                    st.session_state.feedback_up = feedback_score
-                    st.rerun() 
-                elif f3.button("👎🏻", use_container_width = True, help = "This response unhelpful"):
-                    feedback_score = 0
-                    sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-                    st.session_state.feedback_down = feedback_score
-                    st.rerun() 
-                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-        
-            col1, col2, col3 = st.columns([1,6,1])
-            with col2:
-                with st.container():
-                    st.markdown("<h6 style='text-align: center;color: #e76f51;'>Data Science Fellowship (DSF) Program by Eskwelabs</h6>", unsafe_allow_html=True)
-                    st.markdown("""The Data Science Fellowship (DSF) Program by Eskwelabs offers a comprehensive curriculum designed to equip 
-                    participants with practical skills through hands-on projects and sprints. The program includes projects on customer segmentation, 
-                    credit fraud detection, recommender engines, and generative AI, each aiming to provide actionable insights and enhance strategic 
-                    decision-making. Various payment options are available, including early bird discounts, installment plans, and study-now-pay-later 
-                    schemes. Interested individuals can apply online, explore past capstone projects, and consult with admissions advisors for 
-                    personalized guidance. Additional resources and details about the program, including tuition fees and refund policies, 
-                    are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information" button.
-                    """, unsafe_allow_html=True)
-                    st.markdown("")
-                    cola, colb, colc = st.columns([1,1,1,])
-                    with colb:
-                        program_info_page_switch()
+        if 'feedback_up' not in st.session_state:
+            st.session_state.feedback_up = []
+        if 'feedback_down' not in st.session_state:
+            st.session_state.feedback_down = []
     
+        
+        if st.session_state.feedback_up == 1:
+            st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center;'>You selected 👍🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+    
+        elif st.session_state.feedback_up == 0:
+            st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center;'>You selected 👎🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+        else:
+            st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your responses, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
+            f1,f2,f3,f4 = st.columns([4,1,1,4])
+            
+        
+        
+            if f2.button("👍🏻", use_container_width = True, help = "This response helpful"):
+                feedback_score = 1
+                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
+                st.session_state.feedback_up = feedback_score
+                st.rerun() 
+            elif f3.button("👎🏻", use_container_width = True, help = "This response unhelpful"):
+                feedback_score = 0
+                sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
+                st.session_state.feedback_down = feedback_score
+                st.rerun() 
+            st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+    
+        col1, col2, col3 = st.columns([1,6,1])
+        with col2:
+            with st.container():
+                st.markdown("<h6 style='text-align: center;color: #e76f51;'>Data Science Fellowship (DSF) Program by Eskwelabs</h6>", unsafe_allow_html=True)
+                st.markdown("""The Data Science Fellowship (DSF) Program by Eskwelabs offers a comprehensive curriculum designed to equip 
+                participants with practical skills through hands-on projects and sprints. The program includes projects on customer segmentation, 
+                credit fraud detection, recommender engines, and generative AI, each aiming to provide actionable insights and enhance strategic 
+                decision-making. Various payment options are available, including early bird discounts, installment plans, and study-now-pay-later 
+                schemes. Interested individuals can apply online, explore past capstone projects, and consult with admissions advisors for 
+                personalized guidance. Additional resources and details about the program, including tuition fees and refund policies, 
+                are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information" button.
+                """, unsafe_allow_html=True)
+                st.markdown("")
+                cola, colb, colc = st.columns([1,1,1,])
+                with colb:
+                    program_info_page_switch()
+
     
     
     
