@@ -73,7 +73,7 @@ if 'BeginAssessment' not in st.session_state:
 if st.session_state.BeginAssessment == True:
     col_main1, col_main2, col_main3 = st.columns([2,2,1])
     with col_main1:
-        with st.expander("*Our Bot*", expanded=st.session_state.BeginAssessment):
+        with st.expander(":blue-background[Our Bot]", expanded=st.session_state.BeginAssessment):
             st.write("Are you unsure about the best way to pursue your data science journey? Our intelligent classifier bot is here to help! By answering a few simple questions about your background, preferences, and goals, our bot will recommend the most suitable learning pathway for you.")
 
 # Google Sheets connection function
