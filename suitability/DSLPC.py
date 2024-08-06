@@ -118,12 +118,11 @@ def suitability():
     if st.session_state.classification:
         # Display the entire chat history with user responses on the right
         # for role, message in st.session_state.chat_history:
-        tab1, tab2 = st.tabs(["Suitability and Recommendation", "Response"])
+        tab1, tab2 = st.tabs(["Suitability and Recommendation", "Your Responses"])
         with tab2:
-            with st.expander("Click to view your responses"):
-                # Display the entire chat history with user responses on the right
-                for role, message in st.session_state.chat_history:
-                    st.chat_message(role).write(message)
+            # Display the entire chat history with user responses on the right
+            for role, message in st.session_state.chat_history:
+                st.chat_message(role).write(message)
        
         with tab1:
             st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
