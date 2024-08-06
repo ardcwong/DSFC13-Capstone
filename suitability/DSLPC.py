@@ -290,7 +290,7 @@ if st.session_state.classification:
     col1, col2, col3 = st.columns([1,3,1])
     with col2:
         with st.container():
-            st.markdown("<h6 style='text-align: center;'>Data Science Fellowship (DSF) Program by Eskwelabs</h6>", unsafe_allow_html=True)
+            st.markdown("<h6 style='text-align: center;color: #e76f51;'>Data Science Fellowship (DSF) Program by Eskwelabs</h6>", unsafe_allow_html=True)
             st.markdown("""The Data Science Fellowship (DSF) Program by Eskwelabs offers a comprehensive curriculum designed to equip 
             participants with practical skills through hands-on projects and sprints. The program includes projects on customer segmentation, 
             credit fraud detection, recommender engines, and generative AI, each aiming to provide actionable insights and enhance strategic 
