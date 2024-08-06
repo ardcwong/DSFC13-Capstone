@@ -98,7 +98,7 @@ if "spreadsheet_DSLPC" not in st.session_state:
     st.session_state.spreadsheet_DSLPC = google_connection(client)
 
 def program_info_page_switch():
-    if st.button("Program Information",type="primary"):  
+    if st.button("Program Information",type="primary", use_container_width = True, help = "Go to Program Information page"):  
         return st.switch_page("Program_Information/pi_app.py")
 
 
