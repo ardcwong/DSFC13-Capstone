@@ -244,7 +244,7 @@ def suitability():
 suitability()
 
 def program_info_page_switch():
-    if st.button("Program Information"):  
+    if st.button("Program Information",type="primary"):  
         return st.switch_page("Program_Information/pi_app.py")
         
 if st.session_state.classification:
@@ -297,7 +297,7 @@ if st.session_state.classification:
             decision-making. Various payment options are available, including early bird discounts, installment plans, and study-now-pay-later 
             schemes. Interested individuals can apply online, explore past capstone projects, and consult with admissions advisors for 
             personalized guidance. Additional resources and details about the program, including tuition fees and refund policies, 
-            are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information Button".
+            are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information" button.
             """, unsafe_allow_html=True)
 
             program_info_page_switch()
