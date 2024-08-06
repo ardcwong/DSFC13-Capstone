@@ -214,18 +214,16 @@ def suitability():
             # Overall Recommendation:
             # """
             prompt = f"""
-            Based on my responses to the questions listed below, please evaluate whether the responses are relevant to the questions asked. If a response is irrelevant or random, note that it cannot be used for meaningful classification.
+            Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
             
             Questions and Responses:
             {questions_responses}
             
-            For each learning pathway, provide a brief justification for your classification, focusing on the relevance and quality of the responses:
+            Suitabiliity:
             1. Bootcamp: 
             2. Self-Learning:
             3. Master's Program:
-            
-            If any responses are found to be irrelevant, indicate "Cannot Classify" for that pathway and provide an explanation.
-            
+                                
             Finally, provide an overall recommendation on the most suitable learning pathway for me, considering only the relevant and meaningful responses:
             Overall Recommendation:
             """
@@ -237,7 +235,7 @@ def suitability():
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                    	{"role": "system", "content": f"You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and in recommending the most suitable learning path. Check first if t"},
+                    	{"role": "system", "content": f"You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and in recommending the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked."},
                         {"role": "user", "content": prompt}
                     ]
                     #temperature = 0.7
