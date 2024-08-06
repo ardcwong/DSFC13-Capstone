@@ -351,6 +351,8 @@ if st.session_state.BeginAssessment == True:
     with st.container(height=450, border=None):
         s1, s2, s3 = st.columns([1,8,1])
         with s2:
+            st.markdown("")
+            st.markdown("")
             st.markdown(f"<h2 style='text-align: center;'>Start Your Journey</h2>", unsafe_allow_html=True)
             st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Simply click "Begin Assessment" </b></i><i>
             and follow the prompts to receive your personalized learning pathway recommendation. Empower your data science career with the right guidance tailored to your needs!.</h5>""", unsafe_allow_html=True)
