@@ -176,14 +176,14 @@ def suitability():
             
             """
 # You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
-            # Before you classify suitability and recommend the most suitable learning path, check first if the responses is related to the questions being asked.
+            # Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
             try:
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                        {"role": "system", "content": "You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and recommends the most suitable learning path. Before you can classify and recommend the most suitable learning path, check if most responses are related to the questions being asked."},
+                    	{"role": "system", "content": f"You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and recommends the most suitable learning path. Before you can classify and recommend the most suitable learning path, check if most responses are related to the questions being asked.{questions_responses}"},
                         {"role": "user", "content": prompt}
-                    ],
+                    ]
                     #temperature = 0.7
                 )
                 classification = response.choices[0].message.content.strip()
