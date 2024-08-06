@@ -218,9 +218,9 @@ def suitability():
             Classify and explain my suitability for the following data science learning pathway: Eskwelabs' bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
            
             
-            1. Eskwelabs Bootcamp: Suitability and Explanation
-            2. Self-Learning: Suitability and Explanation
-            3. Master's Program: Suitability and Explanation
+            *1. Eskwelabs Bootcamp:* Suitability and Explanation
+            *2. Self-Learning:* Suitability and Explanation
+            *3. Master's Program:* Suitability and Explanation
 
             
             Overall Recommendation:
