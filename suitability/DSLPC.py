@@ -234,7 +234,7 @@ def suitability():
                     model="gpt-3.5-turbo",
                     messages=[
                     	{"role": "system", "content": f"You are a classifier bot designed to determine the suitability of each learning pathway to the user and to determine most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify them into one of the following categories: bootcamp, self-learning, or a master's degree."},
-                        {"role": "user", "content": questions_responses}
+                        {"role": "user", "content": questions_responses},
                         {"role": "assistant", "content": prompt}
                     ]
                     #temperature = 0.7 You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and in recommending the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
