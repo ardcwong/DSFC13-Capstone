@@ -7,6 +7,11 @@ import base64
 import json
 from datetime import datetime
 import pytz
+import nltk
+from nltk.corpus import wordnet as wn
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+
 
 # Define the timezone for the Philippines
 philippines_timezone = pytz.timezone('Asia/Manila')
@@ -17,6 +22,17 @@ philippines_timezone = pytz.timezone('Asia/Manila')
 api_key = st.secrets["api"]['api_key']
 openai.api_key = api_key
 credentials = st.secrets["gcp_service_account"]
+
+if "stop" not in st.session_state:
+    st.session_state.stop = True
+    nltk.download('stopwords')
+
+def remove_stopwords(response):
+    stop_words = set(stopwords.words('english'))
+    word_tokens = word_tokenize(response)
+    filtered_response = [word for word in word_tokens if word.lower() not in stop_words]
+    return ' '.join(filtered_response)
+
 
 
 ########################################################
@@ -158,9 +174,16 @@ def suitability():
 
         # Function to get classification from OpenAI
         def get_classification():
+
+            # Apply the stopwords removal to the responses
+            # filtered_responses = [remove_stopwords(response) for response in st.session_state.responses]
+
             questions_responses = ""
             for i, question in enumerate(questions):
                 questions_responses += f"{i+1}. {question}\n - Responses: {st.session_state.responses[i]}\n"
+
+
+            
             # If my responses is not enough for you to classify me, ask the me to press the reset button, otherwise, please describe my suitability for each and recommend the most suitable one for me.
             # Inform me that in case I want to change any of my responses only, I can press the reset button.
             # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
@@ -176,18 +199,34 @@ def suitability():
             
             # """
 
+            # prompt = f"""
+            # Based on my responses to the questions listed below, please evaluate whether the responses are relevant to the questions asked. Subsequently, classify my suitability for the following data science learning pathways: Bootcamp, Self-Learning, and a Master’s Program.
+            
+            # Questions and Responses:
+            # {questions_responses}
+            
+            # Suitability:
+            # 1. Bootcamp: 
+            # 2. Self-Learning:
+            # 3. Master's Program:
+            
+            # Finally, provide an overall recommendation on the most suitable learning pathway for me, considering my responses:
+            # Overall Recommendation:
+            # """
             prompt = f"""
-            Based on my responses to the questions listed below, please evaluate whether the responses are relevant to the questions asked. Subsequently, classify my suitability for the following data science learning pathways: Bootcamp, Self-Learning, and a Master’s Program.
+            Based on my responses to the questions listed below, please evaluate whether the responses are relevant to the questions asked. If a response is irrelevant or random, note that it cannot be used for meaningful classification.
             
             Questions and Responses:
             {questions_responses}
             
-            For each pathway, provide a brief justification for your classification:
+            For each learning pathway, provide a brief justification for your classification, focusing on the relevance and quality of the responses:
             1. Bootcamp: 
             2. Self-Learning:
             3. Master's Program:
             
-            Finally, provide an overall recommendation on the most suitable learning pathway for me, considering my responses:
+            If any responses are found to be irrelevant, indicate "Cannot Classify" for that pathway and provide an explanation.
+            
+            Finally, provide an overall recommendation on the most suitable learning pathway for me, considering only the relevant and meaningful responses:
             Overall Recommendation:
             """
 
