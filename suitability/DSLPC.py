@@ -165,19 +165,19 @@ def suitability():
             # Inform me that in case I want to change any of my responses only, I can press the reset button.
             # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
             
-            prompt = f"""
-            Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
-            Suitability:
-                1. Bootcamp: 
-                2. Self-Learning:
-                3. Master's Program:
+            # prompt = f"""
+            # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
+            # Suitability:
+            #     1. Bootcamp: 
+            #     2. Self-Learning:
+            #     3. Master's Program:
             
-            Overall Recommendation: 
+            # Overall Recommendation: 
             
-            """
+            # """
 
             prompt = f"""
-            Based on my responses to the questions listed below, please classify my suitability for the following data science learning pathways: Bootcamp, Self-Learning, and a Master’s Program. 
+            Based on my responses to the questions listed below, please identify if Responses is related to question being asked, and classify my suitability for the following data science learning pathways: Bootcamp, Self-Learning, and a Master’s Program. 
             
             Responses:
             {questions_responses}
@@ -196,7 +196,7 @@ def suitability():
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
-                    	{"role": "system", "content": f"You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), in recommending the most suitable learning path, and in identifying if the response is related to the question. Check first if most responses are related to the questions, before you can classify and recommend the most suitable learning path."},
+                    	{"role": "system", "content": f"You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and in recommending the most suitable learning path."},
                         {"role": "user", "content": prompt}
                     ]
                     #temperature = 0.7
