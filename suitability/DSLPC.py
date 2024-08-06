@@ -124,10 +124,11 @@ def suitability():
                 # Display the entire chat history with user responses on the right
                 for role, message in st.session_state.chat_history:
                     st.chat_message(role).write(message)
-    
+       
+        with tab1:
             st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
             # st.write(st.session_state.chat_history)
-        with tab1:
+        
             if 'feedback_up' not in st.session_state:
                 st.session_state.feedback_up = []
             if 'feedback_down' not in st.session_state:
