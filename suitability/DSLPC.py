@@ -123,40 +123,7 @@ def suitability():
         for role, message in st.session_state.chat_history:
             st.chat_message(role).write(message)
         
-        if st.session_state.classification:
-            if 'feedback_up' not in st.session_state:
-                st.session_state.feedback_up = []
-            if 'feedback_down' not in st.session_state:
-                st.session_state.feedback_down = []
-
-            
-            if st.session_state.feedback_up == 1:
-                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>You selected 👍🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-
-            elif st.session_state.feedback_up == 0:
-                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>You selected 👎🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-            else:
-                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your responses, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
-                f1,f2,f3,f4 = st.columns([4,1,1,4])
-                
-            
-            
-                if f2.button("👍🏻", use_container_width = True, help = "This response helpful"):
-                    feedback_score = 1
-                    sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-                    st.session_state.feedback_up = feedback_score
-                    st.rerun() 
-                elif f3.button("👎🏻", use_container_width = True, help = "This response unhelpful"):
-                    feedback_score = 0
-                    sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-                    st.session_state.feedback_down = feedback_score
-                    st.rerun() 
-                st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+       
     with st.container():
         # Function to display the current question and collect user response
         def display_question():
@@ -257,22 +224,9 @@ def suitability():
                     st.rerun()
 
    
-             
-    # Reset button
+
     col1, col2 = st.columns([10, 2])
-    # with col1:
-    #     if st.session_state.classification:
-    #         st.info("Could you please give a thumbs up if you find these recommendations specific and tailored to your needs, or a thumbs down if you do not?")
-    #         sentiment_mapping = [0,1]
-    #         feedback = st.feedback("thumbs")    
-    #         if feedback is not None:
-    #             st.markdown(type(feedback))
-    #             feedback_score = sentiment_mapping[feedback]
-    #             st.markdown(f"You selected: {type(sentiment_mapping[feedback])}")
-    #             sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
-    #             st.success("Thank you for your feedback!")
-    #             st.session_state.classification = []
-    #             st.rerun()   
+
         
     with col2:
         
@@ -285,111 +239,40 @@ def suitability():
             st.session_state.feedback_down = []
             st.rerun()   
 
-    # st.dataframe(st.session_state.chat_history)
+
 
 suitability()
-# df = pd.DataFrame(st.session_state.chat_history)
-# # st.write(st.session_state.chat_history[[1]])
-# st.write(pd.DataFrame(st.session_state.chat_history)[[1]])
-# st.write(df[[1]].T)
-# st.write(pd.DataFrame([st.session_state.chat_history]))
+ if st.session_state.classification:
+    if 'feedback_up' not in st.session_state:
+        st.session_state.feedback_up = []
+    if 'feedback_down' not in st.session_state:
+        st.session_state.feedback_down = []
 
-# if st.session_state.classification:
-#     feedback = st.feedback("thumbs")        
-#     if feedback:
-#         sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback, st.session_state.chat_history)
-#         st.success("Thank you for your feedback!")
-#         st.session_state.responses = []
-#         st.session_state.question_index = 0
-#         st.session_state.chat_history = []
-#         st.session_state.classification = []
-#         st.write(pd.DataFrame(sheet.get_all_records()))
-#         st.rerun() 
+    
+    if st.session_state.feedback_up == 1:
+        st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+        st.markdown("<h6 style='text-align: center;'>You selected 👍🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
+        st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
 
-
-
-
-
-
-# ##############################################
-# @st.fragment
-# def suitability():    
-#     with st.container(height=500):
-#             # Initialize or retrieve session state
-#         if 'responses' not in st.session_state:
-#             st.session_state.responses = []
-#         if 'question_index' not in st.session_state:
-#             st.session_state.question_index = 0
-#         if 'chat_history' not in st.session_state:
-#             st.session_state.chat_history = []
+    elif st.session_state.feedback_up == 0:
+        st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+        st.markdown("<h6 style='text-align: center;'>You selected 👎🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
+        st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+    else:
+        st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+        st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your responses, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
+        f1,f2,f3,f4 = st.columns([4,1,1,4])
         
-#         # # Display the entire chat history
-#         # for role, message in st.session_state.chat_history:
-#         #     st.chat_message(role).write(message)
-#         # Display the entire chat history with user responses on the right
-#         for role, message in st.session_state.chat_history:
-#             st.chat_message(role).write(message)
-                
-#     with st.container(border = False):
-#         # Function to display the current question and collect user response
-#         def display_question():
-#             if st.session_state.question_index < len(questions):
-#                 current_question = questions[st.session_state.question_index]
-#                 # st.chat_message("AI").write(current_question)
-#                 st.session_state.chat_history.append(("AI", current_question))
-
-                
-#                 user_response = st.chat_input("Your response:")
-#                 # st.rerun(scope="fragment")
-#                 if user_response:
-#                     st.session_state.responses.append(user_response)
-                    
-#                     st.session_state.chat_history.append(("User", user_response))
-#                     st.session_state.question_index += 1
-#                     st.rerun(scope="fragment")
     
-#     # Function to get classification from OpenAI
-#     def get_classification():
-#         questions_responses = ""
-#         for i, question in enumerate(questions):
-#             questions_responses += f"{i+1}. {question}\n   - Response: {st.session_state.responses[i]}\n"
     
-#         prompt = f"""
-#         Classify the following person’s suitability for a data science bootcamp, self-learning, or a master's program based on their responses to the questions:
-#         {questions_responses}
-#         Suitability:
-#         """
-    
-#         try:
-#             response = openai.chat.completions.create(
-#                 model="gpt-3.5-turbo",
-#                 messages=[
-#                     {"role": "system", "content": "You are a helpful assistant that classifies education suitability."},
-#                     {"role": "user", "content": prompt}
-#                 ]
-#             )
-#             classification = response.choices[0].message.content.strip()
-#             return classification
-#         except Exception as e:
-#             st.error(f"Error: {e}")
-#             return None
-    
-#     # Main logic
-#     if st.session_state.question_index < len(questions):
-#         display_question()
-#     else:
-#         if st.session_state.responses and st.session_state.question_index == len(questions):
-#             classification = get_classification()
-#             if classification:
-#                 st.session_state.chat_history.append(("Suitability", classification))
-#                 st.session_state.question_index += 1
-#                 st.rerun(scope="fragment")
-    
-#             # with st.container(border=True):
-#         #     suitability()    
-
-# ############################
-# # RUN SUITABILITY
-# ############################
-# suitability()
-
+        if f2.button("👍🏻", use_container_width = True, help = "This response helpful"):
+            feedback_score = 1
+            sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
+            st.session_state.feedback_up = feedback_score
+            st.rerun() 
+        elif f3.button("👎🏻", use_container_width = True, help = "This response unhelpful"):
+            feedback_score = 0
+            sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
+            st.session_state.feedback_down = feedback_score
+            st.rerun() 
+        st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
