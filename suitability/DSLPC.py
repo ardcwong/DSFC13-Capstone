@@ -348,7 +348,7 @@ with col_main2:
         :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
 
 if st.session_state.BeginAssessment == True:    
-    with st.container(height=450, border=None):
+    with st.container(border=None):
         s1, s2, s3 = st.columns([1,8,1])
         with s2:
             st.markdown("")
