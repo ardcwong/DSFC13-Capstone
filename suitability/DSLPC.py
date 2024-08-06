@@ -242,11 +242,15 @@ def suitability():
 
 
 suitability()
+
+def program_info_page_switch():
+    if st.button = ("Program Information"):  
+        return st.switch_page("Program_Information/pi_app.py")
 if st.session_state.classification:
     # Display the entire chat history with user responses on the right
     # for role, message in st.session_state.chat_history:
     st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
-    st.write(st.session_state.chat_history)
+    # st.write(st.session_state.chat_history)
 
     
     if 'feedback_up' not in st.session_state:
@@ -282,3 +286,4 @@ if st.session_state.classification:
             st.session_state.feedback_down = feedback_score
             st.rerun() 
         st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+        
