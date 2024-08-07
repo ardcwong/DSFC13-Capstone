@@ -94,7 +94,9 @@ def retrieve_documents(query, collection):
 
     return [{'text': doc, 'metadata': meta} for doc, meta in zip(docs, metadatas)]
 
-
+#####
+# add rules when chat memory is blank then dont include it in the prompt
+####
 def generate_chatbot_response(context, query, metadata, chat_memory):
     history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_memory])
     metadata_info = "\n".join([f"File: {meta['description']}" for meta in metadata])
@@ -137,8 +139,13 @@ def show_pi_chat_memory():
         content = msg['content']
         st.chat_message(role).write(content)
 
-
-
+st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
+st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
+            <br><br>
+            Curious about the Eskwelabs Data Science Fellowship (DSF) program? Whether you’re thinking about applying or simply want to know more, 
+            this intelligent bot is your go-to resource for all things related to the DSF program. Explore detailed insights, get your questions answered, 
+            and find out how Eskwelabs can help you advance your data science career.</h5>""", unsafe_allow_html=True)
+                        
 
 user_query = st.chat_input("Ask")
 if user_query:
