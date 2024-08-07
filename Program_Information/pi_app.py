@@ -151,7 +151,11 @@ if st.button("Clear history"):
 
 st.session_state.pi_chat_history.show_history_streamlit()
 
-x =st.text_input("type a function")
+
+y = st.text_input("function")
+code = f"'''{y}'''"
+x = st.code(code, language="python")
+
 st.help(x)
 
 
