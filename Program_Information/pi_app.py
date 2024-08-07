@@ -103,12 +103,12 @@ def generate_chatbot_response(context, query, metadata, chat_history):
     )
     
     return response.choices[0].message.content.strip()
-def chatbot_response(user_query, collection, chat_history):
+def chatbot_response(user_query, collection, chat_history, chat_memory):
     chat_history.add_message("user", user_query)
     
     retrieved_docs = retrieve_documents(user_query, collection)
     context = ' '.join([doc['text'] for doc in retrieved_docs])
-    response = generate_chatbot_response(context, user_query, [doc['metadata'] for doc in retrieved_docs], chat_history.get_history())
+    response = generate_chatbot_response(context, user_query, [doc['metadata'] for doc in retrieved_docs], chat_memory.get_history())
     
     chat_history.add_message("assistant", response)
     return response
@@ -127,7 +127,7 @@ def update_chat_memory():
 
 user_query = st.chat_input("Ask")
 if user_query:
-    response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history)
+    response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
     st.write(response)
     update_chat_memory()  # Update chat memory with the latest messages
 
