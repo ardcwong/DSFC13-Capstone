@@ -157,6 +157,23 @@ st.markdown("""
     <div class="fixed-container">
         <h1 style='text-align: center;'><br>Eskwelabs Data Science Fellowship Information Bot</h1>
     </div>
+        .button-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .button-container button {
+        margin: 0;
+    }
+    </style>
+    <div class="fixed-container">
+        <h2>Navigation</h2>
+        <div class="button-container">
+            <button onclick="window.location.href = '?page=home'">Home</button>
+            <button onclick="window.location.href = '?page=about'">About</button>
+            <button onclick="window.location.href = '?page=contact'">Contact</button>
+        </div>
+    </div>
 """, unsafe_allow_html=True)
 
 # st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
