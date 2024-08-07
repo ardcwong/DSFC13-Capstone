@@ -160,11 +160,10 @@ st.markdown("""
 
 # st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
 st.divider()
-st.markdown("""<h6 style='text-align: left;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
+st.markdown("""<h5 style='text-align: left;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
             <br><br>
-            Curious about the Eskwelabs Data Science Fellowship (DSF) program? Whether you’re thinking about applying or simply want to know more, 
-            this intelligent bot is your go-to resource for all things related to the DSF program. Explore detailed insights, get your questions answered, 
-            and find out how Eskwelabs can help you advance your data science career.</h6>""", unsafe_allow_html=True)
+            This intelligent bot is designed to help you understand all aspects of the Eskwelabs Data Science Fellowship (DSF) program.
+            Whether you're considering applying or just curious about what the program offers, this bot provides detailed information to guide you.</h5>""", unsafe_allow_html=True)
 st.divider()                        
 
 user_query = st.chat_input("Ask")
