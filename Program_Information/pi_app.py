@@ -59,6 +59,8 @@ class ChatHistory:
             content = msg['content']
             st.write(f"{role.capitalize()}: {content}")
 
+    
+
 
 
 @st.cache_resource
@@ -128,5 +130,5 @@ if st.button("Clear history"):
     st.session_state.pi_chat_history.clear_history()
 
 st.session_state.pi_chat_history.show_history()
-st.write(st.session_state.pi_chat_history.history)
+st.write(st.session_state.pi_chat_history.history[-10:])
 
