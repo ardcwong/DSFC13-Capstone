@@ -121,7 +121,7 @@ if 'pi_chat_history' not in st.session_state:
 if 'pi_chat_history' not in st.session_state:
     st.session_state.pi_full_chat_history = []
 
-user_query = st.text_input("Ask")
+user_query = chat.chat_input("Ask")
 if user_query:
     response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history)
     st.write(response)
