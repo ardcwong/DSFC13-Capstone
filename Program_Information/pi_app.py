@@ -59,6 +59,9 @@ class ChatHistory:
             content = msg['content']
             st.write(f"{role.capitalize()}: {content}")
 
+    def get_latest_messages(self, count=10):
+        return self.history[-count:]
+
     
 
 
@@ -117,23 +120,27 @@ def chatbot_response(user_query, collection, chat_history):
 if 'pi_chat_history' not in st.session_state:
     st.session_state.pi_chat_history = ChatHistory()
 
-# Initialize chat history in session state
-if 'pi_chat_history' not in st.session_state:
-    st.session_state.pi_full_chat_history = []
+def update_chat_memory():
+    st.session_state.pi_chat_memory = st.session_state.chat_history.get_latest_messages()
 
-user_query = st.chat_input("Ask")
+user_query = st.text_input("Ask")
 if user_query:
     response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history)
     st.write(response)
+    update_chat_memory()  # Update chat memory with the latest messages
 
 if st.button("Clear history"):
     st.session_state.pi_chat_history.clear_history()
+    st.session_state.pi_chat_memory = []  # Clear chat memory as well
 
-st.session_state.pi_chat_history.show_history()
+
+
 aa, bb = st.columns([1,1])
 with aa:
-    
-    st.write(st.session_state.pi_chat_history.history[-10:])
+    # Display chat history
+    st.session_state.pi_chat_history.show_history()
 
 with bb:
-    st.write(st.session_state.pi_chat_history.history)
+    st.session_state.pi_chat_memory.show_history()
+
+
