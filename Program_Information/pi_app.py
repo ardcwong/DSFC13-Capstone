@@ -111,10 +111,13 @@ def chatbot_response(user_query, collection, chat_history):
     return response
 
 
-
 # Initialize chat history in session state
 if 'pi_chat_history' not in st.session_state:
     st.session_state.pi_chat_history = ChatHistory()
+
+# Initialize chat history in session state
+if 'pi_chat_history' not in st.session_state:
+    st.session_state.pi_full_chat_history = []
 
 user_query = st.text_input("Ask")
 if user_query:
@@ -125,4 +128,5 @@ if st.button("Clear history"):
     st.session_state.pi_chat_history.clear_history()
 
 st.session_state.pi_chat_history.show_history()
+st.write("st.session_state.pi_chat_history")
 
