@@ -120,8 +120,8 @@ if user_query:
     response = chatbot_response(user_query, vector_store, st.session_state.chat_history)
     st.write(response)
 
-if st.button("Clear history"):
-    st.session_state.chat_history.clear_history()
+# if st.button("Clear history"):
+#     st.session_state.chat_history.clear_history()
 
 st.session_state.chat_history.show_history()
 
