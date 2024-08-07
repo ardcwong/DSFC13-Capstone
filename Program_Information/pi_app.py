@@ -157,7 +157,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-if st.button("Clear history", type = primary):
+if st.button("Clear history", type = "primary"):
     st.session_state.pi_chat_history.clear_history()
     st.session_state.pi_chat_memory = []  # Clear chat memory as well
 
