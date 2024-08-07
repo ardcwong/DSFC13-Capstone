@@ -139,6 +139,28 @@ def show_pi_chat_memory():
         content = msg['content']
         st.chat_message(role).write(content)
 
+# Inject CSS to create a fixed container
+st.markdown("""
+    <style>
+    .fixed-container {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 1000;
+        padding: 10px;
+        box-shadow: 0 4px 2px -2px gray;
+    }
+    .fixed-container h2 {
+        margin: 0;
+    }
+    </style>
+    <div class="fixed-container">
+        <h2>Your Fixed Header</h2>
+        <p>This text will stay on top when you scroll.</p>
+    </div>
+""", unsafe_allow_html=True)
+
 st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
 st.divider()
 st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
