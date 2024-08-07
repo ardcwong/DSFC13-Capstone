@@ -63,15 +63,7 @@ class ChatHistory:
 
 @st.cache_resource
 def load_collection():
-    # CHROMA_DATA_PATH = 'FDA/fda_drugs_v6'
-    # COLLECTION_NAME = "fda_drugs_embeddings_v6"
-    # client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
-    # openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
-    # collection = client_chromadb.get_or_create_collection(
-    # name=COLLECTION_NAME,
-    # embedding_function=openai_ef,
-    # metadata={"hnsw:space": "cosine"}
-    # )
+
     CHROMA_DATA_PATH = "persistent_directory_4"
     try:
         vector_store = Chroma(persist_directory=CHROMA_DATA_PATH, embedding_function  = OpenAIEmbeddings(api_key=openai.api_key))
@@ -118,20 +110,20 @@ def chatbot_response(user_query, collection, chat_history):
     chat_history.add_message("assistant", response)
     return response
 
-# # Initialize chat history
-chat_history = ChatHistory()
+
+# Initialize chat history in session state
+if 'chat_history' not in st.session_state:
+    st.session_state.chat_history = ChatHistory()
 
 user_query = st.text_input("Ask")
 if user_query:
-    response = chatbot_response(user_query, vector_store, chat_history)
+    response = chatbot_response(user_query, vector_store, st.session_state.chat_history)
     st.write(response)
 
 if st.button("Clear history"):
-    chat_history.clear_history()
+    st.session_state.chat_history.clear_history()
 
-chat_history.show_history()
-
-
+st.session_state.chat_history.show_history()
 
 
 
