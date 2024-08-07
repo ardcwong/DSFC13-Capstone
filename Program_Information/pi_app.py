@@ -139,11 +139,19 @@ def show_pi_chat_memory():
 
 import streamlit.components.v1 as components
 
-# URL of the content to embed
-url = "https://www.eskwelabs.com/"
+# # URL of the content to embed
+# url = "https://www.eskwelabs.com/"
 
-# Embed the URL in an iframe
-components.iframe(url, width=800, height=600, scrolling=True)
+# # Embed the URL in an iframe
+# components.iframe(url, width=800, height=600, scrolling=True)
+
+# Custom HTML content
+html_content = """
+<iframe src="https://www.eskwelabs.com/" width="800" height="600"></iframe>
+"""
+
+# Embed custom HTML
+components.html(html_content, height=600)
 
 
 user_query = st.chat_input("Ask")
