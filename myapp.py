@@ -305,7 +305,7 @@ DSF = st.Page("DSF/app.py", title = "DSF Program Information", icon = "📗")
 
 suitability = st.Page(
     "suitability/DSLPC.py",
-    title="Learning Path Suitability",
+    title="Start Your Journey",
     icon="➕",
 )
 ProgramInformation = st.Page(
@@ -314,7 +314,7 @@ ProgramInformation = st.Page(
 
 
 
-main_apps = [home_page, ProgramInformation, suitability]
+main_apps = [home_page, suitability, ProgramInformation]
 log_in = [login_page]
 log_out = [logout_page]
 data_apps = []
