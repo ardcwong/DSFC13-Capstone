@@ -160,7 +160,7 @@ st.markdown("""
 
 # st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
 st.divider()
-st.markdown("""<h5 style='text-align: left;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
+st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
             <br><br>
             This intelligent bot is designed to help you understand all aspects of the Eskwelabs Data Science Fellowship (DSF) program.
             Whether you're considering applying or just curious about what the program offers, this bot provides detailed information to guide you.</h5>""", unsafe_allow_html=True)
