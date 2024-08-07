@@ -63,7 +63,7 @@ class ChatHistory:
         for msg in self.history:
             role = msg['role']
             content = msg['content']
-            st.chat_message(role).write_stream(content)
+            st.chat_message(role).write(content)
                
     def get_latest_messages(self, count=4):
         return self.history[-count:]
