@@ -149,26 +149,11 @@ st.markdown("""
         background-color: white;
         z-index: 1000;
         padding: 10px;
-        text-align: center;
-    }
-    .button-container {
-        display: inline-flex;
-        gap: 10px;
-        align-items: center;
-        justify-content: center;
-    }
-    .button-container button {
-        margin: 0;
     }
     </style>
     
     <div class="fixed-container">
         <h1>Eskwelabs Data Science Fellowship Information Bot</h1>
-        <div class="button-container">
-            <button onclick="window.location.href = '?page=dsf'">Home</button>
-            <button onclick="window.location.href = '?page=about'">About</button>
-            <button onclick="window.location.href = '?page=contact'">Contact</button>
-        </div>
     </div>
 """, unsafe_allow_html=True)
 
