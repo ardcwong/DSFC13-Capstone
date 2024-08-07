@@ -59,7 +59,7 @@ class ChatHistory:
             content = msg['content']
             st.write(f"{role.capitalize()}: {content}")
 
-    def get_latest_messages(self, count=10):
+    def get_latest_messages(self, count=4):
         return self.history[-count:]
 
 
@@ -123,9 +123,9 @@ if 'pi_chat_memory' not in st.session_state:
     st.session_state.pi_chat_memory = []
 
 def update_chat_memory():
-    st.session_state.pi_chat_memory = st.session_state.pi_chat_history.get_latest_messages(count=4)
+    st.session_state.pi_chat_memory = st.session_state.pi_chat_history.get_latest_messages()
 
-user_query = st.text_input("Ask")
+user_query = st.chat_input("Ask")
 if user_query:
     response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history)
     st.write(response)
