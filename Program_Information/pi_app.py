@@ -143,7 +143,7 @@ with aa:
     st.session_state.pi_chat_history.show_history()
 
 with bb:
-    for msg in st.session_state.chat_memory:
+    for msg in st.session_state.pi_chat_memory:
         role = msg['role']
         content = msg['content']
         st.write(f"{role.capitalize()}: {content}")
