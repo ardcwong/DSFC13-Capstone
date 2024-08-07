@@ -135,8 +135,9 @@ if st.button("Clear history"):
     st.session_state.pi_chat_history.clear_history()
     st.session_state.pi_chat_memory = []  # Clear chat memory as well
 
-
-st.write(st.session_state.pi_chat_history)
+for role, message in st.session_state.pi_chat_history:
+    st.chat_message(role).write(message)
+# st.write(st.session_state.pi_chat_history)
 aa, bb = st.columns([1,1])
 with aa:
     # Display chat history
