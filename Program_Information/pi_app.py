@@ -153,11 +153,7 @@ st.markdown("""
     .fixed-container h2 {
         margin: 0;
     }
-    </style>
-    <div class="fixed-container">
-        <h1 style='text-align: center;'><br>Eskwelabs Data Science Fellowship Information Bot</h1>
-    </div>
-        .button-container {
+    .button-container {
         display: flex;
         gap: 10px;
         align-items: center;
@@ -166,6 +162,7 @@ st.markdown("""
         margin: 0;
     }
     </style>
+    
     <div class="fixed-container">
         <h1 style='text-align: center;'><br>Eskwelabs Data Science Fellowship Information Bot</h1>
         <div class="button-container">
