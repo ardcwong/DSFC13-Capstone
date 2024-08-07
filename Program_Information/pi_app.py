@@ -120,6 +120,10 @@ def chatbot_response(user_query, collection, chat_history):
 if 'pi_chat_history' not in st.session_state:
     st.session_state.pi_chat_history = ChatHistory()
 
+# Initialize chat history in session state
+if 'pi_chat_memory' not in st.session_state:
+    st.session_state.pi_chat_memory = []
+
 def update_chat_memory():
     st.session_state.pi_chat_memory = st.session_state.chat_history.get_latest_messages()
 
