@@ -128,7 +128,10 @@ if user_query:
 
 if st.button("Clear history"):
     st.session_state.pi_chat_history.clear_history()
+aa, bb = st.columns([1,1])
+with aa:
+    st.session_state.pi_chat_history.show_history()
+    st.write(st.session_state.pi_chat_history.history[-10:])
 
-st.session_state.pi_chat_history.show_history()
-st.write(st.session_state.pi_chat_history.history[-10:])
-st.write(st.session_state.pi_chat_history.history)
+with bb:
+    st.write(st.session_state.pi_chat_history.history)
