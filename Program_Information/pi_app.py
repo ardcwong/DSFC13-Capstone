@@ -149,19 +149,17 @@ st.markdown("""
         background-color: white;
         z-index: 1000;
         padding: 10px;
-
     }
     .fixed-container h2 {
         margin: 0;
     }
     </style>
     <div class="fixed-container">
-        <h2>Your Fixed Header</h2>
-        <p>This text will stay on top when you scroll.</p>
+        <h1 style='text-align: center;'><br>Eskwelabs Data Science Fellowship Information Bot</h1>
     </div>
 """, unsafe_allow_html=True)
 
-st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
+# st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
 st.divider()
 st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
             <br><br>
