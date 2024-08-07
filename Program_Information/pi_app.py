@@ -131,7 +131,7 @@ if 'pi_chat_memory' not in st.session_state:
 def update_chat_memory():
     st.session_state.pi_chat_memory = st.session_state.pi_chat_history.get_latest_messages()
 
-def show_pi_chat_memory:
+def show_pi_chat_memory():
     for msg in st.session_state.pi_chat_memory:
         role = msg['role']
         content = msg['content']
