@@ -123,7 +123,7 @@ if 'pi_chat_memory' not in st.session_state:
     st.session_state.pi_chat_memory = []
 
 def update_chat_memory():
-    st.session_state.pi_chat_memory = st.session_state.pi_chat_history.get_latest_messages()
+    st.session_state.pi_chat_memory = st.session_state.pi_chat_history.get_latest_messages(count=4)
 
 user_query = st.text_input("Ask")
 if user_query:
