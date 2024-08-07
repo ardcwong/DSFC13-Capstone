@@ -59,6 +59,12 @@ class ChatHistory:
             content = msg['content']
             st.write(f"{role.capitalize()}: {content}")
 
+    def show_history_streamlit(self):
+        for msg in self.history:
+            role = msg['role']
+            content = msg['content']
+            st.chat_message(role).write(content)
+               
     def get_latest_messages(self, count=4):
         return self.history[-count:]
 
@@ -135,8 +141,10 @@ if st.button("Clear history"):
     st.session_state.pi_chat_history.clear_history()
     st.session_state.pi_chat_memory = []  # Clear chat memory as well
 
-for role, message in st.session_state.pi_chat_history.history:
-    st.chat_message(role).write(message)
+st.session_state.pi_chat_history.show_history_streamlit()
+
+
+
 # st.write(st.session_state.pi_chat_history)
 st.write(st.session_state.pi_chat_history.history)
 aa, bb = st.columns([1,1])
