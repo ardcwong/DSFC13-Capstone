@@ -62,8 +62,6 @@ class ChatHistory:
     def get_latest_messages(self, count=10):
         return self.history[-count:]
 
-    
-
 
 
 @st.cache_resource
@@ -144,7 +142,10 @@ with aa:
     # Display chat history
     st.session_state.pi_chat_history.show_history()
 
-# with bb:
-    # st.session_state.pi_chat_memory.show_history()
+with bb:
+    for msg in st.session_state.chat_memory:
+        role = msg['role']
+        content = msg['content']
+        st.write(f"{role.capitalize()}: {content}")
 
 
