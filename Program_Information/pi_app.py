@@ -138,13 +138,13 @@ if st.button("Clear history"):
     st.session_state.pi_chat_memory = []  # Clear chat memory as well
 
 
-
+st.write(st.session_state.pi_chat_history)
 aa, bb = st.columns([1,1])
 with aa:
     # Display chat history
     st.session_state.pi_chat_history.show_history()
 
 with bb:
-    st.session_state.pi_chat_memory.show_history()
+    # st.session_state.pi_chat_memory.show_history()
 
 
