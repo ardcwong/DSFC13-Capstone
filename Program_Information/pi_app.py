@@ -156,7 +156,7 @@ if user_query:
 if st.button("Clear history"):
     st.session_state.pi_chat_history.clear_history()
     st.session_state.pi_chat_memory = []  # Clear chat memory as well
-with st.container:
+with st.container():
     st.session_state.pi_chat_history.show_history_streamlit()
 
 
