@@ -157,6 +157,9 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
+if st.button("Clear history", type = primary):
+    st.session_state.pi_chat_history.clear_history()
+    st.session_state.pi_chat_memory = []  # Clear chat memory as well
 
 # st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
 st.divider()
@@ -171,9 +174,7 @@ if user_query:
     response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
     update_chat_memory()  # Update chat memory with the latest messages
 
-if st.button("Clear history"):
-    st.session_state.pi_chat_history.clear_history()
-    st.session_state.pi_chat_memory = []  # Clear chat memory as well
+
 with st.container():
     st.session_state.pi_chat_history.show_history_streamlit()
 
