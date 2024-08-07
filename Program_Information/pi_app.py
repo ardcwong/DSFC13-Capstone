@@ -134,7 +134,6 @@ def update_chat_memory():
 user_query = st.chat_input("Ask")
 if user_query:
     response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
-    st.write(response)
     update_chat_memory()  # Update chat memory with the latest messages
 
 if st.button("Clear history"):
@@ -146,16 +145,16 @@ st.session_state.pi_chat_history.show_history_streamlit()
 
 
 # st.write(st.session_state.pi_chat_history)
-st.write(st.session_state.pi_chat_history.history)
-aa, bb = st.columns([1,1])
-with aa:
-    # Display chat history
-    st.session_state.pi_chat_history.show_history()
+# st.write(st.session_state.pi_chat_history.history)
+# aa, bb = st.columns([1,1])
+# with aa:
+#     # Display chat history
+#     st.session_state.pi_chat_history.show_history()
 
-with bb:
-    for msg in st.session_state.pi_chat_memory:
-        role = msg['role']
-        content = msg['content']
-        st.write(f"{role.capitalize()}: {content}")
+# with bb:
+#     for msg in st.session_state.pi_chat_memory:
+#         role = msg['role']
+#         content = msg['content']
+#         st.write(f"{role.capitalize()}: {content}")
 
 
