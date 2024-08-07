@@ -148,7 +148,7 @@ st.markdown("""
         width: 100%;
         background-color: white;
         z-index: 1000;
-        padding: 10px;
+
     }
     </style>
     
