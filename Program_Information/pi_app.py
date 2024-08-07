@@ -149,7 +149,7 @@ st.markdown("""
         background-color: white;
         z-index: 1000;
         padding: 10px;
-        box-shadow: 0 4px 2px -2px gray;
+
     }
     .fixed-container h2 {
         margin: 0;
