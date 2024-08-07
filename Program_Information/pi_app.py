@@ -89,8 +89,8 @@ def retrieve_documents(query, collection):
     return [{'text': doc, 'metadata': meta} for doc, meta in zip(docs, metadatas)]
 
 
-def generate_chatbot_response(context, query, metadata, chat_history):
-    history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_history])
+def generate_chatbot_response(context, query, metadata, chat_memory):
+    history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_memory])
     metadata_info = "\n".join([f"File: {meta['description']}" for meta in metadata])
     prompt = f"Based on the following conversation history:\n\n{history_text}\n\nAnd the following information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
     
@@ -108,7 +108,7 @@ def chatbot_response(user_query, collection, chat_history, chat_memory):
     
     retrieved_docs = retrieve_documents(user_query, collection)
     context = ' '.join([doc['text'] for doc in retrieved_docs])
-    response = generate_chatbot_response(context, user_query, [doc['metadata'] for doc in retrieved_docs], chat_memory.get_history())
+    response = generate_chatbot_response(context, user_query, [doc['metadata'] for doc in retrieved_docs], chat_memory)
     
     chat_history.add_message("assistant", response)
     return response
