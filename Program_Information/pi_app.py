@@ -140,12 +140,13 @@ def show_pi_chat_memory():
         st.chat_message(role).write(content)
 
 st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
+st.divider()
 st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
             <br><br>
             Curious about the Eskwelabs Data Science Fellowship (DSF) program? Whether you’re thinking about applying or simply want to know more, 
             this intelligent bot is your go-to resource for all things related to the DSF program. Explore detailed insights, get your questions answered, 
             and find out how Eskwelabs can help you advance your data science career.</h5>""", unsafe_allow_html=True)
-                        
+st.divider()                        
 
 user_query = st.chat_input("Ask")
 if user_query:
@@ -155,8 +156,8 @@ if user_query:
 if st.button("Clear history"):
     st.session_state.pi_chat_history.clear_history()
     st.session_state.pi_chat_memory = []  # Clear chat memory as well
-
-st.session_state.pi_chat_history.show_history_streamlit()
+with st.container:
+    st.session_state.pi_chat_history.show_history_streamlit()
 
 
 
