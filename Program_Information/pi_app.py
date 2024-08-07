@@ -154,9 +154,10 @@ st.session_state.pi_chat_history.show_history_streamlit()
 
 y = st.text_input("function")
 code = f"'''{y}'''"
-x = st.code(code, language="python")
-
-st.help(x)
+if code:
+    x = st.code(code, language="python")
+    if x:
+        st.help(x)
 
 
 
