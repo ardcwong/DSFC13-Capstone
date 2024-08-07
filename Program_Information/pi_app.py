@@ -128,5 +128,5 @@ if st.button("Clear history"):
     st.session_state.pi_chat_history.clear_history()
 
 st.session_state.pi_chat_history.show_history()
-st.write(st.session_state.pi_chat_history)
+st.write(st.session_state.pi_chat_history.history)
 
