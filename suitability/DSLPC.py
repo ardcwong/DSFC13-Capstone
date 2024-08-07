@@ -300,12 +300,32 @@ def suitability():
                         st.session_state.classification = classification
                         st.rerun()
     
-       
+###############################################      
+
+# FIXED HEADER
+
+###############################################       
+# Inject CSS to create a fixed container
+st.markdown("""
+    <style>
+    .fixed-container {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 1000;
+
+    }
+    </style>
+    
+    <div class="fixed-container">
+        <h1><br>Data Science Learning Path Classifier</h1>
+    </div>
+""", unsafe_allow_html=True)
 
 
 
-
-st.title("Data Science Learning Path Classifier")
+# st.title("Data Science Learning Path Classifier")
 # Streamlit app setup
 if 'BeginAssessment' not in st.session_state:
     st.session_state.BeginAssessment = True
