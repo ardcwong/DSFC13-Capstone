@@ -63,7 +63,7 @@ class ChatHistory:
         for msg in self.history:
             role = msg['role']
             content = msg['content']
-            st.chat_message(role).write(content)
+            st.chat_message(role).write_stream(content)
                
     def get_latest_messages(self, count=4):
         return self.history[-count:]
@@ -152,12 +152,6 @@ if st.button("Clear history"):
 st.session_state.pi_chat_history.show_history_streamlit()
 
 
-y = st.text_input("function")
-code = f"'''{y}'''"
-if code:
-    x = st.code(code, language="python")
-    if x:
-        st.help(x)
 
 
 
