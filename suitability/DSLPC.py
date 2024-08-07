@@ -166,7 +166,7 @@ def suitability():
             with col2:
                 with st.container():
                     st.markdown("<h6 style='text-align: center;color: #e76f51;'>Data Science Fellowship (DSF) Program by Eskwelabs</h6>", unsafe_allow_html=True)
-                    st.markdown("""<div style='text-align: center;'>This offers a comprehensive curriculum designed to equip 
+                    st.markdown("""<div style='text-align: center;'>This program offers a comprehensive curriculum designed to equip 
                     participants with practical skills through hands-on projects and sprints. The program includes projects on customer segmentation, 
                     credit fraud detection, recommender engines, and generative AI, each aiming to provide actionable insights and enhance strategic 
                     decision-making. Various payment options are available, including early bird discounts, installment plans, and study-now-pay-later 
