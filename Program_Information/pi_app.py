@@ -144,7 +144,7 @@ with aa:
     # Display chat history
     st.session_state.pi_chat_history.show_history()
 
-with bb:
+# with bb:
     # st.session_state.pi_chat_memory.show_history()
 
 
