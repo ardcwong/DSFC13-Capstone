@@ -156,7 +156,7 @@ st.markdown("""
         <h1><br>Eskwelabs Data Science Fellowship Information Bot</h1>
     </div>
 """, unsafe_allow_html=True)
-st.markdown("""<br><br>""", unsafe_allow_html=True)
+# st.markdown("""<br><br>""", unsafe_allow_html=True)
 if st.button("Clear history", type = "primary"):
     st.session_state.pi_chat_history.clear_history()
     st.session_state.pi_chat_memory = []  # Clear chat memory as well
