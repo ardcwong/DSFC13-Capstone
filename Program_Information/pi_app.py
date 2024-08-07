@@ -111,6 +111,7 @@ def chatbot_response(user_query, collection, chat_history):
     return response
 
 
+
 # Initialize chat history in session state
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = ChatHistory()
@@ -120,10 +121,8 @@ if user_query:
     response = chatbot_response(user_query, vector_store, st.session_state.chat_history)
     st.write(response)
 
-# if st.button("Clear history"):
-#     st.session_state.chat_history.clear_history()
+if st.button("Clear history"):
+    st.session_state.chat_history.clear_history()
 
 st.session_state.chat_history.show_history()
-
-
 
