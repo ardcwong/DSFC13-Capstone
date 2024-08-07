@@ -167,7 +167,7 @@ st.markdown("""
     }
     </style>
     <div class="fixed-container">
-        <h2>Navigation</h2>
+        <h1 style='text-align: center;'><br>Eskwelabs Data Science Fellowship Information Bot</h1>
         <div class="button-container">
             <button onclick="window.location.href = '?page=home'">Home</button>
             <button onclick="window.location.href = '?page=about'">About</button>
