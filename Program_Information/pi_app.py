@@ -153,7 +153,7 @@ st.markdown("""
     </style>
     
     <div class="fixed-container">
-        <h1>Eskwelabs Data Science Fellowship Information Bot</h1>
+        <h1><br>Eskwelabs Data Science Fellowship Information Bot</h1>
     </div>
 """, unsafe_allow_html=True)
 
