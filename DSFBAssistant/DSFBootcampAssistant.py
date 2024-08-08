@@ -73,5 +73,5 @@ st.write("Ask any question related to the bootcamp, and get recommendations and 
 
 user_input = st.text_input("Enter your question:")
 if user_input:
-    response = generate_conversational_response(user_input, collection)
+    response = generate_conversational_response(user_input, collection_DSFBA)
     st.write(response)
