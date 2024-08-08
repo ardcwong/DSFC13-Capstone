@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import io
 
-st.image(r'C:\Users\Nicole Barrion\anaconda3\envs\capstone_env\data\anaconda.png')
+st.image('data/anaconda.png')
 # st.markdown(f"<h1 style='text-align: center;'> Installation Guide </h1>", unsafe_allow_html=True)
 st.markdown(
     "<h1 style='text-align: center; color: #48a937; font-size: 70px;'>Installation Guide</h1>",
@@ -24,17 +24,17 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.markdown("<h2 style='text-align: center;'>MAC OS</h2>", unsafe_allow_html=True)
     st.markdown("***Install on your MAC OS***")
-    st.image(r'C:\Users\Nicole Barrion\anaconda3\envs\capstone_env\data\1.png')
+    st.image('data/apple.png')
 
 with col2:
     st.markdown("<h2 style='text-align: center;'>WINDOWS</h2>", unsafe_allow_html=True)
     st.markdown("***Install on your Windows***")
-    st.image(r'C:\Users\Nicole Barrion\anaconda3\envs\capstone_env\data\2.png')
+    st.image('data/windows.png')
 
 with col3:
     st.markdown("<h2 style='text-align: center;'>RUN PYTHON</h2>", unsafe_allow_html=True)
     st.markdown("***Run Python in Anaconda***")
-    st.image(r'C:\Users\Nicole Barrion\anaconda3\envs\capstone_env\data\3.png')
+    st.image('data/python.png')
 
 def fetch_pdf_content(url):
     try:
@@ -142,3 +142,5 @@ with col6:
                 file_name='Run Python_Installation Guide.pdf',
                 mime='application/pdf'
             )
+
+st.video("https://www.youtube.com/watch?v=2xh5sjpAI6k")
