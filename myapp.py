@@ -300,6 +300,7 @@ role = st.session_state.role
 home_page = st.Page(home, title="Home", icon="🏠", default=(role == role))
 login_page = st.Page(login, title = "Log In",icon=":material/login:")
 logout_page = st.Page(logout, title="Log Out", icon=":material/logout:")
+IGP = st.Page("InstallationGuidePage/InstallationGuide.py", title = "Installation Guide", icon = "📑")
 pathfinder_rfs = st.Page("Pathfinder/feedback_summary.py", title="Results Feedback Summary", icon="📓")
 DSF = st.Page("DSF/app.py", title = "DSF Program Information", icon = "📗")
 
@@ -314,7 +315,7 @@ ProgramInformation = st.Page(
 
 
 
-main_apps = [home_page, suitability, ProgramInformation]
+main_apps = [home_page, suitability, ProgramInformation,IGP]
 log_in = [login_page]
 log_out = [logout_page]
 data_apps = []
