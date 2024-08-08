@@ -142,3 +142,5 @@ with col6:
                 file_name='Run Python_Installation Guide.pdf',
                 mime='application/pdf'
             )
+
+st.video("https://www.youtube.com/watch?v=2xh5sjpAI6k")
