@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import io
 
-st.image('\data\anaconda.png')
+st.image('data\anaconda.png')
 # st.markdown(f"<h1 style='text-align: center;'> Installation Guide </h1>", unsafe_allow_html=True)
 st.markdown(
     "<h1 style='text-align: center; color: #48a937; font-size: 70px;'>Installation Guide</h1>",
