@@ -1,3 +1,9 @@
+import streamlit as st
+import sqlite3
+__import__('pysqlite3')
+import sys
+
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 import openai
 import streamlit as st
@@ -6,11 +12,6 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import chromadb
 from chromadb.utils import embedding_functions
-import sqlite3
-__import__('pysqlite3')
-import sys
-
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 api_key = st.secrets["api"]['api_key']
 openai.api_key = api_key
