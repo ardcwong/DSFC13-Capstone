@@ -31,7 +31,7 @@ def load_collection():
   COLLECTION_NAME = "eskwe_embeddings"
   client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
   openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_client.api_key, model_name="text-embedding-ada-002")
-  collection = client_chromadb.get_or_create_collection(
+  collection_DSFBA = client_chromadb.get_or_create_collection(
     name=COLLECTION_NAME,
     embedding_function=openai_ef,
     metadata={"hnsw:space": "cosine"}
