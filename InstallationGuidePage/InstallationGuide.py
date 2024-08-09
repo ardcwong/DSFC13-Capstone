@@ -51,7 +51,7 @@ with colA:
 with colB:
     with st.expander("Video", expanded=True):
         st.subheader(f"Youtube Video Installatio Guide for MAC OS")
-        st.video(str(st.session_state.yt_link))
+        st.video('https://www.youtube.com/watch?v=2xh5sjpAI6k')
 
 col1, col2, col3 = st.columns(3)
 
