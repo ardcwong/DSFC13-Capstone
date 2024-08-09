@@ -28,13 +28,13 @@ openai_client = OpenAI(api_key=api_key)
 @st.cache_resource
 def load_collection_DSFBAssistant():
   CHROMA_DATA_PATH_2 = "eskwe"
-  COLLECTION_NAME_2 = f"{CHROMA_DATA_PATH_2}_embeddings"
+  COLLECTION_NAME_2 = "eskwe_embeddings"
   client_chromadb_2 = chromadb.PersistentClient(path=CHROMA_DATA_PATH_2)
-  openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
+  openai_ef_2 = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
   try:
     collection = client_chromadb_2.get_or_create_collection(
       name=COLLECTION_NAME_2,
-      embedding_function=openai_ef,
+      embedding_function=openai_ef_2,
       metadata={"hnsw:space": "cosine"}
     )
     if collection:
