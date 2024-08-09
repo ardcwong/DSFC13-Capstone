@@ -108,7 +108,7 @@ def pdf_view():
     download_pdf(pdf_url, local_pdf_path)
 
     # Display the PDF using pdf_viewer
-    pdf_viewer(local_pdf_path, height = 600)
+    pdf_viewer(local_pdf_path, width=800, height=600)
     
 with colB:
     with st.expander(f"Video", expanded=True):
