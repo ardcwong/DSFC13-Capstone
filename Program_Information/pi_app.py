@@ -70,18 +70,37 @@ class ChatHistory:
 
 
 
+# @st.cache_resource
+# def load_collection():
+
+#     CHROMA_DATA_PATH = "persistent_directory_4"
+#     try:
+#         vector_store = Chroma(persist_directory=CHROMA_DATA_PATH, embedding_function  = OpenAIEmbeddings(api_key=openai.api_key))
+#         return vector_store
+#     except Exception as e:
+#         st.error(f"Error loading vector store: {e}")
+#         return None
+
+
 @st.cache_resource
 def load_collection():
+    CHROMA_DATA_PATH = 'program_info_2'
+    COLLECTION_NAME = f"{CHROMA_DATA_PATH}_embeddings"
+    client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
+    openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
+    collection = client_chromadb.get_or_create_collection(
+        name=COLLECTION_NAME,
+        embedding_function=openai_ef,
+        metadata={"hnsw:space": "cosine"}
+    )
+    return vector_store
 
-    CHROMA_DATA_PATH = "persistent_directory_4"
-    try:
-        vector_store = Chroma(persist_directory=CHROMA_DATA_PATH, embedding_function  = OpenAIEmbeddings(api_key=openai.api_key))
-        return vector_store
-    except Exception as e:
-        st.error(f"Error loading vector store: {e}")
-        return None
 
-    
+
+
+
+
+
 
 vector_store = load_collection()
 # st.write(vector_store)
