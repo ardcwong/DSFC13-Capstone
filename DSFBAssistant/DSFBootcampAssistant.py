@@ -16,7 +16,7 @@ from chromadb.utils import embedding_functions
 api_key = st.secrets["api"]['api_key']
 openai.api_key = api_key
 credentials = st.secrets["gcp_service_account"]
-
+client = OpenAI(api_key=api_key)
 
 # Load environment variables from .env file
 # load_dotenv()
@@ -64,7 +64,7 @@ def generate_conversational_response_DSFBAssistant(user_input, collection):
         {"role": "user", "content": user_input},
         {"role": "assistant", "content": f"This is the recommended article: {relevant_name}. Here is a brief about the article: {relevant_document}"}
     ]
-    response = openai_client.chat.completions.create(
+    response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=messages,
         max_tokens=500
