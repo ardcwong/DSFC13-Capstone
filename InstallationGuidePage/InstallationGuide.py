@@ -108,7 +108,7 @@ def pdf_view():
     download_pdf(pdf_url, local_pdf_path)
 
     # Display the PDF using pdf_viewer
-    pdf_viewer(local_pdf_path, width=800, height=600)
+    pdf_viewer(local_pdf_path)
     
 with colB:
     with st.expander(f"Video", expanded=True):
@@ -116,6 +116,7 @@ with colB:
         yt_video()
     with st.expander("PDF", expanded=True):
         st.subheader(f"")
+        with st.container(height = 600)
         # st.markdown(f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>', unsafe_allow_html=True)
         pdf_view()
 
