@@ -55,7 +55,7 @@ def return_best_eskdata(user_input, collection, n_results=1):
     top_result_document = query_result['documents'][0][0]
     return top_result_metadata.get('eskdata', 'Unknown Data'), top_result_document
 
-def generate_conversational_response(user_input, collection):
+def generate_conversational_response_DSFBAssistant(user_input, collection):
     relevant_name, relevant_document = return_best_eskdata(user_input, collection)
     if not relevant_name:
         return "I couldn't find any relevant articles based on your input."
@@ -77,5 +77,5 @@ st.write("Ask any question related to the bootcamp, and get recommendations and 
 
 user_input = st.text_input("Enter your question:")
 if user_input:
-    response = generate_conversational_response(user_input, collection)
+    response = generate_conversational_response_DSFBAssistant(user_input, collection)
     st.write(response)
