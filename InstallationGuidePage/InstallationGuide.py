@@ -16,8 +16,8 @@ pdf_url_windows = "https://drive.google.com/uc?export=download&id=1bNYZP591fY5-r
 youtube_url_windows = "https://www.youtube.com/watch?v=UTqOXwAi1pE"
 
 choose_python = "Python"
-pdf_url_run = "https://drive.google.com/uc?export=download&id=18DltGgOgzL3gbqlFCGxqG581g8fkFkHu"
-youtube_url_run = "https://www.youtube.com/watch?v=DPi6CAkUUPY"
+pdf_url_python = "https://drive.google.com/uc?export=download&id=18DltGgOgzL3gbqlFCGxqG581g8fkFkHu"
+youtube_url_python = "https://www.youtube.com/watch?v=DPi6CAkUUPY"
 
 if 'yt_link' not in st.session_state:
     st.session_state.yt_link = youtube_url_mac
