@@ -31,3 +31,4 @@ langchain
 langchain-community
 opentelemetry-api
 opentelemetry-sdk
+protobuf==3.20.*
