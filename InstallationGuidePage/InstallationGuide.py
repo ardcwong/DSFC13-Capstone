@@ -31,7 +31,7 @@ if 'choose' not in st.session_state:
 
 if 'pdf' not in st.session_state:
     st.session_state.pdf = pdf_url_mac
-st.write(st.session_state.pdf)
+
 colA, colB = st.columns([1,2])
 with colA:
     with st.expander("Anaconda", expanded=True):
@@ -96,7 +96,7 @@ def yt_video():
     return st.video(st.session_state.yt_link)
     
 def pdf_view():
-    return pdf_viewer(st.session_state.pdf)
+    return pdf_viewer("https://drive.google.com/uc?export=download&id=1kBWygtPP5nkzCv9uR3AX2Y-PGjCFpeFr")
     
 with colB:
     with st.expander("Video", expanded=True):
