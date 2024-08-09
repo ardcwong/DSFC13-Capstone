@@ -8,7 +8,7 @@ st.markdown(
 )
 
 pdf_url_mac = 'https://drive.google.com/uc?export=download&id=1kBWygtPP5nkzCv9uR3AX2Y-PGjCFpeFr'
-youtube_url_mac = 'https://www.youtube.com/watch?v=2xh5sjpAI6k'
+youtube_url_mac = "https://www.youtube.com/watch?v=2xh5sjpAI6k"
 
 pdf_url_windows = 'https://drive.google.com/uc?export=download&id=1bNYZP591fY5-rwjKbSYHAUuNjmYsqV9N'
 youtube_url_windows = 'https://www.youtube.com/watch?v=UTqOXwAi1pE'
@@ -51,7 +51,7 @@ with colA:
 with colB:
     with st.expander("Video", expanded=True):
         st.subheader(f"Youtube Video Installatio Guide for MAC OS")
-        st.video('https://www.youtube.com/watch?v=2xh5sjpAI6k')
+        st.video(youtube_url_mac)
 
 col1, col2, col3 = st.columns(3)
 
