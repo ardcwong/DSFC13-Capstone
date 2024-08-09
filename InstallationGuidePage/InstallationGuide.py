@@ -11,15 +11,15 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-choose_mac = "Watch Youtube Video Installation Guide for MAC OS"
+choose_mac = "Installation Guide for MAC OS"
 pdf_url_mac = "https://drive.google.com/uc?export=download&id=1kBWygtPP5nkzCv9uR3AX2Y-PGjCFpeFr"
 youtube_url_mac = "https://www.youtube.com/watch?v=2xh5sjpAI6k"
 
-choose_windows = "Watch Youtube Video Installation Guide for Windows"
+choose_windows = "Installation Guide for Windows"
 pdf_url_windows = "https://drive.google.com/uc?export=download&id=1bNYZP591fY5-rwjKbSYHAUuNjmYsqV9N"
 youtube_url_windows = "https://www.youtube.com/watch?v=UTqOXwAi1pE"
 
-choose_python = "Watch How to Run Python in Anaconda"
+choose_python = "How to Run Python in Anaconda"
 pdf_url_python = "https://drive.google.com/uc?export=download&id=18DltGgOgzL3gbqlFCGxqG581g8fkFkHu"
 youtube_url_python = "https://www.youtube.com/watch?v=DPi6CAkUUPY"
 
@@ -105,20 +105,31 @@ def pdf_view():
     local_pdf_path = "/tmp/installation_guide.pdf"
 
     # Download the PDF from the URL
-    download_pdf(pdf_url, local_pdf_path)
+    downloaded_pdf = download_pdf(pdf_url, local_pdf_path)
+    return local_pdf_path, downloaded_pdf
 
-    # Display the PDF using pdf_viewer
-    pdf_viewer(local_pdf_path)
+    
     
 with colB:
     with st.expander(f"Video", expanded=True):
-        st.subheader(f"{st.session_state.choose}")
+        st.subheader(f"Watch Youtube Video: {st.session_state.choose}")
         yt_video()
     with st.expander("PDF", expanded=True):
-        st.subheader(f"")
+        st.subheader(f"Read: {st.session_state.choose}")
+        local_pdf_path, downloaded_pdf = pdf_view()
+        # Provide a download button for the PDF
+        with open(downloaded_pdf, "rb") as file:
+            btn = st.download_button(
+                label="Download PDF",
+                data=file,
+                file_name="installation_guide.pdf",
+                mime="application/pdf"
+            )
+        
         with st.container(height = 600):
         # st.markdown(f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>', unsafe_allow_html=True)
-           pdf_view()
+            # Display the PDF using pdf_viewer
+            pdf_viewer(local_pdf_path)   
 
 
 
