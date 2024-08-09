@@ -43,7 +43,7 @@ def remove_stopwords(response):
 # Define the questions
 questions = [
     "What is your highest level of education?",
-    "Do you have a background in mathematics, statistics, or computer science?",
+    "Do you have a background in mathematics, statistics, or computer science? If so, could you share about your experience in any of the these?",
     "Do you have any work experience related to data science or any technical field? If so, please describe your role(s).",
     "How many years of professional experience do you have?",
     "Are you familiar with any programming languages? If yes, which ones?",
@@ -58,9 +58,9 @@ questions = [
     "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
     "Do you need to balance your studies with work or other commitments?",
     "Do you prefer learning in a classroom setting, online, or a hybrid approach?",
-	"Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?",
+    "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?",
     "Have you ever attended any data science workshops or courses? If so, please describe them.",
-    #"How do you handle complex problem-solving and analytical tasks?",
+    "How do you handle complex problem-solving and analytical tasks?",
     "Do you have a network or community for support in your learning journey?"
 
 ]
@@ -306,26 +306,26 @@ def suitability():
 
 ###############################################       
 # Inject CSS to create a fixed container
-st.markdown("""
-    <style>
-    .fixed-container {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: white;
-        z-index: 1000;
+# st.markdown("""
+#     <style>
+#     .fixed-container {
+#         position: fixed;
+#         top: 0;
+#         width: 100%;
+#         background-color: white;
+#         z-index: 1000;
 
-    }
-    </style>
+#     }
+#     </style>
     
-    <div class="fixed-container">
-        <h1><br>Data Science Learning Path Classifier</h1>
-    </div>
-""", unsafe_allow_html=True)
+#     <div class="fixed-container">
+#         <h1><br>Data Science Learning Path Classifier</h1>
+#     </div>
+# """, unsafe_allow_html=True)
 
 
 
-# st.title("Data Science Learning Path Classifier")
+st.title("Data Science Learning Path Classifier")
 # Streamlit app setup
 if 'BeginAssessment' not in st.session_state:
     st.session_state.BeginAssessment = True
