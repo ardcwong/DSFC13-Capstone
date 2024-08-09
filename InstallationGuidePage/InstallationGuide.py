@@ -102,13 +102,13 @@ def download_pdf(url, save_path):
 
 def pdf_view():
     pdf_url = "https://drive.google.com/uc?export=download&id=1kBWygtPP5nkzCv9uR3AX2Y-PGjCFpeFr"
-    local_pdf_path = "/tmp/installation_guide.pdf"
+    # local_pdf_path = "/tmp/installation_guide.pdf"
 
     # Download the PDF from the URL
-    download_pdf(pdf_url, local_pdf_path)
+    pdf_content = download_pdf(pdf_url, local_pdf_path)
 
     # Display the PDF using pdf_viewer
-    pdf_viewer(local_pdf_path)
+    pdf_viewer(pdf_content)
     
 with colB:
     with st.expander("Video", expanded=True):
@@ -121,121 +121,121 @@ with colB:
 
 
 
-col1, col2, col3 = st.columns(3)
+# col1, col2, col3 = st.columns(3)
 
-with col1:
-    st.markdown("<h2 style='text-align: center;'>MAC OS</h2>", unsafe_allow_html=True)
-    st.markdown("***Install on your MAC OS***")
-    st.image('data/apple.png')
+# with col1:
+#     st.markdown("<h2 style='text-align: center;'>MAC OS</h2>", unsafe_allow_html=True)
+#     st.markdown("***Install on your MAC OS***")
+#     st.image('data/apple.png')
 
-with col2:
-    st.markdown("<h2 style='text-align: center;'>WINDOWS</h2>", unsafe_allow_html=True)
-    st.markdown("***Install on your Windows***")
-    st.image('data/windows.png')
+# with col2:
+#     st.markdown("<h2 style='text-align: center;'>WINDOWS</h2>", unsafe_allow_html=True)
+#     st.markdown("***Install on your Windows***")
+#     st.image('data/windows.png')
 
-with col3:
-    st.markdown("<h2 style='text-align: center;'>RUN PYTHON</h2>", unsafe_allow_html=True)
-    st.markdown("***Run Python in Anaconda***")
-    st.image('data/python.png')
+# with col3:
+#     st.markdown("<h2 style='text-align: center;'>RUN PYTHON</h2>", unsafe_allow_html=True)
+#     st.markdown("***Run Python in Anaconda***")
+#     st.image('data/python.png')
 
-def fetch_pdf_content(url):
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        return response.content
-    except requests.exceptions.RequestException as e:
-        st.error(f"An error occurred: {e}")
-        return None
+# def fetch_pdf_content(url):
+#     try:
+#         response = requests.get(url)
+#         response.raise_for_status()
+#         return response.content
+#     except requests.exceptions.RequestException as e:
+#         st.error(f"An error occurred: {e}")
+#         return None
 
 
 
-col4, col5, col6 = st.columns(3)
+# col4, col5, col6 = st.columns(3)
 
-with col4:
-    st.markdown(
-            """
-            <a href="https://www.youtube.com/watch?v=2xh5sjpAI6k" target="_blank">
-                <button style="background-color:#FF4B4B;color:white;padding:10px 20px;border:none;border-radius:5px;">
-                    Youtube Video Installation Guide
-                </button>
-            </a>
-            """,
-            unsafe_allow_html=True
-        )
+# with col4:
+#     st.markdown(
+#             """
+#             <a href="https://www.youtube.com/watch?v=2xh5sjpAI6k" target="_blank">
+#                 <button style="background-color:#FF4B4B;color:white;padding:10px 20px;border:none;border-radius:5px;">
+#                     Youtube Video Installation Guide
+#                 </button>
+#             </a>
+#             """,
+#             unsafe_allow_html=True
+#         )
 
-    st.markdown("<div style='margin: 20px 0;'></div>", unsafe_allow_html=True)
+#     st.markdown("<div style='margin: 20px 0;'></div>", unsafe_allow_html=True)
     
-    #May isa pang button to proceed with download
-    if st.button('PDF Guide for MAC OS', type="primary", use_container_width=True):
-        pdf_content = fetch_pdf_content(pdf_url_mac)
-        if pdf_content:
-            st.download_button(
-                label="Download PDF",
-                data=pdf_content,
-                file_name='MAC OS_Installation Guide.pdf',
-                mime='application/pdf'
-            )
+#     #May isa pang button to proceed with download
+#     if st.button('PDF Guide for MAC OS', type="primary", use_container_width=True):
+#         pdf_content = fetch_pdf_content(pdf_url_mac)
+#         if pdf_content:
+#             st.download_button(
+#                 label="Download PDF",
+#                 data=pdf_content,
+#                 file_name='MAC OS_Installation Guide.pdf',
+#                 mime='application/pdf'
+#             )
             
-    # # # Direct download once clicked
-    # # with col4:
-    # if st.button('Download Installation Guide for MAC OS', type="primary", use_container_width=True):
-    #     pdf_content_mac = fetch_pdf_content(pdf_url_mac)
+#     # # # Direct download once clicked
+#     # # with col4:
+#     # if st.button('Download Installation Guide for MAC OS', type="primary", use_container_width=True):
+#     #     pdf_content_mac = fetch_pdf_content(pdf_url_mac)
         
-    # if pdf_content_mac:
-    #     st.download_button(
-    #         label='Download Installation Guide for MAC OS',
-    #         data=pdf_content_mac,
-    #         file_name='MAC_OS_Installation_Guide.pdf',
-    #         mime='application/pdf'
-    #     )
+#     # if pdf_content_mac:
+#     #     st.download_button(
+#     #         label='Download Installation Guide for MAC OS',
+#     #         data=pdf_content_mac,
+#     #         file_name='MAC_OS_Installation_Guide.pdf',
+#     #         mime='application/pdf'
+#     #     )
 
-with col5:
-    st.markdown(
-            """
-            <a href="https://www.youtube.com/watch?v=UTqOXwAi1pE" target="_blank">
-                <button style="background-color:#FF4B4B;color:white;padding:10px 20px;border:none;border-radius:5px;">
-                    Youtube Video Installation Guide 
-                </button>
-            </a>
-            """,
-            unsafe_allow_html=True
-        )
+# with col5:
+#     st.markdown(
+#             """
+#             <a href="https://www.youtube.com/watch?v=UTqOXwAi1pE" target="_blank">
+#                 <button style="background-color:#FF4B4B;color:white;padding:10px 20px;border:none;border-radius:5px;">
+#                     Youtube Video Installation Guide 
+#                 </button>
+#             </a>
+#             """,
+#             unsafe_allow_html=True
+#         )
 
-    st.markdown("<div style='margin: 20px 0;'></div>", unsafe_allow_html=True)
+#     st.markdown("<div style='margin: 20px 0;'></div>", unsafe_allow_html=True)
 
-    if st.button('PDF Guide for Windows', type="primary", use_container_width=True):
-        pdf_content = fetch_pdf_content(pdf_url_windows)
-        if pdf_content:
-            st.download_button(
-                label="Download PDF",
-                data=pdf_content,
-                file_name='Windows_Installation Guide.pdf',
-                mime='application/pdf'
-            )
+#     if st.button('PDF Guide for Windows', type="primary", use_container_width=True):
+#         pdf_content = fetch_pdf_content(pdf_url_windows)
+#         if pdf_content:
+#             st.download_button(
+#                 label="Download PDF",
+#                 data=pdf_content,
+#                 file_name='Windows_Installation Guide.pdf',
+#                 mime='application/pdf'
+#             )
 
-with col6:
+# with col6:
 
-    st.markdown(
-            """
-            <a href="https://www.youtube.com/watch?v=DPi6CAkUUPY" target="_blank">
-                <button style="background-color:#FF4B4B;color:white;padding:10px 20px;border:none;border-radius:5px;">
-                    Youtube Video Installation Guide
-                </button>
-            </a>
-            """,
-            unsafe_allow_html=True
-        )
+#     st.markdown(
+#             """
+#             <a href="https://www.youtube.com/watch?v=DPi6CAkUUPY" target="_blank">
+#                 <button style="background-color:#FF4B4B;color:white;padding:10px 20px;border:none;border-radius:5px;">
+#                     Youtube Video Installation Guide
+#                 </button>
+#             </a>
+#             """,
+#             unsafe_allow_html=True
+#         )
 
-    st.markdown("<div style='margin: 20px 0;'></div>", unsafe_allow_html=True)
+#     st.markdown("<div style='margin: 20px 0;'></div>", unsafe_allow_html=True)
     
-    if st.button('PDF Guide to Run Python', type="primary", use_container_width=True):
-        pdf_content = fetch_pdf_content(pdf_url_run)
-        if pdf_content:
-            st.download_button(
-                label="Download PDF",
-                data=pdf_content,
-                file_name='Run Python_Installation Guide.pdf',
-                mime='application/pdf'
-            )
+#     if st.button('PDF Guide to Run Python', type="primary", use_container_width=True):
+#         pdf_content = fetch_pdf_content(pdf_url_run)
+#         if pdf_content:
+#             st.download_button(
+#                 label="Download PDF",
+#                 data=pdf_content,
+#                 file_name='Run Python_Installation Guide.pdf',
+#                 mime='application/pdf'
+#             )
 
 
