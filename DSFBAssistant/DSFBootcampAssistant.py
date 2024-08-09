@@ -43,29 +43,7 @@ def load_collection_DSFBAssistant():
         st.error(f"Error loading vector store: {e}")
         return None
 
-#     try:
-#         vector_store = Chroma(persist_directory=CHROMA_DATA_PATH, embedding_function  = OpenAIEmbeddings(api_key=openai.api_key))
-#         return vector_store
-#     except Exception as e:
-#         st.error(f"Error loading vector store: {e}")
-#         return None
-
-
-# @st.cache_resource
-# def load_collection():
-#     CHROMA_DATA_PATH = 'program_info_2'
-#     COLLECTION_NAME = f"{CHROMA_DATA_PATH}_embeddings"
-#     client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
-#     openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
-#     vector_store = client_chromadb.get_or_create_collection(
-#         name=COLLECTION_NAME,
-#         embedding_function=openai_ef,
-#         metadata={"hnsw:space": "cosine"}
-#     )
-#     return vector_store
-
-
-collection_DSFBA = load_collection_DSFBAssistant()
+collection = load_collection_DSFBAssistant()
 
 
 def return_best_eskdata(user_input, collection, n_results=1):
@@ -99,5 +77,5 @@ st.write("Ask any question related to the bootcamp, and get recommendations and 
 
 user_input = st.text_input("Enter your question:")
 if user_input:
-    response = generate_conversational_response(user_input, collection_DSFBA)
+    response = generate_conversational_response(user_input, collection)
     st.write(response)
