@@ -2,41 +2,18 @@ import streamlit as st
 import requests
 import io
 
-st.markdown("""
-    <style>
-    .fixed-container {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: white;
-        z-index: 1000;
-    }
-    .fixed-container img {
-        vertical-align: middle;
-        margin-right: 20px;
-    }
-    </style>
-    
-    <div class="fixed-container">
-        <img src="data/anaconda.png" alt="Anaconda Logo" height="50">
-        <h1 style="display: inline;">Eskwelabs Data Science Fellowship Information Bot</h1>
-    </div>
-""", unsafe_allow_html=True)
-
-
-
 
 
 colA, colB, colC = st.columns([1,1,1])
-with colB:
+with colA:
     st.image('data/anaconda.png', use_column_width = True)
     # st.markdown(f"<h1 style='text-align: center;'> Installation Guide </h1>", unsafe_allow_html=True)
     st.markdown(
         "<h2 style='text-align: center; color: #48a937; font-size: 35px;'>Installation Guide</h2>",
         unsafe_allow_html=True
     )
-st.divider()
-st.markdown(
+with colC:
+    st.markdown(
     """
     <p style='text-align: center; color: #333333; font-size: 20px;'>
         Welcome to the installation guide where you'll find all the necessary steps 
@@ -45,7 +22,9 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.divider()
+    
+
+
 
 with st.container(height=500):
     st.title(f"Youtube Video Installatio Guide for MAC OS")
