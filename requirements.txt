@@ -16,7 +16,7 @@ scikit-llm
 scipy
 spacy-streamlit
 sentence-transformers
-chromadb
+chromadb==0.5.4
 torch
 torchvision
 pysqlite3-binary
