@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 import io
-
+import base64
 st.markdown(
     "<h2 style='text-align: left; color: #48a937; font-size: 35px;'>Installation Guide</h2>",
     unsafe_allow_html=True
