@@ -25,7 +25,7 @@ credentials = st.secrets["gcp_service_account"]
 openai_client = OpenAI(api_key=api_key)
 
 
-
+@st.cache_resource
 def load_collection_DSFBAssistant():
   CHROMA_DATA_PATH = "eskwe"
   COLLECTION_NAME = "eskwe_embeddings"
