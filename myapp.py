@@ -13,7 +13,18 @@ st.set_page_config(
     # initial_sidebar_state="expanded",
     layout='wide',
     menu_items={
-    'About': "### Hi! Thanks for viewing our app!"
+    'About': "### Hi! Thanks for viewing our app!",
+    'Foreword': """
+    Here is the updated foreword reflecting the change:
+    
+    Foreword
+    In an era where data science is rapidly becoming a cornerstone of innovation and decision-making, the journey of acquiring relevant skills and knowledge has never been more critical. Our capstone project seeks to bridge the gap between aspirants and their ideal learning pathway in the field of data science. Whether you're an aspiring student, an enrolled learner, or an operations professional, this platform is designed to tailor content, recommend resources, and guide your learning journey with precision.
+    
+    The capstone project emphasizes personalized learning through a meticulously crafted user profile with specific page access tailored to diverse roles such as students, mentors, instructors, and operations staff. Each feature is thoughtfully integrated to enhance your learning experience, providing you with program-specific information, educational material recommendations, and a comprehensive interpretation of your progress through the Pathfinder exam results.
+    
+    Our goal is to empower learners to make informed decisions about their educational pathway, whether it leads them to a bootcamp, self-learning, or a master's program. By leveraging data-driven insights and a user-centric design, we aim to transform the way you navigate your data science education, ensuring that every step you take is aligned with your personal and professional goals.
+    
+    We are excited to present this capstone project as a tool for continuous growth and excellence in the ever-evolving landscape of data science. We hope that this platform will be an invaluable resource on your journey to mastering the art of data science."""
     }
 )
 
@@ -317,11 +328,11 @@ ProgramInformation = st.Page(
 
 
 
-main_apps = [home_page, suitability, ProgramInformation,IGP,DSFBA]
+main_apps = [home_page, suitability, ProgramInformation,IGP,]
 log_in = [login_page]
 log_out = [logout_page]
 data_apps = []
-dsf_apps = []
+dsf_apps = [DSFBA]
 pf_apps = [pathfinder_rfs]
 st.logo(
     "data/Eskwelabs_logo.svg"#,
