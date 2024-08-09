@@ -29,6 +29,6 @@ tiktoken
 langchain-openai
 langchain
 langchain-community
-protobuf==3.20.*
-opentelemetry-api==1.9.0
-opentelemetry-sdk==1.9.0
+protobuf
+opentelemetry-api
+opentelemetry-sdk
