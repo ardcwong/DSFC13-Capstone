@@ -26,7 +26,7 @@ openai_client = OpenAI(api_key=api_key)
 
 
 
-def load_collection():
+def load_collection_DSFBAssistant():
   CHROMA_DATA_PATH = "eskwe"
   COLLECTION_NAME = "eskwe_embeddings"
   client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
@@ -54,7 +54,7 @@ def load_collection():
 #     return vector_store
 
 
-collection_DSFBA = load_collection()
+collection_DSFBA = load_collection_DSFBAssistant()
 
 
 def return_best_eskdata(user_input, collection, n_results=1):
