@@ -29,3 +29,5 @@ tiktoken
 langchain-openai
 langchain
 langchain-community
+opentelemetry-api
+opentelemetry-sdk
