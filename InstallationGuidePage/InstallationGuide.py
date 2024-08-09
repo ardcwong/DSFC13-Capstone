@@ -18,7 +18,7 @@ youtube_url_run = "https://www.youtube.com/watch?v=DPi6CAkUUPY"
 
 if 'yt_link' not in st.session_state:
     st.session_state.yt_link = youtube_url_mac
-
+st.write(youtube_url_mac)
 st.write(st.session_state.yt_link)
 colA, colB = st.columns([1,2])
 with colA:
