@@ -31,7 +31,7 @@ if 'choose' not in st.session_state:
 
 if 'pdf' not in st.session_state:
     st.session_state.pdf = pdf_url_mac
-
+st.write("st.session_state.pdf")
 colA, colB = st.columns([1,2])
 with colA:
     with st.expander("Anaconda", expanded=True):
