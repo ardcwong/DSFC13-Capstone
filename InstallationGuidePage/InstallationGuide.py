@@ -34,15 +34,16 @@ with colA:
         """,
         unsafe_allow_html=True
         )
-    with st.expander("Choose"):
+    with st.expander("Choose", expanded=True):
         
         with st.container():
-            a, b = st.columns([1,1])
+            a, b = st.columns([1,2])
             with a:
-                st.markdown("<h2 style='text-align: center;'>MAC OS</h2>", unsafe_allow_html=True)
-                st.markdown("***Install on your MAC OS***")
+                
                 st.image('data/windows.png')
             with b:
+                st.markdown("<h2 style='text-align: center;'>MAC OS</h2>", unsafe_allow_html=True)
+                st.markdown("***Install on your MAC OS***")
                 mac_os = st.button("Watch", use_container_width=False)
                 if mac_os:
                     st.session_state.yt_link = youtube_url_mac
