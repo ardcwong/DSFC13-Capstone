@@ -1,0 +1,5 @@
+Sprint Number,Main Topic,Sub-Topics
+Sprint 1,Introduction to Data Science and Machine Learning,"Python Fundamentals, Pandas: Data wrangling techniques, Data distributions, Data visualization, Exploratory Data Analysis, Data storytelling, Intro to GitHub, Streamlit Deployment, Cloud, Machine Learning, RFM Clustering, Linear & Logistic Regression"
+Sprint 2,Machine Learning Techniques and Model Evaluation,"Outlier detection, tree-based ensemble models, resampling techniques, evaluation metrics, explainability, and interpretability models"
+Sprint 3,Applied NLP and LLM Techniques,"Text preprocessing, Streamlit apps, LLMs, summarization, classification, sentiment analysis, vectorization, topic modeling, keyword extraction, NER, bias mitigation, ChatGPT for scoping and coding"
+Sprint 4,Advanced Concepts and Implementation of Retrieval Augmented Generation (RAG),"Introduction to RAG, Role of Domain Experts, Embedding Techniques, Vector Database, Retrieval and Ranking, GenAI in RAG, Stakeholder Perspectives, Prompt Engineering, RAG Metrics for Stakeholders"
