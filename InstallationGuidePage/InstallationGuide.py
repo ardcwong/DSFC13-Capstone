@@ -48,13 +48,18 @@ with colA:
                 mac_os = st.button("Watch", use_container_width=True, type = "primary", help = "Click to Watch Installation Guide for MAC OS")
                 if mac_os:
                     st.session_state.yt_link = youtube_url_mac
-                    st.rerun()
+                    st.rerun(scope = "fragment")
                     
-        
+@st.fragment
+def yt_video():
+    return st.video(st.session_state.yt_link)
+    
+
+    
 with colB:
     with st.expander("Video", expanded=True):
         st.subheader(f"Youtube Video Installatio Guide for MAC OS")
-        st.video(st.session_state.yt_link)
+        yt_video()
 
 col1, col2, col3 = st.columns(3)
 
