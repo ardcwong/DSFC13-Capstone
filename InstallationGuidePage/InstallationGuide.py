@@ -50,7 +50,7 @@ with colA:
                     st.session_state.yt_link = youtube_url_mac
                     st.rerun(scope = "fragment")
                     
-@st.fragment
+
 def yt_video():
     return st.video(st.session_state.yt_link)
     
