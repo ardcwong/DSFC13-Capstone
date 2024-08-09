@@ -105,8 +105,8 @@ def pdf_view():
     # local_pdf_path = "/tmp/installation_guide.pdf"
 
     # Download the PDF from the URL
-    pdf_content = download_pdf(pdf_url, local_pdf_path)
-
+    # download_pdf(pdf_url, local_pdf_path)
+    pdf_content = requests.get(pdf_url)
     # Display the PDF using pdf_viewer
     pdf_viewer(pdf_content)
     
