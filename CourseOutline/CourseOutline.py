@@ -54,7 +54,7 @@ def enhance_course_outline(course_outline, collection):
                         {"role": "system", "content": "You are an assistant that provides detailed educational content."},
                         {"role": "user", "content": query}
                     ],
-                    max_tokens=500
+                    max_tokens=350
                 )
                 additional_content = response.choices[0].message.content.strip()
                 enhanced_outline[sprint][main_topic][subtopic] = additional_content
@@ -70,14 +70,22 @@ course_outline = load_and_generate_course_outline(cohort_outline_filepath)
 # Assuming `collection` is your ChromaDB collection with embeddings already set up
 enhanced_course_outline = enhance_course_outline(course_outline, None)
 
+
+st.title("Sprint Navigator")
+st.markdown("""The Sprint Navigator is a meticulously crafted course outline, designed to provide a clear and organized view of the 
+program's main topics and sub-topics, divided into four distinct Sprints. This Navigator acts as both a strategic planning tool and 
+a detailed guide for fellows, helping them steer through their learning journey with confidence. It ensures that all critical areas 
+of the program are covered in a cohesive and logical order, enabling fellows to grasp the curriculum's flow, stay aligned with their 
+learning objectives, and prepare effectively for the challenges ahead.""")
 # Print the enhanced course outline with detailed content
 for sprint, topics in enhanced_course_outline.items():
-    st.write(f"{sprint}:")
-    for main_topic, subtopics in topics.items():
-        st.write(f"  Main Topic: {main_topic}")
-        for subtopic, content in subtopics.items():
-            st.write(f"    Subtopic: {subtopic}")
-            st.write(f"      Content:\n{content}\n")
+    with st.expander(f"{sprint}",expanded=True)
+    # st.write(f"{sprint}:")
+        for main_topic, subtopics in topics.items():
+            st.write(f"  Main Topic: {main_topic}")
+            for subtopic, content in subtopics.items():
+                st.write(f"    Subtopic: {subtopic}")
+                st.write(f"      Content:\n{content}\n")
 
 
 
