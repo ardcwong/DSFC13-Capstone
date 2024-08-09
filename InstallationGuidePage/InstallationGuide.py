@@ -10,10 +10,10 @@ st.markdown(
 
 colA, colB = st.columns([1,2])
 with colA:
-    with st.expander("Anaconda"):
+    with st.expander("Anaconda", expanded=True):
         st.image('data/anaconda.png', use_column_width = True)
     # st.markdown(f"<h1 style='text-align: center;'> Installation Guide </h1>", unsafe_allow_html=True)
-    with st.expander("What do we have here"):
+    with st.expander("What do we have here", expanded=True):
         st.markdown(
         """
         <p style='text-align: center; color: #333333; font-size: 20px;'>
@@ -25,14 +25,8 @@ with colA:
         )
         
 with colB:
-    
-
-    
-
-
-
-    with st.expander("Video"):
-        st.title(f"Youtube Video Installatio Guide for MAC OS")
+    with st.expander("Video", expanded=True):
+        st.subheader(f"Youtube Video Installatio Guide for MAC OS")
         st.video("https://www.youtube.com/watch?v=2xh5sjpAI6k")
 
 col1, col2, col3 = st.columns(3)
