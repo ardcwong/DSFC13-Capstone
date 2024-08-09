@@ -17,7 +17,7 @@ pdf_url_run = 'https://drive.google.com/uc?export=download&id=18DltGgOgzL3gbqlFC
 youtube_url_run = 'https://www.youtube.com/watch?v=DPi6CAkUUPY'
 
 if 'yt_link' not in st.session_state:
-    st.session_state.yt_link = []
+    st.session_state.yt_link = youtube_url_mac
 
 colA, colB = st.columns([1,2])
 with colA:
