@@ -7,6 +7,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+pdf_url_mac = 'https://drive.google.com/uc?export=download&id=1kBWygtPP5nkzCv9uR3AX2Y-PGjCFpeFr'
+youtube_url_mac = 'https://www.youtube.com/watch?v=2xh5sjpAI6k'
+
+pdf_url_windows = 'https://drive.google.com/uc?export=download&id=1bNYZP591fY5-rwjKbSYHAUuNjmYsqV9N'
+youtube_url_windows = 'https://www.youtube.com/watch?v=UTqOXwAi1pE'
+
+pdf_url_run = 'https://drive.google.com/uc?export=download&id=18DltGgOgzL3gbqlFCGxqG581g8fkFkHu'
+youtube_url_run = 'https://www.youtube.com/watch?v=DPi6CAkUUPY'
+if 'yt_link' not in st.session_state:
+    st.session_state.yt_link = []
 
 colA, colB = st.columns([1,2])
 with colA:
@@ -23,11 +33,23 @@ with colA:
         """,
         unsafe_allow_html=True
         )
+    with st.expander("Choose"):
+        a, b = st.columns([1,1])
+        with st.container():
+            with col a:
+                st.markdown("<h2 style='text-align: center;'>MAC OS</h2>", unsafe_allow_html=True)
+                st.markdown("***Install on your MAC OS***")
+                st.image('data/windows.png')
+            with col b:
+                mac_os = st.button("Watch", use_column_width = True)
+                if mac_os:
+                    st.session_state.yt_link = youtube_url_mac
+        
         
 with colB:
     with st.expander("Video", expanded=True):
         st.subheader(f"Youtube Video Installatio Guide for MAC OS")
-        st.video("https://www.youtube.com/watch?v=2xh5sjpAI6k")
+        st.video(st.session_state.yt_link)
 
 col1, col2, col3 = st.columns(3)
 
@@ -55,14 +77,7 @@ def fetch_pdf_content(url):
         st.error(f"An error occurred: {e}")
         return None
 
-pdf_url_mac = 'https://drive.google.com/uc?export=download&id=1kBWygtPP5nkzCv9uR3AX2Y-PGjCFpeFr'
-youtube_url_mac = 'https://www.youtube.com/watch?v=2xh5sjpAI6k'
 
-pdf_url_windows = 'https://drive.google.com/uc?export=download&id=1bNYZP591fY5-rwjKbSYHAUuNjmYsqV9N'
-youtube_url_windows = 'https://www.youtube.com/watch?v=UTqOXwAi1pE'
-
-pdf_url_run = 'https://drive.google.com/uc?export=download&id=18DltGgOgzL3gbqlFCGxqG581g8fkFkHu'
-youtube_url_run = 'https://www.youtube.com/watch?v=DPi6CAkUUPY'
 
 col4, col5, col6 = st.columns(3)
 
