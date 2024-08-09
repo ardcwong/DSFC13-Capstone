@@ -50,7 +50,7 @@ with colA:
             with b:
                 # st.subheader("MAC OS")
                 st.markdown("<h4 style='text-align: left;'>MAC OS</h4>", unsafe_allow_html=True)
-                st.markdown("***Install on your MAC OS***")
+                st.caption("***Install on your MAC OS***")
                 if st.button("Watch", use_container_width=True, type = "primary", help = "Click to Watch Installation Guide for MAC OS"):
                     st.session_state.choose = choose_mac
                     st.session_state.yt_link = youtube_url_mac
