@@ -4,6 +4,8 @@ __import__('pysqlite3')
 import sys
 
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+import chromadb
+from chromadb.utils import embedding_functions
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -21,8 +23,6 @@ import subprocess
 import time
 import numpy as np
 import ast #built in
-import chromadb
-from chromadb.utils import embedding_functions
 from annotated_text import annotated_text
 # from langchain.vectorstores import Chroma
 from langchain_chroma import Chroma
