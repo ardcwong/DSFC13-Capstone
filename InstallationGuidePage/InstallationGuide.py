@@ -101,14 +101,14 @@ def download_pdf(url, save_path):
         file.write(response.content)
 
 def pdf_view():
-    pdf_url = "https://drive.google.com/uc?export=download&id=1kBWygtPP5nkzCv9uR3AX2Y-PGjCFpeFr"
-    # local_pdf_path = "/tmp/installation_guide.pdf"
+    pdf_url = st.session_state.pdf
+    local_pdf_path = "/tmp/installation_guide.pdf"
 
     # Download the PDF from the URL
-    # download_pdf(pdf_url, local_pdf_path)
-    pdf_content = requests.get(pdf_url)
+    download_pdf(pdf_url, local_pdf_path)
+
     # Display the PDF using pdf_viewer
-    pdf_viewer(pdf_content)
+    pdf_viewer(local_pdf_path)
     
 with colB:
     with st.expander("Video", expanded=True):
