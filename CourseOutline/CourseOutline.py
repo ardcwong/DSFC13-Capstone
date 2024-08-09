@@ -120,16 +120,18 @@ guide for fellows, helping them steer through their learning journey with confid
 
 # Dynamic expander generation with session state
 for sprint in course_outline.keys():
-    with st.expander(f"{sprint}", expanded=False) as exp:
-        if exp and f"outline_{sprint}" not in st.session_state:
-            # Enhance the course outline for the sprint and store it in session state
-            st.session_state[f"outline_{sprint}"] = enhance_course_outline({sprint: course_outline[sprint]}, None)
-        
-        # Retrieve the enhanced course outline from session state
-        if f"outline_{sprint}" in st.session_state:
-            enhanced_outline = st.session_state[f"outline_{sprint}"]
-            for main_topic, subtopics in enhanced_outline[sprint].items():
-                st.write(f"Main Topic: {main_topic}")
-                for subtopic, content in subtopics.items():
-                    st.write(f"  Subtopic: {subtopic}")
-                    st.write(f"    Content:\n{content}\n")
+    expanded = st.expander(f"{sprint}", expanded=False)
+    
+    # Check if the expander is expanded and if the sprint outline hasn't been enhanced yet
+    if expanded and f"outline_{sprint}" not in st.session_state:
+        # Enhance the course outline for the sprint and store it in session state
+        st.session_state[f"outline_{sprint}"] = enhance_course_outline({sprint: course_outline[sprint]}, None)
+    
+    # Retrieve and display the enhanced course outline from session state
+    if f"outline_{sprint}" in st.session_state:
+        enhanced_outline = st.session_state[f"outline_{sprint}"]
+        for main_topic, subtopics in enhanced_outline[sprint].items():
+            st.write(f"Main Topic: {main_topic}")
+            for subtopic, content in subtopics.items():
+                st.write(f"  Subtopic: {subtopic}")
+                st.write(f"    Content:\n{content}\n")
