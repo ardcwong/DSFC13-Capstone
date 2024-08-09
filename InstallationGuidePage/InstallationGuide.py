@@ -23,7 +23,7 @@ if 'yt_link' not in st.session_state:
     st.session_state.yt_link = youtube_url_mac
 
 if 'choose' not in st.session_state:
-    st.session_state.choose = youtube_url_mac
+    st.session_state.choose = choose_mac
     
 colA, colB = st.columns([1,2])
 with colA:
