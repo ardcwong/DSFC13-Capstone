@@ -136,7 +136,7 @@ with colB:
                 st.download_button(
                     label="Download PDF",
                     data=file,
-                    file_name="installation_guide.pdf",
+                    file_name=f"{st.session_state.choose}.pdf",
                     mime="application/pdf"
                 )
 #     if st.button('PDF Guide to Run Python', type="primary", use_container_width=True):
