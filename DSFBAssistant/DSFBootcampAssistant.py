@@ -30,7 +30,7 @@ def load_collection():
   CHROMA_DATA_PATH = "eskwe"
   COLLECTION_NAME = "eskwe_embeddings"
   client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
-  openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_client.api_key, model_name="text-embedding-ada-002")
+  openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
   collection = client_chromadb.get_or_create_collection(
     name=COLLECTION_NAME,
     embedding_function=openai_ef,
@@ -39,7 +39,21 @@ def load_collection():
 
    
   return collection
-    
+
+# @st.cache_resource
+# def load_collection():
+#     CHROMA_DATA_PATH = 'program_info_2'
+#     COLLECTION_NAME = f"{CHROMA_DATA_PATH}_embeddings"
+#     client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
+#     openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
+#     vector_store = client_chromadb.get_or_create_collection(
+#         name=COLLECTION_NAME,
+#         embedding_function=openai_ef,
+#         metadata={"hnsw:space": "cosine"}
+#     )
+#     return vector_store
+
+
 collection_DSFBA = load_collection()
 
 
