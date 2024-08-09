@@ -99,6 +99,7 @@ def download_pdf(url, save_path):
     response = requests.get(url)
     with open(save_path, 'wb') as file:
         file.write(response.content)
+    return save_path
 
 def pdf_view():
     pdf_url = st.session_state.pdf
@@ -120,6 +121,17 @@ with colB:
         local_pdf_path, downloaded_pdf = pdf_view()
         # Provide a download button for the PDF
         if downloaded_pdf:
+
+# def fetch_pdf_content(url):
+#     try:
+#         response = requests.get(url)
+#         response.raise_for_status()
+#         return response.content
+#     except requests.exceptions.RequestException as e:
+#         st.error(f"An error occurred: {e}")
+#         return None
+
+            
             with open(downloaded_pdf, "rb") as file:
                 st.download_button(
                     label="Download PDF",
