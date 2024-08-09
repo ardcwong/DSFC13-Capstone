@@ -103,7 +103,7 @@ def download_pdf(url, save_path):
 
 def pdf_view():
     pdf_url = st.session_state.pdf
-    local_pdf_path = "/tmp/installation_guide.pdf"
+    local_pdf_path = f"/tmp/{st.session_state.choose}.pdf"
 
     # Download the PDF from the URL
     downloaded_pdf = download_pdf(pdf_url, local_pdf_path)
