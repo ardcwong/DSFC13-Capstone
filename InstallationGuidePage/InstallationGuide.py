@@ -2,6 +2,10 @@ import streamlit as st
 import requests
 import io
 import base64
+import streamlit as st
+from streamlit_pdf_viewer import pdf_viewer
+
+
 st.markdown(
     "<h2 style='text-align: left; color: #48a937; font-size: 35px;'>Installation Guide</h2>",
     unsafe_allow_html=True
@@ -92,16 +96,7 @@ def yt_video():
     return st.video(st.session_state.yt_link)
     
 def pdf_view():
-    # Download the PDF file from the URL
-    response = requests.get(st.session_state.pdf)
-    pdf_bytes = response.content
-    
-    # Encode the PDF bytes as base64
-    base64_pdf = base64.b64encode(pdf_bytes).decode('utf-8')
-    
-    # Create an iframe to display the PDF
-    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
-    return st.markdown(pdf_display, unsafe_allow_html=True)
+    return pdf_viewer(st.session_state.pdf)
     
 with colB:
     with st.expander("Video", expanded=True):
@@ -110,7 +105,7 @@ with colB:
     with st.expander("PDF", expanded=True):
         st.write("Researching... ")
         # st.markdown(f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>', unsafe_allow_html=True)
-        # pdf_view()
+        pdf_view()
 
 
 
