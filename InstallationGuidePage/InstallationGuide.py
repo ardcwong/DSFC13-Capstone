@@ -3,13 +3,14 @@ import requests
 import io
 
 
-st.image('data/anaconda.png', use_column_width = True)
-    # st.markdown(f"<h1 style='text-align: center;'> Installation Guide </h1>", unsafe_allow_html=True)
+
 colA, colB, colC = st.columns([1,1,1])
 
 
 
 with colC:
+    st.image('data/anaconda.png', use_column_width = True)
+    # st.markdown(f"<h1 style='text-align: center;'> Installation Guide </h1>", unsafe_allow_html=True)
     st.markdown(
         "<h2 style='text-align: right; color: #48a937; font-size: 35px;'>Installation Guide</h2>",
         unsafe_allow_html=True
