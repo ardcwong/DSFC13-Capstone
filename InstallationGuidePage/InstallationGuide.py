@@ -22,6 +22,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 st.divider()
+
+with st.container(height=300):
+    st.video("https://www.youtube.com/watch?v=2xh5sjpAI6k")
+
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -146,4 +150,4 @@ with col6:
                 mime='application/pdf'
             )
 
-st.video("https://www.youtube.com/watch?v=2xh5sjpAI6k")
+
