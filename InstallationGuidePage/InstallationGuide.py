@@ -15,6 +15,7 @@ youtube_url_windows = 'https://www.youtube.com/watch?v=UTqOXwAi1pE'
 
 pdf_url_run = 'https://drive.google.com/uc?export=download&id=18DltGgOgzL3gbqlFCGxqG581g8fkFkHu'
 youtube_url_run = 'https://www.youtube.com/watch?v=DPi6CAkUUPY'
+
 if 'yt_link' not in st.session_state:
     st.session_state.yt_link = []
 
@@ -34,8 +35,9 @@ with colA:
         unsafe_allow_html=True
         )
     with st.expander("Choose"):
-        a, b = st.columns([1,1])
+        
         with st.container():
+            a, b = st.columns([1,1])
             with col a:
                 st.markdown("<h2 style='text-align: center;'>MAC OS</h2>", unsafe_allow_html=True)
                 st.markdown("***Install on your MAC OS***")
