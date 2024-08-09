@@ -108,6 +108,7 @@ with colB:
         st.subheader(f"Youtube Video Installatio Guide for {st.session_state.choose}")
         yt_video()
     with st.expander("PDF", expanded=True):
+        st.write("Researching... ")
         # st.markdown(f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>', unsafe_allow_html=True)
         # pdf_view()
 
