@@ -96,12 +96,6 @@ def load_collection():
     return vector_store
 
 
-
-
-
-
-
-
 vector_store = load_collection()
 # st.write(vector_store)
 # def retrieve_documents(query, collection):
