@@ -8,7 +8,7 @@ st.markdown(
 )
 
 
-colA, colB, colC = st.columns([1,2,0.5])
+colA, colB = st.columns([1,2])
 with colA:
     with st.expander("Anaconda"):
         st.image('data/anaconda.png', use_column_width = True)
