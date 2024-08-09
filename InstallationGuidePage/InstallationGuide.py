@@ -27,7 +27,7 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.markdown("<h2 style='text-align: center;'>MAC OS</h2>", unsafe_allow_html=True)
     st.markdown("***Install on your MAC OS***")
-    st.image('data/apple.png')
+    st.image('data/apple.png',width=300)
 
 with col2:
     st.markdown("<h2 style='text-align: center;'>WINDOWS</h2>", unsafe_allow_html=True)
