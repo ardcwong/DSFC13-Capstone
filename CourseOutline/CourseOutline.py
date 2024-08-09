@@ -79,7 +79,7 @@ of the program are covered in a cohesive and logical order, enabling fellows to 
 learning objectives, and prepare effectively for the challenges ahead.""")
 # Print the enhanced course outline with detailed content
 for sprint, topics in enhanced_course_outline.items():
-    with st.expander(f"{sprint}",expanded=True)
+    with st.expander(f"{sprint}",expanded=True):
     # st.write(f"{sprint}:")
         for main_topic, subtopics in topics.items():
             st.write(f"  Main Topic: {main_topic}")
