@@ -120,7 +120,7 @@ with colB:
         # Provide a download button for the PDF
         if downloaded_pdf:
             with open(downloaded_pdf, "rb") as file:
-                pdf_col_1, pdf_col_2 = st.columns(6,4])
+                pdf_col_1, pdf_col_2 = st.columns([6,4])
                 with pdf_col_1:
                     st.subheader(f"Read: {st.session_state.choose}")
                 with pdf_col_2:
