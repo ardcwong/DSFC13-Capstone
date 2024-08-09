@@ -2,38 +2,37 @@ import streamlit as st
 import requests
 import io
 
-
-
-colA, colB, colC = st.columns([1,1,1])
-
-
-
-with colC:
-    st.image('data/anaconda.png', use_column_width = True)
-    # st.markdown(f"<h1 style='text-align: center;'> Installation Guide </h1>", unsafe_allow_html=True)
-    st.markdown(
-        "<h2 style='text-align: right; color: #48a937; font-size: 35px;'>Installation Guide</h2>",
-        unsafe_allow_html=True
-    )
-    
-st.divider()
 st.markdown(
-"""
-<p style='text-align: center; color: #333333; font-size: 20px;'>
-    Welcome to the installation guide where you'll find all the necessary steps 
-    to set up your environment and get started with the installation process of Anaconda.
-</p>
-""",
-unsafe_allow_html=True
+    "<h2 style='text-align: left; color: #48a937; font-size: 35px;'>Installation Guide</h2>",
+    unsafe_allow_html=True
 )
+
+
+colA, colB, colC = st.columns([1,2,0.5])
+with colA:
+    with st.expander("Anaconda"):
+        st.image('data/anaconda.png', use_column_width = True)
+    # st.markdown(f"<h1 style='text-align: center;'> Installation Guide </h1>", unsafe_allow_html=True)
+    with st.expander("What do we have here"):
+        st.markdown(
+        """
+        <p style='text-align: center; color: #333333; font-size: 20px;'>
+            Welcome to the installation guide where you'll find all the necessary steps 
+            to set up your environment and get started with the installation process of Anaconda.
+        </p>
+        """,
+        unsafe_allow_html=True
+        )
+        
+with colB:
+    
+
     
 
 
 
-with st.container(height=500):
-    st.title(f"Youtube Video Installatio Guide for MAC OS")
-    a, b = st.columns([7,3])
-    with a:
+    with st.expander("Video"):
+        st.title(f"Youtube Video Installatio Guide for MAC OS")
         st.video("https://www.youtube.com/watch?v=2xh5sjpAI6k")
 
 col1, col2, col3 = st.columns(3)
