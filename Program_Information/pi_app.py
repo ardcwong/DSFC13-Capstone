@@ -88,18 +88,18 @@ def load_collection():
     COLLECTION_NAME = f"{CHROMA_DATA_PATH}_embeddings"
     client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
     openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
-    try:
-        vector_store = client_chromadb.get_or_create_collection(
-            name=COLLECTION_NAME,
-            embedding_function=openai_ef,
-            metadata={"hnsw:space": "cosine"}
-        )
-        if vector_store:
-            st.success("Success!")
-        return vector_store
-    except Exception as e:
-        st.error(f"Error loading vector store: {e}")
-        return None
+    # try:
+    vector_store = client_chromadb.get_or_create_collection(
+        name=COLLECTION_NAME,
+        embedding_function=openai_ef,
+        metadata={"hnsw:space": "cosine"}
+    )
+        # if vector_store:
+        #     st.success("Success!")
+    return vector_store
+    # except Exception as e:
+    #     st.error(f"Error loading vector store: {e}")
+    #     return None
 
 
 vector_store = load_collection()
