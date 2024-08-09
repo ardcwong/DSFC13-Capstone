@@ -2,6 +2,29 @@ import streamlit as st
 import requests
 import io
 
+st.markdown("""
+    <style>
+    .fixed-container {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: white;
+        z-index: 1000;
+    }
+    .fixed-container img {
+        vertical-align: middle;
+        margin-right: 20px;
+    }
+    </style>
+    
+    <div class="fixed-container">
+        <img src="data/anaconda.png" alt="Anaconda Logo" height="50">
+        <h1 style="display: inline;">Eskwelabs Data Science Fellowship Information Bot</h1>
+    </div>
+""", unsafe_allow_html=True)
+
+
+
 
 colA, colB, colC = st.columns([1,1,1])
 with colB:
