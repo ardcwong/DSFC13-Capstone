@@ -11,7 +11,7 @@ colA, colB, colC = st.columns([1,1,1])
 
 with colC:
     st.markdown(
-        "<h2 style='text-align: center; color: #48a937; font-size: 35px;'>Installation Guide</h2>",
+        "<h2 style='text-align: right; color: #48a937; font-size: 35px;'>Installation Guide</h2>",
         unsafe_allow_html=True
     )
     
