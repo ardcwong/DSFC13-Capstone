@@ -111,11 +111,11 @@ def pdf_view():
     pdf_viewer(local_pdf_path)
     
 with colB:
-    with st.expander("Video", expanded=True):
-        st.subheader(f"Youtube Video Installatio Guide for {st.session_state.choose}")
+    with st.expander("f"{st.session_state.choose}", expanded=True):
+        st.subheader(f"{st.session_state.choose}")
         yt_video()
     with st.expander("PDF", expanded=True):
-        st.write("Researching... ")
+        st.subheader(f"")
         # st.markdown(f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>', unsafe_allow_html=True)
         pdf_view()
 
