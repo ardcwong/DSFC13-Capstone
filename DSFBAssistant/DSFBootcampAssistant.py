@@ -31,14 +31,24 @@ async def load_collection_DSFBAssistant():
   COLLECTION_NAME = "eskwe_embeddings"
   client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
   openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
-  collection = await client_chromadb.get_or_create_collection(
-    name=COLLECTION_NAME,
-    embedding_function=openai_ef,
-    metadata={"hnsw:space": "cosine"}
-  )
+  try:
+    collection = await client_chromadb.get_or_create_collection(
+      name=COLLECTION_NAME,
+      embedding_function=openai_ef,
+      metadata={"hnsw:space": "cosine"}
+    )
+    return collection
+  except Exception as e:
+        st.error(f"Error loading vector store: {e}")
+        return None
 
-   
-  return collection
+#     try:
+#         vector_store = Chroma(persist_directory=CHROMA_DATA_PATH, embedding_function  = OpenAIEmbeddings(api_key=openai.api_key))
+#         return vector_store
+#     except Exception as e:
+#         st.error(f"Error loading vector store: {e}")
+#         return None
+
 
 # @st.cache_resource
 # def load_collection():
