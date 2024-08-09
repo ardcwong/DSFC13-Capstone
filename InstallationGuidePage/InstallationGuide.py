@@ -7,15 +7,15 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-choose_mac = "MAC OS"
+choose_mac = "Watch Youtube Video Installation Guide for MAC OS"
 pdf_url_mac = "https://drive.google.com/uc?export=download&id=1kBWygtPP5nkzCv9uR3AX2Y-PGjCFpeFr"
 youtube_url_mac = "https://www.youtube.com/watch?v=2xh5sjpAI6k"
 
-choose_windows = "Windows"
+choose_windows = "Watch Youtube Video Installation Guide for Windows"
 pdf_url_windows = "https://drive.google.com/uc?export=download&id=1bNYZP591fY5-rwjKbSYHAUuNjmYsqV9N"
 youtube_url_windows = "https://www.youtube.com/watch?v=UTqOXwAi1pE"
 
-choose_python = "Python"
+choose_python = "Watch How to Run Python in Anaconda"
 pdf_url_python = "https://drive.google.com/uc?export=download&id=18DltGgOgzL3gbqlFCGxqG581g8fkFkHu"
 youtube_url_python = "https://www.youtube.com/watch?v=DPi6CAkUUPY"
 
@@ -48,8 +48,8 @@ with colA:
                 
                 st.image('data/apple.png')
             with b:
-                st.subheader("MAC OS")
-                # st.markdown("<h2 style='text-align: center;'>MAC OS</h2>", unsafe_allow_html=True)
+                # st.subheader("MAC OS")
+                st.markdown("<h6 style='text-align: center;'>MAC OS</h6>", unsafe_allow_html=True)
                 st.markdown("***Install on your MAC OS***")
                 if st.button("Watch", use_container_width=True, type = "primary", help = "Click to Watch Installation Guide for MAC OS"):
                     st.session_state.choose = choose_mac
