@@ -1,16 +1,17 @@
-
-import openai
 import streamlit as st
-# import os
-from openai import OpenAI
-from dotenv import load_dotenv
-import chromadb
-from chromadb.utils import embedding_functions
 import sqlite3
 __import__('pysqlite3')
 import sys
 
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+import openai
+import streamlit as st
+# import os
+from openai import OpenAI
+# from dotenv import load_dotenv
+import chromadb
+from chromadb.utils import embedding_functions
 
 api_key = st.secrets["api"]['api_key']
 openai.api_key = api_key
@@ -24,13 +25,13 @@ credentials = st.secrets["gcp_service_account"]
 openai_client = OpenAI(api_key=api_key)
 
 
-@st.cache_resource
+
 def load_collection():
-  CHROMA_DATA_PATH = 'eskwe'
+  CHROMA_DATA_PATH = "eskwe"
   COLLECTION_NAME = "eskwe_embeddings"
   client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
   openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_client.api_key, model_name="text-embedding-ada-002")
-  collection = client_chromadb.get_or_create_collection(
+  collection_DSFBA = client_chromadb.get_or_create_collection(
     name=COLLECTION_NAME,
     embedding_function=openai_ef,
     metadata={"hnsw:space": "cosine"}
@@ -73,5 +74,5 @@ st.write("Ask any question related to the bootcamp, and get recommendations and 
 
 user_input = st.text_input("Enter your question:")
 if user_input:
-    response = generate_conversational_response(user_input, collection)
+    response = generate_conversational_response(user_input, collection_DSFBA)
     st.write(response)
