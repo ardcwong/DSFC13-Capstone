@@ -111,7 +111,7 @@ def pdf_view():
     pdf_viewer(local_pdf_path)
     
 with colB:
-    with st.expander("f"{st.session_state.choose}", expanded=True):
+    with st.expander(f"{st.session_state.choose}", expanded=True):
         st.subheader(f"{st.session_state.choose}")
         yt_video()
     with st.expander("PDF", expanded=True):
