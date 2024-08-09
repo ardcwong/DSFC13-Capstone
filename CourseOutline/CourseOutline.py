@@ -98,21 +98,37 @@ guide for fellows, helping them steer through their learning journey with confid
 """)
 
 
-# Dynamic checkbox generation with session state
-selected_sprints = {}
+# # Dynamic checkbox generation with session state
+# selected_sprints = {}
 
+# for sprint in course_outline.keys():
+#     if st.checkbox(sprint, key=f"checkbox_{sprint}"):
+#         if f"outline_{sprint}" not in st.session_state:
+#             # Enhance only if it hasn't been done before
+#             st.session_state[f"outline_{sprint}"] = enhance_course_outline({sprint: course_outline[sprint]}, None)
+#         selected_sprints[sprint] = st.session_state[f"outline_{sprint}"]
+
+# # Display the enhanced course outline with detailed content
+# if selected_sprints:
+#     for sprint, topics in selected_sprints.items():
+#         with st.expander(f"{sprint}", expanded=True):
+#             for main_topic, subtopics in topics[sprint].items():
+#                 st.write(f"Main Topic: {main_topic}")
+#                 for subtopic, content in subtopics.items():
+#                     st.write(f"  Subtopic: {subtopic}")
+#                     st.write(f"    Content:\n{content}\n")
+
+# Dynamic expander generation with session state
 for sprint in course_outline.keys():
-    if st.checkbox(sprint, key=f"checkbox_{sprint}"):
-        if f"outline_{sprint}" not in st.session_state:
-            # Enhance only if it hasn't been done before
+    with st.expander(f"{sprint}", expanded=False) as exp:
+        if exp and f"outline_{sprint}" not in st.session_state:
+            # Enhance the course outline for the sprint and store it in session state
             st.session_state[f"outline_{sprint}"] = enhance_course_outline({sprint: course_outline[sprint]}, None)
-        selected_sprints[sprint] = st.session_state[f"outline_{sprint}"]
-
-# Display the enhanced course outline with detailed content
-if selected_sprints:
-    for sprint, topics in selected_sprints.items():
-        with st.expander(f"{sprint}", expanded=True):
-            for main_topic, subtopics in topics[sprint].items():
+        
+        # Retrieve the enhanced course outline from session state
+        if f"outline_{sprint}" in st.session_state:
+            enhanced_outline = st.session_state[f"outline_{sprint}"]
+            for main_topic, subtopics in enhanced_outline[sprint].items():
                 st.write(f"Main Topic: {main_topic}")
                 for subtopic, content in subtopics.items():
                     st.write(f"  Subtopic: {subtopic}")
