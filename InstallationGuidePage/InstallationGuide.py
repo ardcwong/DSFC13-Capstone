@@ -114,22 +114,24 @@ with colB:
     with st.expander(f"Video", expanded=True):
         st.subheader(f"Watch Youtube Video: {st.session_state.choose}")
         yt_video()
+        
     with st.expander("PDF", expanded=True):
         st.subheader(f"Read: {st.session_state.choose}")
         local_pdf_path, downloaded_pdf = pdf_view()
         # Provide a download button for the PDF
-        with open(downloaded_pdf, "rb") as file:
-            btn = st.download_button(
-                label="Download PDF",
-                data=file,
-                file_name="installation_guide.pdf",
-                mime="application/pdf"
-            )
-        
-        with st.container(height = 600):
-        # st.markdown(f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>', unsafe_allow_html=True)
-            # Display the PDF using pdf_viewer
-            pdf_viewer(local_pdf_path)   
+        if downloaded_pdf:
+            with open(downloaded_pdf, "rb") as file:
+                btn = st.download_button(
+                    label="Download PDF",
+                    data=file,
+                    file_name="installation_guide.pdf",
+                    mime="application/pdf"
+                )
+        if local_pdf_path:
+            with st.container(height = 600):
+            # st.markdown(f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>', unsafe_allow_html=True)
+                # Display the PDF using pdf_viewer
+                pdf_viewer(local_pdf_path)   
 
 
 
