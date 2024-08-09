@@ -26,7 +26,8 @@ st.divider()
 with st.container(height=500):
     st.title(f"Youtube Video Installatio Guide for MAC OS")
     a, b = st.columns([7,3])
-    st.video("https://www.youtube.com/watch?v=2xh5sjpAI6k")
+    with a:
+        st.video("https://www.youtube.com/watch?v=2xh5sjpAI6k")
 
 col1, col2, col3 = st.columns(3)
 
