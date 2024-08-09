@@ -8,7 +8,7 @@ with colB:
     st.image('data/anaconda.png', use_column_width = True)
     # st.markdown(f"<h1 style='text-align: center;'> Installation Guide </h1>", unsafe_allow_html=True)
     st.markdown(
-        "<h1 style='text-align: center; color: #48a937; font-size: 70px;'>Installation Guide</h1>",
+        "<h3 style='text-align: center; color: #48a937; font-size: 70px;'>Installation Guide</h3>",
         unsafe_allow_html=True
     )
 st.divider()
