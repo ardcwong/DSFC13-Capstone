@@ -5,8 +5,8 @@ import io
 
 
 colA, colB, colC = st.columns([1,1,1])
-with colA:
-    st.image('data/anaconda.png', use_column_width = True)
+
+st.image('data/anaconda.png', use_column_width = True)
     # st.markdown(f"<h1 style='text-align: center;'> Installation Guide </h1>", unsafe_allow_html=True)
 
 with colC:
