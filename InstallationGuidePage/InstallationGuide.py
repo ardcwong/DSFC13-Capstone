@@ -42,7 +42,7 @@ with colA:
                 st.markdown("<h2 style='text-align: center;'>MAC OS</h2>", unsafe_allow_html=True)
                 st.markdown("***Install on your MAC OS***")
                 st.image('data/windows.png')
-            with cb:
+            with b:
                 mac_os = st.button("Watch", use_column_width = True)
                 if mac_os:
                     st.session_state.yt_link = youtube_url_mac
