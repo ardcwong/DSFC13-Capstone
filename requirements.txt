@@ -29,3 +29,4 @@ tiktoken
 langchain-openai
 langchain
 langchain-community
+protobuf==3.20.*
