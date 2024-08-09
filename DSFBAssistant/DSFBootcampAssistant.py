@@ -37,8 +37,7 @@ async def load_collection_DSFBAssistant():
       embedding_function=openai_ef,
       metadata={"hnsw:space": "cosine"}
     )
-    if collection:
-      st.success("Success!")
+    st.success("Success!")
     return collection
   except Exception as e:
         st.error(f"Error loading vector store: {e}")
