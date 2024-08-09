@@ -104,14 +104,24 @@ def load_collection():
 
 vector_store = load_collection()
 # st.write(vector_store)
-def retrieve_documents(query, collection):
-    # Perform similarity search
-    results = collection.similarity_search(query, k=3)
+# def retrieve_documents(query, collection):
+#     # Perform similarity search
+#     results = collection.similarity_search(query, k=3)
     
-    docs = [result.page_content for result in results]
-    metadatas = [result.metadata for result in results] 
+#     docs = [result.page_content for result in results]
+#     metadatas = [result.metadata for result in results] 
 
-    return [{'text': doc, 'metadata': meta} for doc, meta in zip(docs, metadatas)]
+#     return [{'text': doc, 'metadata': meta} for doc, meta in zip(docs, metadatas)]
+
+
+def retrieve_documents(query, collection):
+    results = collection.query(query_texts=[query], n_results=3)
+    docs = results['documents'][0]
+    metadatas = results['metadatas'][0]
+    return [{"text": doc, "metadata": meta} for doc, meta in zip(docs, metadatas)]
+
+
+
 
 #####
 # add rules when chat memory is blank then dont include it in the prompt
