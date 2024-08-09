@@ -50,8 +50,8 @@ collection = load_collection_DSFBAssistant()
 
 def return_best_eskdata(user_input, collection, n_results=1):
     query_result = collection.query(query_texts=[user_input], n_results=n_results)
-    if not query_result['ids'] or not query_result['ids'][0]:
-        return None, None
+    # if not query_result['ids'] or not query_result['ids'][0]:
+    #     return None, None
     top_result_id = query_result['ids'][0][0]
     top_result_metadata = query_result['metadatas'][0][0]
     top_result_document = query_result['documents'][0][0]
