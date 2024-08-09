@@ -45,7 +45,7 @@ with colA:
             with b:
                 mac_os = st.button("Watch", use_container_width=False)
                 if mac_os:
-                    st.session_state.yt_link = youtube_url_mac
+                    st.session_state.yt_link = 'https://www.youtube.com/watch?v=2xh5sjpAI6k'
         
         
 with colB:
