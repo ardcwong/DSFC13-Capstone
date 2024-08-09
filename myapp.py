@@ -304,7 +304,7 @@ IGP = st.Page("InstallationGuidePage/InstallationGuide.py", title = "Installatio
 pathfinder_rfs = st.Page("Pathfinder/feedback_summary.py", title="Results Feedback Summary", icon="📓")
 # DSF = st.Page("DSF/app.py", title = "DSF Program Information", icon = "📗")
 DSFBA = st.Page("DSFBAssistant/DSFBootcampAssistant.py", title = "Your Bootcamp Assistant", icon = "📗")
-CO = st.Page("CourseOutline/CourseOutline.py", title = "Course Outline", icon = "📗")
+CO = st.Page("CourseOutline/CourseOutline.py", title = "Course Outline", icon = "📍")
 
 
 suitability = st.Page(
