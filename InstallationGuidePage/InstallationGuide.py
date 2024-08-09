@@ -49,7 +49,7 @@ with colA:
                 st.image('data/apple.png')
             with b:
                 # st.subheader("MAC OS")
-                st.markdown("<h6 style='text-align: center;'>MAC OS</h6>", unsafe_allow_html=True)
+                st.markdown("<h4 style='text-align: left;'>MAC OS</h4>", unsafe_allow_html=True)
                 st.markdown("***Install on your MAC OS***")
                 if st.button("Watch", use_container_width=True, type = "primary", help = "Click to Watch Installation Guide for MAC OS"):
                     st.session_state.choose = choose_mac
