@@ -24,7 +24,10 @@ if 'yt_link' not in st.session_state:
 
 if 'choose' not in st.session_state:
     st.session_state.choose = choose_mac
-    
+
+if 'pdf' not in st.session_state:
+    st.session_state.pdf = pdf_url_mac
+
 colA, colB = st.columns([1,2])
 with colA:
     with st.expander("Anaconda", expanded=True):
@@ -54,6 +57,7 @@ with colA:
                 if st.button("Watch", use_container_width=True, type = "primary", help = "Click to Watch Installation Guide for MAC OS"):
                     st.session_state.choose = choose_mac
                     st.session_state.yt_link = youtube_url_mac
+                    st.session_state.pdf = pdf_url_mac
                     
         
         with st.container():
@@ -67,7 +71,8 @@ with colA:
                 st.markdown("***Install on your Windows***")
                 if st.button("Watch", use_container_width=True, type = "primary", help = "Click to Watch Installation Guide for Windows"):
                     st.session_state.choose = choose_windows
-                    st.session_state.yt_link = youtube_url_windows               
+                    st.session_state.yt_link = youtube_url_windows      
+                    st.session_state.pdf = pdf_url_windows
 
         with st.container():
             e, f = st.columns([1,2])
@@ -81,18 +86,30 @@ with colA:
                 if st.button("Watch", use_container_width=True, type = "primary", help = "Click to Watch Run Python in Anaconda"):
                     st.session_state.choose = choose_python
                     st.session_state.yt_link = youtube_url_python  
+                    st.session_state.pdf = pdf_url_python
 
 def yt_video():
     return st.video(st.session_state.yt_link)
-
+    
+def pdf_view():
+    # Download the PDF file from the URL
+    response = requests.get(st.session_state.pdf)
+    pdf_bytes = response.content
+    
+    # Encode the PDF bytes as base64
+    base64_pdf = base64.b64encode(pdf_bytes).decode('utf-8')
+    
+    # Create an iframe to display the PDF
+    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
+    return st.markdown(pdf_display, unsafe_allow_html=True)
     
 with colB:
     with st.expander("Video", expanded=True):
         st.subheader(f"Youtube Video Installatio Guide for {st.session_state.choose}")
         yt_video()
     with st.expander("PDF", expanded=True):
-        st.markdown(f'<iframe src="https://drive.google.com/uc?export=download&id=1kBWygtPP5nkzCv9uR3AX2Y-PGjCFpeFr;base64,{pdf_base64}" width="700" height="1000" type="application/pdf"></iframe>', unsafe_allow_html=True)
-
+        # st.markdown(f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>', unsafe_allow_html=True)
+        pdf_view()
 
 
 
