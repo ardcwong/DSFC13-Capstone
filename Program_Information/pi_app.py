@@ -94,7 +94,7 @@ def load_collection():
             embedding_function=openai_ef,
             metadata={"hnsw:space": "cosine"}
         )
-        if verctor_store:
+        if vector_store:
             st.success("Success!")
         return vector_store
     except Exception as e:
