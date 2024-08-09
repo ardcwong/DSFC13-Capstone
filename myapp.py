@@ -304,6 +304,7 @@ IGP = st.Page("InstallationGuidePage/InstallationGuide.py", title = "Installatio
 pathfinder_rfs = st.Page("Pathfinder/feedback_summary.py", title="Results Feedback Summary", icon="📓")
 # DSF = st.Page("DSF/app.py", title = "DSF Program Information", icon = "📗")
 DSFBA = st.Page("DSFBAssistant/DSFBootcampAssistant.py", title = "Your Bootcamp Assistant", icon = "📗")
+CO = st.Page("CourseOutline/CourseOutline.py", title = "Course Outline", icon = "📗")
 
 
 suitability = st.Page(
@@ -321,7 +322,7 @@ main_apps = [home_page, suitability, ProgramInformation]
 log_in = [login_page]
 log_out = [logout_page]
 data_apps = []
-dsf_apps = [DSFBA,IGP]
+dsf_apps = [CO,DSFBA,IGP]
 pf_apps = [pathfinder_rfs]
 st.logo(
     "data/Eskwelabs_logo.svg"#,
