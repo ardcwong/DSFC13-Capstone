@@ -68,7 +68,7 @@ cohort_outline_filepath = 'data/Data Science Fellowship Cohort 13 Curriculum.csv
 course_outline = load_and_generate_course_outline(cohort_outline_filepath)
 
 # Assuming `collection` is your ChromaDB collection with embeddings already set up
-enhanced_course_outline = enhance_course_outline(course_outline, collection)
+enhanced_course_outline = enhance_course_outline(course_outline, vector_store)
 
 # Print the enhanced course outline with detailed content
 for sprint, topics in enhanced_course_outline.items():
