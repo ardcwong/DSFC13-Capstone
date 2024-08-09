@@ -18,7 +18,7 @@ st.markdown("""
     </style>
     
     <div class="fixed-container">
-        <img src="data/anaconda.png" alt="Anaconda Logo" height="50">
+        <img src="/mnt/data/image.png" alt="Anaconda Logo" height="50">
         <h1 style="display: inline;">Eskwelabs Data Science Fellowship Information Bot</h1>
     </div>
 """, unsafe_allow_html=True)
