@@ -97,21 +97,22 @@ topics and sub-topics, divided into four distinct Sprints. This Navigator acts a
 guide for fellows, helping them steer through their learning journey with confidence.
 """)
 
-# Dynamic checkbox generation
+
+# Dynamic checkbox generation with session state
 selected_sprints = {}
 
 for sprint in course_outline.keys():
-    if st.checkbox(sprint):
-        selected_sprints[sprint] = course_outline[sprint]
+    if st.checkbox(sprint, key=f"checkbox_{sprint}"):
+        if f"outline_{sprint}" not in st.session_state:
+            # Enhance only if it hasn't been done before
+            st.session_state[f"outline_{sprint}"] = enhance_course_outline({sprint: course_outline[sprint]}, None)
+        selected_sprints[sprint] = st.session_state[f"outline_{sprint}"]
 
-# Enhance selected sprints
+# Display the enhanced course outline with detailed content
 if selected_sprints:
-    enhanced_course_outline = enhance_course_outline(selected_sprints, None)
-
-    # Print the enhanced course outline with detailed content
-    for sprint, topics in enhanced_course_outline.items():
+    for sprint, topics in selected_sprints.items():
         with st.expander(f"{sprint}", expanded=True):
-            for main_topic, subtopics in topics.items():
+            for main_topic, subtopics in topics[sprint].items():
                 st.write(f"Main Topic: {main_topic}")
                 for subtopic, content in subtopics.items():
                     st.write(f"  Subtopic: {subtopic}")
