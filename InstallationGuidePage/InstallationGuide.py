@@ -43,7 +43,7 @@ with colA:
                 st.markdown("***Install on your MAC OS***")
                 st.image('data/windows.png')
             with b:
-                mac_os = st.button("Watch", use_column_width = True)
+                mac_os = st.button("Watch", use_container_width=False)
                 if mac_os:
                     st.session_state.yt_link = youtube_url_mac
         
