@@ -121,12 +121,24 @@ with colB:
         # Provide a download button for the PDF
         if downloaded_pdf:
             with open(downloaded_pdf, "rb") as file:
-                btn = st.download_button(
+                st.download_button(
                     label="Download PDF",
                     data=file,
                     file_name="installation_guide.pdf",
                     mime="application/pdf"
                 )
+#     if st.button('PDF Guide to Run Python', type="primary", use_container_width=True):
+#         pdf_content = fetch_pdf_content(pdf_url_run)
+#         if pdf_content:
+#             st.download_button(
+#                 label="Download PDF",
+#                 data=pdf_content,
+#                 file_name='Run Python_Installation Guide.pdf',
+#                 mime='application/pdf'
+#             )
+
+
+        
         if local_pdf_path:
             with st.container(height = 600):
             # st.markdown(f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>', unsafe_allow_html=True)
