@@ -95,8 +95,20 @@ with colA:
 def yt_video():
     return st.video(st.session_state.yt_link)
     
+def download_pdf(url, save_path):
+    response = requests.get(url)
+    with open(save_path, 'wb') as file:
+        file.write(response.content)
+
 def pdf_view():
-    return pdf_viewer("https://drive.google.com/uc?export=download&id=1kBWygtPP5nkzCv9uR3AX2Y-PGjCFpeFr")
+    pdf_url = "https://drive.google.com/uc?export=download&id=1kBWygtPP5nkzCv9uR3AX2Y-PGjCFpeFr"
+    local_pdf_path = "/tmp/installation_guide.pdf"
+
+    # Download the PDF from the URL
+    download_pdf(pdf_url, local_pdf_path)
+
+    # Display the PDF using pdf_viewer
+    pdf_viewer(local_pdf_path)
     
 with colB:
     with st.expander("Video", expanded=True):
