@@ -109,51 +109,29 @@ def pdf_view():
     downloaded_pdf = download_pdf(pdf_url, local_pdf_path)
     return local_pdf_path, downloaded_pdf
 
-    
-    
 with colB:
     with st.expander(f"Video", expanded=True):
         st.subheader(f"Watch Youtube Video: {st.session_state.choose}")
         yt_video()
         
     with st.expander("PDF", expanded=True):
-        st.subheader(f"Read: {st.session_state.choose}")
+        
         local_pdf_path, downloaded_pdf = pdf_view()
         # Provide a download button for the PDF
         if downloaded_pdf:
-
-# def fetch_pdf_content(url):
-#     try:
-#         response = requests.get(url)
-#         response.raise_for_status()
-#         return response.content
-#     except requests.exceptions.RequestException as e:
-#         st.error(f"An error occurred: {e}")
-#         return None
-
-            
             with open(downloaded_pdf, "rb") as file:
-                st.download_button(
-                    label="Download PDF",
-                    data=file,
-                    file_name=f"{st.session_state.choose}.pdf",
-                    mime="application/pdf"
-                )
-#     if st.button('PDF Guide to Run Python', type="primary", use_container_width=True):
-#         pdf_content = fetch_pdf_content(pdf_url_run)
-#         if pdf_content:
-#             st.download_button(
-#                 label="Download PDF",
-#                 data=pdf_content,
-#                 file_name='Run Python_Installation Guide.pdf',
-#                 mime='application/pdf'
-#             )
-
-
-        
+                pdf_col_1, pdf_col_2 = st.columns(6,4])
+                with pdf_col_1:
+                    st.subheader(f"Read: {st.session_state.choose}")
+                with pdf_col_2:
+                    st.download_button(
+                        label="Download PDF",
+                        data=file,
+                        file_name=f"{st.session_state.choose}.pdf",
+                        mime="application/pdf"
+                    )
         if local_pdf_path:
             with st.container(height = 600):
-            # st.markdown(f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>', unsafe_allow_html=True)
                 # Display the PDF using pdf_viewer
                 pdf_viewer(local_pdf_path)   
 
