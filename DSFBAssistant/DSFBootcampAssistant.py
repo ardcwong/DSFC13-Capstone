@@ -31,18 +31,18 @@ def load_collection_DSFBAssistant():
   COLLECTION_NAME_2 = "eskwe_embeddings"
   client_chromadb_2 = chromadb.PersistentClient(path=CHROMA_DATA_PATH_2)
   openai_ef_2 = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
-  try:
-    collection = client_chromadb_2.get_or_create_collection(
-      name=COLLECTION_NAME_2,
-      embedding_function=openai_ef_2,
-      metadata={"hnsw:space": "cosine"}
-    )
-    if collection:
-        st.success("Success!")    
-    return collection
-  except:
-    st.error("error")
-    return None
+  # try:
+  collection = client_chromadb_2.get_or_create_collection(
+    name=COLLECTION_NAME_2,
+    embedding_function=openai_ef_2,
+    metadata={"hnsw:space": "cosine"}
+  )
+    # if collection:
+    #     st.success("Success!")    
+  return collection
+  # except:
+  #   st.error("error")
+  #   return None
 
 
 collection = load_collection_DSFBAssistant()
