@@ -109,7 +109,7 @@ with colB:
         yt_video()
     with st.expander("PDF", expanded=True):
         # st.markdown(f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>', unsafe_allow_html=True)
-        pdf_view()
+        # pdf_view()
 
 
 
