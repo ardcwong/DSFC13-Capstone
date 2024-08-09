@@ -47,7 +47,7 @@ with colA:
                 st.markdown("***Install on your MAC OS***")
                 mac_os = st.button("Watch", use_container_width=True, type = "primary", help = "Click to Watch Installation Guide for MAC OS")
                 if mac_os:
-                    st.session_state.yt_link = youtube_url_mac
+                    st.session_state.yt_link = youtube_url_windows
                     # st.rerun(scope = "fragment")
                     
 
