@@ -79,8 +79,8 @@ with colA:
                 # st.markdown("<h2 style='text-align: center;'>MAC OS</h2>", unsafe_allow_html=True)
                 st.markdown("***Run Python in Anaconda***")
                 if st.button("Watch", use_container_width=True, type = "primary", help = "Click to Watch Run Python in Anaconda"):
-                    st.session_state.choose = choose_windows
-                    st.session_state.yt_link = youtube_url_windows  
+                    st.session_state.choose = choose_python
+                    st.session_state.yt_link = youtube_url_python  
 
 def yt_video():
     return st.video(st.session_state.yt_link)
