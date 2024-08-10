@@ -137,7 +137,7 @@ def ask_openai(prompt):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are an assistant who provides specific and actionable feedback."},
+            {"role": "system", "content": "You are an assistant who provides actionable feedback summary."},
             {"role": "user", "content": prompt}
         ],
         max_tokens=150
@@ -168,7 +168,7 @@ if st.button("Lookup Scores"):
             with st.spinner("Generating feedback..."):
                 feedback_output = generate_feedback_per_category(scores)
                 st.header("Feedback Summary")
-                st.text(feedback_output)
+                st.write(feedback_output)
         else:
             st.error("Reference Number not found.")
     else:
