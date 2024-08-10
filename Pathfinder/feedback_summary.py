@@ -170,7 +170,7 @@ else:
             score_category = categorize_score(score)
             
             scores[main_category] = score_category
-            st.write(pd.DataFrame(scores.loc[-1]))
+            st.write((scores))
         with st.spinner("Generating feedback..."):
             if st.session_state.feedback_generated == []:
                 st.session_state.feedback_generated = generate_summarized_feedback(scores)
