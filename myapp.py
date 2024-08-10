@@ -318,11 +318,11 @@ ProgramInformation = st.Page(
 
 
 
-main_apps = [home_page, suitability, ProgramInformation]
+main_apps = [home_page, suitability, ProgramInformation, CO,DSFBA,IGP]
 log_in = [login_page]
 log_out = [logout_page]
 data_apps = []
-dsf_apps = [CO,DSFBA,IGP]
+dsf_apps = []
 pf_apps = [pathfinder_rfs]
 st.logo(
     "data/Eskwelabs_logo.svg"#,
