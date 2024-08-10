@@ -98,7 +98,7 @@ def generate_summarized_feedback(scores):
         # Constructing the prompt
         prompt = (
             f"Based on the following information, please provide a single summarized paragraph of feedback and actionable suggestions "
-            f"to help the me improve in the category '{category}'.\n"
+            f"to help me improve in the category '{category}'.\n"
             f"The student's performance in this category is '{score_category}'.\n"
             f"Here are the subcategories and key topics covered in this category:\n\n"
         )
@@ -177,6 +177,9 @@ else:
             st.header("Feedback Summary")
             st.write(st.session_state.feeback_generated)
             st.write(st.session_state.feeback_generated[0])
+            # Display each feedback using st.write
+            for key, feedback in st.session_state.feeback_generated.items():
+                st.write(feedback)
     else:
         st.error("Reference Number not found.")
 # else:
