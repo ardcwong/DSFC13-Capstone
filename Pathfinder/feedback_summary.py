@@ -151,6 +151,7 @@ if st.session_state.generate_pf_fs == False:
             st.session_state.generate_pf_fs = True
             st.session_state.reference_number = reference_number
             st.rerun()
+        
 # Streamlit App Title
 # st.title("Data Science Preparedness Feedback Generator")
 
@@ -191,6 +192,9 @@ else:
                         st.write(feedback)
     else:
         st.error("Reference Number not found.")
+        st.session_state.generate_pf_fs = False
+        st.session_state.reference_number = []
+        st.rerun()
 # else:
 #     st.error("Please enter a Reference Number.")
 
