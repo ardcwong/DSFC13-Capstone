@@ -131,7 +131,7 @@ def ask_openai(prompt):
             {"role": "system", "content": "You are an assistant who generates feedback for exam results in a generalized and constructive manner."},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=150
+        max_tokens=250
     )
     return response.choices[0].message.content.strip()
 
