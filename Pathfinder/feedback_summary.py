@@ -139,6 +139,8 @@ if "generate_pf_fs" not in st.session_state:
     st.session_state.generate_pf_fs = False
 if "reference_number" not in st.session_state:
     st.session_state.reference_number = []
+if "feeback_generated" not in st.session_state:
+    st.session_state.feeback_generated = []
 
 if st.session_state.generate_pf_fs == False:
     # Input for reference number
@@ -169,10 +171,12 @@ else:
             # st.write(scores[main_category])
             scores[main_category] = score_category
         with st.spinner("Generating feedback..."):
-            feedback_output = generate_summarized_feedback(scores)
+            if st.session_state.feeback_generated == []:
+                st.session_state.feeback_generated = generate_summarized_feedback(scores)
+                
             st.header("Feedback Summary")
-            st.write(feedback_output)
-            st.write(feedback_output[0])
+            st.write(st.session_state.feeback_generated)
+            st.write(st.session_state.feeback_generated[0])
     else:
         st.error("Reference Number not found.")
 # else:
