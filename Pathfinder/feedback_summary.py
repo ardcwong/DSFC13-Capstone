@@ -177,8 +177,9 @@ else:
             st.header("Feedback Summary")
             st.write(st.session_state.feeback_generated)
             st.write(st.session_state.feeback_generated[0])
+            feedback_outputs = json.loads(st.session_state.feeback_generated)
             # Display each feedback using st.write
-            for key, feedback in st.session_state.feeback_generated:
+            for key, feedback in feedback_outputs.items():
                 st.write(feedback)
     else:
         st.error("Reference Number not found.")
