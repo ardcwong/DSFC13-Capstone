@@ -126,11 +126,42 @@ def retrieve_documents(query, collection):
 #####
 # add rules when chat memory is blank then dont include it in the prompt
 ####
-def generate_chatbot_response(context, query, metadata, chat_memory):
-    history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_memory])
-    metadata_info = "\n".join([f"File: {meta['description']}" for meta in metadata])
-    prompt = f"Based on the following conversation history:\n\n{history_text}\n\nAnd the following information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
+
+
+# def generate_chatbot_response(context, query, metadata, chat_memory):
+#     history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_memory])
+#     metadata_info = "\n".join([f"File: {meta['description']}" for meta in metadata])
+#     prompt = f"Based on the following conversation history:\n\n{history_text}\n\nAnd the following information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
     
+#     response = openai.chat.completions.create(
+#         model="gpt-3.5-turbo",
+#         messages=[
+#             {"role": "system", "content": "You are an assistant that helps students answer questions about Eskwelabs' Data Science Fellowship program."},
+#             {"role": "user", "content": prompt}
+#         ]
+#     )
+#     return response.choices[0].message.content.strip()
+
+def generate_chatbot_response(context, query, metadata, chat_memory):
+    # prompt components
+    history_text = ""
+    metadata_info = ""
+
+    # Check if chat memory is not empty and add to history_text if not empty
+    if chat_memory:
+        history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_memory])
+
+    #Check if metadata is not empty and add to metadata_info if not empty
+    if metadata:
+        metadata_info = "\n".join([f"File: {meta['description']}" for meta in metadata])
+
+    #Prompt with no history
+    prompt = f"Based on the following information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
+
+    #Prompt with history
+    if history_text:
+        prompt = f"Based on the following conversation history:\n\n{history_text}\n\n{prompt}"
+
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -138,8 +169,15 @@ def generate_chatbot_response(context, query, metadata, chat_memory):
             {"role": "user", "content": prompt}
         ]
     )
+
+    response_text = response.choices[0].message.content.strip()
+
+    #Fallback message
+    if not response_text or "unknown" in response_text.lower():
+        response_text = "I couldn't find any relevant information based on your query. Please try rephrasing your question or providing more details."
+
+    return response_text
     
-    return response.choices[0].message.content.strip()
 def chatbot_response(user_query, collection, chat_history, chat_memory):
     chat_history.add_message("user", user_query)
     
