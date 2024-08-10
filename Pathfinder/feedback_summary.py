@@ -170,11 +170,11 @@ else:
             score_category = categorize_score(score)
             
             scores[main_category] = score_category
-            st.write((scores))
+            
         with st.spinner("Generating feedback..."):
             if st.session_state.feedback_generated == []:
                 st.session_state.feedback_generated = generate_summarized_feedback(scores)
-                
+            st.write((scores))  
             st.header("Feedback Summary")
             # st.write(st.session_state.feeback_generated)
             # st.write(st.session_state.feeback_generated[0])
