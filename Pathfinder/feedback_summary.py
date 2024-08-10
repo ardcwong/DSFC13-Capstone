@@ -167,7 +167,7 @@ else:
                 score = float(score_str)
                 
             scores[main_category] = score
-            score_category = categorize_score(score.values())
+            score_category = categorize_score(score)
             
             scores[main_category] = score_category
             
