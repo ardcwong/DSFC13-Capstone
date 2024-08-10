@@ -179,7 +179,7 @@ else:
             # st.write(st.session_state.feeback_generated[0])
 
             # Display each feedback using st.write
-            st.write(category_structure["main_category"])
+            st.write(category_structure)
             for feedback in st.session_state.feeback_generated:
                 with st.container(border=True):
                     st.write(feedback)
