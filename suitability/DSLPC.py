@@ -23,9 +23,9 @@ api_key = st.secrets["api"]['api_key']
 openai.api_key = api_key
 credentials = st.secrets["gcp_service_account"]
 
-if "stop" not in st.session_state:
-    st.session_state.stop = True
-    nltk.download('stopwords')
+# if "stop" not in st.session_state:
+#     st.session_state.stop = True
+#     nltk.download('stopwords')
 
 def remove_stopwords(response):
     stop_words = set(stopwords.words('english'))
