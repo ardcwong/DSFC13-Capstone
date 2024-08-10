@@ -147,7 +147,7 @@ if st.session_state.generate_pf_fs == False:
     column11, column12, column13 = st.columns([2,6,2])  
     with column12:
         reference_number = st.text_input("Enter your Reference Number:")
-        if st.button("My Pathfinder Exam Results Feedback Summary", use_column_width = True):
+        if st.button("My Pathfinder Exam Results Feedback Summary", use_container_width = True):
             st.session_state.generate_pf_fs = True
             st.session_state.reference_number = reference_number
             st.rerun()
