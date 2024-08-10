@@ -64,7 +64,8 @@ def load_scores_dataset(spreadsheet):
 # Load the data
 category_structure = load_category_structure(st.session_state.spreadsheet_DerivedCompetencyFramework)
 scores_dataset = load_scores_dataset(st.session_state.spreadsheet_DerivedCompetencyFramework)
-
+st.write(category_structure)
+st.write(scores_dataset.head())
 # Streamlit App Title
 st.title("Data Science Preparedness Feedback Generator")
 
