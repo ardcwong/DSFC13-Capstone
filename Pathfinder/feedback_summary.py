@@ -13,17 +13,18 @@ openai.api_key = api_key
 credentials = st.secrets["gcp_service_account"]
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
-client = gspread.authorize(creds)
+client1 = gspread.authorize(creds)
+client2 = gspread.authorize(creds)
 
 # Google Sheets connection function
 def google_connection_gsheet_DerivedCompetencyFramework(client):
     # Open the Google Sheet
-    spreadsheet = client.open("Derived Competency Framework")
+    spreadsheet = client1.open("Derived Competency Framework")
     return spreadsheet
 
 def google_connection_gsheet_PathfinderExamResults(client):
     # Open the Google Sheet
-    spreadsheet = client.open("Pathfinder Exam Results")
+    spreadsheet = client2.open("Pathfinder Exam Results")
     return spreadsheet
 
 ########################################################
