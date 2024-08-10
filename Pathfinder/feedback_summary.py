@@ -13,37 +13,37 @@ openai.api_key = api_key
 credentials = st.secrets["gcp_service_account"]
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
-client1 = gspread.authorize(creds)
-client2 = gspread.authorize(creds)
+client = gspread.authorize(creds)
+
 
 # Google Sheets connection function
 def google_connection_gsheet_DerivedCompetencyFramework(client):
     # Open the Google Sheet
-    spreadsheet1 = client.open("Derived Competency Framework")
-    return spreadsheet1
+    spreadsheet = client.open("Derived Competency Framework")
+    return spreadsheet
 
 def google_connection_gsheet_PathfinderExamResults(client):
     # Open the Google Sheet
-    spreadsheet2 = client.open("Pathfinder Exam Results")
-    return spreadsheet2
+    spreadsheet = client.open("Pathfinder Exam Results")
+    return spreadsheet
 
 ########################################################
 # ACCESS DERIVED COMPETENCY FRAMEWORK GSHEET
 ########################################################
 if "spreadsheet_DerivedCompetencyFramework" not in st.session_state:
-    st.session_state.spreadsheet_DerivedCompetencyFramework = google_connection_gsheet_DerivedCompetencyFramework(client1)
+    st.session_state.spreadsheet_DerivedCompetencyFramework = google_connection_gsheet_DerivedCompetencyFramework(client)
 ########################################################
 # ACCESS PATHFINDER EXAM RESULTS GSHEET
 ########################################################
 if "spreadsheet_PathfinderExamResults" not in st.session_state:
-    st.session_state.spreadsheet_PathfinderExamResults = google_connection_gsheet_PathfinderExamResults(client2)
+    st.session_state.spreadsheet_PathfinderExamResults = google_connection_gsheet_PathfinderExamResults(client)
 
 st.write(st.session_state.spreadsheet_DerivedCompetencyFramework)
 st.write(st.session_state.spreadsheet_PathfinderExamResults)
 # Function to load category structure data from Google Sheet
-@st.cache_data
-def load_category_structure(_spreadsheet):
-    worksheet = _spreadsheet.worksheet("Sheet1")
+
+def load_category_structure(spreadsheet):
+    worksheet = spreadsheet.worksheet("Sheet1")
     data = worksheet.get_all_values()
     df = pd.DataFrame(data[1:], columns=data[0])
     df['Main Category'] = df['Main Category'].fillna(method='ffill')
@@ -61,17 +61,17 @@ def load_category_structure(_spreadsheet):
     return category_structure
 
 # Function to load the scores dataset from Google Sheet
-@st.cache_data
-def load_scores_dataset(_spreadsheet2):
-    worksheet2 = _spreadsheet2.worksheet("Sheet1")
-    data_score = worksheet2.get_all_values()
+
+def load_scores_dataset(spreadsheet):
+    worksheet = spreadsheet.worksheet("Sheet1")
+    data_score = worksheet.get_all_values()
     df_score = pd.DataFrame(data_score[1:], columns=data_score[0])
     st.write(df_score)
     return df_score
 
 # Load the data
 category_structure = load_category_structure(st.session_state.spreadsheet_DerivedCompetencyFramework)
-scores_dataset = load_scores_dataset(st.session_state.spreadsheet_DerivedCompetencyFramework)
+scores_dataset = load_scores_dataset(st.session_state.spreadsheet_PathfinderExamResults)
 st.write(category_structure)
 st.write(scores_dataset.head())
 # Streamlit App Title
