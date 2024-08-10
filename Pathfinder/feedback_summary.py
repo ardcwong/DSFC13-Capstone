@@ -161,7 +161,36 @@ def generate_feedback(scores):
         feedback.append(f"**{category}** ({score_category}):\n{suggestion}\n")
     
     return "\n".join(feedback)
+# Function to generate a single summarized feedback paragraph using GPT
+def generate_summarized_feedback(scores):
+    feedback = []
 
+    # Iterate through each main category and generate feedback
+    for category, score in scores.items():
+        score_category = score
+        subcategories = category_structure[category]
+
+        # Constructing the prompt
+        prompt = (
+            f"Based on the following information, please provide a single summarized paragraph of actionable suggestions "
+            f"to help the student improve in the category '{category}'.\n"
+            f"The student's performance in this category is '{score_category}'.\n"
+            f"Here are the subcategories and key topics covered in this category:\n\n"
+        )
+
+        for subcategory, topics in subcategories.items():
+            topic_list = ', '.join(topics)
+            prompt += f"- {subcategory}: {topic_list}\n"
+
+        prompt += "\nSummarize the feedback into a single paragraph."
+
+        # Get the suggestion from GPT
+        suggestion = ask_openai(prompt)
+
+        # Append the feedback
+        feedback.append(f"**{category}** ({score_category}):\n{suggestion}\n")
+    
+    return "\n".join(feedback)
 # Function to interact with OpenAI's GPT
 def ask_openai(prompt):
     response = openai.chat.completions.create(
@@ -198,7 +227,7 @@ if st.button("Lookup Scores"):
                 st.write(scores[main_category])
                 scores[main_category] = score_category
             with st.spinner("Generating feedback..."):
-                feedback_output = generate_feedback(scores)
+                feedback_output = generate_summarized_feedback(scores)
                 st.header("Feedback Summary")
                 st.write(feedback_output)
         else:
