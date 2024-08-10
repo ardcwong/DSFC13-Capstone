@@ -70,7 +70,7 @@ def load_scores_dataset(spreadsheet):
 category_structure = load_category_structure(st.session_state.spreadsheet_DerivedCompetencyFramework)
 scores_dataset = load_scores_dataset(st.session_state.spreadsheet_PathfinderExamResults)
 # st.write(category_structure)
-st.write(scores_dataset.head())
+# st.write(scores_dataset.head())
 # Streamlit App Title
 st.title("Data Science Preparedness Feedback Generator")
 
@@ -172,6 +172,7 @@ else:
             feedback_output = generate_summarized_feedback(scores)
             st.header("Feedback Summary")
             st.write(feedback_output)
+            st.write(feedback_output[0])
     else:
         st.error("Reference Number not found.")
 # else:
