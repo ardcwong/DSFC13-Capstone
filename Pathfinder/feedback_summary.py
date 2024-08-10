@@ -166,8 +166,7 @@ if st.button("Lookup Scores"):
                 score_category = categorize_score(score)
                 scores[main_category] = score_category
             with st.spinner("Generating feedback..."):
-                feedback_list = generate_feedback_with_subcategories_via_gpt(scores)
-                feedback_output = "\n".join(feedback_list)
+                feedback_output = generate_feedback_per_category(scores)
                 st.header("Feedback Summary")
                 st.text(feedback_output)
         else:
@@ -175,7 +174,31 @@ if st.button("Lookup Scores"):
     else:
         st.error("Please enter a Reference Number.")
 
-# Optional: Display raw data for transparency
-if st.checkbox("Show Raw Data"):
-    st.subheader("Raw Data")
-    st.write(scores_dataset)
+# # Optional: Display raw data for transparency
+# if st.checkbox("Show Raw Data"):
+#     st.subheader("Raw Data")
+#     st.write(scores_dataset)
+
+# # Button to look up scores
+# if st.button("Lookup Scores"):
+#     if reference_number:
+#         user_data = scores_dataset[scores_dataset['Reference Number'] == reference_number]
+#         if not user_data.empty:
+#             scores = {}
+#             for main_category in category_structure.keys():
+#                 score = float(user_data[main_category].values[0])
+#                 score_category = categorize_score(score)
+#                 scores[main_category] = score_category
+#             with st.spinner("Generating feedback..."):
+#                 feedback_output = generate_feedback_per_category(scores)
+#                 st.header("Feedback Summary")
+#                 st.text(feedback_output)
+#         else:
+#             st.error("Reference Number not found.")
+#     else:
+#         st.error("Please enter a Reference Number.")
+
+# # Optional: Display raw data for transparency
+# if st.checkbox("Show Raw Data"):
+#     st.subheader("Raw Data")
+#     st.write(scores_dataset)
