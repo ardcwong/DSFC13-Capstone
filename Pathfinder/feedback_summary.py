@@ -16,21 +16,26 @@ creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
 client = gspread.authorize(creds)
 
 # Google Sheets connection function
-def google_connection_gsheet(client,gsheetname):
+def google_connection_gsheet_DerivedCompetencyFramework(client):
     # Open the Google Sheet
-    spreadsheet = client.open(gsheetname)
+    spreadsheet = client.open("Derived Competency Framework")
+    return spreadsheet
+
+def google_connection_gsheet_PathfinderExamResults(client):
+    # Open the Google Sheet
+    spreadsheet = client.open("Pathfinder Exam Results")
     return spreadsheet
 
 ########################################################
 # ACCESS DERIVED COMPETENCY FRAMEWORK GSHEET
 ########################################################
 if "spreadsheet_DerivedCompetencyFramework" not in st.session_state:
-    st.session_state.spreadsheet_DerivedCompetencyFramework = google_connection_gsheet(client,"Derived Competency Framework")
+    st.session_state.spreadsheet_DerivedCompetencyFramework = google_connection_gsheet_DerivedCompetencyFramework(client)
 ########################################################
 # ACCESS PATHFINDER EXAM RESULTS GSHEET
 ########################################################
 if "spreadsheet_PathfinderExamResults" not in st.session_state:
-    st.session_state.spreadsheet_PathfinderExamResults = google_connection_gsheet(client,"Pathfinder Exam Results")
+    st.session_state.spreadsheet_PathfinderExamResults = google_connection_gsheet_PathfinderExamResults(client)
 
 st.write(st.session_state.spreadsheet_DerivedCompetencyFramework)
 st.write(st.session_state.spreadsheet_PathfinderExamResults)
