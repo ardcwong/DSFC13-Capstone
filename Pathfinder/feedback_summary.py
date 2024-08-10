@@ -97,7 +97,7 @@ def generate_summarized_feedback(scores):
 
         # Constructing the prompt
         prompt = (
-            f"Based on the following information, please provide a two summarized paragraphs of feedback and actionable suggestions "
+            f"Based on the following information, please provide a summarized of feedback and actionable suggestions "
             f"to help me improve in the category '{category}'.\n"
             f"The student's performance in this category is '{score_category}'.\n"
             f"Here are the subcategories and key topics covered in this category:\n\n"
@@ -107,7 +107,7 @@ def generate_summarized_feedback(scores):
             topic_list = ', '.join(topics)
             prompt += f"- {subcategory}: {topic_list}\n"
 
-        prompt += "\nSummarize the feedback and actionable suggestions into two paragraphs. "
+        prompt += "\nSummarize the feedback and actionable suggestions into a single paragraph. "
 
         # Get the suggestion from GPT
         suggestion = ask_openai(prompt)
