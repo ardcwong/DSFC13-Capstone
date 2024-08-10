@@ -181,7 +181,7 @@ else:
             
             column1, column2, column3 = st.columns([1,8,1])        
             with column2:
-                st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Score Category"]))  
+                # st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Score Category"]))  
                 st.header("Feedback Summary")
                 for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
                     with st.container(border = True):
