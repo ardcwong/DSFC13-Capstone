@@ -110,25 +110,55 @@ def categorize_score(score):
 #     return feedback
 
 # Function to generate feedback using GPT based on summarized input per main category
-def generate_feedback_per_category(scores):
-    feedback = []
+# def generate_feedback_per_category(scores):
+#     feedback = []
     
-    # Create a prompt for each main category
-    for category, score in scores.items():
-        # Constructing the summary input for GPT per main category
-        prompt = (
-            f"Based on this information:\n\n"
-            f"Scores for {category}: {score}\n\n"
-            f"Additional Information: Categorize Score Matrix: Needs Improvement, Fair, Good, Excellent\n\n"
-            f"Other Information: {category_structure[category]}\n\n"
-            f"Provide summarized actionable suggestions for the main category '{category}'."
-        )
+#     # Create a prompt for each main category
+#     for category, score in scores.items():
+#         # Constructing the summary input for GPT per main category
+#         prompt = (
+#             f"Based on this information:\n\n"
+#             f"Scores for {category}: {score}\n\n"
+#             f"Additional Information: Categorize Score Matrix: Needs Improvement, Fair, Good, Excellent\n\n"
+#             f"Other Information: {category_structure[category]}\n\n"
+#             f"Provide summarized actionable suggestions for the main category '{category}'."
+#         )
         
+#         # Get the suggestion from GPT
+#         suggestion = ask_openai(prompt)
+        
+#         # Append the feedback
+#         feedback.append(f"{category}:\n{suggestion}\n")
+    
+#     return "\n".join(feedback)
+
+# Function to generate feedback using GPT based on exam scores and subcategories
+def generate_feedback(scores):
+    feedback = []
+
+    # Iterate through each main category and generate feedback
+    for category, score in scores.items():
+        score_category = score
+        subcategories = category_structure[category]
+
+        # Constructing the prompt
+        prompt = (
+            f"You are an educational assistant tasked with providing feedback.\n"
+            f"The performance of the student in the category '{category}' is '{score_category}'.\n"
+            f"Here are the subcategories and key topics covered in this category:\n\n"
+        )
+
+        for subcategory, topics in subcategories.items():
+            topic_list = ', '.join(topics)
+            prompt += f"- {subcategory}: {topic_list}\n"
+
+        prompt += "\nBased on this information, provide summarized actionable suggestions to help the student improve in each of these subcategories."
+
         # Get the suggestion from GPT
         suggestion = ask_openai(prompt)
-        
+
         # Append the feedback
-        feedback.append(f"{category}:\n{suggestion}\n")
+        feedback.append(f"**{category}** ({score_category}):\n{suggestion}\n")
     
     return "\n".join(feedback)
 
@@ -137,7 +167,7 @@ def ask_openai(prompt):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are an assistant who provides actionable feedback summary."},
+            {"role": "system", "content": "You are an assistant who generates feedback for exam results in a generalized and constructive manner."},
             {"role": "user", "content": prompt}
         ],
         max_tokens=150
@@ -146,6 +176,7 @@ def ask_openai(prompt):
 
 # Input for reference number
 reference_number = st.text_input("Enter your Reference Number:")
+
 
 # Button to look up scores
 if st.button("Lookup Scores"):
@@ -167,7 +198,7 @@ if st.button("Lookup Scores"):
                 st.write(scores[main_category])
                 scores[main_category] = score_category
             with st.spinner("Generating feedback..."):
-                feedback_output = generate_feedback_per_category(scores)
+                feedback_output = generate_feedback(scores)
                 st.header("Feedback Summary")
                 st.write(feedback_output)
         else:
