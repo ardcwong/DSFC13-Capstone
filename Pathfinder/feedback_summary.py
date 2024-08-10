@@ -38,10 +38,8 @@ if "spreadsheet_DerivedCompetencyFramework" not in st.session_state:
 if "spreadsheet_PathfinderExamResults" not in st.session_state:
     st.session_state.spreadsheet_PathfinderExamResults = google_connection_gsheet_PathfinderExamResults(client)
 
-st.write(st.session_state.spreadsheet_DerivedCompetencyFramework)
-st.write(st.session_state.spreadsheet_PathfinderExamResults)
-# Function to load category structure data from Google Sheet
 
+# Function to load category structure data from Google Sheet
 def load_category_structure(spreadsheet):
     worksheet = spreadsheet.worksheet("Sheet1")
     data = worksheet.get_all_values()
