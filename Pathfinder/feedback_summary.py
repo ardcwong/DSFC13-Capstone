@@ -174,7 +174,7 @@ else:
         with st.spinner("Generating feedback..."):
             if st.session_state.feedback_generated == []:
                 st.session_state.feedback_generated = generate_summarized_feedback(scores)
-            st.write(pd.DataFrame(list(data.items()), columns=["Category", "Score Category"]))  
+            st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Score Category"]))  
             st.header("Feedback Summary")
             # st.write(st.session_state.feeback_generated)
             # st.write(st.session_state.feeback_generated[0])
