@@ -187,9 +187,8 @@ else:
             # Iterate through main categories and corresponding feedback
             for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
                 with st.container(border=True):
-                    st.write(f"**{main_category.upper()}**")
+                    # st.write(f"**{main_category.upper()}**")
                     st.write(feedback)
-                    st.markdown("---")  # Optional separator line    
     else:
         st.error("Reference Number not found.")
 # else:
