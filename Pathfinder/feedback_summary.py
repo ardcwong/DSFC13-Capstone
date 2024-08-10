@@ -188,8 +188,9 @@ else:
             # Iterate through main categories and corresponding feedback
             for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
                 with st.container(border = True):
-                    st.markdown(f"""<h5 style='text-align: center;color: #e76f51;'><b><i>{main_category.upper()}</b></i><i></h5>""", unsafe_allow_html=True)
-                    st.write(f"**{main_category.upper()}**")
+                    st.markdown(f"""<h5 style='text-align: center;color: #e76f51;font-size: 35px;'><b><i>{main_category.upper()}</b></i><i></h5>""", unsafe_allow_html=True)
+                    st.divider()
+                    # st.write(f"**{main_category.upper()}**")
                     st.write(feedback)
     else:
         st.error("Reference Number not found.")
