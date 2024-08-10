@@ -178,12 +178,18 @@ else:
             # st.write(st.session_state.feeback_generated)
             # st.write(st.session_state.feeback_generated[0])
 
-            # Display each feedback using st.write
-            st.write(category_structure)
-            for feedback in st.session_state.feeback_generated and for main_category in category_structure.keys():
+            # # Display each feedback using st.write
+            # st.write(category_structure)
+            # for feedback in st.session_state.feeback_generated and for main_category in category_structure.keys():
+            #     with st.container(border=True):
+            #         st.write(main_category)
+            #         st.write(feedback)
+            # Iterate through main categories and corresponding feedback
+            for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
                 with st.container(border=True):
-                    st.write(main_category)
+                    st.write(f"**{main_category}**")
                     st.write(feedback)
+                    st.markdown("---")  # Optional separator line    
     else:
         st.error("Reference Number not found.")
 # else:
