@@ -178,7 +178,7 @@ else:
             st.write(st.session_state.feeback_generated)
             st.write(st.session_state.feeback_generated[0])
             # Display each feedback using st.write
-            for key, feedback in st.session_state.feeback_generated.items():
+            for key, feedback in st.session_state.feeback_generated:
                 st.write(feedback)
     else:
         st.error("Reference Number not found.")
