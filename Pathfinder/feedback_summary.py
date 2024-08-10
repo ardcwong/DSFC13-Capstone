@@ -116,7 +116,7 @@ def generate_summarized_feedback(scores):
         # feedback[category] = {
         #     "Score Category": score_category,
         #     "Feedback": suggestion
-        }
+        # }
         # Append the feedback
         feedback.append(f"**{category}** ({score_category}):\n{suggestion}\n")
 
