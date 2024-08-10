@@ -168,7 +168,7 @@ else:
                 
             scores[main_category] = score
             score_category = categorize_score(score)
-            # st.write(scores[main_category])
+            st.write(scores[main_category])
             scores[main_category] = score_category
         with st.spinner("Generating feedback..."):
             if st.session_state.feedback_generated == []:
