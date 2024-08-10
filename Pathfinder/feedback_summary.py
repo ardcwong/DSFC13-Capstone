@@ -41,7 +41,7 @@ if "spreadsheet_PathfinderExamResults" not in st.session_state:
 st.write(st.session_state.spreadsheet_DerivedCompetencyFramework)
 st.write(st.session_state.spreadsheet_PathfinderExamResults)
 # Function to load category structure data from Google Sheet
-
+@st.cache_data
 def load_category_structure(spreadsheet):
     worksheet = spreadsheet.worksheet("Sheet1")
     data = worksheet.get_all_values()
@@ -61,7 +61,7 @@ def load_category_structure(spreadsheet):
     return category_structure
 
 # Function to load the scores dataset from Google Sheet
-
+@st.cache_data
 def load_scores_dataset(spreadsheet2):
     worksheet2 = spreadsheet2.worksheet("Sheet1")
     data_score = worksheet2.get_all_values()
