@@ -180,7 +180,7 @@ else:
 
             # Display each feedback using st.write
             for feedback in st.session_state.feeback_generated:
-                with container():
+                with st.container():
                     st.write(feedback)
     else:
         st.error("Reference Number not found.")
