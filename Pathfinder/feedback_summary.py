@@ -85,29 +85,52 @@ def categorize_score(score):
     else:
         return "Excellent"
 
-# Function to generate feedback using GPT based on categorized scores
-def generate_feedback_with_subcategories_via_gpt(scores):
+# # Function to generate feedback using GPT based on categorized scores
+# def generate_feedback_with_subcategories_via_gpt(scores):
+#     feedback = []
+#     for category, score in scores.items():
+#         feedback.append(f"Your performance in {category} is categorized as {score}. Here are some suggestions:")
+        
+#         # Custom feedback messages based on the score category
+#         if score == "Needs Improvement":
+#             feedback.append(f"Consider revisiting the basics in {category}. Focus on understanding the fundamentals.")
+#         elif score == "Fair":
+#             feedback.append(f"You're on the right track in {category}, but there's room for improvement. Keep practicing.")
+#         elif score == "Good":
+#             feedback.append(f"You're doing well in {category}. Keep honing your skills and move to advanced topics.")
+#         else:  # Excellent
+#             feedback.append(f"Great job in {category}! Consider taking on more challenging tasks to further excel.")
+        
+#         for subcat, topics in category_structure.get(category, {}).items():
+#             topic_list = ', '.join(topics)
+#             prompt = (f"Based on a performance categorized as '{score}' in {category}, provide specific, actionable suggestions "
+#                       f"for improving in the subcategory '{subcat}', considering the key topics: {topic_list}.")
+#             suggestion = ask_openai(prompt)
+#             feedback.append(f"- {subcat}: {suggestion}")
+#     return feedback
+
+# Function to generate feedback using GPT based on summarized input per main category
+def generate_feedback_per_category(scores):
     feedback = []
+    
+    # Create a prompt for each main category
     for category, score in scores.items():
-        feedback.append(f"Your performance in {category} is categorized as {score}. Here are some suggestions:")
+        # Constructing the summary input for GPT per main category
+        prompt = (
+            f"Based on this information:\n\n"
+            f"Scores for {category}: {score}\n\n"
+            f"Additional Information: Categorize Score Matrix: Needs Improvement, Fair, Good, Excellent\n\n"
+            f"Other Information: {category_structure[category]}\n\n"
+            f"Provide summarized actionable suggestions for the main category '{category}'."
+        )
         
-        # Custom feedback messages based on the score category
-        if score == "Needs Improvement":
-            feedback.append(f"Consider revisiting the basics in {category}. Focus on understanding the fundamentals.")
-        elif score == "Fair":
-            feedback.append(f"You're on the right track in {category}, but there's room for improvement. Keep practicing.")
-        elif score == "Good":
-            feedback.append(f"You're doing well in {category}. Keep honing your skills and move to advanced topics.")
-        else:  # Excellent
-            feedback.append(f"Great job in {category}! Consider taking on more challenging tasks to further excel.")
+        # Get the suggestion from GPT
+        suggestion = ask_openai(prompt)
         
-        for subcat, topics in category_structure.get(category, {}).items():
-            topic_list = ', '.join(topics)
-            prompt = (f"Based on a performance categorized as '{score}' in {category}, provide specific, actionable suggestions "
-                      f"for improving in the subcategory '{subcat}', considering the key topics: {topic_list}.")
-            suggestion = ask_openai(prompt)
-            feedback.append(f"- {subcat}: {suggestion}")
-    return feedback
+        # Append the feedback
+        feedback.append(f"{category}:\n{suggestion}\n")
+    
+    return "\n".join(feedback)
 
 # Function to interact with OpenAI's GPT
 def ask_openai(prompt):
