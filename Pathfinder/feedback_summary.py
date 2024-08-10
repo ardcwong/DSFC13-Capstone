@@ -175,10 +175,11 @@ else:
                 st.session_state.feeback_generated = generate_summarized_feedback(scores)
                 
             st.header("Feedback Summary")
-            st.write(st.session_state.feeback_generated)
+            # st.write(st.session_state.feeback_generated)
             # st.write(st.session_state.feeback_generated[0])
 
             # Display each feedback using st.write
+            st.write(category_structure["Main Category"])
             for feedback in st.session_state.feeback_generated:
                 with st.container(border=True):
                     st.write(feedback)
