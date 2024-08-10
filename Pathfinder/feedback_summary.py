@@ -119,7 +119,7 @@ def generate_summarized_feedback(scores):
         # }
         # Append the feedback
         feedback.append(f"**{category}** ({score_category}):\n{suggestion}\n")
-
+        
     return feedback 
 
     # return "\n".join(feedback)
@@ -176,11 +176,12 @@ else:
                 
             st.header("Feedback Summary")
             st.write(st.session_state.feeback_generated)
-            st.write(st.session_state.feeback_generated[0])
+            # st.write(st.session_state.feeback_generated[0])
 
             # Display each feedback using st.write
             for feedback in st.session_state.feeback_generated:
-                st.write(feedback)
+                with container():
+                    st.write(feedback)
     else:
         st.error("Reference Number not found.")
 # else:
