@@ -86,34 +86,34 @@ def categorize_score(score):
         return "Excellent"
 
 # Function to generate feedback using GPT based on exam scores and subcategories
-def generate_feedback(scores):
-    feedback = []
+# def generate_feedback(scores):
+#     feedback = []
 
-    # Iterate through each main category and generate feedback
-    for category, score in scores.items():
-        score_category = score
-        subcategories = category_structure[category]
+#     # Iterate through each main category and generate feedback
+#     for category, score in scores.items():
+#         score_category = score
+#         subcategories = category_structure[category]
 
-        # Constructing the prompt
-        prompt = (
-            f"You are an educational assistant tasked with providing feedback.\n"
-            f"The performance of the student in the category '{category}' is '{score_category}'.\n"
-            f"Here are the subcategories and key topics covered in this category:\n\n"
-        )
+#         # Constructing the prompt
+#         prompt = (
+#             f"You are an educational assistant tasked with providing feedback.\n"
+#             f"The performance of the student in the category '{category}' is '{score_category}'.\n"
+#             f"Here are the subcategories and key topics covered in this category:\n\n"
+#         )
 
-        for subcategory, topics in subcategories.items():
-            topic_list = ', '.join(topics)
-            prompt += f"- {subcategory}: {topic_list}\n"
+#         for subcategory, topics in subcategories.items():
+#             topic_list = ', '.join(topics)
+#             prompt += f"- {subcategory}: {topic_list}\n"
 
-        prompt += "\nBased on this information, provide summarized actionable suggestions to help the student improve in each of these subcategories."
+#         prompt += "\nBased on this information, provide summarized actionable suggestions to help the student improve in each of these subcategories."
 
-        # Get the suggestion from GPT
-        suggestion = ask_openai(prompt)
+#         # Get the suggestion from GPT
+#         suggestion = ask_openai(prompt)
 
-        # Append the feedback
-        feedback.append(f"**{category}** ({score_category}):\n{suggestion}\n")
+#         # Append the feedback
+#         feedback.append(f"**{category}** ({score_category}):\n{suggestion}\n")
     
-    return "\n".join(feedback)
+#     return "\n".join(feedback)
 # Function to generate a single summarized feedback paragraph using GPT
 def generate_summarized_feedback(scores):
     feedback = []
