@@ -60,6 +60,7 @@ def load_scores_dataset(spreadsheet):
     worksheet = spreadsheet.worksheet("Sheet1")
     data = worksheet.get_all_values()
     df_score = pd.DataFrame(data[1:], columns=data[0])
+    st.write(df_score)
     return df_score
 
 # Load the data
