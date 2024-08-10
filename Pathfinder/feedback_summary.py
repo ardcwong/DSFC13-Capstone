@@ -42,8 +42,8 @@ st.write(st.session_state.spreadsheet_DerivedCompetencyFramework)
 st.write(st.session_state.spreadsheet_PathfinderExamResults)
 # Function to load category structure data from Google Sheet
 @st.cache_data
-def load_category_structure(spreadsheet):
-    worksheet = spreadsheet.worksheet("Sheet1")
+def load_category_structure(_spreadsheet):
+    worksheet = _spreadsheet.worksheet("Sheet1")
     data = worksheet.get_all_values()
     df = pd.DataFrame(data[1:], columns=data[0])
     df['Main Category'] = df['Main Category'].fillna(method='ffill')
@@ -62,8 +62,8 @@ def load_category_structure(spreadsheet):
 
 # Function to load the scores dataset from Google Sheet
 @st.cache_data
-def load_scores_dataset(spreadsheet2):
-    worksheet2 = spreadsheet2.worksheet("Sheet1")
+def load_scores_dataset(_spreadsheet2):
+    worksheet2 = _spreadsheet2.worksheet("Sheet1")
     data_score = worksheet2.get_all_values()
     df_score = pd.DataFrame(data_score[1:], columns=data_score[0])
     st.write(df_score)
