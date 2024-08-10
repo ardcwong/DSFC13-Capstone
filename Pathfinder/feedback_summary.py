@@ -107,7 +107,7 @@ def generate_summarized_feedback(scores):
             topic_list = ', '.join(topics)
             prompt += f"- {subcategory}: {topic_list}\n"
 
-        prompt += "\nSummarize the feedback and actionable suggestions into a single paragraph.\nUse this format: Summary\nSuggestions"
+        prompt += "\nSummarize the feedback and actionable suggestions into a single paragraph.\nUse this format:\nSummary\nSuggestions(paragraph)"
 
         # Get the suggestion from GPT
         suggestion = ask_openai(prompt)
@@ -128,7 +128,7 @@ def ask_openai(prompt):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are an assistant who generates feedback for Eskwelabs pathfinder exam results."},
+            {"role": "system", "content": "You are an assistant who generates feedback for Eskwelabs pathfinder exam results in a generalized and contructive manner."},
             {"role": "user", "content": prompt}
         ],
         max_tokens=250
@@ -187,8 +187,9 @@ else:
             #         st.write(feedback)
             # Iterate through main categories and corresponding feedback
             for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
-                with st.expander(" ",expanded=True):
-                    # st.write(f"**{main_category.upper()}**")
+                with st.container(border = True):
+                    st.markdown(f"""<h5 style='text-align: center;color: #e76f51;'><b><i>{main_category.upper()}</b></i><i></h5>""", unsafe_allow_html=True)
+                    st.write(f"**{main_category.upper()}**")
                     st.write(feedback)
     else:
         st.error("Reference Number not found.")
