@@ -71,8 +71,7 @@ category_structure = load_category_structure(st.session_state.spreadsheet_Derive
 scores_dataset = load_scores_dataset(st.session_state.spreadsheet_PathfinderExamResults)
 # st.write(category_structure)
 # st.write(scores_dataset.head())
-# Streamlit App Title
-st.title("Data Science Preparedness Feedback Generator")
+
 
 # Custom function to categorize scores
 def categorize_score(score):
@@ -144,11 +143,16 @@ if "feedback_generated" not in st.session_state:
 
 if st.session_state.generate_pf_fs == False:
     # Input for reference number
-    reference_number = st.text_input("Enter your Reference Number:")
-    if st.button("My Pathfinder Exam Results Feedback Summary"):
-        st.session_state.generate_pf_fs = True
-        st.session_state.reference_number = reference_number
-        st.rerun()
+
+    column11, column12, column13 = st.columns([2,6,2])  
+    with column22:
+        reference_number = st.text_input("Enter your Reference Number:")
+        if st.button("My Pathfinder Exam Results Feedback Summary", use_column_width = True):
+            st.session_state.generate_pf_fs = True
+            st.session_state.reference_number = reference_number
+            st.rerun()
+# Streamlit App Title
+# st.title("Data Science Preparedness Feedback Generator")
 
 else:
     # # Button to look up scores
@@ -174,20 +178,11 @@ else:
         with st.spinner("Generating feedback..."):
             if st.session_state.feedback_generated == []:
                 st.session_state.feedback_generated = generate_summarized_feedback(scores)
-            st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Score Category"]))  
-            st.header("Feedback Summary")
-            # st.write(st.session_state.feeback_generated)
-            # st.write(st.session_state.feeback_generated[0])
-
-            # # Display each feedback using st.write
-            # st.write(category_structure)
-            # for feedback in st.session_state.feeback_generated and for main_category in category_structure.keys():
-            #     with st.container(border=True):
-            #         st.write(main_category)
-            #         st.write(feedback)
-            # Iterate through main categories and corresponding feedback
-            column1, column2, column3 = st.columns([1,8,1])
+            
+            column1, column2, column3 = st.columns([1,8,1])        
             with column2:
+                st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Score Category"]))  
+                st.header("Feedback Summary")
                 for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
                     with st.container(border = True):
                         st.markdown(f"""<h5 style='text-align: center;color: #e76f51;font-size: 35px;'><b><i>{main_category}</b></i><i></h5>""", unsafe_allow_html=True)
