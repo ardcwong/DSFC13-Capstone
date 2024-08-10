@@ -15,7 +15,7 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
 client1 = gspread.authorize(creds)
 client2 = gspread.authorize(creds)
-
+st.write(client1)
 # Google Sheets connection function
 def google_connection_gsheet_DerivedCompetencyFramework(client):
     # Open the Google Sheet
