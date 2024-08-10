@@ -59,8 +59,8 @@ def load_category_structure(spreadsheet):
 def load_scores_dataset(spreadsheet):
     worksheet = spreadsheet.worksheet("Sheet1")
     data = worksheet.get_all_values()
-    df = pd.DataFrame(data[1:], columns=data[0])
-    return df
+    df_score = pd.DataFrame(data[1:], columns=data[0])
+    return df_score
 
 # Load the data
 category_structure = load_category_structure(st.session_state.spreadsheet_DerivedCompetencyFramework)
