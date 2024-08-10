@@ -187,7 +187,7 @@ else:
             #         st.write(feedback)
             # Iterate through main categories and corresponding feedback
             for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
-                with st.expander(expanded=True):
+                with st.expander(" ",expanded=True):
                     # st.write(f"**{main_category.upper()}**")
                     st.write(feedback)
     else:
