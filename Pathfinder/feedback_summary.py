@@ -180,8 +180,9 @@ else:
 
             # Display each feedback using st.write
             st.write(category_structure)
-            for feedback in st.session_state.feeback_generated:
+            for feedback in st.session_state.feeback_generated and for main_category in category_structure.keys():
                 with st.container(border=True):
+                    st.write(main_category)
                     st.write(feedback)
     else:
         st.error("Reference Number not found.")
