@@ -34,7 +34,7 @@ if "spreadsheet_PathfinderExamResults" not in st.session_state:
 
 
 # Function to load category structure data from Google Sheet
-@st.cache_data
+
 def load_category_structure(spreadsheet):
     worksheet = spreadsheet.worksheet("Sheet1")
     data = worksheet.get_all_values()
@@ -54,7 +54,7 @@ def load_category_structure(spreadsheet):
     return category_structure
 
 # Function to load the scores dataset from Google Sheet
-@st.cache_data
+
 def load_scores_dataset(spreadsheet):
     worksheet = spreadsheet.worksheet("Sheet1")
     data = worksheet.get_all_values()
