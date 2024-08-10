@@ -107,7 +107,7 @@ def generate_summarized_feedback(scores):
             topic_list = ', '.join(topics)
             prompt += f"- {subcategory}: {topic_list}\n"
 
-        prompt += "\nSummarize the feedback and actionable suggestions into a single paragraph. "
+        prompt += "\nSummarize the feedback and actionable suggestions into a single paragraph. Provide only the summary."
 
         # Get the suggestion from GPT
         suggestion = ask_openai(prompt)
