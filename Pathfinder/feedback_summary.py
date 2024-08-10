@@ -111,7 +111,7 @@ def generate_feedback_with_subcategories_via_gpt(scores):
 
 # Function to interact with OpenAI's GPT
 def ask_openai(prompt):
-    response = openai.ChatCompletion.create(
+    response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are an assistant who provides specific and actionable feedback."},
