@@ -107,7 +107,7 @@ def generate_summarized_feedback(scores):
             topic_list = ', '.join(topics)
             prompt += f"- {subcategory}: {topic_list}\n"
 
-        prompt += "\nSummarize the feedback and actionable suggestions into two paragraphs."
+        prompt += "\nSummarize the feedback and actionable suggestions into two paragraphs. "
 
         # Get the suggestion from GPT
         suggestion = ask_openai(prompt)
@@ -128,7 +128,7 @@ def ask_openai(prompt):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are an assistant who generates feedback for exam results in a generalized and constructive manner."},
+            {"role": "system", "content": "You are an assistant who generates feedback for Eskwelabs pathfinder exam results."},
             {"role": "user", "content": prompt}
         ],
         max_tokens=250
