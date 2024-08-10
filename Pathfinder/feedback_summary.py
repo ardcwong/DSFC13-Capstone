@@ -85,53 +85,6 @@ def categorize_score(score):
     else:
         return "Excellent"
 
-# # Function to generate feedback using GPT based on categorized scores
-# def generate_feedback_with_subcategories_via_gpt(scores):
-#     feedback = []
-#     for category, score in scores.items():
-#         feedback.append(f"Your performance in {category} is categorized as {score}. Here are some suggestions:")
-        
-#         # Custom feedback messages based on the score category
-#         if score == "Needs Improvement":
-#             feedback.append(f"Consider revisiting the basics in {category}. Focus on understanding the fundamentals.")
-#         elif score == "Fair":
-#             feedback.append(f"You're on the right track in {category}, but there's room for improvement. Keep practicing.")
-#         elif score == "Good":
-#             feedback.append(f"You're doing well in {category}. Keep honing your skills and move to advanced topics.")
-#         else:  # Excellent
-#             feedback.append(f"Great job in {category}! Consider taking on more challenging tasks to further excel.")
-        
-#         for subcat, topics in category_structure.get(category, {}).items():
-#             topic_list = ', '.join(topics)
-#             prompt = (f"Based on a performance categorized as '{score}' in {category}, provide specific, actionable suggestions "
-#                       f"for improving in the subcategory '{subcat}', considering the key topics: {topic_list}.")
-#             suggestion = ask_openai(prompt)
-#             feedback.append(f"- {subcat}: {suggestion}")
-#     return feedback
-
-# Function to generate feedback using GPT based on summarized input per main category
-# def generate_feedback_per_category(scores):
-#     feedback = []
-    
-#     # Create a prompt for each main category
-#     for category, score in scores.items():
-#         # Constructing the summary input for GPT per main category
-#         prompt = (
-#             f"Based on this information:\n\n"
-#             f"Scores for {category}: {score}\n\n"
-#             f"Additional Information: Categorize Score Matrix: Needs Improvement, Fair, Good, Excellent\n\n"
-#             f"Other Information: {category_structure[category]}\n\n"
-#             f"Provide summarized actionable suggestions for the main category '{category}'."
-#         )
-        
-#         # Get the suggestion from GPT
-#         suggestion = ask_openai(prompt)
-        
-#         # Append the feedback
-#         feedback.append(f"{category}:\n{suggestion}\n")
-    
-#     return "\n".join(feedback)
-
 # Function to generate feedback using GPT based on exam scores and subcategories
 def generate_feedback(scores):
     feedback = []
@@ -186,11 +139,18 @@ def generate_summarized_feedback(scores):
 
         # Get the suggestion from GPT
         suggestion = ask_openai(prompt)
+        
+        # Store the feedback in the dictionary
+        feedback[category] = {
+            "Score Category": score_category,
+            "Feedback": suggestion
+        }
+        # # Append the feedback
+        # feedback.append(f"**{category}** ({score_category}):\n{suggestion}\n")
 
-        # Append the feedback
-        feedback.append(f"**{category}** ({score_category}):\n{suggestion}\n")
-    
-    return "\n".join(feedback)
+    return feedback 
+
+    # return "\n".join(feedback)
 # Function to interact with OpenAI's GPT
 def ask_openai(prompt):
     response = openai.chat.completions.create(
@@ -235,31 +195,3 @@ if st.button("Lookup Scores"):
     else:
         st.error("Please enter a Reference Number.")
 
-# # Optional: Display raw data for transparency
-# if st.checkbox("Show Raw Data"):
-#     st.subheader("Raw Data")
-#     st.write(scores_dataset)
-
-# # Button to look up scores
-# if st.button("Lookup Scores"):
-#     if reference_number:
-#         user_data = scores_dataset[scores_dataset['Reference Number'] == reference_number]
-#         if not user_data.empty:
-#             scores = {}
-#             for main_category in category_structure.keys():
-#                 score = float(user_data[main_category].values[0])
-#                 score_category = categorize_score(score)
-#                 scores[main_category] = score_category
-#             with st.spinner("Generating feedback..."):
-#                 feedback_output = generate_feedback_per_category(scores)
-#                 st.header("Feedback Summary")
-#                 st.text(feedback_output)
-#         else:
-#             st.error("Reference Number not found.")
-#     else:
-#         st.error("Please enter a Reference Number.")
-
-# # Optional: Display raw data for transparency
-# if st.checkbox("Show Raw Data"):
-#     st.subheader("Raw Data")
-#     st.write(scores_dataset)
