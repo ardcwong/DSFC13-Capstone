@@ -15,17 +15,17 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
 client1 = gspread.authorize(creds)
 client2 = gspread.authorize(creds)
-st.write(client1)
+
 # Google Sheets connection function
 def google_connection_gsheet_DerivedCompetencyFramework(client):
     # Open the Google Sheet
-    spreadsheet = client.open("Derived Competency Framework")
-    return spreadsheet
+    spreadsheet1 = client.open("Derived Competency Framework")
+    return spreadsheet1
 
 def google_connection_gsheet_PathfinderExamResults(client):
     # Open the Google Sheet
-    spreadsheet = client.open("Pathfinder Exam Results")
-    return spreadsheet
+    spreadsheet2 = client.open("Pathfinder Exam Results")
+    return spreadsheet2
 
 ########################################################
 # ACCESS DERIVED COMPETENCY FRAMEWORK GSHEET
