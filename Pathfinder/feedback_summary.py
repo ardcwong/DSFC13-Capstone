@@ -131,7 +131,15 @@ if st.button("Lookup Scores"):
         if not user_data.empty:
             scores = {}
             for main_category in category_structure.keys():
-                score = float(user_data[main_category].values[0])
+                score_str = user_data[main_category].values[0]
+                
+                # Remove the '%' sign and convert to float
+                if isinstance(score_str, str) and '%' in score_str:
+                    score = float(score_str.replace('%', '').strip())
+                else:
+                    score = float(score_str)
+                    
+                scores[main_category] = score
                 score_category = categorize_score(score)
                 scores[main_category] = score_category
             with st.spinner("Generating feedback..."):
