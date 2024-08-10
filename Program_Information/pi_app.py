@@ -194,11 +194,12 @@ if st.button("Clear history", type = "primary"):
 st.divider()
 st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
             <br><br>
-            This intelligent bot is designed to help you understand all aspects of the Eskwelabs Data Science Fellowship (DSF) program.
-            Whether you're considering applying or just curious about what the program offers, this bot provides detailed information to guide you.</h5>""", unsafe_allow_html=True)
+            This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that you may have to understand all aspects of the Eskwelabs DSF program.<br><br>
+            Whether you're just curious about what the program offers, or you consider applying for a future-proof career in data, this chatbot provides detailed information to guide you, 
+            and can even recommend the perfect education material for your review, tailor-fit on your stated learning style and expertise level (Beginner, Intermediate, or Advanced).</h5>""", unsafe_allow_html=True)
 st.divider()                        
 
-user_query = st.chat_input("Ask")
+user_query = st.chat_input("Ask Eskwelabs")
 if user_query:
     response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
     update_chat_memory()  # Update chat memory with the latest messages
