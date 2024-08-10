@@ -69,7 +69,7 @@ def load_scores_dataset(spreadsheet):
 # Load the data
 category_structure = load_category_structure(st.session_state.spreadsheet_DerivedCompetencyFramework)
 scores_dataset = load_scores_dataset(st.session_state.spreadsheet_PathfinderExamResults)
-st.write(category_structure)
+# st.write(category_structure)
 st.write(scores_dataset.head())
 # Streamlit App Title
 st.title("Data Science Preparedness Feedback Generator")
@@ -172,8 +172,8 @@ def generate_summarized_feedback(scores):
 
         # Constructing the prompt
         prompt = (
-            f"Based on the following information, please provide a single summarized paragraph of actionable suggestions "
-            f"to help the student improve in the category '{category}'.\n"
+            f"Based on the following information, please provide a single summarized paragraph of feedback and actionable suggestions "
+            f"to help the me improve in the category '{category}'.\n"
             f"The student's performance in this category is '{score_category}'.\n"
             f"Here are the subcategories and key topics covered in this category:\n\n"
         )
@@ -182,7 +182,7 @@ def generate_summarized_feedback(scores):
             topic_list = ', '.join(topics)
             prompt += f"- {subcategory}: {topic_list}\n"
 
-        prompt += "\nSummarize the feedback into a single paragraph."
+        prompt += "\nSummarize the feedback and actionable suggestions into a single paragraph."
 
         # Get the suggestion from GPT
         suggestion = ask_openai(prompt)
