@@ -135,35 +135,45 @@ def ask_openai(prompt):
     )
     return response.choices[0].message.content.strip()
 
-# Input for reference number
-reference_number = st.text_input("Enter your Reference Number:")
+if "generate_pf_fs" not in st.session_state:
+    st.session_state.generate_pf_fs = False
+if "reference_number" not in st.session_state:
+    st.session_state.reference_number = []
 
+if st.session_state.generate_pf_fs == False:
+    # Input for reference number
+    reference_number = st.text_input("Enter your Reference Number:")
+    if st.button("My Pathfinder Exam Results Feedback Summary"):
+        st.session_state.generate_pf_fs = True
+        st.session_state.reference_number = reference_number
+        st.rerun()
 
-# Button to look up scores
-if st.button("Lookup Scores"):
-    if reference_number:
-        user_data = scores_dataset[scores_dataset['Reference Number'] == reference_number]
-        if not user_data.empty:
-            scores = {}
-            for main_category in category_structure.keys():
-                score_str = user_data[main_category].values[0]
+else:
+    # # Button to look up scores
+# if st.button("Lookup Scores"):
+#     if reference_number:
+    user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]
+    if not user_data.empty:
+        scores = {}
+        for main_category in category_structure.keys():
+            score_str = user_data[main_category].values[0]
+            
+            # Remove the '%' sign and convert to float
+            if isinstance(score_str, str) and '%' in score_str:
+                score = float(score_str.replace('%', '').strip())
+            else:
+                score = float(score_str)
                 
-                # Remove the '%' sign and convert to float
-                if isinstance(score_str, str) and '%' in score_str:
-                    score = float(score_str.replace('%', '').strip())
-                else:
-                    score = float(score_str)
-                    
-                scores[main_category] = score
-                score_category = categorize_score(score)
-                # st.write(scores[main_category])
-                scores[main_category] = score_category
-            with st.spinner("Generating feedback..."):
-                feedback_output = generate_summarized_feedback(scores)
-                st.header("Feedback Summary")
-                st.write(feedback_output)
-        else:
-            st.error("Reference Number not found.")
+            scores[main_category] = score
+            score_category = categorize_score(score)
+            # st.write(scores[main_category])
+            scores[main_category] = score_category
+        with st.spinner("Generating feedback..."):
+            feedback_output = generate_summarized_feedback(scores)
+            st.header("Feedback Summary")
+            st.write(feedback_output)
     else:
-        st.error("Please enter a Reference Number.")
+        st.error("Reference Number not found.")
+# else:
+#     st.error("Please enter a Reference Number.")
 
