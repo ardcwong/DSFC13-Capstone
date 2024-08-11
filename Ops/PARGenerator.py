@@ -191,7 +191,7 @@ def score_table_show():
 
 
 st.dataframe(scores_dataset)
-is_blank = scores_dataset["Generated?"].isna()
+is_blank = scores_dataset["PARGenTag"] in ["N"]
 st.write(scores_dataset[is_blank])
 pf_rn = scores_dataset["Reference Number"].tolist()
 st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn)
