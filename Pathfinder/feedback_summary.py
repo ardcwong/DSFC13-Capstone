@@ -137,7 +137,7 @@ else:
         st.rerun()
     pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
     
-    if st.session_state.reference_number in [pf_rn_y]
+    if st.session_state.reference_number in [pf_rn_y]:
         column__1, column__2 = st.columns([2,8])
         with column__2:
     
