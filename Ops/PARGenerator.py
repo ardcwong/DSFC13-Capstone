@@ -241,7 +241,9 @@ with tab2:
     reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn_y)
     st.write(scores_dataset)
     with st.container(border=True):
-        column_1, column_2, column_3 = st.columns([1,8,1])        
+        column_1, column_2, column_3 = st.columns([1,8,1])     
+
+        st.write(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['REPORT_INTRO'].values[0])
         with column_2:
             st.write("")
             
