@@ -71,8 +71,8 @@ def generate_conversational_response_DSFBAssistant(user_input, collection):
 # Streamlit UI
 st.title("Data Science Bootcamp Assistant")
 st.write("Ask any question related to the bootcamp, and get recommendations and answers.")
-
-user_input = st.text_input("Enter your question:")
-if user_input:
-    response = generate_conversational_response_DSFBAssistant(user_input, collection)
-    st.write(response)
+with st.container():
+  user_input = st.chat_input("Enter your question:")
+  if user_input:
+      response = generate_conversational_response_DSFBAssistant(user_input, collection)
+      st.write(response)
