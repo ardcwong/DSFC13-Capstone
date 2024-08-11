@@ -305,8 +305,8 @@ pathfinder_rfs = st.Page("Pathfinder/feedback_summary.py", title="Pathfinder Ass
 # DSF = st.Page("DSF/app.py", title = "DSF Program Information", icon = "📗")
 DSFBA = st.Page("DSFBAssistant/DSFBootcampAssistant.py", title = "Your Bootcamp Assistant", icon = "📗")
 CO = st.Page("CourseOutline/CourseOutline.py", title = "Course Outline", icon = "📍")
-pathfinder_rfs_ops = st.Page("Ops/PARGenerator.py", title="Generate Pathfinder Assessment Report", icon="📊")
-CO_ops = st.Page("Ops/COGenerator.py", title="Generate Comprehensive Course Outline", icon="📖")
+pathfinder_rfs_ops = st.Page("Ops/PARGenerator.py", title="PAR Generator", icon="📊")
+CO_ops = st.Page("Ops/COGenerator.py", title="CCO Generator", icon="📖")
 
 suitability = st.Page(
     "suitability/DSLPC.py",
