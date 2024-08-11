@@ -121,38 +121,17 @@ for sprint in course_outline.keys():
 #                     st.write(f"  Subtopic: {subtopic}")
 #                     st.write(f"    Content:\n{content}\n")
 
-if selected_sprints:
-    for sprint, topics in selected_sprints.items():
-        with st.container():
-            sprint_section = f"""
-            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #1f77b4; color: white; padding: 10px; font-size: 18px; margin-bottom: 10px;">
-                <strong>{sprint}</strong>
-            </div>
-            """
-
-            for main_topic, subtopics in topics.items():
-                sprint_section += f"""
-                <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #f0f0f0; padding: 15px; font-size: 14px; color: black; margin-bottom: 10px;">
-                    <strong>Main Topic: {main_topic}</strong><br>
-                """
-
-                for subtopic, content in subtopics.items():
-                    # Ensure content is properly converted to string if it's a list or dictionary
-                    if isinstance(content, (list, dict)):
-                        content = ', '.join(map(str, content))
-
-                    sprint_section += f"""
-                    <p><strong>Subtopic: {subtopic}</strong></p>
-                    <div style="margin-left: 15px;">
-                        <p>{content}</p>
-                    </div>
-                    """
-
-                sprint_section += "</div>"
-
-            # Append sprint_section to session state or display it
-            # st.session_state.html_content += sprint_section
-            st.markdown(sprint_section, unsafe_allow_html=True)
+# Assuming you have four sprints
+for sprint in sorted(selected_sprints.keys()):
+    st.header(f"Sprint {sprint}")
+    
+    for main_topic, subtopics in selected_sprints[sprint].items():
+        st.subheader(f"Main Topic: {main_topic}")
+        
+        for subtopic, content in subtopics.items():
+            st.markdown(f"**Sub-Topic: {subtopic}**")
+            st.markdown(content)
+            st.markdown("---")  # Adds a horizontal line for separation between subtopics
 # # Dynamic checkbox generation with session state
 # selected_sprints = {}
 
