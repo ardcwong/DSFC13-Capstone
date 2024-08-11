@@ -246,7 +246,7 @@ else:
         st.session_state.feedback_generated = []
         st.rerun()
         
-    user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]
+    user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number_ops]
     if not user_data.empty:
         scores = {}
         for main_category in category_structure.keys():
