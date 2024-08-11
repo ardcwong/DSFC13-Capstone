@@ -245,7 +245,8 @@ if "styled_table_html" not in st.session_state:
 if "feedback_section" not in st.session_state:
     st.session_state.feedback_section = ""
 
-
+if st.session_state.html_content is not "":
+    st.markdown(st.session_state.feedback_section, unsafe_allow_html=True)
 
 
 column11, column12, column13 = st.columns([2,6,2])  
@@ -260,113 +261,117 @@ with column12:
         st.session_state.styled_table_html = ""
         st.session_state.feedback_section = ""
         # st.rerun()
- 
-        user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number_ops]
-        if not user_data.empty:
-            scores = {}
-            for main_category in category_structure.keys():
-                score_str = user_data[main_category].values[0]
+
+if st.session_state.generate_pf_fs == True:
+    user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number_ops]
+    if not user_data.empty:
+        scores = {}
+        for main_category in category_structure.keys():
+            score_str = user_data[main_category].values[0]
+            
+            # Remove the '%' sign and convert to float
+            if isinstance(score_str, str) and '%' in score_str:
+                score = float(score_str.replace('%', '').strip())
+            else:
+                score = float(score_str)
                 
-                # Remove the '%' sign and convert to float
-                if isinstance(score_str, str) and '%' in score_str:
-                    score = float(score_str.replace('%', '').strip())
+            scores[main_category] = score
+            score_category = categorize_score(score)
+            
+            scores[main_category] = score_category
+            
+        with st.spinner("Generating feedback..."):
+            if st.session_state.feedback_generated == []:
+                st.session_state.feedback_generated = generate_summarized_feedback(scores)
+
+            # Add the "Save" button
+            if st.button("Save"):
+                saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, st.session_state.html_content)
+                if saved:
+                    st.success("HTML content saved successfully and PARGeneratedTag updated.")
+                    st.rerun()
                 else:
-                    score = float(score_str)
+                    st.error("Failed to save HTML content or update PARGeneratedTag.")
                     
-                scores[main_category] = score
-                score_category = categorize_score(score)
-                
-                scores[main_category] = score_category
-                
-            with st.spinner("Generating feedback..."):
-                if st.session_state.feedback_generated == []:
-                    st.session_state.feedback_generated = generate_summarized_feedback(scores)
-    
-                # Add the "Save" button
-                if st.button("Save"):
-                    saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, st.session_state.html_content)
-                    if saved:
-                        st.success("HTML content saved successfully and PARGeneratedTag updated.")
-                        st.rerun()
-                    else:
-                        st.error("Failed to save HTML content or update PARGeneratedTag.")
-                        
-                
-                # html_content = ""
-                
-                with st.container(border=True):
-                    column1, column2, column3 = st.columns([1,8,1])        
-                    with column2:
-                        report_intro = f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
-                        <hr style="border:2px solid #ccc;" />
-                        <h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Introduction</b></strong></h5>
-                        <div style="font-size:16px;">
-                            <strong>Thank you for completing the Pathfinder Assessment Exam.<br></strong>
-                        </div>
-                        <div style="font-size:14px;">
-                            <br>The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.<br>
-                        </div>
-                        <div style="font-size:16px;">
-                            <strong><br>We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.<br></strong>
-                        </div>
-                        <div style="font-size:14px;">
-                            <strong><br>Performance Summary:</strong>
-                            <ul>
-                                <li><strong>Needs Improvement:</strong> Areas where further development is recommended.</li>
-                                <li><strong>Fair:</strong> Areas where your performance meets basic expectations.</li>
-                                <li><strong>Good:</strong> Areas where you have demonstrated a solid understanding and capability.</li>
-                                <li><strong>Excellent:</strong> Areas where you have excelled and shown strong proficiency.</li>
-                            </ul>
-                        </div>
-                        <div style="font-size:14px;">
-                            <strong>Actionable Suggestions:</strong><br>
-                            Along with your performance summary, we have included actionable suggestions to help you improve where needed, build on your strengths, and continue your journey toward mastering key skills.
-                        </div>
-                        <div style="font-size:14px;">
-                            <br>We hope you find this information helpful.
-                        </div>
-                        <hr style="border:2px solid #ccc;" />
-                        <h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>
-                        """
-                        # st.markdown(report_intro, unsafe_allow_html=True)
-                        st.session_state.report_intro = report_intro
-                        st.session_state.html_content += report_intro
-    
-                        
+            
+            # html_content = ""
+            
+            with st.container(border=True):
+                column1, column2, column3 = st.columns([1,8,1])        
+                with column2:
+                    report_intro = f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
+                    <hr style="border:2px solid #ccc;" />
+                    <h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Introduction</b></strong></h5>
+                    <div style="font-size:16px;">
+                        <strong>Thank you for completing the Pathfinder Assessment Exam.<br></strong>
+                    </div>
+                    <div style="font-size:14px;">
+                        <br>The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.<br>
+                    </div>
+                    <div style="font-size:16px;">
+                        <strong><br>We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.<br></strong>
+                    </div>
+                    <div style="font-size:14px;">
+                        <strong><br>Performance Summary:</strong>
+                        <ul>
+                            <li><strong>Needs Improvement:</strong> Areas where further development is recommended.</li>
+                            <li><strong>Fair:</strong> Areas where your performance meets basic expectations.</li>
+                            <li><strong>Good:</strong> Areas where you have demonstrated a solid understanding and capability.</li>
+                            <li><strong>Excellent:</strong> Areas where you have excelled and shown strong proficiency.</li>
+                        </ul>
+                    </div>
+                    <div style="font-size:14px;">
+                        <strong>Actionable Suggestions:</strong><br>
+                        Along with your performance summary, we have included actionable suggestions to help you improve where needed, build on your strengths, and continue your journey toward mastering key skills.
+                    </div>
+                    <div style="font-size:14px;">
+                        <br>We hope you find this information helpful.
+                    </div>
+                    <hr style="border:2px solid #ccc;" />
+                    <h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>
+                    """
+                    # st.markdown(report_intro, unsafe_allow_html=True)
+                    st.session_state.report_intro = report_intro
+                    st.session_state.html_content += report_intro
+
+                    
+                    with st.container(border=False):
+                        styled_table_html = score_table_show(scores)
+                        # Display the HTML table in Streamlit
+                        st.session_state.styled_table_html = styled_table_html
+                        # st.markdown(styled_table_html, unsafe_allow_html=True)
+                        st.session_state.html_content += styled_table_html
+
+
+                    for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
                         with st.container(border=False):
-                            styled_table_html = score_table_show(scores)
-                            # Display the HTML table in Streamlit
-                            st.session_state.styled_table_html = styled_table_html
-                            # st.markdown(styled_table_html, unsafe_allow_html=True)
-                            st.session_state.html_content += styled_table_html
-    
-    
-                        for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
-                            with st.container(border=False):
-    
-                                
-                                feedback_section = f"""
-                                <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #1f77b4; color: white; padding: 10px; font-size: 18px;">
-                                    <strong>{main_category}</strong>
-                                </div>
-                                <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #f0f0f0; padding: 15px; font-size: 14px; color: black;">
-                                    <p>{feedback}</p>
-                                </div>
-                                <div style="font-size:18px;">
-                                <strong><br></strong>
-                                </div>
-                                """
-                                st.session_state.feedback_section = feedback_section
-                                # st.markdown(feedback_section, unsafe_allow_html=True)
-                                st.session_state.html_content += feedback_section
-                
-                        pdf = convert_html_to_pdf(st.session_state.html_content)
-                        
-                        if pdf:
-                            # Provide download link for the PDF
-                            st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
-                        else:
-                            st.error("Failed to convert HTML to PDF.")
+
+                            
+                            feedback_section = f"""
+                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #1f77b4; color: white; padding: 10px; font-size: 18px;">
+                                <strong>{main_category}</strong>
+                            </div>
+                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #f0f0f0; padding: 15px; font-size: 14px; color: black;">
+                                <p>{feedback}</p>
+                            </div>
+                            <div style="font-size:18px;">
+                            <strong><br></strong>
+                            </div>
+                            """
+                            st.session_state.feedback_section = feedback_section
+                            # st.markdown(feedback_section, unsafe_allow_html=True)
+                            st.session_state.html_content += feedback_section
+            
+                    pdf = convert_html_to_pdf(st.session_state.html_content)
+                    
+                    if pdf:
+                        # Provide download link for the PDF
+                        st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
+                    else:
+                        st.error("Failed to convert HTML to PDF.")
+
+                    st.session_state.generate_pf_fs = False
+                    st.rerun()
                 
             
 
