@@ -236,8 +236,16 @@ def score_table_show(scores):
 
 tab1, tab2 = st.tabs(["Generate","View"])
 with tab2:
-    st.write("Hi")
-
+    st.dataframe(scores_dataset)
+    pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
+    reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn_y)
+    st.write(scores_dataset)
+    with st.container(border=True):
+        column_1, column_2, column_3 = st.columns([1,8,1])        
+        with column_2:
+            st.write("")
+            
+    
 with tab1:
     
     
