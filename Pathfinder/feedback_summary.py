@@ -261,8 +261,8 @@ else:
                     # Convert the scores dictionary to an HTML table directly
                     table_html = f"""
                     <table class="styled-table" style="width: 100%; border-collapse: collapse; font-size: 16px; margin-top: 20px;">
-                        <tr style="background-color: #d4edda;">  <!-- Light green for header background -->
-                            {"".join([f"<th style='padding: 8px; text-align: center;'>{category}</th>" for category in scores.keys()])}
+                        <tr style="background-color: #28a745;">  <!-- Dark green for header background -->
+                            {"".join([f"<th style='padding: 8px; text-align: center; color: white;'>{category}</th>" for category in scores.keys()])}
                         </tr>
                         <tr>
                             {"".join([f"<td style='padding: 8px; text-align: center;'>{performance}</td>" for performance in scores.values()])}
@@ -274,17 +274,17 @@ else:
                     styled_table_html = f"""
                     <style>
                     .styled-table th, .styled-table td {{
-                        border: 1px solid #155724;  /* Dark green border */
+                        border: 2px solid #28a745;  /* Dark green border */
                     }}
                     .styled-table th {{
-                        background-color: #d4edda;  /* Light green header */
-                        color: #155724;  /* Dark green text */
+                        background-color: #28a745;  /* Dark green header */
+                        color: white;  /* White text in header */
                     }}
                     .styled-table tr:nth-child(even) {{
-                        background-color: #c3e6cb;  /* Slightly darker green for even rows */
+                        background-color: #e9f7ef;  /* Light green for even rows */
                     }}
                     .styled-table tr:nth-child(odd) {{
-                        background-color: #d4edda;  /* Light green for odd rows */
+                        background-color: #f7fcf9;  /* Slightly lighter green for odd rows */
                     }}
                     </style>
                     {table_html}
