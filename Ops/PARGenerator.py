@@ -64,7 +64,8 @@ def save_html_content_and_update_tag(spreadsheet, reference_number, html_content
         # worksheet.update_cell(cell.row, worksheet.find("HTML_CONTENT").col, html_content)
         worksheet.update_cell(cell.row, worksheet.find("REPORT_INTRO").col, report_intro)
         worksheet.update_cell(cell.row, worksheet.find("SCORE_CATEGORY_TABLE").col, styled_table_html)
-        # worksheet.update_cell(cell.row, worksheet.find("FEEDBACK_SECTION").col, feedback_section)
+        for i, feedback in feedback_section:
+            worksheet.update_cell(cell.row, worksheet.find(f"FEEDBACK_SECTION_{i}").col, feedback)
         # Update PARGeneratedTag to "Y"
         worksheet.update_cell(cell.row, worksheet.find("PARGenTag").col, "Y")
         return True
@@ -247,7 +248,7 @@ if "styled_table_html" not in st.session_state:
 if "feedback_section" not in st.session_state:
     st.session_state.feedback_section = []
 
-st.write(str(st.session_state.feedback_section))
+# st.write(str(st.session_state.feedback_section))
          # [[1]].T.values.flatten().tolist())
 # st.write(st.session_state.feedback_section)
 
@@ -260,9 +261,8 @@ with COL2:
         if st.session_state.html_content is not "":
             st.markdown(st.session_state.report_intro, unsafe_allow_html=True)
             st.markdown(st.session_state.styled_table_html, unsafe_allow_html=True)
-            st.markdown(str(st.session_state.feedback_section), unsafe_allow_html=True)
-            # for feedback_section in st.session_state.feedback_section:
-            #     st.markdown(feedback_section, unsafe_allow_html=True)
+            for feedback_section in st.session_state.feedback_section:
+                st.markdown(feedback_section, unsafe_allow_html=True)
         else:
             st.info("Choose a Reference Number to generate its PAR.")
             
