@@ -245,7 +245,7 @@ with tab2:
 
         st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['REPORT_INTRO'].values[0], unsafe_allow_html=True)
         st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['SCORE_CATEGORY_TABLE'].values[0], unsafe_allow_html=True)
-        for i in range(9)
+        for i in range(9):
             st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view][f"FEEDBACK_SECTION_{i+1}"].values[0], unsafe_allow_html=True)
         # st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['REPORT_INTRO'].values[0], unsafe_allow_html=True)
         
