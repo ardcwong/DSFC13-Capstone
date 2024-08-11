@@ -121,7 +121,7 @@ if st.session_state.generate_pf_fs == False:
         with st.container():
             reference_number = st.chat_input("Enter your Reference Number:")
             st.session_state.reference_number = reference_number
-            st.write(st.session_state.reference_number)
+            # st.write(st.session_state.reference_number)
             # st.write(pf_rn_y.tolist())
             if st.session_state.reference_number is not []:
         # if st.button("My Pathfinder Assessment Exam Report", use_container_width = True, type = "primary"):
@@ -145,30 +145,30 @@ else:
     
     
     
-        column__1, column__2 = st.columns([2,8])
-        with column__2:
-    
-            pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
-    
-        with column__1:
-            
-            if scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['HTML_CONTENT'].values[0] is not "":
-                download_disabled = False
-            else:
-                download_disabled = True
-    
-            pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0])
-            if pdf:
-                st.download_button(label=f"Download PDF (**{reference_number_ops_view}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR")
-            else:
-                st.error("Failed to convert HTML to PDF.")
+    column__1, column__2 = st.columns([2,8])
+    with column__2:
+
+        pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
+
+    with column__1:
         
-        with st.container(border=True):
-            column_1, column_2, column_3 = st.columns([1,8,1])     
-            with column_2:
-                st.markdown(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['REPORT_INTRO'].values[0], unsafe_allow_html=True)
-                st.markdown(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['SCORE_CATEGORY_TABLE'].values[0], unsafe_allow_html=True)
-                for i in range(9):
-                    st.markdown(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number][f"FEEDBACK_SECTION_{i+1}"].values[0], unsafe_allow_html=True)
+        if scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['HTML_CONTENT'].values[0] is not "":
+            download_disabled = False
+        else:
+            download_disabled = True
+
+        pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0])
+        if pdf:
+            st.download_button(label=f"Download PDF (**{reference_number_ops_view}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR")
+        else:
+            st.error("Failed to convert HTML to PDF.")
+    
+    with st.container(border=True):
+        column_1, column_2, column_3 = st.columns([1,8,1])     
+        with column_2:
+            st.markdown(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['REPORT_INTRO'].values[0], unsafe_allow_html=True)
+            st.markdown(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['SCORE_CATEGORY_TABLE'].values[0], unsafe_allow_html=True)
+            for i in range(9):
+                st.markdown(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number][f"FEEDBACK_SECTION_{i+1}"].values[0], unsafe_allow_html=True)
 
 
