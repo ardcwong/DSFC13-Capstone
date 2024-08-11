@@ -374,7 +374,7 @@ with column12:
         st.error("Reference Number not found.")
         st.session_state.generate_pf_fs = False
         st.session_state.reference_number = []
-        st.rerun()
+
 # else:
 #     st.error("Please enter a Reference Number.")
 
