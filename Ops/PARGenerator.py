@@ -71,7 +71,7 @@ def save_html_content_and_update_tag(spreadsheet, reference_number, html_content
         return True
     else:
         return False
-st.write(st.session_state.feedback_section)        
+st.write(type(st.session_state.feedback_section))        
 ########################################################
 # ACCESS DERIVED COMPETENCY FRAMEWORK GSHEET
 ########################################################
