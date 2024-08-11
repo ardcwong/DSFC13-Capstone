@@ -265,7 +265,7 @@ else:
                     table_html = df_scores_T.to_html(index=False, border=0, classes="dataframe", justify="center", header=True)
                     st.markdown(table_html)
                     # Additional CSS for styling the HTML table
-                    table_html_styled = f"""
+                    table_html_styled = """
                     <style>
                         .dataframe {
                             width: 100%;
@@ -285,11 +285,12 @@ else:
                             border: 1px solid #ccc;
                         }
                     </style>
-                    {table_html}
+                    
                     """
                     
                     # Display the HTML table in Streamlit
-                    st.markdown(table_html_styled, unsafe_allow_html=True)
+                    st.markdown(table_html_styled + table_html, unsafe_allow_html=True)
+                    
 
     else:
         st.error("Reference Number not found.")
