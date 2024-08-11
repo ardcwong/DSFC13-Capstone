@@ -171,30 +171,23 @@ if st.session_state.generate_pf_fs == False:
 
 
 else:
-
-    if st.button("Go Back", type = "primary"):
-        st.session_state.generate_pf_fs = False
-        st.session_state.reference_number = []
-        st.session_state.feedback_generated = []
-        st.rerun()
-    
-    
-    
-    column__1, column__2 = st.columns([2,8])
-    with column__2:
-
+    column11, column22, column33 = st.columns([])
+    with column11:
+        if st.button("Go Back", type = "primary", use_container_width = True):
+            st.session_state.generate_pf_fs = False
+            st.session_state.reference_number = []
+            st.session_state.feedback_generated = []
+            st.rerun()
+    with column33:
         pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
-
-    with column__1:
-        
         if scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['HTML_CONTENT'].values[0] is not "":
             download_disabled = False
         else:
             download_disabled = True
-
+            
         pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['HTML_CONTENT'].values[0])
         if pdf:
-            st.download_button(label=f"Download PDF (**{st.session_state.reference_number}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR")
+            st.download_button(label=f"Download PDF (**{st.session_state.reference_number}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR", type = "primary")
         else:
             st.error("Failed to convert HTML to PDF.")
     
