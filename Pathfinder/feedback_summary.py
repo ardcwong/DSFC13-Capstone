@@ -5,6 +5,7 @@ import pandas as pd
 import openai
 import json
 from weasyprint import HTML
+import pdfkit
 
 ########################################################
 # API KEYS and CREDENTIALS
@@ -313,13 +314,14 @@ else:
                     
                     # Button to download the report as a PDF
                     if st.button("Download Report as PDF"):
-                        pdf = HTML(string=html_content).write_pdf()
-                        st.download_button(
-                            label="Download PDF",
-                            data=pdf,
-                            file_name="pathfinder_assessment_report.pdf",
-                            mime="application/pdf",
-                        )
+                        pdfkit.from_string(html_content, 'pathfinder_assessment_report.pdf')
+                        with open('pathfinder_assessment_report.pdf', 'rb') as pdf_file:
+                            st.download_button(
+                                label="Download PDF",
+                                data=pdf_file,
+                                file_name="pathfinder_assessment_report.pdf",
+                                mime="application/pdf",
+                            )
 
 
     else:
