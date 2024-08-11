@@ -258,8 +258,8 @@ else:
                             """, unsafe_allow_html=True)
                     # Create the DataFrame
                     df_scores_T = pd.DataFrame(list(scores.items()), columns=["Category", "Performance"]).T
-                    # df_scores_T.columns = df_scores_T.iloc[0]
-                    # df_scores_T = df_scores_T[1:].reset_index()
+                    df_scores_T.columns = df_scores_T.iloc[0]
+                    df_scores_T = df_scores_T[1:].reset_index()
                     st.write(df_scores_T)
                     # Convert the DataFrame to HTML
                     table_html = df_scores_T.to_html(index=False, border=0, justify='center', classes='styled-table')
