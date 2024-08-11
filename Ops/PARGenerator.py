@@ -359,7 +359,7 @@ with column12:
                                 st.session_state.feedback_section = feedback_section
                                 # st.markdown(feedback_section, unsafe_allow_html=True)
                                 st.session_state.html_content += feedback_section
-                st.rerun()
+                
                         pdf = convert_html_to_pdf(st.session_state.html_content)
                         
                         if pdf:
@@ -367,6 +367,7 @@ with column12:
                             st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
                         else:
                             st.error("Failed to convert HTML to PDF.")
+                st.rerun()
             
 
     else:
