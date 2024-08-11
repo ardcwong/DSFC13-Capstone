@@ -263,7 +263,7 @@ else:
                     st.write(df_scores_T)
                     # Convert the DataFrame to HTML
                     table_html = df_scores_T.to_html(index=False, border=0, justify='center', classes='styled-table')
-                    st.markdwon(table_html)
+                    st.markdown(table_html)
                     # Apply CSS styling
                     styled_table_html = f"""
                     <style>
