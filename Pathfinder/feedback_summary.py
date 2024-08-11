@@ -259,40 +259,9 @@ else:
                     # Create the DataFrame
                     df_scores_T = pd.DataFrame(list(scores.items()), columns=["Category", "Performance"]).T
                     df_scores_T.columns = df_scores_T.iloc[0]
-                    df_scores_T = df_scores_T[1:].reset_index(drop=True)
+                    df_scores_T = df_scores_T[1:].reset_index(drop=True).drop(index)
                     st.write(df_scores_T)
-                    # Convert the DataFrame to HTML
-                    table_html = df_scores_T.to_html(index=False, border=0, justify='center', classes='styled-table')
-                    st.markdown(table_html)
-                    # Apply CSS styling
-                    styled_table_html = f"""
-                    <style>
-                    .styled-table {{
-                        width: 100%;
-                        border-collapse: collapse;
-                        font-size: 16px;
-                        margin-top: 20px;
-                    }}
-                    .styled-table th, .styled-table td {{
-                        padding: 8px;
-                        text-align: center;
-                        border: 1px solid #ccc;
-                    }}
-                    .styled-table th {{
-                        background-color: #f0f0f0;
-                    }}
-                    .styled-table tr:nth-child(even) {{
-                        background-color: #f9f9f9;
-                    }}
-                    .styled-table tr:nth-child(odd) {{
-                        background-color: #ffffff;
-                    }}
-                    </style>
-                    {table_html}
-                    """
-                    
-                    # Display the styled HTML table in Streamlit
-                    st.markdown(styled_table_html, unsafe_allow_html=True)
+
     else:
         st.error("Reference Number not found.")
         st.session_state.generate_pf_fs = False
