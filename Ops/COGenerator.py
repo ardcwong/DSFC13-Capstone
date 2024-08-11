@@ -89,11 +89,11 @@ def enhance_course_outline(course_outline, collection):
                 enhanced_outline[sprint][main_topic][subtopic] = additional_content
     return enhanced_outline
 
-if 'enhanced_course_outline' not in st.session_state:
-    st.session_state.enhanced_course_outline = []
+
 # Load and generate the course outline from the CSV file
 course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
-st.session_state.enhanced_course_outline = enhance_course_outline(course_outline, None)
+if 'enhanced_course_outline' not in st.session_state:
+    st.session_state.enhanced_course_outline = enhance_course_outline(course_outline, None)
 
 # Streamlit UI
 st.title("Sprint Navigator")
