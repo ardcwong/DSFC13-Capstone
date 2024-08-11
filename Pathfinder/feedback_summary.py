@@ -40,7 +40,7 @@ def convert_html_to_pdf(html_content):
     </html>
     """
     result = BytesIO()
-    pisa_status = pisa.CreatePDF(BytesIO(html_with_margins.encode("utf-8")), dest=result)
+    pisa_status = pisa.CreatePDF(BytesIO(html_with_styles.encode("utf-8")), dest=result)
     if pisa_status.err:
         return None
     return result.getvalue()
