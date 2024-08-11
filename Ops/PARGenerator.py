@@ -251,7 +251,7 @@ with tab2:
 with tab1:
     
     
-    st.dataframe(scores_dataset)
+    st.dataframe(scores_dataset[scores_dataset["PARGenTag"] == "N")
     is_blank = scores_dataset["PARGenTag"] == "N"
     pf_rn = scores_dataset["Reference Number"][is_blank].tolist()
     reference_number_ops = st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn)
