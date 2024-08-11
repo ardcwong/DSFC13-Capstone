@@ -64,7 +64,7 @@ def save_html_content_and_update_tag(spreadsheet, reference_number, html_content
         # Update HTML_CONTENT
         worksheet.update_cell(cell.row, worksheet.find("HTML_CONTENT").col, html_content)
         # Update PARGeneratedTag to "Y"
-        worksheet.update_cell(cell.row, worksheet.find("PARGeneratedTag").col, "Y")
+        worksheet.update_cell(cell.row, worksheet.find("PARGenTag").col, "Y")
         return True
     else:
         return False
