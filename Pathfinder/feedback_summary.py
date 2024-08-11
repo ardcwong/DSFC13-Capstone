@@ -259,7 +259,7 @@ else:
                     # Create the DataFrame
                     df_scores_T = pd.DataFrame(list(scores.items())).T
                     df_scores_T.columns = df_scores_T.iloc[0]
-                    df_scores_T = df_scores_T[1:].reset_index(drop=True).drop("index")
+                    df_scores_T = df_scores_T[1:].reset_index(drop=True)
                     st.write(df_scores_T)
 
     else:
