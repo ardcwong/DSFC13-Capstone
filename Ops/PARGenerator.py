@@ -270,7 +270,7 @@ with COL1:
             st.session_state.feedback_section = []
         if st.session_state.html_content is not "":
             # Add the "Save" button
-            if st.button("Save"):
+            if st.button(f"Save {st.session_state.reference_number_ops} PAR"):
                 saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, st.session_state.html_content)
                 if saved:
                     st.success("HTML content saved successfully and PARGeneratedTag updated.")
