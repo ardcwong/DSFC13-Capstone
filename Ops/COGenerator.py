@@ -105,7 +105,7 @@ guide for fellows, helping them steer through their learning journey with confid
 
 st.write(type(enhanced_course_outline))
 st.write(enhanced_course_outline)
-# selected_sprints = {}
+# selected_sprints = {} 
 
 # for sprint in course_outline.keys():
 #     if f"outline_{sprint}" not in st.session_state:
