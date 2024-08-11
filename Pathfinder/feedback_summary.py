@@ -176,6 +176,9 @@ def score_table_show(scores):
             {"".join([f"<td style='padding: 8px; text-align: center;'>{performance}</td>" for performance in scores.values()])}
         </tr>
     </table>
+    <div style="font-size:16px;">
+        <strong><br><br></strong>
+    </div>
     """
     
     # Apply CSS styling
