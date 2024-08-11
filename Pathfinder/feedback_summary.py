@@ -284,7 +284,7 @@ else:
                         background-color: #e9f7ef;  /* Light green for even rows */
                     }}
                     .styled-table tr:nth-child(odd) {{
-                        background-color: #f7fcf9;  /* Slightly lighter green for odd rows */
+                        background-color: #13782A;  /* Slightly lighter green for odd rows */
                     }}
                     </style>
                     {table_html}
