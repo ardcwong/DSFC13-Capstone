@@ -64,7 +64,7 @@ def save_html_content_and_update_tag(spreadsheet, reference_number, html_content
         # worksheet.update_cell(cell.row, worksheet.find("HTML_CONTENT").col, html_content)
         worksheet.update_cell(cell.row, worksheet.find("REPORT_INTRO").col, report_intro)
         worksheet.update_cell(cell.row, worksheet.find("SCORE_CATEGORY_TABLE").col, styled_table_html)
-        worksheet.update_cell(cell.row, worksheet.find("FEEDBACK_SECTION").col, feedback_section)
+        # worksheet.update_cell(cell.row, worksheet.find("FEEDBACK_SECTION").col, feedback_section)
         # Update PARGeneratedTag to "Y"
         worksheet.update_cell(cell.row, worksheet.find("PARGenTag").col, "Y")
         return True
