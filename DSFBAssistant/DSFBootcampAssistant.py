@@ -75,4 +75,5 @@ with st.container():
   user_input = st.chat_input("Enter your question:")
   if user_input:
       response = generate_conversational_response_DSFBAssistant(user_input, collection)
+      st.write(f"You asked: {user_input}")  
       st.write(response)
