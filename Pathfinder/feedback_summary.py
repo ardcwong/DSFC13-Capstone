@@ -118,9 +118,9 @@ if st.session_state.generate_pf_fs == False:
     st.title("Pathfinder Assessment Report")
     col_main1, col_main2 = st.columns([1,2.5])
     with col_main1:
-        with st.expander("# **About**", expanded=st.session_state.BeginAssessment):
+        with st.expander("# **About**", expanded=True):
             st.write("The 'Pathfinder Assessment Report' feature of our app provides a comprehensive performance overview after completing the Pathfinder Exam. This report helps you identify your strengths and weaknesses across different topic areas, allowing you to pinpoint knowledge gaps that need improvement. Along with the performance summary, the app offers personalized suggestions to help you bridge those gaps, guiding you on the next steps in your learning journey.")
-        with st.expander("**View Report**"):
+        with st.expander("**View Report**", expanded =True):
                 
             reference_number = st.chat_input("Enter your Reference Number:")
             if reference_number:
@@ -141,7 +141,7 @@ if st.session_state.generate_pf_fs == False:
                     reference = []
                     # st.rerun()
     with col_main2:
-        with st.expander("# **Instructions**", expanded=st.session_state.BeginAssessment):
+        with st.expander("# **Instructions**", expanded=True):
             st.markdown("""
             1. **Complete the Pathfinder Exam:**  
                Before accessing the Pathfinder Assessment Report, you must first complete the Pathfinder Exam.
