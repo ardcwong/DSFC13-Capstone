@@ -233,7 +233,7 @@ def score_table_show(scores):
 ####################################################################
 ################            MAIN PROGRAM            ################
 ####################################################################
-
+st.title("Pathfinder Assessment Report Generator")
 tab1, tab2 = st.tabs(["Generate","View"])
 with tab2:
     column__1, column__2 = st.columns([2,8])
