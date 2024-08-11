@@ -239,6 +239,17 @@ with tab2:
     st.dataframe(scores_dataset[scores_dataset["PARGenTag"] == "Y"])
     pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
     reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn_y)
+    if scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0] is not "":
+        download_disabled = False
+    else:
+        download_disabled = True
+        
+    pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0])
+    if pdf:
+        st.download_button(label=f"Download PDF (**{reference_number_ops_view}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled)
+    else:
+        st.error("Failed to convert HTML to PDF.")
+    
     with st.container(border=True):
         column_1, column_2, column_3 = st.columns([1,8,1])     
         with column_2:
