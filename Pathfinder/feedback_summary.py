@@ -276,7 +276,7 @@ else:
                     .styled-table {{
                         border-radius: 5px;  /* Rounded corners for the table */
                         overflow: hidden; /* Ensures rounded corners are applied */
-                        border: 2px solid #28a745;  /* Dark green border for the whole table */
+                        border: 1px solid #28a745;  /* Dark green border for the whole table */
                     }}
                     .styled-table th, .styled-table td {{
                         border: 1px solid #28a745;  /* Dark green border for cells */
