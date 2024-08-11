@@ -179,8 +179,8 @@ def ask_openai(prompt):
     )
     return response.choices[0].message.content.strip()
 
-if "generate_pf_fs" not in st.session_state:
-    st.session_state.generate_pf_fs = False
+if "generate_pf_fs_ops" not in st.session_state:
+    st.session_state.generate_pf_fs_ops = False
 if "reference_number_ops" not in st.session_state:
     st.session_state.reference_number_ops = []
 if "feedback_generated" not in st.session_state:
@@ -303,7 +303,7 @@ with tab1:
     
     with COL1:
         with st.expander("TOOLS", expanded = True):
-            if st.session_state.generate_pf_fs == True:
+            if st.session_state.generate_pf_fs_ops == True:
                 user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number_ops]
                 if not user_data.empty:
                     scores = {}
@@ -393,12 +393,12 @@ with tab1:
                         
             
             
-                                st.session_state.generate_pf_fs = False
+                                st.session_state.generate_pf_fs_ops = False
                                 st.rerun()
                                 
-            elif st.session_state.generate_pf_fs == False:
+            elif st.session_state.generate_pf_fs_ops == False:
                 if st.button("Generate", use_container_width = True, type = "primary"):
-                    st.session_state.generate_pf_fs = True
+                    st.session_state.generate_pf_fs_ops = True
                     st.session_state.reference_number_ops = reference_number_ops
                     st.session_state.html_content = ""
                     st.session_state.report_intro = ""
@@ -428,7 +428,7 @@ with tab1:
     
         # else:
         #     st.error("Reference Number not found.")
-        #     st.session_state.generate_pf_fs = False
+        #     st.session_state.generate_pf_fs_ops = False
         #     st.session_state.reference_number = []
     
     # else:
