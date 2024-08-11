@@ -266,7 +266,7 @@ with COL1:
             st.session_state.feedback_section = []
         if st.session_state.html_content is not "":
             # Add the "Save" button
-            if st.button(f"Save {st.session_state.reference_number_ops} PAR", use_container_width = True):
+            if st.button(f"Save **{st.session_state.reference_number_ops}** PAR", use_container_width = True):
                 saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, st.session_state.html_content)
                 if saved:
                     st.success("HTML content saved successfully and PARGeneratedTag updated.")
@@ -275,7 +275,7 @@ with COL1:
                     st.error("Failed to save HTML content or update PARGeneratedTag.")
             pdf = convert_html_to_pdf(st.session_state.html_content)
             if pdf:
-                st.download_button(label=f"Download {st.session_state.reference_number_ops} PAR PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
+                st.download_button(label=f"Download **{st.session_state.reference_number_ops}** PAR PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
             else:
                 st.error("Failed to convert HTML to PDF.")
 
