@@ -89,11 +89,12 @@ def enhance_course_outline(course_outline, collection):
                 enhanced_outline[sprint][main_topic][subtopic] = additional_content
     return enhanced_outline
 
-
+if 'enhanced_course_outline' not in st.session_state:
+    st.session_state.enhanced_course_outline = []
 # Load and generate the course outline from the CSV file
 course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
 enhanced_course_outline = enhance_course_outline(course_outline, None)
-
+st.session_state.enhanced_course_outline = enhanced_course_outline
 # Streamlit UI
 st.title("Sprint Navigator")
 
@@ -105,20 +106,18 @@ guide for fellows, helping them steer through their learning journey with confid
 
 st.write(type(enhanced_course_outline))
 st.write(enhanced_course_outline)
-# selected_sprints = {} 
+# Generating the st.markdown for each sprint with the new styling
 for sprint, topics in enhanced_course_outline.items():
     for main_topic, subtopics in topics.items():
-        st.markdown(f"""
-        <div style="background-color:#F0F4FA; padding: 10px; border-radius: 5px;">
-            <h3 style="color: #1F4E79;">{main_topic}</h3>
-        </div>
-        """, unsafe_allow_html=True)
-
         for subtopic, description in subtopics.items():
             st.markdown(f"""
-            <div style="background-color:#FFFFFF; padding: 10px; margin-top: 10px; border: 1px solid #D9E1F2; border-radius: 5px;">
-                <h4 style="color: #1F4E79;">{subtopic}</h4>
-                <p>{description}</p>
+            <div style="border: 1px solid #1E73BE; border-radius: 5px; overflow: hidden; margin-bottom: 20px;">
+                <div style="background-color: #1E73BE; padding: 10px;">
+                    <h4 style="color: white; margin: 0;">{main_topic}</h4>
+                </div>
+                <div style="background-color: #F8F9FA; padding: 15px;">
+                    <p style="color: #333333;">{description}</p>
+                </div>
             </div>
             """, unsafe_allow_html=True)
 # for sprint in course_outline.keys():
