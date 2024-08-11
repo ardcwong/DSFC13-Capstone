@@ -205,7 +205,7 @@ else:
     # # Button to look up scores
 # if st.button("Lookup Scores"):
 #     if reference_number:
-    if st.button("↩️"):
+    if st.button("↩🔙 "):
         st.session_state.generate_pf_fs = False
         st.session_state.reference_number = []
         st.session_state.feedback_generated = []
