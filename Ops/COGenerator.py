@@ -148,7 +148,7 @@ if selected_sprints:
                 sprint_section += "</div>"
 
             # Append sprint_section to session state or display it
-            st.session_state.html_content += sprint_section
+            # st.session_state.html_content += sprint_section
             st.markdown(sprint_section, unsafe_allow_html=True)
 # # Dynamic checkbox generation with session state
 # selected_sprints = {}
