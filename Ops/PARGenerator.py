@@ -61,7 +61,7 @@ def save_html_content_and_update_tag(spreadsheet, reference_number, html_content
     worksheet = spreadsheet.worksheet("Sheet1")
     cell = worksheet.find(reference_number, in_column=1)  # Assumes "Reference Number" is in the first column
     if cell:
-        # worksheet.update_cell(cell.row, worksheet.find("HTML_CONTENT").col, html_content)
+        worksheet.update_cell(cell.row, worksheet.find("HTML_CONTENT").col, html_content)
         worksheet.update_cell(cell.row, worksheet.find("REPORT_INTRO").col, report_intro)
         worksheet.update_cell(cell.row, worksheet.find("SCORE_CATEGORY_TABLE").col, styled_table_html)
         for i, feedback in enumerate(feedback_section):
