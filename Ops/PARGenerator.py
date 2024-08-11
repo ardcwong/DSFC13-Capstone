@@ -1,11 +1,11 @@
-
 import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import openai
 import json
-import pdfkit
+from xhtml2pdf import pisa
+from io import BytesIO
 ########################################################
 # API KEYS and CREDENTIALS
 ########################################################
@@ -16,6 +16,34 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
 client = gspread.authorize(creds)
 
+# Function to convert HTML content to PDF
+
+def convert_html_to_pdf(html_content):
+    # Embed CSS for margins
+    # Embed CSS for scaling and margins
+    html_with_styles = f"""
+    <html>
+    <head>
+        <style>
+            @page {{
+                margin: 0.3in; /* Set margins */
+            }}
+            body {{
+                transform: scale(0.5); /* Scale content */
+                transform-origin: top left; /* Scale from top-left corner */
+            }}
+        </style>
+    </head>
+    <body>
+        {html_content}
+    </body>
+    </html>
+    """
+    result = BytesIO()
+    pisa_status = pisa.CreatePDF(BytesIO(html_with_styles.encode("utf-8")), dest=result)
+    if pisa_status.err:
+        return None
+    return result.getvalue()
 
 # Google Sheets connection function
 def google_connection_gsheet_DerivedCompetencyFramework(client):
@@ -137,15 +165,15 @@ def ask_openai(prompt):
 
 if "generate_pf_fs" not in st.session_state:
     st.session_state.generate_pf_fs = False
-if "reference_number_ops" not in st.session_state:
-    st.session_state.reference_number_ops = []
+if "reference_number" not in st.session_state:
+    st.session_state.reference_number = []
 if "feedback_generated" not in st.session_state:
     st.session_state.feedback_generated = []
 
-def score_table_show():
+def score_table_show(scores):
     # Convert the scores dictionary to an HTML table directly
     table_html = f"""
-    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 16px; margin-top: 0px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
+    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; margin-top: 6px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
         <tr style="background-color: #28a745;">
             {"".join([f"<th style='padding: 8px; text-align: center; color: white;'>{category}</th>" for category in scores.keys()])}
         </tr>
@@ -153,6 +181,9 @@ def score_table_show():
             {"".join([f"<td style='padding: 8px; text-align: center;'>{performance}</td>" for performance in scores.values()])}
         </tr>
     </table>
+    <div style="font-size:16px;">
+        <strong><br><br></strong>
+    </div>
     """
     
     # Apply CSS styling
@@ -180,15 +211,10 @@ def score_table_show():
     {table_html}
     """
     
-    # Display the HTML table in Streamlit
-    st.markdown(styled_table_html, unsafe_allow_html=True)
+    return styled_table_html
 ####################################################################
 ################            MAIN PROGRAM            ################
 ####################################################################
-
-
-
-
 
 st.dataframe(scores_dataset)
 is_blank = scores_dataset["PARGenTag"] == "N"
@@ -216,11 +242,11 @@ else:
 #     if reference_number:
     if st.button("Go Back", type = "primary"):
         st.session_state.generate_pf_fs = False
-        st.session_state.reference_number_ops = []
+        st.session_state.reference_number = []
         st.session_state.feedback_generated = []
         st.rerun()
         
-    user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number_ops]
+    user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]
     if not user_data.empty:
         scores = {}
         for main_category in category_structure.keys():
@@ -240,31 +266,23 @@ else:
         with st.spinner("Generating feedback..."):
             if st.session_state.feedback_generated == []:
                 st.session_state.feedback_generated = generate_summarized_feedback(scores)
+            html_content = ""
             with st.container(border=True):
                 column1, column2, column3 = st.columns([1,8,1])        
                 with column2:
-                    # st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Performance"]).T)  
-                    # st.write(scores)
-                    
-                    st.markdown(f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
+                    report_intro = f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
                     <hr style="border:2px solid #ccc;" />
-                    """, unsafe_allow_html=True)
-                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Introduction</b></strong></h5>""", unsafe_allow_html=True)
-                    # st.markdown(f"""<h5 style='text-align: left;font-size: 20px;'><b><i>Introduction</b></i><i></h5>""", unsafe_allow_html=True)
-                    st.markdown("""
-                    <div style="font-size:18px;">
+                    <h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Introduction</b></strong></h5>
+                    <div style="font-size:16px;">
                         <strong>Thank you for completing the Pathfinder Assessment Exam.<br></strong>
                     </div>
-                    
-                    <div style="font-size:16px;">
+                    <div style="font-size:14px;">
                         <br>The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.<br>
                     </div>
-                    
-                    <div style="font-size:18px;">
+                    <div style="font-size:16px;">
                         <strong><br>We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.<br></strong>
                     </div>
-                    
-                    <div style="font-size:16px;">
+                    <div style="font-size:14px;">
                         <strong><br>Performance Summary:</strong>
                         <ul>
                             <li><strong>Needs Improvement:</strong> Areas where further development is recommended.</li>
@@ -273,48 +291,54 @@ else:
                             <li><strong>Excellent:</strong> Areas where you have excelled and shown strong proficiency.</li>
                         </ul>
                     </div>
-                    
-                    <div style="font-size:16px;">
+                    <div style="font-size:14px;">
                         <strong>Actionable Suggestions:</strong><br>
                         Along with your performance summary, we have included actionable suggestions to help you improve where needed, build on your strengths, and continue your journey toward mastering key skills.
                     </div>
-                    
-                    <div style="font-size:16px;">
+                    <div style="font-size:14px;">
                         <br>We hope you find this information helpful.
                     </div>
                     <hr style="border:2px solid #ccc;" />
-                    """, unsafe_allow_html=True)
+                    """
+                    st.markdown(report_intro, unsafe_allow_html=True)
+                    html_content += report_intro
                     
-                    
-                    
-                    # for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
-                    #     with st.container(border = True):
-                    #         st.markdown(f"""<h5 style='text-align: center;color: #e76f51;font-size: 35px;'><b><i>{main_category}</b></i><i></h5>""", unsafe_allow_html=True)
-                    #         st.write(feedback)
                     st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
-                    with st.container(border=False):
-                        score_table_show()
+                    html_content += """<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>"""
                     
+                    with st.container(border=False):
+                        styled_table_html = score_table_show(scores)
+                        # Display the HTML table in Streamlit
+                        st.markdown(styled_table_html, unsafe_allow_html=True)
+                        html_content += styled_table_html
+
+
                     for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
                         with st.container(border=False):
-                            # Header section for the category name
-                            st.markdown(f"""
-                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #1f77b4; color: white; padding: 10px; font-size: 20px;">
+
+                            
+                            feedback_section = f"""
+                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #1f77b4; color: white; padding: 10px; font-size: 18px;">
                                 <strong>{main_category}</strong>
                             </div>
-                            """, unsafe_allow_html=True)
-                            
-                            # Feedback content section
-                            st.markdown(f"""
-                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #f0f0f0; padding: 15px; font-size: 16px; color: black;">
+                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #f0f0f0; padding: 15px; font-size: 14px; color: black;">
                                 <p>{feedback}</p>
                             </div>
                             <div style="font-size:18px;">
                             <strong><br></strong>
                             </div>
-                            """, unsafe_allow_html=True)
+                            """
+                            st.markdown(feedback_section, unsafe_allow_html=True)
+                            html_content += feedback_section
                     
-
+                    pdf = convert_html_to_pdf(html_content)
+                    
+                    if pdf:
+                        # Provide download link for the PDF
+                        st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
+                    else:
+                        st.error("Failed to convert HTML to PDF.")
+        
 
     else:
         st.error("Reference Number not found.")
