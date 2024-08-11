@@ -260,8 +260,9 @@ with COL2:
         if st.session_state.html_content is not "":
             st.markdown(st.session_state.report_intro, unsafe_allow_html=True)
             st.markdown(st.session_state.styled_table_html, unsafe_allow_html=True)
-            for feedback_section in st.session_state.feedback_section:
-                st.markdown(feedback_section, unsafe_allow_html=True)
+            st.markdown(str(st.session_state.feedback_section), unsafe_allow_html=True)
+            # for feedback_section in st.session_state.feedback_section:
+            #     st.markdown(feedback_section, unsafe_allow_html=True)
         else:
             st.info("Choose a Reference Number to generate its PAR.")
             
