@@ -255,6 +255,8 @@ with COL2:
             st.markdown(st.session_state.styled_table_html, unsafe_allow_html=True)
             for feedback_section in st.session_state.feedback_section:
                 st.markdown(feedback_section, unsafe_allow_html=True)
+        else:
+            st.info("Choose a Reference Number to generate its PAR.")
             
 
 with COL1:
@@ -281,11 +283,6 @@ with COL1:
                     if st.session_state.feedback_generated == []:
                         st.session_state.feedback_generated = generate_summarized_feedback(scores)
         
-        
-                            
-                    
-                    # html_content = ""
-                    
                     with st.container(border=True):
                         column1, column2, column3 = st.columns([1,8,1])        
                         with column2:
@@ -365,20 +362,21 @@ with COL1:
                 st.session_state.styled_table_html = ""
                 st.session_state.feedback_section = []
                 st.session_state.feedback_generated = []
-            if st.session_state.html_content is not "":
-                # Add the "Save" button
-                if st.button(f"Save Report to Google Sheet (**{st.session_state.reference_number_ops}**)", use_container_width = True):
-                    saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, st.session_state.html_content)
-                    if saved:
-                        st.success("HTML content saved successfully and PARGeneratedTag updated.")
-                        st.rerun()
-                    else:
-                        st.error("Failed to save HTML content or update PARGeneratedTag.")
-                pdf = convert_html_to_pdf(st.session_state.html_content)
-                if pdf:
-                    st.download_button(label=f"Download PDF (**{st.session_state.reference_number_ops}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
+                
+        if st.session_state.html_content is not "":
+            # Add the "Save" button
+            if st.button(f"Save Report to Google Sheet (**{st.session_state.reference_number_ops}**)", use_container_width = True):
+                saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, st.session_state.html_content)
+                if saved:
+                    st.success("HTML content saved successfully and PARGeneratedTag updated.")
+                    st.rerun()
                 else:
-                    st.error("Failed to convert HTML to PDF.")
+                    st.error("Failed to save HTML content or update PARGeneratedTag.")
+            pdf = convert_html_to_pdf(st.session_state.html_content)
+            if pdf:
+                st.download_button(label=f"Download PDF (**{st.session_state.reference_number_ops}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
+            else:
+                st.error("Failed to convert HTML to PDF.")
 
 
 
