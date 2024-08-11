@@ -153,7 +153,7 @@ if "feedback_generated" not in st.session_state:
 def score_table_show(scores):
     # Convert the scores dictionary to an HTML table directly
     table_html = f"""
-    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 16px; margin-top: 0px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
+    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 12px; margin-top: 0px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
         <tr style="background-color: #28a745;">
             {"".join([f"<th style='padding: 8px; text-align: center; color: white;'>{category}</th>" for category in scores.keys()])}
         </tr>
@@ -319,22 +319,11 @@ else:
                             st.markdown(feedback_section, unsafe_allow_html=True)
                             html_content += feedback_section
                     
-                    # # Button to download the report as a PDF
-                    # if st.button("Download Report as PDF"):
-                    #     pdfkit.from_string(html_content, 'pathfinder_assessment_report.pdf')
-                    #     with open('pathfinder_assessment_report.pdf', 'rb') as pdf_file:
-                    #         st.download_button(
-                    #             label="Download PDF",
-                    #             data=pdf_file,
-                    #             file_name="pathfinder_assessment_report.pdf",
-                    #             mime="application/pdf",
-                    #         )
-                    # Convert the HTML content to PDF
                     pdf = convert_html_to_pdf(html_content)
                     
                     if pdf:
                         # Provide download link for the PDF
-                        st.download_button(label="Download PDF", data=pdf, file_name="output.pdf", mime="application/pdf")
+                        st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
                     else:
                         st.error("Failed to convert HTML to PDF.")
         
