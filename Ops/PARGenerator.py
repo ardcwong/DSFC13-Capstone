@@ -56,6 +56,19 @@ def google_connection_gsheet_PathfinderExamResults(client):
     spreadsheet = client.open("Pathfinder Exam Results")
     return spreadsheet
 
+# Function to update the HTML_CONTENT and PARGeneratedTag columns in the Google Sheet
+def save_html_content_and_update_tag(spreadsheet, reference_number, html_content):
+    worksheet = spreadsheet.worksheet("Sheet1")
+    cell = worksheet.find(reference_number, in_column=1)  # Assumes "Reference Number" is in the first column
+    if cell:
+        # Update HTML_CONTENT
+        worksheet.update_cell(cell.row, worksheet.find("HTML_CONTENT").col, html_content)
+        # Update PARGeneratedTag to "Y"
+        worksheet.update_cell(cell.row, worksheet.find("PARGeneratedTag").col, "Y")
+        return True
+    else:
+        return False
+        
 ########################################################
 # ACCESS DERIVED COMPETENCY FRAMEWORK GSHEET
 ########################################################
@@ -245,6 +258,15 @@ else:
         st.session_state.reference_number = []
         st.session_state.feedback_generated = []
         st.rerun()
+
+    # Add the "Save" button
+    if st.button("Save"):
+        saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, html_content)
+        if saved:
+            st.success("HTML content saved successfully and PARGeneratedTag updated.")
+        else:
+            st.error("Failed to save HTML content or update PARGeneratedTag.")
+
         
     user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number_ops]
     if not user_data.empty:
