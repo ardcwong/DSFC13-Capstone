@@ -180,7 +180,7 @@ else:
             st.rerun()
 
     with column22:
-        st.markdown("""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>""", unsafe_allow_html = True)
+        st.markdown(f"""<h6 style='text-align: center; font-weight: bold;'><br>Viewing Reference Number {st.session_state.reference_number}</h6>""", unsafe_allow_html = True)
     with column33:
         pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
         if scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['HTML_CONTENT'].values[0] is not "":
