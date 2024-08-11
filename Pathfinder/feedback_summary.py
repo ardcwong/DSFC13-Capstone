@@ -130,11 +130,12 @@ if st.session_state.generate_pf_fs == False:
                 st.session_state.generate_pf_fs = True
                 st.rerun()
             elif st.session_state.reference_number == []:
-                st.info("Input Rn")
-            else:
-                st.error("Reference Number not found.")
-                st.session_state.generate_pf_fs = False
-                st.session_state.reference_number = []
+                st.info("Input RN")
+                
+            # else:
+            #     st.error("Reference Number not found.")
+            #     st.session_state.generate_pf_fs = False
+            #     st.session_state.reference_number = []
                 # st.rerun()
 
 
