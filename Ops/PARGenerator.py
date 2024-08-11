@@ -260,27 +260,24 @@ with COL2:
             else:
                 st.error("Failed to convert HTML to PDF.")
 with COL1:
-    if st.session_state.html_content is not "":
-        # Add the "Save" button
-        if st.button("Save"):
-            saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, st.session_state.html_content)
-            if saved:
-                st.success("HTML content saved successfully and PARGeneratedTag updated.")
-                st.rerun()
-            else:
-                st.error("Failed to save HTML content or update PARGeneratedTag.")
-column11, column12, column13 = st.columns([2,6,2])  
-with column12:
-    st.markdown("")
-    st.markdown("")
-    if st.button("Generate", use_container_width = True, type = "primary"):
-        st.session_state.generate_pf_fs = True
-        st.session_state.reference_number_ops = reference_number_ops
-        st.session_state.html_content = ""
-        st.session_state.report_intro = ""
-        st.session_state.styled_table_html = ""
-        st.session_state.feedback_section = []
-        # st.rerun()
+    with st.expander("TOOLS", expanded = True):
+        if st.button("Generate", use_container_width = True, type = "primary"):
+            st.session_state.generate_pf_fs = True
+            st.session_state.reference_number_ops = reference_number_ops
+            st.session_state.html_content = ""
+            st.session_state.report_intro = ""
+            st.session_state.styled_table_html = ""
+            st.session_state.feedback_section = []
+        if st.session_state.html_content is not "":
+            # Add the "Save" button
+            if st.button("Save"):
+                saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, st.session_state.html_content)
+                if saved:
+                    st.success("HTML content saved successfully and PARGeneratedTag updated.")
+                    st.rerun()
+                else:
+                    st.error("Failed to save HTML content or update PARGeneratedTag.")
+
 
 if st.session_state.generate_pf_fs == True:
     user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number_ops]
