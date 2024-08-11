@@ -83,7 +83,7 @@ def enhance_course_outline(course_outline, collection):
                         {"role": "system", "content": "You are an assistant that provides detailed educational content."},
                         {"role": "user", "content": query}
                     ],
-                    max_tokens=350
+                    max_tokens=500
                 )
                 additional_content = response.choices[0].message.content.strip()
                 enhanced_outline[sprint][main_topic][subtopic] = additional_content
