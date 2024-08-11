@@ -242,15 +242,11 @@ with tab2:
     st.write(scores_dataset)
     with st.container(border=True):
         column_1, column_2, column_3 = st.columns([1,8,1])     
-
-        st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['REPORT_INTRO'].values[0], unsafe_allow_html=True)
-        st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['SCORE_CATEGORY_TABLE'].values[0], unsafe_allow_html=True)
-        for i in range(9):
-            st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view][f"FEEDBACK_SECTION_{i+1}"].values[0], unsafe_allow_html=True)
-        st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['FEEDBACK_SECTION_1'].values[0], unsafe_allow_html=True)
-        
         with column_2:
-            st.write("")
+            st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['REPORT_INTRO'].values[0], unsafe_allow_html=True)
+            st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['SCORE_CATEGORY_TABLE'].values[0], unsafe_allow_html=True)
+            for i in range(9):
+                st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view][f"FEEDBACK_SECTION_{i+1}"].values[0], unsafe_allow_html=True)
             
     
 with tab1:
