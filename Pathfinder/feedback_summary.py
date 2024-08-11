@@ -203,7 +203,7 @@ else:
                     </div>
                     
                     <div style="font-size:16px;">
-                        The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.<br>
+                        <br>The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.<br>
                     </div>
                     
                     <div style="font-size:18px;">
