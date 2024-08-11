@@ -260,8 +260,8 @@ else:
 
                     # Convert the scores dictionary to an HTML table directly
                     table_html = f"""
-                    <table class="styled-table" style="width: 100%; border-collapse: collapse; font-size: 16px; margin-top: 20px;">
-                        <tr style="background-color: #28a745;">  <!-- Dark green for header background -->
+                    <table class="styled-table" style="width: 100%; border-collapse: collapse; font-size: 16px; margin-top: 20px; border-radius: 5px;">
+                        <tr style="background-color: #21AF8D;">  <!-- Dark green for header background -->
                             {"".join([f"<th style='padding: 8px; text-align: center; color: white;'>{category}</th>" for category in scores.keys()])}
                         </tr>
                         <tr>
@@ -274,7 +274,7 @@ else:
                     styled_table_html = f"""
                     <style>
                     .styled-table th, .styled-table td {{
-                        border: 2px solid #21AF8D; border-radius: 5px;  /* Dark green border */
+                        border: 2px solid #21AF8D;  /* Dark green border */
                     }}
                     .styled-table th {{
                         background-color: #21AF8D;  /* Dark green header */
