@@ -141,6 +141,12 @@ if "reference_number" not in st.session_state:
 if "feedback_generated" not in st.session_state:
     st.session_state.feedback_generated = []
 
+
+
+####################################################################
+################            MAIN PROGRAM            ################
+####################################################################
+
 if st.session_state.generate_pf_fs == False:
     # Input for reference number
 
@@ -185,7 +191,31 @@ else:
             column1, column2, column3 = st.columns([1,8,1])        
             with column2:
                 # st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Score Category"]))  
+                with st.container()
+                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><b><i>Introduction</b></i><i></h5>""", unsafe_allow_html=True)
+                    # st.markdown(f"""<h5 style='text-align: left;font-size: 20px;'><b><i>Introduction</b></i><i></h5>""", unsafe_allow_html=True)
+                    st.markdown("""
+                    <div style="font-size:16px;">
+                        **Thank you for completing the Pathfinder Assessment Exam.** The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.
+                    
+                        We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.
+                    
+                        **Performance Summary:**
+                    
+                        * **Needs Improvement:** Areas where further development is recommended.
+                        * **Fair:** Areas where your performance meets basic expectations.
+                        * **Good:** Areas where you have demonstrated a solid understanding and capability.
+                        * **Excellent:** Areas where you have excelled and shown strong proficiency.
+                    
+                        **Actionable Suggestions:**  
+                        Along with your performance summary, we have included actionable suggestions to help you improve where needed, build on your strengths, and continue your journey toward mastering key skills.
+                    
+                        We hope you find this information helpful, and we look forward to considering your application.
+                    </div>
+                    """, unsafe_allow_html=True)
                 st.header("Feedback Summary")
+                
+                
                 for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
                     with st.container(border = True):
                         st.markdown(f"""<h5 style='text-align: center;color: #e76f51;font-size: 35px;'><b><i>{main_category}</b></i><i></h5>""", unsafe_allow_html=True)
