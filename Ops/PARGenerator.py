@@ -274,10 +274,10 @@ with COL1:
                 else:
                     st.error("Failed to save HTML content or update PARGeneratedTag.")
             pdf = convert_html_to_pdf(st.session_state.html_content)
-                if pdf:
-                    st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
-                else:
-                    st.error("Failed to convert HTML to PDF.")
+            if pdf:
+                st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
+            else:
+                st.error("Failed to convert HTML to PDF.")
 
 
 if st.session_state.generate_pf_fs == True:
