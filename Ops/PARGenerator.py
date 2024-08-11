@@ -246,6 +246,7 @@ if st.session_state.generate_pf_fs == False:
         if st.button("Generate", use_container_width = True, type = "primary"):
             st.session_state.generate_pf_fs = True
             st.session_state.reference_number_ops = reference_number_ops
+            st.session_state.html_content = ""
             st.rerun()
         
 # Streamlit App Title
@@ -290,8 +291,10 @@ else:
                 saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, st.session_state.html_content)
                 if saved:
                     st.success("HTML content saved successfully and PARGeneratedTag updated.")
+                    st.rerun()
                 else:
                     st.error("Failed to save HTML content or update PARGeneratedTag.")
+                    
             
             # html_content = ""
             
