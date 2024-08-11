@@ -118,6 +118,29 @@ for sprint, topics in st.session_state.enhanced_course_outline.items():
                 </div>
             </div>
             """, unsafe_allow_html=True)
+
+
+# Generate markdown for each sprint and save it in st.session_state
+for sprint, topics in enhanced_course_outline.items():
+    sprint_markdown = ""
+    for main_topic, subtopics in topics.items():
+        for subtopic, description in subtopics.items():
+            sprint_markdown += f"""
+            <div style="border: 1px solid #1E73BE; border-radius: 5px; overflow: hidden; margin-bottom: 20px;">
+                <div style="background-color: #1E73BE; padding: 10px;">
+                    <h4 style="color: white; margin: 0;">{sprint} - {main_topic}</h4>
+                </div>
+                <div style="background-color: #F8F9FA; padding: 15px;">
+                    <p style="color: #333333;">{description}</p>
+                </div>
+            </div>
+            """
+
+    # Save the generated markdown in st.session_state
+    st.session_state['markdowns'][sprint] = sprint_markdown
+
+# Example: Display the markdown for a specific sprint (Sprint 1)
+st.markdown(st.session_state['markdowns'].get('Sprint 1', ''), unsafe_allow_html=True)
 # for sprint in course_outline.keys():
 #     if f"outline_{sprint}" not in st.session_state:
 #         # Enhance only if it hasn't been done before
