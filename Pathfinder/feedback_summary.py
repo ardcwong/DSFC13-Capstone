@@ -231,30 +231,22 @@ else:
         with st.spinner("Generating feedback..."):
             if st.session_state.feedback_generated == []:
                 st.session_state.feedback_generated = generate_summarized_feedback(scores)
+            html_content = ""
             with st.container(border=True):
                 column1, column2, column3 = st.columns([1,8,1])        
                 with column2:
-                    # st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Performance"]).T)  
-                    # st.write(scores)
-                    
-                    st.markdown(f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
+                    report_intro = f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
                     <hr style="border:2px solid #ccc;" />
-                    """, unsafe_allow_html=True)
-                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Introduction</b></strong></h5>""", unsafe_allow_html=True)
-                    # st.markdown(f"""<h5 style='text-align: left;font-size: 20px;'><b><i>Introduction</b></i><i></h5>""", unsafe_allow_html=True)
-                    st.markdown("""
+                    <h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Introduction</b></strong></h5>
                     <div style="font-size:18px;">
                         <strong>Thank you for completing the Pathfinder Assessment Exam.<br></strong>
                     </div>
-                    
                     <div style="font-size:16px;">
                         <br>The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.<br>
                     </div>
-                    
                     <div style="font-size:18px;">
                         <strong><br>We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.<br></strong>
                     </div>
-                    
                     <div style="font-size:16px;">
                         <strong><br>Performance Summary:</strong>
                         <ul>
@@ -264,17 +256,59 @@ else:
                             <li><strong>Excellent:</strong> Areas where you have excelled and shown strong proficiency.</li>
                         </ul>
                     </div>
-                    
                     <div style="font-size:16px;">
                         <strong>Actionable Suggestions:</strong><br>
                         Along with your performance summary, we have included actionable suggestions to help you improve where needed, build on your strengths, and continue your journey toward mastering key skills.
                     </div>
-                    
                     <div style="font-size:16px;">
                         <br>We hope you find this information helpful.
                     </div>
                     <hr style="border:2px solid #ccc;" />
-                    """, unsafe_allow_html=True)
+                    """
+                    st.markdown(report_intro, unsafe_allow_html=True)
+                    html_content += report_intro
+                    st.write(html_content)
+                    # st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Performance"]).T)  
+                    # st.write(scores)
+                    
+                    # st.markdown(f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
+                    # <hr style="border:2px solid #ccc;" />
+                    # """, unsafe_allow_html=True)
+                    # st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Introduction</b></strong></h5>""", unsafe_allow_html=True)
+                    # # st.markdown(f"""<h5 style='text-align: left;font-size: 20px;'><b><i>Introduction</b></i><i></h5>""", unsafe_allow_html=True)
+                    # st.markdown("""
+                    # <div style="font-size:18px;">
+                    #     <strong>Thank you for completing the Pathfinder Assessment Exam.<br></strong>
+                    # </div>
+                    
+                    # <div style="font-size:16px;">
+                    #     <br>The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.<br>
+                    # </div>
+                    
+                    # <div style="font-size:18px;">
+                    #     <strong><br>We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.<br></strong>
+                    # </div>
+                    
+                    # <div style="font-size:16px;">
+                    #     <strong><br>Performance Summary:</strong>
+                    #     <ul>
+                    #         <li><strong>Needs Improvement:</strong> Areas where further development is recommended.</li>
+                    #         <li><strong>Fair:</strong> Areas where your performance meets basic expectations.</li>
+                    #         <li><strong>Good:</strong> Areas where you have demonstrated a solid understanding and capability.</li>
+                    #         <li><strong>Excellent:</strong> Areas where you have excelled and shown strong proficiency.</li>
+                    #     </ul>
+                    # </div>
+                    
+                    # <div style="font-size:16px;">
+                    #     <strong>Actionable Suggestions:</strong><br>
+                    #     Along with your performance summary, we have included actionable suggestions to help you improve where needed, build on your strengths, and continue your journey toward mastering key skills.
+                    # </div>
+                    
+                    # <div style="font-size:16px;">
+                    #     <br>We hope you find this information helpful.
+                    # </div>
+                    # <hr style="border:2px solid #ccc;" />
+                    # """, unsafe_allow_html=True)
                     
                     
                     
