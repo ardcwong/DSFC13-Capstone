@@ -205,6 +205,11 @@ else:
     # # Button to look up scores
 # if st.button("Lookup Scores"):
 #     if reference_number:
+    if st.button("Go Back"):
+        st.session_state.generate_pf_fs = False
+        st.session_state.reference_number = []
+        st.session_state.feedback_generated = []
+        
     user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]
     if not user_data.empty:
         scores = {}
