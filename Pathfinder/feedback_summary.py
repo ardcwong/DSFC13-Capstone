@@ -195,21 +195,34 @@ else:
                     st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><b><i>Introduction</b></i><i></h5>""", unsafe_allow_html=True)
                     # st.markdown(f"""<h5 style='text-align: left;font-size: 20px;'><b><i>Introduction</b></i><i></h5>""", unsafe_allow_html=True)
                     st.markdown("""
+                    <div style="font-size:18px;">
+                        <strong>Thank you for completing the Pathfinder Assessment Exam.</strong>
+                    </div>
+                    
                     <div style="font-size:16px;">
-                        **Thank you for completing the Pathfinder Assessment Exam.** The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.
+                        The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.
+                    </div>
                     
-                        We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.
+                    <div style="font-size:18px;">
+                        <strong>We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.</strong>
+                    </div>
                     
-                        **Performance Summary:**
+                    <div style="font-size:16px;">
+                        <strong>Performance Summary:</strong>
+                        <ul>
+                            <li><strong>Needs Improvement:</strong> Areas where further development is recommended.</li>
+                            <li><strong>Fair:</strong> Areas where your performance meets basic expectations.</li>
+                            <li><strong>Good:</strong> Areas where you have demonstrated a solid understanding and capability.</li>
+                            <li><strong>Excellent:</strong> Areas where you have excelled and shown strong proficiency.</li>
+                        </ul>
+                    </div>
                     
-                        * **Needs Improvement:** Areas where further development is recommended.
-                        * **Fair:** Areas where your performance meets basic expectations.
-                        * **Good:** Areas where you have demonstrated a solid understanding and capability.
-                        * **Excellent:** Areas where you have excelled and shown strong proficiency.
-                    
-                        **Actionable Suggestions:**  
+                    <div style="font-size:16px;">
+                        <strong>Actionable Suggestions:</strong><br>
                         Along with your performance summary, we have included actionable suggestions to help you improve where needed, build on your strengths, and continue your journey toward mastering key skills.
+                    </div>
                     
+                    <div style="font-size:16px;">
                         We hope you find this information helpful, and we look forward to considering your application.
                     </div>
                     """, unsafe_allow_html=True)
