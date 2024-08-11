@@ -186,6 +186,15 @@ def score_table_show():
 ################            MAIN PROGRAM            ################
 ####################################################################
 
+
+
+
+
+st.write(scores_dataset)
+
+
+
+
 if st.session_state.generate_pf_fs == False:
     # Input for reference number
 
