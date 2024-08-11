@@ -236,7 +236,7 @@ def score_table_show(scores):
 
 tab1, tab2 = st.tabs(["Generate","View"])
 with tab2:
-    column__1, column__2 = st.columns([1,1])
+    column__1, column__2 = st.columns([2,8])
     with column__2:
         st.dataframe(scores_dataset[scores_dataset["PARGenTag"] == "Y"])
         pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
