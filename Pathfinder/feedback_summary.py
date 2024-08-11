@@ -187,11 +187,11 @@ else:
         with st.spinner("Generating feedback..."):
             if st.session_state.feedback_generated == []:
                 st.session_state.feedback_generated = generate_summarized_feedback(scores)
-            
-            column1, column2, column3 = st.columns([1,8,1])        
-            with column2:
-                # st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Score Category"]))  
-                with st.container(border=True):
+            with st.container(border=True):
+                column1, column2, column3 = st.columns([1,8,1])        
+                with column2:
+                    # st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Score Category"]))  
+                    
                     st.markdown(f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'>Your Pathfinder Assessment Exam Report</h1>
                     <hr style="border:2px solid #ccc;" />
                     """, unsafe_allow_html=True)
@@ -230,15 +230,15 @@ else:
                     </div>
                     <hr style="border:2px solid #ccc;" />
                     """, unsafe_allow_html=True)
-                st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
-                
-                
-                for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
-                    with st.container(border = True):
-                        st.markdown(f"""<h5 style='text-align: center;color: #e76f51;font-size: 35px;'><b><i>{main_category}</b></i><i></h5>""", unsafe_allow_html=True)
-                        # st.divider()
-                        # st.write(f"**{main_category.upper()}**")
-                        st.write(feedback)
+                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
+                    
+                    
+                    for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
+                        with st.container(border = True):
+                            st.markdown(f"""<h5 style='text-align: center;color: #e76f51;font-size: 35px;'><b><i>{main_category}</b></i><i></h5>""", unsafe_allow_html=True)
+                            # st.divider()
+                            # st.write(f"**{main_category.upper()}**")
+                            st.write(feedback)
     else:
         st.error("Reference Number not found.")
         st.session_state.generate_pf_fs = False
