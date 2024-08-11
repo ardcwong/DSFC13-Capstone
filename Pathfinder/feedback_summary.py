@@ -260,8 +260,8 @@ else:
 
                     # Convert the scores dictionary to an HTML table directly
                     table_html = f"""
-                    <table class="styled-table" style="width: 100%; border-collapse: collapse; font-size: 16px; margin-top: 20px; border-radius: 5px;">
-                        <tr style="background-color: #21AF8D;">  <!-- Dark green for header background -->
+                    <table class="styled-table" style="width: 100%; border-collapse: collapse; font-size: 16px; margin-top: 20px; border-radius: 5px; overflow: hidden;">
+                        <tr style="background-color: #28a745; border-radius: 5px;">
                             {"".join([f"<th style='padding: 8px; text-align: center; color: white;'>{category}</th>" for category in scores.keys()])}
                         </tr>
                         <tr>
@@ -273,11 +273,16 @@ else:
                     # Apply CSS styling
                     styled_table_html = f"""
                     <style>
+                    .styled-table {{
+                        border: 2px solid #28a745;  /* Dark green border */
+                        border-radius: 5px;  /* Rounded corners for the table */
+                        overflow: hidden; /* Ensures rounded corners are applied */
+                    }}
                     .styled-table th, .styled-table td {{
-                        border: 2px solid #21AF8D;  /* Dark green border */
+                        border: 1px solid #28a745;  /* Dark green border for cells */
                     }}
                     .styled-table th {{
-                        background-color: #21AF8D;  /* Dark green header */
+                        background-color: #28a745;  /* Dark green header */
                         color: white;  /* White text in header */
                     }}
                     .styled-table tr:nth-child(even) {{
