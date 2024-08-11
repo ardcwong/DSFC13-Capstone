@@ -104,8 +104,6 @@ topics and sub-topics, divided into four distinct Sprints. This Navigator acts a
 guide for fellows, helping them steer through their learning journey with confidence.
 """)
 
-st.write(type(enhanced_course_outline))
-st.write(enhanced_course_outline)
 # Generating the st.markdown for each sprint with the new styling
 for sprint, topics in enhanced_course_outline.items():
     for main_topic, subtopics in topics.items():
@@ -113,7 +111,7 @@ for sprint, topics in enhanced_course_outline.items():
             st.markdown(f"""
             <div style="border: 1px solid #1E73BE; border-radius: 5px; overflow: hidden; margin-bottom: 20px;">
                 <div style="background-color: #1E73BE; padding: 10px;">
-                    <h4 style="color: white; margin: 0;">{main_topic}</h4>
+                    <h4 style="color: white; margin: 0;">{sprint}: {main_topic}</h4>
                 </div>
                 <div style="background-color: #F8F9FA; padding: 15px;">
                     <p style="color: #333333;">{description}</p>
