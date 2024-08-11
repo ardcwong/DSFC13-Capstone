@@ -264,6 +264,7 @@ with COL1:
             st.session_state.report_intro = ""
             st.session_state.styled_table_html = ""
             st.session_state.feedback_section = []
+            st.session_state.feedback_generated = []
         if st.session_state.html_content is not "":
             # Add the "Save" button
             if st.button(f"Save Report to Google Sheet (**{st.session_state.reference_number_ops}**)", use_container_width = True):
