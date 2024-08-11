@@ -257,7 +257,40 @@ else:
                             <strong><br></strong>
                             </div>
                             """, unsafe_allow_html=True)
+
+                    # Convert the scores dictionary to an HTML table directly
+                    table_html = f"""
+                    <table class="styled-table" style="width: 100%; border-collapse: collapse; font-size: 16px; margin-top: 20px;">
+                        <tr style="background-color: #f0f0f0;">
+                            {"".join([f"<th style='padding: 8px; text-align: center;'>{category}</th>" for category in scores.keys()])}
+                        </tr>
+                        <tr>
+                            {"".join([f"<td style='padding: 8px; text-align: center;'>{performance}</td>" for performance in scores.values()])}
+                        </tr>
+                    </table>
+                    """
                     
+                    # Apply CSS styling
+                    styled_table_html = f"""
+                    <style>
+                    .styled-table th, .styled-table td {{
+                        border: 1px solid #ccc;
+                    }}
+                    .styled-table th {{
+                        background-color: #f0f0f0;
+                    }}
+                    .styled-table tr:nth-child(even) {{
+                        background-color: #f9f9f9;
+                    }}
+                    .styled-table tr:nth-child(odd) {{
+                        background-color: #ffffff;
+                    }}
+                    </style>
+                    {table_html}
+                    """
+                    
+                    # Display the HTML table in Streamlit
+                    st.markdown(styled_table_html, unsafe_allow_html=True)
 
     else:
         st.error("Reference Number not found.")
