@@ -247,7 +247,7 @@ if "styled_table_html" not in st.session_state:
 if "feedback_section" not in st.session_state:
     st.session_state.feedback_section = []
 
-st.write(st.session_state.feedback_section.values.tolist())
+st.write(str(st.session_state.feedback_section))
          # [[1]].T.values.flatten().tolist())
 # st.write(st.session_state.feedback_section)
 
