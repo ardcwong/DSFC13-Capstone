@@ -274,7 +274,7 @@ else:
                     styled_table_html = f"""
                     <style>
                     .styled-table th, .styled-table td {{
-                        border: 2px solid #21AF8D;  /* Dark green border */
+                        border: 2px solid #21AF8D; border-radius: 5px;  /* Dark green border */
                     }}
                     .styled-table th {{
                         background-color: #21AF8D;  /* Dark green header */
