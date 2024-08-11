@@ -207,11 +207,11 @@ else:
                     </div>
                     
                     <div style="font-size:18px;">
-                        <strong>We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.<br></strong>
+                        <strong><br>We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.<br></strong>
                     </div>
                     
                     <div style="font-size:16px;">
-                        <strong>Performance Summary:</strong>
+                        <strong><br>Performance Summary:</strong>
                         <ul>
                             <li><strong>Needs Improvement:</strong> Areas where further development is recommended.</li>
                             <li><strong>Fair:</strong> Areas where your performance meets basic expectations.</li>
@@ -226,8 +226,9 @@ else:
                     </div>
                     
                     <div style="font-size:16px;">
-                        We hope you find this information helpful, and we look forward to considering your application.
+                        <br>We hope you find this information helpful, and we look forward to considering your application.
                     </div>
+                    <hr style="border:2px solid #ccc;" />
                     """, unsafe_allow_html=True)
                 st.header("Feedback Summary")
                 
