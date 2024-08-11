@@ -120,7 +120,9 @@ if selected_sprints:
                 for subtopic, content in subtopics.items():
                     st.write(f"  Subtopic: {subtopic}")
                     st.write(f"    Content:\n{content}\n")
-                    
+
+st.write(st.session_state)
+
 # # Dynamic checkbox generation with session state
 # selected_sprints = {}
 
