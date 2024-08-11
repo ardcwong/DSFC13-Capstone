@@ -112,13 +112,13 @@ if "feedback_generated" not in st.session_state:
 pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
 
 st.title("Pathfinder Assessment Report")
-col_main1, col_main2, col_main3 = st.columns([1,2,0.5])
+col_main1, col_main2, col_main3 = st.columns([1,2.5])
 with col_main1:
-    with st.expander("#**About**", expanded=st.session_state.BeginAssessment):
+    with st.expander("# **About**", expanded=st.session_state.BeginAssessment):
         st.write("The 'Pathfinder Assessment Report' feature of our app provides a comprehensive performance overview after completing the Pathfinder Exam. This report helps you identify your strengths and weaknesses across different topic areas, allowing you to pinpoint knowledge gaps that need improvement. Along with the performance summary, the app offers personalized suggestions to help you bridge those gaps, guiding you on the next steps in your learning journey.")
 
 with col_main2:
-    with st.expander("#**Instructions**", expanded=st.session_state.BeginAssessment):
+    with st.expander("# **Instructions**", expanded=st.session_state.BeginAssessment):
         st.markdown("""
         1. **Complete the Pathfinder Exam:**  
            Before accessing the Pathfinder Assessment Report, you must first complete the Pathfinder Exam.
