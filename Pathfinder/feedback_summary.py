@@ -191,6 +191,7 @@ else:
                 column1, column2, column3 = st.columns([1,8,1])        
                 with column2:
                     # st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Performance"]).T)  
+                    st.write(scores)
                     
                     st.markdown(f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Exam Report</h1>
                     <hr style="border:2px solid #ccc;" />
