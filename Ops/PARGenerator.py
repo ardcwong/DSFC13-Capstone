@@ -5,7 +5,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import openai
 import json
-
+import pdfkit
 ########################################################
 # API KEYS and CREDENTIALS
 ########################################################
