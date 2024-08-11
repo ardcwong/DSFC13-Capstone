@@ -57,14 +57,14 @@ def google_connection_gsheet_PathfinderExamResults(client):
     return spreadsheet
 
 # Function to update the HTML_CONTENT and PARGeneratedTag columns in the Google Sheet
-def save_html_content_and_update_tag(spreadsheet, reference_number, html_content):
+def save_html_content_and_update_tag(spreadsheet, reference_number, html_content, report_intro, styled_table_html, feedback_section):
     worksheet = spreadsheet.worksheet("Sheet1")
     cell = worksheet.find(reference_number, in_column=1)  # Assumes "Reference Number" is in the first column
     if cell:
-        # worksheet.update_cell(cell.row, worksheet.find("HTML_CONTENT").col, st.session_state.html_content)
-        worksheet.update_cell(cell.row, worksheet.find("REPORT_INTRO").col, st.session_state.report_intro)
-        worksheet.update_cell(cell.row, worksheet.find("SCORE_CATEGORY_TABLE").col, st.session_state.styled_table_html)
-        worksheet.update_cell(cell.row, worksheet.find("FEEDBACK_SECTION").col, st.session_state.feedback_section)
+        # worksheet.update_cell(cell.row, worksheet.find("HTML_CONTENT").col, html_content)
+        worksheet.update_cell(cell.row, worksheet.find("REPORT_INTRO").col, report_intro)
+        worksheet.update_cell(cell.row, worksheet.find("SCORE_CATEGORY_TABLE").col, styled_table_html)
+        worksheet.update_cell(cell.row, worksheet.find("FEEDBACK_SECTION").col, feedback_section)
         # Update PARGeneratedTag to "Y"
         worksheet.update_cell(cell.row, worksheet.find("PARGenTag").col, "Y")
         return True
@@ -367,7 +367,7 @@ with COL1:
         if st.session_state.html_content is not "":
             # Add the "Save" button
             if st.button(f"Save Report to Google Sheet (**{st.session_state.reference_number_ops}**)", use_container_width = True):
-                saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, st.session_state.html_content)
+                saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, st.session_state.html_content, st.session_state.report_intro, st.session_state.styled_table_html, st.session_state.feedback_section)
                 if saved:
                     st.success("HTML content saved successfully and PARGeneratedTag updated.")
                     st.rerun()
