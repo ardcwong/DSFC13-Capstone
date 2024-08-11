@@ -25,7 +25,7 @@ client = OpenAI(api_key=api_key)
 openai_client = OpenAI(api_key=api_key)
 
 
-@st.cache_resource
+# @st.cache_resource
 def load_collection_DSFBAssistant():
   CHROMA_DATA_PATH_2 = "eskwe"
   COLLECTION_NAME_2 = "eskwe_embeddings"
