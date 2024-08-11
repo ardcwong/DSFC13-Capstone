@@ -4,7 +4,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import openai
 import json
-import pdfkit, os
+from weasyprint import HTML
 
 ########################################################
 # API KEYS and CREDENTIALS
@@ -313,14 +313,13 @@ else:
                     
                     # Button to download the report as a PDF
                     if st.button("Download Report as PDF"):
-                        pdfkit.from_string(html_content, 'pathfinder_assessment_report.pdf')
-                        with open('pathfinder_assessment_report.pdf', 'rb') as pdf_file:
-                            st.download_button(
-                                label="Download PDF",
-                                data=pdf_file,
-                                file_name="pathfinder_assessment_report.pdf",
-                                mime="application/pdf",
-                            )
+                        pdf = HTML(string=html_content).write_pdf()
+                        st.download_button(
+                            label="Download PDF",
+                            data=pdf,
+                            file_name="pathfinder_assessment_report.pdf",
+                            mime="application/pdf",
+                        )
 
 
     else:
