@@ -89,6 +89,25 @@ def enhance_course_outline(course_outline, collection):
                 enhanced_outline[sprint][main_topic][subtopic] = additional_content
     return enhanced_outline
 
+# Function to save the markdowns to the Google Sheet
+def save_markdowns_to_gsheet(spreadsheet, sprint_markdowns):
+    worksheet = spreadsheet.worksheet("Data Science Fellowship Cohort")
+    data = worksheet.get_all_values()
+    df = pd.DataFrame(data[1:], columns=data[0])
+    
+    # Ensure that there is an "Enhanced Course Outline" column
+    if "Enhanced Course Outline" not in df.columns:
+        worksheet.update_cell(1, len(df.columns) + 1, "Enhanced Course Outline")
+        df["Enhanced Course Outline"] = ""
+    
+    # Update the "Enhanced Course Outline" column for each sprint
+    for sprint, markdown in sprint_markdowns.items():
+        # Find the rows corresponding to the sprint
+        rows = df[df['Sprint Number'] == sprint].index.tolist()
+        for row in rows:
+            worksheet.update_cell(row + 2, df.columns.get_loc("Enhanced Course Outline") + 1, markdown)
+
+
 
 # Load and generate the course outline from the CSV file
 course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
@@ -104,20 +123,6 @@ topics and sub-topics, divided into four distinct Sprints. This Navigator acts a
 guide for fellows, helping them steer through their learning journey with confidence.
 """)
 
-# # Generating the st.markdown for each sprint with the new styling
-# for sprint, topics in st.session_state.enhanced_course_outline.items():
-#     for main_topic, subtopics in topics.items():
-#         for subtopic, description in subtopics.items():
-#             st.markdown(f"""
-#             <div style="border: 1px solid #1E73BE; border-radius: 5px; overflow: hidden; margin-bottom: 20px;">
-#                 <div style="background-color: #1E73BE; padding: 10px;">
-#                     <h4 style="color: white; margin: 0;">{sprint}: {main_topic}</h4>
-#                 </div>
-#                 <div style="background-color: #F8F9FA; padding: 15px;">
-#                     <p style="color: #333333;">{description}</p>
-#                 </div>
-#             </div>
-#             """, unsafe_allow_html=True)
 
 # Initialize session state if it doesn't exist
 if 'markdowns' not in st.session_state:
@@ -131,7 +136,7 @@ for sprint, topics in st.session_state.enhanced_course_outline.items():
             sprint_markdown += f"""
             <div style="border: 1px solid #1E73BE; border-radius: 5px; overflow: hidden; margin-bottom: 20px;">
                 <div style="background-color: #1E73BE; padding: 10px;">
-                    <h4 style="color: white; margin: 0;">{sprint} - {main_topic}</h4>
+                    <h4 style="color: white; margin: 0;">{sprint}: {main_topic}</h4>
                 </div>
                 <div style="background-color: #F8F9FA; padding: 15px;">
                     <p style="color: #333333;">{description}</p>
@@ -145,50 +150,12 @@ for sprint, topics in st.session_state.enhanced_course_outline.items():
 # Example: Display the markdown for a specific sprint (Sprint 1)
 st.markdown(st.session_state['markdowns'].get('Sprint 1', ''), unsafe_allow_html=True)
 st.write(st.session_state['markdowns'].get('Sprint 1', ''))
-# for sprint in course_outline.keys():
-#     if f"outline_{sprint}" not in st.session_state:
-#         # Enhance only if it hasn't been done before
-#         st.session_state[f"outline_{sprint}"] = enhance_course_outline({sprint: course_outline[sprint]}, None)
-#     selected_sprints[sprint] = st.session_state[f"outline_{sprint}"]
 
-# # Display the enhanced course outline with detailed content
-# if selected_sprints:
-#     for sprint, topics in selected_sprints.items():
-#         with st.expander(f"{sprint}", expanded=True):
-#             for main_topic, subtopics in topics[sprint].items():
-#                 st.write(f"Main Topic: {main_topic}")
-#                 for subtopic, content in subtopics.items():
-#                     st.write(f"  Subtopic: {subtopic}")
-#                     st.write(f"    Content:\n{content}\n")
-
-# Assuming you have four sprints
-# for sprint in sorted(selected_sprints.keys()):
-#     st.header(f"Sprint {sprint}")
-    
-#     for main_topic, subtopics in selected_sprints[sprint].items():
-#         st.subheader(f"Main Topic: {main_topic}")
-        
-#         for subtopic, content in subtopics.items():
-#             st.markdown(f"**Sub-Topic: {subtopic}**")
-#             st.markdown(content, unsafe_allow_html = True)
-#             st.markdown("---")  # Adds a horizontal line for separation between subtopics
-# # Dynamic checkbox generation with session state
-# selected_sprints = {}
-
-# for sprint in course_outline.keys():
-#     if st.checkbox(sprint, key=f"checkbox_{sprint}"):
-#         if f"outline_{sprint}" not in st.session_state:
-#             # Enhance only if it hasn't been done before
-#             st.session_state[f"outline_{sprint}"] = enhance_course_outline({sprint: course_outline[sprint]}, None)
-#         selected_sprints[sprint] = st.session_state[f"outline_{sprint}"]
-
-# # Display the enhanced course outline with detailed content
-# if selected_sprints:
-#     for sprint, topics in selected_sprints.items():
-#         with st.expander(f"{sprint}", expanded=True):
-#             for main_topic, subtopics in topics[sprint].items():
-#                 st.write(f"Main Topic: {main_topic}")
-#                 for subtopic, content in subtopics.items():
-#                     st.write(f"  Subtopic: {subtopic}")
-#                     st.write(f"    Content:\n{content}\n")
-
+# Save markdowns to Google Sheet
+if st.button("Save", use_container_width = True):
+    saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'])
+    if saved:
+        st.success("HTML content saved successfully.")
+        st.rerun()
+    else:
+        st.error("Failed to save HTML content.")
