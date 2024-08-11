@@ -207,8 +207,6 @@ with t1:
     # Collect all markdowns into a single HTML content block
     st.session_state.html_content_co = collect_all_markdowns(st.session_state['markdowns'])
     
-    # Optional: You can display the collected HTML content in your Streamlit app
-    st.markdown(st.session_state.html_content_co, unsafe_allow_html=True)
     
     pdf = convert_html_to_pdf(st.session_state.html_content_co)
     if pdf:
