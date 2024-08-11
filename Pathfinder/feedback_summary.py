@@ -237,7 +237,7 @@ else:
                     # st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Performance"]).T)  
                     # st.write(scores)
                     
-                    st.markdown(f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Exam Report</h1>
+                    st.markdown(f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
                     <hr style="border:2px solid #ccc;" />
                     """, unsafe_allow_html=True)
                     st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Introduction</b></strong></h5>""", unsafe_allow_html=True)
