@@ -261,6 +261,9 @@ else:
                     df_scores_T.columns = df_scores_T.iloc[0]
                     df_scores_T = df_scores_T[1:]
                     st.write(df_scores_T)
+                    # Convert DataFrame to HTML table with styling
+                    table_html = df_scores_T.to_html(index=False, border=0, classes="dataframe", justify="center", header=True)
+                    st.markdown(table_html)
 
     else:
         st.error("Reference Number not found.")
