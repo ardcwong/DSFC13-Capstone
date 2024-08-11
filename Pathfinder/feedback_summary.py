@@ -141,8 +141,46 @@ if "reference_number" not in st.session_state:
 if "feedback_generated" not in st.session_state:
     st.session_state.feedback_generated = []
 
-
-
+def score_table_show():
+    # Convert the scores dictionary to an HTML table directly
+    table_html = f"""
+    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 16px; margin-top: 20px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
+        <tr style="background-color: #28a745;">
+            {"".join([f"<th style='padding: 8px; text-align: center; color: white;'>{category}</th>" for category in scores.keys()])}
+        </tr>
+        <tr>
+            {"".join([f"<td style='padding: 8px; text-align: center;'>{performance}</td>" for performance in scores.values()])}
+        </tr>
+    </table>
+    """
+    
+    # Apply CSS styling
+    styled_table_html = f"""
+    <style>
+    .styled-table {{
+        border-radius: 5px;  /* Rounded corners for the table */
+        overflow: hidden; /* Ensures rounded corners are applied */
+        border: 1px solid #21AF8D;  /* Dark green border for the whole table */
+    }}
+    .styled-table th, .styled-table td {{
+        border: 1px solid #21AF8D;  /* Dark green border for cells */
+    }}
+    .styled-table th {{
+        background-color: #21AF8D;  /* Dark green header */
+        color: white;  /* White text in header */
+    }}
+    .styled-table tr:nth-child(even) {{
+        background-color: #e9f7ef;  /* Light green for even rows */
+    }}
+    .styled-table tr:nth-child(odd) {{
+        background-color: #f7fcf9;  /* Slightly lighter green for odd rows */
+    }}
+    </style>
+    {table_html}
+    """
+    
+    # Display the HTML table in Streamlit
+    st.markdown(styled_table_html, unsafe_allow_html=True)
 ####################################################################
 ################            MAIN PROGRAM            ################
 ####################################################################
@@ -231,14 +269,17 @@ else:
                     </div>
                     <hr style="border:2px solid #ccc;" />
                     """, unsafe_allow_html=True)
-                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
+                    
                     
                     
                     # for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
                     #     with st.container(border = True):
                     #         st.markdown(f"""<h5 style='text-align: center;color: #e76f51;font-size: 35px;'><b><i>{main_category}</b></i><i></h5>""", unsafe_allow_html=True)
                     #         st.write(feedback)
-
+                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Performance</b></strong></h5>""", unsafe_allow_html=True)
+                    score_table_show()
+                    
+                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
                     for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
                         with st.container(border=False):
                             # Header section for the category name
@@ -257,46 +298,8 @@ else:
                             <strong><br></strong>
                             </div>
                             """, unsafe_allow_html=True)
+                    
 
-                    # Convert the scores dictionary to an HTML table directly
-                    table_html = f"""
-                    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 16px; margin-top: 20px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
-                        <tr style="background-color: #28a745;">
-                            {"".join([f"<th style='padding: 8px; text-align: center; color: white;'>{category}</th>" for category in scores.keys()])}
-                        </tr>
-                        <tr>
-                            {"".join([f"<td style='padding: 8px; text-align: center;'>{performance}</td>" for performance in scores.values()])}
-                        </tr>
-                    </table>
-                    """
-                    
-                    # Apply CSS styling
-                    styled_table_html = f"""
-                    <style>
-                    .styled-table {{
-                        border-radius: 5px;  /* Rounded corners for the table */
-                        overflow: hidden; /* Ensures rounded corners are applied */
-                        border: 1px solid #21AF8D;  /* Dark green border for the whole table */
-                    }}
-                    .styled-table th, .styled-table td {{
-                        border: 1px solid #21AF8D;  /* Dark green border for cells */
-                    }}
-                    .styled-table th {{
-                        background-color: #21AF8D;  /* Dark green header */
-                        color: white;  /* White text in header */
-                    }}
-                    .styled-table tr:nth-child(even) {{
-                        background-color: #e9f7ef;  /* Light green for even rows */
-                    }}
-                    .styled-table tr:nth-child(odd) {{
-                        background-color: #f7fcf9;  /* Slightly lighter green for odd rows */
-                    }}
-                    </style>
-                    {table_html}
-                    """
-                    
-                    # Display the HTML table in Streamlit
-                    st.markdown(styled_table_html, unsafe_allow_html=True)
 
     else:
         st.error("Reference Number not found.")
