@@ -134,7 +134,7 @@ if st.session_state.generate_pf_fs == False:
                     st.info("Input RN")
                     
                 else:
-                    st.error("Reference Number not found.")
+                    st.error(f"Reference Number {st.session_state.reference_number} not found. Either it doesn't exist or your Pathfinder Assessment Report (PAR) is not yet generated.")
                     st.session_state.generate_pf_fs = False
                     st.session_state.reference_number = []
                     reference = []
