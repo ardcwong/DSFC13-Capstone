@@ -190,7 +190,7 @@ else:
             with st.container(border=True):
                 column1, column2, column3 = st.columns([1,8,1])        
                 with column2:
-                    st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Performance"]).T)  
+                    # st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Performance"]).T)  
                     
                     st.markdown(f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Exam Report</h1>
                     <hr style="border:2px solid #ccc;" />
@@ -256,6 +256,41 @@ else:
                             <strong><br></strong>
                             </div>
                             """, unsafe_allow_html=True)
+                    # Creating the DataFrame and transposing it
+                    df_scores_T = pd.DataFrame(list(scores.items()), columns=["Category", "Performance"]).T
+                    
+                    # Convert DataFrame to HTML with custom styling
+                    table_html = df_scores_T.to_html(header=False, index=True, border=0, justify='center', classes='styled-table')
+                    
+                    # Apply additional styling using CSS
+                    styled_table_html = f"""
+                    <style>
+                    .styled-table {{
+                        width: 100%;
+                        border-collapse: collapse;
+                        font-size: 16px;
+                        margin-top: 20px;
+                    }}
+                    .styled-table th, .styled-table td {{
+                        padding: 8px;
+                        text-align: center;
+                        border: 1px solid #ccc;
+                    }}
+                    .styled-table th {{
+                        background-color: #f0f0f0;
+                    }}
+                    .styled-table tr:nth-child(even) {{
+                        background-color: #f9f9f9;
+                    }}
+                    .styled-table tr:nth-child(odd) {{
+                        background-color: #ffffff;
+                    }}
+                    </style>
+                    {table_html}
+                    """
+                    
+                    # Display the HTML table in Streamlit
+                    st.markdown(styled_table_html, unsafe_allow_html=True)
     else:
         st.error("Reference Number not found.")
         st.session_state.generate_pf_fs = False
