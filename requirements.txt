@@ -34,3 +34,4 @@ opentelemetry-api
 opentelemetry-sdk
 streamlit-pdf-viewer
 pdfkit
+weasyprint
