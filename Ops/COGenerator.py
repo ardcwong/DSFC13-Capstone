@@ -130,7 +130,7 @@ for sprint in sorted(selected_sprints.keys()):
         
         for subtopic, content in subtopics.items():
             st.markdown(f"**Sub-Topic: {subtopic}**")
-            st.markdown(content)
+            st.markdown(content, unsafe_allow_html = True)
             st.markdown("---")  # Adds a horizontal line for separation between subtopics
 # # Dynamic checkbox generation with session state
 # selected_sprints = {}
