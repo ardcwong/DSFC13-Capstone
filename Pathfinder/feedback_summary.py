@@ -111,6 +111,38 @@ if "feedback_generated" not in st.session_state:
 
 pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
 
+st.title("Pathfinder Assessment Report")
+col_main1, col_main2, col_main3 = st.columns([1,2,0.5])
+with col_main1:
+    with st.expander("**About**", expanded=st.session_state.BeginAssessment):
+        st.write("The 'Pathfinder Assessment Report' feature of our app provides a comprehensive performance overview after completing the Pathfinder Exam. This report helps you identify your strengths and weaknesses across different topic areas, allowing you to pinpoint knowledge gaps that need improvement. Along with the performance summary, the app offers personalized suggestions to help you bridge those gaps, guiding you on the next steps in your learning journey.")
+
+with col_main2:
+    with st.expander("**Instructions**", expanded=st.session_state.BeginAssessment):
+        st.markdown("""
+        1. **Complete the Pathfinder Exam:**  
+           Before accessing the Pathfinder Assessment Report, you must first complete the Pathfinder Exam.
+        
+        2. **Receive Your Reference Number:**  
+           After completing the exam, a reference number will be sent to you by the Eskwelabs team.  
+           Keep this reference number handy, as you will need it to access your report.
+        
+        3. **View Your Performance Summary:**  
+           Once you have received your reference number, navigate to the "Pathfinder Assessment Report" section in the app.  
+           Enter the reference number to access a detailed breakdown of your scores across various topic areas, highlighting both your strengths and areas that need further attention.
+        
+        4. **Review Suggestions for Improvement:**  
+           Along with your performance summary, the app will provide tailored suggestions aimed at helping you improve in the areas where you scored lower.  
+           Follow these suggestions to enhance your understanding and close any knowledge gaps.
+        
+        5. **Save Your Report:**  
+           If desired, you can save your performance summary and suggestions for future reference. This allows you to track your progress over time and revisit the feedback as needed.
+        
+        6. **Plan Your Next Steps:**  
+           Use the feedback and suggestions to plan your next steps in your learning journey. Focus on the areas identified as needing improvement and take advantage of the resources provided by the app.
+        """, unsafe_allow_html=True)
+
+
 if st.session_state.generate_pf_fs == False:
     # Input for reference number
 
@@ -122,7 +154,7 @@ if st.session_state.generate_pf_fs == False:
             reference_number = st.chat_input("Enter your Reference Number:")
             if reference_number:
                 st.session_state.reference_number = reference_number
-                st.write(st.session_state.reference_number)
+
             # st.write(pf_rn_y.tolist())
 
         # if st.button("My Pathfinder Assessment Exam Report", use_container_width = True, type = "primary"):
@@ -130,8 +162,6 @@ if st.session_state.generate_pf_fs == False:
                 if st.session_state.reference_number in pf_rn_y:
                     st.session_state.generate_pf_fs = True
                     st.rerun()
-                elif st.session_state.reference_number == []:
-                    st.info("Input RN")
                     
                 else:
                     st.error(f"Reference Number {st.session_state.reference_number} not found. Either it doesn't exist or your Pathfinder Assessment Report (PAR) is not yet generated.")
