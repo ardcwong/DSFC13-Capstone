@@ -280,8 +280,8 @@ with COL1:
                     scores[main_category] = score_category
                     
                 with st.spinner("Generating feedback..."):
-                    if st.session_state.feedback_generated == []:
-                        st.session_state.feedback_generated = generate_summarized_feedback(scores)
+                    # if st.session_state.feedback_generated == []:
+                    st.session_state.feedback_generated = generate_summarized_feedback(scores)
         
                     with st.container(border=True):
                         column1, column2, column3 = st.columns([1,8,1])        
@@ -361,7 +361,6 @@ with COL1:
                 st.session_state.report_intro = ""
                 st.session_state.styled_table_html = ""
                 st.session_state.feedback_section = []
-                st.session_state.feedback_generated = []
                 
         if st.session_state.html_content is not "":
             # Add the "Save" button
