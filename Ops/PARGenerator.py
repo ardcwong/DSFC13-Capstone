@@ -243,12 +243,13 @@ if "styled_table_html" not in st.session_state:
     st.session_state.styled_table_html = ""
 
 if "feedback_section" not in st.session_state:
-    st.session_state.feedback_section = ""
+    st.session_state.feedback_section = []
 
 if st.session_state.html_content is not "":
     st.markdown(st.session_state.report_intro, unsafe_allow_html=True)
     st.markdown(st.session_state.styled_table_html, unsafe_allow_html=True)
-    st.markdown(st.session_state.feedback_section, unsafe_allow_html=True)
+    for feedback_section in st.session_state.feedback_sections:
+        st.markdown(feedback_section, unsafe_allow_html=True)
     
     pdf = convert_html_to_pdf(st.session_state.html_content)
     if pdf:
@@ -267,7 +268,7 @@ with column12:
         st.session_state.html_content = ""
         st.session_state.report_intro = ""
         st.session_state.styled_table_html = ""
-        st.session_state.feedback_section = ""
+        st.session_state.feedback_section = []
         # st.rerun()
 
 if st.session_state.generate_pf_fs == True:
@@ -366,7 +367,7 @@ if st.session_state.generate_pf_fs == True:
                             <strong><br></strong>
                             </div>
                             """
-                            st.session_state.feedback_section.append = feedback_section
+                            st.session_state.feedback_section.append(feedback_section)
                             # st.markdown(feedback_section, unsafe_allow_html=True)
                             st.session_state.html_content += feedback_section
             
