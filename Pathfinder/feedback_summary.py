@@ -256,40 +256,6 @@ else:
                             <strong><br></strong>
                             </div>
                             """, unsafe_allow_html=True)
-                    # Create the DataFrame
-                    df_scores_T = pd.DataFrame(list(scores.items())).T
-                    df_scores_T.columns = df_scores_T.iloc[0]
-                    df_scores_T = df_scores_T[1:]
-                    st.write(df_scores_T)
-                    # Convert DataFrame to HTML table with styling
-                    table_html = df_scores_T.to_html(index=False, border=0, classes="dataframe", justify="center", header=True)
-                    st.markdown(table_html)
-                    # Additional CSS for styling the HTML table
-                    table_html_styled = """
-                    <style>
-                        .dataframe {
-                            width: 100%;
-                            border-collapse: collapse;
-                            font-size: 16px;
-                            margin-top: 20px;
-                        }
-                        .dataframe th {
-                            background-color: #f0f0f0;
-                            padding: 10px;
-                            text-align: center;
-                            border: 1px solid #ccc;
-                        }
-                        .dataframe td {
-                            padding: 10px;
-                            text-align: center;
-                            border: 1px solid #ccc;
-                        }
-                    </style>
-                    
-                    """
-                    
-                    # Display the HTML table in Streamlit
-                    st.markdown(table_html_styled + table_html, unsafe_allow_html=True)
                     
 
     else:
