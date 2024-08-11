@@ -118,7 +118,9 @@ if st.session_state.generate_pf_fs == False:
     with column12:
         st.markdown("")
         st.markdown("")
-        reference_number = st.text_input("Enter your Reference Number:")
+        with st.container():
+            reference_number = st.chat_input("Enter your Reference Number:")
+            
         if st.button("My Pathfinder Assessment Exam Report", use_container_width = True, type = "primary"):
             if st.session_state.reference_number in [pf_rn_y]:
                 st.session_state.generate_pf_fs = True
