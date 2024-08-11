@@ -121,7 +121,7 @@ if selected_sprints:
                     st.write(f"  Subtopic: {subtopic}")
                     st.write(f"    Content:\n{content}\n")
 
-st.write(st.session_state.'outline_Sprint 3')
+st.write(st.session_state.outline_Sprint 3)
 
 # # Dynamic checkbox generation with session state
 # selected_sprints = {}
