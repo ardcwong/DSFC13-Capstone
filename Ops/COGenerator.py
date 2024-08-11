@@ -93,8 +93,8 @@ if 'enhanced_course_outline' not in st.session_state:
     st.session_state.enhanced_course_outline = []
 # Load and generate the course outline from the CSV file
 course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
-enhanced_course_outline = enhance_course_outline(course_outline, None)
-st.session_state.enhanced_course_outline = enhanced_course_outline
+st.session_state.enhanced_course_outline = enhance_course_outline(course_outline, None)
+
 # Streamlit UI
 st.title("Sprint Navigator")
 
@@ -105,7 +105,7 @@ guide for fellows, helping them steer through their learning journey with confid
 """)
 
 # Generating the st.markdown for each sprint with the new styling
-for sprint, topics in enhanced_course_outline.items():
+for sprint, topics in st.session_state.enhanced_course_outline.items():
     for main_topic, subtopics in topics.items():
         for subtopic, description in subtopics.items():
             st.markdown(f"""
