@@ -275,7 +275,7 @@ with COL1:
                     st.error("Failed to save HTML content or update PARGeneratedTag.")
             pdf = convert_html_to_pdf(st.session_state.html_content)
             if pdf:
-                st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
+                st.download_button(label=f"Download {st.session_state.reference_number_ops} PAR PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
             else:
                 st.error("Failed to convert HTML to PDF.")
 
