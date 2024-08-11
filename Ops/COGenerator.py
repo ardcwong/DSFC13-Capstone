@@ -106,7 +106,21 @@ guide for fellows, helping them steer through their learning journey with confid
 st.write(type(enhanced_course_outline))
 st.write(enhanced_course_outline)
 # selected_sprints = {} 
+for sprint, topics in enhanced_course_outline.items():
+    for main_topic, subtopics in topics.items():
+        st.markdown(f"""
+        <div style="background-color:#F0F4FA; padding: 10px; border-radius: 5px;">
+            <h3 style="color: #1F4E79;">{main_topic}</h3>
+        </div>
+        """, unsafe_allow_html=True)
 
+        for subtopic, description in subtopics.items():
+            st.markdown(f"""
+            <div style="background-color:#FFFFFF; padding: 10px; margin-top: 10px; border: 1px solid #D9E1F2; border-radius: 5px;">
+                <h4 style="color: #1F4E79;">{subtopic}</h4>
+                <p>{description}</p>
+            </div>
+            """, unsafe_allow_html=True)
 # for sprint in course_outline.keys():
 #     if f"outline_{sprint}" not in st.session_state:
 #         # Enhance only if it hasn't been done before
