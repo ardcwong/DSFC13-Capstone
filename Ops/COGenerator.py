@@ -16,6 +16,41 @@ credentials = st.secrets["gcp_service_account"]
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
 client = gspread.authorize(creds)
+# Function to collect all markdowns into a single HTML content block
+def collect_all_markdowns(markdowns):
+    html_content = ""
+    for sprint, sprint_markdown in markdowns.items():
+        html_content += sprint_markdown
+    return html_content
+    
+# Function to convert HTML content to PDF
+def convert_html_to_pdf(html_content):
+    # Embed CSS for margins
+    # Embed CSS for scaling and margins
+    html_with_styles = f"""
+    <html>
+    <head>
+        <style>
+            @page {{
+                margin: 0.3in; /* Set margins */
+            }}
+            body {{
+                transform: scale(0.5); /* Scale content */
+                transform-origin: top left; /* Scale from top-left corner */
+            }}
+        </style>
+    </head>
+    <body>
+        {html_content}
+    </body>
+    </html>
+    """
+    result = BytesIO()
+    pisa_status = pisa.CreatePDF(BytesIO(html_with_styles.encode("utf-8")), dest=result)
+    if pisa_status.err:
+        return None
+    return result.getvalue()
+
 # Google Sheets connection function
 def google_connection_gsheet_courseoutline_ops(client):
     # Open the Google Sheet
@@ -127,6 +162,9 @@ guide for fellows, helping them steer through their learning journey with confid
 # Initialize session state if it doesn't exist
 if 'markdowns' not in st.session_state:
     st.session_state['markdowns'] = {}
+
+# if 'html_content_co' not in st.session_state:
+#     st.session_state.html_content_co = ""
     
 # Generate markdown for each sprint and save it in st.session_state
 for sprint, topics in st.session_state.enhanced_course_outline.items():
@@ -159,3 +197,15 @@ if st.button("Save", use_container_width = True):
         st.rerun()
     else:
         st.error("Failed to save HTML content.")
+
+# Collect all markdowns into a single HTML content block
+st.session_state.html_content_co = collect_all_markdowns(st.session_state['markdowns'])
+
+# Optional: You can display the collected HTML content in your Streamlit app
+st.markdown(st.session_state.html_content_co, unsafe_allow_html=True)
+
+pdf = convert_html_to_pdf(st.session_state.html_content)
+if pdf:
+    st.download_button(label=f"Download PDF (**{st.session_state.reference_number_ops}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
+else:
+    st.error("Failed to convert HTML to PDF.")
