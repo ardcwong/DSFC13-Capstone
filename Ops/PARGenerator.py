@@ -248,7 +248,7 @@ if "feedback_section" not in st.session_state:
 if st.session_state.html_content is not "":
     st.markdown(st.session_state.report_intro, unsafe_allow_html=True)
     st.markdown(st.session_state.styled_table_html, unsafe_allow_html=True)
-    for feedback_section in st.session_state.feedback_sections:
+    for feedback_section in st.session_state.feedback_section:
         st.markdown(feedback_section, unsafe_allow_html=True)
     
     pdf = convert_html_to_pdf(st.session_state.html_content)
