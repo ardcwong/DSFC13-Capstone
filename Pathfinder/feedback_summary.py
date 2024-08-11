@@ -171,7 +171,7 @@ if st.session_state.generate_pf_fs == False:
 
 
 else:
-    column11, column22, column33 = st.columns([])
+    column11, column22, column33 = st.columns([1,3,1])
     with column11:
         if st.button("Go Back", type = "primary", use_container_width = True):
             st.session_state.generate_pf_fs = False
