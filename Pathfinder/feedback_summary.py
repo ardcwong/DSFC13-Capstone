@@ -226,7 +226,7 @@ else:
                     </div>
                     
                     <div style="font-size:16px;">
-                        <br>We hope you find this information helpful, and we look forward to considering your application.
+                        <br>We hope you find this information helpful.
                     </div>
                     <hr style="border:2px solid #ccc;" />
                     """, unsafe_allow_html=True)
