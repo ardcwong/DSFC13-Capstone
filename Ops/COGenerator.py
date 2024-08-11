@@ -144,10 +144,12 @@ def save_markdowns_to_gsheet(spreadsheet, sprint_markdowns):
 
 
 
-# Load and generate the course outline from the CSV file
-course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
+
 if 'enhanced_course_outline' not in st.session_state:
-    st.session_state.enhanced_course_outline = enhance_course_outline(course_outline, None)
+    st.session_state.enhanced_course_outline = []
+
+
+t1, t2 = st.tabs(["Generate","View"])
 
 # Streamlit UI
 st.title("Sprint Navigator")
@@ -158,54 +160,71 @@ topics and sub-topics, divided into four distinct Sprints. This Navigator acts a
 guide for fellows, helping them steer through their learning journey with confidence.
 """)
 
-
-# Initialize session state if it doesn't exist
-if 'markdowns' not in st.session_state:
-    st.session_state['markdowns'] = {}
-
-# if 'html_content_co' not in st.session_state:
-#     st.session_state.html_content_co = ""
+with t1:
     
-# Generate markdown for each sprint and save it in st.session_state
-for sprint, topics in st.session_state.enhanced_course_outline.items():
-    sprint_markdown = ""
-    for main_topic, subtopics in topics.items():
-        for subtopic, description in subtopics.items():
-            sprint_markdown += f"""
-            <div style="border: 1px solid #1E73BE; border-radius: 5px; overflow: hidden; margin-bottom: 20px;">
-                <div style="background-color: #1E73BE; padding: 10px;">
-                    <h4 style="color: white; margin: 0;">{sprint}: {main_topic}</h4>
-                </div>
-                <div style="background-color: #F8F9FA; padding: 15px;">
-                    <p style="color: #333333;">{description}</p>
-                </div>
-            </div>
-            """
-
-    # Save the generated markdown in st.session_state
-    st.session_state['markdowns'][sprint] = sprint_markdown
-
-# Example: Display the markdown for a specific sprint (Sprint 1)
-st.markdown(st.session_state['markdowns'].get('Sprint 1', ''), unsafe_allow_html=True)
-st.write(st.session_state['markdowns'].get('Sprint 1', ''))
-
-# Save markdowns to Google Sheet
-if st.button("Save", use_container_width = True):
-    saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'])
-    if saved_:
-        st.success("HTML content saved successfully.")
-        st.rerun()
+    # Initialize session state if it doesn't exist
+    if 'markdowns' not in st.session_state:
+        st.session_state['markdowns'] = {}
+    
+    # if 'html_content_co' not in st.session_state:
+    #     st.session_state.html_content_co = ""
+    if st.button("Generate New Course Outline"):
+        # Load and generate the course outline from the CSV file
+        course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
+        st.session_state.enhanced_course_outline = enhance_course_outline(course_outline, None)
+    # Generate markdown for each sprint and save it in st.session_state
+        for sprint, topics in st.session_state.enhanced_course_outline.items():
+            sprint_markdown = ""
+            for main_topic, subtopics in topics.items():
+                for subtopic, description in subtopics.items():
+                    sprint_markdown += f"""
+                    <div style="border: 1px solid #1E73BE; border-radius: 5px; overflow: hidden; margin-bottom: 20px;">
+                        <div style="background-color: #1E73BE; padding: 10px;">
+                            <h4 style="color: white; margin: 0;">{sprint}: {main_topic}</h4>
+                        </div>
+                        <div style="background-color: #F8F9FA; padding: 15px;">
+                            <p style="color: #333333;">{description}</p>
+                        </div>
+                    </div>
+                    """
+        
+            # Save the generated markdown in st.session_state
+            st.session_state['markdowns'][sprint] = sprint_markdown
+    
+    # # Example: Display the markdown for a specific sprint (Sprint 1)
+    # st.markdown(st.session_state['markdowns'].get('Sprint 1', ''), unsafe_allow_html=True)
+    # st.write(st.session_state['markdowns'].get('Sprint 1', ''))
+    
+    # Save markdowns to Google Sheet
+    if st.button("Save", use_container_width = True):
+        saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'])
+        if saved_:
+            st.success("HTML content saved successfully.")
+            st.rerun()
+        else:
+            st.error("Failed to save HTML content.")
+    
+    # Collect all markdowns into a single HTML content block
+    st.session_state.html_content_co = collect_all_markdowns(st.session_state['markdowns'])
+    
+    # Optional: You can display the collected HTML content in your Streamlit app
+    st.markdown(st.session_state.html_content_co, unsafe_allow_html=True)
+    
+    pdf = convert_html_to_pdf(st.session_state.html_content_co)
+    if pdf:
+        st.download_button(label=f"Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
     else:
-        st.error("Failed to save HTML content.")
+        st.error("Failed to convert HTML to PDF.")
 
-# Collect all markdowns into a single HTML content block
-st.session_state.html_content_co = collect_all_markdowns(st.session_state['markdowns'])
+with t2:
+    def load_course_outline_dataset(spreadsheet):
+        worksheet = spreadsheet.worksheet("Data Science Fellowship Cohort")
+        data_score = worksheet.get_all_values()
+        df_co = pd.DataFrame(data_score[1:], columns=data_score[0])
+        return df_co
 
-# Optional: You can display the collected HTML content in your Streamlit app
-st.markdown(st.session_state.html_content_co, unsafe_allow_html=True)
 
-pdf = convert_html_to_pdf(st.session_state.html_content_co)
-if pdf:
-    st.download_button(label=f"Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
-else:
-    st.error("Failed to convert HTML to PDF.")
+    df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_ops)
+    st.title("Course Outline")
+    for i in range(4):
+        st.markdown(df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0], unsafe_allow_html=True)
