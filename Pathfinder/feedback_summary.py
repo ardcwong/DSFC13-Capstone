@@ -192,22 +192,22 @@ else:
             with column2:
                 # st.write(pd.DataFrame(list(scores.items()), columns=["Category", "Score Category"]))  
                 with st.container():
-                    st.markdown(f"""<h2 style='text-align: center;font-size: 40px; font-weight: bold;'><strong><b>YOUR PATHFINDER ASSESSMENT EXAM REPORT</b></strong></h2>
+                    st.markdown(f"""<h2 style='text-align: center;font-size: 40px; font-weight: bold;'><strong><b>Your Pathfinder Assessment Exam Report</b></strong></h2>
                     <hr style="border:2px solid #ccc;" />
                     """, unsafe_allow_html=True)
                     st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Introduction</b></strong></h5>""", unsafe_allow_html=True)
                     # st.markdown(f"""<h5 style='text-align: left;font-size: 20px;'><b><i>Introduction</b></i><i></h5>""", unsafe_allow_html=True)
                     st.markdown("""
                     <div style="font-size:18px;">
-                        <strong>Thank you for completing the Pathfinder Assessment Exam.</strong>
+                        <strong>Thank you for completing the Pathfinder Assessment Exam.<br></strong>
                     </div>
                     
                     <div style="font-size:16px;">
-                        The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.
+                        The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.<br>
                     </div>
                     
                     <div style="font-size:18px;">
-                        <strong>We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.</strong>
+                        <strong>We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.<br></strong>
                     </div>
                     
                     <div style="font-size:16px;">
