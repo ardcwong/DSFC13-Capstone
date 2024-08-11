@@ -1,4 +1,4 @@
-import streamlit as st
+eimport streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
@@ -276,10 +276,10 @@ else:
                     #     with st.container(border = True):
                     #         st.markdown(f"""<h5 style='text-align: center;color: #e76f51;font-size: 35px;'><b><i>{main_category}</b></i><i></h5>""", unsafe_allow_html=True)
                     #         st.write(feedback)
-                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Performance</b></strong></h5>""", unsafe_allow_html=True)
-                    score_table_show()
-                    
                     st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
+                    with st.container(border=False):
+                        score_table_show()
+                    
                     for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
                         with st.container(border=False):
                             # Header section for the category name
