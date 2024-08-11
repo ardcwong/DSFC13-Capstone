@@ -253,7 +253,7 @@ if "feedback_section" not in st.session_state:
 # st.write(st.session_state.feedback_section)
 
 
-
+tab1, tab2 = st.tabs(["Generate","View"])
 
 COL1, COL2 = st.columns([3,7])
 with COL2:
