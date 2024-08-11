@@ -111,18 +111,45 @@ for sprint in course_outline.keys():
         st.session_state[f"outline_{sprint}"] = enhance_course_outline({sprint: course_outline[sprint]}, None)
     selected_sprints[sprint] = st.session_state[f"outline_{sprint}"]
 
-# Display the enhanced course outline with detailed content
+# # Display the enhanced course outline with detailed content
+# if selected_sprints:
+#     for sprint, topics in selected_sprints.items():
+#         with st.expander(f"{sprint}", expanded=True):
+#             for main_topic, subtopics in topics[sprint].items():
+#                 st.write(f"Main Topic: {main_topic}")
+#                 for subtopic, content in subtopics.items():
+#                     st.write(f"  Subtopic: {subtopic}")
+#                     st.write(f"    Content:\n{content}\n")
+
+# st.write(st.session_state["outline_Sprint 3"])
 if selected_sprints:
     for sprint, topics in selected_sprints.items():
-        with st.expander(f"{sprint}", expanded=True):
-            for main_topic, subtopics in topics[sprint].items():
-                st.write(f"Main Topic: {main_topic}")
+        with st.container():
+            sprint_section = f"""
+            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #1f77b4; color: white; padding: 10px; font-size: 18px;">
+                <strong>{sprint}</strong>
+            </div>
+            """
+
+            for main_topic, subtopics in topics.items():
+                sprint_section += f"""
+                <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #f0f0f0; padding: 15px; font-size: 14px; color: black;">
+                    <strong>Main Topic: {main_topic}</strong><br>
+                """
+
                 for subtopic, content in subtopics.items():
-                    st.write(f"  Subtopic: {subtopic}")
-                    st.write(f"    Content:\n{content}\n")
+                    sprint_section += f"""
+                    <p><strong>Subtopic: {subtopic}</strong></p>
+                    <div style="margin-left: 15px;">
+                        <p>{content}</p>
+                    </div>
+                    """
 
-st.write(st.session_state["outline_Sprint 3"])
+                sprint_section += "</div>"
 
+            # Append sprint_section to session state or display it
+            st.session_state.html_content += sprint_section
+            st.markdown(sprint_section, unsafe_allow_html=True)
 # # Dynamic checkbox generation with session state
 # selected_sprints = {}
 
