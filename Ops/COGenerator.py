@@ -121,7 +121,7 @@ guide for fellows, helping them steer through their learning journey with confid
 
 
 # Generate markdown for each sprint and save it in st.session_state
-for sprint, topics in enhanced_course_outline.items():
+for sprint, topics in st.session_state.enhanced_course_outline.items():
     sprint_markdown = ""
     for main_topic, subtopics in topics.items():
         for subtopic, description in subtopics.items():
