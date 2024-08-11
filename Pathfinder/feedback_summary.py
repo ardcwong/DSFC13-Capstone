@@ -6,7 +6,7 @@ import openai
 import json
 # from weasyprint import HTML
 import pdfkit
-
+import os
 ########################################################
 # API KEYS and CREDENTIALS
 ########################################################
