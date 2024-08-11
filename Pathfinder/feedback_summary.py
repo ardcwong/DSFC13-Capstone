@@ -233,12 +233,26 @@ else:
                     st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
                     
                     
+                    # for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
+                    #     with st.container(border = True):
+                    #         st.markdown(f"""<h5 style='text-align: center;color: #e76f51;font-size: 35px;'><b><i>{main_category}</b></i><i></h5>""", unsafe_allow_html=True)
+                    #         st.write(feedback)
+
                     for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
-                        with st.container(border = True):
-                            st.markdown(f"""<h5 style='text-align: center;color: #e76f51;font-size: 35px;'><b><i>{main_category}</b></i><i></h5>""", unsafe_allow_html=True)
-                            # st.divider()
-                            # st.write(f"**{main_category.upper()}**")
-                            st.write(feedback)
+                        with st.container(border=True):
+                            # Header section for the category name
+                            st.markdown(f"""
+                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #1f77b4; color: white; padding: 10px; font-size: 20px;">
+                                <strong>{main_category}</strong>
+                            </div>
+                            """, unsafe_allow_html=True)
+                            
+                            # Feedback content section
+                            st.markdown(f"""
+                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #f0f0f0; padding: 15px; font-size: 16px; color: black;">
+                                <p>{feedback}</p>
+                            </div>
+                            """, unsafe_allow_html=True)
     else:
         st.error("Reference Number not found.")
         st.session_state.generate_pf_fs = False
