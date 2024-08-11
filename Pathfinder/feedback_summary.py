@@ -274,10 +274,10 @@ else:
                     styled_table_html = f"""
                     <style>
                     .styled-table th, .styled-table td {{
-                        border: 2px solid #28a745;  /* Dark green border */
+                        border: 2px solid #20AA40;  /* Dark green border */
                     }}
                     .styled-table th {{
-                        background-color: #13782A;  /* Dark green header */
+                        background-color: #20AA40;  /* Dark green header */
                         color: white;  /* White text in header */
                     }}
                     .styled-table tr:nth-child(even) {{
