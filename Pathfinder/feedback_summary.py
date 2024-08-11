@@ -277,14 +277,14 @@ else:
                         border: 2px solid #28a745;  /* Dark green border */
                     }}
                     .styled-table th {{
-                        background-color: #28a745;  /* Dark green header */
+                        background-color: #13782A;  /* Dark green header */
                         color: white;  /* White text in header */
                     }}
                     .styled-table tr:nth-child(even) {{
                         background-color: #e9f7ef;  /* Light green for even rows */
                     }}
                     .styled-table tr:nth-child(odd) {{
-                        background-color: #13782A;  /* Slightly lighter green for odd rows */
+                        background-color: #f7fcf9;  /* Slightly lighter green for odd rows */
                     }}
                     </style>
                     {table_html}
