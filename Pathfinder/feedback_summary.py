@@ -20,12 +20,17 @@ client = gspread.authorize(creds)
 
 def convert_html_to_pdf(html_content):
     # Embed CSS for margins
-    html_with_margins = f"""
+    # Embed CSS for scaling and margins
+    html_with_styles = f"""
     <html>
     <head>
         <style>
             @page {{
-                margin: 1in; /* Set all margins to 1 inch */
+                margin: 1in; /* Set margins */
+            }}
+            body {{
+                transform: scale(0.9); /* Scale content */
+                transform-origin: top left; /* Scale from top-left corner */
             }}
         </style>
     </head>
