@@ -92,7 +92,7 @@ def enhance_course_outline(course_outline, collection):
 
 # Load and generate the course outline from the CSV file
 course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
-
+enhanced_course_outline = enhance_course_outline(course_outline, None)
 
 # Streamlit UI
 st.title("Sprint Navigator")
@@ -103,13 +103,13 @@ topics and sub-topics, divided into four distinct Sprints. This Navigator acts a
 guide for fellows, helping them steer through their learning journey with confidence.
 """)
 
-selected_sprints = {}
+# selected_sprints = {}
 
-for sprint in course_outline.keys():
-    if f"outline_{sprint}" not in st.session_state:
-        # Enhance only if it hasn't been done before
-        st.session_state[f"outline_{sprint}"] = enhance_course_outline({sprint: course_outline[sprint]}, None)
-    selected_sprints[sprint] = st.session_state[f"outline_{sprint}"]
+# for sprint in course_outline.keys():
+#     if f"outline_{sprint}" not in st.session_state:
+#         # Enhance only if it hasn't been done before
+#         st.session_state[f"outline_{sprint}"] = enhance_course_outline({sprint: course_outline[sprint]}, None)
+#     selected_sprints[sprint] = st.session_state[f"outline_{sprint}"]
 
 # # Display the enhanced course outline with detailed content
 # if selected_sprints:
@@ -122,16 +122,16 @@ for sprint in course_outline.keys():
 #                     st.write(f"    Content:\n{content}\n")
 
 # Assuming you have four sprints
-for sprint in sorted(selected_sprints.keys()):
-    st.header(f"Sprint {sprint}")
+# for sprint in sorted(selected_sprints.keys()):
+#     st.header(f"Sprint {sprint}")
     
-    for main_topic, subtopics in selected_sprints[sprint].items():
-        st.subheader(f"Main Topic: {main_topic}")
+#     for main_topic, subtopics in selected_sprints[sprint].items():
+#         st.subheader(f"Main Topic: {main_topic}")
         
-        for subtopic, content in subtopics.items():
-            st.markdown(f"**Sub-Topic: {subtopic}**")
-            st.markdown(content, unsafe_allow_html = True)
-            st.markdown("---")  # Adds a horizontal line for separation between subtopics
+#         for subtopic, content in subtopics.items():
+#             st.markdown(f"**Sub-Topic: {subtopic}**")
+#             st.markdown(content, unsafe_allow_html = True)
+#             st.markdown("---")  # Adds a horizontal line for separation between subtopics
 # # Dynamic checkbox generation with session state
 # selected_sprints = {}
 
