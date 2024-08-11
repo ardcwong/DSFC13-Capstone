@@ -190,8 +190,9 @@ def score_table_show():
 
 
 
-st.write(scores_dataset)
-
+st.dataframe(scores_dataset)
+pf_rn = scores_dataset["Reference Number"].tolist()
+st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn)
 
 
 
