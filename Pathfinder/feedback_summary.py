@@ -4,7 +4,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import openai
 import json
-from weasyprint import HTML
+# from weasyprint import HTML
 import pdfkit
 
 ########################################################
