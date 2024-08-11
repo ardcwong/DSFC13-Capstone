@@ -137,8 +137,8 @@ def ask_openai(prompt):
 
 if "generate_pf_fs" not in st.session_state:
     st.session_state.generate_pf_fs = False
-if "reference_number" not in st.session_state:
-    st.session_state.reference_number = []
+if "reference_number_ops" not in st.session_state:
+    st.session_state.reference_number_ops = []
 if "feedback_generated" not in st.session_state:
     st.session_state.feedback_generated = []
 
@@ -193,9 +193,7 @@ def score_table_show():
 st.dataframe(scores_dataset)
 is_blank = scores_dataset["PARGenTag"] == "N"
 pf_rn = scores_dataset["Reference Number"][is_blank].tolist()
-st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn)
-
-
+reference_number_ops = st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn)
 
 if st.session_state.generate_pf_fs == False:
     # Input for reference number
@@ -204,10 +202,9 @@ if st.session_state.generate_pf_fs == False:
     with column12:
         st.markdown("")
         st.markdown("")
-        reference_number = st.text_input("Enter your Reference Number:")
-        if st.button("My Pathfinder Assessment Exam Report", use_container_width = True, type = "primary"):
+        if st.button("Generate", use_container_width = True, type = "primary"):
             st.session_state.generate_pf_fs = True
-            st.session_state.reference_number = reference_number
+            st.session_state.reference_number_ops = reference_number_ops
             st.rerun()
         
 # Streamlit App Title
@@ -219,7 +216,7 @@ else:
 #     if reference_number:
     if st.button("Go Back", type = "primary"):
         st.session_state.generate_pf_fs = False
-        st.session_state.reference_number = []
+        st.session_state.reference_number_ops = []
         st.session_state.feedback_generated = []
         st.rerun()
         
