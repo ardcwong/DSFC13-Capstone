@@ -173,7 +173,7 @@ if st.session_state.generate_pf_fs == False:
 else:
     column11, column22, column33 = st.columns([1,2,1])
     with column11:
-        if st.button("Go Back", type = "primary", use_container_width = True):
+        if st.button("Go Back", type = "primary", use_container_width = True, help = "Go Back to PAR main menu."):
             st.session_state.generate_pf_fs = False
             st.session_state.reference_number = []
             st.session_state.feedback_generated = []
@@ -191,7 +191,7 @@ else:
             
         pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['HTML_CONTENT'].values[0])
         if pdf:
-            st.download_button(label=f"Download PDF (**{st.session_state.reference_number}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR", type = "primary")
+            st.download_button(label=f"Download PDF (**{st.session_state.reference_number}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "If unclickable: Not Yet Available for Download.", type = "primary")
         else:
             st.error("Failed to convert HTML to PDF.")
     
