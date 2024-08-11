@@ -70,5 +70,6 @@ if "spreadsheet_courseoutline_ops" not in st.session_state:
     st.session_state.spreadsheet_courseoutline_ops = google_connection_gsheet_courseoutline_ops(client)
 
 df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_ops)
+st.title("Course Outline")
 for i in range(4):
     st.markdown(df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0], unsafe_allow_html=True)
