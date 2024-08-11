@@ -243,7 +243,8 @@ with tab2:
         pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
 
     with column__1:
-        reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number to View",pf_rn_y)
+        st.subheader("Choose a Pathfinder Result Reference Number to View")
+        reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number to View",pf_rn_y, label_visibility = "collapsed")
         if scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0] is not "":
             download_disabled = False
         else:
