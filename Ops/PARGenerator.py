@@ -240,13 +240,14 @@ with tab2:
     column__1, column__2 = st.columns([1,1])
     pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
     
-    if scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0] is not "":
-        download_disabled = False
-    else:
-        download_disabled = True
+
         
     with column__1:
         reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn_y)
+        if scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0] is not "":
+            download_disabled = False
+        else:
+            download_disabled = True
         
     with column__2:  
         pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0])
