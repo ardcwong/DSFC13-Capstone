@@ -4,9 +4,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import openai
 import json
-# from weasyprint import HTML
-import pdfkit
-import os
+from xhtml2pdf import pisa
+from io import BytesIO
 ########################################################
 # API KEYS and CREDENTIALS
 ########################################################
@@ -16,6 +15,14 @@ credentials = st.secrets["gcp_service_account"]
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
 client = gspread.authorize(creds)
+
+# Function to convert HTML content to PDF
+def convert_html_to_pdf(html_content):
+    result = BytesIO()
+    pisa_status = pisa.CreatePDF(BytesIO(html_content.encode("utf-8")), dest=result)
+    if pisa_status.err:
+        return None
+    return result.getvalue()
 
 
 # Google Sheets connection function
@@ -312,17 +319,25 @@ else:
                             st.markdown(feedback_section, unsafe_allow_html=True)
                             html_content += feedback_section
                     
-                    # Button to download the report as a PDF
-                    if st.button("Download Report as PDF"):
-                        pdfkit.from_string(html_content, 'pathfinder_assessment_report.pdf')
-                        with open('pathfinder_assessment_report.pdf', 'rb') as pdf_file:
-                            st.download_button(
-                                label="Download PDF",
-                                data=pdf_file,
-                                file_name="pathfinder_assessment_report.pdf",
-                                mime="application/pdf",
-                            )
-
+                    # # Button to download the report as a PDF
+                    # if st.button("Download Report as PDF"):
+                    #     pdfkit.from_string(html_content, 'pathfinder_assessment_report.pdf')
+                    #     with open('pathfinder_assessment_report.pdf', 'rb') as pdf_file:
+                    #         st.download_button(
+                    #             label="Download PDF",
+                    #             data=pdf_file,
+                    #             file_name="pathfinder_assessment_report.pdf",
+                    #             mime="application/pdf",
+                    #         )
+                    # Convert the HTML content to PDF
+                    pdf = convert_html_to_pdf(html_content)
+                    
+                    if pdf:
+                        # Provide download link for the PDF
+                        st.download_button(label="Download PDF", data=pdf, file_name="output.pdf", mime="application/pdf")
+                    else:
+                        st.error("Failed to convert HTML to PDF.")
+        
 
     else:
         st.error("Reference Number not found.")
