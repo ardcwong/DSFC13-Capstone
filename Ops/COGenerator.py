@@ -144,6 +144,7 @@ for sprint, topics in st.session_state.enhanced_course_outline.items():
 
 # Example: Display the markdown for a specific sprint (Sprint 1)
 st.markdown(st.session_state['markdowns'].get('Sprint 1', ''), unsafe_allow_html=True)
+st.write(st.session_state['markdowns'].get('Sprint 1', ''))
 # for sprint in course_outline.keys():
 #     if f"outline_{sprint}" not in st.session_state:
 #         # Enhance only if it hasn't been done before
