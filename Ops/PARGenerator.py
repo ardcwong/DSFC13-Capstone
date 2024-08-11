@@ -353,7 +353,8 @@ with COL1:
         
                             st.session_state.generate_pf_fs = False
                             st.rerun()
-        else:
+                            
+        elif st.session_state.generate_pf_fs = False:
             if st.button("Generate", use_container_width = True, type = "primary"):
                 st.session_state.generate_pf_fs = True
                 st.session_state.reference_number_ops = reference_number_ops
