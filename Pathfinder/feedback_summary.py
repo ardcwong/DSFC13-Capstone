@@ -26,10 +26,10 @@ def convert_html_to_pdf(html_content):
     <head>
         <style>
             @page {{
-                margin: 1in; /* Set margins */
+                margin: 0.5in; /* Set margins */
             }}
             body {{
-                transform: scale(0.6); /* Scale content */
+                transform: scale(0.5); /* Scale content */
                 transform-origin: top left; /* Scale from top-left corner */
             }}
         </style>
