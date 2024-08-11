@@ -179,9 +179,11 @@ def ask_openai(prompt):
 if "generate_pf_fs" not in st.session_state:
     st.session_state.generate_pf_fs = False
 if "reference_number" not in st.session_state:
-    st.session_state.reference_number = []
+    st.session_state.reference_number_ops = []
 if "feedback_generated" not in st.session_state:
     st.session_state.feedback_generated = []
+if "html_content" not in st.session_state:
+    st.session_state.html_content = ""
 
 def score_table_show(scores):
     # Convert the scores dictionary to an HTML table directly
@@ -259,13 +261,7 @@ else:
         st.session_state.feedback_generated = []
         st.rerun()
 
-    # Add the "Save" button
-    if st.button("Save"):
-        saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, html_content)
-        if saved:
-            st.success("HTML content saved successfully and PARGeneratedTag updated.")
-        else:
-            st.error("Failed to save HTML content or update PARGeneratedTag.")
+
 
         
     user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number_ops]
@@ -288,7 +284,17 @@ else:
         with st.spinner("Generating feedback..."):
             if st.session_state.feedback_generated == []:
                 st.session_state.feedback_generated = generate_summarized_feedback(scores)
-            html_content = ""
+
+            # Add the "Save" button
+            if st.button("Save"):
+                saved = save_html_content_and_update_tag(st.session_state.spreadsheet_PathfinderExamResults, st.session_state.reference_number_ops, st.session_state.html_content)
+                if saved:
+                    st.success("HTML content saved successfully and PARGeneratedTag updated.")
+                else:
+                    st.error("Failed to save HTML content or update PARGeneratedTag.")
+            
+            # html_content = ""
+            
             with st.container(border=True):
                 column1, column2, column3 = st.columns([1,8,1])        
                 with column2:
@@ -323,16 +329,16 @@ else:
                     <hr style="border:2px solid #ccc;" />
                     """
                     st.markdown(report_intro, unsafe_allow_html=True)
-                    html_content += report_intro
+                    st.session_state.html_content += report_intro
                     
                     st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
-                    html_content += """<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>"""
+                    st.session_state.html_content += """<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>"""
                     
                     with st.container(border=False):
                         styled_table_html = score_table_show(scores)
                         # Display the HTML table in Streamlit
                         st.markdown(styled_table_html, unsafe_allow_html=True)
-                        html_content += styled_table_html
+                        st.session_state.html_content += styled_table_html
 
 
                     for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
@@ -351,16 +357,16 @@ else:
                             </div>
                             """
                             st.markdown(feedback_section, unsafe_allow_html=True)
-                            html_content += feedback_section
+                            st.session_state.html_content += feedback_section
                     
-                    pdf = convert_html_to_pdf(html_content)
+                    pdf = convert_html_to_pdf(st.session_state.html_content)
                     
                     if pdf:
                         # Provide download link for the PDF
                         st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
                     else:
                         st.error("Failed to convert HTML to PDF.")
-        
+            
 
     else:
         st.error("Reference Number not found.")
