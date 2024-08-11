@@ -309,6 +309,17 @@ else:
                             """
                             st.markdown(feedback_section, unsafe_allow_html=True)
                             html_content += feedback_section
+                    
+                    # Button to download the report as a PDF
+                    if st.button("Download Report as PDF"):
+                        pdfkit.from_string(html_content, 'pathfinder_assessment_report.pdf')
+                        with open('pathfinder_assessment_report.pdf', 'rb') as pdf_file:
+                            st.download_button(
+                                label="Download PDF",
+                                data=pdf_file,
+                                file_name="pathfinder_assessment_report.pdf",
+                                mime="application/pdf",
+                            )
 
 
     else:
