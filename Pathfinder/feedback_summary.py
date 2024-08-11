@@ -144,7 +144,7 @@ if "feedback_generated" not in st.session_state:
 def score_table_show():
     # Convert the scores dictionary to an HTML table directly
     table_html = f"""
-    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 16px; margin-top: 10px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
+    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 16px; margin-top: 0px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
         <tr style="background-color: #28a745;">
             {"".join([f"<th style='padding: 8px; text-align: center; color: white;'>{category}</th>" for category in scores.keys()])}
         </tr>
