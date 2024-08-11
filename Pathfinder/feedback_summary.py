@@ -180,7 +180,8 @@ else:
             st.rerun()
 
     with column22:
-        st.markdown(f"""<h6 style='text-align: center; font-weight: bold;'><br>Viewing Reference Number {st.session_state.reference_number}</h6>""", unsafe_allow_html = True)
+        st.button(f"Viewing Reference Number {st.session_state.reference_number}", disabled = True, use_container_width = True)
+        # st.markdown(f"""<h6 style='text-align: center; font-weight: bold;'><br>Viewing Reference Number {st.session_state.reference_number}</h6>""", unsafe_allow_html = True)
     with column33:
         pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
         if scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['HTML_CONTENT'].values[0] is not "":
