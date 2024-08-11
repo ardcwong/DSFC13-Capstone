@@ -361,6 +361,7 @@ with COL1:
                 st.session_state.report_intro = ""
                 st.session_state.styled_table_html = ""
                 st.session_state.feedback_section = []
+                st.rerun()
                 
         if st.session_state.html_content is not "":
             # Add the "Save" button
