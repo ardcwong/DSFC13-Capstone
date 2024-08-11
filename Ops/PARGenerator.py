@@ -245,17 +245,20 @@ if "styled_table_html" not in st.session_state:
 if "feedback_section" not in st.session_state:
     st.session_state.feedback_section = []
 
-if st.session_state.html_content is not "":
-    st.markdown(st.session_state.report_intro, unsafe_allow_html=True)
-    st.markdown(st.session_state.styled_table_html, unsafe_allow_html=True)
-    for feedback_section in st.session_state.feedback_section:
-        st.markdown(feedback_section, unsafe_allow_html=True)
-    
-    pdf = convert_html_to_pdf(st.session_state.html_content)
-    if pdf:
-        st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
-    else:
-        st.error("Failed to convert HTML to PDF.")
+COL1, COL2 = st.columns([3,7])
+with COL2:
+    with st.expander(f"{st.session_state.reference_number_ops} PAR",expanded=True):
+        if st.session_state.html_content is not "":
+            st.markdown(st.session_state.report_intro, unsafe_allow_html=True)
+            st.markdown(st.session_state.styled_table_html, unsafe_allow_html=True)
+            for feedback_section in st.session_state.feedback_section:
+                st.markdown(feedback_section, unsafe_allow_html=True)
+            
+            pdf = convert_html_to_pdf(st.session_state.html_content)
+            if pdf:
+                st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
+            else:
+                st.error("Failed to convert HTML to PDF.")
 
 
 column11, column12, column13 = st.columns([2,6,2])  
