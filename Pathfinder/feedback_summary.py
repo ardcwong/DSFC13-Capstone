@@ -120,24 +120,26 @@ if st.session_state.generate_pf_fs == False:
         st.markdown("")
         with st.container():
             reference_number = st.chat_input("Enter your Reference Number:")
-            st.session_state.reference_number = reference_number
-            st.write(st.session_state.reference_number)
+            if reference_number:
+                st.session_state.reference_number = reference_number
+                st.write(st.session_state.reference_number)
             # st.write(pf_rn_y.tolist())
 
         # if st.button("My Pathfinder Assessment Exam Report", use_container_width = True, type = "primary"):
 
-            if st.session_state.reference_number in pf_rn_y:
-                st.session_state.generate_pf_fs = True
-                st.rerun()
-            elif st.session_state.reference_number == []:
-                st.info("Input RN")
-                
-            else:
-                st.error("Reference Number not found.")
-                st.session_state.generate_pf_fs = False
-                st.session_state.reference_number = []
-                reference = []
-                st.rerun()
+                if st.session_state.reference_number in pf_rn_y:
+                    st.session_state.generate_pf_fs = True
+                    st.rerun()
+                elif st.session_state.reference_number == []:
+                    st.info("Input RN")
+                    
+                else:
+                    st.error("Reference Number not found.")
+                    st.session_state.generate_pf_fs = False
+                    st.session_state.reference_number = []
+                    reference = []
+                    st.rerun()
+            
 
 
 else:
