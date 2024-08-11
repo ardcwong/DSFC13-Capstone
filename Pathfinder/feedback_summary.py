@@ -193,7 +193,7 @@ if st.session_state.generate_pf_fs == False:
         st.markdown("")
         st.markdown("")
         reference_number = st.text_input("Enter your Reference Number:")
-        if st.button("My Pathfinder Exam Results Feedback Summary", use_container_width = True, type = "primary"):
+        if st.button("My Pathfinder Assessment Exam Report", use_container_width = True, type = "primary"):
             st.session_state.generate_pf_fs = True
             st.session_state.reference_number = reference_number
             st.rerun()
@@ -205,7 +205,7 @@ else:
     # # Button to look up scores
 # if st.button("Lookup Scores"):
 #     if reference_number:
-    if st.button("↩🔙 "):
+    if st.button("Go Back", type = "primary"):
         st.session_state.generate_pf_fs = False
         st.session_state.reference_number = []
         st.session_state.feedback_generated = []
