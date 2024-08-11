@@ -235,7 +235,8 @@ st.dataframe(scores_dataset)
 is_blank = scores_dataset["PARGenTag"] == "N"
 pf_rn = scores_dataset["Reference Number"][is_blank].tolist()
 reference_number_ops = st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn)
-
+if st.session_state.html_content is not "":
+    st.markdown(st.session_state.html_content, unsafe_allow_html=True)
 if st.session_state.generate_pf_fs == False:
     # Input for reference number
 
@@ -248,23 +249,14 @@ if st.session_state.generate_pf_fs == False:
             st.session_state.reference_number_ops = reference_number_ops
             st.session_state.html_content = ""
             st.rerun()
-        
-# Streamlit App Title
-# st.title("Data Science Preparedness Feedback Generator")
-
 else:
-    # # Button to look up scores
-# if st.button("Lookup Scores"):
-#     if reference_number:
-    if st.button("Go Back", type = "primary"):
-        st.session_state.generate_pf_fs = False
-        st.session_state.reference_number = []
-        st.session_state.feedback_generated = []
-        st.rerun()
 
-
-
-        
+    # if st.button("Go Back", type = "primary"):
+    #     st.session_state.generate_pf_fs = False
+    #     st.session_state.reference_number = []
+    #     st.session_state.feedback_generated = []
+    #     st.rerun()
+   
     user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number_ops]
     if not user_data.empty:
         scores = {}
