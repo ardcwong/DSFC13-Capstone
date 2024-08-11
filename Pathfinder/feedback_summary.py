@@ -209,6 +209,7 @@ else:
         st.session_state.generate_pf_fs = False
         st.session_state.reference_number = []
         st.session_state.feedback_generated = []
+        st.rerun()
         
     user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]
     if not user_data.empty:
