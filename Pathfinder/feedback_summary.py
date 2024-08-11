@@ -264,6 +264,32 @@ else:
                     # Convert DataFrame to HTML table with styling
                     table_html = df_scores_T.to_html(index=False, border=0, classes="dataframe", justify="center", header=True)
                     st.markdown(table_html)
+                    # Additional CSS for styling the HTML table
+                    table_html_styled = f"""
+                    <style>
+                        .dataframe {
+                            width: 100%;
+                            border-collapse: collapse;
+                            font-size: 16px;
+                            margin-top: 20px;
+                        }
+                        .dataframe th {
+                            background-color: #f0f0f0;
+                            padding: 10px;
+                            text-align: center;
+                            border: 1px solid #ccc;
+                        }
+                        .dataframe td {
+                            padding: 10px;
+                            text-align: center;
+                            border: 1px solid #ccc;
+                        }
+                    </style>
+                    {table_html}
+                    """
+                    
+                    # Display the HTML table in Streamlit
+                    st.markdown(table_html_styled, unsafe_allow_html=True)
 
     else:
         st.error("Reference Number not found.")
