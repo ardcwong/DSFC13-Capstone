@@ -238,11 +238,12 @@ tab1, tab2 = st.tabs(["Generate","View"])
 with tab2:
     column__1, column__2 = st.columns([2,8])
     with column__2:
+        st.subheader("What you can view")
         st.dataframe(scores_dataset[scores_dataset["PARGenTag"] == "Y"])
         pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
 
     with column__1:
-        reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn_y)
+        reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number to View",pf_rn_y)
         if scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0] is not "":
             download_disabled = False
         else:
@@ -250,7 +251,7 @@ with tab2:
 
         pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0])
         if pdf:
-            st.download_button(label=f"Download PDF (**{reference_number_ops_view}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled)
+            st.download_button(label=f"Download PDF (**{reference_number_ops_view}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR")
         else:
             st.error("Failed to convert HTML to PDF.")
     
