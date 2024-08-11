@@ -168,7 +168,7 @@ if "feedback_generated" not in st.session_state:
 def score_table_show(scores):
     # Convert the scores dictionary to an HTML table directly
     table_html = f"""
-    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 10px; margin-top: 0px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
+    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 16px; margin-top: 0px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
         <tr style="background-color: #28a745;">
             {"".join([f"<th style='padding: 8px; text-align: center; color: white;'>{category}</th>" for category in scores.keys()])}
         </tr>
@@ -258,9 +258,9 @@ else:
             with st.container(border=True):
                 column1, column2, column3 = st.columns([1,8,1])        
                 with column2:
-                    report_intro = f"""<h1 style='text-align: center;font-size: 30px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
+                    report_intro = f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
                     <hr style="border:2px solid #ccc;" />
-                    <h5 style='text-align: left;color: #e76f51;font-size: 24px;'><strong><b>Introduction</b></strong></h5>
+                    <h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Introduction</b></strong></h5>
                     <div style="font-size:16px;">
                         <strong>Thank you for completing the Pathfinder Assessment Exam.<br></strong>
                     </div>
@@ -291,8 +291,8 @@ else:
                     st.markdown(report_intro, unsafe_allow_html=True)
                     html_content += report_intro
                     
-                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 24px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
-                    html_content += """<h5 style='text-align: left;color: #e76f51;font-size: 24px;'><strong><b>Feedback Summary</b></strong></h5>"""
+                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
+                    html_content += """<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>"""
                     
                     with st.container(border=False):
                         styled_table_html = score_table_show(scores)
