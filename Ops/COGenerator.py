@@ -204,8 +204,8 @@ st.session_state.html_content_co = collect_all_markdowns(st.session_state['markd
 # Optional: You can display the collected HTML content in your Streamlit app
 st.markdown(st.session_state.html_content_co, unsafe_allow_html=True)
 
-pdf = convert_html_to_pdf(st.session_state.html_content)
+pdf = convert_html_to_pdf(st.session_state.html_content_co)
 if pdf:
-    st.download_button(label=f"Download PDF (**{st.session_state.reference_number_ops}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
+    st.download_button(label=f"Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
 else:
     st.error("Failed to convert HTML to PDF.")
