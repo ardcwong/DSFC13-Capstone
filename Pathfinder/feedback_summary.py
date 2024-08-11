@@ -17,13 +17,28 @@ creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
 client = gspread.authorize(creds)
 
 # Function to convert HTML content to PDF
+
 def convert_html_to_pdf(html_content):
+    # Embed CSS for margins
+    html_with_margins = f"""
+    <html>
+    <head>
+        <style>
+            @page {{
+                margin: 1in; /* Set all margins to 1 inch */
+            }}
+        </style>
+    </head>
+    <body>
+        {html_content}
+    </body>
+    </html>
+    """
     result = BytesIO()
-    pisa_status = pisa.CreatePDF(BytesIO(html_content.encode("utf-8")), dest=result)
+    pisa_status = pisa.CreatePDF(BytesIO(html_with_margins.encode("utf-8")), dest=result)
     if pisa_status.err:
         return None
     return result.getvalue()
-
 
 # Google Sheets connection function
 def google_connection_gsheet_DerivedCompetencyFramework(client):
@@ -153,7 +168,7 @@ if "feedback_generated" not in st.session_state:
 def score_table_show(scores):
     # Convert the scores dictionary to an HTML table directly
     table_html = f"""
-    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 12px; margin-top: 0px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
+    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 10px; margin-top: 0px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
         <tr style="background-color: #28a745;">
             {"".join([f"<th style='padding: 8px; text-align: center; color: white;'>{category}</th>" for category in scores.keys()])}
         </tr>
@@ -243,19 +258,19 @@ else:
             with st.container(border=True):
                 column1, column2, column3 = st.columns([1,8,1])        
                 with column2:
-                    report_intro = f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
+                    report_intro = f"""<h1 style='text-align: center;font-size: 30px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
                     <hr style="border:2px solid #ccc;" />
-                    <h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Introduction</b></strong></h5>
-                    <div style="font-size:18px;">
+                    <h5 style='text-align: left;color: #e76f51;font-size: 24px;'><strong><b>Introduction</b></strong></h5>
+                    <div style="font-size:16px;">
                         <strong>Thank you for completing the Pathfinder Assessment Exam.<br></strong>
                     </div>
-                    <div style="font-size:16px;">
+                    <div style="font-size:14px;">
                         <br>The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.<br>
                     </div>
-                    <div style="font-size:18px;">
+                    <div style="font-size:16px;">
                         <strong><br>We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.<br></strong>
                     </div>
-                    <div style="font-size:16px;">
+                    <div style="font-size:14px;">
                         <strong><br>Performance Summary:</strong>
                         <ul>
                             <li><strong>Needs Improvement:</strong> Areas where further development is recommended.</li>
@@ -264,11 +279,11 @@ else:
                             <li><strong>Excellent:</strong> Areas where you have excelled and shown strong proficiency.</li>
                         </ul>
                     </div>
-                    <div style="font-size:16px;">
+                    <div style="font-size:14px;">
                         <strong>Actionable Suggestions:</strong><br>
                         Along with your performance summary, we have included actionable suggestions to help you improve where needed, build on your strengths, and continue your journey toward mastering key skills.
                     </div>
-                    <div style="font-size:16px;">
+                    <div style="font-size:14px;">
                         <br>We hope you find this information helpful.
                     </div>
                     <hr style="border:2px solid #ccc;" />
@@ -276,8 +291,8 @@ else:
                     st.markdown(report_intro, unsafe_allow_html=True)
                     html_content += report_intro
                     
-                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
-                    html_content += """<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>"""
+                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 24px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
+                    html_content += """<h5 style='text-align: left;color: #e76f51;font-size: 24px;'><strong><b>Feedback Summary</b></strong></h5>"""
                     
                     with st.container(border=False):
                         styled_table_html = score_table_show(scores)
@@ -306,10 +321,10 @@ else:
                             # """, unsafe_allow_html=True)
                             
                             feedback_section = f"""
-                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #1f77b4; color: white; padding: 10px; font-size: 20px;">
+                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #1f77b4; color: white; padding: 10px; font-size: 18px;">
                                 <strong>{main_category}</strong>
                             </div>
-                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #f0f0f0; padding: 15px; font-size: 16px; color: black;">
+                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #f0f0f0; padding: 15px; font-size: 14px; color: black;">
                                 <p>{feedback}</p>
                             </div>
                             <div style="font-size:18px;">
