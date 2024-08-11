@@ -318,11 +318,11 @@ ProgramInformation = st.Page(
 
 
 
-main_apps = [home_page, suitability, ProgramInformation, CO,DSFBA,IGP]
+main_apps = [home_page, suitability, ProgramInformation]
 log_in = [login_page]
 log_out = [logout_page]
 data_apps = []
-dsf_apps = []
+dsf_apps = [CO,DSFBA,IGP]
 pf_apps = [pathfinder_rfs]
 st.logo(
     "data/Eskwelabs_logo.svg"#,
@@ -334,7 +334,7 @@ if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["Eskwelabs App"] = main_apps
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
     page_dict["PathFinder"] = pf_apps
-if st.session_state.role in ["Fellow"]:
+if st.session_state.role in [None,"Fellow"]:
     page_dict["Data Science Fellowship"] = dsf_apps
 
 if st.session_state.role in ["Fellow", "Mentor", "Ops"]:
