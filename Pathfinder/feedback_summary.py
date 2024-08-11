@@ -261,7 +261,7 @@ else:
                     # Convert the scores dictionary to an HTML table directly
                     table_html = f"""
                     <table class="styled-table" style="width: 100%; border-collapse: collapse; font-size: 16px; margin-top: 20px;">
-                        <tr style="background-color: #f0f0f0;">
+                        <tr style="background-color: #d4edda;">  <!-- Light green for header background -->
                             {"".join([f"<th style='padding: 8px; text-align: center;'>{category}</th>" for category in scores.keys()])}
                         </tr>
                         <tr>
@@ -274,16 +274,17 @@ else:
                     styled_table_html = f"""
                     <style>
                     .styled-table th, .styled-table td {{
-                        border: 1px solid #ccc;
+                        border: 1px solid #155724;  /* Dark green border */
                     }}
                     .styled-table th {{
-                        background-color: #f0f0f0;
+                        background-color: #d4edda;  /* Light green header */
+                        color: #155724;  /* Dark green text */
                     }}
                     .styled-table tr:nth-child(even) {{
-                        background-color: #f9f9f9;
+                        background-color: #c3e6cb;  /* Slightly darker green for even rows */
                     }}
                     .styled-table tr:nth-child(odd) {{
-                        background-color: #ffffff;
+                        background-color: #d4edda;  /* Light green for odd rows */
                     }}
                     </style>
                     {table_html}
