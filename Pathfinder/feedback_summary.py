@@ -256,13 +256,13 @@ else:
                             <strong><br></strong>
                             </div>
                             """, unsafe_allow_html=True)
-                    # Creating the DataFrame and transposing it
-                    df_scores_T = pd.DataFrame(list(scores.items()), columns=["Category", "Performance"]).T
+                    # Create the DataFrame
+                    df_scores_T = pd.DataFrame(list(scores.items()), columns=["Category", "Performance"])
                     
-                    # Convert DataFrame to HTML with custom styling
-                    table_html = df_scores_T.to_html(header=False, index=True, border=0, justify='center', classes='styled-table')
+                    # Convert the DataFrame to HTML
+                    table_html = df_scores_T.to_html(index=False, border=0, justify='center', classes='styled-table')
                     
-                    # Apply additional styling using CSS
+                    # Apply CSS styling
                     styled_table_html = f"""
                     <style>
                     .styled-table {{
@@ -289,7 +289,7 @@ else:
                     {table_html}
                     """
                     
-                    # Display the HTML table in Streamlit
+                    # Display the styled HTML table in Streamlit
                     st.markdown(styled_table_html, unsafe_allow_html=True)
     else:
         st.error("Reference Number not found.")
