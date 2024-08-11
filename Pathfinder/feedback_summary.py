@@ -239,7 +239,7 @@ else:
                     #         st.write(feedback)
 
                     for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
-                        with st.container(border=True):
+                        with st.container(border=False):
                             # Header section for the category name
                             st.markdown(f"""
                             <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #1f77b4; color: white; padding: 10px; font-size: 20px;">
