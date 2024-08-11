@@ -119,7 +119,10 @@ guide for fellows, helping them steer through their learning journey with confid
 #             </div>
 #             """, unsafe_allow_html=True)
 
-
+# Initialize session state if it doesn't exist
+if 'markdowns' not in st.session_state:
+    st.session_state['markdowns'] = {}
+    
 # Generate markdown for each sprint and save it in st.session_state
 for sprint, topics in st.session_state.enhanced_course_outline.items():
     sprint_markdown = ""
