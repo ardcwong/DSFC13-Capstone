@@ -59,7 +59,7 @@ def google_connection_gsheet_courseoutline_ops(client):
 
 
 def load_course_outline_dataset(spreadsheet):
-    worksheet = spreadsheet.worksheet("Sheet1")
+    worksheet = spreadsheet.worksheet("Data Science Fellowship Cohort")
     data_score = worksheet.get_all_values()
     df_co = pd.DataFrame(data_score[1:], columns=data_score[0])
     return df_co
