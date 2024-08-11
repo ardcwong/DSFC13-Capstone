@@ -61,8 +61,10 @@ def save_html_content_and_update_tag(spreadsheet, reference_number, html_content
     worksheet = spreadsheet.worksheet("Sheet1")
     cell = worksheet.find(reference_number, in_column=1)  # Assumes "Reference Number" is in the first column
     if cell:
-        # Update HTML_CONTENT
-        worksheet.update_cell(cell.row, worksheet.find("HTML_CONTENT").col, html_content)
+        # worksheet.update_cell(cell.row, worksheet.find("HTML_CONTENT").col, st.session_state.html_content)
+        worksheet.update_cell(cell.row, worksheet.find("REPORT_INTRO").col, st.session_state.report_intro)
+        worksheet.update_cell(cell.row, worksheet.find("SCORE_CATEGORY_TABLE").col, st.session_state.styled_table_html)
+        worksheet.update_cell(cell.row, worksheet.find("FEEDBACK_SECTION").col, st.session_state.feedback_section)
         # Update PARGeneratedTag to "Y"
         worksheet.update_cell(cell.row, worksheet.find("PARGenTag").col, "Y")
         return True
