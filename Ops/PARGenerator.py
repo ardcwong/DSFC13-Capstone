@@ -65,13 +65,13 @@ def save_html_content_and_update_tag(spreadsheet, reference_number, html_content
         worksheet.update_cell(cell.row, worksheet.find("REPORT_INTRO").col, report_intro)
         worksheet.update_cell(cell.row, worksheet.find("SCORE_CATEGORY_TABLE").col, styled_table_html)
         for i, feedback in feedback_section:
-            worksheet.update_cell(cell.row, worksheet.find(f"FEEDBACK_SECTION_{i}").col, feedback)
+            worksheet.update_cell(cell.row, worksheet.find(f"FEEDBACK_SECTION_{i+1}").col, feedback)
         # Update PARGeneratedTag to "Y"
         worksheet.update_cell(cell.row, worksheet.find("PARGenTag").col, "Y")
         return True
     else:
         return False
-st.write(type(st.session_state.feedback_section))        
+# st.write(type(st.session_state.feedback_section))        
 ########################################################
 # ACCESS DERIVED COMPETENCY FRAMEWORK GSHEET
 ########################################################
