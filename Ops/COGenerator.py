@@ -192,7 +192,10 @@ with t1:
             st.session_state['markdowns'][sprint] = sprint_markdown
     
     # # Example: Display the markdown for a specific sprint (Sprint 1)
-    # st.markdown(st.session_state['markdowns'].get('Sprint 1', ''), unsafe_allow_html=True)
+    st.markdown(st.session_state['markdowns'].get('Sprint 1', ''), unsafe_allow_html=True)
+    st.markdown(st.session_state['markdowns'].get('Sprint 2', ''), unsafe_allow_html=True)
+    st.markdown(st.session_state['markdowns'].get('Sprint 3', ''), unsafe_allow_html=True)
+    st.markdown(st.session_state['markdowns'].get('Sprint 4', ''), unsafe_allow_html=True)
     # st.write(st.session_state['markdowns'].get('Sprint 1', ''))
     
     # Save markdowns to Google Sheet
