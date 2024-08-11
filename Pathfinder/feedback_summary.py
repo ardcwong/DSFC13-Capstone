@@ -102,67 +102,6 @@ scores_dataset = load_scores_dataset(st.session_state.spreadsheet_PathfinderExam
 # st.write(scores_dataset.head())
 
 
-# Custom function to categorize scores
-def categorize_score(score):
-    if score < 40:
-        return "Needs Improvement"
-    elif 40 <= score < 60:
-        return "Fair"
-    elif 60 <= score < 80:
-        return "Good"
-    else:
-        return "Excellent"
-
-
-# Function to generate a single summarized feedback paragraph using GPT
-def generate_summarized_feedback(scores):
-    feedback = []
-
-    # Iterate through each main category and generate feedback
-    for category, score in scores.items():
-        score_category = score
-        subcategories = category_structure[category]
-
-        # Constructing the prompt
-        prompt = (
-            f"Based on the following information, please provide a summarized of feedback and actionable suggestions "
-            f"to help me improve in the category '{category}'.\n"
-            f"The student's performance in this category is '{score_category}'.\n"
-            f"Here are the subcategories and key topics covered in this category:\n\n"
-        )
-
-        for subcategory, topics in subcategories.items():
-            topic_list = ', '.join(topics)
-            prompt += f"- {subcategory}: {topic_list}\n"
-
-        prompt += "\nSummarize the feedback and actionable suggestions into a single paragraph."
-
-        # Get the suggestion from GPT
-        suggestion = ask_openai(prompt)
-        
-        # # Store the feedback in the dictionary
-        # feedback[category] = {
-        #     "Score Category": score_category,
-        #     "Feedback": suggestion
-        # }
-        # Append the feedback
-        feedback.append(f"**{category}** ({score_category}):\n{suggestion}\n")
-        
-    return feedback 
-
-    # return "\n".join(feedback)
-# Function to interact with OpenAI's GPT
-def ask_openai(prompt):
-    response = openai.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are an assistant who generates feedback for Eskwelabs pathfinder exam results in a generalized and contructive manner."},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=250
-    )
-    return response.choices[0].message.content.strip()
-
 if "generate_pf_fs" not in st.session_state:
     st.session_state.generate_pf_fs = False
 if "reference_number" not in st.session_state:
@@ -170,51 +109,6 @@ if "reference_number" not in st.session_state:
 if "feedback_generated" not in st.session_state:
     st.session_state.feedback_generated = []
 
-def score_table_show(scores):
-    # Convert the scores dictionary to an HTML table directly
-    table_html = f"""
-    <table class="styled-table" style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; margin-top: 6px; border-radius: 5px; border: 1px solid #21AF8D; overflow: hidden;">
-        <tr style="background-color: #28a745;">
-            {"".join([f"<th style='padding: 8px; text-align: center; color: white;'>{category}</th>" for category in scores.keys()])}
-        </tr>
-        <tr>
-            {"".join([f"<td style='padding: 8px; text-align: center;'>{performance}</td>" for performance in scores.values()])}
-        </tr>
-    </table>
-    <div style="font-size:16px;">
-        <strong><br><br></strong>
-    </div>
-    """
-    
-    # Apply CSS styling
-    styled_table_html = f"""
-    <style>
-    .styled-table {{
-        border-radius: 5px;  /* Rounded corners for the table */
-        overflow: hidden; /* Ensures rounded corners are applied */
-        border: 1px solid #21AF8D;  /* Dark green border for the whole table */
-    }}
-    .styled-table th, .styled-table td {{
-        border: 1px solid #21AF8D;  /* Dark green border for cells */
-    }}
-    .styled-table th {{
-        background-color: #21AF8D;  /* Dark green header */
-        color: white;  /* White text in header */
-    }}
-    .styled-table tr:nth-child(even) {{
-        background-color: #e9f7ef;  /* Light green for even rows */
-    }}
-    .styled-table tr:nth-child(odd) {{
-        background-color: #f7fcf9;  /* Slightly lighter green for odd rows */
-    }}
-    </style>
-    {table_html}
-    """
-    
-    return styled_table_html
-####################################################################
-################            MAIN PROGRAM            ################
-####################################################################
 
 if st.session_state.generate_pf_fs == False:
     # Input for reference number
@@ -241,114 +135,34 @@ else:
         st.session_state.reference_number = []
         st.session_state.feedback_generated = []
         st.rerun()
-        
-    user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]
-    if not user_data.empty:
-        scores = {}
-        for main_category in category_structure.keys():
-            score_str = user_data[main_category].values[0]
+    pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
+    
+    if st.session_state.reference_number in [pf_rn_y]
+        column__1, column__2 = st.columns([2,8])
+        with column__2:
+    
+            pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
+    
+        with column__1:
             
-            # Remove the '%' sign and convert to float
-            if isinstance(score_str, str) and '%' in score_str:
-                score = float(score_str.replace('%', '').strip())
+            if scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['HTML_CONTENT'].values[0] is not "":
+                download_disabled = False
             else:
-                score = float(score_str)
-                
-            scores[main_category] = score
-            score_category = categorize_score(score)
-            
-            scores[main_category] = score_category
-            
-        with st.spinner("Generating feedback..."):
-            if st.session_state.feedback_generated == []:
-                st.session_state.feedback_generated = generate_summarized_feedback(scores)
-            html_content = ""
-            with st.container(border=True):
-                column1, column2, column3 = st.columns([1,8,1])        
-                with column2:
-                    report_intro = f"""<h1 style='text-align: center;font-size: 40px; font-weight: bold;'><br>Your Pathfinder Assessment Report</h1>
-                    <hr style="border:2px solid #ccc;" />
-                    <h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Introduction</b></strong></h5>
-                    <div style="font-size:16px;">
-                        <strong>Thank you for completing the Pathfinder Assessment Exam.<br></strong>
-                    </div>
-                    <div style="font-size:14px;">
-                        <br>The results of your assessment have been analyzed, and a summary of your performance is provided below. The content of this report is confidential and intended solely for you.<br>
-                    </div>
-                    <div style="font-size:16px;">
-                        <strong><br>We strongly believe in the value of feedback, and this report is based on your responses to the Pathfinder Assessment Exam.<br></strong>
-                    </div>
-                    <div style="font-size:14px;">
-                        <strong><br>Performance Summary:</strong>
-                        <ul>
-                            <li><strong>Needs Improvement:</strong> Areas where further development is recommended.</li>
-                            <li><strong>Fair:</strong> Areas where your performance meets basic expectations.</li>
-                            <li><strong>Good:</strong> Areas where you have demonstrated a solid understanding and capability.</li>
-                            <li><strong>Excellent:</strong> Areas where you have excelled and shown strong proficiency.</li>
-                        </ul>
-                    </div>
-                    <div style="font-size:14px;">
-                        <strong>Actionable Suggestions:</strong><br>
-                        Along with your performance summary, we have included actionable suggestions to help you improve where needed, build on your strengths, and continue your journey toward mastering key skills.
-                    </div>
-                    <div style="font-size:14px;">
-                        <br>We hope you find this information helpful.
-                    </div>
-                    <hr style="border:2px solid #ccc;" />
-                    """
-                    st.markdown(report_intro, unsafe_allow_html=True)
-                    html_content += report_intro
-                    
-                    st.markdown(f"""<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>""", unsafe_allow_html=True)
-                    html_content += """<h5 style='text-align: left;color: #e76f51;font-size: 35px;'><strong><b>Feedback Summary</b></strong></h5>"""
-                    
-                    with st.container(border=False):
-                        styled_table_html = score_table_show(scores)
-                        # Display the HTML table in Streamlit
-                        st.markdown(styled_table_html, unsafe_allow_html=True)
-                        html_content += styled_table_html
-
-
-                    for main_category, feedback in zip(category_structure.keys(), st.session_state.feedback_generated):
-                        with st.container(border=False):
-                            # Header section for the category name
-                            # st.markdown(f"""
-                            # <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #1f77b4; color: white; padding: 10px; font-size: 20px;">
-                            #     <strong>{main_category}</strong>
-                            # </div>
-                            # """, unsafe_allow_html=True)
-                            
-                            # # Feedback content section
-                            # st.markdown(f"""
-                            # <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #f0f0f0; padding: 15px; font-size: 16px; color: black;">
-                            #     <p>{feedback}</p>
-                            # </div>
-                            # <div style="font-size:18px;">
-                            # <strong><br></strong>
-                            # </div>
-                            # """, unsafe_allow_html=True)
-                            
-                            feedback_section = f"""
-                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #1f77b4; color: white; padding: 10px; font-size: 18px;">
-                                <strong>{main_category}</strong>
-                            </div>
-                            <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #f0f0f0; padding: 15px; font-size: 14px; color: black;">
-                                <p>{feedback}</p>
-                            </div>
-                            <div style="font-size:18px;">
-                            <strong><br></strong>
-                            </div>
-                            """
-                            st.markdown(feedback_section, unsafe_allow_html=True)
-                            html_content += feedback_section
-                    
-                    pdf = convert_html_to_pdf(html_content)
-                    
-                    if pdf:
-                        # Provide download link for the PDF
-                        st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
-                    else:
-                        st.error("Failed to convert HTML to PDF.")
+                download_disabled = True
+    
+            pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0])
+            if pdf:
+                st.download_button(label=f"Download PDF (**{reference_number_ops_view}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR")
+            else:
+                st.error("Failed to convert HTML to PDF.")
+        
+        with st.container(border=True):
+            column_1, column_2, column_3 = st.columns([1,8,1])     
+            with column_2:
+                st.markdown(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['REPORT_INTRO'].values[0], unsafe_allow_html=True)
+                st.markdown(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['SCORE_CATEGORY_TABLE'].values[0], unsafe_allow_html=True)
+                for i in range(9):
+                    st.markdown(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number][f"FEEDBACK_SECTION_{i+1}"].values[0], unsafe_allow_html=True)
         
 
     else:
