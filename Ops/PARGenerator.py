@@ -366,7 +366,7 @@ if st.session_state.generate_pf_fs == True:
                             <strong><br></strong>
                             </div>
                             """
-                            st.session_state.feedback_section = feedback_section
+                            st.session_state.feedback_section.append = feedback_section
                             # st.markdown(feedback_section, unsafe_allow_html=True)
                             st.session_state.html_content += feedback_section
             
