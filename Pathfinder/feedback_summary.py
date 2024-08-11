@@ -122,11 +122,11 @@ if st.session_state.generate_pf_fs == False:
             reference_number = st.chat_input("Enter your Reference Number:")
             st.session_state.reference_number = reference_number
             st.write(st.session_state.reference_number)
-            st.write(pf_rn_y.tolist())
+            # st.write(pf_rn_y.tolist())
             if st.session_state.reference_number is not []:
         # if st.button("My Pathfinder Assessment Exam Report", use_container_width = True, type = "primary"):
                 
-                if st.session_state.reference_number in [pf_rn_y]:
+                if st.session_state.reference_number in pf_rn_y:
                     st.session_state.generate_pf_fs = True
                     st.rerun()
                 else:
