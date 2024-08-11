@@ -138,7 +138,7 @@ if st.session_state.generate_pf_fs == False:
                     st.session_state.generate_pf_fs = False
                     st.session_state.reference_number = []
                     reference = []
-                    st.rerun()
+                    # st.rerun()
             
 
 
