@@ -109,6 +109,7 @@ if "reference_number" not in st.session_state:
 if "feedback_generated" not in st.session_state:
     st.session_state.feedback_generated = []
 
+pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
 
 if st.session_state.generate_pf_fs == False:
     # Input for reference number
@@ -119,25 +120,26 @@ if st.session_state.generate_pf_fs == False:
         st.markdown("")
         reference_number = st.text_input("Enter your Reference Number:")
         if st.button("My Pathfinder Assessment Exam Report", use_container_width = True, type = "primary"):
-            st.session_state.generate_pf_fs = True
-            st.session_state.reference_number = reference_number
-            st.rerun()
-        
-# Streamlit App Title
-# st.title("Data Science Preparedness Feedback Generator")
+            if st.session_state.reference_number in [pf_rn_y]:
+                st.session_state.generate_pf_fs = True
+                st.session_state.reference_number = reference_number
+                st.rerun()
+            else:
+                st.error("Reference Number not found.")
+                st.session_state.generate_pf_fs = False
+                st.session_state.reference_number = []
+                st.rerun()
 
 else:
-    # # Button to look up scores
-# if st.button("Lookup Scores"):
-#     if reference_number:
+
     if st.button("Go Back", type = "primary"):
         st.session_state.generate_pf_fs = False
         st.session_state.reference_number = []
         st.session_state.feedback_generated = []
         st.rerun()
-    pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
     
-    if st.session_state.reference_number in [pf_rn_y]:
+    
+    
         column__1, column__2 = st.columns([2,8])
         with column__2:
     
@@ -163,13 +165,5 @@ else:
                 st.markdown(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['SCORE_CATEGORY_TABLE'].values[0], unsafe_allow_html=True)
                 for i in range(9):
                     st.markdown(scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number][f"FEEDBACK_SECTION_{i+1}"].values[0], unsafe_allow_html=True)
-        
 
-    else:
-        st.error("Reference Number not found.")
-        st.session_state.generate_pf_fs = False
-        st.session_state.reference_number = []
-        st.rerun()
-# else:
-#     st.error("Please enter a Reference Number.")
 
