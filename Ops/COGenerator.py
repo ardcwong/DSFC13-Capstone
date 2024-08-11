@@ -147,10 +147,6 @@ def save_markdowns_to_gsheet(spreadsheet, sprint_markdowns):
 
 if 'enhanced_course_outline' not in st.session_state:
     st.session_state.enhanced_course_outline = []
-
-
-t1, t2 = st.tabs(["Generate","View"])
-
 # Streamlit UI
 st.title("Sprint Navigator")
 
@@ -159,6 +155,10 @@ The Sprint Navigator is a meticulously crafted course outline, designed to provi
 topics and sub-topics, divided into four distinct Sprints. This Navigator acts as both a strategic planning tool and a detailed 
 guide for fellows, helping them steer through their learning journey with confidence.
 """)
+
+t1, t2 = st.tabs(["Generate","View"])
+
+
 
 with t1:
     
