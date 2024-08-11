@@ -29,7 +29,7 @@ def convert_html_to_pdf(html_content):
                 margin: 1in; /* Set margins */
             }}
             body {{
-                transform: scale(0.9); /* Scale content */
+                transform: scale(0.6); /* Scale content */
                 transform-origin: top left; /* Scale from top-left corner */
             }}
         </style>
