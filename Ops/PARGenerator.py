@@ -367,7 +367,7 @@ with column12:
                             st.download_button(label="Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf")
                         else:
                             st.error("Failed to convert HTML to PDF.")
-                st.rerun()
+                
             
 
     else:
