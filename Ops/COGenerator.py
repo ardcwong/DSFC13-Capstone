@@ -91,7 +91,7 @@ def enhance_course_outline(course_outline, collection):
 
 
 # Load and generate the course outline from the CSV file
-course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_op)
+course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
 
 
 # Streamlit UI
