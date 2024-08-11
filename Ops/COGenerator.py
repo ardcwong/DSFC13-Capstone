@@ -154,7 +154,7 @@ st.write(st.session_state['markdowns'].get('Sprint 1', ''))
 # Save markdowns to Google Sheet
 if st.button("Save", use_container_width = True):
     saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'])
-    if saved:
+    if saved_:
         st.success("HTML content saved successfully.")
         st.rerun()
     else:
