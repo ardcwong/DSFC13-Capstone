@@ -252,6 +252,9 @@ else:
                             <div style="border: 2px solid #1f77b4; border-radius: 5px; background-color: #f0f0f0; padding: 15px; font-size: 16px; color: black;">
                                 <p>{feedback}</p>
                             </div>
+                            <div style="font-size:18px;">
+                            <strong><br></strong>
+                            </div>
                             """, unsafe_allow_html=True)
     else:
         st.error("Reference Number not found.")
