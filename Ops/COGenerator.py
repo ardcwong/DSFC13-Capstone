@@ -232,7 +232,7 @@ with t2:
 
 with t1:
     if 'get_current_markdown' not in st.session_state:
-        st.session_state.get_current_markdown = ""
+        st.session_state.get_current_markdown_co = ""
     
     def load_course_outline_dataset(spreadsheet):
         worksheet = spreadsheet.worksheet("Data Science Fellowship Cohort")
