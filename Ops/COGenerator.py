@@ -156,7 +156,7 @@ topics and sub-topics, divided into four distinct Sprints. This Navigator acts a
 guide for fellows, helping them steer through their learning journey with confidence.
 """)
 
-t1, t2 = st.tabs(["Generate","View"])
+t1, t2 = st.columns([1,1])
 
 
 
