@@ -243,10 +243,10 @@ with t1:
             get_current_markdown +=  df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0]
             st.session_state.get_current_markdown += get_current_markdown
             
-        st.markdown(st.session_state.get_current_markdown, unsafe_allow_html=True)     
+        # st.markdown(st.session_state.get_current_markdown, unsafe_allow_html=True)     
         pdf_current = st.session_state.get_current_markdown
         if pdf_current:
-            st.download_button(label=f"Download PDF (Current CO)", data=pdf, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
+            st.download_button(label=f"Download PDF (Current CO)", data=pdf_current, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
         else:
             st.error("Failed to convert HTML to PDF.")
 
