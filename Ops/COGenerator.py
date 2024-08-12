@@ -146,6 +146,8 @@ def save_markdowns_to_gsheet(spreadsheet, sprint_markdowns, full_html_content):
     if cell:
         worksheet.update_cell(cell.row, worksheet.find("Full HTML_CONTENT").col, full_html_content)
 
+    return True
+
 
 if 'enhanced_course_outline' not in st.session_state:
     st.session_state.enhanced_course_outline = []
