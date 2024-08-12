@@ -242,7 +242,9 @@ with col111:
     
 with col222:
     with st.container(border = True, height = 600):
-        st.session_state.pi_chat_history.show_history_streamlit()
+        c1, c2, c3 = st.columns([1,4,1])
+        with c2:
+            st.session_state.pi_chat_history.show_history_streamlit()
     
 
     
