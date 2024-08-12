@@ -245,11 +245,12 @@ with col111:
                 This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that you may have to understand all aspects of the Eskwelabs DSF program. 
                 Whether you're just curious about what the program offers, or you consider applying for a future-proof career in data, this chatbot provides detailed information to guide you, 
                 and can even recommend the perfect education material for your review, tailor-fit on your stated learning style and expertise level (Beginner, Intermediate, or Advanced).</h5>""", unsafe_allow_html=True)
-
+st.divider()
 with st.container():
-    c1, c2, c3 = st.columns([1,8,1])
-    with c2:
+    c1, c2 = st.columns([8,2])
+    with c1:
         st.session_state.pi_chat_history.show_history_streamlit()   
+        
 user_query = st.chat_input("Ask Eskwelabs")
 if user_query:
     response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
