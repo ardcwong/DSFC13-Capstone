@@ -248,10 +248,10 @@ with t1:
         for i in range(4):
             get_current_markdown +=  df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0]
             # st.session_state.get_current_markdown += get_current_markdown
-        st.session_state.get_current_markdowndf_co - [df_co['Sprint Number'] == f"Sprint 1"]['Full HTML_CONTENT'].values[0]    
+        st.session_state.get_current_markdown_co - [df_co['Sprint Number'] == f"Sprint 1"]['Full HTML_CONTENT'].values[0]    
             
         # st.markdown(st.session_state.get_current_markdown, unsafe_allow_html=True)     
-        pdf_current = st.session_state.get_current_markdown
+        pdf_current = st.session_state.get_current_markdown_co
         if pdf_current:
             st.download_button(label=f"Download PDF (Current CO)", data=pdf_current, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
         else:
