@@ -227,16 +227,15 @@ st.markdown("""
 """, unsafe_allow_html=True)
 st.markdown("""<br>""", unsafe_allow_html=True)
 # st.divider()
-col111, col222 = st.columns([3,7])
+col111, col222 = st.columns([8,2])
 with col222:
     # st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
-    
+    if st.button("Start Over", type = "primary", use_container_width = True):
+        st.session_state.pi_chat_history.clear_history()
+        st.session_state.pi_chat_memory = []  # Clear chat memory as well    
     
 
-    with st.container(border = True):
-        c1, c2, c3 = st.columns([1,8,1])
-        with c2:
-            st.session_state.pi_chat_history.show_history_streamlit()
+
 with col111:
     
     
@@ -246,10 +245,11 @@ with col111:
                         This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that you may have to understand all aspects of the Eskwelabs DSF program. 
                         Whether you're just curious about what the program offers, or you consider applying for a future-proof career in data, this chatbot provides detailed information to guide you, 
                         and can even recommend the perfect education material for your review, tailor-fit on your stated learning style and expertise level (Beginner, Intermediate, or Advanced).</h6>""", unsafe_allow_html=True)
-    if st.button("Start Over", type = "primary", use_container_width = True):
-        st.session_state.pi_chat_history.clear_history()
-        st.session_state.pi_chat_memory = []  # Clear chat memory as well
-    
+
+with st.container(border = True):
+    c1, c2, c3 = st.columns([1,8,1])
+    with c2:
+        st.session_state.pi_chat_history.show_history_streamlit()   
 user_query = st.chat_input("Ask Eskwelabs")
 if user_query:
     response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
