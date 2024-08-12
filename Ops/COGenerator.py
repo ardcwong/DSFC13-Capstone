@@ -172,8 +172,8 @@ with t2:
         AA, BB, CC = st.columns([1,1,1])
         with AA:
             
-        # if 'html_content_co' not in st.session_state:
-        #     st.session_state.html_content_co = ""
+        if 'html_content_co' not in st.session_state:
+            st.session_state.html_content_co = ""
             if st.button("Generate New Course Outline", use_container_width = True):
                 # Load and generate the course outline from the CSV file
                 course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
