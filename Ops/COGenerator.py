@@ -252,7 +252,7 @@ with t1:
         st.session_state.get_current_markdown_co = df_co[df_co['Sprint Number'] == f"Sprint 1"]['Full HTML_CONTENT'].values[0]    
             
         # st.markdown(st.session_state.get_current_markdown, unsafe_allow_html=True)     
-        pdf_current = st.session_state.get_current_markdown_co
+        pdf_current = convert_html_to_pdf(st.session_state.get_current_markdown_co)
         if pdf_current:
             st.download_button(label=f"Download PDF (Current CO)", data=pdf_current, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
         else:
