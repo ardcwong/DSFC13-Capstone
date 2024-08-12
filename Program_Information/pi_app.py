@@ -245,6 +245,7 @@ user_query = st.chat_input("Ask Eskwelabs")
 if user_query:
     response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
     update_chat_memory()  # Update chat memory with the latest messages
+    st.rerun()
 
 
 
