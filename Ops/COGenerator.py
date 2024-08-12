@@ -160,7 +160,7 @@ t1, t2 = st.columns([1,1])
 
 
 
-with t1:
+with t2:
     
     # Initialize session state if it doesn't exist
     if 'markdowns' not in st.session_state:
@@ -217,7 +217,7 @@ with t1:
     else:
         st.error("Failed to convert HTML to PDF.")
 
-with t2:
+with t1:
     def load_course_outline_dataset(spreadsheet):
         worksheet = spreadsheet.worksheet("Data Science Fellowship Cohort")
         data_score = worksheet.get_all_values()
@@ -226,6 +226,7 @@ with t2:
 
 
     df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_ops)
-    st.title("Course Outline")
+    st.header("CURRENT")
+    st.subheader("Course Outline")
     for i in range(4):
         st.markdown(df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0], unsafe_allow_html=True)
