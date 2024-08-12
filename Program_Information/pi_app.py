@@ -225,7 +225,7 @@ def show_pi_chat_memory():
 # """, unsafe_allow_html=True)
 # st.markdown("""<br><br>""", unsafe_allow_html=True)
 
-col111, col222 = st.columns([4,6])
+col111, col222, col333, col444 = st.columns([4,1,4,1])
 with col111:
     st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
     st.divider()
@@ -240,7 +240,7 @@ with col111:
         st.session_state.pi_chat_history.clear_history()
         st.session_state.pi_chat_memory = []  # Clear chat memory as well
     
-with col222:
+with col333:
     with st.container(border = True, height = 600):
         c1, c2, c3 = st.columns([1,4,1])
         with c2:
