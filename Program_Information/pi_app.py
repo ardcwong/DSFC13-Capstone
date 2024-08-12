@@ -224,17 +224,17 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 st.markdown("""<br>""", unsafe_allow_html=True)
-st.divider()
+# st.divider()
 col111, col222, col333, col444 = st.columns([4,0.5,5,0.5])
 with col111:
     # st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
     
     with st.expander("About", expanded = True):
-        st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
+        st.markdown("""<h6 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
                     <br><br>
                     This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that you may have to understand all aspects of the Eskwelabs DSF program. 
                     Whether you're just curious about what the program offers, or you consider applying for a future-proof career in data, this chatbot provides detailed information to guide you, 
-                    and can even recommend the perfect education material for your review, tailor-fit on your stated learning style and expertise level (Beginner, Intermediate, or Advanced).</h5>""", unsafe_allow_html=True)
+                    and can even recommend the perfect education material for your review, tailor-fit on your stated learning style and expertise level (Beginner, Intermediate, or Advanced).</h6>""", unsafe_allow_html=True)
 
 
     if st.button("Start Over", type = "primary"):
