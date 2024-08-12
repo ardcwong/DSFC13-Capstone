@@ -225,7 +225,7 @@ with t1:
         return df_co
 
 
-    df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_ops)e
+    df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_ops)
     with st.expander("Current Course Outline"):
         st.markdown("""<h4 style='text-align: left;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!</b></h4>""", unsafe_allow_html=True) 
         for i in range(4):
