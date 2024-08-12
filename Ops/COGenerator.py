@@ -211,7 +211,7 @@ with t2:
         with BB:
             # Save markdowns to Google Sheet
             if st.button("Save", use_container_width = True):
-                saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'],st.session_state.html_content_c)
+                saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'],st.session_state.html_content_co)
                 if saved_:
                     st.success("HTML content saved successfully.")
                     st.rerun()
