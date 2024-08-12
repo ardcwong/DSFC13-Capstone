@@ -70,7 +70,7 @@ if "spreadsheet_courseoutline_ops" not in st.session_state:
     st.session_state.spreadsheet_courseoutline_ops = google_connection_gsheet_courseoutline_ops(client)
 
 df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_ops)
-column_1, column_2 = st.columns([9,1])
+column_1, column_2 = st.columns([8,2])
 with column_1:
     st.title("Course Outline")
 with column_2:
