@@ -125,7 +125,7 @@ def enhance_course_outline(course_outline, collection):
     return enhanced_outline
 
 # Function to save the markdowns to the Google Sheet
-def save_markdowns_to_gsheet(spreadsheet, sprint_markdowns):
+def save_markdowns_to_gsheet(spreadsheet, sprint_markdowns, full_html_content):
     worksheet = spreadsheet.worksheet("Data Science Fellowship Cohort")
     data = worksheet.get_all_values()
     df = pd.DataFrame(data[1:], columns=data[0])
@@ -142,7 +142,9 @@ def save_markdowns_to_gsheet(spreadsheet, sprint_markdowns):
         for row in rows:
             worksheet.update_cell(row + 2, df.columns.get_loc("Enhanced Course Outline") + 1, markdown)
 
-
+    cell = worksheet.find("Sprint 1", in_column=1)  # Assumes "Reference Number" is in the first column
+    if cell:
+        worksheet.update_cell(cell.row, worksheet.find("Full HTML_CONTENT").col, full_html_content)
 
 
 if 'enhanced_course_outline' not in st.session_state:
@@ -204,18 +206,19 @@ with t2:
         st.markdown(st.session_state['markdowns'].get('Sprint 3', ''), unsafe_allow_html=True)
         st.markdown(st.session_state['markdowns'].get('Sprint 4', ''), unsafe_allow_html=True)
         # st.write(st.session_state['markdowns'].get('Sprint 1', ''))
+        # Collect all markdowns into a single HTML content block
+        st.session_state.html_content_co = collect_all_markdowns(st.session_state['markdowns'])
         with BB:
             # Save markdowns to Google Sheet
             if st.button("Save", use_container_width = True):
-                saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'])
+                saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'],st.session_state.html_content_c)
                 if saved_:
                     st.success("HTML content saved successfully.")
                     st.rerun()
                 else:
                     st.error("Failed to save HTML content.")
         
-        # Collect all markdowns into a single HTML content block
-        st.session_state.html_content_co = collect_all_markdowns(st.session_state['markdowns'])
+
         
         with CC:
             pdf = convert_html_to_pdf(st.session_state.html_content_co)
