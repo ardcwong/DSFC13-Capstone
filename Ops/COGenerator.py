@@ -246,6 +246,7 @@ with t1:
             get_current_markdown +=  df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0]
             st.session_state.get_current_markdown += get_current_markdown
             
+            
         # st.markdown(st.session_state.get_current_markdown, unsafe_allow_html=True)     
         pdf_current = st.session_state.get_current_markdown
         if pdf_current:
