@@ -243,7 +243,7 @@ with col111:
         st.session_state.pi_chat_history.clear_history()
         st.session_state.pi_chat_memory = []  # Clear chat memory as well
     
-with col333:
+
     with st.container(border = True, height = 600):
         c1, c2, c3 = st.columns([1,4,1])
         with c2:
