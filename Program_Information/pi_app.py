@@ -241,7 +241,7 @@ with col111:
         st.session_state.pi_chat_memory = []  # Clear chat memory as well
     
 with col222:
-    with st.container(border = True, height = 550):
+    with st.container(border = True, height = 600):
         st.session_state.pi_chat_history.show_history_streamlit()
     
 
