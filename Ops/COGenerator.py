@@ -210,13 +210,14 @@ with t2:
         st.session_state.html_content_co = collect_all_markdowns(st.session_state['markdowns'])
         with BB:
             # Save markdowns to Google Sheet
-            if st.button("Save", use_container_width = True):
-                saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'],st.session_state.html_content_co)
-                if saved_:
-                    st.success("HTML content saved successfully.")
-                    st.rerun()
-                else:
-                    st.error("Failed to save HTML content.")
+            if st.session_state.html_content_co is not "":
+                if st.button("Save", use_container_width = True):
+                    saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'],st.session_state.html_content_co)
+                    if saved_:
+                        st.success("HTML content saved successfully.")
+                        st.rerun()
+                    else:
+                        st.error("Failed to save HTML content.")
         
 
         
