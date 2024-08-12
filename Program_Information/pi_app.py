@@ -227,8 +227,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 st.markdown("""<br>""", unsafe_allow_html=True)
 # st.divider()
-col111, col222 = st.columns([6,4])
-with col111:
+col111, col222 = st.columns([3,7])
+with col222:
     # st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
     
     
@@ -237,7 +237,7 @@ with col111:
         c1, c2, c3 = st.columns([1,8,1])
         with c2:
             st.session_state.pi_chat_history.show_history_streamlit()
-with col222:
+with col111:
     
     
     with st.expander("About", expanded = True):
