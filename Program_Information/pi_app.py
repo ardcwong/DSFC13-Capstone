@@ -196,10 +196,11 @@ if 'pi_chat_history' not in st.session_state:
 # Initialize chat history in session state
 if 'pi_chat_memory' not in st.session_state:
     st.session_state.pi_chat_memory = []
+
 @st.fragment
 def update_chat_memory():
     st.session_state.pi_chat_memory = st.session_state.pi_chat_history.get_latest_messages()
-    st.rerun(scope="fragment")
+    st.rerun()
 
 def show_pi_chat_memory():
     for msg in st.session_state.pi_chat_memory:
