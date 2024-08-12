@@ -235,6 +235,6 @@ with t1:
             
         pdf_current = get_current_markdown
         if pdf_current:
-            st.download_button(label=f"Download PDF", data=pdf, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
+            st.download_button(label=f"Download PDF (Current CO)", data=pdf, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
         else:
             st.error("Failed to convert HTML to PDF.")
