@@ -215,7 +215,7 @@ with t2:
                     st.error("Failed to save HTML content.")
         
         # Collect all markdowns into a single HTML content block
-        st.session_state.html_content_co = collect_all_markdowns("""<h4 style='text-align: left;color: #e76f51;'><b>Course Outline</b></h4>""" + st.session_state['markdowns'])
+        st.session_state.html_content_co = collect_all_markdowns(st.session_state['markdowns'])
         
         with CC:
             pdf = convert_html_to_pdf(st.session_state.html_content_co)
