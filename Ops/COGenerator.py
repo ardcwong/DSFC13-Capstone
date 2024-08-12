@@ -225,6 +225,9 @@ with t2:
                 st.error("Failed to convert HTML to PDF.")
 
 with t1:
+    if 'get_current_markdown' not in st.session_state:
+        st.session_state.get_current_markdown = ""
+    
     def load_course_outline_dataset(spreadsheet):
         worksheet = spreadsheet.worksheet("Data Science Fellowship Cohort")
         data_score = worksheet.get_all_values()
@@ -238,8 +241,9 @@ with t1:
         
         for i in range(4):
             get_current_markdown +=  df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0]
-        
-        pdf_current = get_current_markdown
+            st.session_state.get_current_markdown += get_current_markdown
+            
+        pdf_current = st.session_state.get_current_markdown
         if pdf_current:
             st.download_button(label=f"Download PDF (Current CO)", data=pdf, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
         else:
