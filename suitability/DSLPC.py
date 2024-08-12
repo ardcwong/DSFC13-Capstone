@@ -28,7 +28,7 @@ credentials = st.secrets["gcp_service_account"]
 #     nltk.download('stopwords')
 if st.toggle("Show Work Flow", label_visibility="collapsed"):
     with st.expander("Work Flow: How It Works", expanded = True):
-        st.image('data/DSLPC_WorkFlow')
+        st.image('data/DSLPC_WorkFlow.png')
 
 def remove_stopwords(response):
     stop_words = set(stopwords.words('english'))
