@@ -227,7 +227,7 @@ def show_pi_chat_memory():
 
 col111, col222 = st.columns([4,6])
 with col111:
-    st.markdown(f"<h2 style='text-align: left;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
     st.divider()
     st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
                 <br><br>
@@ -241,7 +241,7 @@ with col111:
         st.session_state.pi_chat_memory = []  # Clear chat memory as well
     
 with col222:
-    with st.container(border = True, height = 450):
+    with st.container(border = True, height = 550):
         st.session_state.pi_chat_history.show_history_streamlit()
     
 
