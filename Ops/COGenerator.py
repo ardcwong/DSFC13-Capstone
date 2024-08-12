@@ -247,8 +247,8 @@ with t1:
         
         for i in range(4):
             get_current_markdown +=  df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0]
-            st.session_state.get_current_markdown += get_current_markdown
-            
+            # st.session_state.get_current_markdown += get_current_markdown
+        st.session_state.get_current_markdowndf_co - [df_co['Sprint Number'] == f"Sprint 1"]['Full HTML_CONTENT'].values[0]    
             
         # st.markdown(st.session_state.get_current_markdown, unsafe_allow_html=True)     
         pdf_current = st.session_state.get_current_markdown
