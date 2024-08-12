@@ -246,7 +246,7 @@ with col222:
                         This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that you may have to understand all aspects of the Eskwelabs DSF program. 
                         Whether you're just curious about what the program offers, or you consider applying for a future-proof career in data, this chatbot provides detailed information to guide you, 
                         and can even recommend the perfect education material for your review, tailor-fit on your stated learning style and expertise level (Beginner, Intermediate, or Advanced).</h6>""", unsafe_allow_html=True)
-    if st.button("Start Over", type = "primary"):
+    if st.button("Start Over", type = "primary", use_container_width = True):
         st.session_state.pi_chat_history.clear_history()
         st.session_state.pi_chat_memory = []  # Clear chat memory as well
     
