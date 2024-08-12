@@ -223,7 +223,7 @@ st.markdown("""
         <h1><br>Eskwelabs Data Science Fellowship Information Bot</h1>
     </div>
 """, unsafe_allow_html=True)
-st.markdown("""<br><br>""", unsafe_allow_html=True)
+# st.markdown("""<br><br>""", unsafe_allow_html=True)
 
 
 # st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
