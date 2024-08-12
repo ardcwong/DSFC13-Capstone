@@ -235,9 +235,9 @@ def logout():
 ########################################################
 def home():
     def home_main_content():
-        st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELABS APP✨</h1>", unsafe_allow_html=True)
+        st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELAPPS✨</h1>", unsafe_allow_html=True)
         st.divider()
-        st.markdown("""<h4 style='text-align: center;color: #e76f51;'><b><i>Welcome to Eskwelabs App.</b></i><i> Ready for the Future of Work? 
+        st.markdown("""<h4 style='text-align: center;color: #e76f51;'><b><i>Welcome to EskwelApps.</b></i><i> Ready for the Future of Work? 
         Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school 
         that gives you access to affordable and high quality data skills education. Your Future Begins with Upskilling. Eskwelabs creates a warm 
         online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.""", unsafe_allow_html=True)
@@ -333,7 +333,7 @@ st.logo(
 
 page_dict = {}
 if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
-    page_dict["Eskwelabs App"] = main_apps
+    page_dict["Main"] = main_apps
 # if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
 #     page_dict["PathFinder"] = pf_apps
 if st.session_state.role in [None,"Fellow"]:
@@ -348,7 +348,7 @@ elif st.session_state.role in [None]:
 
 
 if len(page_dict) > 0:
-    pg = st.navigation(page_dict | {"Eskwelabs App": account_apps + main_apps}, position="sidebar")
+    pg = st.navigation(page_dict | {"Main": account_apps + main_apps}, position="sidebar")
 else:
     pg = st.navigation([st.Page(login)], position="sidebar") #defaults to login page if no acceptable role is selected
 
