@@ -231,23 +231,24 @@ col111, col222 = st.columns([6,4])
 with col111:
     # st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
     
-    with st.expander("About", expanded = True):
-        st.markdown("""<h6 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
-                    <br><br>
-                    This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that you may have to understand all aspects of the Eskwelabs DSF program. 
-                    Whether you're just curious about what the program offers, or you consider applying for a future-proof career in data, this chatbot provides detailed information to guide you, 
-                    and can even recommend the perfect education material for your review, tailor-fit on your stated learning style and expertise level (Beginner, Intermediate, or Advanced).</h6>""", unsafe_allow_html=True)
+    
 
     with st.container(border = True):
         c1, c2, c3 = st.columns([1,4,1])
         with c2:
             st.session_state.pi_chat_history.show_history_streamlit()
 with col222:
+    
+    
+    with st.expander("About", expanded = True):
+            st.markdown("""<h6 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
+                        <br><br>
+                        This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that you may have to understand all aspects of the Eskwelabs DSF program. 
+                        Whether you're just curious about what the program offers, or you consider applying for a future-proof career in data, this chatbot provides detailed information to guide you, 
+                        and can even recommend the perfect education material for your review, tailor-fit on your stated learning style and expertise level (Beginner, Intermediate, or Advanced).</h6>""", unsafe_allow_html=True)
     if st.button("Start Over", type = "primary"):
         st.session_state.pi_chat_history.clear_history()
         st.session_state.pi_chat_memory = []  # Clear chat memory as well
-    
-
     
 user_query = st.chat_input("Ask Eskwelabs")
 if user_query:
