@@ -197,7 +197,7 @@ with t2:
                 st.session_state.title = True
                 st.rerun()
         if st.session_state.title == True:
-            st.session_statest.markdown("""<h4 style='text-align: left;color: #e76f51;'><b>Course Outline</b></h4>""", unsafe_allow_html=True) 
+            st.markdown("""<h4 style='text-align: left;color: #e76f51;'><b>Course Outline</b></h4>""", unsafe_allow_html=True) 
         # # Example: Display the markdown for a specific sprint (Sprint 1)
         st.markdown(st.session_state['markdowns'].get('Sprint 1', ''), unsafe_allow_html=True)
         st.markdown(st.session_state['markdowns'].get('Sprint 2', ''), unsafe_allow_html=True)
