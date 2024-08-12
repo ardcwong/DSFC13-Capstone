@@ -399,8 +399,10 @@ else:
         
 
 if st.toggle("Show Work Flow", label_visibility="collapsed"):
-    with st.expander("Work Flow: How It Works", expanded = True):
-        st.image('data/DSLPC_WorkFlow.png')
+    wf1, wf2 = st.columns([8,2])
+    with wf1:
+        with st.expander("Work Flow: How It Works", expanded = True):
+            st.image('data/DSLPC_WorkFlow.png')
 
 
 
