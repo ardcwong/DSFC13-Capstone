@@ -26,7 +26,7 @@ credentials = st.secrets["gcp_service_account"]
 # if "stop" not in st.session_state:
 #     st.session_state.stop = True
 #     nltk.download('stopwords')
-if st.toggle("Show Work Flow", value=False, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False, label_visibility="collapsed"):
+if st.toggle("Show Work Flow", label_visibility="collapsed"):
     with st.expander("Work Flow: How It Works", expanded = True):
         st.image('data/DSLPC_WorkFlow')
 
