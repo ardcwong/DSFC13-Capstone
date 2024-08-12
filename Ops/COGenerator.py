@@ -165,6 +165,8 @@ with t2:
         # Initialize session state if it doesn't exist
         if 'markdowns' not in st.session_state:
             st.session_state['markdowns'] = {}
+        if 'title' not in st.session_state:
+            st.session_state.title = False
         AA, BB, CC = st.columns([1,1,1])
         with AA:
             
@@ -192,7 +194,10 @@ with t2:
                 
                     # Save the generated markdown in st.session_state
                     st.session_state['markdowns'][sprint] = sprint_markdown
-        
+                st.session_state.title = True
+                st.rerun()
+        if st.session_state.title == True:
+            st.session_statest.markdown("""<h4 style='text-align: left;color: #e76f51;'><b>Course Outline</b></h4>""", unsafe_allow_html=True) 
         # # Example: Display the markdown for a specific sprint (Sprint 1)
         st.markdown(st.session_state['markdowns'].get('Sprint 1', ''), unsafe_allow_html=True)
         st.markdown(st.session_state['markdowns'].get('Sprint 2', ''), unsafe_allow_html=True)
@@ -210,7 +215,7 @@ with t2:
                     st.error("Failed to save HTML content.")
         
         # Collect all markdowns into a single HTML content block
-        st.session_state.html_content_co = collect_all_markdowns(st.session_state['markdowns'])
+        st.session_state.html_content_co = collect_all_markdowns(st.markdown("""<h4 style='text-align: left;color: #e76f51;'><b>Course Outline</b></h4>""", unsafe_allow_html=True) + st.session_state['markdowns'])
         
         with CC:
             pdf = convert_html_to_pdf(st.session_state.html_content_co)
