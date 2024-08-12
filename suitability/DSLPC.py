@@ -274,10 +274,30 @@ def suitability():
     # You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
                 # Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
                 try:
+                    # Define the system message with the summarized information
+                    system_message = """
+                    You are an expert education bot designed to classify the suitability either Highly Suitable, Moderately Suitable, Slightly Suitable, or Not Suitable for each learning pathway of the user, 
+                    and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability 
+                    of the user to each of the following learning path: Eskwelabs bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path.
+                    
+                    Consider the following details in your responses:
+                    
+                    - **Prerequisites:** Basic to intermediate Python skills, basic statistics and linear algebra, strong analytical and problem-solving abilities.
+                    - **Program Structure:** Duration of a few months, full-time or part-time. Hands-on, project-based learning covering data wrangling, EDA, machine learning, and data visualization.
+                    - **Time Commitment:** Significant time investment required for coursework, self-study, and team collaboration.
+                    - **Cost and Financial Aid:** Tuition varies; financial aid options may be available.
+                    - **Career Outcomes:** High job placement rates, career services, and networking opportunities.
+                    - **Suitability:** Ideal for those passionate about data science, with clear career goals in related fields.
+                    - **Application Process:** Includes a technical assessment and interview.
+                    - **Community and Culture:** Emphasizes collaboration, inclusivity, and strong alumni engagement.
+                    - **Diversity and Inclusion:** Focuses on promoting diversity in tech.
+                    
+                    Use this information to help users determine if they are suitable for the Eskwelabs bootcamp.
+                    """
                     response = openai.chat.completions.create(
                         model="gpt-3.5-turbo",
                         messages=[
-                        	{"role": "system", "content": f"You are an expert education bot designed to classify the suitability either Highly Suitable, Moderately Suitable, Slightly Suitable, or Not Suitable for each learning pathway of the user, and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability of the user to each of the following learning path: Eskwelabs bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path."},
+                        	{"role": "system", "content": system_message},
                             {"role": "user", "content": prompt},
                             # {"role": "assistant", "content": prompt}
                         ]
