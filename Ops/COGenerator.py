@@ -231,7 +231,7 @@ with t2:
                 st.error("Failed to convert HTML to PDF.")
 
 with t1:
-    if 'get_current_markdown' not in st.session_state:
+    if 'get_current_markdown_co' not in st.session_state:
         st.session_state.get_current_markdown_co = ""
     
     def load_course_outline_dataset(spreadsheet):
