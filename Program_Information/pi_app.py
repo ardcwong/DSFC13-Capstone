@@ -84,7 +84,7 @@ class ChatHistory:
 
 @st.cache_resource
 def load_collection():
-    CHROMA_DATA_PATH = 'program_info_2'
+    CHROMA_DATA_PATH = 'program_info_6'
     COLLECTION_NAME = f"{CHROMA_DATA_PATH}_embeddings"
     client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
     openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
@@ -156,11 +156,17 @@ def generate_chatbot_response(context, query, metadata, chat_memory):
         metadata_info = "\n".join([f"File: {meta['description']}" for meta in metadata])
 
     #Prompt with no history
-    prompt = f"Based on the following information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
-
+    # prompt = f"Based on the following information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
     #Prompt with history
+    # if history_text:
+    #     prompt = f"Based on the following conversation history:\n\n{history_text}\n\n{prompt}"
+
+    # UPDATED PROMPTS
     if history_text:
-        prompt = f"Based on the following conversation history:\n\n{history_text}\n\n{prompt}"
+        prompt = f"Based on the following conversation history:\n\n{history_text}\n\nCurrent Information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
+    else:
+        prompt = f"Based on the following information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
+
 
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
