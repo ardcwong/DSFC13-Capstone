@@ -172,7 +172,7 @@ with t2:
             st.session_state['markdowns'] = {}
         if 'title' not in st.session_state:
             st.session_state.title = False
-        AA, BB, CC = st.columns([1,1,1])
+        AA, BB, CC = st.columns([2,0.5,1])
         with AA:
             
 
@@ -213,7 +213,7 @@ with t2:
         with BB:
             # Save markdowns to Google Sheet
             if st.session_state.html_content_co is not "":
-                if st.button("Save", use_container_width = True):
+                if st.button("Update", use_container_width = True):
                     saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'],st.session_state.html_content_co)
                     if saved_:
                         st.success("HTML content saved successfully.")
