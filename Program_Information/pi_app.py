@@ -225,7 +225,7 @@ def show_pi_chat_memory():
 # """, unsafe_allow_html=True)
 # st.markdown("""<br><br>""", unsafe_allow_html=True)
 
-col111, col222 = st.columns([2,8])
+col111, col222 = st.columns([4,6])
 with col111:
     st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
     st.divider()
