@@ -213,7 +213,7 @@ with t2:
     
     pdf = convert_html_to_pdf(st.session_state.html_content_co)
     if pdf:
-        st.download_button(label=f"Download PDF", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
+        st.download_button(label=f"Download PDF", data=pdf, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
     else:
         st.error("Failed to convert HTML to PDF.")
 
@@ -230,3 +230,11 @@ with t1:
         st.markdown("""<h4 style='text-align: left;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!</b></h4>""", unsafe_allow_html=True) 
         for i in range(4):
             st.markdown(df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0], unsafe_allow_html=True)
+            get_current_markdown +=  df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0]
+            
+        for_download_current = collect_all_markdowns(get_current_markdown)
+        pdf_current = convert_html_to_pdf(for_download_current)
+        if pdf_current:
+            st.download_button(label=f"Download PDF", data=pdf, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
+        else:
+            st.error("Failed to convert HTML to PDF.")
