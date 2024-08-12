@@ -227,14 +227,19 @@ with t1:
 
     df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_ops)
     with st.expander("Current Course Outline"):
-        st.markdown("""<h4 style='text-align: left;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!</b></h4>""", unsafe_allow_html=True) 
         get_current_markdown = ""
         for i in range(4):
-            st.markdown(df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0], unsafe_allow_html=True)
             get_current_markdown +=  df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0]
-            
+        
         pdf_current = get_current_markdown
         if pdf_current:
             st.download_button(label=f"Download PDF (Current CO)", data=pdf, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
         else:
             st.error("Failed to convert HTML to PDF.")
+
+        st.markdown("""<h4 style='text-align: left;color: #e76f51;'><b>Course Outline</b></h4>""", unsafe_allow_html=True) 
+        
+        for i in range(4):
+            st.markdown(df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0], unsafe_allow_html=True)
+            
+            
