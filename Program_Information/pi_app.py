@@ -234,7 +234,7 @@ with col111:
     
 
     with st.container(border = True):
-        c1, c2, c3 = st.columns([1,4,1])
+        c1, c2, c3 = st.columns([1,8,1])
         with c2:
             st.session_state.pi_chat_history.show_history_streamlit()
 with col222:
