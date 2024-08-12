@@ -238,16 +238,14 @@ with col111:
                     Whether you're just curious about what the program offers, or you consider applying for a future-proof career in data, this chatbot provides detailed information to guide you, 
                     and can even recommend the perfect education material for your review, tailor-fit on your stated learning style and expertise level (Beginner, Intermediate, or Advanced).</h6>""", unsafe_allow_html=True)
 
-
-    if st.button("Start Over", type = "primary"):
-        st.session_state.pi_chat_history.clear_history()
-        st.session_state.pi_chat_memory = []  # Clear chat memory as well
-    
-
-    with st.container(border = True, height = 600):
+    with st.container(border = True):
         c1, c2, c3 = st.columns([1,4,1])
         with c2:
             st.session_state.pi_chat_history.show_history_streamlit()
+with col333:
+    if st.button("Start Over", type = "primary"):
+        st.session_state.pi_chat_history.clear_history()
+        st.session_state.pi_chat_memory = []  # Clear chat memory as well
     
 
     
