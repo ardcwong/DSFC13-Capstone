@@ -26,6 +26,9 @@ credentials = st.secrets["gcp_service_account"]
 # if "stop" not in st.session_state:
 #     st.session_state.stop = True
 #     nltk.download('stopwords')
+if st.toggle("", value=False, key=None, help=None, on_change=None, args=None, kwargs=None, *, disabled=False, label_visibility="collapsed"):
+    with st.expander("Work Flow: How It Works", expanded = True):
+        st.image('data/DSLPC_WorkFlow')
 
 def remove_stopwords(response):
     stop_words = set(stopwords.words('english'))
