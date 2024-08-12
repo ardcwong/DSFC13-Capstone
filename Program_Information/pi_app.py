@@ -206,34 +206,35 @@ def show_pi_chat_memory():
         content = msg['content']
         st.chat_message(role).write(content)
 
-# Inject CSS to create a fixed container
-st.markdown("""
-    <style>
-    .fixed-container {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: white;
-        z-index: 1000;
+# # Inject CSS to create a fixed container
+# st.markdown("""
+#     <style>
+#     .fixed-container {
+#         position: fixed;
+#         top: 0;
+#         width: 100%;
+#         background-color: white;
+#         z-index: 1000;
 
-    }
-    </style>
+#     }
+#     </style>
     
-    <div class="fixed-container">
-        <h1><br>Eskwelabs Data Science Fellowship Information Bot</h1>
-    </div>
-""", unsafe_allow_html=True)
+#     <div class="fixed-container">
+#         <h1><br>Eskwelabs Data Science Fellowship Information Bot</h1>
+#     </div>
+# """, unsafe_allow_html=True)
 # st.markdown("""<br><br>""", unsafe_allow_html=True)
 
-
-# st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
-st.divider()
-st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
-            <br><br>
-            This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that you may have to understand all aspects of the Eskwelabs DSF program. 
-            Whether you're just curious about what the program offers, or you consider applying for a future-proof career in data, this chatbot provides detailed information to guide you, 
-            and can even recommend the perfect education material for your review, tailor-fit on your stated learning style and expertise level (Beginner, Intermediate, or Advanced).</h5>""", unsafe_allow_html=True)
-st.divider()           
+col111, col222 = st.columns([2,8])
+with col111:
+    st.markdown(f"<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>", unsafe_allow_html=True)
+    st.divider()
+    st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Welcome to the Eskwelabs Data Science Fellowship Information Bot!" </b></i><i>
+                <br><br>
+                This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that you may have to understand all aspects of the Eskwelabs DSF program. 
+                Whether you're just curious about what the program offers, or you consider applying for a future-proof career in data, this chatbot provides detailed information to guide you, 
+                and can even recommend the perfect education material for your review, tailor-fit on your stated learning style and expertise level (Beginner, Intermediate, or Advanced).</h5>""", unsafe_allow_html=True)
+    st.divider()           
 with st.container():
     st.session_state.pi_chat_history.show_history_streamlit()
     
