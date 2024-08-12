@@ -172,7 +172,7 @@ with t2:
             st.session_state['markdowns'] = {}
         if 'title' not in st.session_state:
             st.session_state.title = False
-        AA, BB, CC = st.columns([2,0.5,1])
+        AA, BB, CC = st.columns([2,1,1])
         with AA:
             
 
