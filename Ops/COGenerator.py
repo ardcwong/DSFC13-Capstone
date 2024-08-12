@@ -233,8 +233,9 @@ with t1:
 
 
     df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_ops)
+    get_current_markdown = ""
     with st.expander("Current Course Outline", expanded=True):
-        get_current_markdown = ""
+        
         for i in range(4):
             get_current_markdown +=  df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0]
         
