@@ -224,11 +224,12 @@ with t2:
 
         
         with CC:
-            pdf = convert_html_to_pdf(st.session_state.html_content_co)
-            if pdf:
-                st.download_button(label=f"Download PDF", data=pdf, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
-            else:
-                st.error("Failed to convert HTML to PDF.")
+            if st.session_state.html_content_co is not "":
+                pdf = convert_html_to_pdf(st.session_state.html_content_co)
+                if pdf:
+                    st.download_button(label=f"Download PDF", data=pdf, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
+                else:
+                    st.error("Failed to convert HTML to PDF.")
 
 with t1:
     if 'get_current_markdown_co' not in st.session_state:
