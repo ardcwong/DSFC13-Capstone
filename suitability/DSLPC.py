@@ -228,12 +228,12 @@ def suitability():
                   
               
               
-                  if f3.button("👍🏻", use_container_width = True, help = "This response helpful"):
+                  if f2.button("👍🏻", use_container_width = True, help = "This response helpful"):
                       feedback_score = 1
                       sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
                       st.session_state.feedback_up = feedback_score
                       st.rerun() 
-                  elif f4.button("👎🏻", use_container_width = True, help = "This response unhelpful"):
+                  elif f3.button("👎🏻", use_container_width = True, help = "This response unhelpful"):
                       feedback_score = 0
                       sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
                       st.session_state.feedback_down = feedback_score
