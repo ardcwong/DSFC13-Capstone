@@ -6,7 +6,7 @@ import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import chromadb
 from chromadb.utils import embedding_functions
-
+import base64
 import pandas as pd
 import matplotlib.pyplot as plt
 import nltk
