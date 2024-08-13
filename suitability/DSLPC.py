@@ -188,9 +188,9 @@ def suitability():
                 
             for role, message in st.session_state.chat_history:
                 if role == "User":
-                    show_user_answer_lpc(message_text,avatar_url_user)
+                    show_user_answer_lpc(message,avatar_url_user)
                 elif role == "AI":
-                    show_ai_response_lpc(message_text,avatar_lpc)
+                    show_ai_response_lpc(message,avatar_lpc)
             
             
        
@@ -272,9 +272,9 @@ def suitability():
             # Display the entire chat history with user responses on the right
             for role, message in st.session_state.chat_history:
                 if role == "User":
-                    show_user_answer_lpc(message_text,avatar_url_user)
+                    show_user_answer_lpc(message,avatar_url_user)
                 elif role == "AI":
-                    show_ai_response_lpc(message_text,avatar_lpc)
+                    show_ai_response_lpc(message,avatar_lpc)
             
            
         with st.container():
