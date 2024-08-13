@@ -440,7 +440,7 @@ with col_main2:
       :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
 
 if st.session_state.BeginAssessment == True:  
-  st.markdown("<br><br><br>", unsafe_allow_html = True)       
+  st.markdown("<br>", unsafe_allow_html = True)       
   
   ba00, ba01, ba02, ba03, ba04 = st.columns([1,1,1,1,1])
   with ba02:
