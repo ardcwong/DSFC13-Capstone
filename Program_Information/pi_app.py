@@ -346,7 +346,7 @@ with col222:
 
 
   
-  if st.session_state.question_pi_bool = True:       
+  if st.session_state.question_pi_bool == True:       
     st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
     update_chat_memory()
     # if st.session_statest.session_state.question_pi_bool = False
