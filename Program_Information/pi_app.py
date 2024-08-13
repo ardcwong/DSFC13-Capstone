@@ -340,13 +340,13 @@ with col222:
           st.rerun()
 
 
-
-  # if st.session_state.button_clicked_pi == True:
   
-  # if st.session_state.question_pi == "":       
-  #   st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
-  #   update_chat_memory()
-  #   # st.session_state.question_pi == ""
+  if st.session_state.question_pi is not "":       
+    st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
+    if st.session_state.response_pi:
+      update_chat_memory()
+      st.session_state.question_pi = ""
+    # st.session_state.question_pi == ""
     
 
 
