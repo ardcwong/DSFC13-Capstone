@@ -78,12 +78,12 @@ def show_user_question(message_text,avatar_url):
 def ai_avatar():
   # Load the image and convert it to base64
   with open('data/avatar_ai.png', 'rb') as image_file:
-    encoded_string = base64.b64encode(image_file.read()).decode()
+    encoded_string_ai = base64.b64encode(image_file.read()).decode()
   # Base64 encoded image string from the previous step
-  avatar_base64 = encoded_string  # This is the base64 string you got earlier
+  avatar_base64_ai = encoded_string_ai  # This is the base64 string you got earlier
   
   # Construct the base64 image string for use in HTML
-  avatar_ai = f'data:image/png;base64,{avatar_base64}'
+  avatar_ai = f'data:image/png;base64,{avatar_base64_ai}'
   return avatar_ai
 
 avatar_ai = user_avatar()
@@ -98,7 +98,7 @@ def show_ai_response(message_text,avatar_ai):
       <div style='flex-shrink: 0;'>
           <img src='{avatar_ai}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
       </div>
-      <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-left: 10px; display: inline-block; text-align: left; max-width: 60%;'>
+      <div style='background-color: #FCFCFC; padding: 10px 15px; border-radius: 10px; margin-left: 10px; display: inline-block; text-align: left; max-width: 60%;'>
           <span style='font-size: 16px;'>{message_text}</span>
       </div>
 
