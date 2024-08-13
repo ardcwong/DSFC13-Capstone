@@ -152,35 +152,40 @@ st.write("Ask any question related to the bootcamp, and get recommendations and 
 if 'button_clicked' not in st.session_state:
     st.session_state.button_clicked = False
 
-# Function to handle button clicks and generate a response
-def handle_button_click(question):
-    st.session_state.button_clicked = True
-    st.session_state.response = generate_conversational_response(question, collection)
+    
+# Initialize session state for the selected starter question
+if 'starter_question' not in st.session_state:
+  st.session_state.starter_question = ""
 
 # Add conversation starters if no button has been clicked yet
 if st.session_state.button_clicked == False:
     st.write("Choose a question to get started:")
     
     if st.button("What is RAG in LLM?"):
-      handle_button_click("What is RAG in LLM?")
+      st.session_state.starter_question = "What is RAG in LLM?"
+      st.session_state.button_clicked = True
       st.rerun()
         
     
     if st.button("What is Bag of Words?"):
-      handle_button_click("What is Bag of Words?")
+      st.session_state.starter_question = "What is Bag of Words?"
+      st.session_state.button_clicked = True
       st.rerun()
     
     if st.button("What is Recall in Machine Learning?"):
-      handle_button_click("What is Recall in Machine Learning?")
+      st.session_state.starter_question = "What is Recall in Machine Learning?"
+      st.session_state.button_clicked = True
       st.rerun()
 
 # Display the response if a button has been clicked
 if st.session_state.button_clicked == True:
+    st.session_state.response = generate_conversational_response(question, collection)
     st.write(st.session_state.response)
 
 # Allow the user to enter their own question after clicking a starter question
 user_input = st.chat_input("Or enter your question:")
 if user_input:
+    st.session_state.button_clicked = True # removes the conversation starters
     response = generate_conversational_response(user_input, collection)
     st.write(response)
 
