@@ -281,7 +281,11 @@ def show_pi_chat_memory():
     for msg in st.session_state.pi_chat_memory:
         role = msg['role']
         content = msg['content']
-        st.chat_message(role).write(content)
+        # st.chat_message(role).write(content)
+        if role == "user":
+            show_user_answer_pi(content,avatar_url_user)
+        elif role == "assistant":
+            show_ai_response_pi(content,avatar_lpc)
 
 
 
