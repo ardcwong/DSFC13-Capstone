@@ -229,12 +229,12 @@ with ba2:
       # st.chat_message("AI").write(st.session_state.response)
       show_ai_response(st.session_state.response,avatar_ai)
   
-  # Allow the user to enter their own question after clicking a starter question
-  user_input = st.chat_input("Or enter your question:")
-  if user_input:
-      st.session_state.button_clicked = True
-      st.session_state.question = user_input
-      st.rerun()
+# Allow the user to enter their own question after clicking a starter question
+user_input = st.chat_input("Or enter your question:")
+if user_input:
+    st.session_state.button_clicked = True
+    st.session_state.question = user_input
+    st.rerun()
 
 
 # Sample chat message content
