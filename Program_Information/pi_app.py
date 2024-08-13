@@ -328,7 +328,7 @@ with col222:
   cc11, cc22, cc33 = st.columns([1,10,1])
   with cc22:
     st.markdown(f"""<h6 style='text-align: center;'><i>This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that you may have to understand all aspects of the Eskwelabs DSF program.</h6>""", unsafe_allow_html=True)
-    # st.session_state.pi_chat_history.show_history_streamlit()   
+    st.session_state.pi_chat_history.show_history_streamlit()   
 
 
   if st.session_state.button_clicked_pi == False:
@@ -368,10 +368,10 @@ with col222:
 
   # Display the response 
   if st.session_state.question_pi is not "":
-      show_user_answer_pi(st.session_state.question_pi, avatar_url_user_pi)
+      # show_user_answer_pi(st.session_state.question_pi, avatar_url_user_pi)
       st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
       # st.chat_message("AI").write(st.session_state.response_pi)
-      show_ai_response_pi(st.session_state.response_pi,avatar_pi)
+      # show_ai_response_pi(st.session_state.response_pi,avatar_pi)
 
 
 
