@@ -61,7 +61,7 @@ def show_user_answer_lpc(message_text,avatar_url_user):
 @st.cache_data
 def ai_avatar_lpc():
   # Load the image and convert it to base64
-  with open('data/avatar_ai.png', 'rb') as image_file_lpc:
+  with open('data/avatar_ai_lpc.png', 'rb') as image_file_lpc:
     encoded_string_lpc = base64.b64encode(image_file_lpc.read()).decode()
   # Base64 encoded image string from the previous step
   avatar_base64_lpc = encoded_string_lpc  # This is the base64 string you got earlier
@@ -438,20 +438,25 @@ with col_main2:
         2. Get Classified: *Based on your answers, our classifier bot will evaluate and determine the most appropriate learning pathway for you:* 
         :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
 
-if st.session_state.BeginAssessment == True:    
-  with st.container(border=None):
-      s1, s2, s3 = st.columns([1,4,1])
-      with s2:
-          st.markdown("")
-          st.markdown("")
-          st.markdown(f"<h6 style='text-align: center;'><b>Start Your Journey</b></h6>", unsafe_allow_html=True)
-          st.markdown("""<h5 style='text-align: center;color: #e76f51;'><b><i>Simply click "Begin Assessment" </b></i><i>
-          and follow the prompts to receive your personalized learning pathway recommendation. Empower your data science career with the right guidance tailored to your needs!.</h5>""", unsafe_allow_html=True)
-          cs1,cs2,cs3 = st.columns([1,1,1])
-          with cs2:
-              if st.button("Begin Assessment", type="primary", use_container_width = True):
-                  st.session_state.BeginAssessment = False
-                  st.rerun()
+if st.session_state.BeginAssessment == True:  
+  st.markdown("<br><br><br>", unsafe_allow_html = True)       
+  
+  ba00, ba01, ba02, ba03, ba04 = st.columns([1,1,1,1,1])
+  with ba02:
+    st.image('data/avatar_ai_lpc.png', use_column_width =True)
+
+  s1, s2, s3 = st.columns([1,4,1])
+  with s2:
+      st.markdown("")
+      st.markdown("")
+      st.markdown(f"<h6 style='text-align: center;'><b>Start Your Journey</b></h6>", unsafe_allow_html=True)
+      st.markdown("""<h6 style='text-align: center;color: #e76f51;'><b><i>Simply click "Begin Assessment" </b></i><i>
+      and follow the prompts to receive your personalized learning pathway recommendation. Empower your data science career with the right guidance tailored to your needs!.</h6>""", unsafe_allow_html=True)
+      cs1,cs2,cs3 = st.columns([1,1,1])
+      with cs2:
+          if st.button("Begin Assessment", type="primary", use_container_width = True):
+              st.session_state.BeginAssessment = False
+              st.rerun()
 else: 
 # st.session_state.BeginAssessment == False:
   suitability()               
