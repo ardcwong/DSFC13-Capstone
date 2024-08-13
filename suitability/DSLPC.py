@@ -210,14 +210,16 @@ def suitability():
           
               
               if st.session_state.feedback_up == 1:
-                  st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                  st.markdown("<h6 style='text-align: center;'>You selected 👍🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
-                  st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+                  # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+                  show_ai_response_lpc("You selected 👍🏻 Thanks for your feedback!",avatar_lpc)
+                  # st.markdown("<h6 style='text-align: center;'>You selected 👍🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
+                  # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
           
               elif st.session_state.feedback_up == 0:
-                  st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                  st.markdown("<h6 style='text-align: center;'>You selected 👎🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
-                  st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+                  # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
+                  show_ai_response_lpc("You selected 👎🏻 Thanks for your feedback",avatar_lpc)
+                  # st.markdown("<h6 style='text-align: center;'>You selected 👎🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
+                  # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
               else:
                   # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
                   show_ai_response_lpc("Could you please give a thumbs up if you find these recommendations specific and tailored to your responses, or a thumbs down if you do not?",avatar_lpc)
@@ -243,7 +245,7 @@ def suitability():
                   col1, col2, col3 = st.columns([1,6,1])
                   with col2:
                   
-                      st.markdown("<h6 style='text-align: center;color: #e76f51;'>Data Science Fellowship (DSF) Program by Eskwelabs</h6>", unsafe_allow_html=True)
+                      st.markdown("<h6 style='text-align: center;color: #e76f51;'><br><br>Data Science Fellowship (DSF) Program by Eskwelabs</h6>", unsafe_allow_html=True)
                       st.markdown("""<div style='text-align: center;'>This program offers a comprehensive curriculum designed to equip 
                       participants with practical skills through hands-on projects and sprints. The program includes projects on customer segmentation, 
                       credit fraud detection, recommender engines, and generative AI, each aiming to provide actionable insights and enhance strategic 
