@@ -202,6 +202,11 @@ if 'button_clicked' not in st.session_state:
 if 'question' not in st.session_state:
   st.session_state.question = ""
   
+with ba1:
+  if st.button("🟧", help = "Start Over"):
+    st.session_state.button_clicked = False
+    st.session_state.question = ""
+  
 with ba2:
   # Add conversation starters if no button has been clicked yet
   if st.session_state.button_clicked == False:
