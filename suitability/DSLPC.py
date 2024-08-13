@@ -260,20 +260,20 @@ def suitability():
         lpc1, lpc2, lpc3 = st.columns([1,4,1])
         
         with lpc2:
-          with st.container(height=450, border=None): 
+          # with st.container(height=450, border=None): 
               
-      
-              # Initialize the first question in the chat history if not already done
-              if st.session_state.question_index == 0 and not st.session_state.chat_history:
-                  first_question = questions[st.session_state.question_index]
-                  st.session_state.chat_history.append(("AI", first_question))
-      
-              # Display the entire chat history with user responses on the right
-              for role, message in st.session_state.chat_history:
-                  if role == "User":
-                      show_user_answer_lpc(message,avatar_url_user)
-                  elif role == "AI":
-                      show_ai_response_lpc(message,avatar_lpc)
+    
+            # Initialize the first question in the chat history if not already done
+            if st.session_state.question_index == 0 and not st.session_state.chat_history:
+                first_question = questions[st.session_state.question_index]
+                st.session_state.chat_history.append(("AI", first_question))
+    
+            # Display the entire chat history with user responses on the right
+            for role, message in st.session_state.chat_history:
+                if role == "User":
+                    show_user_answer_lpc(message,avatar_url_user)
+                elif role == "AI":
+                    show_ai_response_lpc(message,avatar_lpc)
               
              
           # with st.container():
@@ -387,7 +387,7 @@ if st.session_state.question_index < len(questions):
         if st.session_state.question_index < len(questions):
             next_question = questions[st.session_state.question_index]
             st.session_state.chat_history.append(("AI", next_question))
-        st.rerun(scope="fragment")
+        st.rerun(scope)
 else:
     if st.session_state.responses and st.session_state.question_index == len(questions):
         classification = get_classification()
