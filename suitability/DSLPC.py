@@ -426,7 +426,7 @@ if 'BeginAssessment' not in st.session_state:
   
 col_main1, col_main2, col_main3 = st.columns([1,4,1])
 with col_main2:
-  st.markdown(f"<h1 style='text-align: center;'>Data Science Learning Path Classifier</h1>", unsafe_allow_html=True)
+  st.write(f"<h1 style='text-align: center;'>Data Science Learning Path Classifier</h1>", unsafe_allow_html=True)
   cc1, cc2, cc3 = st.columns([1,10,1])
   with cc2:
   
@@ -452,8 +452,8 @@ if st.session_state.BeginAssessment == True:
   with s2:
       st.markdown("")
       st.markdown("")
-      st.markdown(f"<h6 style='text-align: center;'><b>Start Your Journey</b></h6>", unsafe_allow_html=True)
-      st.markdown("""<h6 style='text-align: center;color: #e76f51;'><b><i>Simply click "Begin Assessment" </b></i><i>
+      st.write(f"<h6 style='text-align: center;'><b>Start Your Journey</b></h6>", unsafe_allow_html=True)
+      st.write("""<h6 style='text-align: center;color: #e76f51;'><b><i>Simply click "Begin Assessment" </b></i><i>
       and follow the prompts to receive your personalized learning pathway recommendation. Empower your data science career with the right guidance tailored to your needs!.</h6>""", unsafe_allow_html=True)
       cs1,cs2,cs3 = st.columns([1,1,1])
       with cs2:
