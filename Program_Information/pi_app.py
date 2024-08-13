@@ -309,31 +309,88 @@ def show_pi_chat_memory():
 #     </div>
 # """, unsafe_allow_html=True)
 # st.markdown("""<br>""", unsafe_allow_html=True)
+
+# Initialize session state for button clicks
+if 'button_clicked_pi' not in st.session_state:
+    st.session_state.button_clicked_pi = False
+
+    
+# Initialize session state for question
+if 'question_pi' not in st.session_state:
+    st.session_state.question_pi = ""
+
+
+
+
 col111, col222, col333 = st.columns([1,4,1])
 with col222:
   st.markdown("""<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>""", unsafe_allow_html=True)
   cc11, cc22, cc33 = st.columns([1,10,1])
   with cc22:
-  
-
     st.markdown(f"""<h6 style='text-align: center;'><i>This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that you may have to understand all aspects of the Eskwelabs DSF program.</h6>""", unsafe_allow_html=True)
-  
+    st.session_state.pi_chat_history.show_history_streamlit()   
+
+
+  if st.session_state.button_clicked_pi == False:
+
+      st.markdown("<br><br><br><br><br>", unsafe_allow_html = True)       
+      
+      bb00, bb01, bb02, bb03, bb04 = st.columns([1,1,1,1,1])
+      with b02:
+        st.image('data/avatar_ai_pi.png', use_column_width =True)
+      st.markdown(f"<h6 style='text-align: center;'><br><br>Choose a question to get started or ask Eskwelabs below:</h6>", unsafe_allow_html=True)
+      bb0, bb1, bb2, bb3, bb4 = st.columns([1,1,1,1,1])
+      with bb1:
+        if st.button("What are the learning outcomes of DSF Program?", use_container_width = True):
+          st.session_state.question_pi = "What is RAG in LLM?"
+          st.session_state.button_clicked = True
+          st.rerun()
+          
+      with bb3:
+        if st.button("What is the DSF program guide about?", use_container_width = True):
+          st.session_state.question_pi = "What is Bag of Words?"
+          st.session_state.button_clicked = True
+          st.rerun()
+          
+      with bb2:
+        if st.button("What is pathfinder exam? ", use_container_width = True):
+          st.session_state.question_pi = "What is Recall in Machine Learning?"
+          st.session_state.button_clicked = True
+          st.rerun()
+
+
+
+
+
+
+
+
+
+  # Display the response 
+  if st.session_state.question_pi is not "":
+      # show_user_question(st.session_state.question_pi, avatar_user)
+      st.session_state.response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
+      # st.chat_message("AI").write(st.session_state.response)
+      show_ai_response(st.session_state.response,avatar_ai)
+
+
+
+
 with col333:
     # st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
     if st.button("Start Over", type = "primary", use_container_width = True):
         st.session_state.pi_chat_history.clear_history()
         st.session_state.pi_chat_memory = []  # Clear chat memory as well    
-    
-with st.container():
-    c1, c2 = st.columns([8,2])
-    with c1:
-        st.session_state.pi_chat_history.show_history_streamlit()   
+
+  
+
         
 user_query = st.chat_input("Ask Eskwelabs")
 if user_query:
-    response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
+    st.session_state.button_clicked_pi = True
+    st.session_state.question_pi = user_query 
     update_chat_memory()  # Update chat memory with the latest messages
-    # st.rerun()
+    st.rerun()
 
 
 
