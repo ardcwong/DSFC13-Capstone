@@ -369,7 +369,7 @@ if user_query:
 
 
     
-
+st.write(st.session_state.question_pi)
 
 
 
