@@ -72,15 +72,18 @@ def show_user_question(message_text):
   # Markdown to replicate the chat message
   avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
   st.markdown(f"""
-  <div style='display: flex; align-items: center; padding: 10px;'> 
+  <div style='display: flex; align-items: center; padding: 10px; justify-content: flex-end;'> 
+      <div style='background-color: #f0f0f0; padding: 10px 15px; border-radius: 10px; margin-right: 10px; flex-grow: 1; text-align: right;'>
+          <span style='font-size: 16px; color: #333;'>{message_text}</span> 
+      </div> 
       <div style='flex-shrink: 0;'> 
           <img src='{avatar_url}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
       </div>
-      <div style='background-color: #f0f0f0; padding: 10px 15px; border-radius: 10px; margin-left: 10px; flex-grow: 1;'>
-          <span style='font-size: 16px; color: #333;'>{message_text}</span> 
-      </div> 
+
   </div> 
   """, unsafe_allow_html=True)
+
+
 
 # Function to find the best matching data in the collection based on user input
 def return_best_eskdata(user_input, collection, n_results=3):
