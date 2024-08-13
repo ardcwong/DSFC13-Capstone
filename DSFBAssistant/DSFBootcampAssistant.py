@@ -205,12 +205,13 @@ if 'question' not in st.session_state:
 with ba2:
   # Add conversation starters if no button has been clicked yet
   if st.session_state.button_clicked == False:
-
-      b0, b1, b2, b3, b4 = st.columns([1,1,1,1,1])
-      st.markdown("<br><br><br><br><br>", unsafe_allow_html = True)
-      with b2:
-        st.image('data/avatar_ai.png')
+      b01, b02, b03 = st.columns([])
+      with b02:
+        st.image('data/avatar_ai.png', use_container_width =True)
+      
+      st.markdown("<br><br><br><br><br>", unsafe_allow_html = True)       
       st.markdown(f"<h6 style='text-align: center;'>Choose a question to get started:</h6>", unsafe_allow_html=True)
+      b0, b1, b2, b3, b4 = st.columns([1,1,1,1,1])
       with b1:
         if st.button("What is RAG in LLM?", use_container_width = True):
           st.session_state.question = "What is RAG in LLM?"
