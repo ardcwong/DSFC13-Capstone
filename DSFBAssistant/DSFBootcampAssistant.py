@@ -188,7 +188,7 @@ st.write("Ask any question related to the bootcamp, and get recommendations and 
 
 
 
-ba1, ba2, ba3 = st.columns([1,6,1])
+ba1, ba2, ba3 = st.columns([1,4,1])
 
 
 # Initialize session state for button clicks
