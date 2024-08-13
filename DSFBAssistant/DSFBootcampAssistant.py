@@ -178,8 +178,7 @@ def generate_conversational_response(user_input, collection):
 
 # Streamlit UI
 # st.title("Data Science Bootcamp Assistant")
-st.markdown(f"<h1 style='text-align: center;'>Data Science Bootcamp Assistant</h1>", unsafe_allow_html=True)
-st.markdown(f"<h6 style='text-align: center;'><i>Ask any question related to the bootcamp, and get recommendations and answers.</i></h6>", unsafe_allow_html=True)
+
 # st.write("Ask any question related to the bootcamp, and get recommendations and answers.")
 # with st.container():
 #   user_input = st.chat_input("Enter your question:")
@@ -203,11 +202,13 @@ if 'question' not in st.session_state:
   st.session_state.question = ""
   
 with ba1:
-  if st.button("🟧", help = "Start Over"):
+  if st.button(" ", help = "Start Over", type = "primary"):
     st.session_state.button_clicked = False
     st.session_state.question = ""
   
 with ba2:
+  st.markdown(f"<h1 style='text-align: center;'>Data Science Bootcamp Assistant</h1>", unsafe_allow_html=True)
+  st.markdown(f"<h6 style='text-align: center;'><i>Ask any question related to the bootcamp, and get recommendations and answers.</i></h6>", unsafe_allow_html=True)
   # Add conversation starters if no button has been clicked yet
   if st.session_state.button_clicked == False:
 
