@@ -261,6 +261,7 @@ def chatbot_response(user_query, collection, chat_history, chat_memory):
     response = generate_chatbot_response(context, user_query, [doc['metadata'] for doc in retrieved_docs], chat_memory)
     
     chat_history.add_message("assistant", response)
+    st.session_state.question_pi_bool = False
     return response
 
 
@@ -298,7 +299,8 @@ if 'button_clicked_pi' not in st.session_state:
 if 'question_pi' not in st.session_state:
     st.session_state.question_pi = ""
 
-
+if 'question_pi_bool' not in st.session_state:
+    st.session_state.question_pi_bool = False
 
 
 col111, col222, col333 = st.columns([1,4,1])
@@ -325,27 +327,29 @@ with col222:
         if st.button("What are the learning outcomes of DSF Program?", use_container_width = True):
           st.session_state.question_pi = "What are the learning outcomes of the DSF program?"
           st.session_state.button_clicked_pi = True
+          st.session_state.question_pi_bool = True
           st.rerun()
           
       with bb3:
         if st.button("What is the DSF program guide about?", use_container_width = True):
           st.session_state.question_pi = "What is the DSF program guide about?"
           st.session_state.button_clicked_pi = True
+          st.session_state.question_pi_bool = True
           st.rerun()
           
       with bb2:
         if st.button("What is pathfinder exam? ", use_container_width = True):
           st.session_state.question_pi = "What is pathfinder exam?"
           st.session_state.button_clicked_pi = True
+          st.session_state.question_pi_bool = True
           st.rerun()
 
 
   
-  if st.session_state.question_pi is not "":       
+  if st.session_state.question_pi_bool = True:       
     st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
-    if st.session_state.response_pi:
-      update_chat_memory()
-      st.session_state.question_pi = ""
+    update_chat_memory()
+    # if st.session_statest.session_state.question_pi_bool = False
     # st.session_state.question_pi == ""
     
 
