@@ -317,33 +317,27 @@ with col222:
       bb00, bb01, bb02, bb03, bb04 = st.columns([1,1,1,1,1])
       with bb02:
         st.image('data/avatar_ai_pi.png', use_column_width =True)
-      # st.markdown(f"<h6 style='text-align: center;'><br><br>Choose a question to get started or ask Eskwelabs below:</h6>", unsafe_allow_html=True)
-      # bb0, bb1, bb2, bb3, bb4 = st.columns([1,1,1,1,1])
-      # with bb1:
-      #   if st.button("What are the learning outcomes of DSF Program?", use_container_width = True):
-      #     st.session_state.question_pi = "What are the learning outcomes of the DSF program?"
-      #     st.session_state.button_clicked_pi = True
-      #     st.rerun()
+      st.markdown(f"<h6 style='text-align: center;'><br><br>Choose a question to get started or ask Eskwelabs below:</h6>", unsafe_allow_html=True)
+      bb0, bb1, bb2, bb3, bb4 = st.columns([1,1,1,1,1])
+      with bb1:
+        if st.button("What are the learning outcomes of DSF Program?", use_container_width = True):
+          st.session_state.question_pi = "What are the learning outcomes of the DSF program?"
+          st.session_state.button_clicked_pi = True
+          st.rerun()
           
-      # with bb3:
-      #   if st.button("What is the DSF program guide about?", use_container_width = True):
-      #     st.session_state.question_pi = "What is the DSF program guide about?"
-      #     st.session_state.button_clicked_pi = True
-      #     st.rerun()
+      with bb3:
+        if st.button("What is the DSF program guide about?", use_container_width = True):
+          st.session_state.question_pi = "What is the DSF program guide about?"
+          st.session_state.button_clicked_pi = True
+          st.rerun()
           
-      # with bb2:
-      #   if st.button("What is pathfinder exam? ", use_container_width = True):
-      #     st.session_state.question_pi = "What is pathfinder exam?"
-      #     st.session_state.button_clicked_pi = True
-      #     st.rerun()
+      with bb2:
+        if st.button("What is pathfinder exam? ", use_container_width = True):
+          st.session_state.question_pi = "What is pathfinder exam?"
+          st.session_state.button_clicked_pi = True
+          st.rerun()
 
-  # if st.session_state.question_pi is not "":
-  #   update_chat_memory()
-  #   # show_user_answer_pi(st.session_state.question_pi, avatar_url_user_pi)
-  #   st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
-  #   # st.chat_message("AI").write(st.session_state.response_pi)
-  #   # show_ai_response_pi(st.session_state.response_pi,avatar_pi)
-  #   st.rerun()
+
 
 
 
@@ -362,13 +356,19 @@ with col333:
 user_query = st.chat_input("Ask Eskwelabs")
 if user_query:
     st.session_state.button_clicked_pi = True
-    st.session_state.question_pi = user_query 
-    response = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
+    response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
     update_chat_memory()
-      # Display the response 
 
-      # Update chat memory with the latest messages
-    # st.rerun()
+
+if st.session_state.question_pi is not "":
+    
+    # show_user_answer_pi(st.session_state.question_pi, avatar_url_user_pi)
+    st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
+    # st.chat_message("AI").write(st.session_state.response_pi)
+    # show_ai_response_pi(st.session_state.response_pi,avatar_pi)
+    update_chat_memory()
+    st.session_state.question_pi = ""
+    st.rerun()
 
 
 
