@@ -383,6 +383,7 @@ with col333:
         st.session_state.pi_chat_memory = []  # Clear chat memory as well   
         st.session_state.button_clicked_pi = False
         st.session_state.question_pi = ""
+        st.rerun()
         
 
   
