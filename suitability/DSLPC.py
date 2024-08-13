@@ -475,7 +475,7 @@ if st.session_state.BeginAssessment == True:
       with cs2:
           if st.button("Begin Assessment", type="primary", use_container_width = True):
               st.session_state.BeginAssessment = False
-              st.rerun()
+              # st.rerun()
 else: 
 # st.session_state.BeginAssessment == False:
   suitability()               
