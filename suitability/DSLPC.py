@@ -256,9 +256,7 @@ def suitability():
     
     
     else:
-    
-    
-    
+
         lpc1, lpc2, lpc3 = st.columns([1,4,1])
         
         with lpc2:
@@ -497,11 +495,11 @@ with col_main3:
 
         
 
-if st.toggle("Show Work Flow", label_visibility="collapsed"):
-    wf1, wf2 = st.columns([8,2])
-    with wf1:
-        with st.expander("Work Flow: How It Actually Works", expanded = True):
-            st.image('data/DSLPC_WorkFlow.png')
+# if st.toggle("Show Work Flow", label_visibility="collapsed"):
+#     wf1, wf2 = st.columns([8,2])
+#     with wf1:
+#         with st.expander("Work Flow: How It Actually Works", expanded = True):
+#             st.image('data/DSLPC_WorkFlow.png')
 
 
 
