@@ -178,8 +178,8 @@ def suitability():
         # Display the entire chat history with user responses on the right
         # for role, message in st.session_state.chat_history:
         col_main11, col_main22, col_main33 = st.columns([1,4,1])    
-          with col_main22:
-          tab1, tab2 = st.tabs(["Suitability and Recommendation", "Your Responses"])
+        with col_main22:
+        tab1, tab2 = st.tabs(["Suitability and Recommendation", "Your Responses"])
           with tab2:
               # Display the entire chat history with user responses on the right
               # for role, message in st.session_state.chat_history:
