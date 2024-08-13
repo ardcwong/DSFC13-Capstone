@@ -343,19 +343,19 @@ with col222:
       with bb1:
         if st.button("What are the learning outcomes of DSF Program?", use_container_width = True):
           st.session_state.question_pi = "What is RAG in LLM?"
-          st.session_state.button_clicked = True
+          st.session_state.button_clicked_pi = True
           st.rerun()
           
       with bb3:
         if st.button("What is the DSF program guide about?", use_container_width = True):
           st.session_state.question_pi = "What is Bag of Words?"
-          st.session_state.button_clicked = True
+          st.session_state.button_clicked_pi = True
           st.rerun()
           
       with bb2:
         if st.button("What is pathfinder exam? ", use_container_width = True):
           st.session_state.question_pi = "What is Recall in Machine Learning?"
-          st.session_state.button_clicked = True
+          st.session_state.button_clicked_pi = True
           st.rerun()
 
 
@@ -369,9 +369,9 @@ with col222:
   # Display the response 
   if st.session_state.question_pi is not "":
       # show_user_question(st.session_state.question_pi, avatar_user)
-      st.session_state.response = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
-      # st.chat_message("AI").write(st.session_state.response)
-      show_ai_response_pi(st.session_state.response,avatar_pi)
+      st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
+      # st.chat_message("AI").write(st.session_state.response_pi)
+      show_ai_response_pi(st.session_state.response_pi,avatar_pi)
 
 
 
