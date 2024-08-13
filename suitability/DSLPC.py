@@ -387,7 +387,7 @@ def get_classification():
 # Main logic
 if st.session_state.question_index < len(questions):
     display_question()
-    user_response = st.chat_input("Your response:")
+    user_response = st.chat_input("Your response:", disabled = st.session_state.BeginAssessment)
     if user_response:
         st.session_state.responses.append(user_response)
         st.session_state.chat_history.append(("User", user_response))
