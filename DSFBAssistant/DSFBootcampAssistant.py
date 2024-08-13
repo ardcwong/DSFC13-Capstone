@@ -201,10 +201,10 @@ if 'button_clicked' not in st.session_state:
 if 'question' not in st.session_state:
   st.session_state.question = ""
   
-with ba1:
-  if st.button(" ", help = "Start Over", type = "primary"):
-    st.session_state.button_clicked = False
-    st.session_state.question = ""
+# with ba1:
+#   if st.button(" ", help = "Start Over", type = "primary"):
+#     st.session_state.button_clicked = False
+#     st.session_state.question = ""
   
 with ba2:
   st.markdown(f"<h1 style='text-align: center;'>Data Science Bootcamp Assistant</h1>", unsafe_allow_html=True)
