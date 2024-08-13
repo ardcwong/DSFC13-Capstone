@@ -336,7 +336,7 @@ with col222:
       st.markdown("<br><br><br><br><br>", unsafe_allow_html = True)       
       
       bb00, bb01, bb02, bb03, bb04 = st.columns([1,1,1,1,1])
-      with b02:
+      with bb02:
         st.image('data/avatar_ai_pi.png', use_column_width =True)
       st.markdown(f"<h6 style='text-align: center;'><br><br>Choose a question to get started or ask Eskwelabs below:</h6>", unsafe_allow_html=True)
       bb0, bb1, bb2, bb3, bb4 = st.columns([1,1,1,1,1])
