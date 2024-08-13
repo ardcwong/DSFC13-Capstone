@@ -179,7 +179,7 @@ if st.session_state.button_clicked == False:
 
 # Display the response if a button has been clicked
 if st.session_state.button_clicked == True:
-    st.session_state.response = generate_conversational_response(question, collection)
+    st.session_state.response = generate_conversational_response(st.session_state.starter_question, collection)
     st.write(st.session_state.response)
 
 # Allow the user to enter their own question after clicking a starter question
