@@ -259,8 +259,9 @@ def suitability():
     
     
     
-    
-        with st.container(height=450, border=None):
+        lpc1, lpc2, lpc3 = st.columns([1,4,1])
+        # with st.container(height=450, border=None):
+        with lpc2:
 
               
     
