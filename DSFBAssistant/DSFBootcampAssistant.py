@@ -13,7 +13,7 @@ from openai import OpenAI
 import chromadb
 from chromadb.utils import embedding_functions
 
-api_key = st.secrets["api"]['api_key']e
+api_key = st.secrets["api"]['api_key']
 openai.api_key = api_key
 credentials = st.secrets["gcp_service_account"]
 client = OpenAI(api_key=api_key)
