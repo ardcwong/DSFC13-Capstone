@@ -426,7 +426,7 @@ if 'BeginAssessment' not in st.session_state:
   
 col_main1, col_main2, col_main3 = st.columns([1,4,1])
 with col_main2:
-  st.write(f"<h1 style='text-align: center;'>Data Science Learning Path Classifier</h1>", unsafe_allow_html=True)
+  st.write(f"""<h1 style='text-align: center;'>Data Science Learning Path Classifier</h1>""", unsafe_allow_html=True)
   cc1, cc2, cc3 = st.columns([1,10,1])
   with cc2:
   
