@@ -98,7 +98,7 @@ def show_ai_response(message_text,avatar_ai):
       <div style='flex-shrink: 0;'>
           <img src='{avatar_ai}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
       </div>
-      <div style='background-color: #FCFCFC; padding: 10px 15px; border-radius: 10px; margin-left: 10px; display: inline-block; text-align: left; max-width: 75%;'>
+      <div style='background-color: #FCFCFC; padding: 10px 15px; border-radius: 10px; margin-left: 10px; display: inline-block; text-align: left; max-width: 90%;'>
           <span style='font-size: 16px;'>{message_text}</span>
       </div>
 
