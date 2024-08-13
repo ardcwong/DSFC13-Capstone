@@ -158,24 +158,24 @@ def handle_button_click(question):
     st.session_state.response = generate_conversational_response(question, collection)
 
 # Add conversation starters if no button has been clicked yet
-if not st.session_state.button_clicked:
+if st.session_state.button_clicked == False:
     st.write("Choose a question to get started:")
     
     if st.button("What is RAG in LLM?"):
       handle_button_click("What is RAG in LLM?")
-      
+      st.rerun()
         
     
     if st.button("What is Bag of Words?"):
       handle_button_click("What is Bag of Words?")
-        
+      st.rerun()
     
     if st.button("What is Recall in Machine Learning?"):
       handle_button_click("What is Recall in Machine Learning?")
-        
+      st.rerun()
 
 # Display the response if a button has been clicked
-if st.session_state.button_clicked:
+if st.session_state.button_clicked == True:
     st.write(st.session_state.response)
 
 # Allow the user to enter their own question after clicking a starter question
