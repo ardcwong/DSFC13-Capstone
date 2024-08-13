@@ -368,7 +368,7 @@ if st.session_state.button_clicked_pi == True:
     # show_ai_response_pi(st.session_state.response_pi,avatar_pi)
     update_chat_memory()
     st.session_state.button_clicked_pi = False
-    st.rerun()
+    
 
 
 
