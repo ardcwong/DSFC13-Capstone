@@ -436,10 +436,10 @@ with col_main2:
   
     # with st.expander("**How it works**", expanded=st.session_state.BeginAssessment):
     st.markdown("""
-    **HOW IT WORKS:**<br>
+    <h6>**HOW IT WORKS:**<br>
     1. Answer Questions: *Provide responses to a series of questions about your current experience, learning preferences, time commitment, and budget.*<br>
     2. Get Classified: *Based on your answers, our classifier bot will evaluate and determine the most appropriate learning pathway for you:* 
-    :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
+    :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]</h6>""", unsafe_allow_html=True)
 
 if st.session_state.BeginAssessment == True:  
   st.markdown("<br>", unsafe_allow_html = True)       
