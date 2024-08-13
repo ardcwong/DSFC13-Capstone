@@ -224,16 +224,16 @@ def suitability():
 
           
                   # st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your responses, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
-                  f1,f2,f3,f4 = st.columns([4,4,1,1])
+                  f1,f2,f3,f4 = st.columns([1,1,4,4])
                   
               
               
-                  if f3.button("👍🏻", use_container_width = True, help = "This response helpful"):
+                  if f1.button("👍🏻", use_container_width = True, help = "This response helpful"):
                       feedback_score = 1
                       sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
                       st.session_state.feedback_up = feedback_score
                       st.rerun() 
-                  elif f4.button("👎🏻", use_container_width = True, help = "This response unhelpful"):
+                  elif f2.button("👎🏻", use_container_width = True, help = "This response unhelpful"):
                       feedback_score = 0
                       sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
                       st.session_state.feedback_down = feedback_score
