@@ -178,7 +178,7 @@ def generate_conversational_response(user_input, collection):
 
 # Streamlit UI
 # st.title("Data Science Bootcamp Assistant")
-st.markdown(f"<h2 style='text-align: center;'>Data Science Bootcamp Assistant</h2>", unsafe_allow_html=True)
+st.markdown(f"<h1 style='text-align: center;'>Data Science Bootcamp Assistant</h1>", unsafe_allow_html=True)
 st.markdown(f"<h2 style='text-align: center;'><i>Ask any question related to the bootcamp, and get recommendations and answers.</i></h2>", unsafe_allow_html=True)
 # st.write("Ask any question related to the bootcamp, and get recommendations and answers.")
 # with st.container():
