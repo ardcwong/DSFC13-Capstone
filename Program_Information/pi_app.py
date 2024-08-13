@@ -342,7 +342,7 @@ with col222:
       bb0, bb1, bb2, bb3, bb4 = st.columns([1,1,1,1,1])
       with bb1:
         if st.button("What are the learning outcomes of DSF Program?", use_container_width = True):
-          st.session_state.question_pi = "What is RAG in LLM?"
+          st.session_state.question_pi = "What are the learning outcomes of the DSF program?"
           st.session_state.button_clicked_pi = True
           st.rerun()
           
