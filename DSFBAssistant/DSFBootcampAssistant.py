@@ -179,6 +179,7 @@ if st.session_state.button_clicked == False:
 
 # Display the response 
 if st.session_state.question is not "":
+    st.write(f"🧏‍♂️ {st.session_state.question}")
     st.session_state.response = generate_conversational_response(st.session_state.question, collection)
     st.chat_message("AI").write(st.session_state.response)
 
