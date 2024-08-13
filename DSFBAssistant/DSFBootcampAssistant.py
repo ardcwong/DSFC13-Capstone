@@ -153,41 +153,42 @@ if 'button_clicked' not in st.session_state:
     st.session_state.button_clicked = False
 
     
-# Initialize session state for the selected starter question
-if 'starter_question' not in st.session_state:
-  st.session_state.starter_question = ""
+# Initialize session state for question
+if 'question' not in st.session_state:
+  st.session_state.question = ""
 
 # Add conversation starters if no button has been clicked yet
 if st.session_state.button_clicked == False:
     st.write("Choose a question to get started:")
     
     if st.button("What is RAG in LLM?"):
-      st.session_state.starter_question = "What is RAG in LLM?"
+      st.session_state.question = "What is RAG in LLM?"
       st.session_state.button_clicked = True
       st.rerun()
         
     
     if st.button("What is Bag of Words?"):
-      st.session_state.starter_question = "What is Bag of Words?"
+      st.session_state.question = "What is Bag of Words?"
       st.session_state.button_clicked = True
       st.rerun()
     
     if st.button("What is Recall in Machine Learning?"):
-      st.session_state.starter_question = "What is Recall in Machine Learning?"
+      st.session_state.question = "What is Recall in Machine Learning?"
       st.session_state.button_clicked = True
       st.rerun()
 
-# Display the response if a button has been clicked
-if st.session_state.button_clicked == True:
+# Display the response 
+if st.session_state.question is not "":
     st.session_state.response = generate_conversational_response(st.session_state.starter_question, collection)
-    st.write(st.session_state.response)
+    st.chat_message("AI").write(st.session_state.response)
 
 # Allow the user to enter their own question after clicking a starter question
 user_input = st.chat_input("Or enter your question:")
 if user_input:
-    st.session_state.button_clicked = True # removes the conversation starters
-    response = generate_conversational_response(user_input, collection)
-    st.chat_message("AI").write(response)
+    st.session_state.button_clicked = True
+    st.session_state.question = user_input
+    st.rerun()
+
 
 
     # feedback = st.text_input("Was this answer helpful? Leave your feedback:")
