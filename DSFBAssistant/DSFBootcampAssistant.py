@@ -68,7 +68,7 @@ collection = load_collection_DSFBAssistant()
 #     )
 #     return response.choices[0].message.content
 
-def show_user_question(message_text)
+def show_user_question(message_text):
   # Markdown to replicate the chat message
   avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
   st.markdown(f"""
