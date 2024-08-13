@@ -420,9 +420,12 @@ def suitability():
 #     </div>
 # """, unsafe_allow_html=True)
 
-
-
-st.title("Data Science Learning Path Classifier")
+ba1, ba2, ba3 = st.columns([1,4,1])
+with ba2:
+  st.markdown(f"<h1 style='text-align: center;'>Data Science Learning Path Classifier</h1>", unsafe_allow_html=True)
+  st.markdown(f"<h6 style='text-align: center;'><i>Are you unsure about the best way to pursue your data science journey? Our intelligent classifier bot is here to help! By answering a few simple questions about your background, preferences, and goals, our bot will recommend the most suitable learning pathway for you.</i></h6>", unsafe_allow_html=True)
+  
+# st.title("Data Science Learning Path Classifier")
 # Streamlit app setup
 if 'BeginAssessment' not in st.session_state:
     st.session_state.BeginAssessment = True
