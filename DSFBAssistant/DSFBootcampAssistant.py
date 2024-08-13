@@ -71,18 +71,27 @@ collection = load_collection_DSFBAssistant()
 def show_user_question(message_text):
   # Markdown to replicate the chat message
   avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
+  # st.markdown(f"""
+  # <div style='display: flex; align-items: center; padding: 10px; justify-content: flex-end;'> 
+  #     <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-right: 10px; flex-grow: 1; max-width: 70%; text-align: right;'>
+  #         <span style='font-size: 16px; color: #333;'>{message_text}</span> 
+  #     </div> 
+  #     <div style='flex-shrink: 0;'> 
+  #         <img src='{avatar_url}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
+  #     </div>
+
+  # </div> 
+  # """, unsafe_allow_html=True)
   st.markdown(f"""
-  <div style='display: flex; align-items: center; padding: 10px; justify-content: flex-end;'> 
-      <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-right: 10px; flex-grow: 1; max-width: 70%; text-align: right;'>
-          <span style='font-size: 16px; color: #333;'>{message_text}</span> 
-      </div> 
-      <div style='flex-shrink: 0;'> 
+  <div style='display: flex; align-items: center; padding: 10px; justify-content: flex-end;'>
+      <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-right: 10px; display: inline-block; text-align: right; max-width: 60%;'>
+          <span style='font-size: 16px;'>{message_text}</span>
+      </div>
+      <div style='flex-shrink: 0;'>
           <img src='{avatar_url}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
       </div>
-
-  </div> 
+  </div>
   """, unsafe_allow_html=True)
-
 
 
 # Function to find the best matching data in the collection based on user input
