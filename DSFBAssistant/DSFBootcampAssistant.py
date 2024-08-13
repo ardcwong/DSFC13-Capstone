@@ -13,7 +13,7 @@ from openai import OpenAI
 import chromadb
 from chromadb.utils import embedding_functions
 
-api_key = st.secrets["api"]['api_key']
+api_key = st.secrets["api"]['api_key']e
 openai.api_key = api_key
 credentials = st.secrets["gcp_service_account"]
 client = OpenAI(api_key=api_key)
@@ -163,7 +163,7 @@ if not st.session_state.button_clicked:
     
     if st.button("What is RAG in LLM?"):
         handle_button_click("What is RAG in LLM?")
-      st.rerum()
+        st.rerum()
     
     if st.button("What is Bag of Words?"):
         handle_button_click("What is Bag of Words?")
