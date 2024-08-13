@@ -180,8 +180,8 @@ def suitability():
         tab1, tab2 = st.tabs(["Suitability and Recommendation", "Your Responses"])
         with tab2:
             # Display the entire chat history with user responses on the right
-            for role, message in st.session_state.chat_history:
-                st.chat_message(role).write(message)
+            # for role, message in st.session_state.chat_history:
+            #     st.chat_message(role).write(message)
 
             # for role, message in st.session_state.chat_history:
             #     if st.session_state.chat_history
@@ -393,7 +393,7 @@ if st.session_state.question_index < len(questions):
                 if classification:
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
-                    st.session_state.classification = classification
+                    # st.session_state.classification = classification
                     st.rerun()
         # st.rerun()
 else:
@@ -402,7 +402,7 @@ else:
         if classification:
             st.session_state.chat_history.append(("AI", classification))
             st.session_state.question_index += 1
-            st.session_state.classification = classification
+            # st.session_state.classification = classification
             st.rerun()
     
 ###############################################      
