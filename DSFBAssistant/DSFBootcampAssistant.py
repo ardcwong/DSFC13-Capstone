@@ -79,7 +79,7 @@ def user_avatar():
   avatar_url = f'data:image/png;base64,{avatar_base64}'
   return avatar_url
 
-# avatar_url = user_avatar()
+avatar_url = user_avatar()
 
 def show_user_question(message_text):
   # Markdown to replicate the chat message
