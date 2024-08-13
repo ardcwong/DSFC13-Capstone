@@ -242,20 +242,20 @@ def suitability():
                       st.rerun() 
                   # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
               with st.container():
-                  col1, col2, col3 = st.columns([1,6,1])
-                  with col2:
+
                       
-                      content_dsf_ad = """<h6 style='text-align: center;color: #e76f51;'><br><br>Data Science Fellowship (DSF) Program by Eskwelabs</h6>
-                      <div style='text-align: center;'>This program offers a comprehensive curriculum designed to equip 
-                      participants with practical skills through hands-on projects and sprints. The program includes projects on customer segmentation, 
-                      credit fraud detection, recommender engines, and generative AI, each aiming to provide actionable insights and enhance strategic 
-                      decision-making. Various payment options are available, including early bird discounts, installment plans, and study-now-pay-later 
-                      schemes. Interested individuals can apply online, explore past capstone projects, and consult with admissions advisors for 
-                      personalized guidance. Additional resources and details about the program, including tuition fees and refund policies, 
-                      are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information" button.</div>
-                      """
-                      show_ai_response_lpc(content_dsf_ad,avatar_lpc)
-                      st.markdown("")
+                  content_dsf_ad = """
+                  <h6 style='text-align: left;color: #e76f51;'><br><br>Learn More about Data Science Fellowship (DSF) Program by Eskwelabs!</h6>
+                  <div style='text-align: left;'>This program offers a comprehensive curriculum designed to equip 
+                  participants with practical skills through hands-on projects and sprints. The program includes projects on customer segmentation, 
+                  credit fraud detection, recommender engines, and generative AI, each aiming to provide actionable insights and enhance strategic 
+                  decision-making. Various payment options are available, including early bird discounts, installment plans, and study-now-pay-later 
+                  schemes. Interested individuals can apply online, explore past capstone projects, and consult with admissions advisors for 
+                  personalized guidance. Additional resources and details about the program, including tuition fees and refund policies, 
+                  are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information" button.</div>
+                  """
+                  show_ai_response_lpc(content_dsf_ad,avatar_lpc)
+                  st.markdown("")
                   cola, colb, colc = st.columns([1,0.7,1])
                   with colb:
                       program_info_page_switch()
