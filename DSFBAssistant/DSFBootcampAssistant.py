@@ -179,10 +179,12 @@ if st.session_state.button_clicked == True:
     st.write(st.session_state.response)
 
 # Allow the user to enter their own question after clicking a starter question
-user_input = st.text_input("Or enter your question:")
+user_input = st.chat_input("Or enter your question:")
 if user_input:
     response = generate_conversational_response(user_input, collection)
     st.write(response)
-    feedback = st.text_input("Was this answer helpful? Leave your feedback:")
-    if feedback:
-        st.write("Thank you for your feedback!")
+
+
+    # feedback = st.text_input("Was this answer helpful? Leave your feedback:")
+    # if feedback:
+    #     st.write("Thank you for your feedback!")
