@@ -244,7 +244,7 @@ def home():
         
         st.divider()
         
-    col1, col2, col3 = st.columns([1,6,1])
+    col1, col2, col3 = st.columns([1,8,1])
     
     # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
     with col2:
