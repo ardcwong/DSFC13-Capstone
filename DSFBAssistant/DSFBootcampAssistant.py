@@ -205,21 +205,21 @@ with ba2:
   if st.session_state.button_clicked == False:
       st.markdown("<br><br><br><br><br>", unsafe_allow_html = True)
       st.write("*Choose a question to get started:*")
-      b1, b2, b3 = st.columns([1,1,1])
+      b0, b1, b2, b3, b4 = st.columns([2,1,1,1,2])
       with b1:
-        if st.button("What is RAG in LLM?"):
+        if st.button("What is RAG in LLM?", use_container_width = True):
           st.session_state.question = "What is RAG in LLM?"
           st.session_state.button_clicked = True
           st.rerun()
           
       with b2:
-        if st.button("What is Bag of Words?"):
+        if st.button("What is Bag of Words?", use_container_width = True):
           st.session_state.question = "What is Bag of Words?"
           st.session_state.button_clicked = True
           st.rerun()
           
       with b3:
-        if st.button("What is Recall in Machine Learning?"):
+        if st.button("What is Recall in Machine Learning?", use_container_width = True):
           st.session_state.question = "What is Recall in Machine Learning?"
           st.session_state.button_clicked = True
           st.rerun()
