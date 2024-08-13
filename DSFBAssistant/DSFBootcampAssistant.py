@@ -86,7 +86,7 @@ def ai_avatar():
   avatar_ai = f'data:image/png;base64,{avatar_base64_ai}'
   return avatar_ai
 
-avatar_ai = user_avatar()
+avatar_ai = ai_avatar()
 
 def show_ai_response(message_text,avatar_ai):
   # Markdown to replicate the chat message
