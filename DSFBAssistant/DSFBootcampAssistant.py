@@ -80,10 +80,22 @@ def show_user_question(message_text):
   #         <img src='{avatar_url}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
   #     </div>
 
-  # </div> 
+  # # </div> 
+  # # """, unsafe_allow_html=True)
+  # st.markdown(f"""
+  # <div style='display: flex; align-items: center; padding: 10px; justify-content: flex-end;'>
+  #     <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-right: 10px; display: inline-block; text-align: right; max-width: 60%;'>
+  #         <span style='font-size: 16px;'>{message_text}</span>
+  #     </div>
+  #     <div style='flex-shrink: 0;'>
+  #         <img src='{avatar_url}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
+  #     </div>
+  # </div>
   # """, unsafe_allow_html=True)
+
+# Markdown to replicate the chat message with the avatar aligned to the top right of the message bubble
   st.markdown(f"""
-  <div style='display: flex; align-items: center; padding: 10px; justify-content: flex-end;'>
+  <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex-end;'>
       <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-right: 10px; display: inline-block; text-align: right; max-width: 60%;'>
           <span style='font-size: 16px;'>{message_text}</span>
       </div>
@@ -92,8 +104,6 @@ def show_user_question(message_text):
       </div>
   </div>
   """, unsafe_allow_html=True)
-
-
 # Function to find the best matching data in the collection based on user input
 def return_best_eskdata(user_input, collection, n_results=3):
     query_result = collection.query(query_texts=[user_input], n_results=n_results)
