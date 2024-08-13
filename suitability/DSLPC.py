@@ -430,7 +430,7 @@ with col_main2:
   st.markdown(f"<h1 style='text-align: center;'>Data Science Learning Path Classifier</h1>", unsafe_allow_html=True)
 
   st.markdown(f"<h6 style='text-align: center;'><i>Are you unsure about the best way to pursue your data science journey? Our intelligent classifier bot is here to help! By answering a few simple questions about your background, preferences, and goals, our bot will recommend the most suitable learning pathway for you.</i></h6>", unsafe_allow_html=True)
-  cc1, cc2, cc3 = st.columns([1,8,1])
+  cc1, cc2, cc3 = st.columns([1,10,1])
   with cc2:
     # with st.expander("**How it works**", expanded=st.session_state.BeginAssessment):
       st.markdown("""
@@ -442,7 +442,7 @@ with col_main2:
 if st.session_state.BeginAssessment == True:  
   st.markdown("<br>", unsafe_allow_html = True)       
   
-  ba00, ba01, ba02, ba03, ba04 = st.columns([1,1,1,1,1])
+  ba00, ba01, ba02, ba03, ba04 = st.columns([1,1,0.7,1,1])
   with ba02:
     st.image('data/avatar_ai_lpc.png', use_column_width =True)
 
