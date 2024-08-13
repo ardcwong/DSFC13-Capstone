@@ -217,7 +217,7 @@ def suitability():
           
               elif st.session_state.feedback_up == 0:
                   # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                  show_ai_response_lpc("You selected 👎🏻 Thanks for your feedback",avatar_lpc)
+                  show_ai_response_lpc("<b>You selected 👎🏻 Thanks for your feedback<b>",avatar_lpc)
                   # st.markdown("<h6 style='text-align: center;'>You selected 👎🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
                   # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
               else:
