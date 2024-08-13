@@ -73,7 +73,7 @@ def show_user_question(message_text):
   # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
   
   # Load the image and convert it to base64
-  with open('data/user_avatar.png', 'rb') as image_file:
+  with open('data/avatar_user.png', 'rb') as image_file:
     encoded_string = base64.b64encode(image_file.read()).decode()
   # Base64 encoded image string from the previous step
   avatar_base64 = encoded_string  # This is the base64 string you got earlier
