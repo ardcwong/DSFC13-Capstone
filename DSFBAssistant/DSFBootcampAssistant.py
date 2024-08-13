@@ -42,31 +42,7 @@ def load_collection_DSFBAssistant():
 
 collection = load_collection_DSFBAssistant()
 
-
-# def return_best_eskdata(user_input, collection, n_results=1):
-#     query_result = collection.query(query_texts=[user_input], n_results=n_results)
-#     if not query_result['ids'] or not query_result['ids'][0]:
-#         return None, None
-#     top_result_id = query_result['ids'][0][0]
-#     top_result_metadata = query_result['metadatas'][0][0]
-#     top_result_document = query_result['documents'][0][0]
-#     return top_result_metadata.get('eskdata', 'Unknown Data'), top_result_document
-
-# def generate_conversational_response_DSFBAssistant(user_input, collection):
-#     relevant_name, relevant_document = return_best_eskdata(user_input, collection)
-#     if not relevant_name:
-#         return "I couldn't find any relevant articles based on your input."
-#     messages = [
-#         {"role": "system", "content": "You are a bot that makes recommendations for each Sprint 1 to 4 for the Data Science bootcamp."},
-#         {"role": "user", "content": user_input},
-#         {"role": "assistant", "content": f"This is the recommended article: {relevant_name}. Here is a brief about the article: {relevant_document}"}
-#     ]
-#     response = openai.chat.completions.create(
-#         model="gpt-3.5-turbo",
-#         messages=messages,
-#         max_tokens=500
-#     )
-#     return response.choices[0].message.content
+#### USER AVATAR AND RESPONSE
 @st.cache_data
 def user_avatar():
   # Load the image and convert it to base64
@@ -79,7 +55,7 @@ def user_avatar():
   avatar_url = f'data:image/png;base64,{avatar_base64}'
   return avatar_url
 
-avatar_url = user_avatar()
+avatar_user = user_avatar()
 
 def show_user_question(message_text,avatar_url):
   # Markdown to replicate the chat message
@@ -96,6 +72,39 @@ def show_user_question(message_text,avatar_url):
       </div>
   </div>
   """, unsafe_allow_html=True)
+
+#### AI AVATAR AND RESPONSE
+@st.cache_data
+def ai_avatar():
+  # Load the image and convert it to base64
+  with open('data/avatar_ai.png', 'rb') as image_file:
+    encoded_string = base64.b64encode(image_file.read()).decode()
+  # Base64 encoded image string from the previous step
+  avatar_base64 = encoded_string  # This is the base64 string you got earlier
+  
+  # Construct the base64 image string for use in HTML
+  avatar_ai = f'data:image/png;base64,{avatar_base64}'
+  return avatar_ai
+
+avatar_ai = user_avatar()
+
+def show_ai_response(message_text,avatar_ai):
+  # Markdown to replicate the chat message
+  # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
+  
+
+  st.markdown(f"""
+  <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex;'>
+      <div style='flex-shrink: 0;'>
+          <img src='{avatar_ai}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
+      </div>
+      <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-left: 10px; display: inline-block; text-align: left; max-width: 60%;'>
+          <span style='font-size: 16px;'>{message_text}</span>
+      </div>
+
+  </div>
+  """, unsafe_allow_html=True)
+
 
 
 # Function to find the best matching data in the collection based on user input
@@ -213,9 +222,10 @@ if st.session_state.button_clicked == False:
 
 # Display the response 
 if st.session_state.question is not "":
-    show_user_question(st.session_state.question, avatar_url)
+    show_user_question(st.session_state.question, avatar_user)
     st.session_state.response = generate_conversational_response(st.session_state.question, collection)
     st.chat_message("AI").write(st.session_state.response)
+    show_ai_response(st.session_state.response,avatar_ai)
 
 # Allow the user to enter their own question after clicking a starter question
 user_input = st.chat_input("Or enter your question:")
