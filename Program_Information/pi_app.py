@@ -333,7 +333,7 @@ with col222:
 
   if st.session_state.button_clicked_pi == False:
 
-      st.markdown("<br><br><br><br><br>", unsafe_allow_html = True)       
+      st.markdown("<br><br><br>", unsafe_allow_html = True)       
       
       bb00, bb01, bb02, bb03, bb04 = st.columns([1,1,1,1,1])
       with bb02:
@@ -369,7 +369,7 @@ with col222:
   # Display the response 
   if st.session_state.question_pi is not "":
       # show_user_question(st.session_state.question_pi, avatar_user)
-      st.session_state.response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
+      st.session_state.response = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
       # st.chat_message("AI").write(st.session_state.response)
       show_ai_response(st.session_state.response,avatar_ai)
 
