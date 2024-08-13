@@ -245,7 +245,7 @@ def suitability():
 
                       
                   content_dsf_ad = """
-                  <h6 style='text-align: left;color: #e76f51;'><br><br>Learn More about Data Science Fellowship (DSF) Program by Eskwelabs!</h6>
+                  <h6 style='text-align: left;color: #e76f51;'>Learn More about Data Science Fellowship (DSF) Program by Eskwelabs!</h6>
                   <div style='text-align: left;'>This program offers a comprehensive curriculum designed to equip 
                   participants with practical skills through hands-on projects and sprints. The program includes projects on customer segmentation, 
                   credit fraud detection, recommender engines, and generative AI, each aiming to provide actionable insights and enhance strategic 
