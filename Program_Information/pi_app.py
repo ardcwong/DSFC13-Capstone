@@ -118,11 +118,11 @@ class ChatHistory:
         for msg in self.history:
             role = msg['role']
             content = msg['content']
-            st.write(f"{role.capitalize()}: {content}")
+            # st.write(f"{role.capitalize()}: {content}")
             if role == "user":
-                show_user_answer_lpc(content,avatar_url_user)
+                show_user_answer_pi(content,avatar_url_user)
             elif role == "assistant":
-                show_ai_response_lpc(content,avatar_lpc)
+                show_ai_response_pi(content,avatar_lpc)
 
     def show_history_streamlit(self):
         for msg in self.history:
