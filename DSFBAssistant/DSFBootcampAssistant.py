@@ -73,7 +73,7 @@ def show_user_question(message_text):
   # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
   
   # Construct the base64 image string for use in HTML
-  avatar_url = f'data:image/png;base64,{base64.b64encode(open('data/avatar_user.png', "rb").read()).decode()}'
+  avatar_url = f"data:image/png;base64,{base64.b64encode(open('data/avatar_user.png', "rb").read()).decode()}"
   
   st.markdown(f"""
   <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex-end;'>
