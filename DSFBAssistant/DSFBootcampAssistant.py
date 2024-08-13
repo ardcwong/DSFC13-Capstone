@@ -98,7 +98,7 @@ def show_ai_response(message_text,avatar_ai):
       <div style='flex-shrink: 0;'>
           <img src='{avatar_ai}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
       </div>
-      <div style='background-color: #FCFCFC; padding: 10px 15px; border-radius: 10px; margin-left: 10px; display: inline-block; text-align: left; max-width: 60%;'>
+      <div style='background-color: #FCFCFC; padding: 10px 15px; border-radius: 10px; margin-left: 10px; display: inline-block; text-align: left; max-width: 75%;'>
           <span style='font-size: 16px;'>{message_text}</span>
       </div>
 
@@ -201,10 +201,11 @@ if 'question' not in st.session_state:
   st.session_state.question = ""
   
 with ba2:
-  b1, b2, b3 = st.columns([1,1,1])
   # Add conversation starters if no button has been clicked yet
   if st.session_state.button_clicked == False:
-      st.write("Choose a question to get started:")
+      st.markdown("<br><br><br><br><br>", unsafe_allow_html = True)
+      st.write("*Choose a question to get started:*")
+      b1, b2, b3 = st.columns([1,1,1])
       with b1:
         if st.button("What is RAG in LLM?"):
           st.session_state.question = "What is RAG in LLM?"
@@ -216,6 +217,7 @@ with ba2:
           st.session_state.question = "What is Bag of Words?"
           st.session_state.button_clicked = True
           st.rerun()
+          
       with b3:
         if st.button("What is Recall in Machine Learning?"):
           st.session_state.question = "What is Recall in Machine Learning?"
