@@ -371,7 +371,7 @@ with col222:
       # show_user_question(st.session_state.question_pi, avatar_user)
       st.session_state.response = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
       # st.chat_message("AI").write(st.session_state.response)
-      show_ai_response(st.session_state.response,avatar_ai)
+      show_ai_response_pi(st.session_state.response,avatar_ai_pi)
 
 
 
