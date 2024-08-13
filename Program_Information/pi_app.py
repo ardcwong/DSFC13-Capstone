@@ -283,9 +283,9 @@ def show_pi_chat_memory():
         content = msg['content']
         # st.chat_message(role).write(content)
         if role == "user":
-            show_user_answer_pi(content,avatar_url_user)
+            show_user_answer_pi(content,avatar_url_user_pi)
         elif role == "assistant":
-            show_ai_response_pi(content,avatar_lpc)
+            show_ai_response_pi(content,avatar_pi)
 
 
 
@@ -368,7 +368,7 @@ with col222:
 
   # Display the response 
   if st.session_state.question_pi is not "":
-      # show_user_question(st.session_state.question_pi, avatar_user)
+      show_user_answer_pi(st.session_state.question_pi, avatar_user)
       st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
       # st.chat_message("AI").write(st.session_state.response_pi)
       show_ai_response_pi(st.session_state.response_pi,avatar_pi)
