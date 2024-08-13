@@ -120,9 +120,9 @@ class ChatHistory:
             content = msg['content']
             st.write(f"{role.capitalize()}: {content}")
             # if role == "user":
-            #     show_user_answer_pi(content,avatar_url_user)
+            #     show_user_answer_pi(content,avatar_url_user_pi)
             # elif role == "assistant":
-            #     show_ai_response_pi(content,avatar_lpc)
+            #     show_ai_response_pi(content,avatar_pi)
 
     def show_history_streamlit(self):
         for msg in self.history:
@@ -130,9 +130,9 @@ class ChatHistory:
             content = msg['content']
             # st.chat_message(role).write(content)
             if role == "user":
-                show_user_answer_pi(content,avatar_url_user)
+                show_user_answer_pi(content,avatar_url_user_pi)
             elif role == "assistant":
-                show_ai_response_pi(content,avatar_lpc)
+                show_ai_response_pi(content,avatar_pi)
                
     def get_latest_messages(self, count=4):
         return self.history[-count:]
