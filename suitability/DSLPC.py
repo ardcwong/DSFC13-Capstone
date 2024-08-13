@@ -252,7 +252,7 @@ def suitability():
                   decision-making. Various payment options are available, including early bird discounts, installment plans, and study-now-pay-later 
                   schemes. Interested individuals can apply online, explore past capstone projects, and consult with admissions advisors for 
                   personalized guidance. Additional resources and details about the program, including tuition fees and refund policies, 
-                  are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information" button.</div>
+                  are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this <b>"Program Information"</b> button.</div>
                   """
                   show_ai_response_lpc(content_dsf_ad,avatar_lpc)
                   st.markdown("")
