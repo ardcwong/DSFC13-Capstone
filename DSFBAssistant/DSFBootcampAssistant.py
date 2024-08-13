@@ -180,7 +180,7 @@ if st.session_state.button_clicked == False:
 # Display the response 
 if st.session_state.question is not "":
     st.chat_message("User").write(f"""
-    <div style="background-color: #f0f0f0; padding: 0px; display: inline-block; border-radius: 5px;">
+    <div style="background-color: #f0f0f0; padding: 0px; border-radius: 5px;">
     <span style="font-size: 16px;">Hello</span>
     </div>
     """, unsafe_allow_html=True)
