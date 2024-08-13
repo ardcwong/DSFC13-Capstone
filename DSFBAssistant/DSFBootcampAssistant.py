@@ -207,7 +207,7 @@ with ba2:
   if st.session_state.button_clicked == False:
       b01, b02, b03 = st.columns([1,1,1])
       with b02:
-        st.image('data/avatar_ai.png', use_container_width =True)
+        st.image('data/avatar_ai.png', use_column_width =True)
       
       st.markdown("<br><br><br><br><br>", unsafe_allow_html = True)       
       st.markdown(f"<h6 style='text-align: center;'>Choose a question to get started:</h6>", unsafe_allow_html=True)
