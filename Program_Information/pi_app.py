@@ -328,7 +328,7 @@ with col222:
   cc11, cc22, cc33 = st.columns([1,10,1])
   with cc22:
     st.markdown(f"""<h6 style='text-align: center;'><i>This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that you may have to understand all aspects of the Eskwelabs DSF program.</h6>""", unsafe_allow_html=True)
-    st.session_state.pi_chat_history.show_history_streamlit()   
+    # st.session_state.pi_chat_history.show_history_streamlit()   
 
 
   if st.session_state.button_clicked_pi == False:
