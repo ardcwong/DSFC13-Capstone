@@ -67,17 +67,17 @@ collection = load_collection_DSFBAssistant()
 #         max_tokens=500
 #     )
 #     return response.choices[0].message.content
-# @st.cache_data
-# def user_avatar():
-#   # Load the image and convert it to base64
-#   with open('data/avatar_user.png', 'rb') as image_file:
-#     encoded_string = base64.b64encode(image_file.read()).decode()
-#   # Base64 encoded image string from the previous step
-#   avatar_base64 = encoded_string  # This is the base64 string you got earlier
+@st.cache_data
+def user_avatar():
+  # Load the image and convert it to base64
+  with open('data/avatar_user.png', 'rb') as image_file:
+    encoded_string = base64.b64encode(image_file.read()).decode()
+  # Base64 encoded image string from the previous step
+  avatar_base64 = encoded_string  # This is the base64 string you got earlier
   
-#   # Construct the base64 image string for use in HTML
-#   avatar_url = f'data:image/png;base64,{avatar_base64}'
-#   return avatar_url
+  # Construct the base64 image string for use in HTML
+  avatar_url = f'data:image/png;base64,{avatar_base64}'
+  return avatar_url
 
 # avatar_url = user_avatar()
 
