@@ -289,27 +289,6 @@ def show_pi_chat_memory():
 
 
 
-
-################# MAIN #################
-# # Inject CSS to create a fixed container
-# st.markdown("""
-#     <style>
-#     .fixed-container {
-#         position: fixed;
-#         top: 0;
-#         width: 100%;
-#         background-color: white;
-#         z-index: 1000;
-
-#     }
-#     </style>
-    
-#     <div class="fixed-container">
-#         <h1><br>Eskwelabs Data Science Fellowship Information Bot</h1>
-#     </div>
-# """, unsafe_allow_html=True)
-# st.markdown("""<br>""", unsafe_allow_html=True)
-
 # Initialize session state for button clicks
 if 'button_clicked_pi' not in st.session_state:
     st.session_state.button_clicked_pi = False
@@ -359,13 +338,7 @@ with col222:
           st.rerun()
 
 
-  # Display the response 
-  if st.session_state.question_pi is not "":
-      # show_user_answer_pi(st.session_state.question_pi, avatar_url_user_pi)
-      st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
-      # st.chat_message("AI").write(st.session_state.response_pi)
-      # show_ai_response_pi(st.session_state.response_pi,avatar_pi)
-      st.rerun()
+
 
 
 
@@ -378,17 +351,22 @@ with col333:
         st.session_state.button_clicked_pi = False
         st.session_state.question_pi = ""
         st.rerun()
-        
-
-  
 
         
 user_query = st.chat_input("Ask Eskwelabs")
 if user_query:
     st.session_state.button_clicked_pi = True
     st.session_state.question_pi = user_query 
-    update_chat_memory()  # Update chat memory with the latest messages
-    st.rerun()
+      # Display the response 
+    if st.session_state.question_pi is not "":
+      update_chat_memory()
+      # show_user_answer_pi(st.session_state.question_pi, avatar_url_user_pi)
+      st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
+      # st.chat_message("AI").write(st.session_state.response_pi)
+      # show_ai_response_pi(st.session_state.response_pi,avatar_pi)
+      st.rerun()
+      # Update chat memory with the latest messages
+    # st.rerun()
 
 
 
