@@ -331,15 +331,15 @@ with col222:
           st.rerun()
           
       with bb3:
-        if st.button("What is the DSF program guide about?", use_container_width = True):
-          st.session_state.question_pi = "What is the DSF program guide about?"
+        if st.button("Recommend educational materials for beginners.", use_container_width = True): # What is the DSF program guide about?
+          st.session_state.question_pi = "Recommend educational materials for beginners." # What is the DSF program guide about?
           st.session_state.button_clicked_pi = True
           st.session_state.question_pi_bool = True
           st.rerun()
           
       with bb2:
-        if st.button("What is pathfinder exam? ", use_container_width = True):
-          st.session_state.question_pi = "What is pathfinder exam?"
+        if st.button("What is the pathfinder exam? ", use_container_width = True):
+          st.session_state.question_pi = "What is the pathfinder exam?"
           st.session_state.button_clicked_pi = True
           st.session_state.question_pi_bool = True
           st.rerun()
