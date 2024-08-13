@@ -39,7 +39,68 @@ openai.api_key = api_key
 credentials = st.secrets["gcp_service_account"]
 client = OpenAI(api_key=api_key)
 # SKLLMConfig.set_openai_key(api_key)
+@st.cache_data
+def user_avatar_pi():
+  # Load the image and convert it to base64
+  with open('data/avatar_user.png', 'rb') as image_file_user_pi:
+    encoded_string_user_pi = base64.b64encode(image_file_user_pi.read()).decode()
+  # Base64 encoded image string from the previous step
+  avatar_base64_user_pi = encoded_string_user_pi  # This is the base64 string you got earlier
+  
+  # Construct the base64 image string for use in HTML
+  avatar_url_user_pi = f'data:image/png;base64,{avatar_base64_user_pi}'
+  return avatar_url_user_pi
 
+avatar_url_user_pi = user_avatar_pi()
+
+def show_user_answer_pi(message_text,avatar_url_user_pi):
+  # Markdown to replicate the chat message
+  # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
+  
+
+  st.markdown(f"""
+  <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex-end;'>
+      <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-right: 10px; display: inline-block; text-align: right; max-width: 60%;'>
+          <span style='font-size: 16px;'>{message_text}</span>
+      </div>
+      <div style='flex-shrink: 0;'>
+          <img src='{avatar_url_user_pi}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
+      </div>
+  </div>
+  """, unsafe_allow_html=True)
+
+#### AI AVATAR AND RESPONSE
+@st.cache_data
+def ai_avatar_pi():
+  # Load the image and convert it to base64
+  with open('data/avatar_ai_pi.png', 'rb') as image_file_pi:
+    encoded_string_pi = base64.b64encode(image_file_pi.read()).decode()
+  # Base64 encoded image string from the previous step
+  avatar_base64_pi = encoded_string_pi  # This is the base64 string you got earlier
+  
+  # Construct the base64 image string for use in HTML
+  avatar_pi = f'data:image/png;base64,{avatar_base64_pi}'
+  return avatar_pi
+
+avatar_pi = ai_avatar_pi()
+
+def show_ai_response_pi(message_text,avatar_pi):
+  # Markdown to replicate the chat message
+  # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
+  
+
+  st.markdown(f"""
+  <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex;'>
+      <div style='flex-shrink: 0;'>
+          <img src='{avatar_pi}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
+      </div>
+      <div style='background-color: #FCFCFC; padding: 10px 15px; border-radius: 10px; margin-left: 10px; display: inline-block; text-align: left; max-width: 85%;'>
+          <span style='font-size: 16px;'>{message_text}</span>
+      </div>
+
+  </div>
+  """, unsafe_allow_html=True)
+    
 class ChatHistory:
     def __init__(self):
         self.history = []
@@ -58,6 +119,10 @@ class ChatHistory:
             role = msg['role']
             content = msg['content']
             st.write(f"{role.capitalize()}: {content}")
+            if role == "user":
+                show_user_answer_lpc(content,avatar_url_user)
+            elif role == "assistant":
+                show_ai_response_lpc(content,avatar_lpc)
 
     def show_history_streamlit(self):
         for msg in self.history:
