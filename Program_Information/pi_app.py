@@ -354,7 +354,7 @@ with col222:
           
       with bb2:
         if st.button("What is pathfinder exam? ", use_container_width = True):
-          st.session_state.question_pi = "What is pathfinder exam?
+          st.session_state.question_pi = "What is pathfinder exam?"
           st.session_state.button_clicked_pi = True
           st.rerun()
 
