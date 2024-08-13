@@ -448,8 +448,8 @@ with col_main2:
                 if st.button("Begin Assessment", type="primary", use_container_width = True):
                     st.session_state.BeginAssessment = False
                     st.rerun()
-   else: 
-    # st.session_state.BeginAssessment == False:
+  else: 
+  # st.session_state.BeginAssessment == False:
     suitability()               
 
 
