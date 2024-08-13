@@ -148,6 +148,23 @@ st.write("Ask any question related to the bootcamp, and get recommendations and 
 #       st.write(f"You asked: {user_input}")  
 #       st.write(response)
 
+# Sample chat message content
+avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
+message_text = "Hello, this is a chat message!"
+
+# Markdown to replicate the chat message
+st.markdown(f"""
+<div style="display: flex; align-items: center; padding: 10px;">
+    <div style="flex-shrink: 0;">
+        <img src="{avatar_url}" alt="avatar" style="width: 40px; height: 40px; border-radius: 50%;">
+    </div>
+    <div style="background-color: #f0f0f0; padding: 10px 15px; border-radius: 10px; margin-left: 10px; flex-grow: 1;">
+        <span style="font-size: 16px;">{message_text}</span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+
 # Initialize session state for button clicks
 if 'button_clicked' not in st.session_state:
     st.session_state.button_clicked = False
