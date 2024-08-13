@@ -301,9 +301,9 @@ home_page = st.Page(home, title="Home", icon="🏠", default=(role == role))
 login_page = st.Page(login, title = "Log In",icon=":material/login:")
 logout_page = st.Page(logout, title="Log Out", icon=":material/logout:")
 IGP = st.Page("InstallationGuidePage/InstallationGuide.py", title = "Installation Guide", icon = "📦") # 📑
-pathfinder_rfs = st.Page("Pathfinder/feedback_summary.py", title="Pathfinder Assessment Report", icon="📓")
+pathfinder_rfs = st.Page("Pathfinder/feedback_summary.py", title="Pathfinder Assessment Report", icon="📝") # 📓
 # DSF = st.Page("DSF/app.py", title = "DSF Program Information", icon = "📗")
-DSFBA = st.Page("DSFBAssistant/DSFBootcampAssistant.py", title = "Your Bootcamp Assistant", icon = "📗")
+DSFBA = st.Page("DSFBAssistant/DSFBootcampAssistant.py", title = "Your Bootcamp Assistant", icon = "🤖") # 📗
 CO = st.Page("CourseOutline/CourseOutline.py", title = "Course Outline", icon = "📍")
 pathfinder_rfs_ops = st.Page("Ops/PARGenerator.py", title="PAR Generator", icon="📊")
 CO_ops = st.Page("Ops/COGenerator.py", title="CCO Generator", icon="🗂️") # 📖 
