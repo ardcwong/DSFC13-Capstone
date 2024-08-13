@@ -188,7 +188,7 @@ st.write("Ask any question related to the bootcamp, and get recommendations and 
 
 
 
-
+ba1, ba2, ba3 = st.columns([1,8,1])
 
 
 # Initialize session state for button clicks
@@ -199,40 +199,42 @@ if 'button_clicked' not in st.session_state:
 # Initialize session state for question
 if 'question' not in st.session_state:
   st.session_state.question = ""
-
-# Add conversation starters if no button has been clicked yet
-if st.session_state.button_clicked == False:
-    st.write("Choose a question to get started:")
-    
-    if st.button("What is RAG in LLM?"):
-      st.session_state.question = "What is RAG in LLM?"
+  
+with ba2:
+  b1, b2, b3 = st.columns([1,1,1])
+  # Add conversation starters if no button has been clicked yet
+  if st.session_state.button_clicked == False:
+      st.write("Choose a question to get started:")
+      with b1:
+        if st.button("What is RAG in LLM?"):
+          st.session_state.question = "What is RAG in LLM?"
+          st.session_state.button_clicked = True
+          st.rerun()
+          
+      with b2:
+        if st.button("What is Bag of Words?"):
+          st.session_state.question = "What is Bag of Words?"
+          st.session_state.button_clicked = True
+          st.rerun()
+      with b3:
+        if st.button("What is Recall in Machine Learning?"):
+          st.session_state.question = "What is Recall in Machine Learning?"
+          st.session_state.button_clicked = True
+          st.rerun()
+  
+  # Display the response 
+  if st.session_state.question is not "":
+      show_user_question(st.session_state.question, avatar_user)
+      st.session_state.response = generate_conversational_response(st.session_state.question, collection)
+      # st.chat_message("AI").write(st.session_state.response)
+      show_ai_response(st.session_state.response,avatar_ai)
+  
+  # Allow the user to enter their own question after clicking a starter question
+  user_input = st.chat_input("Or enter your question:")
+  if user_input:
       st.session_state.button_clicked = True
+      st.session_state.question = user_input
       st.rerun()
-        
-    
-    if st.button("What is Bag of Words?"):
-      st.session_state.question = "What is Bag of Words?"
-      st.session_state.button_clicked = True
-      st.rerun()
-    
-    if st.button("What is Recall in Machine Learning?"):
-      st.session_state.question = "What is Recall in Machine Learning?"
-      st.session_state.button_clicked = True
-      st.rerun()
-
-# Display the response 
-if st.session_state.question is not "":
-    show_user_question(st.session_state.question, avatar_user)
-    st.session_state.response = generate_conversational_response(st.session_state.question, collection)
-    # st.chat_message("AI").write(st.session_state.response)
-    show_ai_response(st.session_state.response,avatar_ai)
-
-# Allow the user to enter their own question after clicking a starter question
-user_input = st.chat_input("Or enter your question:")
-if user_input:
-    st.session_state.button_clicked = True
-    st.session_state.question = user_input
-    st.rerun()
 
 
 # Sample chat message content
