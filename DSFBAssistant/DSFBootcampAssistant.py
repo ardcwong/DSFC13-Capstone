@@ -46,8 +46,8 @@ collection = load_collection_DSFBAssistant()
 @st.cache_data
 def user_avatar():
   # Load the image and convert it to base64
-  with open('data/avatar_user.png', 'rb') as image_file:
-    encoded_string = base64.b64encode(image_file.read()).decode()
+  with open('data/avatar_user.png', 'rb') as image_file_ai:
+    encoded_string = base64.b64encode(image_file_ai.read()).decode()
   # Base64 encoded image string from the previous step
   avatar_base64 = encoded_string  # This is the base64 string you got earlier
   
