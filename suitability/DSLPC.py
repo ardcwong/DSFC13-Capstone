@@ -159,7 +159,8 @@ if "spreadsheet_DSLPC" not in st.session_state:
 def program_info_page_switch():
     if st.button("Program Information",type="primary", use_container_width = True, help = "Go to Program Information page"):  
         return st.switch_page("Program_Information/pi_app.py")
-
+if 'question_index' not in st.session_state:
+    st.session_state.question_index = 0
 
 @st.fragment
 def suitability():
@@ -169,8 +170,7 @@ def suitability():
         # Initialize or retrieve session state
     if 'responses' not in st.session_state:
         st.session_state.responses = []
-    if 'question_index' not in st.session_state:
-        st.session_state.question_index = 0
+
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
         
