@@ -148,9 +148,7 @@ st.write("Ask any question related to the bootcamp, and get recommendations and 
 #       st.write(f"You asked: {user_input}")  
 #       st.write(response)
 
-# Sample chat message content
-avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
-message_text = "Hello, this is a chat message!"
+
 
 
 
@@ -186,11 +184,7 @@ if st.session_state.button_clicked == False:
 
 # Display the response 
 if st.session_state.question is not "":
-    st.chat_message("User").write(f"""
-    <div style="background-color: #f0f0f0; padding: 0px; border-radius: 5px;">
-    <span style="font-size: 16px;">Hello</span>
-    </div>
-    """, unsafe_allow_html=True)
+    show_user_question(st.session_state.question)
     st.session_state.response = generate_conversational_response(st.session_state.question, collection)
     st.chat_message("AI").write(st.session_state.response)
 
@@ -200,18 +194,24 @@ if user_input:
     st.session_state.button_clicked = True
     st.session_state.question = user_input
     st.rerun()
-  
-# Markdown to replicate the chat message
-st.markdown(f"""
-<div style='display: flex; align-items: center; padding: 10px;'> 
-    <div style='flex-shrink: 0;'> 
-        <img src='{avatar_url}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
-    </div>
-    <div style='background-color: #f0f0f0; padding: 10px 15px; border-radius: 10px; margin-left: 10px; flex-grow: 1;'>
-        <span style='font-size: 16px; color: #333;'>{message_text}</span> 
-    </div> 
-</div> 
-""", unsafe_allow_html=True)
+
+
+# Sample chat message content
+
+
+def show_user_question(message_text)
+  # Markdown to replicate the chat message
+  avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
+  st.markdown(f"""
+  <div style='display: flex; align-items: center; padding: 10px;'> 
+      <div style='flex-shrink: 0;'> 
+          <img src='{avatar_url}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
+      </div>
+      <div style='background-color: #f0f0f0; padding: 10px 15px; border-radius: 10px; margin-left: 10px; flex-grow: 1;'>
+          <span style='font-size: 16px; color: #333;'>{message_text}</span> 
+      </div> 
+  </div> 
+  """, unsafe_allow_html=True)
 
     # feedback = st.text_input("Was this answer helpful? Leave your feedback:")
     # if feedback:
