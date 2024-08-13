@@ -261,7 +261,7 @@ def chatbot_response(user_query, collection, chat_history, chat_memory):
     response = generate_chatbot_response(context, user_query, [doc['metadata'] for doc in retrieved_docs], chat_memory)
     
     chat_history.add_message("assistant", response)
-    # st.session_state.question_pi_bool = False
+    st.session_state.question_pi_bool = False
     return response
 
 
@@ -349,8 +349,6 @@ with col222:
   if st.session_state.question_pi_bool == True:       
     st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
     update_chat_memory()
-    if st.session_state.response_pi:
-      st.session_state.question_pi_bool = False
     # st.session_state.question_pi == ""
     
 
