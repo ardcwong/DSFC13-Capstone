@@ -204,7 +204,7 @@ with ba2:
   # Add conversation starters if no button has been clicked yet
   if st.session_state.button_clicked == False:
       st.markdown("<br><br><br><br><br>", unsafe_allow_html = True)
-      st.write("*Choose a question to get started:*")
+      st.markdown(f"<h6 style='text-align: center;'>Choose a question to get started:</h6>", unsafe_allow_html=True)
       b0, b1, b2, b3, b4 = st.columns([1,1,1,1,1])
       with b1:
         if st.button("What is RAG in LLM?", use_container_width = True):
@@ -212,13 +212,13 @@ with ba2:
           st.session_state.button_clicked = True
           st.rerun()
           
-      with b2:
+      with b3:
         if st.button("What is Bag of Words?", use_container_width = True):
           st.session_state.question = "What is Bag of Words?"
           st.session_state.button_clicked = True
           st.rerun()
           
-      with b3:
+      with b2:
         if st.button("What is Recall in Machine Learning?", use_container_width = True):
           st.session_state.question = "What is Recall in Machine Learning?"
           st.session_state.button_clicked = True
