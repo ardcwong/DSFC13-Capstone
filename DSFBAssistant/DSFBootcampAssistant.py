@@ -205,7 +205,7 @@ with ba2:
   if st.session_state.button_clicked == False:
       st.markdown("<br><br><br><br><br>", unsafe_allow_html = True)
       st.write("*Choose a question to get started:*")
-      b0, b1, b2, b3, b4 = st.columns([2,1,1,1,2])
+      b0, b1, b2, b3, b4 = st.columns([1,1,1,1,1])
       with b1:
         if st.button("What is RAG in LLM?", use_container_width = True):
           st.session_state.question = "What is RAG in LLM?"
