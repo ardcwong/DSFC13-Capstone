@@ -236,10 +236,10 @@ def suitability():
                       st.session_state.feedback_down = feedback_score
                       st.rerun() 
                   st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-          
-              col1, col2, col3 = st.columns([1,6,1])
-              with col2:
-                  with st.container():
+              with st.container():
+                  col1, col2, col3 = st.columns([1,6,1])
+                  with col2:
+                  
                       st.markdown("<h6 style='text-align: center;color: #e76f51;'>Data Science Fellowship (DSF) Program by Eskwelabs</h6>", unsafe_allow_html=True)
                       st.markdown("""<div style='text-align: center;'>This program offers a comprehensive curriculum designed to equip 
                       participants with practical skills through hands-on projects and sprints. The program includes projects on customer segmentation, 
@@ -250,9 +250,9 @@ def suitability():
                       are accessible via the Eskwelabs website or interactive with our Program Information Chatbot for more information by clicking this "Program Information" button.</div>
                       """, unsafe_allow_html=True)
                       st.markdown("")
-                      cola, colb, colc = st.columns([1,1,1,])
-                      with colb:
-                          program_info_page_switch()
+                  cola, colb, colc = st.columns([1,0.7,1])
+                  with colb:
+                      program_info_page_switch()
   
       
     
