@@ -260,143 +260,143 @@ def suitability():
     
     
         lpc1, lpc2, lpc3 = st.columns([1,4,1])
-        # with st.container(height=450, border=None):
+        
         with lpc2:
-
+          with st.container(height=450, border=None): 
               
-    
-            # Initialize the first question in the chat history if not already done
-            if st.session_state.question_index == 0 and not st.session_state.chat_history:
-                first_question = questions[st.session_state.question_index]
-                st.session_state.chat_history.append(("AI", first_question))
-    
-            # Display the entire chat history with user responses on the right
-            for role, message in st.session_state.chat_history:
-                if role == "User":
-                    show_user_answer_lpc(message,avatar_url_user)
-                elif role == "AI":
-                    show_ai_response_lpc(message,avatar_lpc)
-            
-           
-        with st.container():
-            # Function to display the current question and collect user response
-            def display_question():
-                if st.session_state.question_index < len(questions):
-                    current_question = questions[st.session_state.question_index]
-                    user_response = st.chat_input("Your response:")
-                    if user_response:
-                        st.session_state.responses.append(user_response)
-                        st.session_state.chat_history.append(("User", user_response))
-                        st.session_state.question_index += 1
-                        if st.session_state.question_index < len(questions):
-                            next_question = questions[st.session_state.question_index]
-                            st.session_state.chat_history.append(("AI", next_question))
-                        st.rerun(scope="fragment")
-    
-            # Function to get classification from OpenAI
-            def get_classification():
-    
-                # Apply the stopwords removal to the responses
-                # filtered_responses = [remove_stopwords(response) for response in st.session_state.responses]
-    
-                questions_responses = ""
-                for i, question in enumerate(questions):
-                    questions_responses += f"{i+1}. {question}\n - Responses: {st.session_state.responses[i]}\n"
-    
-    
-                
-                # If my responses is not enough for you to classify me, ask the me to press the reset button, otherwise, please describe my suitability for each and recommend the most suitable one for me.
-                # Inform me that in case I want to change any of my responses only, I can press the reset button.
-                # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
-                
-                # prompt = f"""
-                # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
-                # Suitability:
-                #     1. Bootcamp: 
-                #     2. Self-Learning:
-                #     3. Master's Program:
-                
-                # Overall Recommendation: 
-                
-                # """
-    
-                # prompt = f"""
-                # Based on my responses to the questions listed below, please evaluate whether the responses are relevant to the questions asked. Subsequently, classify my suitability for the following data science learning pathways: Bootcamp, Self-Learning, and a Master’s Program.
-                
-                # Questions and Responses:
-                # {questions_responses}
-                
-                # Suitability:
-                # 1. Bootcamp: 
-                # 2. Self-Learning:
-                # 3. Master's Program:
-                
-                # Finally, provide an overall recommendation on the most suitable learning pathway for me, considering my responses:
-                # Overall Recommendation:
-                # """
-                 # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
-                prompt = f"""
-                Classify and explain my suitability for the following data science learning pathway: Eskwelabs' bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
-               
-                
-                *1. Eskwelabs Bootcamp:* Suitability and Explanation
-                *2. Self-Learning:* Suitability and Explanation
-                *3. Master's Program:* Suitability and Explanation
-    
-                
-                Overall Recommendation:
-                """
-    
-    
-    # You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
-                # Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
-                try:
-                    # Define the system message with the summarized information
-                    system_message = """
-                    You are an expert education bot designed to classify the suitability either Highly Suitable, Moderately Suitable, Slightly Suitable, or Not Suitable for each learning pathway of the user, 
-                    and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability 
-                    of the user to each of the following learning path: Eskwelabs bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path.
-                    
-                    Consider the following details in your responses:
-                    
-                    - **Prerequisites:** Basic to intermediate Python skills, basic statistics and linear algebra, strong analytical and problem-solving abilities.
-                    - **Program Structure:** Duration of a few months, full-time or part-time. Hands-on, project-based learning covering data wrangling, EDA, machine learning, and data visualization.
-                    - **Time Commitment:** Significant time investment required for coursework, self-study, and team collaboration.
-                    - **Cost and Financial Aid:** Tuition varies; financial aid options may be available.
-                    - **Career Outcomes:** High job placement rates, career services, and networking opportunities.
-                    - **Suitability:** Ideal for those passionate about data science, with clear career goals in related fields.
-                    - **Application Process:** Includes a technical assessment and interview.
-                    - **Community and Culture:** Emphasizes collaboration, inclusivity, and strong alumni engagement.
-                    - **Diversity and Inclusion:** Focuses on promoting diversity in tech.
-                    
-                    Use this information to help users determine if they are suitable for the Eskwelabs bootcamp.
-                    """
-                    response = openai.chat.completions.create(
-                        model="gpt-3.5-turbo",
-                        messages=[
-                        	{"role": "system", "content": system_message},
-                            {"role": "user", "content": prompt},
-                            # {"role": "assistant", "content": prompt}
-                        ],
-                        max_tokens = 700
-                        #temperature = 0.7 You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and in recommending the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
-                    )
-                    classification = response.choices[0].message.content.strip()
-                    return classification
-                except Exception as e:
-                    st.error(f"Error: {e}")
-                    return None
-            # Main logic
-            if st.session_state.question_index < len(questions):
-                display_question()
-            else:
-                if st.session_state.responses and st.session_state.question_index == len(questions):
-                    classification = get_classification()
-                    if classification:
-                        st.session_state.chat_history.append(("AI", classification))
-                        st.session_state.question_index += 1
-                        st.session_state.classification = classification
-                        st.rerun()
+      
+              # Initialize the first question in the chat history if not already done
+              if st.session_state.question_index == 0 and not st.session_state.chat_history:
+                  first_question = questions[st.session_state.question_index]
+                  st.session_state.chat_history.append(("AI", first_question))
+      
+              # Display the entire chat history with user responses on the right
+              for role, message in st.session_state.chat_history:
+                  if role == "User":
+                      show_user_answer_lpc(message,avatar_url_user)
+                  elif role == "AI":
+                      show_ai_response_lpc(message,avatar_lpc)
+              
+             
+          with st.container():
+              # Function to display the current question and collect user response
+              def display_question():
+                  if st.session_state.question_index < len(questions):
+                      current_question = questions[st.session_state.question_index]
+                      user_response = st.chat_input("Your response:")
+                      if user_response:
+                          st.session_state.responses.append(user_response)
+                          st.session_state.chat_history.append(("User", user_response))
+                          st.session_state.question_index += 1
+                          if st.session_state.question_index < len(questions):
+                              next_question = questions[st.session_state.question_index]
+                              st.session_state.chat_history.append(("AI", next_question))
+                          st.rerun(scope="fragment")
+      
+              # Function to get classification from OpenAI
+              def get_classification():
+      
+                  # Apply the stopwords removal to the responses
+                  # filtered_responses = [remove_stopwords(response) for response in st.session_state.responses]
+      
+                  questions_responses = ""
+                  for i, question in enumerate(questions):
+                      questions_responses += f"{i+1}. {question}\n - Responses: {st.session_state.responses[i]}\n"
+      
+      
+                  
+                  # If my responses is not enough for you to classify me, ask the me to press the reset button, otherwise, please describe my suitability for each and recommend the most suitable one for me.
+                  # Inform me that in case I want to change any of my responses only, I can press the reset button.
+                  # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
+                  
+                  # prompt = f"""
+                  # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
+                  # Suitability:
+                  #     1. Bootcamp: 
+                  #     2. Self-Learning:
+                  #     3. Master's Program:
+                  
+                  # Overall Recommendation: 
+                  
+                  # """
+      
+                  # prompt = f"""
+                  # Based on my responses to the questions listed below, please evaluate whether the responses are relevant to the questions asked. Subsequently, classify my suitability for the following data science learning pathways: Bootcamp, Self-Learning, and a Master’s Program.
+                  
+                  # Questions and Responses:
+                  # {questions_responses}
+                  
+                  # Suitability:
+                  # 1. Bootcamp: 
+                  # 2. Self-Learning:
+                  # 3. Master's Program:
+                  
+                  # Finally, provide an overall recommendation on the most suitable learning pathway for me, considering my responses:
+                  # Overall Recommendation:
+                  # """
+                   # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
+                  prompt = f"""
+                  Classify and explain my suitability for the following data science learning pathway: Eskwelabs' bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
+                 
+                  
+                  *1. Eskwelabs Bootcamp:* Suitability and Explanation
+                  *2. Self-Learning:* Suitability and Explanation
+                  *3. Master's Program:* Suitability and Explanation
+      
+                  
+                  Overall Recommendation:
+                  """
+      
+      
+      # You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
+                  # Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
+                  try:
+                      # Define the system message with the summarized information
+                      system_message = """
+                      You are an expert education bot designed to classify the suitability either Highly Suitable, Moderately Suitable, Slightly Suitable, or Not Suitable for each learning pathway of the user, 
+                      and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability 
+                      of the user to each of the following learning path: Eskwelabs bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path.
+                      
+                      Consider the following details in your responses:
+                      
+                      - **Prerequisites:** Basic to intermediate Python skills, basic statistics and linear algebra, strong analytical and problem-solving abilities.
+                      - **Program Structure:** Duration of a few months, full-time or part-time. Hands-on, project-based learning covering data wrangling, EDA, machine learning, and data visualization.
+                      - **Time Commitment:** Significant time investment required for coursework, self-study, and team collaboration.
+                      - **Cost and Financial Aid:** Tuition varies; financial aid options may be available.
+                      - **Career Outcomes:** High job placement rates, career services, and networking opportunities.
+                      - **Suitability:** Ideal for those passionate about data science, with clear career goals in related fields.
+                      - **Application Process:** Includes a technical assessment and interview.
+                      - **Community and Culture:** Emphasizes collaboration, inclusivity, and strong alumni engagement.
+                      - **Diversity and Inclusion:** Focuses on promoting diversity in tech.
+                      
+                      Use this information to help users determine if they are suitable for the Eskwelabs bootcamp.
+                      """
+                      response = openai.chat.completions.create(
+                          model="gpt-3.5-turbo",
+                          messages=[
+                          	{"role": "system", "content": system_message},
+                              {"role": "user", "content": prompt},
+                              # {"role": "assistant", "content": prompt}
+                          ],
+                          max_tokens = 700
+                          #temperature = 0.7 You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and in recommending the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
+                      )
+                      classification = response.choices[0].message.content.strip()
+                      return classification
+                  except Exception as e:
+                      st.error(f"Error: {e}")
+                      return None
+              # Main logic
+              if st.session_state.question_index < len(questions):
+                  display_question()
+              else:
+                  if st.session_state.responses and st.session_state.question_index == len(questions):
+                      classification = get_classification()
+                      if classification:
+                          st.session_state.chat_history.append(("AI", classification))
+                          st.session_state.question_index += 1
+                          st.session_state.classification = classification
+                          st.rerun()
     
 ###############################################      
 
