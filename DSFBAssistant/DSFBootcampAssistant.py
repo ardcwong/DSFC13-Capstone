@@ -180,10 +180,10 @@ if st.session_state.button_clicked == False:
 # Display the response 
 if st.session_state.question is not "":
     st.chat_message("User").write(f"""
-    <div style="background-color: #f0f0f0; padding: 5px; border-radius: 5px;">
-        <span style="font-size: 16px;">{st.session_state.question}</span>
-    </div>
-    """, unsafe_allow_html=True)
+<div style="background-color: #f0f0f0; padding: 5px 10px; display: inline-block; border-radius: 5px;">
+    <span style="font-size: 16px;">Hello</span>
+</div>
+""", unsafe_allow_html=True)
     st.session_state.response = generate_conversational_response(st.session_state.question, collection)
     st.chat_message("AI").write(st.session_state.response)
 
