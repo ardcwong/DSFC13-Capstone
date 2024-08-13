@@ -281,15 +281,7 @@ def suitability():
               def display_question():
                   if st.session_state.question_index < len(questions):
                       current_question = questions[st.session_state.question_index]
-                      user_response = st.chat_input("Your response:")
-                      if user_response:
-                          st.session_state.responses.append(user_response)
-                          st.session_state.chat_history.append(("User", user_response))
-                          st.session_state.question_index += 1
-                          if st.session_state.question_index < len(questions):
-                              next_question = questions[st.session_state.question_index]
-                              st.session_state.chat_history.append(("AI", next_question))
-                          st.rerun(scope="fragment")
+
       
               # Function to get classification from OpenAI
               def get_classification():
@@ -387,6 +379,15 @@ def suitability():
               # Main logic
               if st.session_state.question_index < len(questions):
                   display_question()
+                                  # user_response = st.chat_input("Your response:")
+                  if user_response:
+                      st.session_state.responses.append(user_response)
+                      st.session_state.chat_history.append(("User", user_response))
+                      st.session_state.question_index += 1
+                      if st.session_state.question_index < len(questions):
+                          next_question = questions[st.session_state.question_index]
+                          st.session_state.chat_history.append(("AI", next_question))
+                      st.rerun(scope="fragment")
               else:
                   if st.session_state.responses and st.session_state.question_index == len(questions):
                       classification = get_classification()
@@ -463,7 +464,7 @@ else:
 # st.session_state.BeginAssessment == False:
   suitability()               
 
-
+user_response = st.chat_input("Your response:", disabled=~(st.session_state.BeginAssessment))
 
 # col_main1, col_main2, col_main3 = st.columns([1,2,0.5])
 # with col_main1:
@@ -488,9 +489,6 @@ with col_main3:
         st.rerun()       
 
     
-
-                    
-
 
 
         
