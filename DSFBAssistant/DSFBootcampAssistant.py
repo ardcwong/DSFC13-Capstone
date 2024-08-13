@@ -187,7 +187,7 @@ user_input = st.chat_input("Or enter your question:")
 if user_input:
     st.session_state.button_clicked = True # removes the conversation starters
     response = generate_conversational_response(user_input, collection)
-    st.write(response)
+    st.chat_message("AI").write(response)
 
 
     # feedback = st.text_input("Was this answer helpful? Leave your feedback:")
