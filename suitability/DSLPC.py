@@ -26,7 +26,68 @@ credentials = st.secrets["gcp_service_account"]
 # if "stop" not in st.session_state:
 #     st.session_state.stop = True
 #     nltk.download('stopwords')
+#### USER AVATAR AND RESPONSE
+@st.cache_data
+def user_avatar_lpc():
+  # Load the image and convert it to base64
+  with open('data/avatar_user.png', 'rb') as image_file_user:
+    encoded_string_user = base64.b64encode(image_file_user.read()).decode()
+  # Base64 encoded image string from the previous step
+  avatar_base64_user = encoded_string_user  # This is the base64 string you got earlier
+  
+  # Construct the base64 image string for use in HTML
+  avatar_url_user = f'data:image/png;base64,{avatar_base64_user}'
+  return avatar_url_user
 
+avatar_url_user = user_avatar_lpc()
+
+def show_user_answer_lpc(message_text,avatar_url_user):
+  # Markdown to replicate the chat message
+  # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
+  
+
+  st.markdown(f"""
+  <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex-end;'>
+      <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-right: 10px; display: inline-block; text-align: right; max-width: 60%;'>
+          <span style='font-size: 16px;'>{message_text}</span>
+      </div>
+      <div style='flex-shrink: 0;'>
+          <img src='{avatar_url_user}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
+      </div>
+  </div>
+  """, unsafe_allow_html=True)
+
+#### AI AVATAR AND RESPONSE
+@st.cache_data
+def ai_avatar_lpc():
+  # Load the image and convert it to base64
+  with open('data/avatar_ai.png', 'rb') as image_file_lpc:
+    encoded_string_lpc = base64.b64encode(image_file_lpc.read()).decode()
+  # Base64 encoded image string from the previous step
+  avatar_base64_lpc = encoded_string_lpc  # This is the base64 string you got earlier
+  
+  # Construct the base64 image string for use in HTML
+  avatar_lpc = f'data:image/png;base64,{avatar_base64_lpc}'
+  return avatar_lpc
+
+avatar_lpc = ai_avatar_lpc()
+
+def show_ai_response_lpc(message_text,avatar_lpc):
+  # Markdown to replicate the chat message
+  # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
+  
+
+  st.markdown(f"""
+  <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex;'>
+      <div style='flex-shrink: 0;'>
+          <img src='{avatar_lpc}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
+      </div>
+      <div style='background-color: #FCFCFC; padding: 10px 15px; border-radius: 10px; margin-left: 10px; display: inline-block; text-align: left; max-width: 85%;'>
+          <span style='font-size: 16px;'>{message_text}</span>
+      </div>
+
+  </div>
+  """, unsafe_allow_html=True)
 
 def remove_stopwords(response):
     stop_words = set(stopwords.words('english'))
@@ -121,6 +182,17 @@ def suitability():
             # Display the entire chat history with user responses on the right
             for role, message in st.session_state.chat_history:
                 st.chat_message(role).write(message)
+
+            # for role, message in st.session_state.chat_history:
+            #     if st.session_state.chat_history
+                
+            for role, message in st.session_state.chat_history:
+                if role == "User":
+                    show_user_answer_lpc(message_text,avatar_url_user)
+                elif role == "AI":
+                    show_ai_response_lpc(message_text,avatar_lpc)
+            
+            
        
         with tab1:
 
@@ -199,7 +271,10 @@ def suitability():
     
             # Display the entire chat history with user responses on the right
             for role, message in st.session_state.chat_history:
-                st.chat_message(role).write(message)
+                if role == "User":
+                    show_user_answer_lpc(message_text,avatar_url_user)
+                elif role == "AI":
+                    show_ai_response_lpc(message_text,avatar_lpc)
             
            
         with st.container():
