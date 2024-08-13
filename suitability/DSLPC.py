@@ -426,18 +426,20 @@ if 'BeginAssessment' not in st.session_state:
   
 col_main1, col_main2, col_main3 = st.columns([1,4,1])
 with col_main2:
-
   st.markdown(f"<h1 style='text-align: center;'>Data Science Learning Path Classifier</h1>", unsafe_allow_html=True)
-
-  st.markdown(f"<h6 style='text-align: center;'><i>Are you unsure about the best way to pursue your data science journey? Our intelligent classifier bot is here to help! By answering a few simple questions about your background, preferences, and goals, our bot will recommend the most suitable learning pathway for you.</i></h6>", unsafe_allow_html=True)
   cc1, cc2, cc3 = st.columns([1,10,1])
   with cc2:
+  
+
+    st.markdown(f"<h6 style='text-align: center;'><i>Are you unsure about the best way to pursue your data science journey? Our intelligent classifier bot is here to help! By answering a few simple questions about your background, preferences, and goals, our bot will recommend the most suitable learning pathway for you.</i></h6>", unsafe_allow_html=True)
+  
+  
     # with st.expander("**How it works**", expanded=st.session_state.BeginAssessment):
-      st.markdown("""
-      **HOW IT WORKS:**
-      1. Answer Questions: *Provide responses to a series of questions about your current experience, learning preferences, time commitment, and budget.*<br>
-      2. Get Classified: *Based on your answers, our classifier bot will evaluate and determine the most appropriate learning pathway for you:* 
-      :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
+    st.markdown("""
+    **HOW IT WORKS:**
+    1. Answer Questions: *Provide responses to a series of questions about your current experience, learning preferences, time commitment, and budget.*<br>
+    2. Get Classified: *Based on your answers, our classifier bot will evaluate and determine the most appropriate learning pathway for you:* 
+    :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
 
 if st.session_state.BeginAssessment == True:  
   st.markdown("<br>", unsafe_allow_html = True)       
