@@ -67,11 +67,8 @@ collection = load_collection_DSFBAssistant()
 #         max_tokens=500
 #     )
 #     return response.choices[0].message.content
-
-def show_user_question(message_text):
-  # Markdown to replicate the chat message
-  # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
-  
+@st.cache_data
+def user_avatar():
   # Load the image and convert it to base64
   with open('data/avatar_user.png', 'rb') as image_file:
     encoded_string = base64.b64encode(image_file.read()).decode()
@@ -80,7 +77,15 @@ def show_user_question(message_text):
   
   # Construct the base64 image string for use in HTML
   avatar_url = f'data:image/png;base64,{avatar_base64}'
+  return avatar_url
+
+avatar_url = user_avatar()
+
+def show_user_question(message_text, avatar_url):
+  # Markdown to replicate the chat message
+  # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
   
+
   st.markdown(f"""
   <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex-end;'>
       <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-right: 10px; display: inline-block; text-align: right; max-width: 60%;'>
@@ -91,6 +96,8 @@ def show_user_question(message_text):
       </div>
   </div>
   """, unsafe_allow_html=True)
+
+
 # Function to find the best matching data in the collection based on user input
 def return_best_eskdata(user_input, collection, n_results=3):
     query_result = collection.query(query_texts=[user_input], n_results=n_results)
@@ -206,7 +213,7 @@ if st.session_state.button_clicked == False:
 
 # Display the response 
 if st.session_state.question is not "":
-    show_user_question(st.session_state.question)
+    show_user_question(st.session_state.question, avatar_url)
     st.session_state.response = generate_conversational_response(st.session_state.question, collection)
     st.chat_message("AI").write(st.session_state.response)
 
