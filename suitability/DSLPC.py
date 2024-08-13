@@ -197,8 +197,8 @@ def suitability():
         with tab1:
 
 
-            
-            st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
+            show_ai_response_lpc(st.session_state.chat_history[-1][1],avatar_lpc)
+            # st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
             # st.write(st.session_state.chat_history)
         
             if 'feedback_up' not in st.session_state:
