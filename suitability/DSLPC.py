@@ -448,7 +448,7 @@ if st.session_state.BeginAssessment == True:
   with ba02:
     st.image('data/avatar_ai_lpc.png', use_column_width =True)
 
-  s1, s2, s3 = st.columns([1,10,1])
+  s1, s2, s3 = st.columns([1,3,1])
   with s2:
       st.markdown("")
       st.markdown("")
