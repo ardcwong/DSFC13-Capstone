@@ -208,10 +208,11 @@ with ba2:
 
       
       st.markdown("<br><br><br><br><br>", unsafe_allow_html = True)       
-      st.markdown(f"<h6 style='text-align: center;'>Choose a question to get started:</h6>", unsafe_allow_html=True)
+      
       b00, b01, b02, b03, b04 = st.columns([1,1,1,1,1])
       with b02:
         st.image('data/avatar_ai.png', use_column_width =True)
+      st.markdown(f"<h6 style='text-align: center;'><br><br>Choose a question to get started:</h6>", unsafe_allow_html=True)
       b0, b1, b2, b3, b4 = st.columns([1,1,1,1,1])
       with b1:
         if st.button("What is RAG in LLM?", use_container_width = True):
