@@ -224,7 +224,7 @@ if st.session_state.button_clicked == False:
 if st.session_state.question is not "":
     show_user_question(st.session_state.question, avatar_user)
     st.session_state.response = generate_conversational_response(st.session_state.question, collection)
-    st.chat_message("AI").write(st.session_state.response)
+    # st.chat_message("AI").write(st.session_state.response)
     show_ai_response(st.session_state.response,avatar_ai)
 
 # Allow the user to enter their own question after clicking a starter question
