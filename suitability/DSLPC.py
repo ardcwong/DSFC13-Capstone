@@ -159,20 +159,32 @@ if "spreadsheet_DSLPC" not in st.session_state:
 def program_info_page_switch():
     if st.button("Program Information",type="primary", use_container_width = True, help = "Go to Program Information page"):  
         return st.switch_page("Program_Information/pi_app.py")
+
+
 if 'question_index' not in st.session_state:
     st.session_state.question_index = 0
 
+if 'BeginAssessment' not in st.session_state:
+    st.session_state.BeginAssessment = True
+  
+if 'classification' not in st.session_state:
+    st.session_state.classification = []
+
+    # Initialize or retrieve session state
+if 'responses' not in st.session_state:
+    st.session_state.responses = []
+
+if 'chat_history' not in st.session_state:
+    st.session_state.chat_history = []
+
+if 'feedback_up' not in st.session_state:
+    st.session_state.feedback_up = []
+  
+if 'feedback_down' not in st.session_state:
+    st.session_state.feedback_down = []
 @st.fragment
 def suitability():
-    if 'classification' not in st.session_state:
-        st.session_state.classification = []
-    
-        # Initialize or retrieve session state
-    if 'responses' not in st.session_state:
-        st.session_state.responses = []
 
-    if 'chat_history' not in st.session_state:
-        st.session_state.chat_history = []
         
     if st.session_state.classification:
         # Display the entire chat history with user responses on the right
@@ -203,10 +215,7 @@ def suitability():
               # st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
               # st.write(st.session_state.chat_history)
           
-              if 'feedback_up' not in st.session_state:
-                  st.session_state.feedback_up = []
-              if 'feedback_down' not in st.session_state:
-                  st.session_state.feedback_down = []
+
           
               
               if st.session_state.feedback_up == 1:
@@ -437,8 +446,7 @@ else:
 # """, unsafe_allow_html=True)
 # st.title("Data Science Learning Path Classifier")
 # Streamlit app setup
-if 'BeginAssessment' not in st.session_state:
-    st.session_state.BeginAssessment = True
+
   
 col_main1, col_main2, col_main3 = st.columns([1,4,1])
 with col_main2:
