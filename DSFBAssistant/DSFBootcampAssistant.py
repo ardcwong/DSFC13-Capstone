@@ -163,7 +163,7 @@ if not st.session_state.button_clicked:
     
     if st.button("What is RAG in LLM?"):
       handle_button_click("What is RAG in LLM?")
-      st.rerun()
+      
         
     
     if st.button("What is Bag of Words?"):
