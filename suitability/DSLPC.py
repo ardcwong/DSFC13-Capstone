@@ -142,6 +142,7 @@ questions = [
     "Are you comfortable with a fast-paced and intensive learning environment?",
     "Do you prefer hands-on projects or theoretical learning?",
     "Have you participated in online learning platforms or bootcamps before?",
+    "Do you prefer learning in a classroom setting, online, or a hybrid approach?",
     "Do you work better independently or in group settings?",
     "What are your long-term career goals?",
     "Are you looking to advance in your current role or switch careers?",
