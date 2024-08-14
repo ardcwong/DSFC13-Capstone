@@ -511,7 +511,7 @@ with col_main3:
         st.session_state.responses = []
         st.session_state.question_index = 0
         st.session_state.chat_history = []
-        st.session_state.classification = []
+        st.session_state.classification = False
         st.session_state.feedback_up = []
         st.session_state.feedback_down = []
         st.session_state.BeginAssessment = True
