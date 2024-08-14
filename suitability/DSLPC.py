@@ -150,7 +150,8 @@ questions = [
     "Are you interested in gaining foundational skills or advanced data science skills?",
     "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
     "Do you need to balance your studies with work or other commitments?",
-    "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?"
+    "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?",
+    "How do you handle complex problem-solving and analytical tasks?"
 ]
 # Google Sheets connection function
 def google_connection(client):
