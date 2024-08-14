@@ -380,8 +380,25 @@ def get_classification():
         - **Application Process:** Simple application, possibly an interview.
         - **Community and Culture:** Collaborative and supportive, with strong industry network and focus on diversity in tech.
 
+         **Self-Learning:**
+        - **Prerequisites:** Self-discipline, motivation, and a strong ability to learn independently. Some prior experience with programming and statistics is helpful but not required.
+        - **Learning Structure:** Flexible and self-paced, using online resources such as MOOCs (e.g., Coursera, edX), books, and tutorials. Topics include programming, data analysis, machine learning, and more.
+        - **Time Commitment:** Varies widely based on individual pace; typically requires consistent effort over an extended period.
+        - **Cost:** Often lower than formal programs, with many free or low-cost resources available.
+        - **Career Outcomes:** Can be successful but may require more effort to demonstrate skills to employers, often through personal projects or portfolios.
+        - **Suitability:** Ideal for highly motivated individuals who prefer flexibility and are capable of learning independently.
+        - **Support:** Limited formal support; may require participation in online communities or finding mentors.
         
-        Use this information to help users determine if they are suitable for either of these programs.
+        **Master's Program in Data Science or Analytics:**
+        - **Prerequisites:** Typically requires an undergraduate degree, often in a related field like computer science, mathematics, or engineering. Some programs may require standardized test scores (e.g., GRE).
+        - **Program Structure:** Usually 1-2 years full-time or longer if part-time, with a mix of theoretical and practical coursework, including data science fundamentals, advanced statistics, machine learning, and domain-specific applications.
+        - **Time Commitment:** Full-time commitment with a structured schedule of classes, assignments, and research projects.
+        - **Cost:** Often the most expensive option, but scholarships, grants, and financial aid may be available.
+        - **Career Outcomes:** High; Master's programs are well-regarded by employers and often lead to advanced roles in data science or analytics.
+        - **Suitability:** Best for individuals seeking a deep, comprehensive education in data science or analytics and who can commit to a rigorous academic schedule.
+        - **Networking:** Strong networking opportunities with faculty, peers, and industry connections.
+        
+        Use this information to help users determine which path—Eskwelabs Data Science Fellowship, Data Analytics Bootcamp, Self-Learning, or a Master's Program—is most suitable for their goals and circumstances.       
         """
         response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
