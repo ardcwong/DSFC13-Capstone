@@ -402,7 +402,7 @@ def get_classification():
 # Main logic
 if st.session_state.question_index < len(questions):
     display_question()
-    user_response = st.chat_input("Your response:", disabled = (st.session_state.BeginAssessment or not st.session_state.classification))
+    user_response = st.chat_input("Your response:", disabled = st.session_state.BeginAssessment ) #or not st.session_state.classification)
     if user_response:
         st.session_state.responses.append(user_response)
         st.session_state.chat_history.append(("User", user_response))
