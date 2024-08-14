@@ -149,7 +149,8 @@ questions = [
     "Are you more interested in applied roles or research-oriented roles?",
     "Are you interested in gaining foundational skills or advanced data science skills?",
     "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
-    "Do you need to balance your studies with work or other commitments?"
+    "Do you need to balance your studies with work or other commitments?",
+    "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?"
 ]
 # Google Sheets connection function
 def google_connection(client):
@@ -335,7 +336,8 @@ def get_classification():
 
 
     prompt = f"""
-    Classify and explain my suitability for the following data science learning pathway: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
+    Classify and explain my suitability for the following data science learning pathway: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree, recommend the most suitable learning pathway,
+    and determine whether I am ready for the Eskwelabs Data Science Fellowship, should start with the Eskwelabs Data Analytics Bootcamp, pursue self-learning, or enroll in a Master's Program based on the {questions_responses} provided. 
    
     
     *1. Eskwelabs' Data Science Fellowship:* Suitability and Explanation
@@ -343,8 +345,10 @@ def get_classification():
     *2. Self-Learning:* Suitability and Explanation
     *3. Master's Program:* Suitability and Explanation
 
-    
-    Overall Recommendation:
+    *Most Suitable Learning Path:* 
+
+
+    *Readiness for Data Science Fellowship:*
     """
 
 
@@ -356,49 +360,36 @@ def get_classification():
         You are an expert education bot designed to classify the suitability either Highly Suitable, Moderately Suitable, Slightly Suitable, or Not Suitable for each learning pathway of the user, 
         and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability 
         of the user to each of the following learning path: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path.
-        
+        Also, you will determine whether they are ready for the Eskwelabs Data Science Fellowship, should start with the Eskwelabs Data Analytics Bootcamp, pursue self-learning, or enroll in a Master's Program. 
         Consider the following details in your responses:
-        
-        **Eskwelabs Data Science Fellowship:**
-        - **Prerequisites:** Basic to intermediate Python skills, basic statistics and linear algebra, strong analytical and problem-solving abilities.
-        - **Program Structure:** Duration of a few months, full-time or part-time. Hands-on, project-based learning covering data wrangling, EDA, machine learning, and data visualization.
-        - **Time Commitment:** Significant time investment required for coursework, self-study, and team collaboration.
-        - **Cost and Financial Aid:** Tuition varies; financial aid options may be available.
-        - **Career Outcomes:** High job placement rates, career services, and networking opportunities.
-        - **Suitability:** Ideal for those passionate about data science, with clear career goals in related fields.
-        - **Application Process:** Includes a technical assessment and interview.
-        - **Community and Culture:** Emphasizes collaboration, inclusivity, and strong alumni engagement.
-        - **Diversity and Inclusion:** Focuses on promoting diversity in tech.
-                
-        **Eskwelabs Data Analytics Bootcamp:**
-        - **Prerequisites:** Basic knowledge of Excel or spreadsheets, basic math and statistics, interest in data and problem-solving.
-        - **Program Structure:** Duration of a few weeks to a couple of months, with a focus on practical skills in data cleaning, analysis, visualization, and storytelling. Tools include Excel, SQL, and data visualization platforms.
-        - **Time Commitment:** Part-time commitment with live sessions, self-paced learning, and project work.
-        - **Cost and Financial Aid:** Tuition varies; financial aid and ISA options may be available.
-        - **Career Outcomes:** Prepares for roles such as data analyst or business intelligence analyst, with portfolio projects and career support.
-        - **Suitability:** Ideal for beginners or those transitioning to data analytics, with a passion for data-driven decision-making.
-        - **Application Process:** Simple application, possibly an interview.
-        - **Community and Culture:** Collaborative and supportive, with strong industry network and focus on diversity in tech.
 
-         **Self-Learning:**
+        **Eskwelabs Data Science Fellowship:**
+        - **Prerequisites:** Requires basic to intermediate Python skills, basic statistics and linear algebra, and strong analytical and problem-solving abilities.
+        - **Program Structure:** A few months, full-time or part-time, with hands-on, project-based learning covering data wrangling, EDA, machine learning, and data visualization.
+        - **Time Commitment:** Significant time required for coursework, self-study, and team collaboration.
+        - **Suitability:** Best for those with a clear interest in deepening their data science skills, who have some prior experience, and who are aiming for roles like data scientist or machine learning engineer.
+        
+        **Eskwelabs Data Analytics Bootcamp:**
+        - **Prerequisites:** Suitable for beginners; requires basic knowledge of Excel or spreadsheets, basic math and statistics, and an interest in data and problem-solving.
+        - **Program Structure:** A few weeks to a couple of months, part-time, focusing on practical skills in data cleaning, analysis, visualization, and storytelling using tools like Excel, SQL, and data visualization platforms.
+        - **Time Commitment:** Part-time commitment with live sessions, self-paced learning, and project work.
+        - **Suitability:** Ideal for those new to data analytics or looking to transition into this field, aiming for roles such as data analyst or business intelligence analyst.
+        
+        **Self-Learning:**
         - **Prerequisites:** Self-discipline, motivation, and a strong ability to learn independently. Some prior experience with programming and statistics is helpful but not required.
-        - **Learning Structure:** Flexible and self-paced, using online resources such as MOOCs (e.g., Coursera, edX), books, and tutorials. Topics include programming, data analysis, machine learning, and more.
+        - **Learning Structure:** Flexible and self-paced, using online resources such as MOOCs, books, and tutorials covering programming, data analysis, machine learning, and more.
         - **Time Commitment:** Varies widely based on individual pace; typically requires consistent effort over an extended period.
-        - **Cost:** Often lower than formal programs, with many free or low-cost resources available.
-        - **Career Outcomes:** Can be successful but may require more effort to demonstrate skills to employers, often through personal projects or portfolios.
-        - **Suitability:** Ideal for highly motivated individuals who prefer flexibility and are capable of learning independently.
-        - **Support:** Limited formal support; may require participation in online communities or finding mentors.
+        - **Suitability:** Ideal for highly motivated individuals who prefer flexibility and are capable of learning independently, especially if they are not ready for structured programs.
         
         **Master's Program in Data Science or Analytics:**
-        - **Prerequisites:** Typically requires an undergraduate degree, often in a related field like computer science, mathematics, or engineering. Some programs may require standardized test scores (e.g., GRE).
+        - **Prerequisites:** Typically requires an undergraduate degree, often in a related field like computer science, mathematics, or engineering. Some programs may require standardized test scores.
         - **Program Structure:** Usually 1-2 years full-time or longer if part-time, with a mix of theoretical and practical coursework, including data science fundamentals, advanced statistics, machine learning, and domain-specific applications.
         - **Time Commitment:** Full-time commitment with a structured schedule of classes, assignments, and research projects.
-        - **Cost:** Often the most expensive option, but scholarships, grants, and financial aid may be available.
-        - **Career Outcomes:** High; Master's programs are well-regarded by employers and often lead to advanced roles in data science or analytics.
-        - **Suitability:** Best for individuals seeking a deep, comprehensive education in data science or analytics and who can commit to a rigorous academic schedule.
-        - **Networking:** Strong networking opportunities with faculty, peers, and industry connections.
+        - **Suitability:** Best for individuals seeking a deep, comprehensive education in data science or analytics and who can commit to a rigorous academic schedule, often aiming for advanced roles in the field.
         
-        Use this information to help users determine which path—Eskwelabs Data Science Fellowship, Data Analytics Bootcamp, Self-Learning, or a Master's Program—is most suitable for their goals and circumstances.       
+        **Primary Use Case:** Help users assess if they are ready for the more advanced and intensive Data Science Fellowship, should start with the foundational Data Analytics Bootcamp, pursue self-learning if they need more flexibility, or enroll in a Master's Program for a comprehensive academic experience.
+        
+        Use this information to guide users in making an informed decision about which path aligns best with their current skills, experience, learning style, and career goals. 
         """
         response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
