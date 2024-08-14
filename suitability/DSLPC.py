@@ -363,11 +363,11 @@ def get_classification():
         Also, you will determine whether they are ready for the Eskwelabs Data Science Fellowship, should start with the Eskwelabs Data Analytics Bootcamp, pursue self-learning, or enroll in a Master's Program. 
         Consider the following details in your responses:
 
-        **Eskwelabs Data Science Fellowship:**
-        - **Prerequisites:** Requires basic to intermediate Python skills, basic statistics and linear algebra, and strong analytical and problem-solving abilities.
+        **Eskwelabs Data Science Fellowship (DSF):**
+        - **Prerequisites:** Prior experience with machine learning algorithms is not strictly required. A basic understanding of programming (preferably Python), statistics, and problem-solving skills is recommended.
         - **Program Structure:** A few months, full-time or part-time, with hands-on, project-based learning covering data wrangling, EDA, machine learning, and data visualization.
         - **Time Commitment:** Significant time required for coursework, self-study, and team collaboration.
-        - **Suitability:** Best for those with a clear interest in deepening their data science skills, who have some prior experience, and who are aiming for roles like data scientist or machine learning engineer.
+        - **Suitability:** Suitable for beginners who are eager to learn, as well as those with some prior experience. The program is designed to equip participants with the necessary skills in data science, including machine learning, making it ideal for those aiming for roles like data scientist or machine learning engineer.
         
         **Eskwelabs Data Analytics Bootcamp:**
         - **Prerequisites:** Suitable for beginners; requires basic knowledge of Excel or spreadsheets, basic math and statistics, and an interest in data and problem-solving.
