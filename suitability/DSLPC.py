@@ -11,8 +11,9 @@ import nltk
 from nltk.corpus import wordnet as wn
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+st.write(st.session_state.BeginAssessment)
+st.write(st.session_state.classification)
 
- 
 # Define the timezone for the Philippines
 philippines_timezone = pytz.timezone('Asia/Manila')
 
