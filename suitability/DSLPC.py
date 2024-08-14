@@ -209,7 +209,7 @@ if 'feedback_down' not in st.session_state:
 def suitability():
 
         
-    if st.session_state.classification:
+    if st.session_state.classification == True:
         # Display the entire chat history with user responses on the right
         # for role, message in st.session_state.chat_history:
         col_main11, col_main22, col_main33 = st.columns([1,4,1])    
