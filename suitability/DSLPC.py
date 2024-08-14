@@ -362,7 +362,8 @@ def get_classification():
         and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability 
         of the user to each of the following learning path: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path.
         Also, you will determine whether they are ready for the Eskwelabs Data Science Fellowship, should start with the Eskwelabs Data Analytics Bootcamp, pursue self-learning, or enroll in a Master's Program. 
-        Consider the following details in your responses:
+        
+        You may consider the following details in your responses:
 
         **Eskwelabs Data Science Fellowship (DSF):**
         - **Prerequisites:** Prior experience with machine learning algorithms is not strictly required. A basic understanding of programming (preferably Python), statistics, and problem-solving skills is recommended.
