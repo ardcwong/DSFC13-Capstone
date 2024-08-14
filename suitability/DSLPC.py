@@ -191,7 +191,7 @@ if 'BeginAssessment' not in st.session_state:
     st.session_state.BeginAssessment = True
   
 if 'classification' not in st.session_state:
-    st.session_state.classification = []
+    st.session_state.classification = False
 
     # Initialize or retrieve session state
 if 'responses' not in st.session_state:
@@ -415,7 +415,7 @@ if st.session_state.question_index < len(questions):
                 if classification:
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
-                    st.session_state.classification = classification
+                    st.session_state.classification = True
                     # st.rerun()
         # st.rerun()
 else:
@@ -424,7 +424,7 @@ else:
         if classification:
             st.session_state.chat_history.append(("AI", classification))
             st.session_state.question_index += 1
-            st.session_state.classification = classification
+            st.session_state.classification = True
             st.rerun()
     
 ###############################################      
