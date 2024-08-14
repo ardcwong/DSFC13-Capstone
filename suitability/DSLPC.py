@@ -103,31 +103,54 @@ def remove_stopwords(response):
 
 
 # Define the questions
+# questions = [
+#     "What is your highest level of education?",
+#     "Do you have a background in mathematics, statistics, or computer science? If so, could you share about your experience in any of the these?",
+#     "Do you have any work experience related to data science or any technical field? If so, please describe your role(s).",
+#     "How many years of professional experience do you have?",
+#     "Are you familiar with any programming languages? If yes, which ones?",
+#     "Do you have any experience with data analysis tools or software (e.g., Python, R, SQL, Excel)?",
+#     "Have you worked on any data science projects or competitions?",
+#     "Do you have experience with machine learning algorithms?",
+#     "Do you prefer structured learning with a defined curriculum or self-paced learning?",
+#     "How much time can you dedicate to studying each week?",
+#     "What type of learner are you (visual, auditory, reading/writing, kinesthetic)?",
+#     "What are your short-term and long-term career goals in data science?",
+#     "Are you looking to make a career switch to data science, or do you want to enhance your current role with data science skills?",
+#     "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
+#     "Do you need to balance your studies with work or other commitments?",
+#     "Do you prefer learning in a classroom setting, online, or a hybrid approach?",
+#     "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?",
+#     "Have you ever attended any data science workshops or courses? If so, please describe them.",
+#     "How do you handle complex problem-solving and analytical tasks?",
+#     "Do you have a network or community for support in your learning journey?"
+
+# ]
+
 questions = [
     "What is your highest level of education?",
-    "Do you have a background in mathematics, statistics, or computer science? If so, could you share about your experience in any of the these?",
-    "Do you have any work experience related to data science or any technical field? If so, please describe your role(s).",
-    "How many years of professional experience do you have?",
-    "Are you familiar with any programming languages? If yes, which ones?",
-    "Do you have any experience with data analysis tools or software (e.g., Python, R, SQL, Excel)?",
-    "Have you worked on any data science projects or competitions?",
-    "Do you have experience with machine learning algorithms?",
-    "Do you prefer structured learning with a defined curriculum or self-paced learning?",
-    "How much time can you dedicate to studying each week?",
-    "What type of learner are you (visual, auditory, reading/writing, kinesthetic)?",
-    "What are your short-term and long-term career goals in data science?",
-    "Are you looking to make a career switch to data science, or do you want to enhance your current role with data science skills?",
+    "Did you study any STEM-related fields? If yes, which one?",
+    "Do you have formal education in data science/analytics?",
+    "Have you taken any mathematics or statistics courses during your studies?",
+    "Do you have experience in programming? If yes, which languages?",
+    "Are you familiar with data analysis tools like Excel, SQL, or Tableau?",
+    "Have you worked with machine learning algorithms before?",
+    "How would you rate your proficiency in mathematics and statistics?",
+    "Do you have experience working in a data-related role?",
+    "Have you completed any data-related projects? Can you describe one?",
+    "Do you prefer structured learning with deadlines or self-paced learning?",
+    "How much time per week can you commit to learning?",
+    "Are you comfortable with a fast-paced and intensive learning environment?",
+    "Do you prefer hands-on projects or theoretical learning?",
+    "Have you participated in online learning platforms or bootcamps before?",
+    "Do you work better independently or in group settings?",
+    "What are your long-term career goals?",
+    "Are you looking to advance in your current role or switch careers?",
+    "Are you more interested in applied roles or research-oriented roles?",
+    "Are you interested in gaining foundational skills or advanced data science skills?",
     "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
-    "Do you need to balance your studies with work or other commitments?",
-    "Do you prefer learning in a classroom setting, online, or a hybrid approach?",
-    "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?",
-    "Have you ever attended any data science workshops or courses? If so, please describe them.",
-    "How do you handle complex problem-solving and analytical tasks?",
-    "Do you have a network or community for support in your learning journey?"
-
+    "Do you need to balance your studies with work or other commitments?"
 ]
-
-
 # Google Sheets connection function
 def google_connection(client):
     # Open the Google Sheet
@@ -311,42 +334,12 @@ def get_classification():
         questions_responses += f"{i+1}. {question}\n - Responses: {st.session_state.responses[i]}\n"
 
 
-    
-    # If my responses is not enough for you to classify me, ask the me to press the reset button, otherwise, please describe my suitability for each and recommend the most suitable one for me.
-    # Inform me that in case I want to change any of my responses only, I can press the reset button.
-    # Classify my suitability for a data science bootcamp, self-learning, or a master's program based on my responses to the questions: {questions_responses}.
-    
-    # prompt = f"""
-    # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
-    # Suitability:
-    #     1. Bootcamp: 
-    #     2. Self-Learning:
-    #     3. Master's Program:
-    
-    # Overall Recommendation: 
-    
-    # """
-
-    # prompt = f"""
-    # Based on my responses to the questions listed below, please evaluate whether the responses are relevant to the questions asked. Subsequently, classify my suitability for the following data science learning pathways: Bootcamp, Self-Learning, and a Master’s Program.
-    
-    # Questions and Responses:
-    # {questions_responses}
-    
-    # Suitability:
-    # 1. Bootcamp: 
-    # 2. Self-Learning:
-    # 3. Master's Program:
-    
-    # Finally, provide an overall recommendation on the most suitable learning pathway for me, considering my responses:
-    # Overall Recommendation:
-    # """
-     # Classify my suitability for a data science bootcamp, self-learning, and a master’s program based on my responses to the question:{questions_responses}.
     prompt = f"""
-    Classify and explain my suitability for the following data science learning pathway: Eskwelabs' bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
+    Classify and explain my suitability for the following data science learning pathway: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
    
     
-    *1. Eskwelabs Bootcamp:* Suitability and Explanation
+    *1. Eskwelabs' Data Science Fellowship:* Suitability and Explanation
+    *2. Eskwelabs' Data Analytics Bootcamp:* Suitability and Explanation
     *2. Self-Learning:* Suitability and Explanation
     *3. Master's Program:* Suitability and Explanation
 
@@ -362,10 +355,11 @@ def get_classification():
         system_message = """
         You are an expert education bot designed to classify the suitability either Highly Suitable, Moderately Suitable, Slightly Suitable, or Not Suitable for each learning pathway of the user, 
         and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability 
-        of the user to each of the following learning path: Eskwelabs bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path.
+        of the user to each of the following learning path: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path.
         
         Consider the following details in your responses:
         
+        **Eskwelabs Data Science Fellowship:**
         - **Prerequisites:** Basic to intermediate Python skills, basic statistics and linear algebra, strong analytical and problem-solving abilities.
         - **Program Structure:** Duration of a few months, full-time or part-time. Hands-on, project-based learning covering data wrangling, EDA, machine learning, and data visualization.
         - **Time Commitment:** Significant time investment required for coursework, self-study, and team collaboration.
@@ -375,8 +369,19 @@ def get_classification():
         - **Application Process:** Includes a technical assessment and interview.
         - **Community and Culture:** Emphasizes collaboration, inclusivity, and strong alumni engagement.
         - **Diversity and Inclusion:** Focuses on promoting diversity in tech.
+                
+        **Eskwelabs Data Analytics Bootcamp:**
+        - **Prerequisites:** Basic knowledge of Excel or spreadsheets, basic math and statistics, interest in data and problem-solving.
+        - **Program Structure:** Duration of a few weeks to a couple of months, with a focus on practical skills in data cleaning, analysis, visualization, and storytelling. Tools include Excel, SQL, and data visualization platforms.
+        - **Time Commitment:** Part-time commitment with live sessions, self-paced learning, and project work.
+        - **Cost and Financial Aid:** Tuition varies; financial aid and ISA options may be available.
+        - **Career Outcomes:** Prepares for roles such as data analyst or business intelligence analyst, with portfolio projects and career support.
+        - **Suitability:** Ideal for beginners or those transitioning to data analytics, with a passion for data-driven decision-making.
+        - **Application Process:** Simple application, possibly an interview.
+        - **Community and Culture:** Collaborative and supportive, with strong industry network and focus on diversity in tech.
+
         
-        Use this information to help users determine if they are suitable for the Eskwelabs bootcamp.
+        Use this information to help users determine if they are suitable for either of these programs.
         """
         response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
