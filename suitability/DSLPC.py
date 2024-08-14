@@ -129,7 +129,7 @@ def remove_stopwords(response):
 questions = [
     "What is your highest level of education?",
     "Did you study any STEM-related fields? If yes, which one?",
-    "Do you have formal education in data science/analytics?",
+    "What is your current level of knowledge or experience in data science/analytics?",
     "Have you taken any mathematics or statistics courses during your studies?",
     "Do you have experience in programming? If yes, which languages?",
     "Are you familiar with data analysis tools like Excel, SQL, or Tableau?",
