@@ -403,7 +403,7 @@ def get_classification():
     
     **Readiness for Data Science Fellowship:** Readiness for Data Science Fellowship, preparations for DSP, considerations for DAB.
 
-    Good luck message on the user's Data Science Journey!
+    Good luck message on the user's Data Science Journey! End.
     
     """
 
