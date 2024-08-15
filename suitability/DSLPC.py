@@ -517,7 +517,7 @@ def load_test_answers_by_name(name):
         ],
         "Jao Cordero": [
             "BS in Computer Engineering", "Yes, BS Computer Engineering", "Basic", "Yes - Java",
-            "Yes", "Yes", "None", "Intermediate", "Yes", "Yes, Reports Processing",
+            "Yes", "Yes", "None", "Intermediate", "Yes, Reports Processing", "Yes",
             "Structured learning with deadlines", "6 hours", "Yes", "Theoretical learning", "Yes",
             "classroom setting", "Both", "To gain knowledge in data visualization", "Advance in current role", 
             "Research-oriented", "Yes", "No", "Yes", "Yes, data visualization", 
