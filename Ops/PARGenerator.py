@@ -430,9 +430,9 @@ with tab1:
   
 
         filtered_data = scores_dataset[scores_dataset["Reference Number"] == st.session_state.reference_number_ops].iloc[:, :14].reset_index(drop=True).T # Filter and select the first 14 columns, Reset the index and transpose the DataFrame
-        filtered_data.columns = transposed_data.iloc[0]         # Set the first row of the transposed DataFrame as the column headers
-        filtered_data = transposed_data[1:]
-        st.dataframe(transposed_data, use_container_width=True)
+        filtered_data.columns = filtered_data.iloc[0]         # Set the first row of the transposed DataFrame as the column headers
+        filtered_data = filtered_data[1:]
+        st.dataframe(filtered_data, use_container_width=True)
 
     
     
