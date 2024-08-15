@@ -302,6 +302,13 @@ with tab1:
                 
     
     with COL1:
+        st.dataframe(scores_dataset[scores_dataset["Reference Number"] == st.session_state.reference_number_ops].iloc[:, :14].T)
+        
+        # st.dataframe(scores_dataset[scores_dataset["PARGenTag"] == "N"].iloc[:, :14])
+        # is_blank = scores_dataset["PARGenTag"] == "N"
+        # pf_rn = scores_dataset["Reference Number"][is_blank].tolist()
+        # reference_number_ops = st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn)
+        
         with st.expander("TOOLS", expanded = True):
             if st.session_state.generate_pf_fs_ops == True:
                 user_data = scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number_ops]
@@ -420,6 +427,7 @@ with tab1:
                     st.download_button(label=f"Download PDF (**{st.session_state.reference_number_ops}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
                 else:
                     st.error("Failed to convert HTML to PDF.")
+
     
     
     
