@@ -382,26 +382,26 @@ def get_classification():
 
     The response should begin with a congratulatory or thank you message for completing the assessment.
     
-    *1. Eskwelabs' Data Science Fellowship:* Suitability 
-        *Explanation:*
-        *Recommendation:*
+    **1. Eskwelabs' Data Science Fellowship:** Suitability 
+        **Explanation:**
+        **Recommendation**
         
-    *2. Eskwelabs' Data Analytics Bootcamp:*Suitability 
-        *Explanation:*
-        *Recommendation:*
+    **2. Eskwelabs' Data Analytics Bootcamp:** Suitability 
+        **Explanation:**
+        **Recommendation**
         
-    *2. Self-Learning:* Suitability 
-        *Explanation:*
-        *Recommendation:*
+    **3. Self-Learning:** Suitability 
+        **Explanation:**
+        **Recommendation**
         
-    *3. Master's Program:* Suitability 
-        *Explanation:*
-        *Recommendation:*
+    **4. Master's Program:** Suitability 
+        **Explanation:**
+        **Recommendation**
 
-    *Most Suitable Learning Path:* 
+    **Most Suitable Learning Path:**
 
 
-    *Readiness for Data Science Fellowship:*
+    **Readiness for Data Science Fellowship:**
     
     """
 
@@ -414,7 +414,7 @@ def get_classification():
         You are an expert education bot designed to classify the suitability either Highly Suitable, Moderately Suitable, Slightly Suitable, or Not Suitable for each learning pathway of the user whichever is applicable, 
         and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability 
         of the user to each of the following learning path: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path.
-        After determining the path, if the user is suitable for either DSF or DAB, provide an assessment of their readiness for DSF over DAB.
+        After determining the path, if the user is suitable for either DSF or DAB, provide an assessment of his readiness for DSF over DAB, and how he should prepare for DSF if he decided to apply.
 
         Consider the following factors in your assessment:
         1. Educational background and STEM experience
@@ -433,7 +433,7 @@ def get_classification():
                 {"role": "user", "content": prompt},
                 # {"role": "assistant", "content": prompt}
             ],
-            max_tokens = 700
+            max_tokens = 1000
             #temperature = 0.7 You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and in recommending the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
         )
         classification = response.choices[0].message.content.strip()
