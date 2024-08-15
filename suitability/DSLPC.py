@@ -395,8 +395,8 @@ def get_classification():
     And considering this information:
       1. Data Analytics Bootcamp is focused on teaching data analytics, storytelling, and visualization, as well as tools like Power BI, SQL (Google BigQuery), and Google Data Studio to help current and future professionals answer business questions with data. We invite fresh grads, career shifters, job promotion seekers, upskillers, freelancers who want to level up, and aspiring data analysts to enroll in this intensive program.
       2. Data Science Fellowship prepares you to enter the data science industry long-term or to upskill yourself in your existing company with industry relevant tools. By the end of the program, you would have completed and presented 5 data science projects to data science experts.
-      3. Experience in machine learning algorithms is NOT required for Data Science Fellowship and Data Analytics Bootcamp.
-      4. In the Data Science Fellowship (DSF), you can develop skills in machine learning, web scraping, big data analysis, Streamlit, network analytics, Python, and data ethics.
+      3. In the Data Science Fellowship (DSF), you can develop skills in machine learning, web scraping, big data analysis, Streamlit, network analytics, Python, and data ethics.
+      4. Experience in machine learning algorithms is NOT required for Data Science Fellowship and Data Analytics Bootcamp.
     
     Assess and classify my suitability for the following data science learning pathway: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway.
     If I am suitable for either Data Science Fellowship or Data Analytics Bootcamp, provide an assessment of my readiness for DSF, how I should prepare for DSF if I decided to apply, and suggest if I should consider to start first with DAB before DSF.
