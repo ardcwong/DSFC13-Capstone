@@ -1,9 +1,9 @@
 import streamlit as st
 
 __import__('pysqlite3')
-# import sys
+import sys
 
-# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import chromadb
 from chromadb.utils import embedding_functions
 from chromadb.config import Settings
