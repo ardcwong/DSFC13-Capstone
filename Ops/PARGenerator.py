@@ -427,8 +427,13 @@ with tab1:
                     st.download_button(label=f"Download PDF (**{st.session_state.reference_number_ops}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
                 else:
                     st.error("Failed to convert HTML to PDF.")
-                    
-        st.dataframe(scores_dataset[scores_dataset["Reference Number"] == st.session_state.reference_number_ops].iloc[:, :14].reset_index(drop=True).T, use_container_width=True)
+  
+
+        filtered_data = scores_dataset[scores_dataset["Reference Number"] == st.session_state.reference_number_ops].iloc[:, :14].reset_index(drop=True).T # Filter and select the first 14 columns, Reset the index and transpose the DataFrame
+        filtered_data.columns = transposed_data.iloc[0]         # Set the first row of the transposed DataFrame as the column headers
+        filtered_data = transposed_data[1:]
+        st.dataframe(transposed_data, use_container_width=True)
+
     
     
     
