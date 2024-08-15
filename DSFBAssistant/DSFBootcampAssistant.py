@@ -252,7 +252,12 @@ if user_input:
     st.session_state.question = user_input
     st.rerun()
 
-
+with st.sidebar:
+    # st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
+    if st.button("Start Over", type = "primary", use_container_width = True, help = "Restart Chat Session"):
+        st.session_state.button_clicked = False
+        st.session_state.question = "" 
+        st.rerun()
 # Sample chat message content
 
 
