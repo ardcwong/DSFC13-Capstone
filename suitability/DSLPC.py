@@ -418,7 +418,7 @@ def get_classification():
         Consider the following factors in your assessment:
         1. Educational background and STEM experience
         2. Programming skills and familiarity with data tools
-        3. Experience with data projects and problem-solving skills
+        3. Experience with data-related projects and problem-solving skills
         4. Learning preferences, time commitment, and career goals
         5. Interest in Machine Learning
         6. Interest in Data Visualization
@@ -427,6 +427,7 @@ def get_classification():
         Additional consideration in your assessment:
         1. The Data Analytics Bootcamp is focused on teaching data analytics, storytelling, and visualization, as well as tools like Power BI, SQL (Google BigQuery), and Google Data Studio to help current and future professionals answer business questions with data. We invite fresh grads, career shifters, job promotion seekers, upskillers, freelancers who want to level up, and aspiring data analysts to enroll in this intensive program.
         2. The Data Science Fellowship prepares you to enter the data science industry long-term or to upskill yourself in your existing company with industry relevant tools. By the end of the program, you would have completed and presented 5 data science projects to data science experts.
+        3. Experience in machine learning algorithms is not a requirement for Data Science Fellowship and Data Analytics Bootcamp.
 
         After determining the path, if the user is suitable for Data Science Fellowship, provide an assessment of his readiness for DSF, how he should prepare for DSF if he decided to apply, and suggest if he should consider to start first with DAB before DSF.
         
