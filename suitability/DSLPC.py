@@ -342,10 +342,14 @@ def get_classification():
 
     The response should begin with a congratulatory or thank you message for completing the assessment.
     
-    *1. Eskwelabs' Data Science Fellowship:* Suitability and Explanation with Recommendation
-    *2. Eskwelabs' Data Analytics Bootcamp:* Suitability and Explanation with Recommendation
-    *2. Self-Learning:* Suitability and Explanation with Recommendation
-    *3. Master's Program:* Suitability and Explanation with Recommendation
+    *1. Eskwelabs' Data Science Fellowship:* Suitability 
+        Explanation with Recommendation:
+    *2. Eskwelabs' Data Analytics Bootcamp:*Suitability 
+        Explanation with Recommendation:
+    *2. Self-Learning:* Suitability 
+        Explanation with Recommendation:
+    *3. Master's Program:* Suitability 
+        Explanation with Recommendation:
 
     *Most Suitable Learning Path:* 
 
@@ -370,7 +374,10 @@ def get_classification():
         2. Programming skills and familiarity with data tools
         3. Experience with data projects and problem-solving skills
         4. Learning preferences, time commitment, and career goals
-        5. DAB does not require experience with machine learning algorithms.
+        
+        Additional consideration in your assessment:
+        1. The Data Analytics Bootcamp is focused on teaching data analytics, storytelling, and visualization, as well as tools like Power BI, SQL (Google BigQuery), and Google Data Studio to help current and future professionals answer business questions with data. We invite fresh grads, career shifters, job promotion seekers, upskillers, freelancers who want to level up, and aspiring data analysts to enroll in this intensive program.
+        2. The Data Science Fellowship prepares you to enter the data science industry long-term or to upskill yourself in your existing company with industry relevant tools. By the end of the program, you would have completed and presented 5 data science projects to data science experts.
         """
         response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
