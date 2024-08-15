@@ -522,10 +522,10 @@ def load_test_answers_by_name(name):
 
         # Load the answers and simulate the chat interaction
         for i, answer in enumerate(test_answers[name]):
-            st.session_state.responses.append(answer)
-            st.session_state.chat_history.append(("User", answer))
             if i < len(questions):
-                st.session_state.chat_history.append(("AI", questions[i]))
+                st.session_state.chat_history.append(("AI", questions[i]))  # Append the question first
+            st.session_state.responses.append(answer)
+            st.session_state.chat_history.append(("User", answer))  # Append the user's answer next
 
         st.session_state.question_index = len(test_answers[name])
         st.session_state.classification = True
