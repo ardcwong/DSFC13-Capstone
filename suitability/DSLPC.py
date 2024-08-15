@@ -396,7 +396,8 @@ def get_classification():
         \n **Assessment**:
         \n **Recommendation**:
 
-    **Most Suitable Learning Path:** Data Science Fellowship, Data Analytics Bootcamp, Self-learning, or Master's Program. Recommend a simple preparation plan.
+    **Most Suitable Learning Path:** Data Science Fellowship, Data Analytics Bootcamp, Self-learning, or Master's Program. 
+      \n**Preparation Plan: Recommend a simple preparation plan.
 
     """
     
