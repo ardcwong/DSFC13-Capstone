@@ -164,7 +164,7 @@ questions = [
     # Data Science & Analytics Knowledge
     "What is your current level of knowledge or experience in data science/analytics? (e.g., Beginner, Intermediate, Advanced)",
     "Are you familiar with data analysis tools like Excel, SQL, or Tableau? (e.g., Yes, Somewhat, No)",
-    "Have you worked with machine learning algorithms before? (e.g, Yes, Yes - implemented several models, No, No - but I am interested, ...)",
+    # "Have you worked with machine learning algorithms before? (e.g, Yes, Yes - implemented several models, No, No - but I am interested, ...)",
     "How would you rate your proficiency in mathematics and statistics? (e.g., Beginner, Intermediate, Advanced)",
 
     # Professional Experience
@@ -467,7 +467,7 @@ def load_test_answers_by_name(name):
     test_answers = {
         "Maria Cruz": [
             "Bachelor’s in Business Administration", "No", "Basic knowledge from online courses in Excel and SQL", "Limited, just basic understanding of Python",
-            "Basic statistics", "Proficient in Excel, basic knowledge of SQL", "No - but I am interested", "Basic", "No, currently working as a marketing assistant",
+            "Basic statistics", "Proficient in Excel, basic knowledge of SQL", "Basic", "No, currently working as a marketing assistant",
             "Analyzed customer survey data using Excel for a marketing campaign", "Prefers structured learning with deadlines", "Can commit 10-15 hours per week",
             "Prefers moderate-paced learning", "Prefers hands-on learning", "Completed a course in digital marketing on Coursera", "Prefers online learning",
             "Works well independently but appreciates occasional group work", "Transition into a data analyst role in the marketing industry", "Looking to switch careers",
@@ -476,7 +476,7 @@ def load_test_answers_by_name(name):
         ],
         "John Santos": [
             "Master’s in Electrical Engineering", "Yes, Electrical Engineering", "Intermediate; practical experience with machine learning", "Proficient in Python, MATLAB, and C++",
-            "Extensive coursework in calculus, and statistics", "Experienced with SQL, Excel, and Tableau", "Yes, worked on projects involving predictive modeling", "Advanced",
+            "Extensive coursework in calculus, and statistics", "Experienced with SQL, Excel, and Tableau", "Advanced",
             "Worked as a data engineer in a tech startup", "Developed a predictive maintenance model for an industrial company using Python", "Comfortable with both, but leans towards self-paced learning",
             "Can commit 20-25 hours per week", "Thrives in fast-paced, challenging environments", "Enjoys a mix of both hands-on projects and theoretical understanding",
             "Completed several MOOCs on machine learning", "Prefers hybrid approach, combining classroom and online", "Appreciates community support and networking opportunities",
@@ -486,7 +486,7 @@ def load_test_answers_by_name(name):
         ],
         "Emily Tan": [
             "Bachelor’s in Psychology", "No", "Basic; self-study interest in applying to psychology research", "Limited, basic knowledge of R",
-            "Basic statistics", "Basic knowledge of Excel", "No - but I am interested", "Basic", "No, currently a research assistant in a psychology lab",
+            "Basic statistics", "Basic knowledge of Excel", "Basic", "No, currently a research assistant in a psychology lab",
             "Assisted in data collection and analysis for psychological research studies", "Prefers structured learning with deadlines", "Can commit 15-20 hours per week",
             "Comfortable with moderate-paced learning", "Prefers hands-on learning, especially with real-world data", "Completed a course in research methods", "Prefers online learning",
             "Values community support for sharing ideas and insights", "Apply data science to psychological research or transition into a data analyst role in healthcare",
@@ -496,7 +496,7 @@ def load_test_answers_by_name(name):
         ],
         "Raj Patel": [
             "Bachelor’s in Computer Science", "Yes, Computer Science", "Advanced; coursework and practical projects", "Proficient in Python, Java, and SQL",
-            "Extensive coursework in mathematics and statistics", "Experienced with SQL, Python, and Power BI", "Yes, implemented several models during coursework", "Advanced",
+            "Extensive coursework in mathematics and statistics", "Experienced with SQL, Python, and Power BI", "Advanced",
             "Worked as a software developer with a focus on data engineering", "Developed a recommendation system using collaborative filtering for an e-commerce site",
             "Comfortable with both, but prefers self-paced learning", "Can commit 20-25 hours per week", "Enjoys fast-paced environments with challenging problems",
             "Prefers a mix of hands-on and theoretical learning", "Completed several online courses in machine learning", "Prefers online learning with occasional classroom sessions",
@@ -507,7 +507,7 @@ def load_test_answers_by_name(name):
         ],
         "Lisa Kim": [
             "Bachelor’s in Economics", "Yes, Economics", "Basic; knowledge from courses in econometrics and data analysis", "Basic knowledge of Python and R",
-            "Coursework in statistics and econometrics", "Proficient in Excel, basic knowledge of R", "None, but familiar with statistical models", "Intermediate",
+            "Coursework in statistics and econometrics", "Proficient in Excel, basic knowledge of R", "Intermediate",
             "Currently working as a financial analyst", "Analyzed financial data to create reports for investment strategies", "Prefers structured learning with clear deadlines",
             "Can commit 10-15 hours per week", "Comfortable with moderate-paced learning", "Prefers hands-on projects related to finance and economics",
             "Completed a course in financial modeling", "Prefers hybrid approach, especially for practical sessions", "Values community support for networking and collaboration",
@@ -517,7 +517,7 @@ def load_test_answers_by_name(name):
         ],
         "Jao Cordero": [
             "BS in Computer Engineering", "Yes, BS Computer Engineering", "Basic", "Yes - Java",
-            "Yes", "Yes", "None", "Intermediate", "Yes, Reports Processing", "Yes",
+            "Yes", "Yes", "Intermediate", "Yes, Reports Processing", "Yes",
             "Structured learning with deadlines", "6 hours", "Yes", "Theoretical learning", "Yes",
             "classroom setting", "Both", "To gain knowledge in data visualization", "Advance in current role", 
             "Research-oriented", "Yes", "No", "Yes", "Yes, data visualization", 
