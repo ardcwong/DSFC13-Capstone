@@ -244,7 +244,7 @@ with tab2:
 
     with column__1:
         st.subheader("Choose to View")
-        reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number to View",pf_rn_y, label_visibility = "collapsed", placeholder= None)
+        reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number to View",pf_rn_y, label_visibility = "collapsed")
 
         if reference_number_ops_view:
             # if scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0] is not null:
