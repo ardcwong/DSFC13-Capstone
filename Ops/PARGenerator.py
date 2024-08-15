@@ -182,7 +182,7 @@ def ask_openai(prompt):
 if "generate_pf_fs_ops" not in st.session_state:
     st.session_state.generate_pf_fs_ops = False
 if "reference_number_ops" not in st.session_state:
-    st.session_state.reference_number_ops = []
+    st.session_state.reference_number_ops = ""
 if "feedback_generated" not in st.session_state:
     st.session_state.feedback_generated = []
 if "html_content" not in st.session_state:
