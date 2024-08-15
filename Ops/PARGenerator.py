@@ -244,9 +244,9 @@ with tab2:
 
     with column__1:
         st.subheader("Choose to View")
-        reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number to View",pf_rn_y, label_visibility = "collapsed")
+        reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number to View",pf_rn_y, label_visibility = "collapsed", placeholder="Choose Reference Number")
 
-        if reference_number_ops_view:
+        if reference_number_ops_view != "Choose Reference Number":
             # if scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0] is not null:
             if not pd.isnull(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0]):
                 download_disabled = False
