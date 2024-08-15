@@ -135,8 +135,8 @@ def load_collection():
         metadata={"hnsw:space": "cosine"}
     )
     return vector_store
-
-vector_store = load_collection()
+if 'vector_store' not in st.session_state:
+  st.session_state.vector_store = load_collection()
 
 def retrieve_documents(query, collection):
     results = collection.query(query_texts=[query], n_results=3)
@@ -318,7 +318,7 @@ with col222:
 
   
   if st.session_state.question_pi_bool == True:       
-    st.session_state.response_pi = chatbot_response(st.session_state.question_pi, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
+    st.session_state.response_pi = chatbot_response(st.session_state.question_pi, st.session_state.vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
     update_chat_memory()
     # st.session_state.question_pi == ""
     
