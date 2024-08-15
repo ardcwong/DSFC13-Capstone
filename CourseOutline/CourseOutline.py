@@ -79,7 +79,7 @@ st.image('data/Course_Outline.svg', use_column_width = True)
 st.markdown("""
 <span style='font-weight:bold; font-size: 20px'>Welcome to the Course Outline Page, Fellow! 🤓 </span>
 <br>This page is designed to <span style='color:#54afa7; font-weight:bold;'>provide you with a comprehensive overview of our bootcamp</span> to guide you through each phase of your learning journey. Whether you're a beginner or looking to advance your skills, our structured outline will help you <span style='color:#54afa7; font-weight:bold;'>navigate the curriculum, track your progress, and make the most out of your bootcamp experience.</span>
-<br>Dive in to see what’s in store and get ready to embark on a transformative learning adventure, <span style='color:#54afa7; font-weight:bold;'>Best of luck!</span>
+<br>Dive in to see what’s in store and get ready to embark on a transformative learning adventure, <span style='color:#54afa7; font-weight:bold;'>Best of luck!<br></span>
 """, unsafe_allow_html=True) 
 
 # st.markdown("""
