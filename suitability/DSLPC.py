@@ -378,8 +378,6 @@ def get_classification():
 
     prompt = f"""
     Classify and explain my suitability for the following data science learning pathway: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
-    If I am suitable for either Data Science Fellowship or Data Analytics Bootcamp, provide an assessment of my readiness for DSF, how I should prepare for DSF if I decided to apply, and suggest if I should consider to start first with DAB before DSF.
-
 
     The response should begin with a congratulatory or thank you message for completing the assessment.
     
@@ -401,7 +399,7 @@ def get_classification():
 
     **Most Suitable Learning Path:** Data Science Fellowship, Data Analytics Bootcamp, Self-learning, or Master's Program
     
-    **Readiness for Data Science Fellowship:** Readiness for Data Science Fellowship, preparations for DSP, considerations for DAB.
+    **Readiness for Data Science Fellowship:** If I am suitable for either Data Science Fellowship or Data Analytics Bootcamp, provide an assessment of my readiness for DSF, how I should prepare for DSF if I decided to apply, and suggest if I should consider to start first with DAB before DSF.
 
     """
 
