@@ -6,6 +6,7 @@ import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import chromadb
 from chromadb.utils import embedding_functions
+from chromadb.config import Settings
 import base64
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -126,7 +127,7 @@ class ChatHistory:
 def load_collection():
     CHROMA_DATA_PATH = 'program_info_6'
     COLLECTION_NAME = f"{CHROMA_DATA_PATH}_embeddings"
-    client_chromadb = chromadb.Client()
+    client_chromadb = chromadb.Client(Settings(persist_directory=CHROMA_DATA_PATH))
     openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
     vector_store = client_chromadb.get_or_create_collection(
         name=COLLECTION_NAME,
