@@ -415,6 +415,9 @@ def get_classification():
         2. Programming skills and familiarity with data tools
         3. Experience with data projects and problem-solving skills
         4. Learning preferences, time commitment, and career goals
+        5. Interest in Machine Learning
+        6. Interest in Data Visualization
+        7. Interest in Big Data
         
         Additional consideration in your assessment:
         1. The Data Analytics Bootcamp is focused on teaching data analytics, storytelling, and visualization, as well as tools like Power BI, SQL (Google BigQuery), and Google Data Studio to help current and future professionals answer business questions with data. We invite fresh grads, career shifters, job promotion seekers, upskillers, freelancers who want to level up, and aspiring data analysts to enroll in this intensive program.
