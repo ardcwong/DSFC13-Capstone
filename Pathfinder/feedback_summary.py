@@ -16,8 +16,10 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
 client = gspread.authorize(creds)
 
-# Function to convert HTML content to PDF
 
+########################################################
+##### Function to convert HTML content to PDF
+########################################################
 def convert_html_to_pdf(html_content):
     # Embed CSS for margins
     # Embed CSS for scaling and margins
@@ -45,7 +47,10 @@ def convert_html_to_pdf(html_content):
         return None
     return result.getvalue()
 
-# Google Sheets connection function
+
+########################################################
+##### Google Sheets connection function
+########################################################
 def google_connection_gsheet_DerivedCompetencyFramework(client):
     # Open the Google Sheet
     spreadsheet = client.open("Derived Competency Framework")
@@ -61,6 +66,7 @@ def google_connection_gsheet_PathfinderExamResults(client):
 ########################################################
 if "spreadsheet_DerivedCompetencyFramework" not in st.session_state:
     st.session_state.spreadsheet_DerivedCompetencyFramework = google_connection_gsheet_DerivedCompetencyFramework(client)
+    
 ########################################################
 # ACCESS PATHFINDER EXAM RESULTS GSHEET
 ########################################################
@@ -68,7 +74,10 @@ if "spreadsheet_PathfinderExamResults" not in st.session_state:
     st.session_state.spreadsheet_PathfinderExamResults = google_connection_gsheet_PathfinderExamResults(client)
 
 
+
+########################################################
 # Function to load category structure data from Google Sheet
+########################################################
 def load_category_structure(spreadsheet):
     worksheet = spreadsheet.worksheet("Sheet1")
     data = worksheet.get_all_values()
@@ -87,19 +96,22 @@ def load_category_structure(spreadsheet):
         category_structure[main_category][sub_category] = key_topics.split(',')
     return category_structure
 
-# Function to load the scores dataset from Google Sheet
 
+########################################################
+# Function to load the scores dataset from Google Sheet
+########################################################
 def load_scores_dataset(spreadsheet):
     worksheet = spreadsheet.worksheet("Sheet1")
     data_score = worksheet.get_all_values()
     df_score = pd.DataFrame(data_score[1:], columns=data_score[0])
     return df_score
 
+#################
 # Load the data
+#################
 category_structure = load_category_structure(st.session_state.spreadsheet_DerivedCompetencyFramework)
 scores_dataset = load_scores_dataset(st.session_state.spreadsheet_PathfinderExamResults)
-# st.write(category_structure)
-# st.write(scores_dataset.head())
+
 
 
 if "generate_pf_fs" not in st.session_state:
@@ -110,7 +122,6 @@ if "feedback_generated" not in st.session_state:
     st.session_state.feedback_generated = []
 
 pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
-
 
 
 
@@ -125,10 +136,6 @@ if st.session_state.generate_pf_fs == False:
             reference_number = st.chat_input("Enter your Reference Number:")
             if reference_number:
                 st.session_state.reference_number = reference_number
-
-            # st.write(pf_rn_y.tolist())
-
-        # if st.button("My Pathfinder Assessment Exam Report", use_container_width = True, type = "primary"):
 
                 if st.session_state.reference_number in pf_rn_y:
                     st.session_state.generate_pf_fs = True
@@ -164,25 +171,19 @@ if st.session_state.generate_pf_fs == False:
             6. **Plan Your Next Steps:**  
                Use the feedback and suggestions to plan your next steps in your learning journey. Focus on the areas identified as needing improvement and take advantage of the resources provided by the app.
             """, unsafe_allow_html=True)
-    # Input for reference number
-
-
-            
-
 
 else:
-    column11, column22, column33 = st.columns([1,2,1])
-    with column11:
+    # column11, column22, column33 = st.columns([1,2,1])
+
+    # with column22:
+    st.info(f"Viewing Reference Number {st.session_state.reference_number}")
+        # st.markdown(f"""<h6 style='text-align: center; font-weight: bold;'><br>Viewing Reference Number {st.session_state.reference_number}</h6>""", unsafe_allow_html = True)
+    with st.sidebar():
         if st.button("Go Back", type = "primary", use_container_width = True, help = "Go Back to PAR main menu."):
             st.session_state.generate_pf_fs = False
             st.session_state.reference_number = []
             st.session_state.feedback_generated = []
             st.rerun()
-
-    with column22:
-        st.button(f"Viewing Reference Number {st.session_state.reference_number}", disabled = True, use_container_width = True)
-        # st.markdown(f"""<h6 style='text-align: center; font-weight: bold;'><br>Viewing Reference Number {st.session_state.reference_number}</h6>""", unsafe_allow_html = True)
-    with column33:
         pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
         if scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['HTML_CONTENT'].values[0] is not "":
             download_disabled = False
