@@ -126,33 +126,73 @@ def remove_stopwords(response):
 
 # ]
 
+# questions = [
+#     "What is your highest level of education?",
+#     "Did you study any STEM-related fields? If yes, which one?",
+#     "What is your current level of knowledge or experience in data science/analytics?",
+#     "Have you taken any mathematics or statistics courses during your studies?",
+#     "Do you have experience in programming? If yes, which languages?",
+#     "Are you familiar with data analysis tools like Excel, SQL, or Tableau?",
+#     "Have you worked with machine learning algorithms before?",
+#     "How would you rate your proficiency in mathematics and statistics?",
+#     "Do you have experience working in a data-related role?",
+#     "Have you completed any data-related projects? Can you describe one?",
+#     "Do you prefer structured learning with deadlines or self-paced learning?",
+#     "How much time per week can you commit to learning?",
+#     "Are you comfortable with a fast-paced and intensive learning environment?",
+#     "Do you prefer hands-on projects or theoretical learning?",
+#     "Have you participated in online learning platforms or bootcamps before?",
+#     "Do you prefer learning in a classroom setting, online, or a hybrid approach?",
+#     "Do you work better independently or in group settings?",
+#     "What are your long-term career goals?",
+#     "Are you looking to advance in your current role or switch careers?",
+#     "Are you more interested in applied roles or research-oriented roles?",
+#     "Are you interested in gaining foundational skills or advanced data science skills?",
+#     "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
+#     "Do you need to balance your studies with work or other commitments?",
+#     "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?",
+#     "How do you handle complex problem-solving and analytical tasks?"
+# ]
+
 questions = [
-    "What is your highest level of education?",
-    "Did you study any STEM-related fields? If yes, which one?",
-    "What is your current level of knowledge or experience in data science/analytics?",
+    # Educational Background & Experience
+    "What is your highest level of education? (e.g., High School, Bachelor's, Master's)",
+    "Did you study any STEM-related fields? If yes, which one? (e.g., Yes - Computer Science, No)",
     "Have you taken any mathematics or statistics courses during your studies?",
-    "Do you have experience in programming? If yes, which languages?",
-    "Are you familiar with data analysis tools like Excel, SQL, or Tableau?",
+    "Do you have experience in programming? If yes, which languages? (e.g., Yes - Python, Java, No)",
+
+    # Data Science & Analytics Knowledge
+    "What is your current level of knowledge or experience in data science/analytics? (e.g., Beginner, Intermediate, Advanced)",
+    "Are you familiar with data analysis tools like Excel, SQL, or Tableau? (e.g., Yes, Somewhat, No)",
     "Have you worked with machine learning algorithms before?",
-    "How would you rate your proficiency in mathematics and statistics?",
+    "How would you rate your proficiency in mathematics and statistics? (e.g., Beginner, Intermediate, Advanced)",
+
+    # Professional Experience
     "Do you have experience working in a data-related role?",
     "Have you completed any data-related projects? Can you describe one?",
+
+    # Learning Preferences & Availability
     "Do you prefer structured learning with deadlines or self-paced learning?",
-    "How much time per week can you commit to learning?",
+    "How much time per week can you commit to learning? (e.g., Less than 10 hours, 10-20 hours, More than 20 hours)",
     "Are you comfortable with a fast-paced and intensive learning environment?",
     "Do you prefer hands-on projects or theoretical learning?",
     "Have you participated in online learning platforms or bootcamps before?",
     "Do you prefer learning in a classroom setting, online, or a hybrid approach?",
     "Do you work better independently or in group settings?",
+
+    # Career Goals & Commitment
     "What are your long-term career goals?",
     "Are you looking to advance in your current role or switch careers?",
     "Are you more interested in applied roles or research-oriented roles?",
     "Are you interested in gaining foundational skills or advanced data science skills?",
     "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
     "Do you need to balance your studies with work or other commitments?",
+
+    # Special Interests & Problem-Solving
     "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?",
     "How do you handle complex problem-solving and analytical tasks?"
 ]
+
 # Google Sheets connection function
 def google_connection(client):
     # Open the Google Sheet
