@@ -395,7 +395,7 @@ def get_classification():
         \n **Assessment**
         \n **Recommendation**
 
-    **Most Suitable Learning Path:** Data Science Fellowship, Data Analytics Bootcamp, Self-learning, or Master's Program
+    **Most Suitable Learning Path:** Data Science Fellowship, Data Analytics Bootcamp, Self-learning, or Master's Program. Recommend a simple preparation plan.
 
     """
     
@@ -425,7 +425,7 @@ def get_classification():
 
         After determining the path, if the user is suitable for Data Science Fellowship, provide an assessment of his readiness for DSF, how he should prepare for DSF if he decided to apply, and suggest if he should consider to start first with DAB before DSF.
         
-        The response should begin with a congratulatory or thank you message for completing the assessment.
+        The response should begin with a congratulatory or thank you message for completing the assessment.🎉
         End the response with a good luck message on the user's Data Science Journey!🚀
         """
         response = openai.chat.completions.create(
