@@ -383,13 +383,20 @@ def get_classification():
     The response should begin with a congratulatory or thank you message for completing the assessment.
     
     *1. Eskwelabs' Data Science Fellowship:* Suitability 
-        Explanation with Recommendation:
+        *Explanation:*
+        *Recommendation:*
+        
     *2. Eskwelabs' Data Analytics Bootcamp:*Suitability 
-        Explanation with Recommendation:
+        *Explanation:*
+        *Recommendation:*
+        
     *2. Self-Learning:* Suitability 
-        Explanation with Recommendation:
+        *Explanation:*
+        *Recommendation:*
+        
     *3. Master's Program:* Suitability 
-        Explanation with Recommendation:
+        *Explanation:*
+        *Recommendation:*
 
     *Most Suitable Learning Path:* 
 
