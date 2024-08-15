@@ -253,7 +253,7 @@ def home_main_content():
         m24, m25, m26 = st.columns([1,1,1])
         with m25:	
         	if st.button("Launch", use_column_width = True):
-            	st.switch_page("suitability/DSLPC.py")
+                st.switch_page("suitability/DSLPC.py")
 
 def home():
     
