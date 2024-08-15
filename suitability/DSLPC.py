@@ -164,7 +164,7 @@ questions = [
     # Data Science & Analytics Knowledge
     "What is your current level of knowledge or experience in data science/analytics? (e.g., Beginner, Intermediate, Advanced)",
     "Are you familiar with data analysis tools like Excel, SQL, or Tableau? (e.g., Yes, Somewhat, No)",
-    "Have you worked with machine learning algorithms before?",
+    "Have you worked with machine learning algorithms before? (e.g, Yes, Yes - implemented several models, No, No - but I am interested, ...)",
     "How would you rate your proficiency in mathematics and statistics? (e.g., Beginner, Intermediate, Advanced)",
 
     # Professional Experience
