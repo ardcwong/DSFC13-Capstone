@@ -126,7 +126,7 @@ class ChatHistory:
 def load_collection():
     CHROMA_DATA_PATH = 'program_info_6'
     COLLECTION_NAME = f"{CHROMA_DATA_PATH}_embeddings"
-    client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
+    client_chromadb = chromadb.Client(path=CHROMA_DATA_PATH)
     openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
     vector_store = client_chromadb.get_or_create_collection(
         name=COLLECTION_NAME,
