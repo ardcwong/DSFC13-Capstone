@@ -19,7 +19,7 @@ sentence-transformers
 chromadb
 torch
 torchvision
-sqlite3
+pysqlite3-binary
 st-annotated-text
 streamlit-authenticator
 gspread
@@ -36,4 +36,4 @@ streamlit-pdf-viewer
 pdfkit
 weasyprint
 xhtml2pdf
-pysqlite3-binary
+
