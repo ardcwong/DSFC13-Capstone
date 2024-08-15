@@ -552,7 +552,8 @@ else:
 #         2. Get Classified: *Based on your answers, our classifier bot will evaluate and determine the most appropriate learning pathway for you:* 
 #         :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
 with st.sidebar:
-    if st.button("Start Over", disabled=st.session_state.BeginAssessment, type="primary", use_container_width = True, help = "Press the this button to start over and answer the questions again. Feel free to make any necessary improvements or corrections to enhance your response."):
+
+    if st.button("Start Over", disabled=st.session_state.BeginAssessment, type="primary", use_container_width = True, help = "Press the this button to start over and answer the questions again."):
         st.session_state.responses = []
         st.session_state.question_index = 0
         st.session_state.chat_history = []
