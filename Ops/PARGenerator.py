@@ -237,35 +237,37 @@ st.title("Pathfinder Assessment Report Generator")
 tab1, tab2 = st.tabs(["Generate","View"])
 with tab2:
     column__1, column__2 = st.columns([2,8])
-    with column__2:
-        st.subheader("What you can view")
-        st.dataframe(scores_dataset[scores_dataset["PARGenTag"] == "Y"].iloc[:, :14])
-        pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
 
-    with column__1:
-        st.subheader("Choose to View")
-        reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number to View",pf_rn_y, label_visibility = "collapsed", placeholder="Choose Reference Number")
+    pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
+    st.write(pf_rn_y)
+    # with column__2:
+    #     st.subheader("What you can view")
+    #     st.dataframe(scores_dataset[scores_dataset["PARGenTag"] == "Y"].iloc[:, :14])
+        
 
-        # if reference_number_ops_view != "Choose Reference Number":
-        #     # if scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0] is not null:
-        #     if not pd.isnull(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0]):
-        #         download_disabled = False
-        #     else:
-        #         download_disabled = True
+    # with column__1:
+    #     st.subheader("Choose to View")
+    #     reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number to View",pf_rn_y, label_visibility = "collapsed", placeholder="Choose Reference Number")
+
+    #     # if scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0] is not null:
+    #     if not pd.isnull(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0]):
+    #         download_disabled = False
+    #     else:
+    #         download_disabled = True
+
+    #     pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0])
+    #     if pdf:
+    #         st.download_button(label=f"Download PDF (**{reference_number_ops_view}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR")
+    #     else:
+    #         st.error("Failed to convert HTML to PDF.")
     
-        #     pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0])
-        #     if pdf:
-        #         st.download_button(label=f"Download PDF (**{reference_number_ops_view}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR")
-        #     else:
-        #         st.error("Failed to convert HTML to PDF.")
-    
-    with st.container(border=True):
-        column_1, column_2, column_3 = st.columns([1,8,1])     
-        with column_2:
-            st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['REPORT_INTRO'].values[0], unsafe_allow_html=True)
-            st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['SCORE_CATEGORY_TABLE'].values[0], unsafe_allow_html=True)
-            for i in range(9):
-                st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view][f"FEEDBACK_SECTION_{i+1}"].values[0], unsafe_allow_html=True)
+    # with st.container(border=True):
+    #     column_1, column_2, column_3 = st.columns([1,8,1])     
+    #     with column_2:
+    #         st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['REPORT_INTRO'].values[0], unsafe_allow_html=True)
+    #         st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['SCORE_CATEGORY_TABLE'].values[0], unsafe_allow_html=True)
+    #         for i in range(9):
+    #             st.markdown(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view][f"FEEDBACK_SECTION_{i+1}"].values[0], unsafe_allow_html=True)
             
     
 with tab1:
