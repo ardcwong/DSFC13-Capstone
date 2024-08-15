@@ -168,7 +168,7 @@ def generate_conversational_response(user_input, collection):
 
         # Combine the final response with related articles
         final_response = f"{final_response_content}\n\n{related_content}"
-        
+        st.session_state.question = ""
         return final_response
     
     except Exception as e:
