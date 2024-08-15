@@ -178,7 +178,7 @@ else:
     # with column22:
     st.info(f"Viewing Reference Number {st.session_state.reference_number}")
         # st.markdown(f"""<h6 style='text-align: center; font-weight: bold;'><br>Viewing Reference Number {st.session_state.reference_number}</h6>""", unsafe_allow_html = True)
-    with st.sidebar():
+    with st.sidebar:
         if st.button("Go Back", type = "primary", use_container_width = True, help = "Go Back to PAR main menu."):
             st.session_state.generate_pf_fs = False
             st.session_state.reference_number = []
