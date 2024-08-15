@@ -244,18 +244,20 @@ with tab2:
 
     with column__1:
         st.subheader("Choose to View")
-        reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number to View",pf_rn_y, label_visibility = "collapsed")
-        # if scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0] is not null:
-        if not pd.isnull(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0]):
-            download_disabled = False
-        else:
-            download_disabled = True
+        reference_number_ops_view = st.selectbox("Choose a Pathfinder Result Reference Number to View",pf_rn_y, label_visibility = "collapsed", placeholder= None)
 
-        pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0])
-        if pdf:
-            st.download_button(label=f"Download PDF (**{reference_number_ops_view}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR")
-        else:
-            st.error("Failed to convert HTML to PDF.")
+        if reference_number_ops_view:
+            # if scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0] is not null:
+            if not pd.isnull(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0]):
+                download_disabled = False
+            else:
+                download_disabled = True
+    
+            pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0])
+            if pdf:
+                st.download_button(label=f"Download PDF (**{reference_number_ops_view}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR")
+            else:
+                st.error("Failed to convert HTML to PDF.")
     
     with st.container(border=True):
         column_1, column_2, column_3 = st.columns([1,8,1])     
