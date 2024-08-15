@@ -36,3 +36,4 @@ streamlit-pdf-viewer
 pdfkit
 weasyprint
 xhtml2pdf
+pysqlite3-binary
