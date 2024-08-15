@@ -378,9 +378,6 @@ def get_classification():
 
     prompt = f"""
     Classify and assess my suitability for the following data science learning pathway: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
-    If I am suitable for either Data Science Fellowship or Data Analytics Bootcamp, provide an assessment of my readiness for DSF, how I should prepare for DSF if I decided to apply, and suggest if I should consider to start first with DAB before DSF.
-    
-    The response should begin with a congratulatory or thank you message for completing the assessment.
     
     **1. Eskwelabs' Data Science Fellowship:** Suitability 
         \n **Assessment**
@@ -400,8 +397,9 @@ def get_classification():
 
     **Most Suitable Learning Path:** Data Science Fellowship, Data Analytics Bootcamp, Self-learning, or Master's Program
 
+    **Readiness for Data Science Fellowship:** If I am suitable for either Data Science Fellowship or Data Analytics Bootcamp, provide an assessment of my readiness for DSF, how I should prepare for DSF if I decided to apply, and suggest if I should consider to start first with DAB before DSF.
     """
-    # **Readiness for Data Science Fellowship:** 
+    
 
 # You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
     # Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
@@ -424,6 +422,7 @@ def get_classification():
 
         After determining the path, if the user is suitable for Data Science Fellowship, provide an assessment of his readiness for DSF, how he should prepare for DSF if he decided to apply, and suggest if he should consider to start first with DAB before DSF.
         
+        The response should begin with a congratulatory or thank you message for completing the assessment.
         End the response with a good luck message on the user's Data Science Journey!🚀
         """
         response = openai.chat.completions.create(
