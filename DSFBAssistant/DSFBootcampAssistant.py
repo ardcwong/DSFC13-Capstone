@@ -200,11 +200,23 @@ if 'button_clicked' not in st.session_state:
 # Initialize session state for question
 if 'question' not in st.session_state:
   st.session_state.question = ""
-  
-# with ba1:
-#   if st.button(" ", help = "Start Over", type = "primary"):
-#     st.session_state.button_clicked = False
-#     st.session_state.question = ""
+
+
+########################################## MAIN PROGRAM ##########################################
+# Allow the user to enter their own question after clicking a starter question
+user_input = st.chat_input("Or enter your question:")
+if user_input:
+    st.session_state.button_clicked = True
+    st.session_state.question = user_input
+    st.rerun()
+
+with st.sidebar:
+    if st.button("Start Over", type = "primary", use_container_width = True, help = "Restart Chat Session"):
+        st.session_state.button_clicked = False
+        st.session_state.question = "" 
+        st.rerun()
+#################################################################################################
+
   
 with ba2:
   st.markdown(f"<h1 style='text-align: center;'>Data Science Bootcamp Assistant</h1>", unsafe_allow_html=True)
@@ -245,22 +257,7 @@ with ba2:
       # st.chat_message("AI").write(st.session_state.response)
       show_ai_response(st.session_state.response,avatar_ai)
   
-# Allow the user to enter their own question after clicking a starter question
-user_input = st.chat_input("Or enter your question:")
-if user_input:
-    st.session_state.button_clicked = True
-    st.session_state.question = user_input
-    st.rerun()
-
-with st.sidebar:
-    # st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
-    if st.button("Start Over", type = "primary", use_container_width = True, help = "Restart Chat Session"):
-        st.session_state.button_clicked = False
-        st.session_state.question = "" 
-        st.rerun()
-# Sample chat message content
-
-
+## Add feedback function
 
 
     # feedback = st.text_input("Was this answer helpful? Leave your feedback:")
