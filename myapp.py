@@ -253,8 +253,9 @@ def home():
                 st.markdown("""Data Science Learning Path Classifier""")
                 st.markdown("""Start Your Journney! An imtelligent bot that classifies the most appropriate learning path for your Data Science Journey!""")
         		m24, m25, m26 = st.columns([1,1,1])
-                	if st.button("Launch", use_column_width = True):
-                        st.switch_page("suitability/DSLPC.py")
+                with m25:	
+                    if st.button("Launch", use_column_width = True):
+                    	st.switch_page("suitability/DSLPC.py")
         
         
         
