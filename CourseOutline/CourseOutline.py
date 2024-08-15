@@ -85,8 +85,10 @@ Dive in to see what’s in store and get ready to embark on a transformative lea
 """, unsafe_allow_html=True) 
 
 st.markdown("""
-<span style='font-weight:bold; font-size: 30px; text-align:center;'><br>Data Science Fellowship Course Outline</span>
-""", unsafe_allow_html=True) 
+<div style='text-align:center;'>
+    <span style='font-weight:bold; font-size: 35px;'>Data Science Fellowship Course Outline</span>
+</div>
+""", unsafe_allow_html=True)
 
 with st.sidebar:
     st.session_state.get_current_markdown_co = df_co[df_co['Sprint Number'] == f"Sprint 1"]['Full HTML_CONTENT'].values[0]    
