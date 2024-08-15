@@ -275,13 +275,8 @@ with col222:
 
     
       bb0, bb1, bb2, bb3, bb4 = st.columns([0.5,1,1,1,0.5])
-      with bbb1:
-        if st.button("How do I apply?", use_container_width = True):
-          st.session_state.question_pi = "How do I apply?"
-          st.session_state.button_clicked_pi = True
-          st.session_state.question_pi_bool = True
-          st.rerun()
-          
+      bbb0, bbb1, bbb2, bbb3 = st.columns([0.5, 1, 1, 0.5])
+        
       with bb1:
         if st.button("What is the schedule of the bootcamp?", use_container_width = True): # What is the DSF program guide about?
           st.session_state.question_pi = "What is the schedule of the bootcamp?" # What is the DSF program guide about?
@@ -296,8 +291,14 @@ with col222:
           st.session_state.question_pi_bool = True
           st.rerun()
           
-      bbb0, bbb1, bbb2, bbb3 = st.columns([0.5, 1, 1, 0.5])
 
+      with bbb1:
+        if st.button("How do I apply?", use_container_width = True):
+          st.session_state.question_pi = "How do I apply?"
+          st.session_state.button_clicked_pi = True
+          st.session_state.question_pi_bool = True
+          st.rerun()
+          
       with bb2:
         if st.button("How much is the payment?", use_container_width = True): # What is the DSF program guide about?
           st.session_state.question_pi = "How much is the payment?" # What is the DSF program guide about?
