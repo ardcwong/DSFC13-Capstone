@@ -186,7 +186,7 @@ else:
             st.session_state.feedback_generated = []
             st.rerun()
         pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
-        if scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['HTML_CONTENT'].values[0] is not "":
+        if scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['HTML_CONTENT'].values[0] != "":
             download_disabled = False
         else:
             download_disabled = True
