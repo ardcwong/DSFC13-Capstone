@@ -374,20 +374,26 @@ def get_classification():
     questions_responses = ""
     for i, question in enumerate(questions):
         questions_responses += f"{i+1}. {question}\n - Responses: {st.session_state.responses[i]}\n"
-
+    # 1. Educational background and STEM experience
+    # 2. Programming skills and familiarity with data tools
+    # 3. Experience with data-related projects and problem-solving skills
+    # 4. Learning preferences, time commitment, and career goals
+    # 5. Interest in Machine Learning
+    # 6. Interest in Data Visualization
+    # 7. Interest in Big Data
+    
 
     prompt = f"""
     Based on the {questions_responses} provided, 
     and considering the following factors:
-    1. Educational background and STEM experience
-    2. Programming skills and familiarity with data tools
-    3. Experience with data-related projects and problem-solving skills
-    4. Learning preferences, time commitment, and career goals
-    5. Interest in Machine Learning
-    6. Interest in Data Visualization
-    7. Interest in Big Data
-    
-    and the additional considerations:
+    1. Educational Background & Experience
+    2. Data Science & Analytics Knowledge
+    3. Professional Experience
+    4. Learning Preferences & Availability
+    5. Career Goals & Commitment
+    6. Special Interests & Problem-Solving
+
+    and these information:
     1. The Data Analytics Bootcamp is focused on teaching data analytics, storytelling, and visualization, as well as tools like Power BI, SQL (Google BigQuery), and Google Data Studio to help current and future professionals answer business questions with data. We invite fresh grads, career shifters, job promotion seekers, upskillers, freelancers who want to level up, and aspiring data analysts to enroll in this intensive program.
     2. The Data Science Fellowship prepares you to enter the data science industry long-term or to upskill yourself in your existing company with industry relevant tools. By the end of the program, you would have completed and presented 5 data science projects to data science experts.
     3. Experience in machine learning algorithms is not a requirement for Data Science Fellowship and Data Analytics Bootcamp.
@@ -397,19 +403,19 @@ def get_classification():
     
     Use this format for your response:
     **1. Eskwelabs' Data Science Fellowship:** Suitability 
-        \n **Assessment**:
+        \n **Assessment**: Explain
         \n **Recommendation**: 
         
     **2. Eskwelabs' Data Analytics Bootcamp:** Suitability 
-        \n **Assessment**:
+        \n **Assessment**: Explain
         \n **Recommendation**:
         
     **3. Self-Learning:** Suitability 
-        \n **Assessment**:
+        \n **Assessment**: Explain
         \n **Recommendation**:
         
     **4. Master's Program:** Suitability 
-        \n **Assessment**:
+        \n **Assessment**: Explain
         \n **Recommendation**:
 
 
