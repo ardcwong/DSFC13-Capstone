@@ -403,8 +403,6 @@ def get_classification():
     
     **Readiness for Data Science Fellowship:** Readiness for Data Science Fellowship, preparations for DSP, considerations for DAB.
 
-    Good luck message on the user's Data Science Journey! End.
-    
     """
 
 
@@ -428,6 +426,8 @@ def get_classification():
         2. The Data Science Fellowship prepares you to enter the data science industry long-term or to upskill yourself in your existing company with industry relevant tools. By the end of the program, you would have completed and presented 5 data science projects to data science experts.
 
         After determining the path, if the user is suitable for Data Science Fellowship, provide an assessment of his readiness for DSF, how he should prepare for DSF if he decided to apply, and suggest if he should consider to start first with DAB before DSF.
+        
+        End the response with a good luck message on the user's Data Science Journey!
         """
         response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
