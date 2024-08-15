@@ -378,7 +378,7 @@ def get_classification():
 
     prompt = f"""
     Classify and explain my suitability for the following data science learning pathway: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
-    If I am suitable for either Data Science Fellowship or Data Analytics Bootcamp, provide an assessment of my readiness for DSF over DAB and a list on how I should prepare for DSF if I decided to apply. Let me know if I should start first with DAB before DSF.
+    If I am suitable for either Data Science Fellowship or Data Analytics Bootcamp, provide an assessment of my readiness for DSF over DAB and a list on how I should prepare for DSF if I decided to apply. Let me know if I should consider to start first with DAB before DSF.
 
 
     The response should begin with a congratulatory or thank you message for completing the assessment.
@@ -415,7 +415,7 @@ def get_classification():
         You are an expert education bot designed to classify the suitability either Highly Suitable, Moderately Suitable, Slightly Suitable, or Not Suitable for each learning pathway of the user whichever is applicable, 
         and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability 
         of the user to each of the following learning path: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path.
-        After determining the path, if the user is suitable for either DSF or DAB, provide an assessment of his readiness for DSF over DAB and a list on how he should prepare for DSF if he decided to apply. Let the user know if he should start first with DAB before DSF.
+        After determining the path, if the user is suitable for either DSF or DAB, provide an assessment of his readiness for DSF over DAB and how he should prepare for DSF if he decided to apply. Let the user know if he should consider to start first with DAB before DSF.
 
         Consider the following factors in your assessment:
         1. Educational background and STEM experience
