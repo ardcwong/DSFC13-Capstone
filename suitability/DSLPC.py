@@ -453,7 +453,7 @@ def get_classification():
             ],
             # max_tokens = 1000,
             temperature = 0.4,
-            top_p = 0.7
+            top_p = 0.5
             #temperature = 0.7 You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and in recommending the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
         )
         classification = response.choices[0].message.content.strip()
