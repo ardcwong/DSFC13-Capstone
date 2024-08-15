@@ -381,7 +381,7 @@ def get_classification():
     
     **1. Eskwelabs' Data Science Fellowship:** Suitability 
         \n **Assessment**
-        \n **Recommendation**
+        \n **Recommendation** If I am suitable for either Data Science Fellowship or Data Analytics Bootcamp, provide an assessment of my readiness for DSF, how I should prepare for DSF if I decided to apply, and suggest if I should consider to start first with DAB before DSF.
         
     **2. Eskwelabs' Data Analytics Bootcamp:** Suitability 
         \n **Assessment**
@@ -397,9 +397,9 @@ def get_classification():
 
     **Most Suitable Learning Path:** Data Science Fellowship, Data Analytics Bootcamp, Self-learning, or Master's Program
 
-    **Readiness for Data Science Fellowship:** If I am suitable for either Data Science Fellowship or Data Analytics Bootcamp, provide an assessment of my readiness for DSF, how I should prepare for DSF if I decided to apply, and suggest if I should consider to start first with DAB before DSF.
     """
     
+    # **Readiness for Data Science Fellowship:** 
 
 # You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
     # Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
