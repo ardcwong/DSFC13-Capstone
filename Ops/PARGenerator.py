@@ -302,7 +302,7 @@ with tab1:
                 
     
     with COL1:
-        st.dataframe(scores_dataset[scores_dataset["Reference Number"] == st.session_state.reference_number_ops].iloc[:, :14].T)
+
         
         # st.dataframe(scores_dataset[scores_dataset["PARGenTag"] == "N"].iloc[:, :14])
         # is_blank = scores_dataset["PARGenTag"] == "N"
@@ -427,7 +427,8 @@ with tab1:
                     st.download_button(label=f"Download PDF (**{st.session_state.reference_number_ops}**)", data=pdf, file_name="PAR.pdf", mime="application/pdf", use_container_width = True)
                 else:
                     st.error("Failed to convert HTML to PDF.")
-
+                    
+        st.dataframe(scores_dataset[scores_dataset["Reference Number"] == st.session_state.reference_number_ops].iloc[:, :14].reset_index(drop=True).T, use_container_width=True)
     
     
     
