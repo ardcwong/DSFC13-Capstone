@@ -245,7 +245,7 @@ def home():
         st.divider()
         
         m1, m2, m3, m4, m5 = st.columns([1,1,1,1,1])
-        with m2:
+        with m2.container():
         	st.write("HI")
 			#with st.container():
     #        	m21, m22, m23 = st.columns([1,1,1])
