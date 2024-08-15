@@ -233,30 +233,32 @@ def logout():
 ########################################################
 # HOME PAGE
 ########################################################
-def home():
-    def home_main_content():
-        st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELAPPS✨</h1>", unsafe_allow_html=True)
-        st.divider()
-        st.markdown("""<h4 style='text-align: center;color: #e76f51;'><b><i>Welcome to EskwelApps.</b></i><i> Ready for the Future of Work? 
-        Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school 
-        that gives you access to affordable and high quality data skills education. Your Future Begins with Upskilling. Eskwelabs creates a warm 
-        online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.""", unsafe_allow_html=True)
+def home_main_content():
+    st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELAPPS✨</h1>", unsafe_allow_html=True)
+    st.divider()
+    st.markdown("""<h4 style='text-align: center;color: #e76f51;'><b><i>Welcome to EskwelApps.</b></i><i> Ready for the Future of Work? 
+    Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school 
+    that gives you access to affordable and high quality data skills education. Your Future Begins with Upskilling. Eskwelabs creates a warm 
+    online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.""", unsafe_allow_html=True)
         
-        st.divider()
+    st.divider()
         
-        m1, m2, m3, m4, m5 = st.columns([1,1,1,1,1])
-        with m2.container():
-        	st.write("HI")
+    m1, m2, m3, m4, m5 = st.columns([1,1,1,1,1])
+    with m2.container():
+      	st.write("HI")
 
-        	m21, m22, m23 = st.columns([1,1,1])
-			with m22:
-	      		st.image('data/avatar_ai.png', use_column_width = True)
-            st.markdown("""Data Science Learning Path Classifier""")
-            st.markdown("""Start Your Journney! An imtelligent bot that classifies the most appropriate learning path for your Data Science Journey!""")
-        	m24, m25, m26 = st.columns([1,1,1])
-            with m25:	
-            	if st.button("Launch", use_column_width = True):
-            		st.switch_page("suitability/DSLPC.py")
+      	m21, m22, m23 = st.columns([1,1,1])
+		with m22:
+        	st.image('data/avatar_ai.png', use_column_width = True)
+		st.markdown("""Data Science Learning Path Classifier""")
+        st.markdown("""Start Your Journney! An imtelligent bot that classifies the most appropriate learning path for your Data Science Journey!""")
+        m24, m25, m26 = st.columns([1,1,1])
+        with m25:	
+            if st.button("Launch", use_column_width = True):
+            st.switch_page("suitability/DSLPC.py")
+
+def home():
+    
         
         
         
