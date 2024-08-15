@@ -39,8 +39,8 @@ def load_collection_DSFBAssistant():
   return collection
 
 
-
-collection = load_collection_DSFBAssistant()
+if 'collection' not in st.session_state:
+    st.session_state.collection = load_collection_DSFBAssistant()
 
 #### USER AVATAR AND RESPONSE
 @st.cache_data
