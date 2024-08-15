@@ -360,7 +360,7 @@ def get_classification():
     try:
         # Define the system message with the summarized information
         system_message = """
-        You are an expert education bot designed to classify the suitability either Highly Suitable, Moderately Suitable, Slightly Suitable, or Not Suitable for each learning pathway of the user, 
+        You are an expert education bot designed to classify the suitability either Highly Suitable, Moderately Suitable, Slightly Suitable, or Not Suitable for each learning pathway of the user whichever is applicable, 
         and recommends the most suitable learning pathway for users in their data science journey. Based on the user's responses to a series of questions, you will classify and explain the suitability 
         of the user to each of the following learning path: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree., and you will recommend the most suitable learning path.
         After determining the path, if the user is suitable for either DSF or DAB, provide an assessment of their readiness for DSF over DAB.
@@ -370,6 +370,7 @@ def get_classification():
         2. Programming skills and familiarity with data tools
         3. Experience with data projects and problem-solving skills
         4. Learning preferences, time commitment, and career goals
+        5. DAB does not require experience with machine learning algorithms.
         """
         response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
