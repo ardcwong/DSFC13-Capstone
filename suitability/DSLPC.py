@@ -401,7 +401,9 @@ def get_classification():
 
     **Most Suitable Learning Path:** Data Science Fellowship, Data Analytics Bootcamp, Self-learning, or Master's Program
     
-    **Readiness for Data Science Fellowship:** Readiness, preparations, considerations for DAB
+    **Readiness for Data Science Fellowship:** Readiness for Data Science Fellowship, preparations for DSP, considerations for DAB.
+
+    Good luck message on the user's Data Science Journey!
     
     """
 
