@@ -70,10 +70,13 @@ if "spreadsheet_courseoutline_ops" not in st.session_state:
     st.session_state.spreadsheet_courseoutline_ops = google_connection_gsheet_courseoutline_ops(client)
 
 df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_ops)
-column_1, column_2 = st.columns([8,2])
-with column_1:
-    st.title("Course Outline")
-with column_2:
+
+########################################################
+# MAIN PROGRAM
+########################################################
+
+st.title("Course Outline")
+with st.sidebar:
     st.session_state.get_current_markdown_co = df_co[df_co['Sprint Number'] == f"Sprint 1"]['Full HTML_CONTENT'].values[0]    
         
     # st.markdown(st.session_state.get_current_markdown, unsafe_allow_html=True)     
@@ -82,5 +85,7 @@ with column_2:
         st.download_button(label=f"Download PDF (Current CO)", data=pdf_current, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
     else:
         st.error("Failed to convert HTML to PDF.")
+
+
 for i in range(4):
     st.markdown(df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0], unsafe_allow_html=True)
