@@ -266,7 +266,7 @@ with col222:
 
   if st.session_state.button_clicked_pi == False:
 
-      st.markdown("<br><br><br>", unsafe_allow_html = True)       
+      st.markdown("<br>", unsafe_allow_html = True)       
       
       bb00, bb01, bb02, bb03, bb04 = st.columns([1,1,1,1,1])
       with bb02:
@@ -274,27 +274,44 @@ with col222:
       st.markdown(f"<h6 style='text-align: center;'><br><br>Choose a question to get started or ask Eskwelabs below:</h6>", unsafe_allow_html=True)
 
     
-      bb0, bb1, bb2, bb3, bb4 = st.columns([1,1,1,1,1])
+      bb0, bb1, bb2, bb3, bb4 = st.columns([0.5,1,1,1,0.5])
       with bb1:
-        if st.button("What are the learning outcomes of DSF Program?", use_container_width = True):
-          st.session_state.question_pi = "What are the learning outcomes of the DSF program?"
-          st.session_state.button_clicked_pi = True
-          st.session_state.question_pi_bool = True
-          st.rerun()
-          
-      with bb3:
-        if st.button("Recommend educational materials for beginners.", use_container_width = True): # What is the DSF program guide about?
-          st.session_state.question_pi = "Recommend educational materials for beginners." # What is the DSF program guide about?
+        if st.button("How do I apply?", use_container_width = True):
+          st.session_state.question_pi = "How do I apply?"
           st.session_state.button_clicked_pi = True
           st.session_state.question_pi_bool = True
           st.rerun()
           
       with bb2:
-        if st.button("What is the pathfinder exam? ", use_container_width = True):
-          st.session_state.question_pi = "What is the pathfinder exam?"
+        if st.button("What is the schedule of the bootcamp?", use_container_width = True): # What is the DSF program guide about?
+          st.session_state.question_pi = "What is the schedule of the bootcamp?" # What is the DSF program guide about?
           st.session_state.button_clicked_pi = True
           st.session_state.question_pi_bool = True
           st.rerun()
+          
+      with bb3:
+        if st.button("When is the next bootcamp?", use_container_width = True):
+          st.session_state.question_pi = "When is the next bootcamp?"
+          st.session_state.button_clicked_pi = True
+          st.session_state.question_pi_bool = True
+          st.rerun()
+          
+      bbb0, bbb1, bbb2, bbb3 = st.columns([0.5, 1, 1, 0.5])
+
+      with bbb1:
+        if st.button("How much is the payment?", use_container_width = True): # What is the DSF program guide about?
+          st.session_state.question_pi = "How much is the payment?" # What is the DSF program guide about?
+          st.session_state.button_clicked_pi = True
+          st.session_state.question_pi_bool = True
+          st.rerun()
+          
+      with bbb2:
+        if st.button("Recommend Educational Materials for Beginners", use_container_width = True):
+          st.session_state.question_pi = "Recommend Educational Materials for Beginners"
+          st.session_state.button_clicked_pi = True
+          st.session_state.question_pi_bool = True
+          st.rerun()
+      
 
 
   
