@@ -85,7 +85,7 @@ Dive in to see what’s in store and get ready to embark on a transformative lea
 """, unsafe_allow_html=True) 
 
 st.markdown("""
-<span style='font-weight:bold; font-size: 30px'><br>Course Outline</span>
+<span style='font-weight:bold; font-size: 30px; text-align:center;'><br>Data Science Fellowship Course Outline</span>
 """, unsafe_allow_html=True) 
 
 with st.sidebar:
