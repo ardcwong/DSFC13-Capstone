@@ -84,12 +84,12 @@ This page is designed to <span style='color:#54afa7; font-weight:bold;'>provide 
 Dive in to see what’s in store and get ready to embark on a transformative learning adventure, <span style='color:#54afa7; font-weight:bold;'>Best of luck!</span>
 """, unsafe_allow_html=True) 
 
-st.markdown("""
-<div style='text-align:center;'>
-    <span style='font-weight:bold; font-size: 35px;'>Data Science Fellowship Course Outline</span>
-</div>
-""", unsafe_allow_html=True)
-
+# st.markdown("""
+# <div style='text-align:center;'>
+#     <span style='font-weight:bold; font-size: 35px;'>Data Science Fellowship Course Outline</span>
+# </div>
+# """, unsafe_allow_html=True)
+st.image('data/Course_Outline.png', use_column_width = True)
 with st.sidebar:
     st.session_state.get_current_markdown_co = df_co[df_co['Sprint Number'] == f"Sprint 1"]['Full HTML_CONTENT'].values[0]    
         
