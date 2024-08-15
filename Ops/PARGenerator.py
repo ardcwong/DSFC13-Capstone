@@ -239,7 +239,7 @@ with tab2:
     column__1, column__2 = st.columns([2,8])
     with column__2:
         st.subheader("What you can view")
-        st.dataframe(scores_dataset[scores_dataset["PARGenTag"] == "Y"]).iloc[:, :14])
+        st.dataframe(scores_dataset[scores_dataset["PARGenTag"] == "Y"].iloc[:, :14])
         pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
 
     with column__1:
@@ -268,7 +268,7 @@ with tab2:
 with tab1:
     
     
-    st.dataframe(scores_dataset[scores_dataset["PARGenTag"] == "N"]).iloc[:, :14])
+    st.dataframe(scores_dataset[scores_dataset["PARGenTag"] == "N"].iloc[:, :14])
     is_blank = scores_dataset["PARGenTag"] == "N"
     pf_rn = scores_dataset["Reference Number"][is_blank].tolist()
     reference_number_ops = st.selectbox("Choose a Pathfinder Result Reference Number",pf_rn)
