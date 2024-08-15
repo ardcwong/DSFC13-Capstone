@@ -377,22 +377,23 @@ def get_classification():
 
 
     prompt = f"""
-    Classify and assess my suitability for the following data science learning pathway: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway based on the {questions_responses} provided. 
-    If I am suitable for either Data Science Fellowship or Data Analytics Bootcamp, provide an assessment of my readiness for DSF, how I should prepare for DSF if I decided to apply, and suggest if I should consider to start first with DAB before DSF.
+    Based on the {questions_responses} provided, 
+    and considering the following factors:
+    1. Educational background and STEM experience
+    2. Programming skills and familiarity with data tools
+    3. Experience with data-related projects and problem-solving skills
+    4. Learning preferences, time commitment, and career goals
+    5. Interest in Machine Learning
+    6. Interest in Data Visualization
+    7. Interest in Big Data
     
-      Consider the following factors in your assessment:
-      1. Educational background and STEM experience
-      2. Programming skills and familiarity with data tools
-      3. Experience with data-related projects and problem-solving skills
-      4. Learning preferences, time commitment, and career goals
-      5. Interest in Machine Learning
-      6. Interest in Data Visualization
-      7. Interest in Big Data
-      
-      Additional consideration in your assessment:
-      1. The Data Analytics Bootcamp is focused on teaching data analytics, storytelling, and visualization, as well as tools like Power BI, SQL (Google BigQuery), and Google Data Studio to help current and future professionals answer business questions with data. We invite fresh grads, career shifters, job promotion seekers, upskillers, freelancers who want to level up, and aspiring data analysts to enroll in this intensive program.
-      2. The Data Science Fellowship prepares you to enter the data science industry long-term or to upskill yourself in your existing company with industry relevant tools. By the end of the program, you would have completed and presented 5 data science projects to data science experts.
-      3. Experience in machine learning algorithms is not a requirement for Data Science Fellowship and Data Analytics Bootcamp.
+    and the additional considerations:
+    1. The Data Analytics Bootcamp is focused on teaching data analytics, storytelling, and visualization, as well as tools like Power BI, SQL (Google BigQuery), and Google Data Studio to help current and future professionals answer business questions with data. We invite fresh grads, career shifters, job promotion seekers, upskillers, freelancers who want to level up, and aspiring data analysts to enroll in this intensive program.
+    2. The Data Science Fellowship prepares you to enter the data science industry long-term or to upskill yourself in your existing company with industry relevant tools. By the end of the program, you would have completed and presented 5 data science projects to data science experts.
+    3. Experience in machine learning algorithms is not a requirement for Data Science Fellowship and Data Analytics Bootcamp.
+    
+    Assess and classify my suitability for the following data science learning pathway: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway.
+    If I am suitable for either Data Science Fellowship or Data Analytics Bootcamp, provide an assessment of my readiness for DSF, how I should prepare for DSF if I decided to apply, and suggest if I should consider to start first with DAB before DSF.
     
     Use this format for your response:
     **1. Eskwelabs' Data Science Fellowship:** Suitability 
@@ -411,7 +412,7 @@ def get_classification():
         \n **Assessment**:
         \n **Recommendation**:
 
-    -----------------------------
+
     **Most Suitable Learning Path:** Data Science Fellowship, Data Analytics Bootcamp, Self-learning, or Master's Program. 
       \n**Preparation Plan: Recommend a simple preparation plan.
 
