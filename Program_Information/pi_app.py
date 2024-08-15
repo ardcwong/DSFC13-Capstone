@@ -28,10 +28,6 @@ from annotated_text import annotated_text
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 
-# if "stop" not in st.session_state:
-#     st.session_state.stop = True
-#     nltk.download('stopwords')
-
 x = "No"
 
 api_key = st.secrets["api"]['api_key']
@@ -54,10 +50,6 @@ def user_avatar_pi():
 avatar_url_user_pi = user_avatar_pi()
 
 def show_user_answer_pi(message_text,avatar_url_user_pi):
-  # Markdown to replicate the chat message
-  # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
-  
-
   st.markdown(f"""
   <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex-end;'>
       <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-right: 10px; display: inline-block; text-align: right; max-width: 60%;'>
@@ -85,10 +77,6 @@ def ai_avatar_pi():
 avatar_pi = ai_avatar_pi()
 
 def show_ai_response_pi(message_text,avatar_pi):
-  # Markdown to replicate the chat message
-  # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
-  
-
   st.markdown(f"""
   <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex;'>
       <div style='flex-shrink: 0;'>
@@ -119,10 +107,6 @@ class ChatHistory:
             role = msg['role']
             content = msg['content']
             st.write(f"{role.capitalize()}: {content}")
-            # if role == "user":
-            #     show_user_answer_pi(content,avatar_url_user_pi)
-            # elif role == "assistant":
-            #     show_ai_response_pi(content,avatar_pi)
 
     def show_history_streamlit(self):
         for msg in self.history:
@@ -138,78 +122,26 @@ class ChatHistory:
         return self.history[-count:]
 
 
-
-# @st.cache_resource
-# def load_collection():
-
-#     CHROMA_DATA_PATH = "persistent_directory_4"
-#     try:
-#         vector_store = Chroma(persist_directory=CHROMA_DATA_PATH, embedding_function  = OpenAIEmbeddings(api_key=openai.api_key))
-#         return vector_store
-#     except Exception as e:
-#         st.error(f"Error loading vector store: {e}")
-#         return None
-
-
 @st.cache_resource
 def load_collection():
     CHROMA_DATA_PATH = 'program_info_6'
     COLLECTION_NAME = f"{CHROMA_DATA_PATH}_embeddings"
     client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
     openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
-    # try:
     vector_store = client_chromadb.get_or_create_collection(
         name=COLLECTION_NAME,
         embedding_function=openai_ef,
         metadata={"hnsw:space": "cosine"}
     )
-        # if vector_store:
-        #     st.success("Success!")
     return vector_store
-    # except Exception as e:
-    #     st.error(f"Error loading vector store: {e}")
-    #     return None
-
 
 vector_store = load_collection()
-# st.write(vector_store)
-# def retrieve_documents(query, collection):
-#     # Perform similarity search
-#     results = collection.similarity_search(query, k=3)
-    
-#     docs = [result.page_content for result in results]
-#     metadatas = [result.metadata for result in results] 
-
-#     return [{'text': doc, 'metadata': meta} for doc, meta in zip(docs, metadatas)]
-
 
 def retrieve_documents(query, collection):
     results = collection.query(query_texts=[query], n_results=3)
     docs = results['documents'][0]
     metadatas = results['metadatas'][0]
     return [{"text": doc, "metadata": meta} for doc, meta in zip(docs, metadatas)]
-
-
-
-
-#####
-# add rules when chat memory is blank then dont include it in the prompt
-####
-
-
-# def generate_chatbot_response(context, query, metadata, chat_memory):
-#     history_text = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_memory])
-#     metadata_info = "\n".join([f"File: {meta['description']}" for meta in metadata])
-#     prompt = f"Based on the following conversation history:\n\n{history_text}\n\nAnd the following information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
-    
-#     response = openai.chat.completions.create(
-#         model="gpt-3.5-turbo",
-#         messages=[
-#             {"role": "system", "content": "You are an assistant that helps students answer questions about Eskwelabs' Data Science Fellowship program."},
-#             {"role": "user", "content": prompt}
-#         ]
-#     )
-#     return response.choices[0].message.content.strip()
 
 def generate_chatbot_response(context, query, metadata, chat_memory):
     # prompt components
@@ -303,6 +235,26 @@ if 'question_pi_bool' not in st.session_state:
     st.session_state.question_pi_bool = False
 
 
+########################################## MAIN PROGRAM ##########################################
+with st.sidebar:
+    # st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
+    if st.button("Start Over", type = "primary", use_container_width = True, help = "Restart Chat Session"):
+        st.session_state.pi_chat_history.clear_history()
+        st.session_state.pi_chat_memory = []  # Clear chat memory as well   
+        st.session_state.button_clicked_pi = False
+        st.session_state.question_pi = ""
+        st.rerun()
+
+        
+user_query = st.chat_input("Ask Eskwelabs")
+if user_query:
+    st.session_state.button_clicked_pi = True
+    response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
+    update_chat_memory()
+#################################################################################################
+
+
+
 col111, col222, col333 = st.columns([1,4,1])
 with col222:
   st.markdown("""<h1 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h1>""", unsafe_allow_html=True)
@@ -353,21 +305,6 @@ with col222:
     
 
 
-with st.sidebar:
-    # st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
-    if st.button("Start Over", type = "primary", use_container_width = True, help = "Restart Chat Session"):
-        st.session_state.pi_chat_history.clear_history()
-        st.session_state.pi_chat_memory = []  # Clear chat memory as well   
-        st.session_state.button_clicked_pi = False
-        st.session_state.question_pi = ""
-        st.rerun()
-
-        
-user_query = st.chat_input("Ask Eskwelabs")
-if user_query:
-    st.session_state.button_clicked_pi = True
-    response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
-    update_chat_memory()
 
 
 
