@@ -248,7 +248,7 @@ def home_main_content():
       	st.write("HI")
 
       	m21, m22, m23 = st.columns([1,1,1])
-        m22.image('data/avatar_ai.png', use_column_width = True)
+        m22.image('data/avatar_ai.png',use_column_width=True)
 		st.markdown("""Data Science Learning Path Classifier""")
         st.markdown("""Start Your Journney! An imtelligent bot that classifies the most appropriate learning path for your Data Science Journey!""")
         m24, m25, m26 = st.columns([1,1,1])
