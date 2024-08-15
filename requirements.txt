@@ -19,7 +19,7 @@ sentence-transformers
 chromadb
 torch
 torchvision
-pysqlite3-binary
+sqlite3
 st-annotated-text
 streamlit-authenticator
 gspread
