@@ -335,7 +335,7 @@ with tab1:
                         scores[main_category] = score_category
                         
                     # with st.spinner("Generating feedback..."):
-                    with st.progress(0, text="Generating feedback...")
+                    with st.progress(0, text="Generating feedback..."):
                         # if st.session_state.feedback_generated == []:
                         st.session_state.feedback_generated = generate_summarized_feedback(scores)
             
