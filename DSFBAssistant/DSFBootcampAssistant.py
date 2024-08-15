@@ -204,7 +204,7 @@ if 'question' not in st.session_state:
 
 ########################################## MAIN PROGRAM ##########################################
 # Allow the user to enter their own question after clicking a starter question
-user_input = st.chat_input("Or enter your question:")
+user_input = st.chat_input("Enter your question:")
 if user_input:
     st.session_state.button_clicked = True
     st.session_state.question = user_input
