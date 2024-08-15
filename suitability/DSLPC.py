@@ -553,7 +553,7 @@ else:
 #         :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
 with st.sidebar:
 
-    if st.button("Start Over", disabled=st.session_state.BeginAssessment, type="primary", use_container_width = True, help = "Press the this button to start over and answer the questions again."):
+    if st.button("Start Over", disabled=st.session_state.BeginAssessment, type="primary", use_container_width = True, help = "Press the this button to start over<br>and answer the questions again."):
         st.session_state.responses = []
         st.session_state.question_index = 0
         st.session_state.chat_history = []
