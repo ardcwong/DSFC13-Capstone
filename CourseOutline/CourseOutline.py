@@ -77,7 +77,7 @@ df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_o
 
 # st.title("Course Outline")
 st.markdown("""
-<span style='font-weight:bold;'>Welcome to the Course Outline Page, Fellow! 🤓 </span>
+<span style='font-weight:bold; font-size: 40px'>Welcome to the Course Outline Page, Fellow! 🤓 </span>
 
 This page is designed to <span style='color:#54afa7; font-weight:bold;'>provide you with a comprehensive overview of our bootcamp</span> to guide you through each phase of your learning journey. Whether you're a beginner or looking to advance your skills, our structured outline will help you <span style='color:#54afa7; font-weight:bold;'>navigate the curriculum, track your progress, and make the most out of your bootcamp experience.</span>
 
