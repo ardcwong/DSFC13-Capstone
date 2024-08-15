@@ -444,6 +444,72 @@ def get_classification():
     except Exception as e:
         st.error(f"Error: {e}")
         return None
+
+
+def load_test_answers():
+    # Define a list of predefined answers for testing purposes
+    test_answers = [
+        "Bachelor's Degree",
+        "Yes - Computer Science",
+        "Yes",
+        "Yes - Python, Java",
+        "Intermediate",
+        "Yes",
+        "Yes - implemented several models",
+        "Intermediate",
+        "Yes - 2 years in a data analyst role",
+        "I worked on a customer segmentation project using Python and SQL",
+        "Structured learning with deadlines",
+        "10-20 hours",
+        "Yes",
+        "Hands-on projects",
+        "Yes, completed a few online courses",
+        "Hybrid approach",
+        "I work better independently",
+        "To become a data scientist in the tech industry",
+        "Looking to switch careers",
+        "Applied roles",
+        "Foundational skills",
+        "Yes",
+        "Yes, I have work commitments",
+        "Machine learning, data visualization",
+        "I approach problem-solving analytically and break down problems into smaller steps"
+    ]
+
+    # Ensure the session state is properly initialized
+    if 'responses' not in st.session_state:
+        st.session_state.responses = []
+
+    if 'chat_history' not in st.session_state:
+        st.session_state.chat_history = []
+
+    # Load the predefined answers into the session state
+    for i, answer in enumerate(test_answers):
+        st.session_state.responses.append(answer)
+        st.session_state.chat_history.append(("User", answer))
+        if i < len(questions):
+            st.session_state.chat_history.append(("AI", questions[i]))
+
+    # Mark the assessment as complete
+    st.session_state.question_index = len(test_answers)
+    st.session_state.classification = True
+
+    st.success("Test answers loaded successfully!")
+
+# Call this function to load test answers at the beginning of your app (or when you need to test)
+if st.button("Load Test Answers"):
+    load_test_answers()
+    st.rerun()
+
+
+
+
+
+
+
+
+
+
 # Main logic
 if st.session_state.question_index < len(questions):
     display_question()
