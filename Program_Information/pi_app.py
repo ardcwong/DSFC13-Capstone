@@ -353,9 +353,9 @@ with col222:
     
 
 
-with col333:
+with st.sidebar:
     # st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
-    if st.button("Start Over", type = "primary", use_container_width = True):
+    if st.button("Start Over", type = "primary", use_container_width = True, help = "Restart Chat Session"):
         st.session_state.pi_chat_history.clear_history()
         st.session_state.pi_chat_memory = []  # Clear chat memory as well   
         st.session_state.button_clicked_pi = False
