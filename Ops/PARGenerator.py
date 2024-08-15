@@ -257,7 +257,7 @@ with tab2:
     
             pdf = convert_html_to_pdf(scores_dataset[scores_dataset['Reference Number'] == reference_number_ops_view]['HTML_CONTENT'].values[0])
             if pdf:
-                st.download_button(label=f"Download PDF (**{reference_number_ops_view}**)", data=pdf, file_name=f"{reference_number_ops_view}PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR")
+                st.download_button(label=f"Download PDF (**{reference_number_ops_view}**)", data=pdf, file_name=f"{reference_number_ops_view} PAR.pdf", mime="application/pdf", use_container_width = True, disabled = download_disabled, help = "Download PAR")
             else:
                 st.error("Failed to convert HTML to PDF.")
         
