@@ -126,7 +126,8 @@ pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"]
 
 
 if st.session_state.generate_pf_fs == False:
-    st.title("Pathfinder Assessment Report")
+    # st.title("Pathfinder Assessment Report")
+    st.image('data/PAR.svg', use_column_width = True)
     col_main1, col_main2 = st.columns([1,2.5])
     with col_main1:
         with st.expander("# **About**", expanded=True):
