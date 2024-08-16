@@ -250,13 +250,25 @@ def home_main_content():
             m11, m12, m13 = st.columns([1,1,1])
             with m12:
                 st.image('data/avatar_ai.png', use_column_width=True)
-            st.markdown("""<span style='font-weight:bold; font-size: 20px; text-align: center;'>Data Science Learning Path Classifier 🚀</span>""", unsafe_allow_html=True)
-            # st.markdown("""<h5 style= 'text-align: center;'>Start Your Journney! An intelligent bot that classifies the most appropriate learning path for your Data Science Journey!</h5>""", unsafe_allow_html = True)
-            st.markdown("""Find your ideal data science path! Our tool analyzes your background and preferences to recommend whether the 
-                        Eskwelabs Data Science Fellowship, Data Analytics Bootcamp, or another learning option is right for you. Get guidance tailored to your goals.
+                
+            ############# Data Science Learning Path Classifier ##############
+            st.markdown("""
+                        <div style='text-align: center;'>
+                            <span style='font-weight:bold; font-size: 20px;'>Data Science Learning Path Classifier 🚀</span>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+            ############# DESCRIPTION
+            st.markdown("""
+                        <div style='text-align: center;'>
+                            <span>Find your ideal data science path! Our tool analyzes your background and preferences to recommend whether the 
+                        Eskwelabs Data Science Fellowship, Data Analytics Bootcamp, or another learning option is right for you. Get guidance tailored to your goals.</span>
+                        </div>
                         """, unsafe_allow_html=True) 
             if st.button("Launch", 1,use_container_width = True, type = "primary"):
                 st.switch_page("suitability/DSLPC.py")
+
+    
     with m2:
         with st.container(border = True):
             m21, m22, m23 = st.columns([1,1,1])
