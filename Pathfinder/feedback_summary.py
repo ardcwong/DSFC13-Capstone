@@ -127,7 +127,7 @@ pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"]
 
 if st.session_state.generate_pf_fs == False:
     # st.title("Pathfinder Assessment Report")
-    st.image('data/PAR.svg', use_column_width = True)
+    # st.image('data/PAR.svg', use_column_width = True)
     st.markdown(
         """
         <div style="
@@ -139,12 +139,13 @@ if st.session_state.generate_pf_fs == False:
             color: white;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
         ">
-            <h1 style="font-size: 40px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
+            <h1 style="font-size: 60px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
                 Pathfinder Assessment Report
             </h1>
         </div>
         """,
         unsafe_allow_html=True)
+    st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
 
     
     col_main1, col_main2 = st.columns([1,2.5])
