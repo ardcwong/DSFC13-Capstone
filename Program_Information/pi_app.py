@@ -165,7 +165,7 @@ def generate_chatbot_response(context, query, metadata, chat_memory):
 
     # UPDATED PROMPTS
     if history_text:
-        prompt = f"Based on the following conversation history:\n\n{history_text}\n\nCurrent Information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
+        prompt = f"Consider following conversation history if necessary:\n\n{history_text}\n\nCurrent Information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
     else:
         prompt = f"Based on the following information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
 
