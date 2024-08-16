@@ -264,29 +264,31 @@ def home_main_content():
             unsafe_allow_html=True
         )
         # st.divider()
-        st.markdown(
-            """
-            <div style="
-                background: linear-gradient(90deg, #009688, #3F51B5);
-                padding: 40px;
-                border-radius: 10px;
-                text-align: center;
-                font-family: Arial, sans-serif;
-                color: white;
-            ">
-                <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white;">
-                    Ready For The Future Of Work?
-                </h1>
-                <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
-                    Learn data skills for digital jobs through our online cohort-based courses. 
-                    <strong>Your Future is Bright!</strong> Eskwelabs is an online upskilling school that gives you access to affordable 
-                    and high-quality data skills education. <strong>Your Future Begins with Upskilling.</strong> Eskwelabs creates a warm online atmosphere for 
-                    a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
-                </p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        # st.markdown(
+        #     """
+        #     <div style="
+        #         background: linear-gradient(90deg, #009688, #3F51B5);
+        #         padding: 40px;
+        #         border-radius: 10px;
+        #         text-align: center;
+        #         font-family: Arial, sans-serif;
+        #         color: white;
+        #     ">
+        #         <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white;">
+        #             Ready For The Future Of Work?
+        #         </h1>
+        #         <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
+        #             Learn data skills for digital jobs through our online cohort-based courses. 
+        #             <strong>Your Future is Bright!</strong> Eskwelabs is an online upskilling school that gives you access to affordable 
+        #             and high-quality data skills education. <strong>Your Future Begins with Upskilling.</strong> Eskwelabs creates a warm online atmosphere for 
+        #             a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
+        #         </p>
+        #     </div>
+        #     """,
+        #     unsafe_allow_html=True
+        # )
+
+    
         # st.markdown("""<div style='text-align: center;'>
         #                     <span style='font-weight:bold;font-size: 16px;'>Ready for the Future of Work? 
         #                     Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school 
