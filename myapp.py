@@ -236,7 +236,7 @@ def logout():
 def home_main_content():
     home1, home2, home3 = st.columns([0.3, 3, 0.3])
     with home2:
-        st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELAPPS✨</h1>", unsafe_allow_html=True)
+        st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELAPPS</h1>", unsafe_allow_html=True)
         
         st.divider()
         
@@ -252,7 +252,7 @@ def home_main_content():
         
     m0, m1, m2, m3, m4 = st.columns([0.3, 1,1,1,0.3])
     with m1:
-        with st.container(border = True):
+        with st.container(border = True, height=200):
             m11, m12, m13 = st.columns([1,1,1])
             with m12:
                 st.image('data/avatar_ai.png', use_column_width=True)
