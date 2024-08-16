@@ -1,4 +1,7 @@
-#import streamlit as st
+File "/mount/src/dsfc13-capstone/myapp.py", line 256
+                  st.switch_page("suitability/DSLPC.py")
+  ^
+TabError: inconsistent use of tabs and spaces in indentation#import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
@@ -252,7 +255,7 @@ def home_main_content():
         st.markdown("""Start Your Journney! An imtelligent bot that classifies the most appropriate learning path for your Data Science Journey!""")
         m24, m25, m26 = st.columns([1,1,1])
         with m25:	
-        	if st.button("Launch", use_column_width = True):
+            if st.button("Launch", use_column_width = True):
                 st.switch_page("suitability/DSLPC.py")
 
 def home():
