@@ -237,10 +237,10 @@ def home_main_content():
     
     st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELAPPS✨</h1>", unsafe_allow_html=True)
     st.divider()
-    st.markdown("""<h4 style='text-align: center;color: #e76f51;'><b><i>Welcome to EskwelApps.</b></i><i> Ready for the Future of Work? 
+    st.markdown("""<span style='font-size: 16px; text-align: center;color: #e76f51;'><b><i>Welcome to EskwelApps.</b></i><i> Ready for the Future of Work? 
     Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school 
     that gives you access to affordable and high quality data skills education. Your Future Begins with Upskilling. Eskwelabs creates a warm 
-    online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.""", unsafe_allow_html=True)
+    online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.</span>""", unsafe_allow_html=True)
         
     st.divider()
         
@@ -261,7 +261,7 @@ def home_main_content():
             ############# DESCRIPTION
             st.markdown("""
                         <div style='text-align: center;'>
-                            <span style='font-size: 10px;'><br>Find your ideal data science path! Our tool analyzes your background and preferences to recommend whether the 
+                            <span style='font-size: 14px;'><br>Find your ideal data science path! Our tool analyzes your background and preferences to recommend whether the 
                         Eskwelabs Data Science Fellowship, Data Analytics Bootcamp, or another learning option is right for you. Get guidance tailored to your goals.</span>
                         </div>
                         """, unsafe_allow_html=True) 
