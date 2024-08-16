@@ -244,17 +244,16 @@ def home_main_content():
         
     st.divider()
         
-    m1, m2, m3 = st.columns([1,1,1])
+    m0, m1, m2, m3, m4 = st.columns([0.5, 1,1,1, 0.5])
     with m1:
         with st.container(border = True):
             m11, m12, m13 = st.columns([1,1,1])
             with m12:
                 st.image('data/avatar_ai.png', use_column_width=True)
-            st.markdown("""<span style='font-weight:bold; font-size: 20px'>Data Science Learning Path Classifier 🚀</span>""", unsafe_allow_html=True)
+            st.markdown("""<span style='font-weight:bold; font-size: 20px; text-align: center;'>Data Science Learning Path Classifier 🚀</span>""", unsafe_allow_html=True)
             # st.markdown("""<h5 style= 'text-align: center;'>Start Your Journney! An intelligent bot that classifies the most appropriate learning path for your Data Science Journey!</h5>""", unsafe_allow_html = True)
-            st.markdown("""Chart your data science journey with our Data Science Learning Path Classifier! This intelligent tool assesses your educational background, experience, 
-                        and preferences to provide personalized recommendations on whether you should pursue the Eskwelabs Data Science Fellowship, Data Analytics Bootcamp, or other 
-                        learning paths. Whether you're a beginner or looking to advance your career, our classifier will guide you toward the program that best suits your goals.
+            st.markdown("""Find your ideal data science path! Our tool analyzes your background and preferences to recommend whether the 
+                        Eskwelabs Data Science Fellowship, Data Analytics Bootcamp, or another learning option is right for you. Get guidance tailored to your goals.
                         """, unsafe_allow_html=True) 
             if st.button("Launch", 1,use_container_width = True, type = "primary"):
                 st.switch_page("suitability/DSLPC.py")
