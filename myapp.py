@@ -243,7 +243,26 @@ def home_main_content():
     home1, home2, home3 = st.columns([0.3, 3, 0.3])
     with home2:
         # st.markdown(f"<h1 style='text-align: center;'>Welcome to EskwelApps</h1>", unsafe_allow_html=True)
-        
+        st.markdown(
+            """
+            <div style="
+                background: linear-gradient(90deg, #009688, #3F51B5);
+                padding: 40px;
+                border-radius: 10px;
+                text-align: center;
+                font-family: Arial, sans-serif;
+                color: white;
+            ">
+                <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white;">
+                    Welcome To EskwelApps
+                </h1>
+                <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
+                    Your all-in-one platform for mastering data science with Eskwelabs. Whether you're exploring the right learning path, seeking program insights, or needing a personalized assessment, EskwelApps has you covered. Once enrolled, dive into our comprehensive course outline, get your questions answered with our bootcamp assistant, and easily set up your environment with our installation guide. EskwelApps is designed to support and guide you throughout your entire data science journey.
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
         # st.divider()
         st.markdown(
             """
