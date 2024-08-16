@@ -78,7 +78,7 @@ df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_o
 
 
 st.markdown(
-    """
+    f"""
     <div style="
         background: linear-gradient(90deg, #009688, #3F51B5);
         padding: 40px;
@@ -89,7 +89,7 @@ st.markdown(
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
     ">
         <h1 style="font-size: 60px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
-            Course Outline
+            Welcome Course Outline, {st.session_state.role}!🤓
         </h1>
     </div>
     """,
@@ -104,16 +104,15 @@ st.markdown(
         font-family: Arial, sans-serif;
         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
     ">
-        <span style='font-weight:bold; font-size: 20px'>
-            Welcome to the Course Outline Page, Fellow! 🤓 
-        </span>
         <br>This page is designed to <span style='color:#54afa7; font-weight:bold;'>provide you with a comprehensive overview of our bootcamp</span> to guide you through each phase of your learning journey. Whether you're a beginner or looking to advance your skills, our structured outline will help you <span style='color:#54afa7; font-weight:bold;'>navigate the curriculum, track your progress, and make the most out of your bootcamp experience.</span>
         <br>Dive in to see what’s in store and get ready to embark on a transformative learning adventure, <span style='color:#54afa7; font-weight:bold;'>Best of luck!<br></span>
     </div>
     """,
     unsafe_allow_html=True
 )
-
+        # <span style='font-weight:bold; font-size: 20px'>
+        #     Welcome to the Course Outline Page, Fellow! 🤓 
+        # </span>
 # st.title("Course Outline")
 # st.markdown("""
 # <span style='font-weight:bold; font-size: 20px'>Welcome to the Course Outline Page, Fellow! 🤓 </span>
