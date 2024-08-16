@@ -258,7 +258,7 @@ def home_main_content():
                 st.image('data/avatar_ai.png', use_column_width=True)
 
 
-            m111, m122, m133 = st.columns([0.2,1,0.2])
+            m111, m122, m133 = st.columns([0.1,1,0.1])
             with m122:
                 ############# Data Science Learning Path Classifier ##############
                 st.markdown("""
