@@ -286,12 +286,110 @@ def home_main_content():
                 box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
             ">
                 <h1 style="font-size: 20px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-align: center;">
-                    Hi, <span style="color: #FFD700;">{st.session_state.userinfo['FirstName'][0]}</span>!<br>We've added these Tools and Resources for you!
+                    Hi, <span style="color: #FFD700;">{st.session_state.userinfo['FirstName'][0]}</span>!<br>We've added these tools and resources for you!
                 </h1>
             </div>
             """,
             unsafe_allow_html=True
             )
+            
+            em0, em1, em2, em3, em4 = st.columns([0.3, 1,1,1,0.3])
+            with em1:
+                with st.container(border = True, height=550):
+                    st.markdown("""<br>""", unsafe_allow_html=True)
+                    em11, em12, em13 = st.columns([0.7,1,0.7])
+                    with em12:
+                        st.image('data/avatar_ai.png', use_column_width=True)
+                    em111, em122, em133 = st.columns([0.1,1,0.1])
+                    with em122:
+                        ############# Data Science Learning Path Classifier ##############
+                        st.markdown("""
+                                    <div style='text-align: center;'>
+                                        <span style='font-weight:bold; font-size: 16px;'>Data Science Learning Path Classifier</span>
+                                    </div>
+                                    """,
+                                    unsafe_allow_html=True)
+                        ############# DESCRIPTION
+                        st.markdown("""
+                                    <div style='text-align: center;'>
+                                        <span style='font-size: 14px;'><br>Find your ideal data science path! Our tool analyzes your background and preferences to recommend whether the 
+                                    Eskwelabs Data Science Fellowship, Data Analytics Bootcamp, or another learning option is right for you. Get guidance tailored to your goals.</span>
+                                    </div>
+                                    """, unsafe_allow_html=True)
+                        st.markdown("""<br>""", unsafe_allow_html=True)
+                    
+                    if st.button("Launch", 4,use_container_width = True, type = "primary"):
+                        st.switch_page("suitability/DSLPC.py")
+        
+            
+            with em2:
+                with st.container(border = True, height=550):
+                    st.markdown("""<br>""", unsafe_allow_html=True)
+                    em21, em22, em23 = st.columns([0.7,1,0.7])
+                    with em22:
+                        st.image('data/avatar_ai_pi.png', use_column_width=True)
+                    em211, em222, em233 = st.columns([0.1,1,0.1])
+                    with m222:
+                        ############# Program Information Bot ##############
+                        st.markdown("""
+                                    <div style='text-align: center;'>
+                                        <span style='font-weight:bold; font-size: 16px;'>Program Information Bot</span>
+                                    </div>
+                                    """,
+                                    unsafe_allow_html=True)
+                        ############# DESCRIPTION
+                        st.markdown("""
+                                    <div style='text-align: center;'>
+                                        <span style='font-size: 14px;'><br>This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that 
+                                        you may have to understand all aspects of the Eskwelabs DSF program.</span>
+                                    </div>
+                                    """, unsafe_allow_html=True)
+                        
+                        st.markdown("""<br>""", unsafe_allow_html=True)
+                        
+                    if st.button("Launch", 5,use_container_width = True, type = "primary"):
+                        st.switch_page("Program_Information/pi_app.py")
+            with em3:
+                with st.container(border = True, height=550):
+                    st.markdown("""<br>""", unsafe_allow_html=True)
+                    em31, em32, em33 = st.columns([0.7,1,0.7])
+                    with em32:
+                        st.image('data/avatar_ai_lpc.png', use_column_width=True)
+                    em311, em322, em333 = st.columns([0.1,1,0.1])
+                    with em322:
+                        ############# Program Information Bot ##############
+                        st.markdown("""
+                                    <div style='text-align: center;'>
+                                        <span style='font-weight:bold; font-size: 16px;'>Pathfinder Assessment Report</span>
+                                    </div>
+                                    """,
+                                    unsafe_allow_html=True)
+                        ############# DESCRIPTION
+                        st.markdown("""
+                                    <div style='text-align: center;'>
+                                        <span style='font-size: 14px;'><br>Get a personalized analysis of your data science skills with 
+                                        actionable insights. The report highlights your strengths, areas to improve, and guides your learning journey based on your Pathfinder Assessment Exam results.</span>
+                                    </div>
+                                    """, unsafe_allow_html=True)
+                        
+                        st.markdown("""<br>""", unsafe_allow_html=True)
+                        
+                    if st.button("Launch", 6, use_container_width = True, type = "primary"):
+                        st.switch_page("Pathfinder/feedback_summary.py")
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
         st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)    
         st.markdown(
