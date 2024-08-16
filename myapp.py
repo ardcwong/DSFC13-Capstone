@@ -253,14 +253,10 @@ def home_main_content():
     m0, m1, m2, m3, m4 = st.columns([0.3, 1,1,1,0.3])
     with m1:
         with st.container(border = True, height=550):
-            
             st.markdown("""<br>""", unsafe_allow_html=True)
-            
             m11, m12, m13 = st.columns([0.7,1,0.7])
             with m12:
                 st.image('data/avatar_ai.png', use_column_width=True)
-
-
             m111, m122, m133 = st.columns([0.1,1,0.1])
             with m122:
                 ############# Data Science Learning Path Classifier ##############
@@ -284,12 +280,30 @@ def home_main_content():
 
     
     with m2:
-        with st.container(border = True):
-            m21, m22, m23 = st.columns([0.5,1,0.5])
+        with st.container(border = True, height=550):
+            st.markdown("""<br>""", unsafe_allow_html=True)
+            m21, m22, m23 = st.columns([0.7,1,0.7])
             with m22:
                 st.image('data/avatar_ai_pi.png', use_column_width=True)
-            st.markdown("""<h4 style= 'text-align: center;'>Program Information Bot<h/4>""", unsafe_allow_html=True)
-            st.markdown("""<h5 style= 'text-align: center;'>Start Your Journney! An intelligent bot that classifies the most appropriate learning path for your Data Science Journey!</h5>""", unsafe_allow_html = True)
+            m211, m222, m233 = st.columns([0.1,1,0.1])
+            with m222:
+                ############# Program Information Bot ##############
+                st.markdown("""
+                            <div style='text-align: center;'>
+                                <span style='font-weight:bold; font-size: 16px;'>Program Information Bot</span>
+                            </div>
+                            """,
+                            unsafe_allow_html=True)
+                ############# DESCRIPTION
+                st.markdown("""
+                            <div style='text-align: center;'>
+                                <span style='font-size: 14px;'><br>This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that 
+                                you may have to understand all aspects of the Eskwelabs DSF program.</span>
+                            </div>
+                            """, unsafe_allow_html=True)
+                
+                st.markdown("""<br>""", unsafe_allow_html=True)
+                
             if st.button("Launch", 2,use_container_width = True, type = "primary"):
                 st.switch_page("Program_Information/pi_app.py")
     with m3:
