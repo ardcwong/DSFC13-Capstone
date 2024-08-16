@@ -262,7 +262,7 @@ def home_main_content():
             st.markdown("""<h4 style= 'text-align: center;'>Program Information Bot<h/4>""", unsafe_allow_html=True)
             st.markdown("""<h5 style= 'text-align: center;'>Start Your Journney! An intelligent bot that classifies the most appropriate learning path for your Data Science Journey!</h5>""", unsafe_allow_html = True)
             if st.button("Launch", use_container_width = True, type = "primary"):
-                st.switch_page("ProgramInformation/pi.py")
+                st.switch_page("Program_Information/pi_app.py")
 def home():
     
         
