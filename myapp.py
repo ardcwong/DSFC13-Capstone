@@ -236,8 +236,8 @@ def logout():
 def home_main_content():
     home1, home2, home3 = st.columns([0.3, 3, 0.3])
     with home2:
-        st.markdown(f"<h1 style='text-align: center;'>Welcome to EskwelApps</h1>", unsafe_allow_html=True)
-        
+        # st.markdown(f"<h1 style='text-align: center;'>Welcome to EskwelApps</h1>", unsafe_allow_html=True)
+        st.image('data/EskwelApps.png', use_column_width=True)
         st.divider()
         st.markdown(
             """
