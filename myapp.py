@@ -271,7 +271,7 @@ def home_main_content():
     
     with m2:
         with st.container(border = True):
-            m21, m22, m23 = st.columns([1,1,1])
+            m21, m22, m23 = st.columns([0.5,1,0.5])
             with m22:
                 st.image('data/avatar_ai_pi.png', use_column_width=True)
             st.markdown("""<h4 style= 'text-align: center;'>Program Information Bot<h/4>""", unsafe_allow_html=True)
