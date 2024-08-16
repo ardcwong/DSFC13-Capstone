@@ -273,14 +273,14 @@ def home_main_content():
         st.markdown(
             """
             <div style="
-                background-color: #f0f0f0;  /* Light gray background */
+                background: linear-gradient(90deg, #d3d3d3, #a9a9a9);  /* Gradient from light gray to darker gray */
                 padding: 40px;
                 border-radius: 10px;
                 text-align: center;
                 font-family: Arial, sans-serif;
-                color: #333;  /* Dark gray text */
+                color: white;
             ">
-                <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: #333; text-transform: capitalize;">
+                <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
                     Starter Apps
                 </h1>
             </div>
