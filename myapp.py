@@ -427,7 +427,7 @@ dsf_apps = [CO,DSFBA,IGP]
 pf_apps = []
 ops_apps = [pathfinder_rfs_ops, CO_ops]
 st.logo(
-    "data/Eskwelabs_logo.svg"#,
+    "data/EskwelApps.png"#,
     # icon_image= "data/logo.png",
 )
 
