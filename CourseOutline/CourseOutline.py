@@ -75,7 +75,12 @@ df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_o
 # MAIN PROGRAM
 ########################################################
 # st.image('data/Course_Outline.svg', use_column_width = True)
-
+if st.session_state.role == None:
+    role_co = "!"
+elif st.session_state.role == []:
+    role_co = "!"
+else:
+    role_co = f", {st.session_state.role}!"
 
 st.markdown(
     f"""
@@ -89,7 +94,7 @@ st.markdown(
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
     ">
         <h1 style="font-size: 60px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
-            Welcome Course Outline, {st.session_state.role}!🤓
+            Welcome Course Outline, {role_co}!🤓
         </h1>
     </div>
     """,
