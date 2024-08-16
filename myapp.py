@@ -234,15 +234,15 @@ def logout():
 # HOME PAGE
 ########################################################
 if role == []:
-    role_welcome = " "
+    role_welcome = "!"
 else:
-    role_welcome = f", {role}"
+    role_welcome = f", {role}!"
 
 def home_main_content():
 
     EA0, EA1, EA2, EA3 = st.columns([0.3, 1.5, 1.5,0.3])
     with EA1:
-        st.markdown(f"<h1 style='text-align: left;'>Welcome to EskwelApps{role_welcome}!</h1>", unsafe_allow_html=True)
+        st.markdown(f"<h1 style='text-align: left;'>Welcome to EskwelApps{role_welcome}</h1>", unsafe_allow_html=True)
         # st.image('data/EskwelApps.png', use_column_width=True)
 
     home1, home2, home3 = st.columns([0.3, 3, 0.3])
