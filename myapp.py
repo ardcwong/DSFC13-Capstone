@@ -252,7 +252,7 @@ def home_main_content():
         
     m0, m1, m2, m3, m4 = st.columns([0.3, 1,1,1,0.3])
     with m1:
-        with st.container(border = True, height=200):
+        with st.container(border = True, height=500):
             m11, m12, m13 = st.columns([1,1,1])
             with m12:
                 st.image('data/avatar_ai.png', use_column_width=True)
