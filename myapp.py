@@ -410,7 +410,7 @@ def home():
             """,
             unsafe_allow_html=True
         )
-        st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
+        
         
     m0, m1, m2, m3, m4 = st.columns([0.3, 1,1,1,0.3])
     with m1:
@@ -418,7 +418,7 @@ def home():
             st.markdown("""<br>""", unsafe_allow_html=True)
             m11, m12, m13 = st.columns([0.7,1,0.7])
             with m12:
-                st.image('data/avatar_ai.png', use_column_width=True)
+                st.image('data/avatar_ai_lpc.png', use_column_width=True)
             m111, m122, m133 = st.columns([0.1,1,0.1])
             with m122:
                 ############# Data Science Learning Path Classifier ##############
