@@ -473,7 +473,7 @@ def home():
             st.markdown("""<br>""", unsafe_allow_html=True)
             m31, m32, m33 = st.columns([0.7,1,0.7])
             with m32:
-                st.image('data/avatar_ai_lpc.png', use_column_width=True)
+                st.image('data/pathfinder.png', use_column_width=True)
             m311, m322, m333 = st.columns([0.1,1,0.1])
             with m322:
                 ############# Program Information Bot ##############
