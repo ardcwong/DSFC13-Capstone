@@ -269,27 +269,19 @@ def home_main_content():
             </div>
             """,
             unsafe_allow_html=True
-        )
         st.markdown(
             """
             <div style="
-                background: linear-gradient(90deg, #009688, #3F51B5);
+                background-color: black;
                 padding: 40px;
                 border-radius: 10px;
                 text-align: center;
                 font-family: Arial, sans-serif;
+                color: white;
             ">
-                <div style="
-                    background-color: black;
-                    padding: 20px;
-                    border-radius: 15px;
-                    display: inline-block;
-                    color: white;
-                ">
-                    <h1 style="font-size: 36px; margin-bottom: 10px; font-weight: bold; letter-spacing: 3px; text-transform: capitalize;">
-                        Starter Apps
-                    </h1>
-                </div>
+                <h1 style="font-size: 20px; margin-bottom: 10px; font-weight: bold; letter-spacing: 3px; text-transform: capitalize;">
+                    Starter Apps
+                </h1>
             </div>
             """,
             unsafe_allow_html=True
