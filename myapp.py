@@ -273,10 +273,11 @@ def home_main_content():
             """
             <div style="
                 background-color: #D3D3D3;;
-                padding: 10px;
+                padding: 6px;
                 border-radius: 10px;
                 text-align: center;
                 font-family: Arial, sans-serif;
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
             ">
                 <h1 style="font-size: 20px; margin-bottom: 10px; font-weight: bold; letter-spacing: 3px; text-transform: capitalize;">
                     Starter Apps
