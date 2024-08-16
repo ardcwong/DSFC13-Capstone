@@ -392,7 +392,8 @@ def home():
 
 
         
-
+    shome1, shome2, shome3 = st.columns([0.3, 3, 0.3])
+    with shome2:
         st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)    
         st.markdown(
             """
