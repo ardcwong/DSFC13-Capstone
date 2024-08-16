@@ -273,6 +273,30 @@ def home_main_content():
         st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
 
         if st.session_state.userinfo is not None:
+            st.markdown(
+            f"""
+            <div style="
+                background: linear-gradient(90deg, #3D2B6A, #6A5FAE, #3D2B6A);
+                padding: 40px;
+                border-radius: 10px;
+                text-align: center;
+                font-family: Arial, sans-serif;
+                color: white;
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            ">
+                <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize; text-align: center;">
+                    Hi, {st.session_state.userinfo['FirstName'][0]}! We've added these Tools and Resources for you!
+                </h1>
+                <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
+                    <strong>Learn and Be Guided with Confidence!</strong> EskwelApps is here to guide you every step of the way. Whether you're exploring the perfect learning path, seeking detailed program insights, or looking for a personalized assessment, we’ve got everything you need to thrive. <strong><br><br>Unlock Tools and Resources!</strong> Once enrolled, dive into our comprehensive course outline, get your questions answered with our bootcamp assistant, and easily set up your environment with our installation guide. Let EskwelApps support you throughout your entire data science journey.
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True
+            )
+            
+        st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
+        
             # st.title(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
             # st.subheader("We added these specific apps for you!")
             st.markdown(
