@@ -74,7 +74,27 @@ df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_o
 ########################################################
 # MAIN PROGRAM
 ########################################################
-st.image('data/Course_Outline.svg', use_column_width = True)
+# st.image('data/Course_Outline.svg', use_column_width = True)
+
+
+st.markdown(
+    """
+    <div style="
+        background: linear-gradient(90deg, #009688, #3F51B5);
+        padding: 40px;
+        border-radius: 10px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        color: white;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    ">
+        <h1 style="font-size: 60px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
+            Course Outline
+        </h1>
+    </div>
+    """,
+    unsafe_allow_html=True)
+st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
 # st.title("Course Outline")
 st.markdown("""
 <span style='font-weight:bold; font-size: 20px'>Welcome to the Course Outline Page, Fellow! 🤓 </span>
