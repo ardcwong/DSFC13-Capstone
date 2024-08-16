@@ -5,11 +5,28 @@ import base64
 import streamlit as st
 from streamlit_pdf_viewer import pdf_viewer
 
-
 st.markdown(
-    "<h2 style='text-align: left; color: #48a937; font-size: 35px;'>Installation Guide</h2>",
-    unsafe_allow_html=True
-)
+    """
+    <div style="
+        background: linear-gradient(90deg, #009688, #3F51B5);
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        color: white;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    ">
+        <h1 style="font-size: 40px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white;">
+            Installation Guide
+        </h1>
+    </div>
+    """,
+    unsafe_allow_html=True)
+st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
+# st.markdown(
+#     "<h2 style='text-align: left; color: #48a937; font-size: 35px;'>Installation Guide</h2>",
+#     unsafe_allow_html=True
+# )
 
 choose_mac = "Installation Guide for MAC OS"
 pdf_url_mac = "https://drive.google.com/uc?export=download&id=1kBWygtPP5nkzCv9uR3AX2Y-PGjCFpeFr"
