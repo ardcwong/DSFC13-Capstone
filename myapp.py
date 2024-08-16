@@ -307,12 +307,30 @@ def home_main_content():
             if st.button("Launch", 2,use_container_width = True, type = "primary"):
                 st.switch_page("Program_Information/pi_app.py")
     with m3:
-        with st.container(border = True):
-            m31, m32, m33 = st.columns([1,1,1])
+        with st.container(border = True, height=550):
+            st.markdown("""<br>""", unsafe_allow_html=True)
+            m31, m32, m33 = st.columns([0.7,1,0.7])
             with m32:
                 st.image('data/avatar_ai_lpc.png', use_column_width=True)
-            st.markdown("""<h4 style= 'text-align: center;'>Pathfinder Assessment Report<h/4>""", unsafe_allow_html=True)
-            st.markdown("""<h5 style= 'text-align: center;'>Pathfinder Assessment Report</h5>""", unsafe_allow_html = True)
+            m311, m322, m333 = st.columns([0.1,1,0.1])
+            with m322:
+                ############# Program Information Bot ##############
+                st.markdown("""
+                            <div style='text-align: center;'>
+                                <span style='font-weight:bold; font-size: 16px;'>Pathfinder Assessment Report</span>
+                            </div>
+                            """,
+                            unsafe_allow_html=True)
+                ############# DESCRIPTION
+                st.markdown("""
+                            <div style='text-align: center;'>
+                                <span style='font-size: 14px;'><br>Get a personalized analysis of your data science skills with 
+                                actionable insights. The report highlights your strengths, areas to improve, and guides your learning journey based on your Pathfinder Assessment Exam results.</span>
+                            </div>
+                            """, unsafe_allow_html=True)
+                
+                st.markdown("""<br>""", unsafe_allow_html=True)
+                
             if st.button("Launch", 3, use_container_width = True, type = "primary"):
                 st.switch_page("Pathfinder/feedback_summary.py")
 def home():
