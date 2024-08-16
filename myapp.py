@@ -244,14 +244,14 @@ def home_main_content():
         
     st.divider()
         
-    m1, m2, m3, m4, m5 = st.columns([1,1,1,1,1])
-    with m2:
+    m1, m2, m3 = st.columns([1,1,1])
+    with m1:
         with st.container(border = True):
             m21, m22, m23 = st.columns([1,1,1])
             with m22:
-                st.image('data/avatar_ai.png',width = 40)
-            st.markdown("""Data Science Learning Path Classifier""")
-            st.markdown("""Start Your Journney! An intelligent bot that classifies the most appropriate learning path for your Data Science Journey!""")
+                st.image('data/avatar_ai.png', use_column_width=True)
+            st.markdown("""<h4>Data Science Learning Path Classifier<h/4>""", unsafe_allow_html=True)
+            st.markdown("""<h5>Start Your Journney! An intelligent bot that classifies the most appropriate learning path for your Data Science Journey!</h5>""", unsafe_allow_html = True)
             m24, m25, m26 = st.columns([1,1,1])
             with m25:	
                 if st.button("Launch", use_container_width = True):
