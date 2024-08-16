@@ -234,6 +234,7 @@ def logout():
 # HOME PAGE
 ########################################################
 def home_main_content():
+    
     st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELAPPS✨</h1>", unsafe_allow_html=True)
     st.divider()
     st.markdown("""<h4 style='text-align: center;color: #e76f51;'><b><i>Welcome to EskwelApps.</b></i><i> Ready for the Future of Work? 
@@ -277,7 +278,7 @@ def home():
             
             st.title(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
             st.subheader("We added these specific apps for you!")
-        home_main_content()
+    home_main_content()
         
 
         # col1.image('data/art.png')
