@@ -249,10 +249,10 @@ def home_main_content():
                 font-family: Arial, sans-serif;
                 color: white;
             ">
-                <h1 style="font-size: 28px; margin-bottom: 10px;">
-                    Ready for the Future of Work?
+                <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white;">
+                    Ready For The Future Of Work?
                 </h1>
-                <p style="font-size: 18px; line-height: 1.5;">
+                <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
                     Learn data skills for digital jobs through our online cohort-based courses. 
                     <strong>Your Future is Bright!</strong> Eskwelabs is an online upskilling school that gives you access to affordable 
                     and high-quality data skills education. <strong>Your Future Begins with Upskilling.</strong> Eskwelabs creates a warm online atmosphere for 
