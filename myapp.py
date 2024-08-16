@@ -235,7 +235,7 @@ def logout():
 ########################################################
 def home_main_content():
 
-    EA0, EA1, EA2, EA3 = st.columns([0.3, 2, 1,0.3])
+    EA0, EA1, EA2, EA3 = st.columns([0.3, 1.5, 1.5,0.3])
     with EA1:
         st.image('data/EskwelApps.png', use_column_width=True)
 
