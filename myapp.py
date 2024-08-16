@@ -240,10 +240,12 @@ elif role == []:
 else:
     role_welcome = f", {role}!"
 
-def home_main_content():
+# def home_main_content():
 
     # EA0, EA1, EA2, EA3 = st.columns([0.3, 1.5, 1.5,0.3])
     # with EA1:
+
+def home():
     st.markdown(f"""<h1 style='text-align: center;'>Welcome to EskwelApps{role_welcome}</h1>""", unsafe_allow_html=True)
         # st.image('data/EskwelApps.png', use_column_width=True)
 
@@ -493,13 +495,9 @@ def home_main_content():
                 st.markdown("""<br>""", unsafe_allow_html=True)
                 
             if st.button("Launch", 3, use_container_width = True, type = "primary"):
-                st.switch_page("Pathfinder/feedback_summary.py")
-def home():
-    
-    # col1, col2, col3 = st.columns([1,8,1])
-    # with col2:
+                st.switch_page("Pathfinder/feedback_summary.py")  
         
-    home_main_content()
+  
         
 
 
