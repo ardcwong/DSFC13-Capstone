@@ -331,7 +331,7 @@ def home():
                 with em22:
                     st.image('data/avatar_ai_pi.png', use_column_width=True)
                 em211, em222, em233 = st.columns([0.1,1,0.1])
-                with m222:
+                with em222:
                     ############# Program Information Bot ##############
                     st.markdown("""
                                 <div style='text-align: center;'>
