@@ -295,7 +295,7 @@ def home_main_content():
             unsafe_allow_html=True
             )
             
-        st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
+            st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
         
             # st.title(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
             # st.subheader("We added these specific apps for you!")
