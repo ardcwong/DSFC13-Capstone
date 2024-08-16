@@ -244,7 +244,7 @@ def home_main_content():
         
     st.divider()
         
-    m0, m1, m2, m3, m4 = st.columns([0.5, 1,1,1, 0.5])
+    m0, m1, m2, m3, m4 = st.columns([0.3, 1,1,1,0.3])
     with m1:
         with st.container(border = True):
             m11, m12, m13 = st.columns([1,1,1])
@@ -254,7 +254,7 @@ def home_main_content():
             ############# Data Science Learning Path Classifier ##############
             st.markdown("""
                         <div style='text-align: center;'>
-                            <span style='font-weight:bold; font-size: 20px;'>Data Science Learning Path Classifier 🚀</span>
+                            <span style='font-weight:bold; font-size: 16px;'>Data Science Learning Path Classifier 🚀</span>
                         </div>
                         """,
                         unsafe_allow_html=True)
