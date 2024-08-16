@@ -692,10 +692,10 @@ with st.sidebar:
   if st.button("Load Test Answers", use_container_width = True, type = "primary"):
       load_test_answers_by_name(name)
       st.rerun()
-
+# , label_visibility="collapsed"
         
 with st.sidebar:
-    if st.toggle("Show Work Flow", label_visibility="collapsed"):
+    if st.toggle("Discover!"):
         wf1, wf2 = st.columns([8,2])
         with wf1:
             with st.expander("Work Flow: How It Actually Works", expanded = True):
