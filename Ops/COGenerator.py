@@ -156,9 +156,11 @@ st.title("Sprint Navigator")
 
 st.markdown("""
 The Sprint Navigator is a meticulously crafted course outline, designed to provide a clear and organized view of the program's main 
-topics and sub-topics, divided into four distinct Sprints. This Navigator acts as both a strategic planning tool and a detailed 
-guide for fellows, helping them steer through their learning journey with confidence.
+topics and sub-topics, learning objectives, divided into four distinct Sprints. It also offers tailored dataset recommendations for 
+practical, hands-on learning. This Navigator acts as both a strategic planning tool and a detailed guide for fellows, helping them steer 
+through their learning journey with confidence.
 """)
+# The Sprint Navigator is a meticulously crafted course outline, designed to provide a clear and organized view of the program's main topics and sub-topics, divided into four distinct Sprints. This Navigator acts as both a strategic planning tool and a detailed guide for fellows, helping them steer through their learning journey with confidence.
 
 t1, t2 = st.columns([1,1])
 if 'html_content_co' not in st.session_state:
