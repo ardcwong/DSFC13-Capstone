@@ -272,12 +272,12 @@ def home_main_content():
         st.markdown(
             """
             <div style="
-                background-color: black;
+                background-color: #D3D3D3;;
                 padding: 10px;
                 border-radius: 10px;
                 text-align: center;
                 font-family: Arial, sans-serif;
-                color: #FFFFFF;
+                
             ">
                 <h1 style="font-size: 20px; margin-bottom: 10px; font-weight: bold; letter-spacing: 3px; text-transform: capitalize;">
                     Starter Apps
