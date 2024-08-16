@@ -1,7 +1,4 @@
-File "/mount/src/dsfc13-capstone/myapp.py", line 256
-                  st.switch_page("suitability/DSLPC.py")
-  ^
-TabError: inconsistent use of tabs and spaces in indentation#import streamlit as st
+import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
