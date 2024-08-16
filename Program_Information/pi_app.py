@@ -250,7 +250,7 @@ with st.sidebar:
 user_query = st.chat_input("Ask Eskwelabs")
 if user_query:
     st.session_state.button_clicked_pi = True
-    response = chatbot_response(user_query, vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
+    response = chatbot_response(user_query, st.session_state.vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
     update_chat_memory()
 #################################################################################################
 
