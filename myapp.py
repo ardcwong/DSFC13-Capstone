@@ -277,7 +277,7 @@ def home_main_content():
             f"""
             <div style="
                 background: linear-gradient(90deg, #3D2B6A, #6A5FAE, #3D2B6A);
-                padding: 20px;
+                padding: 6px;
                 border-radius: 10px;
                 text-align: center;
                 font-family: Arial, sans-serif;
