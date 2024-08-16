@@ -239,12 +239,16 @@ def home_main_content():
         st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELAPPS✨</h1>", unsafe_allow_html=True)
         
         st.divider()
-        st.markdown("""<span style='font-size: 16px; text-align: center;color: #e76f51;'><b><i>Welcome to EskwelApps.</b></i><i> Ready for the Future of Work? 
-        Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school 
-        that gives you access to affordable and high quality data skills education. Your Future Begins with Upskilling. Eskwelabs creates a warm 
-        online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.</span>""", unsafe_allow_html=True)
         
-    st.divider()
+        st.markdown("""<div style='text-align: center;'>
+                            <span style='font-size: 16px;'<b><i>Welcome to EskwelApps.</b></i><i> Ready for the Future of Work? 
+                            Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school 
+                            that gives you access to affordable and high quality data skills education. Your Future Begins with Upskilling. Eskwelabs creates a warm 
+                            online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.</span>
+                    </div>        
+                    """, unsafe_allow_html=True)
+            
+        st.divider()
         
     m0, m1, m2, m3, m4 = st.columns([0.3, 1,1,1,0.3])
     with m1:
@@ -256,7 +260,7 @@ def home_main_content():
             ############# Data Science Learning Path Classifier ##############
             st.markdown("""
                         <div style='text-align: center;'>
-                            <span style='font-weight:bold; font-size: 16px;'>Data Science Learning Path Classifier 🚀</span>
+                            <span style='font-weight:bold; font-size: 16px;'>Data Science Learning Path Classifier</span>
                         </div>
                         """,
                         unsafe_allow_html=True)
