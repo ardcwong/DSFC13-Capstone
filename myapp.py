@@ -256,7 +256,7 @@ def home_main_content():
             
             st.markdown("""<br>""", unsafe_allow_html=True)
             
-            m11, m12, m13 = st.columns([1,1,1])
+            m11, m12, m13 = st.columns([0.5,1,0.5])
             with m12:
                 st.image('data/avatar_ai.png', use_column_width=True)
 
