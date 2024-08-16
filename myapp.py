@@ -243,7 +243,7 @@ def home_main_content():
     with home2:
         # st.markdown(f"<h1 style='text-align: center;'>Welcome to EskwelApps</h1>", unsafe_allow_html=True)
         
-        st.divider()
+        # st.divider()
         st.markdown(
             """
             <div style="
