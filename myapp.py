@@ -270,7 +270,23 @@ def home_main_content():
             """,
             unsafe_allow_html=True
         )
-
+        st.markdown(
+            """
+            <div style="
+                background-color: #f0f0f0;  /* Light gray background */
+                padding: 40px;
+                border-radius: 10px;
+                text-align: center;
+                font-family: Arial, sans-serif;
+                color: #333;  /* Dark gray text */
+            ">
+                <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: #333; text-transform: capitalize;">
+                    Starter Apps
+                </h1>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
         # st.divider()
         # st.markdown(
         #     """
