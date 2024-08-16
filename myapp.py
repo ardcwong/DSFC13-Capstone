@@ -273,7 +273,7 @@ def home_main_content():
             """
             <div style="
                 background-color: black;
-                padding: 40px;
+                padding: 10px;
                 border-radius: 10px;
                 text-align: center;
                 font-family: Arial, sans-serif;
