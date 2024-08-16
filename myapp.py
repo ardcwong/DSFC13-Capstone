@@ -257,13 +257,7 @@ def home_main_content():
                     Ready To Navigate Your Data Science Journey?
                 </h1>
                 <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
-                    <strong>Learn and Be Guided with Confidence!</strong> EskwelApps is here to guide you every step of the way. Whether you're <strong>exploring the perfect learning path</strong>, <strong>seeking detailed program insights</strong>, or looking for a <strong>personalized assessment</strong>, we’ve got everything you need to thrive.
-                </p>
-                <h2 style="font-size: 22px; margin-top: 20px; font-weight: bold; color: white; text-transform: capitalize;">
-                    Unlock Tools and Resources!
-                </h2>
-                <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
-                    Once enrolled, dive into our <strong>comprehensive course outline</strong>, get your questions answered with our <strong>bootcamp assistant</strong>, and easily set up your environment with our <strong>installation guide</strong>. Let EskwelApps support you throughout your entire data science journey.
+                    <strong>Learn and Be Guided with Confidence!</strong> EskwelApps is here to guide you every step of the way. Whether you're exploring the perfect learning path, seeking detailed program insights, or looking for a personalized assessment, we’ve got everything you need to thrive. <strong>Unlock Tools and Resources!</strong> Once enrolled, dive into our comprehensive course outline, get your questions answered with our bootcamp assistant, and easily set up your environment with our installation guide. Let EskwelApps support you throughout your entire data science journey.
                 </p>
             </div>
             """,
