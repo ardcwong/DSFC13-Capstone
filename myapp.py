@@ -301,27 +301,27 @@ def home():
                 st.markdown("""<br>""", unsafe_allow_html=True)
                 em11, em12, em13 = st.columns([0.7,1,0.7])
                 with em12:
-                    st.image('data/avatar_ai.png', use_column_width=True)
+                    st.image('data/avatar_course_outline.png', use_column_width=True)
                 em111, em122, em133 = st.columns([0.1,1,0.1])
                 with em122:
                     ############# Data Science Learning Path Classifier ##############
                     st.markdown("""
                                 <div style='text-align: center;'>
-                                    <span style='font-weight:bold; font-size: 16px;'>Data Science Learning Path Classifier</span>
+                                    <span style='font-weight:bold; font-size: 16px;'>Course Outline</span>
                                 </div>
                                 """,
                                 unsafe_allow_html=True)
                     ############# DESCRIPTION
                     st.markdown("""
                                 <div style='text-align: center;'>
-                                    <span style='font-size: 14px;'><br>Find your ideal data science path! Our tool analyzes your background and preferences to recommend whether the 
-                                Eskwelabs Data Science Fellowship, Data Analytics Bootcamp, or another learning option is right for you. Get guidance tailored to your goals.</span>
+                                    <span style='font-size: 14px;'><br>This page is designed to provide you with a comprehensive overview of our bootcamp to 
+                                    guide you through each phase of your learning journey.</span>
                                 </div>
                                 """, unsafe_allow_html=True)
                     st.markdown("""<br>""", unsafe_allow_html=True)
                 
                 if st.button("Launch", 4,use_container_width = True, type = "primary"):
-                    st.switch_page("suitability/DSLPC.py")
+                    st.switch_page("CourseOutline/CourseOutline.py")
     
         
         with em2:
@@ -329,55 +329,53 @@ def home():
                 st.markdown("""<br>""", unsafe_allow_html=True)
                 em21, em22, em23 = st.columns([0.7,1,0.7])
                 with em22:
-                    st.image('data/avatar_ai_pi.png', use_column_width=True)
+                    st.image('data/avatar_ai.png', use_column_width=True)
                 em211, em222, em233 = st.columns([0.1,1,0.1])
                 with em222:
                     ############# Program Information Bot ##############
                     st.markdown("""
                                 <div style='text-align: center;'>
-                                    <span style='font-weight:bold; font-size: 16px;'>Program Information Bot</span>
+                                    <span style='font-weight:bold; font-size: 16px;'>Data Science Bootcamp Assistant</span>
                                 </div>
                                 """,
                                 unsafe_allow_html=True)
                     ############# DESCRIPTION
                     st.markdown("""
                                 <div style='text-align: center;'>
-                                    <span style='font-size: 14px;'><br>This AI-powered assistant chatbot is designed to help you with ideas, advice, and questions that 
-                                    you may have to understand all aspects of the Eskwelabs DSF program.</span>
+                                    <span style='font-size: 14px;'><br>Ask any question related to the bootcamp, and get recommendations and answers.</span>
                                 </div>
                                 """, unsafe_allow_html=True)
                     
                     st.markdown("""<br>""", unsafe_allow_html=True)
                     
                 if st.button("Launch", 5,use_container_width = True, type = "primary"):
-                    st.switch_page("Program_Information/pi_app.py")
+                    st.switch_page("DSFBAssistant/DSFBootcampAssistant.py")
         with em3:
             with st.container(border = True, height=550):
                 st.markdown("""<br>""", unsafe_allow_html=True)
                 em31, em32, em33 = st.columns([0.7,1,0.7])
                 with em32:
-                    st.image('data/avatar_ai_lpc.png', use_column_width=True)
+                    st.image('data/installation_guide.png', use_column_width=True)
                 em311, em322, em333 = st.columns([0.1,1,0.1])
                 with em322:
                     ############# Program Information Bot ##############
                     st.markdown("""
                                 <div style='text-align: center;'>
-                                    <span style='font-weight:bold; font-size: 16px;'>Pathfinder Assessment Report</span>
+                                    <span style='font-weight:bold; font-size: 16px;'>Installation Guide</span>
                                 </div>
                                 """,
                                 unsafe_allow_html=True)
                     ############# DESCRIPTION
                     st.markdown("""
                                 <div style='text-align: center;'>
-                                    <span style='font-size: 14px;'><br>Get a personalized analysis of your data science skills with 
-                                    actionable insights. The report highlights your strengths, areas to improve, and guides your learning journey based on your Pathfinder Assessment Exam results.</span>
+                                    <span style='font-size: 14px;'><br>An installation guide page where you'll find all the necessary steps to set up your environment and get started with the installation process of Anaconda.</span>
                                 </div>
                                 """, unsafe_allow_html=True)
                     
                     st.markdown("""<br>""", unsafe_allow_html=True)
                     
                 if st.button("Launch", 6, use_container_width = True, type = "primary"):
-                    st.switch_page("Pathfinder/feedback_summary.py")
+                    st.switch_page("InstallationGuidePage/InstallationGuide.py")
 
 
 
