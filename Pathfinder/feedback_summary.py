@@ -197,8 +197,27 @@ else:
     # column11, column22, column33 = st.columns([1,2,1])
 
     # with column22:
-    st.info(f"Viewing Reference Number {st.session_state.reference_number}")
+    # st.info(f"Viewing Reference Number {st.session_state.reference_number}")
         # st.markdown(f"""<h6 style='text-align: center; font-weight: bold;'><br>Viewing Reference Number {st.session_state.reference_number}</h6>""", unsafe_allow_html = True)
+
+    st.markdown(
+    f"""
+    <div style="
+        background: linear-gradient(90deg, #009688, #3F51B5);
+        padding: 40px;
+        border-radius: 10px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        color: white;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    ">
+        <h1 style="font-size: 60px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
+            Pathfinder Assessment Report<br>for Reference Number {st.session_state.reference_number}
+        </h1>
+    </div>
+    """,
+    unsafe_allow_html=True)
+    st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
     with st.sidebar:
         if st.button("Go Back", type = "primary", use_container_width = True, help = "Go Back to PAR main menu."):
             st.session_state.generate_pf_fs = False
