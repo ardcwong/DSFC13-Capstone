@@ -94,7 +94,7 @@ st.markdown(
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
     ">
         <h1 style="font-size: 60px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
-            Welcome Course Outline{role_co}🤓
+            Welcome to the Course Outline Page{role_co}🤓
         </h1>
     </div>
     """,
