@@ -277,7 +277,7 @@ def home_main_content():
                 border-radius: 10px;
                 text-align: center;
                 font-family: Arial, sans-serif;
-                color: white;
+                color: #FFFFFF;
             ">
                 <h1 style="font-size: 20px; margin-bottom: 10px; font-weight: bold; letter-spacing: 3px; text-transform: capitalize;">
                     Starter Apps
