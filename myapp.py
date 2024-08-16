@@ -238,7 +238,7 @@ def home_main_content():
     with EA1:
         st.image('data/EskwelApps.png', use_column_width=True)
     with EA2:
-        if st.button('Go to Eskwelabs', use_column_width = True):
+        if st.button('Go to Eskwelabs', use_container_width = True):
             st.write('<script>window.open("https://www.eskwelabs.com/", "_blank");</script>', unsafe_allow_html=True)
     home1, home2, home3 = st.columns([0.3, 3, 0.3])
     with home2:
