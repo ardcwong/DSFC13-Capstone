@@ -257,7 +257,7 @@ def home_main_content():
                             <span style='font-weight:bold; font-size: 20px;'>Data Science Learning Path Classifier 🚀</span>
                         </div>
                         """,
-                        unsafe_allow_html=True
+                        unsafe_allow_html=True)
             ############# DESCRIPTION
             st.markdown("""
                         <div style='text-align: center;'>
