@@ -253,11 +253,11 @@ def home_main_content():
                 font-family: Arial, sans-serif;
                 color: white;
             ">
-                <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white;">
+                <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
                     Ready To Navigate Your Data Science Journey?
                 </h1>
                 <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
-                    EskwelApps is here to guide you every step of the way. Whether you're exploring the right learning path, seeking program insights, or looking for a personalized assessment, EskwelApps has you covered. Once enrolled, dive into our comprehensive course outline, get your questions answered with our bootcamp assistant, and easily set up your environment with our installation guide. Let EskwelApps support you throughout your entire data science journey.
+                    <strong>EskwelApps</strong> is here to guide you every step of the way. Whether you're <strong>exploring the right learning path</strong>, <strong>seeking program insights</strong>, or looking for a <strong>personalized assessment</strong>, EskwelApps has you covered. Once enrolled, dive into our <strong>comprehensive course outline</strong>, get your questions answered with our <strong>bootcamp assistant</strong>, and easily set up your environment with our <strong>installation guide</strong>. Let EskwelApps support you throughout your entire data science journey.
                 </p>
             </div>
             """,
