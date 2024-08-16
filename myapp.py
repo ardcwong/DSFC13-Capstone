@@ -273,6 +273,7 @@ def home_main_content():
         
 
         if st.session_state.userinfo is not None:
+            st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
             st.markdown(
             f"""
             <div style="
@@ -284,7 +285,7 @@ def home_main_content():
                 color: white;
                 box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
             ">
-                <h1 style="font-size: 20px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize; text-align: center;">
+                <h1 style="font-size: 20px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-align: center;">
                     Hi, <span style="color: #FFD700;">{st.session_state.userinfo['FirstName'][0]}</span>!<br>We've added these Tools and Resources for you!
                 </h1>
             </div>
