@@ -95,6 +95,27 @@ st.markdown(
     """,
     unsafe_allow_html=True)
 st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
+
+st.markdown(
+    """
+    <div style="
+        background-color: #D3D3D3;;
+        padding: 6px;
+        border-radius: 10px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    ">
+        <span style='font-weight:bold; font-size: 20px'>
+            Welcome to the Course Outline Page, Fellow! 🤓 
+        </span>
+        <br>This page is designed to <span style='color:#54afa7; font-weight:bold;'>provide you with a comprehensive overview of our bootcamp</span> to guide you through each phase of your learning journey. Whether you're a beginner or looking to advance your skills, our structured outline will help you <span style='color:#54afa7; font-weight:bold;'>navigate the curriculum, track your progress, and make the most out of your bootcamp experience.</span>
+<br>Dive in to see what’s in store and get ready to embark on a transformative learning adventure, <span style='color:#54afa7; font-weight:bold;'>Best of luck!<br></span>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 # st.title("Course Outline")
 st.markdown("""
 <span style='font-weight:bold; font-size: 20px'>Welcome to the Course Outline Page, Fellow! 🤓 </span>
