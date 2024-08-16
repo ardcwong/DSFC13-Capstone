@@ -252,7 +252,7 @@ def home_main_content():
                 st.image('data/avatar_ai.png', use_column_width=True)
             st.markdown("""<h4 style= 'text-align: center;'>Data Science Learning Path Classifier<h/4>""", unsafe_allow_html=True)
             st.markdown("""<h5 style= 'text-align: center;'>Start Your Journney! An intelligent bot that classifies the most appropriate learning path for your Data Science Journey!</h5>""", unsafe_allow_html = True)
-            if st.button("Launch", use_container_width = True, type = "primary"):
+            if st.button("Launch", 1,use_container_width = True, type = "primary"):
                 st.switch_page("suitability/DSLPC.py")
     with m2:
         with st.container(border = True):
@@ -261,8 +261,17 @@ def home_main_content():
                 st.image('data/avatar_ai_pi.png', use_column_width=True)
             st.markdown("""<h4 style= 'text-align: center;'>Program Information Bot<h/4>""", unsafe_allow_html=True)
             st.markdown("""<h5 style= 'text-align: center;'>Start Your Journney! An intelligent bot that classifies the most appropriate learning path for your Data Science Journey!</h5>""", unsafe_allow_html = True)
-            if st.button("Launch", use_container_width = True, type = "primary"):
+            if st.button("Launch", 2,use_container_width = True, type = "primary"):
                 st.switch_page("Program_Information/pi_app.py")
+    with m3:
+        with st.container(border = True):
+            m31, m32, m33 = st.columns([1,1,1])
+            with m32:
+                st.image('data/avatar_ai_lpc.png', use_column_width=True)
+            st.markdown("""<h4 style= 'text-align: center;'>Pathfinder Assessment Report<h/4>""", unsafe_allow_html=True)
+            st.markdown("""<h5 style= 'text-align: center;'>Pathfinder Assessment Report</h5>""", unsafe_allow_html = True)
+            if st.button("Launch", 3, use_container_width = True, type = "primary"):
+                st.switch_page("Pathfinder/feedback_summary.py")
 def home():
     
         
