@@ -270,7 +270,7 @@ def home_main_content():
             </div>
             """,
             unsafe_allow_html=True)
-        
+        st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
         st.markdown(
             """
             <div style="
@@ -287,7 +287,7 @@ def home_main_content():
             """,
             unsafe_allow_html=True
         )
-        st.markdown("<div style='height: 5px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
         
     m0, m1, m2, m3, m4 = st.columns([0.3, 1,1,1,0.3])
     with m1:
