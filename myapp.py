@@ -273,7 +273,7 @@ def home_main_content():
         st.markdown(
             """
             <div style="
-                background: linear-gradient(90deg, #d3d3d3, #a9a9a9);  /* Gradient from light gray to darker gray */
+                background-color: #d3d3d3;  /* Light gray background */
                 padding: 40px;
                 border-radius: 10px;
                 text-align: center;
