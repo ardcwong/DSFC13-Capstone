@@ -218,13 +218,14 @@ else:
     """,
     unsafe_allow_html=True)
     st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
+    # pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
     with st.sidebar:
         if st.button("Go Back", type = "primary", use_container_width = True, help = "Go Back to PAR main menu."):
             st.session_state.generate_pf_fs = False
             st.session_state.reference_number = []
             st.session_state.feedback_generated = []
             st.rerun()
-        pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
+        
         if scores_dataset[scores_dataset['Reference Number'] == st.session_state.reference_number]['HTML_CONTENT'].values[0] != "":
             download_disabled = False
         else:
