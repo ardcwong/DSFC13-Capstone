@@ -262,15 +262,15 @@ def home_main_content():
             """,
             unsafe_allow_html=True
         )
-        st.markdown("""<div style='text-align: center;'>
-                            <span style='font-weight:bold;font-size: 16px;'>Ready for the Future of Work? 
-                            Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school 
-                            that gives you access to affordable and high quality data skills education. Your Future Begins with Upskilling. Eskwelabs creates a warm 
-                            online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.</span>
-                    </div>        
-                    """, unsafe_allow_html=True)
+        # st.markdown("""<div style='text-align: center;'>
+        #                     <span style='font-weight:bold;font-size: 16px;'>Ready for the Future of Work? 
+        #                     Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school 
+        #                     that gives you access to affordable and high quality data skills education. Your Future Begins with Upskilling. Eskwelabs creates a warm 
+        #                     online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.</span>
+        #             </div>        
+        #             """, unsafe_allow_html=True)
             
-        st.divider()
+        # st.divider()
         
     m0, m1, m2, m3, m4 = st.columns([0.3, 1,1,1,0.3])
     with m1:
