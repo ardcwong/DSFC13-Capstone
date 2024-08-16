@@ -253,7 +253,7 @@ def home_main_content():
     m0, m1, m2, m3, m4 = st.columns([0.3, 1,1,1,0.3])
     with m1:
         with st.container(border = True):
-            m11, m12, m13 = st.columns([1,1,1])
+            m10, m11, m12, m13, m14 = st.columns([0.2,1,1,1,0.2])
             with m12:
                 st.image('data/avatar_ai.png', use_column_width=True)
                 
@@ -270,7 +270,9 @@ def home_main_content():
                             <span style='font-size: 14px;'><br>Find your ideal data science path! Our tool analyzes your background and preferences to recommend whether the 
                         Eskwelabs Data Science Fellowship, Data Analytics Bootcamp, or another learning option is right for you. Get guidance tailored to your goals.</span>
                         </div>
-                        """, unsafe_allow_html=True) 
+                        """, unsafe_allow_html=True)
+            st.markdown("""<br>""", unsafe_allow_html=True)
+            
             if st.button("Launch", 1,use_container_width = True, type = "primary"):
                 st.switch_page("suitability/DSLPC.py")
 
