@@ -261,7 +261,7 @@ def home_main_content():
             ############# DESCRIPTION
             st.markdown("""
                         <div style='text-align: center;'>
-                            <span>Find your ideal data science path! Our tool analyzes your background and preferences to recommend whether the 
+                            <span style='font-size: 10px;'><br>Find your ideal data science path! Our tool analyzes your background and preferences to recommend whether the 
                         Eskwelabs Data Science Fellowship, Data Analytics Bootcamp, or another learning option is right for you. Get guidance tailored to your goals.</span>
                         </div>
                         """, unsafe_allow_html=True) 
