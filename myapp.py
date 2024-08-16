@@ -254,15 +254,16 @@ def home_main_content():
                 color: white;
             ">
                 <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white;">
-                    Welcome To EskwelApps
+                    Ready To Navigate Your Data Science Journey?
                 </h1>
                 <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
-                    Your all-in-one platform for mastering data science with Eskwelabs. Whether you're exploring the right learning path, seeking program insights, or needing a personalized assessment, EskwelApps has you covered. Once enrolled, dive into our comprehensive course outline, get your questions answered with our bootcamp assistant, and easily set up your environment with our installation guide. EskwelApps is designed to support and guide you throughout your entire data science journey.
+                    EskwelApps is here to guide you every step of the way. Whether you're exploring the right learning path, seeking program insights, or looking for a personalized assessment, EskwelApps has you covered. Once enrolled, dive into our comprehensive course outline, get your questions answered with our bootcamp assistant, and easily set up your environment with our installation guide. Let EskwelApps support you throughout your entire data science journey.
                 </p>
             </div>
             """,
             unsafe_allow_html=True
         )
+
         # st.divider()
         # st.markdown(
         #     """
