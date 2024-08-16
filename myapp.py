@@ -277,7 +277,7 @@ def home_main_content():
             # st.subheader("We added these specific apps for you!")
             st.markdown(
                 f"""
-                <div style="
+                <div style='
                     background: linear-gradient(90deg, #3D2B6A, #6A5FAE, #3D2B6A);  /* Gradient background with lighter purple in the middle */
                     padding: 8px;
                     border-radius: 10px;
@@ -285,8 +285,8 @@ def home_main_content():
                     font-family: Arial, sans-serif;
                     color: white;
                     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-                ">
-                    <h1 style="font-size: 20px; margin-bottom: 10px; font-weight: bold; letter-spacing: 3px; color: white; text-transform: capitalize;">
+                '>
+                    <h1 style='font-size: 20px; margin-bottom: 10px; font-weight: bold; letter-spacing: 3px; color: white; text-transform: capitalize;text-align: center;'>
                         Hi, {st.session_state.userinfo['FirstName'][0]}! We've added these Tools and Resources for you!
                     </h1>
                 </div>
