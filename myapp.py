@@ -271,6 +271,30 @@ def home_main_content():
             """,
             unsafe_allow_html=True)
         st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
+
+        if st.session_state.userinfo is not None:
+            # st.title(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
+            # st.subheader("We added these specific apps for you!")
+            st.markdown(
+                f"""
+                <div style="
+                    background-color: #3D2B6A;  /* Updated background color */
+                    padding: 40px;
+                    border-radius: 10px;
+                    text-align: center;
+                    font-family: Arial, sans-serif;
+                    color: #FFFFFF;  /* White text color */
+                    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);  /* Adding shadow */
+                ">
+                    <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 1px; text-transform: capitalize;">
+                        Hi, {st.session_state.userinfo['FirstName'][0]}! We've added these Tools and Resources for you!
+                    </h1>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
+            
         st.markdown(
             """
             <div style="
@@ -375,15 +399,9 @@ def home_main_content():
                 st.switch_page("Pathfinder/feedback_summary.py")
 def home():
     
-    col1, col2, col3 = st.columns([1,8,1])
-    
-    # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
-    with col2:
-        if st.session_state.userinfo is not None:
-            
-            
-            st.title(f"Hi, {str(st.session_state.userinfo['FirstName'].values[0])}!")
-            st.subheader("We added these specific apps for you!")
+    # col1, col2, col3 = st.columns([1,8,1])
+    # with col2:
+        
     home_main_content()
         
 
