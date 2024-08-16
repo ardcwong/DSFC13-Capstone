@@ -234,10 +234,10 @@ def logout():
 # HOME PAGE
 ########################################################
 def home_main_content():
-    EA1, EA2, EA3, EA4 = st.columns([4, 2, 2, 2])
+
+    EA0, EA1, EA2, EA3, EA4 = st.columns([0.3, 1,1,1,0.3])
     with EA1:
         st.image('data/EskwelApps.png', use_column_width=True)
-    with EA2:
         if st.button('Go to Eskwelabs', use_container_width = True):
             st.write('<script>window.open("https://www.eskwelabs.com/", "_blank");</script>', unsafe_allow_html=True)
     home1, home2, home3 = st.columns([0.3, 3, 0.3])
