@@ -278,7 +278,6 @@ def home_main_content():
                 border-radius: 10px;
                 text-align: center;
                 font-family: Arial, sans-serif;
-                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
             ">
                 <h1 style="font-size: 20px; margin-bottom: 10px; font-weight: bold; letter-spacing: 3px; text-transform: capitalize;">
                     Starter Apps
@@ -287,41 +286,7 @@ def home_main_content():
             """,
             unsafe_allow_html=True
         )
-        # st.divider()
-        # st.markdown(
-        #     """
-        #     <div style="
-        #         background: linear-gradient(90deg, #009688, #3F51B5);
-        #         padding: 40px;
-        #         border-radius: 10px;
-        #         text-align: center;
-        #         font-family: Arial, sans-serif;
-        #         color: white;
-        #     ">
-        #         <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white;">
-        #             Ready For The Future Of Work?
-        #         </h1>
-        #         <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
-        #             Learn data skills for digital jobs through our online cohort-based courses. 
-        #             <strong>Your Future is Bright!</strong> Eskwelabs is an online upskilling school that gives you access to affordable 
-        #             and high-quality data skills education. <strong>Your Future Begins with Upskilling.</strong> Eskwelabs creates a warm online atmosphere for 
-        #             a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
-        #         </p>
-        #     </div>
-        #     """,
-        #     unsafe_allow_html=True
-        # )
 
-    
-        # st.markdown("""<div style='text-align: center;'>
-        #                     <span style='font-weight:bold;font-size: 16px;'>Ready for the Future of Work? 
-        #                     Learn data skills for digital jobs through our online cohort-based courses. Your Future is Bright! Eskwelabs is an online upskilling school 
-        #                     that gives you access to affordable and high quality data skills education. Your Future Begins with Upskilling. Eskwelabs creates a warm 
-        #                     online atmosphere for a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.</span>
-        #             </div>        
-        #             """, unsafe_allow_html=True)
-            
-        # st.divider()
         
     m0, m1, m2, m3, m4 = st.columns([0.3, 1,1,1,0.3])
     with m1:
@@ -408,17 +373,6 @@ def home_main_content():
                 st.switch_page("Pathfinder/feedback_summary.py")
 def home():
     
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     col1, col2, col3 = st.columns([1,8,1])
     
     # col2.image('data/mihplus.png') #                     !!!!ESKWELABS APP IMAGE!!!
@@ -431,32 +385,6 @@ def home():
     home_main_content()
         
 
-        # col1.image('data/art.png')
-        # st.header("Log in")
-       
-    
-    
-    
-    # st.markdown(f"<h1 style='text-align: center;'>WELCOME TO ESKWELABS APP✨</h1>", unsafe_allow_html=True)
-    # st.divider()
-    
-    # col1, col2 = st.columns(2)
-    # with col1:
-    #     st.subheader("➕HealthPlus")
-    #     st.markdown("***Empowering you with reliable medical knowledge***")
-    #     st.markdown("HealthPlus leverages the power of the MedQuAD dataset and advanced AI to provide you with accurate and easy-to-understand medical information. Our goal is to make healthcare information accessible to everyone, enhancing public health literacy and advocating telemedicine consultations.")
-        
-
-    # with col2:
-    #     st.subheader("⚕️PharmaPal")
-    #     st.markdown("***Bridging the gap between drug knowledge and patient understanding***")
-    #     st.markdown("PharmaPal is an innovative Streamlit application designed to bridge the gap between drug knowledge and patient understanding. Leveraging the power of the FDA Dataset through the Retrieval-Augmented Generation (RAG), this app provides clear, reliable, and accessible information about the drug that is tailor-fit on the user profile, whether a healthcare provider or a patient.")
- 
-    # col3, col4 = st.columns(2)
-    # if col3.button('HealthPlus', type = "primary", use_container_width = True):
-    #     st.switch_page("MedQuAd/medquad.py")
-    # if col4.button('PharmaPal', type = "primary", use_container_width = True):
-    #     st.switch_page("FDA/fda_app.py")
 
   
 
@@ -528,5 +456,27 @@ else:
 pg.run()
 
 
-
+        # st.markdown(
+        #     """
+        #     <div style="
+        #         background: linear-gradient(90deg, #009688, #3F51B5);
+        #         padding: 40px;
+        #         border-radius: 10px;
+        #         text-align: center;
+        #         font-family: Arial, sans-serif;
+        #         color: white;
+        #     ">
+        #         <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white;">
+        #             Ready For The Future Of Work?
+        #         </h1>
+        #         <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
+        #             Learn data skills for digital jobs through our online cohort-based courses. 
+        #             <strong>Your Future is Bright!</strong> Eskwelabs is an online upskilling school that gives you access to affordable 
+        #             and high-quality data skills education. <strong>Your Future Begins with Upskilling.</strong> Eskwelabs creates a warm online atmosphere for 
+        #             a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
+        #         </p>
+        #     </div>
+        #     """,
+        #     unsafe_allow_html=True
+        # )
         
