@@ -250,12 +250,10 @@ def home_main_content():
             m21, m22, m23 = st.columns([1,1,1])
             with m22:
                 st.image('data/avatar_ai.png', use_column_width=True)
-            st.markdown("""<h4>Data Science Learning Path Classifier<h/4>""", unsafe_allow_html=True)
+            st.markdown("""<h4><'style= text-align: center;'>Data Science Learning Path Classifier<h/4>""", unsafe_allow_html=True)
             st.markdown("""<h5>Start Your Journney! An intelligent bot that classifies the most appropriate learning path for your Data Science Journey!</h5>""", unsafe_allow_html = True)
-            m24, m25, m26 = st.columns([1,1,1])
-            with m25:	
-                if st.button("Launch", use_container_width = True):
-                    st.switch_page("suitability/DSLPC.py")
+            if st.button("Launch", use_container_width = True, type = "primary"):
+                st.switch_page("suitability/DSLPC.py")
 
 def home():
     
