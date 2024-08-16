@@ -234,7 +234,7 @@ def logout():
 # HOME PAGE
 ########################################################
 if role == []:
-    role_welcome = ""
+    role_welcome = " "
 else:
     role_welcome = f", {role}"
 
