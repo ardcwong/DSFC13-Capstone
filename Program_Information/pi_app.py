@@ -53,11 +53,11 @@ avatar_url_user_pi = user_avatar_pi()
 def show_user_answer_pi(message_text,avatar_url_user_pi):
   st.markdown(f"""
   <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex-end;'>
-      <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-right: 10px; display: inline-block; text-align: right; max-width: 60%;'>
+      <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-right: 10px; display: inline-block; text-align: right; max-width: 60%;box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);'>
           <span style='font-size: 16px;'>{message_text}</span>
       </div>
       <div style='flex-shrink: 0;'>
-          <img src='{avatar_url_user_pi}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
+          <img src='{avatar_url_user_pi}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);'>
       </div>
   </div>
   """, unsafe_allow_html=True)
@@ -81,9 +81,9 @@ def show_ai_response_pi(message_text,avatar_pi):
   st.markdown(f"""
   <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex;'>
       <div style='flex-shrink: 0;'>
-          <img src='{avatar_pi}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%;'>
+          <img src='{avatar_pi}' alt='avatar' style='width: 40px; height: 40px; border-radius: 50%; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);'>
       </div>
-      <div style='background-color: #FCFCFC; padding: 10px 15px; border-radius: 10px; margin-left: 10px; display: inline-block; text-align: left; max-width: 85%;'>
+      <div style='background-color: #FCFCFC; padding: 10px 15px; border-radius: 10px; margin-left: 10px; display: inline-block; text-align: left; max-width: 85%; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);'>
           <span style='font-size: 16px;'>{message_text}</span>
       </div>
 
