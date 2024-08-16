@@ -233,7 +233,9 @@ def logout():
 ########################################################
 # HOME PAGE
 ########################################################
-if role == []:
+if role == None:
+    role_welcome = "!"
+elif role == []:
     role_welcome = "!"
 else:
     role_welcome = f", {role}!"
