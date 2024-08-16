@@ -86,6 +86,35 @@ def load_and_generate_course_outline(spreadsheet):
     
     return course_outline
 
+# Function to recommend five datasets for a specific sprint
+def recommend_datasets(subtopic):
+    query = f"Recommend 5 datasets with links that are relevant for the subtopic '{subtopic}' for building a concrete deliverable. Provide dataset names, descriptions, use cases, and URLs."
+    response = openai.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a dataset recommendation assistant. Provide recommendations in a standardized format."},
+            {"role": "user", "content": query}
+        ],
+        max_tokens=700
+    )
+    datasets = response.choices[0].message.content.strip()
+    return datasets
+
+# Function to generate learning objectives for a specific sprint
+def generate_learning_objectives(sprint, topics):
+    query = f"Generate learning objectives for {sprint} based on the following topics: {topics}."
+    response = openai.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a learning objectives assistant."},
+            {"role": "user", "content": query}
+        ],
+        max_tokens=300
+    )
+    objectives = response.choices[0].message.content.strip()
+    return objectives
+
+#### TO REMOVE
 # Function to retrieve and generates additional information about specific course topics
 def generate_additional_content(query, collection):
     retrieved_docs = retrieve_documents(query, collection)
@@ -103,6 +132,7 @@ def generate_additional_content(query, collection):
     
     return response.choices[0].message.content.strip()
 
+#### TO REMOVE
 # Function to enhance course outline 
 def enhance_course_outline(course_outline, collection):
     enhanced_outline = {}
@@ -181,7 +211,9 @@ with t2:
             if st.button("Generate New Course Outline", use_container_width = True):
                 # Load and generate the course outline from the CSV file
                 course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
-                st.session_state.enhanced_course_outline = enhance_course_outline(course_outline, None)
+                st.session_state.enhanced_course_outline = enhance_course_outline(course_outline, None) #### TO UPDATE
+                # datasets = recommend_datasets(subtopic)
+                # learning_objectives = generate_learning_objectives(sprint, topics.keys())
             # Generate markdown for each sprint and save it in st.session_state
                 for sprint, topics in st.session_state.enhanced_course_outline.items():
                     sprint_markdown = ""
