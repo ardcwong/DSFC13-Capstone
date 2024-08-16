@@ -258,7 +258,7 @@ def home_main_content():
         with st.container(border = True):
             m21, m22, m23 = st.columns([1,1,1])
             with m22:
-                st.image('data/avatar_pi.png', use_column_width=True)
+                st.image('data/avatar_ai_pi.png', use_column_width=True)
             st.markdown("""<h4 style= 'text-align: center;'>Program Information Bot<h/4>""", unsafe_allow_html=True)
             st.markdown("""<h5 style= 'text-align: center;'>Start Your Journney! An intelligent bot that classifies the most appropriate learning path for your Data Science Journey!</h5>""", unsafe_allow_html = True)
             if st.button("Launch", use_container_width = True, type = "primary"):
