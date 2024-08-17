@@ -109,7 +109,7 @@ def recommend_datasets(subtopic):
             {"role": "system", "content": system_message},
             {"role": "user", "content": query}
         ],
-        temperature = 0.6
+        temperature = 0.4
     )
     datasets = response.choices[0].message.content.strip()
     return datasets
@@ -264,7 +264,7 @@ with t2:
                                 f'''<pre>{generate_learning_objectives(sprint, list(topics.keys()))}<pre>'''
                                 + "".join([
                                     f"<p><strong>Recommended Datasets:</strong></p>"
-                                    f"<pre>{recommend_datasets(subtopic)}</pre>"
+                                    f"<p>{recommend_datasets(subtopic)}</p>"
                                     for subtopic in subtopics
                                 ])
                                 for main_topic, subtopics in sorted(topics.items())
