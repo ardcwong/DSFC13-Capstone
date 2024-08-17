@@ -110,8 +110,7 @@ def recommend_datasets(subtopic):
         messages=[
             {"role": "system", "content": system_message},
             {"role": "user", "content": query}
-        ],
-        max_tokens = 800
+        ]
     )
     datasets = response.choices[0].message.content.strip()
     return datasets
@@ -131,8 +130,7 @@ def generate_learning_objectives(sprint, topics):
         messages=[
             {"role": "system", "content": "You are a learning objectives assistant."},
             {"role": "user", "content": query}
-        ],
-        max_tokens=300
+        ]
     )
     objectives = response.choices[0].message.content.strip()
     return objectives
