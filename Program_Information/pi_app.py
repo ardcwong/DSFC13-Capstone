@@ -125,7 +125,7 @@ class ChatHistory:
 
 @st.cache_resource
 def load_collection():
-    CHROMA_DATA_PATH = 'program_info_6'
+    CHROMA_DATA_PATH = 'program_info_7'
     COLLECTION_NAME = f"{CHROMA_DATA_PATH}_embeddings"
     client_chromadb = chromadb.PersistentClient(path=CHROMA_DATA_PATH)
     openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai.api_key, model_name="text-embedding-ada-002")
