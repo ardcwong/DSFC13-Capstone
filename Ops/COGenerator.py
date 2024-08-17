@@ -220,8 +220,6 @@ with t2:
             st.session_state.title = False
         AA, BB, CC = st.columns([2,1,1])
         with AA:
-            
-
             if st.button("Generate New Course Outline", use_container_width = True):
                 # Load and generate the course outline from the CSV file
                 st.session_state.enhanced_course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
@@ -229,50 +227,86 @@ with t2:
                 # datasets = recommend_datasets(subtopic)
                 # learning_objectives = generate_learning_objectives(sprint, topics.keys())
             # Generate markdown for each sprint and save it in st.session_state
-                for sprint, topics in st.session_state.enhanced_course_outline.items():
-                    sprint_markdown = ""
-                    for main_topic, subtopics in sorted(topics.items()):
-                        # Add sprint and main topic to styled HTML markdown
-                        sprint_markdown = f"""
-                        <div style="border: 1px solid #1E73BE; border-radius: 5px; overflow: hidden; margin-bottom: 20px;">
-                            <div style="background-color: #1E73BE; padding: 10px;">
-                                <h4 style="color: white; margin: 0;">{sprint}: {main_topic}</h4>
-                            </div>
-                            <div style="background-color: #F8F9FA; padding: 15px;">
-                        """
+                for sprint, topics in course_outline.items():
+                    st.markdown(
+                        f"""
+                        <div style="
+                            background-color: #FFFFFF;
+                            padding: 6px;
+                            border-radius: 10px;
+                            font-family: Arial, sans-serif;
+                            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+                            margin-bottom: 10px;
+                        ">
+                            <h3 style="color: #54afa7; font-weight: bold;">{sprint}</h3>
+                            {"".join([
+                                f"<h4>{main_topic}</h4>"
+                                f"<p><strong>Subtopics:</strong> {', '.join(subtopics)}</p>"
+                                f"<p><strong>Learning Objectives:</strong></p>"
+                                f"<pre>{generate_learning_objectives(sprint, list(topics.keys()))}</pre>"
+                                + "".join([
+                                    f"<p><strong>Recommended Datasets for '{subtopic}':</strong></p>"
+                                    f"<pre>{recommend_datasets(subtopic)}</pre>"
+                                    for subtopic in subtopics
+                                ])
+                                for main_topic, subtopics in sorted(topics.items())
+                            ])}
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )        
+
+            # if st.button("Generate New Course Outline", use_container_width = True):
+            #     # Load and generate the course outline from the CSV file
+            #     st.session_state.enhanced_course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
+            #     # st.session_state.enhanced_course_outline = enhance_course_outline(course_outline, None) #### TO UPDATE
+            #     # datasets = recommend_datasets(subtopic)
+            #     # learning_objectives = generate_learning_objectives(sprint, topics.keys())
+            # # Generate markdown for each sprint and save it in st.session_state
+            #     for sprint, topics in st.session_state.enhanced_course_outline.items():
+            #         sprint_markdown = ""
+            #         for main_topic, subtopics in sorted(topics.items()):
+            #             # Add sprint and main topic to styled HTML markdown
+            #             sprint_markdown = f"""
+            #             <div style="border: 1px solid #1E73BE; border-radius: 5px; overflow: hidden; margin-bottom: 20px;">
+            #                 <div style="background-color: #1E73BE; padding: 10px;">
+            #                     <h4 style="color: white; margin: 0;">{sprint}: {main_topic}</h4>
+            #                 </div>
+            #                 <div style="background-color: #F8F9FA; padding: 15px;">
+            #             """
                         
-                        # Add subtopics to the styled HTML markdown
-                        subtopics_list = ', '.join(subtopics)
-                        sprint_markdown += f"<p style='color: #333333;'><strong>Subtopics:</strong> {subtopics_list}<br></p>"
+            #             # Add subtopics to the styled HTML markdown
+            #             subtopics_list = ', '.join(subtopics)
+            #             sprint_markdown += f"<p style='color: #333333;'><strong>Subtopics:</strong> {subtopics_list}<br></p>"
                 
-                        # Generate learning objectives and add to markdown
-                        learning_objectives = generate_learning_objectives(sprint, list(topics.keys()))
-                        st.session_state.learning_objectives = learning_objectives
-                        if learning_objectives:
-                            if isinstance(learning_objectives, str):
-                                learning_objectives = json.loads(learning_objectives)
-                            if learning_objectives:
-                                numbered_list_learning_objectives = "<br>".join(
-                                    [f"{i+1}. {obj}" for i, obj in enumerate(learning_objectives["learning_objectives"])]
-                                )
+            #             # Generate learning objectives and add to markdown
+            #             learning_objectives = generate_learning_objectives(sprint, list(topics.keys()))
+            #             st.session_state.learning_objectives = learning_objectives
+            #             if learning_objectives:
+            #                 if isinstance(learning_objectives, str):
+            #                     learning_objectives = json.loads(learning_objectives)
+            #                 if learning_objectives:
+            #                     numbered_list_learning_objectives = "<br>".join(
+            #                         [f"{i+1}. {obj}" for i, obj in enumerate(learning_objectives["learning_objectives"])]
+            #                     )
     
                             
-                                sprint_markdown += f"<p style='color: #333333;'><strong>Learning Objectives:</strong><br>{numbered_list_learning_objectives}<br></p>"
-                        # st.markdown(learning_objectives)
-                        # Add recommended datasets for each subtopic to the styled HTML markdown
-                        for subtopic in subtopics:
-                            datasets = recommend_datasets(subtopic)
-                            sprint_markdown += f"<p style='color: #333333;'><strong>Recommended Datasets:</strong> {datasets}<br></p>"
+            #                     sprint_markdown += f"<p style='color: #333333;'><strong>Learning Objectives:</strong><br>{numbered_list_learning_objectives}<br></p>"
+            #             # st.markdown(learning_objectives)
+            #             # Add recommended datasets for each subtopic to the styled HTML markdown
+            #             for subtopic in subtopics:
+            #                 datasets = recommend_datasets(subtopic)
+            #                 sprint_markdown += f"<p style='color: #333333;'><strong>Recommended Datasets:</strong> {datasets}<br></p>"
                 
-                        # Close the outer div
-                        sprint_markdown += """
-                            </div>
-                        </div>
-                        """
-                    # Save the generated markdown in st.session_state
-                    st.session_state['markdowns'][sprint] = sprint_markdown
-                st.session_state.title = True
-                st.rerun()
+            #             # Close the outer div
+            #             sprint_markdown += """
+            #                 </div>
+            #             </div>
+            #             """
+            #         # Save the generated markdown in st.session_state
+            #         st.session_state['markdowns'][sprint] = sprint_markdown
+            #     st.session_state.title = True
+            #     st.rerun()
                 # Loop through the sprints and topics to generate styled HTML markdown
         if st.session_state.title == True:
             st.markdown("""<h4 style='text-align: left;color: #e76f51;'><b>Course Outline</b></h4>""", unsafe_allow_html=True) 
