@@ -251,14 +251,14 @@ with t2:
                         if st.session_state.learning_objectives != []:
                             learning_objectives = json.loads(st.session_state.learning_objectives)
                         # st.write(st.session_state.learning_objectives)
-                        
-                            # Convert the list of learning objectives into a numbered list in markdown format
-                            numbered_list_learning_objectives = "<br>".join(
-                                [f"{i+1}. {obj}" for i, obj in enumerate(learning_objectives["learning_objectives"])]
-                            )
-
-                        
-                            sprint_markdown += f"<p style='color: #333333;'><strong>Learning Objectives:</strong><br>{numbered_list_learning_objectives}<br></p>"
+                            if learning_objectives != []:
+                                # Convert the list of learning objectives into a numbered list in markdown format
+                                numbered_list_learning_objectives = "<br>".join(
+                                    [f"{i+1}. {obj}" for i, obj in enumerate(learning_objectives["learning_objectives"])]
+                                )
+    
+                            
+                                sprint_markdown += f"<p style='color: #333333;'><strong>Learning Objectives:</strong><br>{numbered_list_learning_objectives}<br></p>"
                         # st.markdown(learning_objectives)
                         # Add recommended datasets for each subtopic to the styled HTML markdown
                         for subtopic in subtopics:
