@@ -265,7 +265,7 @@ with t2:
                                 f"<p><strong>Learning Objectives:</strong></p>"
                                 f"<p>{generate_learning_objectives(sprint, list(topics.keys()))}<p>"
                                 + "".join([
-                                    f"<p><strong>Recommended Datasets:</strong></p>"
+                                    f"<p><strong><br>Recommended Datasets:</strong></p>"
                                     f"<p>{recommend_datasets(subtopic)}</p>"
                                     for subtopic in subtopics
                                 ])
