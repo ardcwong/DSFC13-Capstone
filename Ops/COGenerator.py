@@ -256,7 +256,10 @@ with t2:
                         </div>
                         """
                     )        
-                st.session_state['markdowns'][sprint] = sprint_markdown
+                    st.session_state['markdowns'][sprint] = sprint_markdown
+                st.session_state.title = True
+                st.rerun()
+                    
             # if st.button("Generate New Course Outline", use_container_width = True):
             #     # Load and generate the course outline from the CSV file
             #     st.session_state.enhanced_course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
