@@ -294,7 +294,7 @@ def home():
             """,
             unsafe_allow_html=True
             )
-    if st.session_state.userinfo is not None:
+    if st.session_state.userinfo is in ["Fellow"]:
         em0, em1, em2, em3, em4 = st.columns([0.3, 1,1,1,0.3])
         with em1:
             with st.container(border = True, height=550):
