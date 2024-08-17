@@ -118,7 +118,15 @@ def recommend_datasets(subtopic):
  # Use only <strong>, <br> to format your response. 
 # Function to generate learning objectives for a specific sprint
 def generate_learning_objectives(sprint, topics):
-    query = f"""Generate learning objectives for {sprint} based on the following topics: {topics}. Provide learning objectives in numbered list format. Separate learning objectives with <br>."""
+    query = f"""Generate learning objectives for {sprint} based on the following topics: {topics}.
+    Ensure you present the learning objectives in this format:
+
+    1.
+    2.
+    3.
+    ...
+    
+    """
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -256,7 +264,7 @@ with t2:
                                 f"<h4>{main_topic}</h4>"
                                 f"<p><strong>Subtopics:</strong> {', '.join(subtopics)}</p>"
                                 f"<p><strong>Learning Objectives:</strong></p>"
-                                f'''<p>{generate_learning_objectives(sprint, list(topics.keys()))}<p>'''
+                                f'''<p><span>{generate_learning_objectives(sprint, list(topics.keys()))}</span><p>'''
                                 + "".join([
                                     f"<p><strong>Recommended Datasets:</strong></p>"
                                     f"<p><span>{recommend_datasets(subtopic)}</span></p>"
