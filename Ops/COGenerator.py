@@ -91,10 +91,10 @@ def recommend_datasets(subtopic):
     query = f"Recommend 5 datasets with links that are relevant for the subtopic '{subtopic}' for building a concrete deliverable. Provide dataset names, descriptions, use cases, and URLs."
     system_message = """You are a dataset recommendation assistant. Provide recommendations in a standardized format:
         
-        [Dataset Name]
-        - Description: [Brief description of the dataset]
-        - Use Case: [Relevant use cases for the dataset]
-        - URL: [Dataset URL]
+        **[Dataset Name]**
+            - **Description:** [Brief description of the dataset]
+            - **Use Case:** [Relevant use cases for the dataset]
+            - **URL:** [Dataset URL]
     """
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
@@ -113,7 +113,7 @@ def generate_learning_objectives(sprint, topics):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a learning objectives assistant."},
+            {"role": "system", "content": "You are a learning objectives assistant. Your response should be itemized."},
             {"role": "user", "content": query}
         ],
         max_tokens=300
