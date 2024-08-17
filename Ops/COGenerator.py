@@ -210,8 +210,8 @@ with t2:
 
             if st.button("Generate New Course Outline", use_container_width = True):
                 # Load and generate the course outline from the CSV file
-                course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
-                st.session_state.enhanced_course_outline = enhance_course_outline(course_outline, None) #### TO UPDATE
+                st.session_state.enhanced_course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
+                # st.session_state.enhanced_course_outline = enhance_course_outline(course_outline, None) #### TO UPDATE
                 # datasets = recommend_datasets(subtopic)
                 # learning_objectives = generate_learning_objectives(sprint, topics.keys())
             # Generate markdown for each sprint and save it in st.session_state
