@@ -220,7 +220,7 @@ if 'html_content_co' not in st.session_state:
 if 'learning_objectives' not in st.session_state:
     st.session_state.learning_objectives = []
 
-st.write(type(st.session_state.learning_objectives))
+# st.write(type(st.session_state.learning_objectives))
 # st.write(st.session_state.enhanced_course_outline.items())
 # st.write("\n".join(
 #     [f"{i+1}. {obj}" for i, obj in enumerate(st.session_state.learning_objectives["learning_objectives"])]
@@ -261,10 +261,10 @@ with t2:
                                 f"<h4>{main_topic}</h4>"
                                 f"<p><strong>Subtopics:</strong> {', '.join(subtopics)}</p>"
                                 f"<p><strong>Learning Objectives:</strong></p>"
-                                f'''<p>{generate_learning_objectives(sprint, list(topics.keys()))}<p>'''
+                                f'''<pre>{generate_learning_objectives(sprint, list(topics.keys()))}<pre>'''
                                 + "".join([
                                     f"<p><strong>Recommended Datasets:</strong></p>"
-                                    f"<p>{recommend_datasets(subtopic)}</p>"
+                                    f"<pre>{recommend_datasets(subtopic)}</pre>"
                                     for subtopic in subtopics
                                 ])
                                 for main_topic, subtopics in sorted(topics.items())
