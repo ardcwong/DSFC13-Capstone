@@ -205,7 +205,10 @@ if 'html_content_co' not in st.session_state:
     st.session_state.html_content_co = ""
 if 'learning_objectives' not in st.session_state:
     st.session_state.learning_objectives = []
+
 st.write(type(st.session_state.learning_objectives))
+
+
 with t2:
     with st.expander("Generate New Course Outline", expanded=True):
         # Initialize session state if it doesn't exist
@@ -244,6 +247,7 @@ with t2:
                         learning_objectives_str = generate_learning_objectives(sprint, list(topics.keys()))
 
                         st.session_state.learning_objectives = json.loads(learning_objectives_str)
+                        st.write(st.session_state.learning_objectives)
                         
                         # Convert the list of learning objectives into a numbered list in markdown format
                         numbered_list_learning_objectives = "\n".join(
