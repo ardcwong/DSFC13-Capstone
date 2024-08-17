@@ -214,7 +214,7 @@ if 'learning_objectives' not in st.session_state:
     st.session_state.learning_objectives = []
 
 st.write(type(st.session_state.learning_objectives))
-st.write(st.session_state.learning_objectives)
+st.write(st.session_state.enhanced_course_outline.items())
 # st.write("\n".join(
 #     [f"{i+1}. {obj}" for i, obj in enumerate(st.session_state.learning_objectives["learning_objectives"])]
 # ))
