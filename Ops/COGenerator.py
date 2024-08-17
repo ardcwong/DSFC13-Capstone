@@ -264,10 +264,10 @@ with t2:
                                 f"<h4>{main_topic}</h4>"
                                 f"<p><strong>Subtopics:</strong> {', '.join(subtopics)}</p>"
                                 f"<p><strong>Learning Objectives:</strong></p>"
-                                f'''<p><span>{generate_learning_objectives(sprint, list(topics.keys()))}</span><p>'''
+                                f'''<p>{generate_learning_objectives(sprint, list(topics.keys()))}<p>'''
                                 + "".join([
                                     f"<p><strong>Recommended Datasets:</strong></p>"
-                                    f"<p><span>{recommend_datasets(subtopic)}</span></p>"
+                                    f"<p>{recommend_datasets(subtopic)}</p>"
                                     for subtopic in subtopics
                                 ])
                                 for main_topic, subtopics in sorted(topics.items())
