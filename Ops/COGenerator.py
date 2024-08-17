@@ -206,8 +206,8 @@ if 'html_content_co' not in st.session_state:
 if 'learning_objectives' not in st.session_state:
     st.session_state.learning_objectives = []
 
-# st.write(type(st.session_state.learning_objectives))
-# st.write(st.session_state.learning_objectives)
+st.write(type(st.session_state.learning_objectives))
+st.write(st.session_state.learning_objectives)
 # st.write("\n".join(
 #     [f"{i+1}. {obj}" for i, obj in enumerate(st.session_state.learning_objectives["learning_objectives"])]
 # ))
@@ -246,14 +246,14 @@ with t2:
                         sprint_markdown += f"<p style='color: #333333;'><strong>Subtopics:</strong> {subtopics_list}<br></p>"
                 
                         # Generate learning objectives and add to markdown
-                        learning_objectives_str = generate_learning_objectives(sprint, list(topics.keys()))
+                        st.session_state.learning_objectives = generate_learning_objectives(sprint, list(topics.keys()))
 
-                        st.session_state.learning_objectives = json.loads(learning_objectives_str)
+                        learning_objectives = json.loads(st.session_state.learning_objectives)
                         # st.write(st.session_state.learning_objectives)
                         
                         # Convert the list of learning objectives into a numbered list in markdown format
                         numbered_list_learning_objectives = "<br>".join(
-                            [f"{i+1}. {obj}" for i, obj in enumerate(st.session_state.learning_objectives["learning_objectives"])]
+                            [f"{i+1}. {obj}" for i, obj in enumerate(learning_objectives["learning_objectives"])]
                         )
 
                         
