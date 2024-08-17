@@ -37,6 +37,12 @@ def convert_html_to_pdf(html_content):
             body {{
                 transform: scale(0.5); /* Scale content */
                 transform-origin: top left; /* Scale from top-left corner */
+                width: 200%; /* Increase body width to handle scaling */
+                overflow-wrap: break-word; /* Ensure long words break to fit */
+                word-wrap: break-word; /* Compatibility for older browsers */
+            }}
+            p {{
+                margin: 0; /* Remove default margins */
             }}
         </style>
     </head>
