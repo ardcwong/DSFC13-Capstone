@@ -249,7 +249,7 @@ with t2:
 
                         
                         sprint_markdown += f"<p style='color: #333333;'><strong>Learning Objectives:</strong> {st.session_state.learning_objectives}<br></p>"
-                        st.markdown(learning_objectives)
+                        # st.markdown(learning_objectives)
                         # Add recommended datasets for each subtopic to the styled HTML markdown
                         for subtopic in subtopics:
                             datasets = recommend_datasets(subtopic)
