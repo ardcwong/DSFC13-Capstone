@@ -246,8 +246,8 @@ with t2:
                         sprint_markdown += f"<p style='color: #333333;'><strong>Subtopics:</strong> {subtopics_list}<br></p>"
                 
                         # Generate learning objectives and add to markdown
-                        st.session_state.learning_objectives = generate_learning_objectives(sprint, list(topics.keys()))
-
+                        learning_objectives = generate_learning_objectives(sprint, list(topics.keys()))
+                        st.session_state.learning_objectives = learning_objectives
                         if st.session_state.learning_objectives != []:
                             learning_objectives = json.loads(st.session_state.learning_objectives)
                         # st.write(st.session_state.learning_objectives)
