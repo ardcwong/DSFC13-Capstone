@@ -96,11 +96,13 @@ def load_and_generate_course_outline(spreadsheet):
 def recommend_datasets(subtopic):
     query = f"""Recommend 5 datasets with links that are relevant for the subtopic '{subtopic}' for building a concrete deliverable. Provide dataset names, descriptions, use cases, and URLs.
     Ensure recommendations are presented using this format:
-    Start with Here are the datasets you could explore!
+    
+    Here are the datasets you could explore!
     **Dataset Name**
         - **Description:** [Brief description of the dataset]
         - **Use Case:** [Relevant use cases for the dataset]
         - **URL:** [Dataset URL]
+        
     """
     system_message = """You are a dataset recommendation assistant. """
     response = openai.chat.completions.create(
