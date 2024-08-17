@@ -241,14 +241,17 @@ with t2:
                         sprint_markdown += f"<p style='color: #333333;'><strong>Subtopics:</strong> {subtopics_list}<br></p>"
                 
                         # Generate learning objectives and add to markdown
-                        st.session_state.learning_objectives = generate_learning_objectives(sprint, list(topics.keys()))
+                        learning_objectives_str = generate_learning_objectives(sprint, list(topics.keys()))
+
+                        st.session_state.learning_objectives = json.loads(learning_objectives_str)
+                        
                         # Convert the list of learning objectives into a numbered list in markdown format
-                        # numbered_list_learning_objectives = "\n".join(
-                        #     [f"{i+1}. {obj}" for i, obj in enumerate(learning_objectives["learning_objectives"])]
+                        numbered_list_learning_objectives = "\n".join(
+                            [f"{i+1}. {obj}" for i, obj in enumerate(st.session_state.learning_objectives["learning_objectives"])]
                         # )
 
                         
-                        sprint_markdown += f"<p style='color: #333333;'><strong>Learning Objectives:</strong> {st.session_state.learning_objectives}<br></p>"
+                        sprint_markdown += f"<p style='color: #333333;'><strong>Learning Objectives:</strong> {numbered_list_learning_objectives}<br></p>"
                         # st.markdown(learning_objectives)
                         # Add recommended datasets for each subtopic to the styled HTML markdown
                         for subtopic in subtopics:
