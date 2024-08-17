@@ -247,7 +247,7 @@ with t2:
                         learning_objectives_str = generate_learning_objectives(sprint, list(topics.keys()))
 
                         st.session_state.learning_objectives = json.loads(learning_objectives_str)
-                        st.write(st.session_state.learning_objectives)
+                        # st.write(st.session_state.learning_objectives)
                         
                         # Convert the list of learning objectives into a numbered list in markdown format
                         numbered_list_learning_objectives = "\n".join(
