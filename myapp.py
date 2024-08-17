@@ -274,7 +274,7 @@ def home():
             unsafe_allow_html=True)
         
 
-        if st.session_state.role in ["Fellow","Ops"]:
+        if st.session_state.role in ["Fellow","Ops","Fellow (Developer)"]:
             st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
             st.markdown(
             f"""
@@ -352,7 +352,7 @@ def home():
                 if st.button("Launch", 8,use_container_width = True, type = "primary"):
                     st.switch_page("Ops/COGenerator.py")
     
-    if st.session_state.role in ["Fellow","Ops"]:
+    if st.session_state.role in ["Fellow","Ops","Fellow (Developer)"]:
         em0, em1, em2, em3, em4 = st.columns([0.3, 1,1,1,0.3])
         with em1:
             with st.container(border = True, height=550):
@@ -595,16 +595,16 @@ st.logo(
 )
 
 page_dict = {}
-if st.session_state.role in [None, "Fellow", "Mentor","Ops"]:
+if st.session_state.role in [None, "Fellow", "Mentor","Ops","Fellow (Developer)"]:
     page_dict["Main"] = main_apps
 # if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
 #     page_dict["PathFinder"] = pf_apps
-if st.session_state.role in [None,"Fellow","Mentor","Ops"]:
+if st.session_state.role in [None,"Fellow","Mentor","Ops","Fellow (Developer)"]:
     page_dict["Data Science Fellowship"] = dsf_apps
-if st.session_state.role in [None,"Fellow", "Mentor","Ops"]:
+if st.session_state.role in [None,"Fellow", "Mentor","Ops","Fellow (Developer)"]:
     page_dict["Ops"] = ops_apps
 
-if st.session_state.role in ["Fellow", "Mentor", "Ops"]:
+if st.session_state.role in ["Fellow", "Mentor", "Ops","Fellow (Developer)"]:
     account_apps = log_out
 elif st.session_state.role in [None]:
     account_apps = log_in
