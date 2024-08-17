@@ -227,7 +227,7 @@ with t2:
                 # datasets = recommend_datasets(subtopic)
                 # learning_objectives = generate_learning_objectives(sprint, topics.keys())
             # Generate markdown for each sprint and save it in st.session_state
-                for sprint, topics in course_outline.items():
+                for sprint, topics in st.session_state.enhanced_course_outline.items():
                     st.markdown(
                         f"""
                         <div style="
