@@ -135,7 +135,8 @@ def generate_additional_content(query, collection):
             {"role": "system", "content": "You are an assistant that provides detailed educational content. "},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=500
+        max_tokens=500,
+        temperature = 0.5
     )
     
     return response.choices[0].message.content.strip()
