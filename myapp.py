@@ -298,7 +298,7 @@ def home():
     if st.session_state.role in ["Ops"]:
         om0, om1, om2, om3 = st.columns([0.3, 1.5, 1.5,0.3])
         with om1:
-            with st.container(border = True, height=550):
+            with st.container(border = True, height=300):
                 st.markdown("""<br>""", unsafe_allow_html=True)
                 # om11, om12, om13 = st.columns([0.7,1,0.7])
                 # with om12:
