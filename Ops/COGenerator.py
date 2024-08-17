@@ -206,9 +206,9 @@ if 'html_content_co' not in st.session_state:
 if 'learning_objectives' not in st.session_state:
     st.session_state.learning_objectives = []
 
-st.write(type(st.session_state.learning_objectives))
-st.write(st.session_state.learning_objectives)
-st.write("\n".join(
+# st.write(type(st.session_state.learning_objectives))
+# st.write(st.session_state.learning_objectives)
+# st.write("\n".join(
     [f"{i+1}. {obj}" for i, obj in enumerate(st.session_state.learning_objectives["learning_objectives"])]
 ))
 with t2:
