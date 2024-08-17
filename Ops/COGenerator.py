@@ -245,7 +245,7 @@ with t2:
                                 f"<h4>{main_topic}</h4>"
                                 f"<p><strong>Subtopics:</strong> {', '.join(subtopics)}</p>"
                                 f"<p><strong>Learning Objectives:</strong></p>"
-                                f"""<p>{generate_learning_objectives(sprint, list(topics.keys()))}<p>"""
+                                f'''<p>{generate_learning_objectives(sprint, list(topics.keys()))}<p>'''
                                 + "".join([
                                     f"<p><strong>Recommended Datasets:</strong></p>"
                                     f"<pre><span>{recommend_datasets(subtopic)}</span></pre>"
