@@ -119,10 +119,12 @@ def recommend_datasets(subtopic):
 def generate_learning_objectives(sprint, topics):
     query = f"""Generate learning objectives for {sprint} based on the following topics: {topics}.
     Ensure you present the learning objectives in this format:
-    1. Learning Objectives 1
-    \n 2. Learning Objectives 2
-    \n 3. Learning Objectives 3
+    1. Learning Objectives 1 \n 
+    2. Learning Objectives 2 \n 
+    3. Learning Objectives 3 \n 
     ...
+    \n N. Learning Objective N
+
     
     """
     response = openai.chat.completions.create(
