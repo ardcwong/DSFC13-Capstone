@@ -92,7 +92,7 @@ def recommend_datasets(subtopic):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a dataset recommendation assistant. Provide recommendations in a standardized format. Your response should be in HTML."},
+            {"role": "system", "content": "You are a dataset recommendation assistant. Provide recommendations in a standardized format. Use only <strong>, <br> to format your response."},
             {"role": "user", "content": query}
         ],
         max_tokens=700
