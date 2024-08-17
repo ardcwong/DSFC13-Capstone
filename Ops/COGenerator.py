@@ -235,6 +235,7 @@ with t2:
                 # learning_objectives = generate_learning_objectives(sprint, topics.keys())
             # Generate markdown for each sprint and save it in st.session_state
                 for sprint, topics in st.session_state.enhanced_course_outline.items():
+                    if sprint == 'Sprint 1': 
                     sprint_markdown = (
                         f"""
                         <div style="
