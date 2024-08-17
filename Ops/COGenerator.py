@@ -203,7 +203,8 @@ through their learning journey with confidence.
 t1, t2 = st.columns([1,1])
 if 'html_content_co' not in st.session_state:
     st.session_state.html_content_co = ""
-
+if 'learning_objectives' not in st.session_state:
+    st.session_state.learning_objectives = []
 
 with t2:
     with st.expander("Generate New Course Outline", expanded=True):
@@ -240,14 +241,14 @@ with t2:
                         sprint_markdown += f"<p style='color: #333333;'><strong>Subtopics:</strong> {subtopics_list}<br></p>"
                 
                         # Generate learning objectives and add to markdown
-                        learning_objectives = generate_learning_objectives(sprint, list(topics.keys()))
+                        st.session_state.learning_objectives = generate_learning_objectives(sprint, list(topics.keys()))
                         # Convert the list of learning objectives into a numbered list in markdown format
-                        numbered_list_learning_objectives = "\n".join(
-                            [f"{i+1}. {obj}" for i, obj in enumerate(learning_objectives["learning_objectives"])]
-                        )
+                        # numbered_list_learning_objectives = "\n".join(
+                        #     [f"{i+1}. {obj}" for i, obj in enumerate(learning_objectives["learning_objectives"])]
+                        # )
 
                         
-                        sprint_markdown += f"<p style='color: #333333;'><strong>Learning Objectives:</strong> {numbered_list_learning_objectives}<br></p>"
+                        sprint_markdown += f"<p style='color: #333333;'><strong>Learning Objectives:</strong> {st.session_state.learning_objectives}<br></p>"
                         st.markdown(learning_objectives)
                         # Add recommended datasets for each subtopic to the styled HTML markdown
                         for subtopic in subtopics:
