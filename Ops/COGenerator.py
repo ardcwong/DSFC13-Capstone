@@ -114,7 +114,7 @@ def generate_learning_objectives(sprint, topics):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a learning objectives assistant. Your response should be in numbered list format."},
+            {"role": "system", "content": "You are a learning objectives assistant. Provide your response in JSON."},
             {"role": "user", "content": query}
         ],
         max_tokens=500
