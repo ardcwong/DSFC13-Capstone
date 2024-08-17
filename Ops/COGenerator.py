@@ -106,7 +106,7 @@ def generate_learning_objectives(sprint, topics):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a learning objectives assistant. Your response should be in HTML since it will be placed inside <p>_</p>."},
+            {"role": "system", "content": "You are a learning objectives assistant. Use only <strong>, <br> to format your response. "},
             {"role": "user", "content": query}
         ],
         max_tokens=300
