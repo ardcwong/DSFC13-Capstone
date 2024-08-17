@@ -99,9 +99,9 @@ def recommend_datasets(subtopic):
 
     Start with Here are the datasets you could explore!
     **Dataset Name**
-        \n\t- **Description:** [Brief description of the dataset]
-        \n\t- **Use Case:** [Relevant use cases for the dataset]
-        \n\t- **URL:** [Dataset URL]
+        \n\t - **Description:** [Brief description of the dataset]
+        \n\t - **Use Case:** [Relevant use cases for the dataset]
+        \n\t - **URL:** [Dataset URL]
     """
     system_message = """You are a dataset recommendation assistant. 
     """
@@ -122,8 +122,8 @@ def generate_learning_objectives(sprint, topics):
     Ensure you present the learning objectives in this format:
 
     1.
-    2.
-    3.
+    \n 2.
+    \n 3.
     ...
     
     """
