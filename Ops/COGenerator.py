@@ -99,9 +99,9 @@ def recommend_datasets(subtopic):
     
     Here are the datasets you could explore!
     
-    **Dataset Name** \n
-        - **Description:** [Brief description of the dataset] \n
-        - **Use Case:** [Relevant use cases for the dataset] \n
+    **Dataset Name**
+        - **Description:** [Brief description of the dataset]
+        - **Use Case:** [Relevant use cases for the dataset]
         - **URL:** [Dataset URL]
         
     """
