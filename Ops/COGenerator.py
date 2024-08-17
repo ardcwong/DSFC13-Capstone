@@ -252,7 +252,7 @@ with t2:
                         # st.write(st.session_state.learning_objectives)
                         
                         # Convert the list of learning objectives into a numbered list in markdown format
-                        numbered_list_learning_objectives = "\n".join(
+                        numbered_list_learning_objectives = "<br>".join(
                             [f"{i+1}. {obj}" for i, obj in enumerate(st.session_state.learning_objectives["learning_objectives"])]
                         )
 
