@@ -99,9 +99,9 @@ def recommend_datasets(subtopic):
 
     Start with Here are the datasets you could explore!
     **Dataset Name**
-        - **Description:** [Brief description of the dataset]
-        - **Use Case:** [Relevant use cases for the dataset]
-        - **URL:** [Dataset URL]
+        \n- **Description:** [Brief description of the dataset]
+        \n- **Use Case:** [Relevant use cases for the dataset]
+        \n- **URL:** [Dataset URL]
     """
     system_message = """You are a dataset recommendation assistant. 
     """
