@@ -274,7 +274,7 @@ def home():
             unsafe_allow_html=True)
         
 
-        if st.session_state.userinfo is not None:
+        if st.session_state.role in ["Fellow","Ops"]:
             st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
             st.markdown(
             f"""
@@ -294,7 +294,39 @@ def home():
             """,
             unsafe_allow_html=True
             )
-    if st.session_state.role in ["Fellow"]:
+
+    if st.session_state.role in ["Ops"]:
+        om0, om1, om2, om3 = st.columns([0.3, 1.5, 1.5,0.3])
+        with om1:
+            with st.container(border = True, height=550):
+                st.markdown("""<br>""", unsafe_allow_html=True)
+                om11, om12, om13 = st.columns([0.7,1,0.7])
+                with om12:
+                    st.image('data/avatar_course_outline.png', use_column_width=True)
+                om111, om122, om133 = st.columns([0.1,1,0.1])
+                with om122:
+                    ############# Data Science Learning Path Classifier ##############
+                    st.markdown("""
+                                <div style='text-align: center;'>
+                                    <span style='font-weight:bold; font-size: 16px;'>Pathfinder Assessment Report Generator</span>
+                                </div>
+                                """,
+                                unsafe_allow_html=True)
+                    ############# DESCRIPTION
+                    st.markdown("""
+                                <div style='text-align: center;'>
+                                    <span style='font-size: 14px;'><br>Leverage this tool to efficiently generate personalized reports 
+                                    for Pathfinder Exam takers. The generator uses aggregated scores across various exam categories to produce 
+                                    detailed insights into each candidate's strengths and areas for improvement.</span>
+                                </div>
+                                """, unsafe_allow_html=True)
+                    st.markdown("""<br>""", unsafe_allow_html=True)
+                
+                if st.button("Launch", 7,use_container_width = True, type = "primary"):
+                    st.switch_page("Ops/PARGenerator.py")
+
+    
+    if st.session_state.role in ["Fellow","Ops"]:
         em0, em1, em2, em3, em4 = st.columns([0.3, 1,1,1,0.3])
         with em1:
             with st.container(border = True, height=550):
@@ -376,16 +408,6 @@ def home():
                     
                 if st.button("Launch", 6, use_container_width = True, type = "primary"):
                     st.switch_page("InstallationGuidePage/InstallationGuide.py")
-
-
-
-
-
-
-
-
-
-
 
 
 
