@@ -92,7 +92,7 @@ def recommend_datasets(subtopic):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a dataset recommendation assistant. Provide recommendations in a standardized format."},
+            {"role": "system", "content": "You are a dataset recommendation assistant. Provide recommendations in a standardized format. Your response should be in HTML."},
             {"role": "user", "content": query}
         ],
         max_tokens=700
@@ -124,7 +124,7 @@ def generate_additional_content(query, collection):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are an assistant that provides detailed educational content."},
+            {"role": "system", "content": "You are an assistant that provides detailed educational content. "},
             {"role": "user", "content": prompt}
         ],
         max_tokens=300
