@@ -103,7 +103,8 @@ def recommend_datasets(subtopic):
             {"role": "system", "content": system_message},
             {"role": "user", "content": query}
         ],
-        max_tokens=900
+        max_tokens=900,
+        temperature = 0.6
     )
     datasets = response.choices[0].message.content.strip()
     return datasets
