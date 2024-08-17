@@ -96,6 +96,8 @@ def load_and_generate_course_outline(spreadsheet):
 def recommend_datasets(subtopic):
     query = f"""Recommend 5 datasets with links that are relevant for the subtopic '{subtopic}' for building a concrete deliverable. Provide dataset names, descriptions, use cases, and URLs.
     Ensure recommendations are presented in a standardized format:
+
+    Start with Here are the data sets that you could explore!
     **Dataset Name**
         - **Description:** [Brief description of the dataset]
         - **Use Case:** [Relevant use cases for the dataset]
@@ -120,7 +122,7 @@ def generate_learning_objectives(sprint, topics):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a learning objectives assistant."},
+            {"role": "system", "content": "You are a learning objectives assistant. Provide learning objectives in numbered list format."},
             {"role": "user", "content": query}
         ],
         max_tokens=500
