@@ -102,7 +102,7 @@ def recommend_datasets(subtopic):
             {"role": "system", "content": system_message},
             {"role": "user", "content": query}
         ],
-        max_tokens=700
+        max_tokens=900
     )
     datasets = response.choices[0].message.content.strip()
     return datasets
@@ -113,10 +113,10 @@ def generate_learning_objectives(sprint, topics):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a learning objectives assistant. Your response should be itemized."},
+            {"role": "system", "content": "You are a learning objectives assistant. Your response should be in numbered list format."},
             {"role": "user", "content": query}
         ],
-        max_tokens=300
+        max_tokens=500
     )
     objectives = response.choices[0].message.content.strip()
     return objectives
@@ -134,7 +134,7 @@ def generate_additional_content(query, collection):
             {"role": "system", "content": "You are an assistant that provides detailed educational content. "},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=300
+        max_tokens=500
     )
     
     return response.choices[0].message.content.strip()
