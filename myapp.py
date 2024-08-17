@@ -324,7 +324,33 @@ def home():
                 
                 if st.button("Launch", 7,use_container_width = True, type = "primary"):
                     st.switch_page("Ops/PARGenerator.py")
-
+        with om2:
+            with st.container(border = True, height=300):
+                st.markdown("""<br>""", unsafe_allow_html=True)
+                # om11, om12, om13 = st.columns([0.7,1,0.7])
+                # with om12:
+                #     st.image('data/avatar_course_outline.png', use_column_width=True)
+                om211, om222, om233 = st.columns([0.1,1,0.1])
+                with om222:
+                    ############# Data Science Learning Path Classifier ##############
+                    st.markdown("""
+                                <div style='text-align: center;'>
+                                    <span style='font-weight:bold; font-size: 16px;'>Course Outline Generator</span>
+                                </div>
+                                """,
+                                unsafe_allow_html=True)
+                    ############# DESCRIPTION
+                    st.markdown("""
+                                <div style='text-align: center;'>
+                                    <span style='font-size: 14px;'><br>Leverage this tool to access a meticulously crafted course 
+                                    outline that provides a clear and comprehensive overview of the program’s core topics and sub-topics, 
+                                    along with specific learning objectives, divided into four distinct Sprints.</span>
+                                </div>
+                                """, unsafe_allow_html=True)
+                    st.markdown("""<br>""", unsafe_allow_html=True)
+                
+                if st.button("Launch", 8,use_container_width = True, type = "primary"):
+                    st.switch_page("Ops/COGenerator.py")
     
     if st.session_state.role in ["Fellow","Ops"]:
         em0, em1, em2, em3, em4 = st.columns([0.3, 1,1,1,0.3])
