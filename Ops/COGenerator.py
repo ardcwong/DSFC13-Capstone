@@ -98,9 +98,10 @@ def recommend_datasets(subtopic):
     Ensure recommendations are presented using this format:
     
     Here are the datasets you could explore!
-    **Dataset Name**
-        - **Description:** [Brief description of the dataset]
-        - **Use Case:** [Relevant use cases for the dataset]
+    
+    **Dataset Name** \n
+        - **Description:** [Brief description of the dataset] \n
+        - **Use Case:** [Relevant use cases for the dataset] \n
         - **URL:** [Dataset URL]
         
     """
@@ -125,7 +126,7 @@ def generate_learning_objectives(sprint, topics):
     ...
     \n N. Learning Objective N
 
-    
+    Continue numbering the learning objectives until all relevant objectives have been listed.
     """
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
