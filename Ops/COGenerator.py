@@ -89,10 +89,17 @@ def load_and_generate_course_outline(spreadsheet):
 # Function to recommend five datasets for a specific sprint
 def recommend_datasets(subtopic):
     query = f"Recommend 5 datasets with links that are relevant for the subtopic '{subtopic}' for building a concrete deliverable. Provide dataset names, descriptions, use cases, and URLs."
+    system_message = """You are a dataset recommendation assistant. Provide recommendations in a standardized format:
+        
+        [Dataset Name]
+        - Description: [Brief description of the dataset]
+        - Use Case: [Relevant use cases for the dataset]
+        - URL: [Dataset URL]
+    """
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a dataset recommendation assistant. Provide recommendations in a standardized format. Note that your response will be placed inside an st.markdown(f{your_response}, unsafe_allow_html) in streamlit."},
+            {"role": "system", "content": system_message},
             {"role": "user", "content": query}
         ],
         max_tokens=700
