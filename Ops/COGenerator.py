@@ -99,9 +99,9 @@ def recommend_datasets(subtopic):
 
     Start with Here are the datasets you could explore!
     **Dataset Name**
-        \n- **Description:** [Brief description of the dataset]
-        \n- **Use Case:** [Relevant use cases for the dataset]
-        \n- **URL:** [Dataset URL]
+        \n\t- **Description:** [Brief description of the dataset]
+        \n\t- **Use Case:** [Relevant use cases for the dataset]
+        \n\t- **URL:** [Dataset URL]
     """
     system_message = """You are a dataset recommendation assistant. 
     """
@@ -118,11 +118,11 @@ def recommend_datasets(subtopic):
  # Use only <strong>, <br> to format your response. 
 # Function to generate learning objectives for a specific sprint
 def generate_learning_objectives(sprint, topics):
-    query = f"Generate learning objectives for {sprint} based on the following topics: {topics}. Separate learning objectives with <br>."
+    query = f"""Generate learning objectives for {sprint} based on the following topics: {topics}. Provide learning objectives in numbered list format. Separate learning objectives with <br>."""
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a learning objectives assistant. Provide learning objectives in numbered list format."},
+            {"role": "system", "content": "You are a learning objectives assistant."},
             {"role": "user", "content": query}
         ],
         max_tokens=500
