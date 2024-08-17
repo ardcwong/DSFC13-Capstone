@@ -300,9 +300,9 @@ def home():
         with om1:
             with st.container(border = True, height=550):
                 st.markdown("""<br>""", unsafe_allow_html=True)
-                om11, om12, om13 = st.columns([0.7,1,0.7])
-                with om12:
-                    st.image('data/avatar_course_outline.png', use_column_width=True)
+                # om11, om12, om13 = st.columns([0.7,1,0.7])
+                # with om12:
+                #     st.image('data/avatar_course_outline.png', use_column_width=True)
                 om111, om122, om133 = st.columns([0.1,1,0.1])
                 with om122:
                     ############# Data Science Learning Path Classifier ##############
