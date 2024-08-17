@@ -238,6 +238,9 @@ with t2:
                             font-family: Arial, sans-serif;
                             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
                             margin-bottom: 10px;
+                            word-wrap: break-word; /* Ensures long words wrap to the next line */
+                            word-break: break-word; /* Breaks long words if necessary */
+                            overflow-wrap: break-word; /* Handles long words or URLs */
                         ">
                             <h3 style="color: #54afa7; font-weight: bold;">{sprint}</h3>
                             {"".join([
