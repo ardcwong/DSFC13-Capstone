@@ -208,7 +208,9 @@ if 'learning_objectives' not in st.session_state:
 
 st.write(type(st.session_state.learning_objectives))
 st.write(st.session_state.learning_objectives)
-
+st.write("\n".join(
+    [f"{i+1}. {obj}" for i, obj in enumerate(st.session_state.learning_objectives["learning_objectives"])]
+))
 with t2:
     with st.expander("Generate New Course Outline", expanded=True):
         # Initialize session state if it doesn't exist
