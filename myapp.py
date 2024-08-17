@@ -199,7 +199,7 @@ def vote(spreadsheet):
             st.rerun()
         else:
             st.error("Invalid username or password")          
-st.write(st.session_state.userinfo)
+# st.write(st.session_state.userinfo)
 ########################################################
 # LOG OUT
 ########################################################
