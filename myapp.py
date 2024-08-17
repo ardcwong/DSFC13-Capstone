@@ -288,7 +288,7 @@ def home():
                 box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
             ">
                 <h1 style="font-size: 20px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-align: center;">
-                    Hi, <span style="color: #FFD700;">{st.session_state.userinfo['FirstName'][0]}</span>!<br>We've added these tools and resources for you!
+                    Hi, <span style="color: #FFD700;">{st.session_state.userinfo['FirstName'].values[0]}</span>!<br>We've added these tools and resources for you!
                 </h1>
             </div>
             """,
