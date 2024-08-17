@@ -207,7 +207,7 @@ if 'learning_objectives' not in st.session_state:
     st.session_state.learning_objectives = []
 
 st.write(type(st.session_state.learning_objectives))
-
+st.write(st.session_state.learning_objectives)
 
 with t2:
     with st.expander("Generate New Course Outline", expanded=True):
