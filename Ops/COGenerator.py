@@ -92,21 +92,21 @@ def recommend_datasets(subtopic):
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a dataset recommendation assistant. Provide recommendations in a standardized format. Use only <strong>, <br> to format your response."},
+            {"role": "system", "content": "You are a dataset recommendation assistant. Provide recommendations in a standardized format. Note that your response will be placed inside an st.markdown() in streamlit."},
             {"role": "user", "content": query}
         ],
         max_tokens=700
     )
     datasets = response.choices[0].message.content.strip()
     return datasets
-
+ # Use only <strong>, <br> to format your response. 
 # Function to generate learning objectives for a specific sprint
 def generate_learning_objectives(sprint, topics):
     query = f"Generate learning objectives for {sprint} based on the following topics: {topics}."
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a learning objectives assistant. Use only <strong>, <br> to format your response. "},
+            {"role": "system", "content": "You are a learning objectives assistant."},
             {"role": "user", "content": query}
         ],
         max_tokens=300
