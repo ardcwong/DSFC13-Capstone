@@ -230,7 +230,7 @@ with t2:
                 # learning_objectives = generate_learning_objectives(sprint, topics.keys())
             # Generate markdown for each sprint and save it in st.session_state
                 for sprint, topics in st.session_state.enhanced_course_outline.items():
-                    st.markdown(
+                    sprint_markdown = (
                         f"""
                         <div style="
                             background-color: #FFFFFF;
@@ -254,10 +254,9 @@ with t2:
                                 for main_topic, subtopics in sorted(topics.items())
                             ])}
                         </div>
-                        """,
-                        unsafe_allow_html=True
+                        """
                     )        
-
+                st.session_state['markdowns'][sprint] = sprint_markdown
             # if st.button("Generate New Course Outline", use_container_width = True):
             #     # Load and generate the course outline from the CSV file
             #     st.session_state.enhanced_course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
