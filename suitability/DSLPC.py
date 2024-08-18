@@ -691,7 +691,9 @@ if st.session_state.BeginAssessment == True:
           padding: 5px 0;
           position: absolute;
           z-index: 1;
-          left: 150%;
+          left: 105%; /* Adjusted to position the tooltip on the right */
+          top: 50%;
+          transform: translateY(-50%);
           opacity: 0;
           transition: opacity 0.3s;
         }}
