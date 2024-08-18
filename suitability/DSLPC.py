@@ -690,9 +690,8 @@ if st.session_state.BeginAssessment == True:
           border-radius: 5px;
           padding: 5px 0;
           position: absolute;
-          z-index: 0;
+          z-index: 1;
           left: 150%;
-          transform: translateY(-50%);
           opacity: 0;
           transition: opacity 0.3s;
         }}
