@@ -688,15 +688,18 @@ if st.session_state.BeginAssessment == True:
           color: #333;
           text-align: center;
           border-radius: 5px;
-          padding: 20px 0;
+          padding: 20px;
           position: absolute;
           z-index: 1;
-          left: 150%; /* Adjusted further to the right */
+          left: 100%; /* Position next to the image */
           top: 50%;
-          transform: translateY(-50%);
+          transform: translateX(20%) translateY(-50%); /* Center tooltip box */
           opacity: 0;
           transition: opacity 0.3s;
           white-space: nowrap; /* Prevent text from wrapping */
+          display: flex;
+          align-items: center; /* Center vertically */
+          justify-content: center; /* Center horizontally */
         }}
     
         .tooltip:hover .tooltiptext {{
