@@ -645,7 +645,7 @@ if st.session_state.BeginAssessment == True:
           width: 160px;
           background-color: #fff;
           color: #333;
-          text-align: center;
+          text-align: left; /* Align text to the left */
           border-radius: 5px;
           padding: 20px;
           position: absolute;
@@ -655,10 +655,10 @@ if st.session_state.BeginAssessment == True:
           transform: translateX(20%) translateY(-50%); /* Center tooltip box */
           opacity: 0;
           transition: opacity 0.3s;
-          white-space: nowrap; /* Prevent text from wrapping */
+          white-space: normal; /* Allow text to wrap */
           display: flex;
           align-items: center; /* Center vertically */
-          justify-content: center; /* Center horizontally */
+          justify-content: flex-start; /* Align content to the left */
           box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
         }}
     
