@@ -253,7 +253,7 @@ with ba2:
         assistant_stats = "Arden. Line 252.<br>Sample: I consistently provide reliable recommendations, with a 93% consistency rate in my suitability classifications."
         b00, b01, b02, b03, b04 = st.columns([1, 1, 1, 1, 1])
         with b02:
-            st.image('data/avatar_ai.png', use_container_width=True)
+            st.image('data/avatar_ai.png', use_column_width=True)
             # st.markdown(
             # f"""
             # <style>
