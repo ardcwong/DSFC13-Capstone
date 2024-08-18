@@ -202,10 +202,11 @@ def generate_subtopics_html(main_topic, subtopics, sprint):
     subtopic_html_parts.append(f"<p><strong>Subtopics:</strong> {', '.join(subtopics)}</p>")
     subtopic_html_parts.append(f"<p><strong>Learning Objectives:</strong></p>")
     subtopic_html_parts.append(f"<p>{learning_objectives}</p>")
-    
+
+    # Adjusting the layout of the "Recommended Datasets" section
+    subtopic_html_parts.append("<p><strong>Recommended Datasets:</strong></p>")
     for subtopic in subtopics:
         recommended_datasets = recommend_datasets(subtopic)
-        subtopic_html_parts.append(f"<p><strong>Recommended Datasets:</strong></p>")
         subtopic_html_parts.append(f"<p>{recommended_datasets}</p>")
 
     return "".join(subtopic_html_parts)
