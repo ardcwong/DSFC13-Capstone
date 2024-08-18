@@ -642,12 +642,12 @@ if st.session_state.BeginAssessment == True:
     
         .tooltip .tooltiptext {{
           visibility: hidden;
-          width: 160px;
+          width: auto; /* Adjust width to match the text */
           background-color: #fff;
           color: #333;
           text-align: left; /* Align text to the left */
           border-radius: 5px;
-          padding: 20px;
+          padding: 5px 10px; /* Adjust padding to match the text */
           position: absolute;
           z-index: 1;
           left: 100%; /* Position next to the image */
