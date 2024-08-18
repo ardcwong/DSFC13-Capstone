@@ -115,7 +115,8 @@ def recommend_datasets(subtopic):
         messages=[
             {"role": "system", "content": system_message},
             {"role": "user", "content": query}
-        ]
+        ],
+        max_tokens=700
     )
     datasets = response.choices[0].message.content.strip()
     return datasets
@@ -124,7 +125,8 @@ def recommend_datasets(subtopic):
 def generate_learning_objectives(sprint, topics):
     query = f"""Generate learning objectives for {sprint} based on the following topics: {topics}.
     Ensure you present the learning objectives in this format:
-    These objectives will guide your learning and help you build valuable skills. Embrace each step and enjoy the process of growth and discovery!
+    
+    Start with These objectives will guide your learning and help you build valuable skills. Embrace each step and enjoy the process of growth and discovery!
     
     1. Learning Objectives 1 \n 
     2. Learning Objectives 2 \n 
@@ -139,7 +141,8 @@ def generate_learning_objectives(sprint, topics):
         messages=[
             {"role": "system", "content": "You are a learning objectives assistant."},
             {"role": "user", "content": query}
-        ]
+        ],
+        max_tokens=300
     )
     objectives = response.choices[0].message.content.strip()
     return objectives
