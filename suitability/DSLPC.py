@@ -688,15 +688,14 @@ if st.session_state.BeginAssessment == True:
           color: #333;
           text-align: center;
           border-radius: 5px;
-          padding: 5px 10px;
+          padding: 5px 0;
           position: absolute;
           z-index: 1;
-          top: 50%;
-          left: 105%; /* Position the tooltip to the right of the text */
-          transform: translateY(-50%);
+          bottom: 125%; /* Position above the text */
+          left: 50%;
+          margin-left: -80px;
           opacity: 0;
           transition: opacity 0.3s;
-          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }}
     
         .tooltip:hover .tooltiptext {{
