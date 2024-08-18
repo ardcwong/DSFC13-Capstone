@@ -277,7 +277,7 @@ def home():
             unsafe_allow_html=True)
         
 
-        if st.session_state.role in ["Fellow","Ops","Fellow (Developer)"]:
+        if st.session_state.role in ["Fellow","Mentor", "Ops","Fellow (Developer)"]:
             st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
             st.markdown(
             f"""
