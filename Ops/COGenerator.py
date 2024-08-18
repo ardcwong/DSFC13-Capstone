@@ -205,8 +205,7 @@ def generate_subtopics_html(main_topic, subtopics, sprint):
     subtopic_html_parts.append(f"<p><strong>Learning Objectives:</strong></p>")
     # subtopic_html_parts.append(f"<p>{learning_objectives}</p>")
     # Split the string into a list of objectives
-    objectives_list = learning_objectives
-    # .split('\n')
+    objectives_list = learning_objectives.split('\n')
     
     # Convert each objective to an HTML list item
     # list_items = ''.join(f"<li>{objective}</li>" for objective in objectives_list)
@@ -237,7 +236,7 @@ def generate_sprint_markdown(sprint, topics):
         'padding: 6px;',
         'border-radius: 10px;',
         'font-family: Arial, sans-serif;',
-        # 'box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);',
+        'box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);',
         'margin-bottom: 10px;',
         'word-wrap: break-word;',  # Ensures long words wrap to the next line
         'word-break: break-word;',  # Breaks long words if necessary
