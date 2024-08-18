@@ -691,8 +691,8 @@ if st.session_state.BeginAssessment == True:
           padding: 5px 0;
           position: absolute;
           z-index: 1;
-          bottom: 125%; /* Position above the text */
-          left: 50%;
+         
+          left: 200%;
           margin-left: -80px;
           opacity: 0;
           transition: opacity 0.3s;
