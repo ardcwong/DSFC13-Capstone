@@ -131,7 +131,7 @@ def recommend_datasets(subtopic):
     # Continue numbering the learning objectives until all relevant objectives have been listed.
 # Function to generate learning objectives for a specific sprint
 def generate_learning_objectives(sprint, topics):
-    query = f"""Generate a | separated list of learning objectives for {sprint} based on the following topics: {topics}.
+    query = f"""Generate a list of learning objectives for {sprint} based on the following topics: {topics}.
     """
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
@@ -203,8 +203,6 @@ def generate_subtopics_html(main_topic, subtopics, sprint):
     subtopic_html_parts.append(f"<h4>{main_topic}</h4>")
     subtopic_html_parts.append(f"<p><strong>Subtopics:</strong> {', '.join(subtopics)}</p>")
     subtopic_html_parts.append(f"<p><strong>Learning Objectives:</strong></p>")
-    # subtopic_html_parts.append(f"<p>{learning_objectives}</p>")
-    # Split the string into a list of objectives
     objectives_list = learning_objectives.split('\n')
     
     # Convert each objective to an HTML list item
