@@ -683,46 +683,46 @@ if st.session_state.BeginAssessment == True:
   
   ba00, ba01, ba02, ba03, ba04 = st.columns([1,1,0.7,1,1])
   with ba02:
-      st.markdown(
-          f"""
-          <style>
-          .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-          }
-      
-          .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 160px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; /* Position above the text */
-            left: 50%;
-            margin-left: -80px;
-            opacity: 0;
-            transition: opacity 0.3s;
-          }
-      
-          .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-          }
-          </style>
-          <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
-              <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
-                  <img src='{avatar_lpc}' style='width: 100%; height: auto; object-fit: contain;'>
-                  <span class="tooltiptext">Click Press</span>
-              </div>
-          </div>
-          """,
-          unsafe_allow_html=True
-      )
+        st.markdown(
+            f"""
+            <style>
+            .tooltip {{
+              position: relative;
+              display: inline-block;
+              cursor: pointer;
+            }}
+        
+            .tooltip .tooltiptext {{
+              visibility: hidden;
+              width: 160px;
+              background-color: #555;
+              color: #fff;
+              text-align: center;
+              border-radius: 5px;
+              padding: 5px 0;
+              position: absolute;
+              z-index: 1;
+              bottom: 125%; /* Position above the text */
+              left: 50%;
+              margin-left: -80px;
+              opacity: 0;
+              transition: opacity 0.3s;
+            }}
+        
+            .tooltip:hover .tooltiptext {{
+              visibility: visible;
+              opacity: 1;
+            }}
+            </style>
+            <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
+                <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
+                    <img src='{avatar_lpc}' style='width: 100%; height: auto; object-fit: contain;'>
+                    <span class="tooltiptext">Click Press</span>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
   
       st.markdown(f"""
       
