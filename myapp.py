@@ -198,7 +198,10 @@ def vote(spreadsheet):
             st.session_state.name = str(users[users['UserID']==userid]['FirstName'].values[0])
             st.rerun()
         else:
-            st.error("Invalid username or password")          
+            st.error("Invalid username or password")       
+
+    if st.toggle("See Sample Login Credentials"):
+        st.dataframe(users)
 # st.write(st.session_state.userinfo)
 ########################################################
 # LOG OUT
