@@ -659,7 +659,7 @@ if st.session_state.BeginAssessment == True:
           display: flex;
           align-items: center; /* Center vertically */
           justify-content: center; /* Center horizontally */
-          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
         }}
     
         .tooltip:hover .tooltiptext {{
@@ -670,7 +670,7 @@ if st.session_state.BeginAssessment == True:
         <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
             <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
                 <img src='{avatar_lpc}' style='width: 100%; height: auto; object-fit: contain;'>
-                <span class="tooltiptext">Click Press</span>
+                <span class="tooltiptext">I have a reliability of 93%!</span>
             </div>
         </div>
         """,
