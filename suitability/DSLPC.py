@@ -285,7 +285,10 @@ def suitability():
               
               if st.session_state.feedback_up == 1:
                   # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-                  show_ai_response_lpc("<b>You selected 👍🏻 Thanks for your feedback!</b>",avatar_lpc)
+                  thanks_placeholder_lpc = st.empty()
+                  thanks_placeholder_lpc.show_ai_response_lpc("<b>You selected 👍🏻 Thanks for your feedback!</b>",avatar_lpc)
+                  time.sleep(1)
+                  thanks_placeholder.empty()
                   # st.markdown("<h6 style='text-align: center;'>You selected 👍🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
                   # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
           
