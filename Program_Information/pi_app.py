@@ -251,7 +251,7 @@ with col222:
       st.markdown("<br>", unsafe_allow_html = True)       
       
       bb00, bb01, bb02, bb03, bb04 = st.columns([1,1,1,1,1])
-      bot_stats = "Kate, palagay sa line 258. (Sample: I have a reliability of 93%!)" 
+      bot_stats = "I have a validity/reliability rate of 94%!)" 
       with bb02:
         st.markdown(
         f"""
