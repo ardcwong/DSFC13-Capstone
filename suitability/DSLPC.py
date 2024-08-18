@@ -647,7 +647,7 @@ if st.session_state.BeginAssessment == True:
           color: #333;
           text-align: left; /* Align text to the left */
           border-radius: 5px;
-          padding: 20px;
+          padding: 10px;
           position: absolute;
           z-index: 1;
           left: 100%; /* Position next to the image */
@@ -657,10 +657,10 @@ if st.session_state.BeginAssessment == True:
           transition: opacity 0.3s;
           white-space: normal; /* Allow text to wrap */
           display: flex;
-          align-items: center; /* Center vertically */
+          align-items: flex-end; /* Align content to the bottom */
           justify-content: flex-start; /* Align content to the left */
           box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-          font-size: 10px; /* Set font size to 10px */
+          font-size: 12px;
         }}
     
         .tooltip:hover .tooltiptext {{
