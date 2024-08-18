@@ -138,7 +138,7 @@ if st.session_state.generate_pf_fs == False:
           padding: 10px;
           position: absolute;
           z-index: 1;
-          left: 50%; /* Center tooltip horizontally */
+          left: 80%; /* Center tooltip horizontally */
           top: -150%; /* Position above the element */
           transform: translateX(-50%); /* Center tooltip horizontally */
           opacity: 0;
