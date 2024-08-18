@@ -47,7 +47,6 @@ def convert_html_to_pdf(html_content):
         return None
     return result.getvalue()
 
-
 ########################################################
 ##### Google Sheets connection function
 ########################################################
@@ -73,8 +72,6 @@ if "spreadsheet_DerivedCompetencyFramework" not in st.session_state:
 if "spreadsheet_PathfinderExamResults" not in st.session_state:
     st.session_state.spreadsheet_PathfinderExamResults = google_connection_gsheet_PathfinderExamResults(client)
 
-
-
 ########################################################
 # Function to load category structure data from Google Sheet
 ########################################################
@@ -96,7 +93,6 @@ def load_category_structure(spreadsheet):
         category_structure[main_category][sub_category] = key_topics.split(',')
     return category_structure
 
-
 ########################################################
 # Function to load the scores dataset from Google Sheet
 ########################################################
@@ -112,8 +108,6 @@ def load_scores_dataset(spreadsheet):
 category_structure = load_category_structure(st.session_state.spreadsheet_DerivedCompetencyFramework)
 scores_dataset = load_scores_dataset(st.session_state.spreadsheet_PathfinderExamResults)
 
-
-
 if "generate_pf_fs" not in st.session_state:
     st.session_state.generate_pf_fs = False
 if "reference_number" not in st.session_state:
@@ -122,8 +116,6 @@ if "feedback_generated" not in st.session_state:
     st.session_state.feedback_generated = []
 
 pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
-
-
 
 if st.session_state.generate_pf_fs == False:
     # st.title("Pathfinder Assessment Report")
@@ -151,17 +143,21 @@ if st.session_state.generate_pf_fs == False:
     col_main1, col_main2 = st.columns([1,2.5])
     with col_main1:
         with st.expander("# **About**", expanded=True):
-            st.write("The 'Pathfinder Assessment Report' feature of our app provides a comprehensive performance overview after completing the Pathfinder Exam. This report helps you identify your strengths and weaknesses across different topic areas, allowing you to pinpoint knowledge gaps that need improvement. Along with the performance summary, the app offers personalized suggestions to help you bridge those gaps, guiding you on the next steps in your learning journey.")
+            st.write("""The Pathfinder Assessment Report gives you a detailed overview of your performance after taking the Pathfinder Exam. 
+            This report helps you identify your strengths and areas needing improvement across various topic areas. By entering your reference 
+            number provided by the Eskwelabs Team, you can access personalized feedback that highlights both your strengths and areas for further 
+            attention. The app also offers tailored suggestions to help you bridge any knowledge gaps and guides you on the next steps in your 
+            learning journey. Additionally, the report leverages the 2023 Competencies Framework of Eskwelabs to derive key sub-categories and 
+            topics, ensuring you receive actionable insights and recommendations. You can save your report to track your progress over time and 
+            revisit the feedback as needed.""")
+            
         with st.expander("**View Report**", expanded =True):
-                
             reference_number = st.chat_input("Enter your Reference Number:")
             if reference_number:
                 st.session_state.reference_number = reference_number
-
                 if st.session_state.reference_number in pf_rn_y:
                     st.session_state.generate_pf_fs = True
                     st.rerun()
-                    
                 else:
                     st.error(f"Reference Number {st.session_state.reference_number} not found. Either it doesn't exist or your Pathfinder Assessment Report (PAR) is not yet generated.")
                     st.session_state.generate_pf_fs = False
@@ -180,7 +176,7 @@ if st.session_state.generate_pf_fs == False:
             
             3. **View Your Performance Summary:**  
                Once you have received your reference number, navigate to this section in the app.  
-               Enter the reference number to access a detailed breakdown of your scores across various topic areas, highlighting both your strengths and areas that need further attention.
+               Enter the reference number to access your Pathfinder Assessment Report.
             
             4. **Review Suggestions for Improvement:**  
                Along with your performance summary, the app will provide tailored suggestions aimed at helping you improve in the areas where you scored lower.  
@@ -194,12 +190,6 @@ if st.session_state.generate_pf_fs == False:
             """, unsafe_allow_html=True)
 
 else:
-    # column11, column22, column33 = st.columns([1,2,1])
-
-    # with column22:
-    # st.info(f"Viewing Reference Number {st.session_state.reference_number}")
-        # st.markdown(f"""<h6 style='text-align: center; font-weight: bold;'><br>Viewing Reference Number {st.session_state.reference_number}</h6>""", unsafe_allow_html = True)
-
     st.markdown(
     f"""
     <div style="
@@ -218,7 +208,7 @@ else:
     """,
     unsafe_allow_html=True)
     st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
-    # pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
+
     with st.sidebar:
         if st.button("Go Back", type = "primary", use_container_width = True, help = "Go Back to PAR main menu."):
             st.session_state.generate_pf_fs = False
