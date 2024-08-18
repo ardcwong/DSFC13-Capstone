@@ -191,6 +191,49 @@ if 'learning_objectives' not in st.session_state:
 # st.write("\n".join(
 #     [f"{i+1}. {obj}" for i, obj in enumerate(st.session_state.learning_objectives["learning_objectives"])]
 # ))
+
+
+def generate_subtopics_html(main_topic, subtopics, sprint):
+    # Collect all HTML parts related to subtopics and learning objectives
+    subtopic_html_parts = []
+    learning_objectives = generate_learning_objectives(sprint, list(subtopics))
+
+    subtopic_html_parts.append(f"<h4>{main_topic}</h4>")
+    subtopic_html_parts.append(f"<p><strong>Subtopics:</strong> {', '.join(subtopics)}</p>")
+    subtopic_html_parts.append(f"<p><strong>Learning Objectives:</strong></p>")
+    subtopic_html_parts.append(f"<p>{learning_objectives}</p>")
+    
+    for subtopic in subtopics:
+        recommended_datasets = recommend_datasets(subtopic)
+        subtopic_html_parts.append(f"<p><strong>Recommended Datasets:</strong></p>")
+        subtopic_html_parts.append(f"<p>{recommended_datasets}</p>")
+
+    return "".join(subtopic_html_parts)
+
+def generate_sprint_markdown(sprint, topics):
+    # Collect all HTML parts related to the entire sprint
+    sprint_html_parts = [
+        '<div style="',
+        'background-color: #FFFFFF;',
+        'padding: 6px;',
+        'border-radius: 10px;',
+        'font-family: Arial, sans-serif;',
+        'box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);',
+        'margin-bottom: 10px;',
+        'word-wrap: break-word;',  # Ensures long words wrap to the next line
+        'word-break: break-word;',  # Breaks long words if necessary
+        'overflow-wrap: break-word;',  # Handles long words or URLs
+        '">',
+        f'<h3 style="color: #54afa7; font-weight: bold;">{sprint}</h3>'
+    ]
+
+    for main_topic, subtopics in sorted(topics.items()):
+        sprint_html_parts.append(generate_subtopics_html(main_topic, subtopics, sprint))
+
+    sprint_html_parts.append("</div>")
+    return "".join(sprint_html_parts)
+
+
 with t2:
     with st.expander("Generate New Course Outline", expanded=True):
         # Initialize session state if it doesn't exist
@@ -207,36 +250,39 @@ with t2:
                 
             # Generate markdown for each sprint and save it in st.session_state
                 for sprint, topics in st.session_state.enhanced_course_outline.items():
-                    # if sprint == 'Sprint 1': 
-                    sprint_markdown = (
-                        f"""
-                        <div style="
-                            background-color: #FFFFFF;
-                            padding: 6px;
-                            border-radius: 10px;
-                            font-family: Arial, sans-serif;
-                            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-                            margin-bottom: 10px;
-                            word-wrap: break-word; /* Ensures long words wrap to the next line */
-                            word-break: break-word; /* Breaks long words if necessary */
-                            overflow-wrap: break-word; /* Handles long words or URLs */
-                        ">
-                            <h3 style="color: #54afa7; font-weight: bold;">{sprint}</h3>
-                            {"".join([
-                                f"<h4>{main_topic}</h4>"
-                                f"<p><strong>Subtopics:</strong> {', '.join(subtopics)}</p>"
-                                f"<p><strong>Learning Objectives:</strong></p>"
-                                f"<p>{generate_learning_objectives(sprint, list(topics.keys()))}<p>"
-                                + "<br>".join([
-                                    f"<p><strong>Recommended Datasets:</strong></p>"
-                                    f"<p>{recommend_datasets(subtopic)}</p>"
-                                    for subtopic in subtopics
-                                ])
-                                for main_topic, subtopics in sorted(topics.items())
-                            ])}
-                        </div>
-                        """
-                    )        
+                    sprint_markdown = generate_sprint_markdown(sprint, topics)
+
+                    
+                    # # if sprint == 'Sprint 1': 
+                    # sprint_markdown = (
+                    #     f"""
+                    #     <div style="
+                    #         background-color: #FFFFFF;
+                    #         padding: 6px;
+                    #         border-radius: 10px;
+                    #         font-family: Arial, sans-serif;
+                    #         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+                    #         margin-bottom: 10px;
+                    #         word-wrap: break-word; /* Ensures long words wrap to the next line */
+                    #         word-break: break-word; /* Breaks long words if necessary */
+                    #         overflow-wrap: break-word; /* Handles long words or URLs */
+                    #     ">
+                    #         <h3 style="color: #54afa7; font-weight: bold;">{sprint}</h3>
+                    #         {"".join([
+                    #             f"<h4>{main_topic}</h4>"
+                    #             f"<p><strong>Subtopics:</strong> {', '.join(subtopics)}</p>"
+                    #             f"<p><strong>Learning Objectives:</strong></p>"
+                    #             f"<p>{generate_learning_objectives(sprint, list(topics.keys()))}<p>"
+                    #             + "<br>".join([
+                    #                 f"<p><strong>Recommended Datasets:</strong></p>"
+                    #                 f"<p>{recommend_datasets(subtopic)}</p>"
+                    #                 for subtopic in subtopics
+                    #             ])
+                    #             for main_topic, subtopics in sorted(topics.items())
+                    #         ])}
+                    #     </div>
+                    #     """
+                    # )        
                     st.session_state['markdowns'][sprint] = sprint_markdown
                 st.session_state.title = True
                 st.rerun()
