@@ -205,13 +205,14 @@ def generate_subtopics_html(main_topic, subtopics, sprint):
     subtopic_html_parts.append(f"<p><strong>Learning Objectives:</strong></p>")
     # subtopic_html_parts.append(f"<p>{learning_objectives}</p>")
     # Split the string into a list of objectives
-    objectives_list = learning_objectives.split('\n')
+    objectives_list = learning_objectives
+    # .split('\n')
     
     # Convert each objective to an HTML list item
-    list_items = ''.join(f"<li>{objective}</li>" for objective in objectives_list)
+    # list_items = ''.join(f"<li>{objective}</li>" for objective in objectives_list)
     
     # Wrap the list items in an ordered list
-    ordered_list = f"<ol>{list_items}</ol>"
+    ordered_list = f"<ol>{objectives_list}</ol>"
     
     # Append the ordered list to subtopic_html_parts
     subtopic_html_parts.append(f"<p>{ordered_list}</p>")
