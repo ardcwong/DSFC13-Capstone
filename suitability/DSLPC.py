@@ -99,61 +99,6 @@ def remove_stopwords(response):
 ########################################################
 # SUITABILITY
 ########################################################
-
-
-# Define the questions
-# questions = [
-#     "What is your highest level of education?",
-#     "Do you have a background in mathematics, statistics, or computer science? If so, could you share about your experience in any of the these?",
-#     "Do you have any work experience related to data science or any technical field? If so, please describe your role(s).",
-#     "How many years of professional experience do you have?",
-#     "Are you familiar with any programming languages? If yes, which ones?",
-#     "Do you have any experience with data analysis tools or software (e.g., Python, R, SQL, Excel)?",
-#     "Have you worked on any data science projects or competitions?",
-#     "Do you have experience with machine learning algorithms?",
-#     "Do you prefer structured learning with a defined curriculum or self-paced learning?",
-#     "How much time can you dedicate to studying each week?",
-#     "What type of learner are you (visual, auditory, reading/writing, kinesthetic)?",
-#     "What are your short-term and long-term career goals in data science?",
-#     "Are you looking to make a career switch to data science, or do you want to enhance your current role with data science skills?",
-#     "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
-#     "Do you need to balance your studies with work or other commitments?",
-#     "Do you prefer learning in a classroom setting, online, or a hybrid approach?",
-#     "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?",
-#     "Have you ever attended any data science workshops or courses? If so, please describe them.",
-#     "How do you handle complex problem-solving and analytical tasks?",
-#     "Do you have a network or community for support in your learning journey?"
-
-# ]
-
-# questions = [
-#     "What is your highest level of education?",
-#     "Did you study any STEM-related fields? If yes, which one?",
-#     "What is your current level of knowledge or experience in data science/analytics?",
-#     "Have you taken any mathematics or statistics courses during your studies?",
-#     "Do you have experience in programming? If yes, which languages?",
-#     "Are you familiar with data analysis tools like Excel, SQL, or Tableau?",
-#     "Have you worked with machine learning algorithms before?",
-#     "How would you rate your proficiency in mathematics and statistics?",
-#     "Do you have experience working in a data-related role?",
-#     "Have you completed any data-related projects? Can you describe one?",
-#     "Do you prefer structured learning with deadlines or self-paced learning?",
-#     "How much time per week can you commit to learning?",
-#     "Are you comfortable with a fast-paced and intensive learning environment?",
-#     "Do you prefer hands-on projects or theoretical learning?",
-#     "Have you participated in online learning platforms or bootcamps before?",
-#     "Do you prefer learning in a classroom setting, online, or a hybrid approach?",
-#     "Do you work better independently or in group settings?",
-#     "What are your long-term career goals?",
-#     "Are you looking to advance in your current role or switch careers?",
-#     "Are you more interested in applied roles or research-oriented roles?",
-#     "Are you interested in gaining foundational skills or advanced data science skills?",
-#     "Are you willing to invest in a master's degree, which typically requires a significant financial and time commitment?",
-#     "Do you need to balance your studies with work or other commitments?",
-#     "Are there any specific areas of data science you are particularly interested in (e.g., machine learning, data visualization, big data)?",
-#     "How do you handle complex problem-solving and analytical tasks?"
-# ]
-
 questions = [
     # Educational Background & Experience
     "What is your highest level of education? (e.g., High School, Bachelor's, Master's)",
@@ -249,61 +194,30 @@ if 'feedback_down' not in st.session_state:
     st.session_state.feedback_down = []
 @st.fragment
 def suitability():
-
-        
     if st.session_state.classification == True:
         # Display the entire chat history with user responses on the right
-        # for role, message in st.session_state.chat_history:
         col_main11, col_main22, col_main33 = st.columns([1,4,1])    
         with col_main22:
           tab1, tab2 = st.tabs(["Suitability and Recommendation", "Your Responses"])
           with tab2:
               # Display the entire chat history with user responses on the right
-              # for role, message in st.session_state.chat_history:
-              #     st.chat_message(role).write(message)
-  
-              # for role, message in st.session_state.chat_history:
-              #     if st.session_state.chat_history
-  
                 for role, message in st.session_state.chat_history:
                     if role == "User":
                         show_user_answer_lpc(message,avatar_url_user)
                     elif role == "AI":
                         show_ai_response_lpc(message,avatar_lpc)
-              
-              
-         
           with tab1:
-  
-  
               show_ai_response_lpc(st.session_state.chat_history[-1][1],avatar_lpc)
-              # st.chat_message(st.session_state.chat_history[-1][0]).write(st.session_state.chat_history[-1][1])
-              # st.write(st.session_state.chat_history)
-          
-
-          
-              
               if st.session_state.feedback_up == 1:
-                  # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
                   show_ai_response_lpc("<b>You selected 👍🏻 Thanks for your feedback!</b>",avatar_lpc)
-                  # st.markdown("<h6 style='text-align: center;'>You selected 👍🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
-                  # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-          
+
               elif st.session_state.feedback_up == 0:
-                  # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
                   show_ai_response_lpc("<b>You selected 👎🏻 Thanks for your feedback</b>",avatar_lpc)
-                  # st.markdown("<h6 style='text-align: center;'>You selected 👎🏻 Thanks for your feedback!</h6>", unsafe_allow_html=True)
-                  # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
               else:
-                  # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
                   show_ai_response_lpc("Could you please give a thumbs up if you find these recommendations specific and tailored to your responses, or a thumbs down if you do not?",avatar_lpc)
 
-          
-                  # st.markdown("<h6 style='text-align: center;'>Could you please give a thumbs up if you find these recommendations specific and tailored to your responses, or a thumbs down if you do not?</h6>", unsafe_allow_html=True)
                   f1,f2 = st.columns([1,1])
-                  
-              
-              
+
                   if f1.button("👍🏻", use_container_width = True, help = "This response helpful"):
                       feedback_score = 1
                       sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
@@ -314,10 +228,8 @@ def suitability():
                       sheet = write_feedback_to_gsheet(st.session_state.spreadsheet_DSLPC, feedback_score, st.session_state.chat_history)
                       st.session_state.feedback_down = feedback_score
                       st.rerun() 
-                  # st.markdown("<h6 style='text-align: center;'>.&emsp;.&emsp;.&emsp;.&emsp;.</h6>", unsafe_allow_html=True)
-              with st.container():
 
-                      
+              with st.container():
                   content_dsf_ad = """
                   <h6 style='text-align: left;color: #e76f51;'>Learn More about Data Science Fellowship (DSF) Program by Eskwelabs!</h6>
                   <div style='text-align: left;'>This program offers a comprehensive curriculum designed to equip 
@@ -333,18 +245,10 @@ def suitability():
                   cola, colb, colc = st.columns([1,0.7,1])
                   with colb:
                       program_info_page_switch()
-  
-      
-    
-    
-    else:
 
+    else:
         lpc1, lpc2, lpc3 = st.columns([1,4,1])
-        
         with lpc2:
-          # with st.container(height=450, border=None): 
-              
-    
             # Initialize the first question in the chat history if not already done
             if st.session_state.question_index == 0 and not st.session_state.chat_history:
                 first_question = questions[st.session_state.question_index]
@@ -357,9 +261,6 @@ def suitability():
                 elif role == "AI":
                     show_ai_response_lpc(message,avatar_lpc)
               
-             
-          # with st.container():
-# Function to display the current question and collect user response
 def display_question():
     if st.session_state.question_index < len(questions):
         current_question = questions[st.session_state.question_index]
@@ -368,20 +269,10 @@ def display_question():
 # Function to get classification from OpenAI
 def get_classification():
 
-    # Apply the stopwords removal to the responses
-    # filtered_responses = [remove_stopwords(response) for response in st.session_state.responses]
 
     questions_responses = ""
     for i, question in enumerate(questions):
         questions_responses += f"{i+1}. {question}\n - Responses: {st.session_state.responses[i]}\n"
-    # 1. Educational background and STEM experience
-    # 2. Programming skills and familiarity with data tools
-    # 3. Experience with data-related projects and problem-solving skills
-    # 4. Learning preferences, time commitment, and career goals
-    # 5. Interest in Machine Learning
-    # 6. Interest in Data Visualization
-    # 7. Interest in Big Data
-    
 
     prompt = f"""
     Based on the {questions_responses} provided, 
@@ -423,14 +314,7 @@ def get_classification():
       \n**Preparation Plan: Recommend a simple preparation plan.
 
     """
-    
-    # **Readiness for Data Science Fellowship:** 
-
-# You are a helpful assistant that classifies education suitability and recommends the most suitable learning path. "},
-    # Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
-
   
-        # and recommends the most suitable learning pathway for users in their data science journey. 
     try:
         # Define the system message with the summarized information
         system_message = """
@@ -448,20 +332,16 @@ def get_classification():
             model="gpt-3.5-turbo",
             messages=[
               {"role": "system", "content": system_message},
-                {"role": "user", "content": prompt},
-                # {"role": "assistant", "content": prompt}
+              {"role": "user", "content": prompt},
             ],
-            # max_tokens = 1000,
             temperature = 0.4,
             top_p = 0.5
-            #temperature = 0.7 You are an expert in classifying user's suitability to data science learning pathways (e.g., as bootcamp, self-learning, or a master’s program), and in recommending the most suitable learning path. Before you classify suitability and recommend the most suitable learning path, check first if every response is related to the question being asked.
         )
         classification = response.choices[0].message.content.strip()
         return classification
     except Exception as e:
         st.error(f"Error: {e}")
         return None
-
 
 def load_test_answers_by_name(name):
     # Define the updated answers for each person
@@ -552,10 +432,40 @@ def load_test_answers_by_name(name):
     else:
         st.error(f"No test answers found for {name}!")
 
+################################################## SIDE BAR ##################################################
+with st.sidebar:
+
+    if st.button("Start Over", disabled=st.session_state.BeginAssessment, type="primary", use_container_width = True, help = "Restart Assessment"):
+        st.session_state.responses = []
+        st.session_state.question_index = 0
+        st.session_state.chat_history = []
+        st.session_state.classification = False
+        st.session_state.feedback_up = []
+        st.session_state.feedback_down = []
+        st.session_state.BeginAssessment = True
+        st.rerun()       
+
+with st.sidebar:
+  # Call this function to load test answers at the beginning of your app (or when you need to test)
+  name = st.selectbox("Choose a test user:", ["Maria Cruz", "John Santos", "Emily Tan", "Raj Patel", "Lisa Kim", "Jao Cordero"])
+  if st.button("Load Test Answers", use_container_width = True, type = "primary"):
+      load_test_answers_by_name(name)
+      st.rerun()
+        
+with st.sidebar:
+    if st.toggle("Discover!"):
+        wf1, wf2 = st.columns([8,2])
+        with wf1:
+            with st.expander("Work Flow: How It Actually Works", expanded = True):
+                st.image('data/DSLPC_WorkFlow.png')
+
+################################################## SIDE BAR ##################################################
+
+
+################################################ MAIN PROGRAM ################################################
 # Main logic
 if st.session_state.question_index < len(questions):
     display_question()
-
     
     user_response = st.chat_input("Your response:", disabled = (st.session_state.BeginAssessment or st.session_state.classification))
     if user_response:
@@ -572,8 +482,7 @@ if st.session_state.question_index < len(questions):
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
                     st.session_state.classification = True
-                    # st.rerun()
-        # st.rerun()
+
 else:
     if st.session_state.responses and st.session_state.question_index == len(questions):
         classification = get_classification()
@@ -583,31 +492,6 @@ else:
             st.session_state.classification = True
             st.rerun()
     
-###############################################      
-
-# FIXED HEADER
-
-###############################################       
-# Inject CSS to create a fixed container
-# st.markdown("""
-#     <style>
-#     .fixed-container {
-#         position: fixed;
-#         top: 0;
-#         width: 100%;
-#         background-color: white;
-#         z-index: 1000;
-
-#     }
-#     </style>
-    
-#     <div class="fixed-container">
-#         <h1><br>Data Science Learning Path Classifier</h1>
-#     </div>
-# """, unsafe_allow_html=True)
-# st.title("Data Science Learning Path Classifier")
-# Streamlit app setup
-
   
 col_main1, col_main2, col_main3 = st.columns([1,4,1])
 with col_main2:
@@ -619,7 +503,6 @@ with col_main2:
     st.markdown(f"<h6 style='text-align: center;'><i>Are you unsure about the best way to pursue your data science journey? Our intelligent classifier bot is here to help! By answering a few simple questions about your background, preferences, and goals, our bot will recommend the most suitable learning pathway for you.</i></h6>", unsafe_allow_html=True)
   
     if st.session_state.BeginAssessment == True: 
-      # with st.expander("**How it works**", expanded=st.session_state.BeginAssessment):
       st.markdown("""
       **HOW IT WORKS:**<br>
       1. Answer Questions: *Provide responses to a series of questions about your current experience, learning preferences, time commitment, and budget.*<br>
@@ -678,16 +561,6 @@ if st.session_state.BeginAssessment == True:
         unsafe_allow_html=True
     )
   
-      # st.markdown(f"""
-      
-      # <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
-      #     <div style='flex-shrink: 0; width: 100%;'>
-      #         <img src='{avatar_lpc}' style='width: 100%; height: auto; object-fit: contain;'>
-      #     </div>
-      # </div>
-      # """, unsafe_allow_html=True)
-      
-      # st.image('data/avatar_ai_lpc.png', use_column_width =True)
 
   s1, s2, s3 = st.columns([1,3,1])
   with s2:
@@ -702,49 +575,9 @@ if st.session_state.BeginAssessment == True:
               st.session_state.BeginAssessment = False
               st.rerun()
 else: 
-# st.session_state.BeginAssessment == False:
   suitability()               
 
 
-
-# col_main1, col_main2, col_main3 = st.columns([1,2,0.5])
-# with col_main1:
-#     with st.expander("**Our Bot**", expanded=st.session_state.BeginAssessment):
-#         st.write("Are you unsure about the best way to pursue your data science journey? Our intelligent classifier bot is here to help! By answering a few simple questions about your background, preferences, and goals, our bot will recommend the most suitable learning pathway for you.")
-
-# with col_main2:
-#     with st.expander("**How it works**", expanded=st.session_state.BeginAssessment):
-#         st.markdown("""
-#         1. Answer Questions: *Provide responses to a series of questions about your current experience, learning preferences, time commitment, and budget.*<br>
-#         2. Get Classified: *Based on your answers, our classifier bot will evaluate and determine the most appropriate learning pathway for you:* 
-#         :gray-background[**Eskwelabs' Bootcamp**], :gray-background[**Self-Learning**], :gray-background[**Master's Degree**]""", unsafe_allow_html=True)
-with st.sidebar:
-
-    if st.button("Start Over", disabled=st.session_state.BeginAssessment, type="primary", use_container_width = True, help = "Restart Assessment"):
-        st.session_state.responses = []
-        st.session_state.question_index = 0
-        st.session_state.chat_history = []
-        st.session_state.classification = False
-        st.session_state.feedback_up = []
-        st.session_state.feedback_down = []
-        st.session_state.BeginAssessment = True
-        st.rerun()       
-
-
-with st.sidebar:
-  # Call this function to load test answers at the beginning of your app (or when you need to test)
-  name = st.selectbox("Choose a test user:", ["Maria Cruz", "John Santos", "Emily Tan", "Raj Patel", "Lisa Kim", "Jao Cordero"])
-  if st.button("Load Test Answers", use_container_width = True, type = "primary"):
-      load_test_answers_by_name(name)
-      st.rerun()
-# , label_visibility="collapsed"
-        
-with st.sidebar:
-    if st.toggle("Discover!"):
-        wf1, wf2 = st.columns([8,2])
-        with wf1:
-            with st.expander("Work Flow: How It Actually Works", expanded = True):
-                st.image('data/DSLPC_WorkFlow.png')
 
 
 
