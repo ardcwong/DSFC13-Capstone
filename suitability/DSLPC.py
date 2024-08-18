@@ -693,6 +693,7 @@ if st.session_state.BeginAssessment == True:
           z-index: 1;
           top: 50%
           left: 150%;
+          transform: translateY(-50%);
           margin-left: -80px;
           opacity: 0;
           transition: opacity 0.3s;
