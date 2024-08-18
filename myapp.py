@@ -119,41 +119,6 @@ def login():
         else:
             st.session_state.role = st.session_state.vote['role']
            
-            # st.markdown("Let us know who's visiting. Are you a/an ...")
-            # col21, col22, col23 = st.columns([1,1,1])
-        
-        
-        # def role_chosen():
-        #     a = col21.button("Aspiring Student", type = "primary", use_container_width = True)
-        #     b = col22.button("Fellow", type = "primary", use_container_width = True)
-        #     c = col23.button("Mentor", type = "primary", use_container_width = True)
-        #     if a:
-        #         role = "Aspiring Student"
-        #     elif b:
-        #         role = "Fellow"
-        #     elif c:
-        #         role = "Mentor"
-        #     else: 
-        #         role = []
-        #     return role
-        # role = role_chosen()
-       
-        
-        # if st.session_state.vote == None: 
-            
-            
-
-        #     if role in ["Aspiring Student"]:
-        #         st.session_state.vote = {"role": role}
-        #         st.session_state.role = st.session_state.vote['role']
-        #         st.rerun()
-        #     elif role in ["Fellow", "Mentor"]:
-        #         vote(role,st.session_state.spreadsheet)
-        #     # elif role == []:
-                
-        # else:
-        #     st.session_state.role = st.session_state.vote['role']
-
         st.markdown("""<br><br>
         
         """, unsafe_allow_html=True)
@@ -548,12 +513,6 @@ def home():
                 st.switch_page("Pathfinder/feedback_summary.py")  
         
   
-        
-
-
-  
-
-            
  
 ########################################################################
 #    MAIN PROGRAM
@@ -593,7 +552,7 @@ dsf_apps = [CO,DSFBA,IGP]
 pf_apps = []
 ops_apps = [pathfinder_rfs_ops, CO_ops]
 st.logo(
-    "data/EskwelApps.png"#,
+    "data/ESKWELAPPS.svg"#,
     # icon_image= "data/logo.png",
 )
 
@@ -619,29 +578,4 @@ else:
     pg = st.navigation([st.Page(login)], position="sidebar") #defaults to login page if no acceptable role is selected
 
 pg.run()
-
-
-        # st.markdown(
-        #     """
-        #     <div style="
-        #         background: linear-gradient(90deg, #009688, #3F51B5);
-        #         padding: 40px;
-        #         border-radius: 10px;
-        #         text-align: center;
-        #         font-family: Arial, sans-serif;
-        #         color: white;
-        #     ">
-        #         <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white;">
-        #             Ready For The Future Of Work?
-        #         </h1>
-        #         <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
-        #             Learn data skills for digital jobs through our online cohort-based courses. 
-        #             <strong>Your Future is Bright!</strong> Eskwelabs is an online upskilling school that gives you access to affordable 
-        #             and high-quality data skills education. <strong>Your Future Begins with Upskilling.</strong> Eskwelabs creates a warm online atmosphere for 
-        #             a community of students to learn. We mix live sessions, projects, and mentorship to help you achieve your goals.
-        #         </p>
-        #     </div>
-        #     """,
-        #     unsafe_allow_html=True
-        # )
         
