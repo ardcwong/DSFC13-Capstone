@@ -276,7 +276,7 @@ with ba2:
     
     # After a question is asked, append it to the conversation history and display the response
     if st.session_state.question:
-        response = generate_conversational_response(st.session_state.question, collection)
+        response = generate_conversational_response(st.session_state.question, st.session_state.collection)
         st.session_state.conversation.append({'user': st.session_state.question, 'response': response})
         st.session_state.question = ""  # Clear the question after it's processed
         st.rerun()
