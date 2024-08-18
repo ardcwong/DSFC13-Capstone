@@ -7,6 +7,11 @@ from oauth2client.service_account import ServiceAccountCredentials
 import json
 from xhtml2pdf import pisa
 from io import BytesIO
+from weasyprint import HTML
+
+def convert_html_to_pdf_weasy(html_content):
+    pdf = HTML(string=html_content).write_pdf()
+    return pdf
 ########################################################
 # API KEYS and CREDENTIALS
 ########################################################
@@ -115,7 +120,7 @@ def recommend_datasets(subtopic):
     )
     datasets = response.choices[0].message.content.strip()
     return datasets
- # Use only <strong>, <br> to format your response. 
+
 # Function to generate learning objectives for a specific sprint
 def generate_learning_objectives(sprint, topics):
     query = f"""Generate learning objectives for {sprint} based on the following topics: {topics}.
@@ -137,47 +142,6 @@ def generate_learning_objectives(sprint, topics):
     )
     objectives = response.choices[0].message.content.strip()
     return objectives
-
-#### TO REMOVE
-# # Function to retrieve and generates additional information about specific course topics
-# def generate_additional_content(query, collection):
-#     retrieved_docs = retrieve_documents(query, collection)
-#     context = ' '.join([doc['text'] for doc in retrieved_docs])
-    
-#     prompt = f"Based on the following information:\n\n{context}\n\nAnswer the following question:\n{query}"
-#     response = openai.chat.completions.create(
-#         model="gpt-3.5-turbo",
-#         messages=[
-#             {"role": "system", "content": "You are an assistant that provides detailed educational content. "},
-#             {"role": "user", "content": prompt}
-#         ],
-#         max_tokens=500,
-#         temperature = 0.5
-#     )
-    
-#     return response.choices[0].message.content.strip()
-
-#### TO REMOVE
-# Function to enhance course outline 
-# def enhance_course_outline(course_outline, collection):
-#     enhanced_outline = {}
-#     for sprint, topics in course_outline.items():
-#         enhanced_outline[sprint] = {}
-#         for main_topic, subtopics in topics.items():
-#             enhanced_outline[sprint][main_topic] = {}
-#             for subtopic in subtopics:
-#                 query = f"Provide detailed information and educational content about {subtopic} in the context of {main_topic}."
-#                 response = openai.chat.completions.create(
-#                     model="gpt-3.5-turbo",
-#                     messages=[
-#                         {"role": "system", "content": "You are an assistant that provides detailed educational content."},
-#                         {"role": "user", "content": query}
-#                     ],
-#                     max_tokens=500
-#                 )
-#                 additional_content = response.choices[0].message.content.strip()
-#                 enhanced_outline[sprint][main_topic][subtopic] = additional_content
-#     return enhanced_outline
 
 # Function to save the markdowns to the Google Sheet
 def save_markdowns_to_gsheet(spreadsheet, sprint_markdowns, full_html_content):
@@ -241,8 +205,7 @@ with t2:
                 # Load and generate the course outline from the CSV file
                 st.session_state.enhanced_course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
                 # st.session_state.enhanced_course_outline = enhance_course_outline(course_outline, None) #### TO UPDATE
-                # datasets = recommend_datasets(subtopic)
-                # learning_objectives = generate_learning_objectives(sprint, topics.keys())
+                
             # Generate markdown for each sprint and save it in st.session_state
                 for sprint, topics in st.session_state.enhanced_course_outline.items():
                     # if sprint == 'Sprint 1': 
@@ -279,6 +242,86 @@ with t2:
                 st.session_state.title = True
                 st.rerun()
                     
+
+                # Loop through the sprints and topics to generate styled HTML markdown
+        if st.session_state.title == True:
+            st.markdown("""<h4 style='text-align: left;color: #e76f51;'><b>Course Outline</b></h4>""", unsafe_allow_html=True) 
+        # # Example: Display the markdown for a specific sprint (Sprint 1)
+        st.markdown(st.session_state['markdowns'].get('Sprint 1', ''), unsafe_allow_html=True)
+        st.markdown(st.session_state['markdowns'].get('Sprint 2', ''), unsafe_allow_html=True)
+        st.markdown(st.session_state['markdowns'].get('Sprint 3', ''), unsafe_allow_html=True)
+        st.markdown(st.session_state['markdowns'].get('Sprint 4', ''), unsafe_allow_html=True)
+        # st.write(st.session_state['markdowns'].get('Sprint 1', ''))
+        # Collect all markdowns into a single HTML content block
+        st.session_state.html_content_co = collect_all_markdowns(st.session_state['markdowns'])
+        with BB:
+            # Save markdowns to Google Sheet
+            if st.session_state.html_content_co is not "":
+                if st.button("Update", use_container_width = True):
+                    saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'],st.session_state.html_content_co)
+                    if saved_:
+                        st.success("HTML content saved successfully.")
+                        st.rerun()
+                    else:
+                        st.error("Failed to save HTML content.")
+        
+
+        
+        with CC:
+            if st.session_state.html_content_co is not "":
+                pdf = convert_html_to_pdf(st.session_state.html_content_co)
+                if pdf:
+                    st.download_button(label=f"Download PDF", data=pdf, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
+                else:
+                    st.error("Failed to convert HTML to PDF.")
+
+                        # Convert HTML to PDF
+            pdf_data = convert_html_to_pdf_weasy(st.session_state.html_content_co)
+            
+            if pdf_data:
+                st.download_button(
+                    label="Download PDF New",
+                    data=pdf_data,
+                    file_name="Course_Outline.pdf",
+                    mime="application/pdf"
+                )
+            else:
+                st.error("Failed to generate PDF.")
+
+with t1:
+    if 'get_current_markdown_co' not in st.session_state:
+        st.session_state.get_current_markdown_co = ""
+    
+    def load_course_outline_dataset(spreadsheet):
+        worksheet = spreadsheet.worksheet("Data Science Fellowship Cohort")
+        data_score = worksheet.get_all_values()
+        df_co = pd.DataFrame(data_score[1:], columns=data_score[0])
+        return df_co
+
+    df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_ops)
+    get_current_markdown = ""
+    with st.expander("Current Course Outline", expanded=True):
+        
+        for i in range(4):
+            get_current_markdown +=  df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0]
+            # st.session_state.get_current_markdown += get_current_markdown
+        st.session_state.get_current_markdown_co = df_co[df_co['Sprint Number'] == f"Sprint 1"]['Full HTML_CONTENT'].values[0]    
+            
+        # st.markdown(st.session_state.get_current_markdown, unsafe_allow_html=True)     
+        pdf_current = convert_html_to_pdf(st.session_state.get_current_markdown_co)
+        if pdf_current:
+            st.download_button(label=f"Download PDF (Current CO)", data=pdf_current, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
+        else:
+            st.error("Failed to convert HTML to PDF.")
+
+        st.markdown("""<h4 style='text-align: left;color: #e76f51;'><b>Course Outline</b></h4>""", unsafe_allow_html=True) 
+        
+        for i in range(4):
+            st.markdown(df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0], unsafe_allow_html=True)
+
+
+
+
             # if st.button("Generate New Course Outline", use_container_width = True):
             #     # Load and generate the course outline from the CSV file
             #     st.session_state.enhanced_course_outline = load_and_generate_course_outline(st.session_state.spreadsheet_courseoutline_ops)
@@ -330,68 +373,5 @@ with t2:
             #         st.session_state['markdowns'][sprint] = sprint_markdown
             #     st.session_state.title = True
             #     st.rerun()
-                # Loop through the sprints and topics to generate styled HTML markdown
-        if st.session_state.title == True:
-            st.markdown("""<h4 style='text-align: left;color: #e76f51;'><b>Course Outline</b></h4>""", unsafe_allow_html=True) 
-        # # Example: Display the markdown for a specific sprint (Sprint 1)
-        st.markdown(st.session_state['markdowns'].get('Sprint 1', ''), unsafe_allow_html=True)
-        st.markdown(st.session_state['markdowns'].get('Sprint 2', ''), unsafe_allow_html=True)
-        st.markdown(st.session_state['markdowns'].get('Sprint 3', ''), unsafe_allow_html=True)
-        st.markdown(st.session_state['markdowns'].get('Sprint 4', ''), unsafe_allow_html=True)
-        # st.write(st.session_state['markdowns'].get('Sprint 1', ''))
-        # Collect all markdowns into a single HTML content block
-        st.session_state.html_content_co = collect_all_markdowns(st.session_state['markdowns'])
-        with BB:
-            # Save markdowns to Google Sheet
-            if st.session_state.html_content_co is not "":
-                if st.button("Update", use_container_width = True):
-                    saved_ = save_markdowns_to_gsheet(st.session_state.spreadsheet_courseoutline_ops, st.session_state['markdowns'],st.session_state.html_content_co)
-                    if saved_:
-                        st.success("HTML content saved successfully.")
-                        st.rerun()
-                    else:
-                        st.error("Failed to save HTML content.")
-        
-
-        
-        with CC:
-            if st.session_state.html_content_co is not "":
-                pdf = convert_html_to_pdf(st.session_state.html_content_co)
-                if pdf:
-                    st.download_button(label=f"Download PDF", data=pdf, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
-                else:
-                    st.error("Failed to convert HTML to PDF.")
-
-with t1:
-    if 'get_current_markdown_co' not in st.session_state:
-        st.session_state.get_current_markdown_co = ""
-    
-    def load_course_outline_dataset(spreadsheet):
-        worksheet = spreadsheet.worksheet("Data Science Fellowship Cohort")
-        data_score = worksheet.get_all_values()
-        df_co = pd.DataFrame(data_score[1:], columns=data_score[0])
-        return df_co
-
-
-    df_co = load_course_outline_dataset(st.session_state.spreadsheet_courseoutline_ops)
-    get_current_markdown = ""
-    with st.expander("Current Course Outline", expanded=True):
-        
-        for i in range(4):
-            get_current_markdown +=  df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0]
-            # st.session_state.get_current_markdown += get_current_markdown
-        st.session_state.get_current_markdown_co = df_co[df_co['Sprint Number'] == f"Sprint 1"]['Full HTML_CONTENT'].values[0]    
-            
-        # st.markdown(st.session_state.get_current_markdown, unsafe_allow_html=True)     
-        pdf_current = convert_html_to_pdf(st.session_state.get_current_markdown_co)
-        if pdf_current:
-            st.download_button(label=f"Download PDF (Current CO)", data=pdf_current, file_name="Course_Outline.pdf", mime="application/pdf", use_container_width = True)
-        else:
-            st.error("Failed to convert HTML to PDF.")
-
-        st.markdown("""<h4 style='text-align: left;color: #e76f51;'><b>Course Outline</b></h4>""", unsafe_allow_html=True) 
-        
-        for i in range(4):
-            st.markdown(df_co[df_co['Sprint Number'] == f"Sprint {i+1}"]['Enhanced Course Outline'].values[0], unsafe_allow_html=True)
             
             
