@@ -121,20 +121,18 @@ def recommend_datasets(subtopic):
     datasets = response.choices[0].message.content.strip()
     return datasets
 
+    # Start with These objectives will guide your learning and help you build valuable skills. Embrace each step and enjoy the process of growth and discovery!
+    # 1. Learning Objectives 1 \n 
+    # 2. Learning Objectives 2 \n 
+    # 3. Learning Objectives 3 \n 
+    # ...
+    # \n N. Learning Objective N
+
+    # Continue numbering the learning objectives until all relevant objectives have been listed.
 # Function to generate learning objectives for a specific sprint
 def generate_learning_objectives(sprint, topics):
     query = f"""Generate learning objectives for {sprint} based on the following topics: {topics}.
-    Ensure you present the learning objectives in this format:
-    
-    Start with These objectives will guide your learning and help you build valuable skills. Embrace each step and enjoy the process of growth and discovery!
-    
-    1. Learning Objectives 1 \n 
-    2. Learning Objectives 2 \n 
-    3. Learning Objectives 3 \n 
-    ...
-    \n N. Learning Objective N
-
-    Continue numbering the learning objectives until all relevant objectives have been listed.
+    Separate learning objective with \n.
     """
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",
