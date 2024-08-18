@@ -302,13 +302,8 @@ with col222:
         </div>
         """,
         unsafe_allow_html=True
-    )
-
-
-
-
+        )
         
-        st.image('data/avatar_ai_pi.png', use_column_width =True)
       st.markdown(f"<h6 style='text-align: center;'><br><br>Choose a question to get started or ask Eskwelabs below:</h6>", unsafe_allow_html=True)
 
     
