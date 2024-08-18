@@ -130,7 +130,7 @@ if st.session_state.generate_pf_fs == False:
     
         .tooltip .tooltiptext {{
           visibility: hidden;
-          width: 300px;
+          width: 500px;
           background-color: #fff;
           color: #333;
           text-align: left; /* Align text to the left */
