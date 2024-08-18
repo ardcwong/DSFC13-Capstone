@@ -686,7 +686,7 @@ if st.session_state.BeginAssessment == True:
     st.markdown(f"""
     <div style='display: flex; align-items: center; justify-content: center; padding: 10px;'>
         <div style='flex-shrink: 0;'>
-            <img src='{avatar_lpc}' alt='avatar' style='width: 100%; max-width: 60px; height: auto; border-radius: 50%; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);'>
+            <img src='{avatar_lpc}' alt='avatar' style='width: 100%; height: auto; border-radius: 50%; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);'>
         </div>
     </div>
     """, unsafe_allow_html=True)
