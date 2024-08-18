@@ -688,7 +688,7 @@ if st.session_state.BeginAssessment == True:
           color: #333;
           text-align: center;
           border-radius: 5px;
-          padding: 5px 0;
+          padding: 20px 0;
           position: absolute;
           z-index: 1;
           left: 110%; /* Adjusted further to the right */
