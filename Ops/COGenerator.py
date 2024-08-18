@@ -275,19 +275,6 @@ with t2:
                 else:
                     st.error("Failed to convert HTML to PDF.")
 
-                        # Convert HTML to PDF
-            pdf_data = convert_html_to_pdf_weasy(st.session_state.html_content_co)
-            
-            if pdf_data:
-                st.download_button(
-                    label="Download PDF New",
-                    data=pdf_data,
-                    file_name="Course_Outline.pdf",
-                    mime="application/pdf"
-                )
-            else:
-                st.error("Failed to generate PDF.")
-
 with t1:
     if 'get_current_markdown_co' not in st.session_state:
         st.session_state.get_current_markdown_co = ""
