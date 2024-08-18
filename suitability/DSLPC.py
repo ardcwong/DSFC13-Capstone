@@ -684,7 +684,7 @@ if st.session_state.BeginAssessment == True:
   ba00, ba01, ba02, ba03, ba04 = st.columns([1,1,0.7,1,1])
   with ba02:
       st.markdown(
-          """
+          f"""
           <style>
           .tooltip {
             position: relative;
@@ -715,7 +715,7 @@ if st.session_state.BeginAssessment == True:
           }
           </style>
           <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
-              <div class='tooltip;' style='flex-shrink: 0; width: 100%;'>
+              <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
                   <img src='{avatar_lpc}' style='width: 100%; height: auto; object-fit: contain;'>
                   <span class="tooltiptext">Click Press</span>
               </div>
@@ -724,16 +724,16 @@ if st.session_state.BeginAssessment == True:
           unsafe_allow_html=True
       )
   
-    st.markdown(f"""
-    
-    <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
-        <div style='flex-shrink: 0; width: 100%;'>
-            <img src='{avatar_lpc}' style='width: 100%; height: auto; object-fit: contain;'>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.image('data/avatar_ai_lpc.png', use_column_width =True)
+      st.markdown(f"""
+      
+      <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
+          <div style='flex-shrink: 0; width: 100%;'>
+              <img src='{avatar_lpc}' style='width: 100%; height: auto; object-fit: contain;'>
+          </div>
+      </div>
+      """, unsafe_allow_html=True)
+      
+      st.image('data/avatar_ai_lpc.png', use_column_width =True)
 
   s1, s2, s3 = st.columns([1,3,1])
   with s2:
