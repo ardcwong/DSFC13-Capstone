@@ -95,17 +95,18 @@ def load_and_generate_course_outline(spreadsheet):
         course_outline[sprint][main_topic].append(subtopic)
     
     return course_outline
-    # Ensure recommendations are presented using this format:
-    
-    # Here are the datasets you could explore!
-    
-    # **Dataset Name**
-    #     - **Description:** [Brief description of the dataset]
-    #     - **Use Case:** [Relevant use cases for the dataset]
-    #     - **URL:** [Dataset URL]
+
 # Function to recommend five datasets for a specific sprint
 def recommend_datasets(subtopic):
     query = f"""Recommend a list of 5 datasets with links that are relevant for the subtopic '{subtopic}' for building a concrete deliverable. Provide dataset names, descriptions, use cases, and URLs.
+    Ensure recommendations are presented using this format:
+    
+    Here are the datasets you could explore!
+    
+    **Dataset Name**
+        - **Description:** [Brief description of the dataset]
+        - **Use Case:** [Relevant use cases for the dataset]
+        - **URL:** [Dataset URL]
     """
     system_message = """You are a dataset recommendation assistant. """
     response = openai.chat.completions.create(
