@@ -535,7 +535,7 @@ if st.session_state.BeginAssessment == True:
         <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
             <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
                 <img src='{avatar_lpc}' style='width: 100%; height: auto; object-fit: contain;'>
-                <span class="tooltiptext">I consistently provides reliable recommendations, with a 93% consistency rate in my suitability classifications.</span>
+                <span class="tooltiptext">I consistently provide reliable recommendations, with a 93% consistency rate in my suitability classifications.</span>
             </div>
         </div>
         """,
