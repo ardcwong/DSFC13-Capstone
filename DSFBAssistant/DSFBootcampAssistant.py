@@ -248,7 +248,7 @@ with ba2:
 
     # If no button has been clicked yet, show the conversation starter buttons
     if not st.session_state.button_clicked:
-        st.markdown("<br><br><br><br><br>", unsafe_allow_html=True)
+        st.markdown("<br><br><br><br>", unsafe_allow_html=True)
         
         assistant_stats = "Arden. Line 252.<br>Sample: I consistently provide reliable recommendations, with a 93% consistency rate in my suitability classifications."
         b00, b01, b02, b03, b04 = st.columns([1, 1, 1, 1, 1])
@@ -300,7 +300,7 @@ with ba2:
             unsafe_allow_html=True
             )           
         
-        st.markdown(f"<h6 style='text-align: center;'><br><br>Choose a question to get started:</h6>", unsafe_allow_html=True)
+        st.markdown(f"<h6 style='text-align: center;'><br><br><br>Choose a question to get started:</h6>", unsafe_allow_html=True)
         b0, b1, b2, b3, b4 = st.columns([1, 1, 1, 1, 1])
         with b1:
             if st.button("What is RAG in LLM?", use_container_width=True):
