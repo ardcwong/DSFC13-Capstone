@@ -264,7 +264,7 @@ with ba2:
         
             .tooltip .tooltiptext {{
               visibility: hidden;
-              width: 160px;
+              width: 250px;
               background-color: #fff;
               color: #333;
               text-align: left; /* Align text to the left */
@@ -298,12 +298,7 @@ with ba2:
             </div>
             """,
             unsafe_allow_html=True
-            )
-            
-            
-            
-            st.image('data/avatar_ai.png', use_column_width=True)
-            
+            )           
         
         st.markdown(f"<h6 style='text-align: center;'><br><br>Choose a question to get started:</h6>", unsafe_allow_html=True)
         b0, b1, b2, b3, b4 = st.columns([1, 1, 1, 1, 1])
