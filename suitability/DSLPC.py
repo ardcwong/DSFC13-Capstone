@@ -22,9 +22,6 @@ api_key = st.secrets["api"]['api_key']
 openai.api_key = api_key
 credentials = st.secrets["gcp_service_account"]
 
-# if "stop" not in st.session_state:
-#     st.session_state.stop = True
-#     nltk.download('stopwords')
 #### USER AVATAR AND RESPONSE
 @st.cache_data
 def user_avatar_lpc():
@@ -41,10 +38,6 @@ def user_avatar_lpc():
 avatar_url_user = user_avatar_lpc()
 
 def show_user_answer_lpc(message_text,avatar_url_user):
-  # Markdown to replicate the chat message
-  # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
-  
-
   st.markdown(f"""
   <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex-end;'>
       <div style='background-color: #F7F9FA; padding: 10px 15px; border-radius: 10px; margin-right: 10px; display: inline-block; text-align: right; max-width: 60%; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);'>
@@ -560,7 +553,6 @@ if st.session_state.BeginAssessment == True:
         """,
         unsafe_allow_html=True
     )
-  
 
   s1, s2, s3 = st.columns([1,3,1])
   with s2:
@@ -576,11 +568,3 @@ if st.session_state.BeginAssessment == True:
               st.rerun()
 else: 
   suitability()               
-
-
-
-
-
-
-
-       
