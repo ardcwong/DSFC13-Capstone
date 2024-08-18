@@ -139,45 +139,45 @@ def generate_learning_objectives(sprint, topics):
     return objectives
 
 #### TO REMOVE
-# Function to retrieve and generates additional information about specific course topics
-def generate_additional_content(query, collection):
-    retrieved_docs = retrieve_documents(query, collection)
-    context = ' '.join([doc['text'] for doc in retrieved_docs])
+# # Function to retrieve and generates additional information about specific course topics
+# def generate_additional_content(query, collection):
+#     retrieved_docs = retrieve_documents(query, collection)
+#     context = ' '.join([doc['text'] for doc in retrieved_docs])
     
-    prompt = f"Based on the following information:\n\n{context}\n\nAnswer the following question:\n{query}"
-    response = openai.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "You are an assistant that provides detailed educational content. "},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=500,
-        temperature = 0.5
-    )
+#     prompt = f"Based on the following information:\n\n{context}\n\nAnswer the following question:\n{query}"
+#     response = openai.chat.completions.create(
+#         model="gpt-3.5-turbo",
+#         messages=[
+#             {"role": "system", "content": "You are an assistant that provides detailed educational content. "},
+#             {"role": "user", "content": prompt}
+#         ],
+#         max_tokens=500,
+#         temperature = 0.5
+#     )
     
-    return response.choices[0].message.content.strip()
+#     return response.choices[0].message.content.strip()
 
 #### TO REMOVE
 # Function to enhance course outline 
-def enhance_course_outline(course_outline, collection):
-    enhanced_outline = {}
-    for sprint, topics in course_outline.items():
-        enhanced_outline[sprint] = {}
-        for main_topic, subtopics in topics.items():
-            enhanced_outline[sprint][main_topic] = {}
-            for subtopic in subtopics:
-                query = f"Provide detailed information and educational content about {subtopic} in the context of {main_topic}."
-                response = openai.chat.completions.create(
-                    model="gpt-3.5-turbo",
-                    messages=[
-                        {"role": "system", "content": "You are an assistant that provides detailed educational content."},
-                        {"role": "user", "content": query}
-                    ],
-                    max_tokens=500
-                )
-                additional_content = response.choices[0].message.content.strip()
-                enhanced_outline[sprint][main_topic][subtopic] = additional_content
-    return enhanced_outline
+# def enhance_course_outline(course_outline, collection):
+#     enhanced_outline = {}
+#     for sprint, topics in course_outline.items():
+#         enhanced_outline[sprint] = {}
+#         for main_topic, subtopics in topics.items():
+#             enhanced_outline[sprint][main_topic] = {}
+#             for subtopic in subtopics:
+#                 query = f"Provide detailed information and educational content about {subtopic} in the context of {main_topic}."
+#                 response = openai.chat.completions.create(
+#                     model="gpt-3.5-turbo",
+#                     messages=[
+#                         {"role": "system", "content": "You are an assistant that provides detailed educational content."},
+#                         {"role": "user", "content": query}
+#                     ],
+#                     max_tokens=500
+#                 )
+#                 additional_content = response.choices[0].message.content.strip()
+#                 enhanced_outline[sprint][main_topic][subtopic] = additional_content
+#     return enhanced_outline
 
 # Function to save the markdowns to the Google Sheet
 def save_markdowns_to_gsheet(spreadsheet, sprint_markdowns, full_html_content):
@@ -210,12 +210,12 @@ if 'enhanced_course_outline' not in st.session_state:
 st.title("Sprint Navigator")
 
 st.markdown("""
-The Sprint Navigator is a meticulously crafted course outline, designed to provide a clear and organized view of the program's main 
-topics and sub-topics, learning objectives, divided into four distinct Sprints. It also offers tailored dataset recommendations for 
-practical, hands-on learning. This Navigator acts as both a strategic planning tool and a detailed guide for fellows, helping them steer 
-through their learning journey with confidence.
+The Sprint Navigator provides a clear and organized view of the program's main 
+topics, sub-topics, and learning objectives, divided into four distinct Sprints. It also offers tailored dataset recommendations for 
+practical, hands-on learning. This Navigator acts as both a strategic planning tool and a detailed guide for fellows, ensuring they have 
+all the resources they need to help them confidently steer through their learning journey.
 """)
-# The Sprint Navigator is a meticulously crafted course outline, designed to provide a clear and organized view of the program's main topics and sub-topics, divided into four distinct Sprints. This Navigator acts as both a strategic planning tool and a detailed guide for fellows, helping them steer through their learning journey with confidence.
+#
 
 t1, t2 = st.columns([1,1])
 if 'html_content_co' not in st.session_state:
