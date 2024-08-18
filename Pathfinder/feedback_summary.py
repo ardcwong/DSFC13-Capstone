@@ -118,10 +118,43 @@ if "feedback_generated" not in st.session_state:
 pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
 
 if st.session_state.generate_pf_fs == False:
-    # st.title("Pathfinder Assessment Report")
-    # st.image('data/PAR.svg', use_column_width = True)
     st.markdown(
-        """
+        f"""
+        <style>
+        .tooltip {{
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+        }}
+    
+        .tooltip .tooltiptext {{
+          visibility: hidden;
+          width: 160px;
+          background-color: #fff;
+          color: #333;
+          text-align: left; /* Align text to the left */
+          border-radius: 5px;
+          padding: 10px;
+          position: absolute;
+          z-index: 1;
+          left: 100%; /* Position next to the image */
+          top: 50%;
+          transform: translateX(20%) translateY(-50%); /* Center tooltip box */
+          opacity: 0;
+          transition: opacity 0.3s;
+          white-space: normal; /* Allow text to wrap */
+          display: flex;
+          align-items: flex-end; /* Align content to the bottom */
+          justify-content: flex-start; /* Align content to the left */
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+          font-size: 12px;
+        }}
+    
+        .tooltip:hover .tooltiptext {{
+          visibility: visible;
+          opacity: 1;
+        }}
+        </style>
         <div style="
             background: linear-gradient(90deg, #009688, #3F51B5);
             padding: 40px;
@@ -131,13 +164,36 @@ if st.session_state.generate_pf_fs == False:
             color: white;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
         ">
-            <h1 style="font-size: 60px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
+            <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
+                <h1 style="font-size: 60px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
                 Pathfinder Assessment Report
-            </h1>
+                </h1>
+                <span class="tooltiptext">I have a reliability of 93%!</span>
+            </div>
         </div>
         """,
-        unsafe_allow_html=True)
-    st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
+        unsafe_allow_html=True
+    )
+
+    
+    # st.markdown(
+    #     """
+    #     <div style="
+    #         background: linear-gradient(90deg, #009688, #3F51B5);
+    #         padding: 40px;
+    #         border-radius: 10px;
+    #         text-align: center;
+    #         font-family: Arial, sans-serif;
+    #         color: white;
+    #         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    #     ">
+    #         <h1 style="font-size: 60px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
+    #             Pathfinder Assessment Report
+    #         </h1>
+    #     </div>
+    #     """,
+    #     unsafe_allow_html=True)
+    # st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
 
     
     col_main1, col_main2 = st.columns([1,2.5])
