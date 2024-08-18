@@ -125,6 +125,7 @@ def generate_learning_objectives(sprint, topics):
     query = f"""Generate learning objectives for {sprint} based on the following topics: {topics}.
     Ensure you present the learning objectives in this format:
     These objectives will guide your learning and help you build valuable skills. Embrace each step and enjoy the process of growth and discovery!
+    
     1. Learning Objectives 1 \n 
     2. Learning Objectives 2 \n 
     3. Learning Objectives 3 \n 
@@ -224,7 +225,7 @@ def generate_sprint_markdown(sprint, topics):
         'padding: 6px;',
         'border-radius: 10px;',
         'font-family: Arial, sans-serif;',
-        'box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);',
+        # 'box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);',
         'margin-bottom: 10px;',
         'word-wrap: break-word;',  # Ensures long words wrap to the next line
         'word-break: break-word;',  # Breaks long words if necessary
