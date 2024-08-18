@@ -660,6 +660,7 @@ if st.session_state.BeginAssessment == True:
           align-items: center; /* Center vertically */
           justify-content: flex-start; /* Align content to the left */
           box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+          font-size: 10px; /* Set font size to 10px */
         }}
     
         .tooltip:hover .tooltiptext {{
