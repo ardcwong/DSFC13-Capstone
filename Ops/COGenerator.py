@@ -208,7 +208,7 @@ def generate_subtopics_html(main_topic, subtopics, sprint):
     objectives_list = learning_objectives.split('\n')
     
     # Convert each objective to an HTML list item
-    list_items = ''.join(f"{objective}" for objective in objectives_list)
+    list_items = ''.join(f"{objective}<br>" for objective in objectives_list)
     
     # Wrap the list items in an ordered list
     ordered_list = f"<ol>{list_items}</ol>"
