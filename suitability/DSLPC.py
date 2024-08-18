@@ -650,7 +650,7 @@ if st.session_state.BeginAssessment == True:
           padding: 20px;
           position: absolute;
           z-index: 1;
-          left: 150%; /* Position next to the image */
+          left: 100%; /* Position next to the image */
           top: 50%;
           transform: translateX(20%) translateY(-50%); /* Center tooltip box */
           opacity: 0;
