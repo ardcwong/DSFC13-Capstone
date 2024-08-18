@@ -573,7 +573,7 @@ CO_ops = st.Page("Ops/COGenerator.py", title="CCO Generator", icon="🗂️") # 
 
 suitability = st.Page(
     "suitability/DSLPC.py",
-    title="Start Your Journey",
+    title="Start Your Data Journey",
     icon="🚀", # ➕
 )
 ProgramInformation = st.Page(
