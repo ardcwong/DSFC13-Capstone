@@ -16,7 +16,6 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from skllm.config import SKLLMConfig
 from skllm.models.gpt.text2text.summarization import GPTSummarizer
-# from sentence_transformers import SentenceTransformer, util
 import openai
 from openai import OpenAI
 from wordcloud import WordCloud
@@ -25,7 +24,6 @@ import time
 import numpy as np
 import ast #built in
 from annotated_text import annotated_text
-# from langchain.vectorstores import Chroma
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 
@@ -35,7 +33,7 @@ api_key = st.secrets["api"]['api_key']
 openai.api_key = api_key
 credentials = st.secrets["gcp_service_account"]
 client = OpenAI(api_key=api_key)
-# SKLLMConfig.set_openai_key(api_key)
+
 @st.cache_data
 def user_avatar_pi():
   # Load the image and convert it to base64
@@ -121,7 +119,6 @@ class ChatHistory:
                
     def get_latest_messages(self, count=4):
         return self.history[-count:]
-# path=CHROMA_DATA_PATH
 
 @st.cache_resource
 def load_collection():
@@ -135,6 +132,7 @@ def load_collection():
         metadata={"hnsw:space": "cosine"}
     )
     return vector_store
+  
 if 'vector_store' not in st.session_state:
   st.session_state.vector_store = load_collection()
 
@@ -156,12 +154,6 @@ def generate_chatbot_response(context, query, metadata, chat_memory):
     #Check if metadata is not empty and add to metadata_info if not empty
     if metadata:
         metadata_info = "\n".join([f"File: {meta['description']}" for meta in metadata])
-
-    #Prompt with no history
-    # prompt = f"Based on the following information:\n\n{context}\n\nAdditional Information:\n{metadata_info}\n\nAnswer the following question:\n{query}"
-    #Prompt with history
-    # if history_text:
-    #     prompt = f"Based on the following conversation history:\n\n{history_text}\n\n{prompt}"
 
     # UPDATED PROMPTS
     if history_text:
@@ -197,15 +189,6 @@ def chatbot_response(user_query, collection, chat_history, chat_memory):
     st.session_state.question_pi_bool = False
     return response
 
-
-# Initialize chat history in session state
-if 'pi_chat_history' not in st.session_state:
-    st.session_state.pi_chat_history = ChatHistory()
-
-# Initialize chat history in session state
-if 'pi_chat_memory' not in st.session_state:
-    st.session_state.pi_chat_memory = []
-
 @st.fragment
 def update_chat_memory():
     st.session_state.pi_chat_memory = st.session_state.pi_chat_history.get_latest_messages()
@@ -220,14 +203,19 @@ def show_pi_chat_memory():
             show_user_answer_pi(content,avatar_url_user_pi)
         elif role == "assistant":
             show_ai_response_pi(content,avatar_pi)
+          
+# Initialize chat history in session state
+if 'pi_chat_history' not in st.session_state:
+    st.session_state.pi_chat_history = ChatHistory()
 
-
-
+# Initialize chat history in session state
+if 'pi_chat_memory' not in st.session_state:
+    st.session_state.pi_chat_memory = []
+  
 # Initialize session state for button clicks
 if 'button_clicked_pi' not in st.session_state:
     st.session_state.button_clicked_pi = False
 
-    
 # Initialize session state for question
 if 'question_pi' not in st.session_state:
     st.session_state.question_pi = ""
@@ -238,7 +226,6 @@ if 'question_pi_bool' not in st.session_state:
 
 ########################################## MAIN PROGRAM ##########################################
 with st.sidebar:
-    # st.markdown(f"<h2 style='text-align: center;'>Eskwelabs Data Science Fellowship Information Bot</h2>", unsafe_allow_html=True)
     if st.button("Start Over", type = "primary", use_container_width = True, help = "Restart Chat Session"):
         st.session_state.pi_chat_history.clear_history()
         st.session_state.pi_chat_memory = []  # Clear chat memory as well   
@@ -253,8 +240,6 @@ if user_query:
     response = chatbot_response(user_query, st.session_state.vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
     update_chat_memory()
 #################################################################################################
-
-
 
 col111, col222, col333 = st.columns([1,4,1])
 with col222:
@@ -313,23 +298,7 @@ with col222:
           st.session_state.button_clicked_pi = True
           st.session_state.question_pi_bool = True
           st.rerun()
-      
-
-
   
   if st.session_state.question_pi_bool == True:       
     st.session_state.response_pi = chatbot_response(st.session_state.question_pi, st.session_state.vector_store, st.session_state.pi_chat_history, st.session_state.pi_chat_memory)
     update_chat_memory()
-    # st.session_state.question_pi == ""
-    
-
-
-
-
-
-
-
-
-
-
-
