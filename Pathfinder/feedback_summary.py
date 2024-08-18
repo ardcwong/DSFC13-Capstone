@@ -138,8 +138,8 @@ if st.session_state.generate_pf_fs == False:
           padding: 10px;
           position: absolute;
           z-index: 1;
-          left: 100%; /* Center tooltip horizontally */
-          top: -150%; /* Position above the element */
+          left: 70%; /* Center tooltip horizontally */
+          top: -120%; /* Position above the element */
           transform: translateX(-50%); /* Center tooltip horizontally */
           opacity: 0;
           transition: opacity 0.3s;
