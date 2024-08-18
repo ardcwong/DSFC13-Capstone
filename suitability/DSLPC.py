@@ -611,47 +611,6 @@ else:
   
 col_main1, col_main2, col_main3 = st.columns([1,4,1])
 with col_main2:
-  # Example with a tooltip
-  st.markdown(
-      """
-      <style>
-      .tooltip {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-      }
-  
-      .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 160px;
-        background-color: #555;
-        color: #fff;
-        text-align: center;
-        border-radius: 5px;
-        padding: 5px 0;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%; /* Position above the text */
-        left: 50%;
-        margin-left: -80px;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-  
-      .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-      }
-      </style>
-      <div class="tooltip">
-        Press
-        <span class="tooltiptext">Click Press</span>
-      </div>
-      """,
-      unsafe_allow_html=True
-  )
-  
-  
   st.markdown("""<h1 style='text-align: center;'>Data Science Learning Path Classifier</h1>""", unsafe_allow_html=True)
   cc1, cc2, cc3 = st.columns([1,10,1])
   with cc2:
@@ -700,7 +659,7 @@ if st.session_state.BeginAssessment == True:
           display: flex;
           align-items: center; /* Center vertically */
           justify-content: center; /* Center horizontally */
-          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         }}
     
         .tooltip:hover .tooltiptext {{
