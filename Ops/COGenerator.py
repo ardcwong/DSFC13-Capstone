@@ -7,7 +7,6 @@ from oauth2client.service_account import ServiceAccountCredentials
 import json
 from xhtml2pdf import pisa
 from io import BytesIO
-from weasyprint import HTML
 
 def convert_html_to_pdf_weasy(html_content):
     pdf = HTML(string=html_content).write_pdf()
