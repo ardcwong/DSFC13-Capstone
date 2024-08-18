@@ -448,7 +448,7 @@ with st.sidebar:
 with st.sidebar:
   # Call this function to load test answers at the beginning of your app (or when you need to test)
   name = st.selectbox("Choose a test user:", ["Maria Cruz", "John Santos", "Emily Tan", "Raj Patel", "Lisa Kim", "Jao Cordero"])
-  if st.button("Load Test Answers", use_container_width = True, type = "primary"):
+  if st.button("Load Demo Answers", use_container_width = True, type = "primary"):
       load_test_answers_by_name(name)
       st.rerun()
         
