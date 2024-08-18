@@ -217,7 +217,7 @@ def generate_subtopics_html(main_topic, subtopics, sprint):
     ordered_list = f"<ol>{list_items}</ol>"
     
     # Append the ordered list to subtopic_html_parts
-    subtopic_html_parts.append(f"<pre>{ordered_list}</pre>")
+    subtopic_html_parts.append(f"<p>{ordered_list}</p>")
 
     # # Ensure the learning objectives are displayed as a list
     # subtopic_html_parts.append(f"<pre><ol>{learning_objectives}</ol></pre>")
