@@ -200,13 +200,10 @@ if st.session_state.generate_pf_fs == False:
     col_main1, col_main2 = st.columns([1,2.5])
     with col_main1:
         with st.expander("# **About**", expanded=True):
-            st.write("""The Pathfinder Assessment Report gives you a detailed overview of your performance after taking the Pathfinder Exam. 
-            This report helps you identify your strengths and areas needing improvement across various topic areas. By entering your reference 
-            number provided by the Eskwelabs Team, you can access personalized feedback that highlights both your strengths and areas for further 
-            attention. The app also offers tailored suggestions to help you bridge any knowledge gaps and guides you on the next steps in your 
-            learning journey. Additionally, the report leverages the 2023 Competencies Framework of Eskwelabs to derive key sub-categories and 
-            topics, ensuring you receive actionable insights and recommendations. You can save your report to track your progress over time and 
-            revisit the feedback as needed.""")
+            st.write("""The Pathfinder Assessment Report provides a detailed overview of your performance in the Pathfinder Exam, 
+            helping you identify strengths and areas for improvement. By entering your reference number, you can access personalized 
+            feedback and tailored suggestions to bridge knowledge gaps and guide your learning journey. The report leverages Eskwelabs' 
+            2023 Competencies Framework to offer actionable insights, with an option to save your report for tracking progress over time.""")
             
         with st.expander("**View Report**", expanded =True):
             reference_number = st.chat_input("Enter your Reference Number:")
