@@ -207,9 +207,20 @@ def generate_subtopics_html(main_topic, subtopics, sprint):
     subtopic_html_parts.append(f"<p><strong>Subtopics:</strong> {', '.join(subtopics)}</p>")
     subtopic_html_parts.append(f"<p><strong>Learning Objectives:</strong></p>")
     # subtopic_html_parts.append(f"<p>{learning_objectives}</p>")
+    # Split the string into a list of objectives
+    objectives_list = learning_objectives.split('\n')
     
-    # Ensure the learning objectives are displayed as a list
-    subtopic_html_parts.append(f"<ol>{learning_objectives}</ol>")
+    # Convert each objective to an HTML list item
+    list_items = ''.join(f"<li>{objective}</li>" for objective in objectives_list)
+    
+    # Wrap the list items in an ordered list
+    ordered_list = f"<ol>{list_items}</ol>"
+    
+    # Append the ordered list to subtopic_html_parts
+    subtopic_html_parts.append(f"<pre>{ordered_list}</pre>")
+
+    # # Ensure the learning objectives are displayed as a list
+    # subtopic_html_parts.append(f"<pre><ol>{learning_objectives}</ol></pre>")
     
     # Add spacing or a clear block before the Recommended Datasets section
     subtopic_html_parts.append('<br><p><strong>Recommended Datasets:</strong></p>')
