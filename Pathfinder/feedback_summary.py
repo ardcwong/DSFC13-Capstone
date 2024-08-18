@@ -118,6 +118,7 @@ if "feedback_generated" not in st.session_state:
 pf_rn_y = scores_dataset["Reference Number"][scores_dataset["PARGenTag"] == "Y"].tolist()
 
 if st.session_state.generate_pf_fs == False:
+    pargen_stats = "Our Pathfinder Assessment Report Generator has a validity rate of 97.78%, ensuring that the insights it provides are closely aligned with the key topics and sub-categories outlined in the 2023 Competency Framework."
     st.markdown(
         f"""
         <style>
@@ -137,9 +138,9 @@ if st.session_state.generate_pf_fs == False:
           padding: 10px;
           position: absolute;
           z-index: 1;
-          left: 100%; /* Position next to the image */
-          top: 50%;
-          transform: translateX(20%) translateY(-50%); /* Center tooltip box */
+          left: 50%; /* Center tooltip horizontally */
+          top: -150%; /* Position above the element */
+          transform: translateX(-50%); /* Center tooltip horizontally */
           opacity: 0;
           transition: opacity 0.3s;
           white-space: normal; /* Allow text to wrap */
@@ -157,7 +158,7 @@ if st.session_state.generate_pf_fs == False:
         </style>
         <div style="
             background: linear-gradient(90deg, #009688, #3F51B5);
-            padding: 40px;
+            padding: 25px;
             border-radius: 10px;
             text-align: center;
             font-family: Arial, sans-serif;
@@ -168,7 +169,7 @@ if st.session_state.generate_pf_fs == False:
                 <h1 style="font-size: 60px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
                 Pathfinder Assessment Report
                 </h1>
-                <span class="tooltiptext">I have a reliability of 93%!</span>
+                <span class="tooltiptext">{pargen_stats}</span>
             </div>
         </div>
         """,
