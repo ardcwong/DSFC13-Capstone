@@ -690,7 +690,7 @@ if st.session_state.BeginAssessment == True:
           border-radius: 5px;
           padding: 5px 0;
           position: absolute;
-          z-index: 1;
+          z-index: 0;
           left: 150%;
           transform: translateY(-50%);
           opacity: 0;
