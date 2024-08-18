@@ -65,10 +65,6 @@ def ai_avatar_lpc():
 avatar_lpc = ai_avatar_lpc()
 
 def show_ai_response_lpc(message_text,avatar_lpc):
-  # Markdown to replicate the chat message
-  # avatar_url = "https://avatars.githubusercontent.com/u/45109972?s=40&v=4"  # Replace this with any avatar URL or a local file path
-  
-
   st.markdown(f"""
   <div style='display: flex; align-items: flex-start; padding: 10px; justify-content: flex;'>
       <div style='flex-shrink: 0;'>
@@ -86,8 +82,6 @@ def remove_stopwords(response):
     word_tokens = word_tokenize(response)
     filtered_response = [word for word in word_tokens if word.lower() not in stop_words]
     return ' '.join(filtered_response)
-
-
 
 ########################################################
 # SUITABILITY
@@ -140,13 +134,7 @@ def google_connection(client):
 # Function to write feedback and chat history to Google Sheet
 def write_feedback_to_gsheet(spreadsheet, feedback, chat_history):
     sheet = spreadsheet.sheet1
-    # chat_history_json = json.dumps(chat_history)
-    # chat_history_df = pd.DataFrame([chat_history])
-    # chat_history_list = chat_history_df.values.tolist()[0]
-    # flattened_chat_history = [item for sublist in chat_history for item in sublist]
     chat_history_list = pd.DataFrame(chat_history)[[1]].T.values.flatten().tolist()
-    # chat_history_list = chat_history.values.flatten().tolist()
-    # chat_history_json = chat_history.iloc[0].to_json(orient="records")
     sheet.append_row([str(datetime.now(philippines_timezone)), feedback] + chat_history_list)
     return sheet
 
@@ -173,7 +161,6 @@ if 'BeginAssessment' not in st.session_state:
 if 'classification' not in st.session_state:
     st.session_state.classification = False
 
-    # Initialize or retrieve session state
 if 'responses' not in st.session_state:
     st.session_state.responses = []
 
@@ -185,6 +172,7 @@ if 'feedback_up' not in st.session_state:
   
 if 'feedback_down' not in st.session_state:
     st.session_state.feedback_down = []
+  
 @st.fragment
 def suitability():
     if st.session_state.classification == True:
