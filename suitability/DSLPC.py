@@ -506,7 +506,7 @@ if st.session_state.BeginAssessment == True:
     
         .tooltip .tooltiptext {{
           visibility: hidden;
-          width: 160px;
+          width: 250px;
           background-color: #fff;
           color: #333;
           text-align: left; /* Align text to the left */
