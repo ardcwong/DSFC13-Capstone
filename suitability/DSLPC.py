@@ -7,10 +7,6 @@ import base64
 import json
 from datetime import datetime
 import pytz
-import nltk
-from nltk.corpus import wordnet as wn
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
 
 # Define the timezone for the Philippines
 philippines_timezone = pytz.timezone('Asia/Manila')
