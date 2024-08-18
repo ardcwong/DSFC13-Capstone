@@ -691,7 +691,7 @@ if st.session_state.BeginAssessment == True:
           padding: 20px;
           position: absolute;
           z-index: 1;
-          left: 100%; /* Position next to the image */
+          left: 150%; /* Position next to the image */
           top: 50%;
           transform: translateX(20%) translateY(-50%); /* Center tooltip box */
           opacity: 0;
@@ -700,6 +700,7 @@ if st.session_state.BeginAssessment == True:
           display: flex;
           align-items: center; /* Center vertically */
           justify-content: center; /* Center horizontally */
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }}
     
         .tooltip:hover .tooltiptext {{
