@@ -166,7 +166,7 @@ def vote(spreadsheet):
             st.error("Invalid username or password")       
 
     if st.toggle("[For DEMO] Sample Login Credentials"):
-        st.dataframe(users, use_container_width=True, hide_index=True)
+        st.dataframe(users.head(7), use_container_width=True, hide_index=True)
 # st.write(st.session_state.userinfo)
 ########################################################
 # LOG OUT
