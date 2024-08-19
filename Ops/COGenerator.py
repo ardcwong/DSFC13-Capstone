@@ -174,12 +174,11 @@ if 'enhanced_course_outline' not in st.session_state:
 st.title("Sprint Navigator")
 
 st.markdown("""
-The Sprint Navigator provides a clear and organized view of the program's main 
-topics, sub-topics, and learning objectives, divided into four distinct Sprints. It also offers tailored dataset recommendations for 
-practical, hands-on learning. This Navigator acts as both a strategic planning tool and a detailed guide for fellows, ensuring they have 
-all the resources they need to help them confidently steer through their learning journey.
+The Sprint Navigator is a powerful tool designed specifically for the Eskwelabs Ops team to effectively manage and enhance the Data Science 
+Fellowship curriculum. This page acts as both a strategic planning tool and an operational guide, enabling the Ops team to deliver a well-rounded 
+and effective learning experience for all fellows. It ensures that the curriculum is comprehensive, aligned with learning objectives, and supported 
+by relevant datasets that enhance practical learning. 
 """)
-#
 
 t1, t2 = st.columns([1,1])
 if 'html_content_co' not in st.session_state:
