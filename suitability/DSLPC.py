@@ -622,7 +622,7 @@ with st.sidebar:
       <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
           <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
               <img src='{st.session_state.john_avatar}' style='width: 100%; height: auto; object-fit: contain;'>
-              <span class="tooltiptext">Meet John Santos, an aspiring Data Scientist with a background in Electrical Engineering. John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.</span>
+              <span class="tooltiptext">The classifier takes John through a series of questions. By answering questions about his education, skills, and career goals, the classifier quickly identifies that John is ready for the Data Science Fellowship (DSF). It even provides a personalized preparation plan, boosting John’s confidence in his path forward.</span>
           </div>
       </div>
       """,
