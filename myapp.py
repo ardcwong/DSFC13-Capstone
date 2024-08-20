@@ -528,7 +528,7 @@ def home():
     jj0, jj1, jj2 = st.columns([0.3, 3,0.3])
     with jj1:
         with st.container(border =True):
-            j1,j2 = st.columns([1,3])
+            j1,j2 = st.columns([1,2])
             with j1:
                 st.image('data/John.png', use_column_width=True)
             with j2:
@@ -545,10 +545,8 @@ def home():
                 )
                 st.markdown(
                     """
-                    <div style="font-family: 'Arial', sans-serif; padding: 20px; background-color: #E8FCF3; border-radius: 10px; border: 1px solid #ddd;">
                         <p style="font-size: 2px; color: #333;">
                         </p>
-                    </div>
                     """,
                     unsafe_allow_html=True
                 )
