@@ -79,6 +79,78 @@ def remove_stopwords(response):
     filtered_response = [word for word in word_tokens if word.lower() not in stop_words]
     return ' '.join(filtered_response)
 
+
+
+
+
+@st.cache_data
+def john_avatar():
+  # Load the image and convert it to base64
+  with open('data/John.png', 'rb') as image_file_john:
+    encoded_string_john = base64.b64encode(image_file_john.read()).decode()
+  
+  # Construct the base64 image string for use in HTML
+  john_avatar = f'data:image/png;base64,{encoded_string_john}'
+  return john_avatar
+
+john_avatar = john_avatar()
+
+
+
+with st.sidebar:
+    st.markdown(
+        f"""
+        <style>
+        .tooltip {{
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+        }}
+    
+        .tooltip .tooltiptext {{
+          visibility: hidden;
+          width: 400px;
+          background-color: #fff;
+          color: #333;
+          text-align: left; /* Align text to the left */
+          border-radius: 5px;
+          padding: 10px;
+          position: absolute;
+          z-index: 1;
+          left: 50%; /* Position centered above the element */
+          bottom: 100%; /* Position the tooltip on top */
+          transform: translateX(-50%) translateY(-10px); /* Center tooltip horizontally and add a small offset vertically */
+          opacity: 0;
+          transition: opacity 0.3s;
+          white-space: normal; /* Allow text to wrap */
+          display: flex;
+          align-items: flex-end; /* Align content to the bottom */
+          justify-content: flex-start; /* Align content to the left */
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+          font-size: 20px;
+        }}
+    
+        .tooltip:hover .tooltiptext {{
+          visibility: visible;
+          opacity: 1;
+        }}
+        </style>
+        <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
+            <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
+                <img src='{john_avatar}' style='width: 100%; height: auto; object-fit: contain;'>
+                <span class="tooltiptext">The classifier takes John through a series of questions—By answering questions about his education, skills, and career goals, the classifier quickly identifies that John is ready for the Data Science Fellowship (DSF). It even provides a personalized preparation plan, boosting John’s confidence in his path forward.</span>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+
+
+
+
+
 ########################################################
 # SUITABILITY
 ########################################################
