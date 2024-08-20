@@ -57,7 +57,7 @@ def ai_avatar_lpc():
   # Construct the base64 image string for use in HTML
   avatar_lpc = f'data:image/png;base64,{avatar_base64_lpc}'
   return avatar_lpc
-
+st.session_state.john_avatar
 avatar_lpc = ai_avatar_lpc()
 
 def show_ai_response_lpc(message_text,avatar_lpc):
@@ -89,8 +89,8 @@ def john_avatar():
   # Construct the base64 image string for use in HTML
   john_avatar = f'data:image/png;base64,{encoded_string_john}'
   return john_avatar
-
-john_avatar_lpc = john_avatar()
+if 'john_avatar' not in st.session_state:       
+    st.session_state.john_avatar = john_avatar()
 
 
 
@@ -621,7 +621,7 @@ with st.sidebar:
       </style>
       <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
           <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
-              <img src='{john_avatar_lpc}' style='width: 100%; height: auto; object-fit: contain;'>
+              <img src='{st.session_state.john_avatar}' style='width: 100%; height: auto; object-fit: contain;'>
               <span class="tooltiptext">Meet John Santos, an aspiring Data Scientist with a background in Electrical Engineering. John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.</span>
           </div>
       </div>
