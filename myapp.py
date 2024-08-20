@@ -276,8 +276,9 @@ def home():
             unsafe_allow_html=True
             )
     jj0, jj1, jj2 = st.columns([0.3, 3,0.3])
-    st.markdown("<div style='height: 2px;'></div>", unsafe_allow_html=True)
+    
     with jj1:
+        st.markdown("""<br>""", unsafe_allow_html=True)
         with st.container(border =True):
             j1,j2 = st.columns([1,1.5])
             with j1:
