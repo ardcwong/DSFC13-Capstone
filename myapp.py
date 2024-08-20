@@ -535,7 +535,7 @@ def home():
                 st.markdown(
                     """
                     <div style="font-family: 'Arial', sans-serif; padding: 20px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
-                        <p style="font-size: 16px; color: #333;">
+                        <p style="font-size: 14px; color: #333;">
                             Meet <strong>John Santos</strong>, an aspiring Data Scientist with a background in Electrical Engineering. 
                             John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.
                         </p>
@@ -553,7 +553,7 @@ def home():
                 st.markdown(
                     """
                     <div style="font-family: 'Arial', sans-serif; padding: 20px; background-color: #E8FCF3; border-radius: 10px; border: 1px solid #ddd;">
-                        <p style="font-size: 16px; color: #333;">
+                        <p style="font-size: 14px; color: #333;">
                             That’s where <strong>EskwelApps</strong> comes in—a suite of tools designed to guide learners like John from assessing their 
                             readiness to accessing the resources they need to succeed. Let’s follow John’s journey through EskwelApps.
                         </p>
@@ -571,7 +571,7 @@ def home():
                 st.markdown(
                     """
                     <div style="font-family: 'Arial', sans-serif; padding: 20px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
-                        <p style="font-size: 16px; color: #333;">
+                        <p style="font-size: 14px; color: #333;">
                             <strong>John’s journey begins with uncertainty.</strong> With his extensive background, he wonders if the <strong>Data Science Fellowship (DSF)</strong> is the right fit or 
                             if he should explore another path. To find out, John turns to the <strong>Data Science Learning Path Classifier</strong>.
                         </p>
