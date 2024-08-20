@@ -580,50 +580,50 @@ if st.session_state.BeginAssessment == True:
 else: 
   suitability()      
   
-# with st.sidebar:
-st.markdown(
-    f"""
-    <style>
-    .tooltip {{
-      position: relative;
-      display: inline-block;
-      cursor: pointer;
-    }}
-
-    .tooltip .tooltiptext {{
-      visibility: hidden;
-      width: 400px;
-      background-color: #fff;
-      color: #333;
-      text-align: left;
-      border-radius: 5px;
-      padding: 10px;
-      position: absolute;
-      z-index: 1;
-      left: 50%; /* Center horizontally */
-      top: 0; /* Position above the image */
-      transform: translateX(-50%) translateY(-100%); /* Center tooltip box horizontally and move above the element */
-      opacity: 0;
-      transition: opacity 0.3s;
-      white-space: normal;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-      font-size: 20px;
-    }}
-
-    .tooltip:hover .tooltiptext {{
-      visibility: visible;
-      opacity: 1;
-    }}
-    </style>
-    <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
-        <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
-            <img src='{john_avatar_lpc}' style='width: 100%; height: auto; object-fit: contain;'>
-            <span class="tooltiptext">Meet John Santos, an aspiring Data Scientist with a background in Electrical Engineering. John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.</span>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+with st.sidebar:
+  st.markdown(
+      f"""
+      <style>
+      .tooltip {{
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+      }}
+  
+      .tooltip .tooltiptext {{
+        visibility: hidden;
+        width: 400px;
+        background-color: #fff;
+        color: #333;
+        text-align: left;
+        border-radius: 5px;
+        padding: 10px;
+        position: absolute;
+        z-index: 1;
+        left: 50%; /* Center horizontally */
+        top: 0; /* Position above the image */
+        transform: translateX(-50%) translateY(-100%); /* Center tooltip box horizontally and move above the element */
+        opacity: 0;
+        transition: opacity 0.3s;
+        white-space: normal;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        font-size: 12px;
+      }}
+  
+      .tooltip:hover .tooltiptext {{
+        visibility: visible;
+        opacity: 1;
+      }}
+      </style>
+      <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
+          <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
+              <img src='{john_avatar_lpc}' style='width: 100%; height: auto; object-fit: contain;'>
+              <span class="tooltiptext">Meet John Santos, an aspiring Data Scientist with a background in Electrical Engineering. John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.</span>
+          </div>
+      </div>
+      """,
+      unsafe_allow_html=True
+  )
