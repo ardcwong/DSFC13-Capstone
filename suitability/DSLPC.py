@@ -452,17 +452,31 @@ with st.sidebar:
 
 with st.sidebar:
   # Call this function to load test answers at the beginning of your app (or when you need to test)
+  st.image('data/John.png', use_column_width=True)
+  st.markdown(
+      """
+      <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
+          <p style="font-size: 12px; color: #333;">
+              The classifier takes John through a series of questions—By answering questions about his education, skills, and career goals, 
+              the classifier quickly identifies that John is ready for the Data Science Fellowship (DSF). It even provides a personalized 
+              preparation plan, boosting John’s confidence in his path forward.
+          </p>
+      </div>
+      """,
+      unsafe_allow_html=True
+  )
+
+  
   name = st.selectbox("Choose a test user:", ["John Santos", "Emily Tan", "Raj Patel", "Lisa Kim", "Jao Cordero"])
   if st.button("Load Demo Answers", use_container_width = True, type = "primary"):
       load_test_answers_by_name(name)
       st.rerun()
-        
-with st.sidebar:
-    if st.toggle("Discover!"):
-        wf1, wf2 = st.columns([8,2])
-        with wf1:
-            with st.expander("Work Flow: How It Actually Works", expanded = True):
-                st.image('data/DSLPC_WorkFlow.png')
+
+  if st.toggle("Discover!"):
+      wf1, wf2 = st.columns([8,2])
+      with wf1:
+          with st.expander("Work Flow: How It Actually Works", expanded = True):
+              st.image('data/DSLPC_WorkFlow.png')
 
 ################################################## SIDE BAR ##################################################
 
@@ -581,50 +595,50 @@ if st.session_state.BeginAssessment == True:
 else: 
   suitability()      
   
-with st.sidebar:
-  st.markdown(
-      f"""
-      <style>
-      .tooltip {{
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-      }}
+# with st.sidebar:
+#   st.markdown(
+#       f"""
+#       <style>
+#       .tooltip {{
+#         position: relative;
+#         display: inline-block;
+#         cursor: pointer;
+#       }}
   
-      .tooltip .tooltiptext {{
-        visibility: hidden;
-        width: 250px;
-        background-color: #fff;
-        color: #333;
-        text-align: left;
-        border-radius: 5px;
-        padding: 10px;
-        position: absolute;
-        z-index: 1;
-        left: 50%; /* Center horizontally */
-        top: 100; /* Position above the image */
-        transform: translateX(-50%) translateY(-10%); /* Center tooltip box horizontally and move above the element */
-        opacity: 0;
-        transition: opacity 0.3s;
-        white-space: normal;
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-start;
-        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-        font-size: 12px;
-      }}
+#       .tooltip .tooltiptext {{
+#         visibility: hidden;
+#         width: 250px;
+#         background-color: #fff;
+#         color: #333;
+#         text-align: left;
+#         border-radius: 5px;
+#         padding: 10px;
+#         position: absolute;
+#         z-index: 1;
+#         left: 50%; /* Center horizontally */
+#         top: 100; /* Position above the image */
+#         transform: translateX(-50%) translateY(-10%); /* Center tooltip box horizontally and move above the element */
+#         opacity: 0;
+#         transition: opacity 0.3s;
+#         white-space: normal;
+#         display: flex;
+#         align-items: flex-end;
+#         justify-content: flex-start;
+#         box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+#         font-size: 12px;
+#       }}
   
-      .tooltip:hover .tooltiptext {{
-        visibility: visible;
-        opacity: 1;
-      }}
-      </style>
-      <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
-          <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
-              <img src='{st.session_state.john_avatar}' style='width: 100%; height: auto; object-fit: contain;'>
-              <span class="tooltiptext">The classifier takes John through a series of questions. By answering questions about his education, skills, and career goals, the classifier quickly identifies that John is ready for the Data Science Fellowship (DSF). It even provides a personalized preparation plan, boosting John’s confidence in his path forward.</span>
-          </div>
-      </div>
-      """,
-      unsafe_allow_html=True
-  )
+#       .tooltip:hover .tooltiptext {{
+#         visibility: visible;
+#         opacity: 1;
+#       }}
+#       </style>
+#       <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
+#           <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
+#               <img src='{st.session_state.john_avatar}' style='width: 100%; height: auto; object-fit: contain;'>
+#               <span class="tooltiptext">The classifier takes John through a series of questions. By answering questions about his education, skills, and career goals, the classifier quickly identifies that John is ready for the Data Science Fellowship (DSF). It even provides a personalized preparation plan, boosting John’s confidence in his path forward.</span>
+#           </div>
+#       </div>
+#       """,
+#       unsafe_allow_html=True
+#   )
