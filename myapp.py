@@ -541,7 +541,7 @@ def home():
                 
                     .tooltip .tooltiptext {{
                       visibility: hidden;
-                      width: 250px;
+                      width: 600px;
                       background-color: #fff;
                       color: #333;
                       text-align: left; /* Align text to the left */
@@ -559,7 +559,7 @@ def home():
                       align-items: flex-end; /* Align content to the bottom */
                       justify-content: flex-start; /* Align content to the left */
                       box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-                      font-size: 30px;
+                      font-size: 20px;
                     }}
                 
                     .tooltip:hover .tooltiptext {{
