@@ -541,7 +541,7 @@ def home():
                 
                     .tooltip .tooltiptext {{
                       visibility: hidden;
-                      width: 600px;
+                      width: 400px;
                       background-color: #fff;
                       color: #333;
                       text-align: left; /* Align text to the left */
