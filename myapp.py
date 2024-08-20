@@ -33,8 +33,64 @@ def load_local_css(file_name):
 #Load the local CSS file from the 'data' directory
 load_local_css("data/styles.css")
 
+@st.cache_data
+def john_avatar():
+  # Load the image and convert it to base64
+  with open('data/John.png', 'rb') as image_file_john:
+    encoded_string_john = base64.b64encode(image_file_john.read()).decode()
+  
+  # Construct the base64 image string for use in HTML
+  john_avatar = f'data:image/png;base64,{encoded_string_john}'
+  return john_avatar
 
-
+john_avatar = john_avatar()
+with st.sidebar:
+    st.markdown(
+        f"""
+        <style>
+        .tooltip {{
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+        }}
+    
+        .tooltip .tooltiptext {{
+          visibility: hidden;
+          width: 250px;
+          background-color: #fff;
+          color: #333;
+          text-align: left; /* Align text to the left */
+          border-radius: 5px;
+          padding: 10px;
+          position: absolute;
+          z-index: 1;
+          left: 100%; /* Position next to the image */
+          top: 50%;
+          transform: translateX(20%) translateY(-50%); /* Center tooltip box */
+          opacity: 0;
+          transition: opacity 0.3s;
+          white-space: normal; /* Allow text to wrap */
+          display: flex;
+          align-items: flex-end; /* Align content to the bottom */
+          justify-content: flex-start; /* Align content to the left */
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+          font-size: 12px;
+        }}
+    
+        .tooltip:hover .tooltiptext {{
+          visibility: visible;
+          opacity: 1;
+        }}
+        </style>
+        <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
+            <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
+                <img src='{john_avatar}' style='width: 100%; height: auto; object-fit: contain;'>
+                <span class="tooltiptext">Meet John Santos, an aspiring Data Scientist with a background in Electrical Engineering. John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.</span>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 ########################################################
 # CHANGE BACKGROUND USING LOCAL PNG
 ########################################################
