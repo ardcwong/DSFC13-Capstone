@@ -543,6 +543,19 @@ def home():
                     """,
                     unsafe_allow_html=True
                 )
+                st.markdown(
+                    """
+                    <div style="font-family: 'Arial', sans-serif; padding: 20px; background-color: #E8FCF3; border-radius: 10px; border: 1px solid #ddd;">
+                        <p style="font-size: 18px; color: #333;">
+                            That’s where <strong>EskwelApps</strong> comes in—a suite of tools designed to guide learners like John from assessing their 
+                            readiness to accessing the resources they need to succeed. Let’s follow John’s journey through EskwelApps.
+                        </p>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+
                 # st.markdown("""<br><br><br>Meet John Santos, an aspiring Data Scientist with a background in Electrical Engineering. John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.""", unsafe_allow_html = True)
                 # st.markdown(
                 #     f"""
