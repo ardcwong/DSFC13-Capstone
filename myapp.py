@@ -532,6 +532,17 @@ def home():
             with j1:
                 st.image('data/John.png', use_column_width=True)
             with j2:
+                st.markdown(
+                    """
+                    <div style="font-family: 'Arial', sans-serif; padding: 20px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
+                        <p style="font-size: 18px; color: #333;">
+                            <strong>Meet John Santos</strong>, an aspiring Data Scientist with a background in Electrical Engineering. 
+                            John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.
+                        </p>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
                 st.markdown("""<br><br><br>Meet John Santos, an aspiring Data Scientist with a background in Electrical Engineering. John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.""", unsafe_allow_html = True)
                 # st.markdown(
                 #     f"""
