@@ -600,7 +600,7 @@ with st.sidebar:
           position: absolute;
           z-index: 1;
           left: 50%; /* Position centered above the element */
-          bottom: -10%; /* Position the tooltip on top */
+          bottom: -40%; /* Position the tooltip on top */
           transform: translateX(-50%) translateY(-10px); /* Center tooltip horizontally and add a small offset vertically */
           opacity: 0;
           transition: opacity 0.3s;
@@ -609,7 +609,7 @@ with st.sidebar:
           align-items: flex-end; /* Align content to the bottom */
           justify-content: flex-start; /* Align content to the left */
           box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-          font-size: 10px;
+          font-size: 12px;
         }}
     
         .tooltip:hover .tooltiptext {{
