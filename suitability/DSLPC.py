@@ -339,7 +339,7 @@ def load_test_answers_by_name(name):
             "Can commit 20-25 hours per week", "Thrives in fast-paced, challenging environments", "Enjoys a mix of both hands-on projects and theoretical understanding",
             "Completed several MOOCs on machine learning", "Prefers hybrid approach, combining classroom and online", "Appreciates community support and networking opportunities",
             "Transition into a Data Scientist or Machine Learning Engineer role", "Looking to advance and specialize in data science", "Interested in applied roles with a focus on innovation",
-            "Aims to gain advanced data science skills", "Yes", "No, can focus full-time on studies", "Strong interest in machine learning and predictive modeling",
+            "Aims to gain advanced data science skills", "No", "Yes", "Strong interest in machine learning and predictive modeling",
             "Uses a systematic approach, leveraging programming and mathematical models"
         ],
         "Emily Tan": [
