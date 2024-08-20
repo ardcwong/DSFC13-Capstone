@@ -620,7 +620,7 @@ st.markdown(
     </style>
     <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
         <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
-            <img src='{john_avatar}' style='width: 100%; height: auto; object-fit: contain;'>
+            <img src='{john_avatar_lpc}' style='width: 100%; height: auto; object-fit: contain;'>
             <span class="tooltiptext">Meet John Santos, an aspiring Data Scientist with a background in Electrical Engineering. John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.</span>
         </div>
     </div>
