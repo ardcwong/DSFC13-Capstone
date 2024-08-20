@@ -90,7 +90,7 @@ def john_avatar():
   john_avatar = f'data:image/png;base64,{encoded_string_john}'
   return john_avatar
 
-john_avatar = john_avatar()
+john_avatar_lpc = john_avatar()
 
 with st.sidebar:
   st.markdown(
