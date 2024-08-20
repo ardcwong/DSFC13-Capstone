@@ -549,7 +549,7 @@ def home():
                       padding: 10px;
                       position: absolute;
                       z-index: 1;
-                      left: 100%; /* Position next to the image */
+                      left: 80%; /* Position next to the image */
                       top: 50%;
                       transform: translateX(20%) translateY(-50%); /* Center tooltip box */
                       opacity: 0;
