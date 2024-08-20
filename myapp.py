@@ -526,7 +526,7 @@ def home():
                 st.switch_page("Pathfinder/feedback_summary.py")  
         
   
- st.markdown(
+st.markdown(
     f"""
     <style>
     .tooltip {{
