@@ -525,55 +525,55 @@ def home():
             if st.button("Launch", 3, use_container_width = True, type = "primary"):
                 st.switch_page("Pathfinder/feedback_summary.py")  
         
-with st.sidebar: 
-    j1,j2 = st.columns([2,1])
-    with j1:
-        st.markdown(
-            f"""
-            <style>
-            .tooltip {{
-              position: relative;
-              display: inline-block;
-              cursor: pointer;
-            }}
-        
-            .tooltip .tooltiptext {{
-              visibility: hidden;
-              width: 250px;
-              background-color: #fff;
-              color: #333;
-              text-align: left; /* Align text to the left */
-              border-radius: 5px;
-              padding: 10px;
-              position: absolute;
-              z-index: 1;
-              left: 100%; /* Position next to the image */
-              top: 50%;
-              transform: translateX(20%) translateY(-50%); /* Center tooltip box */
-              opacity: 0;
-              transition: opacity 0.3s;
-              white-space: normal; /* Allow text to wrap */
-              display: flex;
-              align-items: flex-end; /* Align content to the bottom */
-              justify-content: flex-start; /* Align content to the left */
-              box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-              font-size: 12px;
-            }}
-        
-            .tooltip:hover .tooltiptext {{
-              visibility: visible;
-              opacity: 1;
-            }}
-            </style>
-            <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
-                <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
-                    <img src='{john_avatar}' style='width: 100%; height: auto; object-fit: contain;'>
-                    <span class="tooltiptext">Meet John Santos, an aspiring Data Scientist with a background in Electrical Engineering. John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.</span>
+    with st.container(border =True):
+        j1,j2 = st.columns([1,1])
+        with j1:
+            st.markdown(
+                f"""
+                <style>
+                .tooltip {{
+                  position: relative;
+                  display: inline-block;
+                  cursor: pointer;
+                }}
+            
+                .tooltip .tooltiptext {{
+                  visibility: hidden;
+                  width: 250px;
+                  background-color: #fff;
+                  color: #333;
+                  text-align: left; /* Align text to the left */
+                  border-radius: 5px;
+                  padding: 10px;
+                  position: absolute;
+                  z-index: 1;
+                  left: 100%; /* Position next to the image */
+                  top: 50%;
+                  transform: translateX(20%) translateY(-50%); /* Center tooltip box */
+                  opacity: 0;
+                  transition: opacity 0.3s;
+                  white-space: normal; /* Allow text to wrap */
+                  display: flex;
+                  align-items: flex-end; /* Align content to the bottom */
+                  justify-content: flex-start; /* Align content to the left */
+                  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+                  font-size: 12px;
+                }}
+            
+                .tooltip:hover .tooltiptext {{
+                  visibility: visible;
+                  opacity: 1;
+                }}
+                </style>
+                <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
+                    <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
+                        <img src='{john_avatar}' style='width: 100%; height: auto; object-fit: contain;'>
+                        <span class="tooltiptext">Meet John Santos, an aspiring Data Scientist with a background in Electrical Engineering. John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.</span>
+                    </div>
                 </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+                """,
+                unsafe_allow_html=True
+            )
 ########################################################################
 #    MAIN PROGRAM
 ########################################################################
