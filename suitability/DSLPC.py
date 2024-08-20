@@ -109,7 +109,7 @@ with st.sidebar:
     
         .tooltip .tooltiptext {{
           visibility: hidden;
-          width: 200px;
+          width: 250px;
           background-color: #fff;
           color: #333;
           text-align: left; /* Align text to the left */
@@ -118,7 +118,7 @@ with st.sidebar:
           position: absolute;
           z-index: 1;
           left: 50%; /* Position centered above the element */
-          bottom: -50%; /* Position the tooltip on top */
+          bottom: -30%; /* Position the tooltip on top */
           transform: translateX(-50%) translateY(-10px); /* Center tooltip horizontally and add a small offset vertically */
           opacity: 0;
           transition: opacity 0.3s;
