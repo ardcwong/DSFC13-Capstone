@@ -602,8 +602,8 @@ with st.sidebar:
         position: absolute;
         z-index: 1;
         left: 50%; /* Center horizontally */
-        top: 80; /* Position above the image */
-        transform: translateX(-50%) translateY(10%); /* Center tooltip box horizontally and move above the element */
+        top: 100; /* Position above the image */
+        transform: translateX(-50%) translateY(-10%); /* Center tooltip box horizontally and move above the element */
         opacity: 0;
         transition: opacity 0.3s;
         white-space: normal;
