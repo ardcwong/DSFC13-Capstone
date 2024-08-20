@@ -109,7 +109,7 @@ with st.sidebar:
     
         .tooltip .tooltiptext {{
           visibility: hidden;
-          width: 400px;
+          width: 150px;
           background-color: #fff;
           color: #333;
           text-align: left; /* Align text to the left */
@@ -127,7 +127,7 @@ with st.sidebar:
           align-items: flex-end; /* Align content to the bottom */
           justify-content: flex-start; /* Align content to the left */
           box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-          font-size: 20px;
+          font-size: 10px;
         }}
     
         .tooltip:hover .tooltiptext {{
