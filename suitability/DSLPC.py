@@ -83,17 +83,6 @@ def remove_stopwords(response):
 
 
 
-@st.cache_data
-def john_avatar():
-  # Load the image and convert it to base64
-  with open('data/John.png', 'rb') as image_file_john:
-    encoded_string_john = base64.b64encode(image_file_john.read()).decode()
-  
-  # Construct the base64 image string for use in HTML
-  john_avatar = f'data:image/png;base64,{encoded_string_john}'
-  return john_avatar
-
-john_avatar = john_avatar()
 
 
 
@@ -577,7 +566,19 @@ if st.session_state.BeginAssessment == True:
               st.session_state.BeginAssessment = False
               st.rerun()
 else: 
-  suitability()               
+  suitability()      
+  
+@st.cache_data
+def john_avatar():
+  # Load the image and convert it to base64
+  with open('data/John.png', 'rb') as image_file_john:
+    encoded_string_john = base64.b64encode(image_file_john.read()).decode()
+  
+  # Construct the base64 image string for use in HTML
+  john_avatar = f'data:image/png;base64,{encoded_string_john}'
+  return john_avatar
+
+john_avatar = john_avatar()
 
 with st.sidebar:
     st.markdown(
