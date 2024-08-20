@@ -593,7 +593,7 @@ with st.sidebar:
   
       .tooltip .tooltiptext {{
         visibility: hidden;
-        width: 400px;
+        width: 250px;
         background-color: #fff;
         color: #333;
         text-align: left;
@@ -602,7 +602,7 @@ with st.sidebar:
         position: absolute;
         z-index: 1;
         left: 50%; /* Center horizontally */
-        top: -50; /* Position above the image */
+        top: -100; /* Position above the image */
         transform: translateX(-50%) translateY(-100%); /* Center tooltip box horizontally and move above the element */
         opacity: 0;
         transition: opacity 0.3s;
