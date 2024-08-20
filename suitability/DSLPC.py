@@ -349,15 +349,15 @@ def get_classification():
 def load_test_answers_by_name(name):
     # Define the updated answers for each person
     test_answers = {
-        "Maria Cruz": [
-            "Bachelor’s in Business Administration", "No", "Basic statistics", "Limited, just basic understanding of Python",
-            "Basic knowledge from online courses in Excel and SQL", "Proficient in Excel, basic knowledge of SQL", "Basic", "No, currently working as a marketing assistant",
-            "Analyzed customer survey data using Excel for a marketing campaign", "Prefers structured learning with deadlines", "Can commit 10-15 hours per week",
-            "Prefers moderate-paced learning", "Prefers hands-on learning", "Completed a course in digital marketing on Coursera", "Prefers online learning",
-            "Works well independently but appreciates occasional group work", "Transition into a data analyst role in the marketing industry", "Looking to switch careers",
-            "Interested in applied roles like Data Analyst", "Looking to gain foundational skills", "No", "Yes, currently working full-time",
-            "Interested in data visualization and marketing analytics", "Breaks down problems into smaller tasks, uses Excel for analysis"
-        ],
+        # "Maria Cruz": [
+        #     "Bachelor’s in Business Administration", "No", "Basic statistics", "Limited, just basic understanding of Python",
+        #     "Basic knowledge from online courses in Excel and SQL", "Proficient in Excel, basic knowledge of SQL", "Basic", "No, currently working as a marketing assistant",
+        #     "Analyzed customer survey data using Excel for a marketing campaign", "Prefers structured learning with deadlines", "Can commit 10-15 hours per week",
+        #     "Prefers moderate-paced learning", "Prefers hands-on learning", "Completed a course in digital marketing on Coursera", "Prefers online learning",
+        #     "Works well independently but appreciates occasional group work", "Transition into a data analyst role in the marketing industry", "Looking to switch careers",
+        #     "Interested in applied roles like Data Analyst", "Looking to gain foundational skills", "No", "Yes, currently working full-time",
+        #     "Interested in data visualization and marketing analytics", "Breaks down problems into smaller tasks, uses Excel for analysis"
+        # ],
         "John Santos": [
             "Master’s in Electrical Engineering", "Yes, Electrical Engineering", "Extensive coursework in calculus, and statistics", "Proficient in Python, MATLAB, and C++",
             "Intermediate; practical experience with machine learning", "Experienced with SQL, Excel, and Tableau", "Advanced",
@@ -378,17 +378,17 @@ def load_test_answers_by_name(name):
             "Looking to gain foundational data science skills", "Possibly, but unsure", "Yes, working part-time and assisting in research",
             "Interested in data visualization for psychological research", "Relies on research and collaboration with peers to find solutions"
         ],
-        "Raj Patel": [
-            "Bachelor’s in Computer Science", "Yes, Computer Science", "Extensive coursework in mathematics and statistics", "Proficient in Python, Java, and SQL",
-            "Advanced; coursework and practical projects", "Experienced with SQL, Python, and Power BI", "Advanced",
-            "Worked as a software developer with a focus on data engineering", "Developed a recommendation system using collaborative filtering for an e-commerce site",
-            "Comfortable with both, but prefers self-paced learning", "Can commit 20-25 hours per week", "Enjoys fast-paced environments with challenging problems",
-            "Prefers a mix of hands-on and theoretical learning", "Completed several online courses in machine learning", "Prefers online learning with occasional classroom sessions",
-            "Appreciates community support but works well independently", "Transition into a Data Scientist or Machine Learning Engineer role in a tech company",
-            "Looking to advance within the data science field", "Interested in applied roles with a focus on cutting-edge technology",
-            "Aims to gain advanced skills in data science", "Yes", "No, fully committed to learning", "Fascinated by machine learning and artificial intelligence",
-            "Breaks down the problem into components, uses programming and algorithms to solve"
-        ],
+        # "Raj Patel": [
+        #     "Bachelor’s in Computer Science", "Yes, Computer Science", "Extensive coursework in mathematics and statistics", "Proficient in Python, Java, and SQL",
+        #     "Advanced; coursework and practical projects", "Experienced with SQL, Python, and Power BI", "Advanced",
+        #     "Worked as a software developer with a focus on data engineering", "Developed a recommendation system using collaborative filtering for an e-commerce site",
+        #     "Comfortable with both, but prefers self-paced learning", "Can commit 20-25 hours per week", "Enjoys fast-paced environments with challenging problems",
+        #     "Prefers a mix of hands-on and theoretical learning", "Completed several online courses in machine learning", "Prefers online learning with occasional classroom sessions",
+        #     "Appreciates community support but works well independently", "Transition into a Data Scientist or Machine Learning Engineer role in a tech company",
+        #     "Looking to advance within the data science field", "Interested in applied roles with a focus on cutting-edge technology",
+        #     "Aims to gain advanced skills in data science", "Yes", "No, fully committed to learning", "Fascinated by machine learning and artificial intelligence",
+        #     "Breaks down the problem into components, uses programming and algorithms to solve"
+        # ],
         "Lisa Kim": [
             "Bachelor’s in Economics", "Yes, Economics", "Coursework in statistics and econometrics", "Basic knowledge of Python and R",
             "Basic; knowledge from courses in econometrics and data analysis", "Proficient in Excel, basic knowledge of R", "Intermediate",
