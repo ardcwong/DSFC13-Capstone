@@ -57,7 +57,7 @@ def ai_avatar_lpc():
   # Construct the base64 image string for use in HTML
   avatar_lpc = f'data:image/png;base64,{avatar_base64_lpc}'
   return avatar_lpc
-st.session_state.john_avatar
+
 avatar_lpc = ai_avatar_lpc()
 
 def show_ai_response_lpc(message_text,avatar_lpc):
