@@ -118,7 +118,7 @@ with st.sidebar:
           position: absolute;
           z-index: 1;
           left: 50%; /* Position centered above the element */
-          bottom: -80%; /* Position the tooltip on top */
+          bottom: -50%; /* Position the tooltip on top */
           transform: translateX(-50%) translateY(-10px); /* Center tooltip horizontally and add a small offset vertically */
           opacity: 0;
           transition: opacity 0.3s;
