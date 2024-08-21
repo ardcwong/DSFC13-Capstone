@@ -24,9 +24,10 @@ with st.sidebar:
       """
       <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
           <p style="font-size: 11px; color: #333;">
-              After applying, John eagerly awaits his Pathfinder Exam results. Once the results are in, he <strong>heads to the Pathfinder Assessment Report page and enters his Reference Number</strong>. 
-              He discovers he scored 75% in Pre-Data Science, showing a solid foundation. The report suggests areas for improvement, like advanced Python syntax and data manipulation, 
-              giving John clear steps to focus on before the fellowship.
+              After applying, John eagerly awaits his Pathfinder Exam results. Once the results are in, he <strong>heads to the Pathfinder Assessment Report 
+              page and enters his Reference Number</strong>. He discovers he scored 75% in Pre-Data Science, showing a solid foundation. The report encourages 
+              John to deepen his knowledge by exploring advanced Python topics and applying more complex data manipulation methods in Pandas.
+              With these insights, John knows exactly where to focus his efforts to ensure he’s fully prepared for the challenges ahead.
           </p>
       </div>
       """,
