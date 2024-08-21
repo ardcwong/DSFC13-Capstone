@@ -456,7 +456,7 @@ with st.sidebar:
   st.markdown(
       """
       <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
-          <p style="font-size: 12px; color: #333;">
+          <p style="font-size: 11px; color: #333;">
               The classifier takes John through a series of questions—By answering questions about his education, skills, and career goals, 
               the classifier quickly identifies that John is ready for the Data Science Fellowship (DSF). It even provides a personalized 
               preparation plan, boosting John’s confidence in his path forward.
