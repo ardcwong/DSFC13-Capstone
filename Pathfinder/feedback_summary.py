@@ -17,6 +17,27 @@ creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
 client = gspread.authorize(creds)
 
 
+with st.sidebar:
+  # Call this function to load test answers at the beginning of your app (or when you need to test)
+  st.image('data/John.png', use_column_width=True)
+  st.markdown(
+      """
+      <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
+          <p style="font-size: 11px; color: #333;">
+              After applying, John eagerly awaits his Pathfinder Exam results. Once the results are in, he <strong>heads to the Pathfinder Assessment Report page and enters his Reference Number</strong>. 
+              He discovers he scored 75% in Pre-Data Science, showing a solid foundation. The report suggests areas for improvement, like advanced Python syntax and data manipulation, 
+              giving John clear steps to focus on before the fellowship.
+          </p>
+      </div>
+      """,
+      unsafe_allow_html=True
+  )
+
+
+
+
+
+
 ########################################################
 ##### Function to convert HTML content to PDF
 ########################################################
