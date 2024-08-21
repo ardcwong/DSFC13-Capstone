@@ -16,6 +16,25 @@ credentials = st.secrets["gcp_service_account"]
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
 client = gspread.authorize(creds)
+
+with st.sidebar:
+  # Call this function to load test answers at the beginning of your app (or when you need to test)
+  st.image('data/John.png', use_column_width=True)
+  st.markdown(
+      """
+      <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
+          <p style="font-size: 11px; color: #333;">
+              John is now officially enrolled in the Data Science Fellowship, and EskwelApps continues to support him. One of the first things he accesses is the Course Outline.
+              The Course Outline is more than just a list of topics—it’s a roadmap. It’s divided into structured sprints, each with specific subtopics and <strong>learning objectives</strong>. John sees that the 
+              first sprint will dive deep into machine learning, exactly what he’s been looking forward to. The outline also recommends <strong>datasets</strong> he can use for hands-on practice, ensuring he’s 
+              not just learning but also applying his knowledge.
+          </p>
+      </div>
+      """,
+      unsafe_allow_html=True
+  )
+
+
 # Function to collect all markdowns into a single HTML content block
 def collect_all_markdowns(markdowns):
     html_content = ""
