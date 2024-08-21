@@ -229,22 +229,22 @@ with st.sidebar:
         st.session_state.question_pi = ""
         st.rerun()
       
-with st.sidebar:
-  # Call this function to load test answers at the beginning of your app (or when you need to test)
-  st.image('data/John.png', use_column_width=True)
-  st.markdown(
-      """
-      <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
-          <p style="font-size: 11px; color: #333;">
-              "To learn more, John turns to the Program Information Bot. He asks, <strong>'How do I apply?'</strong> The bot provides him with the steps he needs to follow, 
-              including taking the Pathfinder Assessment, scheduling a Fit Interview, and selecting a payment option. John then follows up with, 
-              <strong>'For step 2, what should I expect, and how can I best prepare for it?'</strong> The bot explains that the Fit Interview will focus on his background, 
-              goals, and alignment with the program. It gives John guidance on how to effectively prepare, helping him feel confident and ready to make a strong impression."
-          </p>
-      </div>
-      """,
-      unsafe_allow_html=True
-  )
+# with st.sidebar:
+#   # Call this function to load test answers at the beginning of your app (or when you need to test)
+#   st.image('data/John.png', use_column_width=True)
+#   st.markdown(
+#       """
+#       <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
+#           <p style="font-size: 11px; color: #333;">
+#               "To learn more, John turns to the Program Information Bot. He asks, <strong>'How do I apply?'</strong> The bot provides him with the steps he needs to follow, 
+#               including taking the Pathfinder Assessment, scheduling a Fit Interview, and selecting a payment option. John then follows up with, 
+#               <strong>'For step 2, what should I expect, and how can I best prepare for it?'</strong> The bot explains that the Fit Interview will focus on his background, 
+#               goals, and alignment with the program. It gives John guidance on how to effectively prepare, helping him feel confident and ready to make a strong impression."
+#           </p>
+#       </div>
+#       """,
+#       unsafe_allow_html=True
+#   )
         
 user_query = st.chat_input("Ask Eskwelabs")
 if user_query:
