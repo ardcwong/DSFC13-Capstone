@@ -228,7 +228,22 @@ with st.sidebar:
         st.session_state.button_clicked_pi = False
         st.session_state.question_pi = ""
         st.rerun()
-
+      
+with st.sidebar:
+  # Call this function to load test answers at the beginning of your app (or when you need to test)
+  st.image('data/John.png', use_column_width=True)
+  st.markdown(
+      """
+      <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
+          <p style="font-size: 11px; color: #333;">
+              To learn more, John turns to the <strong>Program Information Bot</strong>. He starts by asking about the bootcamp schedule. The bot provides the details, 
+              helping John plan his time. Satisfied, John asks about the application process and receives a clear outline of the steps he needs to take. 
+              Armed with this information, John is ready to apply.
+          </p>
+      </div>
+      """,
+      unsafe_allow_html=True
+  )
         
 user_query = st.chat_input("Ask Eskwelabs")
 if user_query:
