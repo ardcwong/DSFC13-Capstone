@@ -275,62 +275,62 @@ def home():
             """,
             unsafe_allow_html=True
             )
-    jj0, jj1, jj2 = st.columns([0.3, 3,0.3])
+    # jj0, jj1, jj2 = st.columns([0.3, 3,0.3])
     
-    with jj1:
-        st.markdown("""<br>""", unsafe_allow_html=True)
-        with st.container(border =True):
-            j1,j2 = st.columns([1,1.5])
-            with j1:
-                st.image('data/John.png', use_column_width=True)
-            with j2:
-                st.markdown(
-                    """
-                    <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
-                        <p style="font-size: 14px; color: #333;">
-                            Meet <strong>John Santos</strong>, an aspiring Data Scientist with a background in Electrical Engineering. 
-                            John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.
-                        </p>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
-                st.markdown(
-                    """
-                        <p style="font-size: 2px; color: #333;">
-                        </p>
-                    """,
-                    unsafe_allow_html=True
-                )
-                st.markdown(
-                    """
-                    <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #E8FCF3; border-radius: 10px; border: 1px solid #ddd;">
-                        <p style="font-size: 14px; color: #333;">
-                            That’s where <strong>EskwelApps</strong> comes in—a suite of tools designed to guide learners like John from assessing their 
-                            readiness to accessing the resources they need to succeed.
-                        </p>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
-                st.markdown(
-                    """
-                        <p style="font-size: 2px; color: #333;">
-                        </p>
-                    """,
-                    unsafe_allow_html=True
-                )
-                st.markdown(
-                    """
-                    <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
-                        <p style="font-size: 14px; color: #333;">
-                            <strong>John’s journey begins with uncertainty.</strong> With his extensive background, he wonders if the <strong>Data Science Fellowship (DSF)</strong> is the right fit or 
-                            if he should explore another path. To find out, John turns to the <strong>Data Science Learning Path Classifier</strong>.
-                        </p>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
+    # with jj1:
+    #     st.markdown("""<br>""", unsafe_allow_html=True)
+    #     with st.container(border =True):
+    #         j1,j2 = st.columns([1,1.5])
+    #         with j1:
+    #             st.image('data/John.png', use_column_width=True)
+    #         with j2:
+    #             st.markdown(
+    #                 """
+    #                 <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
+    #                     <p style="font-size: 14px; color: #333;">
+    #                         Meet <strong>John Santos</strong>, an aspiring Data Scientist with a background in Electrical Engineering. 
+    #                         John’s eager to take the next step in his career, seeking a program that challenges him and prepares him for advanced roles in data science.
+    #                     </p>
+    #                 </div>
+    #                 """,
+    #                 unsafe_allow_html=True
+    #             )
+    #             st.markdown(
+    #                 """
+    #                     <p style="font-size: 2px; color: #333;">
+    #                     </p>
+    #                 """,
+    #                 unsafe_allow_html=True
+    #             )
+    #             st.markdown(
+    #                 """
+    #                 <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #E8FCF3; border-radius: 10px; border: 1px solid #ddd;">
+    #                     <p style="font-size: 14px; color: #333;">
+    #                         That’s where <strong>EskwelApps</strong> comes in—a suite of tools designed to guide learners like John from assessing their 
+    #                         readiness to accessing the resources they need to succeed.
+    #                     </p>
+    #                 </div>
+    #                 """,
+    #                 unsafe_allow_html=True
+    #             )
+    #             st.markdown(
+    #                 """
+    #                     <p style="font-size: 2px; color: #333;">
+    #                     </p>
+    #                 """,
+    #                 unsafe_allow_html=True
+    #             )
+    #             st.markdown(
+    #                 """
+    #                 <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
+    #                     <p style="font-size: 14px; color: #333;">
+    #                         <strong>John’s journey begins with uncertainty.</strong> With his extensive background, he wonders if the <strong>Data Science Fellowship (DSF)</strong> is the right fit or 
+    #                         if he should explore another path. To find out, John turns to the <strong>Data Science Learning Path Classifier</strong>.
+    #                     </p>
+    #                 </div>
+    #                 """,
+    #                 unsafe_allow_html=True
+    #             )
     if st.session_state.role in ["Ops"]:
         om0, om1, om2, om3 = st.columns([0.3, 1.5, 1.5,0.3])
         with om1:
