@@ -450,7 +450,7 @@ with st.sidebar:
         st.session_state.BeginAssessment = True
         st.rerun()       
 
-# with st.sidebar:
+with st.sidebar:
 #   # Call this function to load test answers at the beginning of your app (or when you need to test)
 #   st.image('data/John.png', use_column_width=True)
 #   st.markdown(
