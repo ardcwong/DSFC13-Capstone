@@ -682,7 +682,7 @@ if st.session_state.role in [None, "Fellow","Mentor","Ops","Fellow (Developer)"]
 if st.session_state.role in [None, "Ops","Fellow (Developer)"]:
     page_dict["Ops"] = ops_apps
 
-if st.session_state.role in [None, "Fellow", "Mentor", "Ops","Fellow (Developer)"]:
+if st.session_state.role in ["Fellow", "Mentor", "Ops","Fellow (Developer)"]:
     account_apps = log_out
 elif st.session_state.role in [None]:
     account_apps = log_in
