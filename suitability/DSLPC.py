@@ -450,21 +450,21 @@ with st.sidebar:
         st.session_state.BeginAssessment = True
         st.rerun()       
 
-with st.sidebar:
-  # Call this function to load test answers at the beginning of your app (or when you need to test)
-  st.image('data/John.png', use_column_width=True)
-  st.markdown(
-      """
-      <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
-          <p style="font-size: 11px; color: #333;">
-              The classifier takes John through a series of questions—By answering questions about his education, skills, and career goals, 
-              the classifier quickly identifies that John is ready for the Data Science Fellowship (DSF). It even provides a personalized 
-              preparation plan, boosting John’s confidence in his path forward.
-          </p>
-      </div>
-      """,
-      unsafe_allow_html=True
-  )
+# with st.sidebar:
+#   # Call this function to load test answers at the beginning of your app (or when you need to test)
+#   st.image('data/John.png', use_column_width=True)
+#   st.markdown(
+#       """
+#       <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
+#           <p style="font-size: 11px; color: #333;">
+#               The classifier takes John through a series of questions—By answering questions about his education, skills, and career goals, 
+#               the classifier quickly identifies that John is ready for the Data Science Fellowship (DSF). It even provides a personalized 
+#               preparation plan, boosting John’s confidence in his path forward.
+#           </p>
+#       </div>
+#       """,
+#       unsafe_allow_html=True
+#   )
 
   
   name = st.selectbox("Choose a test user:", ["John Santos", "Emily Tan", "Raj Patel", "Lisa Kim", "Jao Cordero"])
