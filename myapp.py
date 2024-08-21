@@ -307,7 +307,7 @@ def home():
                     <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #E8FCF3; border-radius: 10px; border: 1px solid #ddd;">
                         <p style="font-size: 14px; color: #333;">
                             That’s where <strong>EskwelApps</strong> comes in—a suite of tools designed to guide learners like John from assessing their 
-                            readiness to accessing the resources they need to succeed. Let’s follow John’s journey through EskwelApps.
+                            readiness to accessing the resources they need to succeed.
                         </p>
                     </div>
                     """,
