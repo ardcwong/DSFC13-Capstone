@@ -677,9 +677,9 @@ if st.session_state.role in [None, "Fellow", "Mentor","Ops","Fellow (Developer)"
     page_dict["Main"] = main_apps
 # if st.session_state.role in [None,"Aspiring Student", "Fellow", "Mentor"]:
 #     page_dict["PathFinder"] = pf_apps
-if st.session_state.role in [None, "Fellow","Mentor","Ops","Fellow (Developer)"]:
+if st.session_state.role in ["Fellow","Mentor","Ops","Fellow (Developer)"]:
     page_dict["Data Science Fellowship"] = dsf_apps
-if st.session_state.role in [None, "Ops","Fellow (Developer)"]:
+if st.session_state.role in ["Ops","Fellow (Developer)"]:
     page_dict["Ops"] = ops_apps
 
 if st.session_state.role in ["Fellow", "Mentor", "Ops","Fellow (Developer)"]:
