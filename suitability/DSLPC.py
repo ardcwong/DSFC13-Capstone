@@ -93,20 +93,6 @@ if 'john_avatar' not in st.session_state:
     st.session_state.john_avatar = john_avatar()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ########################################################
 # SUITABILITY
 ########################################################
@@ -472,11 +458,11 @@ with st.sidebar:
       load_test_answers_by_name(name)
       st.rerun()
 
-  if st.toggle("Discover!"):
-      wf1, wf2 = st.columns([8,2])
-      with wf1:
-          with st.expander("Work Flow: How It Actually Works", expanded = True):
-              st.image('data/DSLPC_WorkFlow.png')
+  # if st.toggle("Discover!"):
+  #     wf1, wf2 = st.columns([8,2])
+  #     with wf1:
+  #         with st.expander("Work Flow: How It Actually Works", expanded = True):
+  #             st.image('data/DSLPC_WorkFlow.png')
 
 ################################################## SIDE BAR ##################################################
 
