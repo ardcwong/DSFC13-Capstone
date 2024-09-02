@@ -24,11 +24,8 @@ def user_avatar_lpc():
   # Load the image and convert it to base64
   with open('data/avatar_user.png', 'rb') as image_file_user:
     encoded_string_user = base64.b64encode(image_file_user.read()).decode()
-  # Base64 encoded image string from the previous step
-  avatar_base64_user = encoded_string_user  # This is the base64 string you got earlier
-  
   # Construct the base64 image string for use in HTML
-  avatar_url_user = f'data:image/png;base64,{avatar_base64_user}'
+  avatar_url_user = f'data:image/png;base64,{encoded_string_user}'
   return avatar_url_user
 
 avatar_url_user = user_avatar_lpc()
@@ -51,11 +48,8 @@ def ai_avatar_lpc():
   # Load the image and convert it to base64
   with open('data/avatar_ai_lpc.png', 'rb') as image_file_lpc:
     encoded_string_lpc = base64.b64encode(image_file_lpc.read()).decode()
-  # Base64 encoded image string from the previous step
-  avatar_base64_lpc = encoded_string_lpc  # This is the base64 string you got earlier
-  
   # Construct the base64 image string for use in HTML
-  avatar_lpc = f'data:image/png;base64,{avatar_base64_lpc}'
+  avatar_lpc = f'data:image/png;base64,{encoded_string_lpc}'
   return avatar_lpc
 
 avatar_lpc = ai_avatar_lpc()
@@ -436,36 +430,11 @@ with st.sidebar:
         st.session_state.BeginAssessment = True
         st.rerun()       
 
-with st.sidebar:
-#   # Call this function to load test answers at the beginning of your app (or when you need to test)
-#   st.image('data/John.png', use_column_width=True)
-#   st.markdown(
-#       """
-#       <div style="font-family: 'Arial', sans-serif; padding: 10px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
-#           <p style="font-size: 11px; color: #333;">
-#               The classifier takes John through a series of questions—By answering questions about his education, skills, and career goals, 
-#               the classifier quickly identifies that John is ready for the Data Science Fellowship (DSF). It even provides a personalized 
-#               preparation plan, boosting John’s confidence in his path forward.
-#           </p>
-#       </div>
-#       """,
-#       unsafe_allow_html=True
-#   )
-
-  
+with st.sidebar: 
   name = st.selectbox("Choose a test user:", ["John Santos", "Emily Tan", "Raj Patel", "Lisa Kim", "Jao Cordero"])
   if st.button("Load Demo Answers", use_container_width = True, type = "primary"):
       load_test_answers_by_name(name)
       st.rerun()
-
-  # if st.toggle("Discover!"):
-  #     wf1, wf2 = st.columns([8,2])
-  #     with wf1:
-  #         with st.expander("Work Flow: How It Actually Works", expanded = True):
-  #             st.image('data/DSLPC_WorkFlow.png')
-
-################################################## SIDE BAR ##################################################
-
 
 ################################################ MAIN PROGRAM ################################################
 # Main logic
@@ -497,7 +466,6 @@ else:
             st.session_state.classification = True
             st.rerun()
     
-  
 col_main1, col_main2, col_main3 = st.columns([1,4,1])
 with col_main2:
   st.markdown("""<h1 style='text-align: center;'>Data Science Learning Path Classifier</h1>""", unsafe_allow_html=True)
@@ -580,51 +548,3 @@ if st.session_state.BeginAssessment == True:
               st.rerun()
 else: 
   suitability()      
-  
-# with st.sidebar:
-#   st.markdown(
-#       f"""
-#       <style>
-#       .tooltip {{
-#         position: relative;
-#         display: inline-block;
-#         cursor: pointer;
-#       }}
-  
-#       .tooltip .tooltiptext {{
-#         visibility: hidden;
-#         width: 250px;
-#         background-color: #fff;
-#         color: #333;
-#         text-align: left;
-#         border-radius: 5px;
-#         padding: 10px;
-#         position: absolute;
-#         z-index: 1;
-#         left: 50%; /* Center horizontally */
-#         top: 100; /* Position above the image */
-#         transform: translateX(-50%) translateY(-10%); /* Center tooltip box horizontally and move above the element */
-#         opacity: 0;
-#         transition: opacity 0.3s;
-#         white-space: normal;
-#         display: flex;
-#         align-items: flex-end;
-#         justify-content: flex-start;
-#         box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-#         font-size: 12px;
-#       }}
-  
-#       .tooltip:hover .tooltiptext {{
-#         visibility: visible;
-#         opacity: 1;
-#       }}
-#       </style>
-#       <div style='display: flex; align-items: center; justify-content: center; width: 100%;'>
-#           <div class='tooltip' style='flex-shrink: 0; width: 100%;'>
-#               <img src='{st.session_state.john_avatar}' style='width: 100%; height: auto; object-fit: contain;'>
-#               <span class="tooltiptext">The classifier takes John through a series of questions. By answering questions about his education, skills, and career goals, the classifier quickly identifies that John is ready for the Data Science Fellowship (DSF). It even provides a personalized preparation plan, boosting John’s confidence in his path forward.</span>
-#           </div>
-#       </div>
-#       """,
-#       unsafe_allow_html=True
-#   )
