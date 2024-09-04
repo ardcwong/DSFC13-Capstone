@@ -67,28 +67,34 @@ def show_ai_response_lpc(message_text,avatar_lpc):
   </div>
   """, unsafe_allow_html=True)
 
-def remove_stopwords(response):
-    stop_words = set(stopwords.words('english'))
-    word_tokens = word_tokenize(response)
-    filtered_response = [word for word in word_tokens if word.lower() not in stop_words]
-    return ' '.join(filtered_response)
+# Google Sheets connection function
+def google_connection(client):
+    # Open the Google Sheet
+    spreadsheet = client.open("Data Science Learning Path Classifier")
+    return spreadsheet
 
+# Function to write feedback and chat history to Google Sheet
+def write_feedback_to_gsheet(spreadsheet, feedback, chat_history):
+    sheet = spreadsheet.sheet1
+    chat_history_list = pd.DataFrame(chat_history)[[1]].T.values.flatten().tolist()
+    sheet.append_row([str(datetime.now(philippines_timezone)), feedback] + chat_history_list)
+    return sheet
 
-@st.cache_data
-def john_avatar():
-  # Load the image and convert it to base64
-  with open('data/John.png', 'rb') as image_file_john:
-    encoded_string_john = base64.b64encode(image_file_john.read()).decode()
-  
-  # Construct the base64 image string for use in HTML
-  john_avatar = f'data:image/png;base64,{encoded_string_john}'
-  return john_avatar
-if 'john_avatar' not in st.session_state:       
-    st.session_state.john_avatar = john_avatar()
+# Initialize Google Sheets connection if not already in session state
+if "spreadsheet_DSLPC" not in st.session_state:
+    # Google Sheets setup using st.secrets
+    credentials = st.secrets["gcp_service_account"]  # Make sure to add your credentials in Streamlit secrets
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
+    client = gspread.authorize(creds)
+    st.session_state.spreadsheet_DSLPC = google_connection(client)
 
+def program_info_page_switch():
+    if st.button("Program Information",type="primary", use_container_width = True, help = "Go to Program Information page"):  
+        return st.switch_page("Program_Information/pi_app.py")
 
 ########################################################
-# SUITABILITY
+# QUESTIONS
 ########################################################
 questions = [
     # Educational Background & Experience
@@ -129,32 +135,6 @@ questions = [
     "How do you handle complex problem-solving and analytical tasks?"
 ]
 
-# Google Sheets connection function
-def google_connection(client):
-    # Open the Google Sheet
-    spreadsheet = client.open("Data Science Learning Path Classifier")
-    return spreadsheet
-
-# Function to write feedback and chat history to Google Sheet
-def write_feedback_to_gsheet(spreadsheet, feedback, chat_history):
-    sheet = spreadsheet.sheet1
-    chat_history_list = pd.DataFrame(chat_history)[[1]].T.values.flatten().tolist()
-    sheet.append_row([str(datetime.now(philippines_timezone)), feedback] + chat_history_list)
-    return sheet
-
-# Initialize Google Sheets connection if not already in session state
-if "spreadsheet_DSLPC" not in st.session_state:
-    # Google Sheets setup using st.secrets
-    credentials = st.secrets["gcp_service_account"]  # Make sure to add your credentials in Streamlit secrets
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_dict(credentials, scope)
-    client = gspread.authorize(creds)
-    st.session_state.spreadsheet_DSLPC = google_connection(client)
-
-def program_info_page_switch():
-    if st.button("Program Information",type="primary", use_container_width = True, help = "Go to Program Information page"):  
-        return st.switch_page("Program_Information/pi_app.py")
-
 
 if 'question_index' not in st.session_state:
     st.session_state.question_index = 0
@@ -184,15 +164,15 @@ def suitability():
         col_main11, col_main22, col_main33 = st.columns([1,4,1])    
         with col_main22:
           tab1, tab2 = st.tabs(["Suitability and Recommendation", "Your Responses"])
-          with tab2:
-              # Display the entire chat history with user responses on the right
-                for role, message in st.session_state.chat_history:
-                    if role == "User":
-                        show_user_answer_lpc(message,avatar_url_user)
-                    elif role == "AI":
-                        show_ai_response_lpc(message,avatar_lpc)
+          
+
+
+          # CLASSIFICATION AND POST CLASSIFICATION (FEEDBACK)
           with tab1:
+              # Show Classification
               show_ai_response_lpc(st.session_state.chat_history[-1][1],avatar_lpc)
+
+              # Feedback
               if st.session_state.feedback_up == 1:
                   show_ai_response_lpc("<b>You selected 👍🏻 Thanks for your feedback!</b>",avatar_lpc)
 
@@ -230,15 +210,18 @@ def suitability():
                   cola, colb, colc = st.columns([1,0.7,1])
                   with colb:
                       program_info_page_switch()
+                    
+          # Display the entire chat history in tab2     
+          with tab2: 
+              for role, message in st.session_state.chat_history:
+                  if role == "User":
+                      show_user_answer_lpc(message,avatar_url_user)
+                  elif role == "AI":
+                      show_ai_response_lpc(message,avatar_lpc)
 
     else:
         lpc1, lpc2, lpc3 = st.columns([1,4,1])
         with lpc2:
-            # Initialize the first question in the chat history if not already done
-            if st.session_state.question_index == 0 and not st.session_state.chat_history:
-                first_question = questions[st.session_state.question_index]
-                st.session_state.chat_history.append(("AI", first_question))
-    
             # Display the entire chat history with user responses on the right
             for role, message in st.session_state.chat_history:
                 if role == "User":
@@ -253,8 +236,6 @@ def display_question():
 
 # Function to get classification from OpenAI
 def get_classification():
-
-
     questions_responses = ""
     for i, question in enumerate(questions):
         questions_responses += f"{i+1}. {question}\n - Responses: {st.session_state.responses[i]}\n"
@@ -274,15 +255,15 @@ def get_classification():
       3. In the Data Science Fellowship (DSF), you can develop skills in machine learning, web scraping, big data analysis, Streamlit, network analytics, Python, and data ethics.
       4. Experience in machine learning algorithms is NOT required for Data Science Fellowship and Data Analytics Bootcamp.
     
-    Assess and classify my suitability for the following data science learning pathway: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway.
+    Assess and classify my  for the following data science learning pathway: Eskwelabs' Data Science Fellowship, Eskwelabs' Data Analytics Bootcamp, self-learning, or a master's degree, and recommend the most suitable learning pathway.
     If I am suitable for either Data Science Fellowship or Data Analytics Bootcamp, provide an assessment of my readiness for DSF, how I should prepare for DSF if I decided to apply, and suggest if I should consider to start first with DAB before DSF.
     
     Use this format for your response:
-    **1. Eskwelabs' Data Science Fellowship:** Suitability 
+    **1. Eskwelabs' Data Science Fellowship:**  
         \n **Assessment**: Explain
         \n **Recommendation**: 
         
-    **2. Eskwelabs' Data Analytics Bootcamp:** Suitability 
+    **2. Eskwelabs' Data Analytics Bootcamp:**  
         \n **Assessment**: Explain
         \n **Recommendation**:
         
@@ -331,15 +312,15 @@ def get_classification():
 def load_test_answers_by_name(name):
     # Define the updated answers for each person
     test_answers = {
-        # "Maria Cruz": [
-        #     "Bachelor’s in Business Administration", "No", "Basic statistics", "Limited, just basic understanding of Python",
-        #     "Basic knowledge from online courses in Excel and SQL", "Proficient in Excel, basic knowledge of SQL", "Basic", "No, currently working as a marketing assistant",
-        #     "Analyzed customer survey data using Excel for a marketing campaign", "Prefers structured learning with deadlines", "Can commit 10-15 hours per week",
-        #     "Prefers moderate-paced learning", "Prefers hands-on learning", "Completed a course in digital marketing on Coursera", "Prefers online learning",
-        #     "Works well independently but appreciates occasional group work", "Transition into a data analyst role in the marketing industry", "Looking to switch careers",
-        #     "Interested in applied roles like Data Analyst", "Looking to gain foundational skills", "No", "Yes, currently working full-time",
-        #     "Interested in data visualization and marketing analytics", "Breaks down problems into smaller tasks, uses Excel for analysis"
-        # ],
+        "Maria Cruz": [
+            "Bachelor’s in Business Administration", "No", "Basic statistics", "Limited, just basic understanding of Python",
+            "Basic knowledge from online courses in Excel and SQL", "Proficient in Excel, basic knowledge of SQL", "Basic", "No, currently working as a marketing assistant",
+            "Analyzed customer survey data using Excel for a marketing campaign", "Prefers structured learning with deadlines", "Can commit 10-15 hours per week",
+            "Prefers moderate-paced learning", "Prefers hands-on learning", "Completed a course in digital marketing on Coursera", "Prefers online learning",
+            "Works well independently but appreciates occasional group work", "Transition into a data analyst role in the marketing industry", "Looking to switch careers",
+            "Interested in applied roles like Data Analyst", "Looking to gain foundational skills", "No", "Yes, currently working full-time",
+            "Interested in data visualization and marketing analytics", "Breaks down problems into smaller tasks, uses Excel for analysis"
+        ],
         "John Santos": [
             "Master’s in Electrical Engineering", "Yes, Electrical Engineering", "Extensive coursework in calculus, and statistics", "Proficient in Python, MATLAB, and C++",
             "Intermediate; practical experience with machine learning", "Experienced with SQL, Excel, and Tableau", "Advanced",
@@ -360,17 +341,17 @@ def load_test_answers_by_name(name):
             "Looking to gain foundational data science skills", "Possibly, but unsure", "Yes, working part-time and assisting in research",
             "Interested in data visualization for psychological research", "Relies on research and collaboration with peers to find solutions"
         ],
-        # "Raj Patel": [
-        #     "Bachelor’s in Computer Science", "Yes, Computer Science", "Extensive coursework in mathematics and statistics", "Proficient in Python, Java, and SQL",
-        #     "Advanced; coursework and practical projects", "Experienced with SQL, Python, and Power BI", "Advanced",
-        #     "Worked as a software developer with a focus on data engineering", "Developed a recommendation system using collaborative filtering for an e-commerce site",
-        #     "Comfortable with both, but prefers self-paced learning", "Can commit 20-25 hours per week", "Enjoys fast-paced environments with challenging problems",
-        #     "Prefers a mix of hands-on and theoretical learning", "Completed several online courses in machine learning", "Prefers online learning with occasional classroom sessions",
-        #     "Appreciates community support but works well independently", "Transition into a Data Scientist or Machine Learning Engineer role in a tech company",
-        #     "Looking to advance within the data science field", "Interested in applied roles with a focus on cutting-edge technology",
-        #     "Aims to gain advanced skills in data science", "Yes", "No, fully committed to learning", "Fascinated by machine learning and artificial intelligence",
-        #     "Breaks down the problem into components, uses programming and algorithms to solve"
-        # ],
+        "Raj Patel": [
+            "Bachelor’s in Computer Science", "Yes, Computer Science", "Extensive coursework in mathematics and statistics", "Proficient in Python, Java, and SQL",
+            "Advanced; coursework and practical projects", "Experienced with SQL, Python, and Power BI", "Advanced",
+            "Worked as a software developer with a focus on data engineering", "Developed a recommendation system using collaborative filtering for an e-commerce site",
+            "Comfortable with both, but prefers self-paced learning", "Can commit 20-25 hours per week", "Enjoys fast-paced environments with challenging problems",
+            "Prefers a mix of hands-on and theoretical learning", "Completed several online courses in machine learning", "Prefers online learning with occasional classroom sessions",
+            "Appreciates community support but works well independently", "Transition into a Data Scientist or Machine Learning Engineer role in a tech company",
+            "Looking to advance within the data science field", "Interested in applied roles with a focus on cutting-edge technology",
+            "Aims to gain advanced skills in data science", "Yes", "No, fully committed to learning", "Fascinated by machine learning and artificial intelligence",
+            "Breaks down the problem into components, uses programming and algorithms to solve"
+        ],
         "Lisa Kim": [
             "Bachelor’s in Economics", "Yes, Economics", "Coursework in statistics and econometrics", "Basic knowledge of Python and R",
             "Basic; knowledge from courses in econometrics and data analysis", "Proficient in Excel, basic knowledge of R", "Intermediate",
@@ -391,6 +372,7 @@ def load_test_answers_by_name(name):
         ]
     }
 
+  
     # Ensure the session state is properly initialized
     if 'responses' not in st.session_state:
         st.session_state.responses = []
@@ -417,6 +399,8 @@ def load_test_answers_by_name(name):
     else:
         st.error(f"No test answers found for {name}!")
 
+
+
 ################################################## SIDE BAR ##################################################
 with st.sidebar:
 
@@ -436,8 +420,19 @@ with st.sidebar:
       load_test_answers_by_name(name)
       st.rerun()
 
+
+
+
 ################################################ MAIN PROGRAM ################################################
-# Main logic
+# Ask every question until it reaches maximum number of question
+
+
+# Initialize the first question in the chat history if not already done
+if st.session_state.question_index == 0 and not st.session_state.chat_history:
+    first_question = questions[st.session_state.question_index]
+    st.session_state.chat_history.append(("AI", first_question))
+
+
 if st.session_state.question_index < len(questions):
     display_question()
     
@@ -456,17 +451,18 @@ if st.session_state.question_index < len(questions):
                     st.session_state.chat_history.append(("AI", classification))
                     st.session_state.question_index += 1
                     st.session_state.classification = True
-
+                  
+# Generate classification once all questions were answered
 else:
-    if st.session_state.responses and st.session_state.question_index == len(questions):
-        classification = get_classification()
+    if st.session_state.responses and st.session_state.question_index == len(questions): # Ensures all questions have responses
+        classification = get_classification() # Generates Classification
         if classification:
             st.session_state.chat_history.append(("AI", classification))
             st.session_state.question_index += 1
-            st.session_state.classification = True
+            st.session_state.classification = True # Triggers showing of classification results (162)
             st.rerun()
     
-col_main1, col_main2, col_main3 = st.columns([1,4,1])
+col_main1, col_main2, col_main3 = st.columns([1,4,1]) # Start Up Display
 with col_main2:
   st.markdown("""<h1 style='text-align: center;'>Data Science Learning Path Classifier</h1>""", unsafe_allow_html=True)
   cc1, cc2, cc3 = st.columns([1,10,1])
