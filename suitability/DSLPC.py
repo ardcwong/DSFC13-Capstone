@@ -309,7 +309,7 @@ def get_classification():
         st.error(f"Error: {e}")
         return None
 
-def load_test_answers_by_name(name):
+def load_test_answers_by_name(name): ######### FOR DEMO ##########
     # Define the updated answers for each person
     test_answers = {
         "Maria Cruz": [
@@ -414,7 +414,7 @@ with st.sidebar:
         st.session_state.BeginAssessment = True
         st.rerun()       
 
-with st.sidebar: 
+with st.sidebar:  ######### FOR DEMO ##########
   name = st.selectbox("Choose a test user:", ["John Santos", "Emily Tan", "Raj Patel", "Lisa Kim", "Jao Cordero"])
   if st.button("Load Demo Answers", use_container_width = True, type = "primary"):
       load_test_answers_by_name(name)
