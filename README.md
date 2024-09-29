@@ -1,4 +1,4 @@
-## EskwelApps: Data Science Education Toolkit
+## EskwelApps: Eskwelabs' Data Science Education Toolkit
 
 **EskwelApps** is a comprehensive suite of tools designed to support aspiring students and data science fellows in their learning journey. Built with a focus on personalization, program guidance, and actionable feedback, EskwelApps helps users make informed decisions about their path in data science. The key features include:
 
